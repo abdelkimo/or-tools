@@ -5,5 +5,5 @@ Build System:
   * Add Mac OS X Xcode package
 
 Source code:
-  * Implement ACMRandom::HostnamePidTimeSeed() and ACMRandom::DeterministicSeed() correctly.
-  * Implement Solver::MemoryUsage().
+  * Implement {{{ACMRandom::HostnamePidTimeSeed()}}} and {{{ACMRandom::DeterministicSeed()}}} correctly.
+  * Implement {{{Solver::MemoryUsage()}}}.
