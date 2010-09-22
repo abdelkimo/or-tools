@@ -1,0 +1,9 @@
+#This page contains items we are working on:
+
+Build System:
+  * Add Microsoft visual studio 2010 solution
+  * Add Mac OS X Xcode package
+
+Source code:
+  * Implement ACMRandom::HostnamePidTimeSeed() and ACMRandom::DeterministicSeed() correctly.
+  * Implement Solver::MemoryUsage().
