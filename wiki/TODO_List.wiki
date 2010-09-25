@@ -7,3 +7,7 @@ Build System:
 Source code:
   * Implement {{{ACMRandom::HostnamePidTimeSeed()}}} and {{{ACMRandom::DeterministicSeed()}}} correctly.
   * Implement {{{Solver::MemoryUsage()}}}.
+
+Wrapping:
+  * Java wrapping
+  * .NET wrapping.
