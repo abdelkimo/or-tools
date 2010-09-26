@@ -9,5 +9,6 @@ Source code:
   * Implement {{{Solver::MemoryUsage()}}}.
 
 Wrapping:
-  * Java wrapping
+  * Java wrapping.
   * .NET wrapping.
+  * Python wrapping on Windows
