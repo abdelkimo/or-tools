@@ -11,4 +11,3 @@ Source code:
 Wrapping:
   * Java wrapping.
   * .NET wrapping.
-  * Python wrapping on Windows
