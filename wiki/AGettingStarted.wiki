@@ -1,4 +1,5 @@
 #summary Getting Started
+#labels Phase-Deploy
 =Content of the Archive=
 
 Upon untarring the given operation_research tar file, you will get the following structure:
