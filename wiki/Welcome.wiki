@@ -1,6 +1,3 @@
-#summary Welcome
-
-=Welcome=
-
 This site contains the documentation of the [http://code.google.com/p/or-tools] project.
+
 Please discuss the content on the [https://groups.google.com/group/or-tools-discuss or-tools-discuss] mailing list.
