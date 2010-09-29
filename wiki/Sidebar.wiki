@@ -5,3 +5,4 @@
   # [CUsingConstraintSolver Using the Constraint Programming Solver]
     # [CUsingConstraintSolver1AnatomyCppExample Anatomy of a C++ example]
     # [CUsingConstraintSolverAnatomyPythonExample Anatomy of a Python example]
+    # [UsingCPSolverCppAPI C++ API Reference Manuel]
