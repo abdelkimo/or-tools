@@ -1,0 +1,9 @@
+=Using Operations Research Algorithms=
+
+The directory algorithms/ proposes
+  * *[Hungarian Method]* to solve assignment problems with linear cost.
+
+The directory graph/ proposes 3 algorithms:
+  * *[Bron-Kerbosch]* to find cliques in an undirected graph.
+  * *[Dijkstra]* algorithm to find shortest paths in a directed graph with non negative costs.
+  * *[Bellman-Ford]* algorithm to find shortest paths in a directed graph with arbitrary costs.
