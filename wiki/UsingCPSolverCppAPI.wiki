@@ -1711,7 +1711,8 @@ SearchMonitor* Solver::MakeSearchLog(int period, IntVar* objective, ResultCallba
 ==Search Trace==
 
 Create a search monitor that will trace precisely the behavior of the search. Use this only for low level debugging. 
-{{
+
+{{{
 SearchMonitor* Solver::MakeSearchTrace(const string& prefix);
 }}}
 
