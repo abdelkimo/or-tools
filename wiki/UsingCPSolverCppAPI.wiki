@@ -380,7 +380,7 @@ Same but allocates an array and returns it.
 IntVar** Solver::MakeIntVarArray(int var_count, int64 vmin, int64 vmax, const string& name);
 }}}
 
-This method will append the vector vars with 'var_count' boolean variables having name "name<i>" where <i> is the index of the variable.
+This method will append the vector vars with 'var_count' boolean variables having name `"name<i>"` where `<i>` is the index of the variable.
 
 {{{
 void Solver::MakeBoolVarArray(int var_count, const string& name, vector<IntVar*>* vars);
