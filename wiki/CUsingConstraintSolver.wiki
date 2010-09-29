@@ -1,0 +1,7 @@
+#Using the Constraing Programming Solver
+
+The constraint solver is located in the `constraint_solver/` directory.
+
+The entry point is the `constraint_solver.h` header file.
+
+<wiki:toc max_depth="1" />
