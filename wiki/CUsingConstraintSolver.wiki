@@ -5,4 +5,4 @@ The constraint solver is located in the `constraint_solver/` directory.
 The entry point is the `constraint_solver.h` header file.
 
 Table of Content:
-  # CUsingConstraintSolver1AnatomyCppExample  
+  # [CUsingConstraintSolver1AnatomyCppExample  Anatomy of a C++ example]
