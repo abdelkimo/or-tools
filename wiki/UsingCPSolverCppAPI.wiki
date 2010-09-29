@@ -174,71 +174,112 @@ Substraction
 {{{
 IntExpr* Solver::MakeDifference(IntExpr* const left, IntExpr* const right);
 IntExpr* Solver::MakeDifference(int64 value, IntExpr* const expr);}}}
-
+}}}
 
 Opposite
+
+{{{
 IntExpr* Solver::MakeOpposite(IntExpr* const expr);
+}}}
 
 Product
+
+{{{
 IntExpr* Solver::MakeProd(IntExpr* const left, IntExpr* const right);
 IntExpr* Solver::MakeProd(IntExpr* const expr, int64 value);
+}}}
 
 Integer division
+
+{{{
 IntExpr* Solver::MakeDiv(IntExpr* const expr, int64 value);
 IntExpr* Solver::MakeDiv(IntExpr* const numerator, IntExpr* const denominator);
+}}}
 
 Absolute Value
+
+{{{
 IntExpr* Solver::MakeAbs(IntExpr* const expr);
+}}}
 
 Square
+
+{{{
 IntExpr* Solver::MakeSquare(IntExpr* const expr);
+}}}
 
 Element Expression (array of integer values indexed by a variable)
+{{{
 IntExpr* Solver::MakeElement(const int64* const vals, int size, IntVar* const index);
 IntExpr* Solver::MakeElement(const vector<int64>& vals, IntVar* const index);
+}}}
+
 Function-based element
+{{{
 IntExpr* Solver::MakeElement(IndexEvaluator1* values, IntVar* const index);
+}}}
 
 2D version of function-based element expression, values(expr1, expr2).
+
+{{{
 IntExpr* Solver::MakeElement(IndexEvaluator2* values, IntVar* const index1, IntVar* const index2);
+}}}
 
 
 Array of variables indexed by another variable
+
+{{{
 IntExpr* Solver::MakeElement(const IntVar* const * vars, int size, IntVar* const index);
 IntExpr* Solver::MakeElement(const vector<IntVar*>& vars, IntVar* const index);
+}}}
 
 Min of integer expressions
+
+{{{
 IntExpr* Solver::MakeMin(const vector<IntVar*>& vars);
 IntExpr* Solver::MakeMin(IntVar* const* vars, int size);
 IntExpr* Solver::MakeMin(IntExpr* const left, IntExpr* const right);
 IntExpr* Solver::MakeMin(IntExpr* const expr, int64 val);
 IntExpr* Solver::MakeMin(IntExpr* const expr, int val);
-
+}}}
 
 Max of integer expressions
+
+{{{
 IntExpr* Solver::MakeMax(const vector<IntVar*>& vars);
 IntExpr* Solver::MakeMax(IntVar* const* vars, int size);
 IntExpr* Solver::MakeMax(IntExpr* const left, IntExpr* const right);
 IntExpr* Solver::MakeMax(IntExpr* const expr, int64 val);
 IntExpr* Solver::MakeMax(IntExpr* const expr, int val);
+}}}
 
 U-shaped convex piecewise function.
+
+{{{
 IntExpr* Solver::MakeConvexPiecewiseExpr(IntVar* e, int64 early_cost, int64 early_date, int64 late_date, int64 late_cost);
+}}}
 
 Semi continuous Expression (x <= 0 -> f(x) = 0; x > 0 -> f(x) = ax + b) with a >= 0 and b >= 0
+
+{{{
 IntExpr* Solver::MakeSemiContinuousExpr(IntExpr* e, int64 fixed_charge, int64 step);
-Create Decision Variables
+}}}
+
+=Create Decision Variables=
 
 The class Iterator has two direct subclasses. HoleIterators iterates over all holes, that is value removed between the current min and max of the variable since the last time the variable was processed in the queue. DomainIterators iterates over all elements of the variable domain. Both iterators are not robust to domain changes. Hole iterators can also report values outside the current min and max of the variable. HoleIterators should only be called from a demon attached to the variable that has created this iterator.
 
 Example:
+{{{
 IntVar* current_var;
 scoped_ptr<IntVarIterator> it(current_var->MakeHoleIterator(false));
 for (it->Init(); it->Ok(); it->Next()) {
   const int64 hole = it->Value();
   // use the hole
 }
+}}}
 
+{{{
 class IntVarIterator : public BaseObject {
  public:
   virtual ~IntVarIterator() {}
@@ -253,9 +294,11 @@ class IntVarIterator : public BaseObject {
   // Pretty Print.
   virtual string DebugString() const;
 };
+}}}
 
 The class IntVar is a subset of IntExpr. In addition to the IntExpr protocol, it offers persistance, removing values from the domains and a finer model for events
 
+{{{
 class IntVar : public IntExpr {
  public:
   explicit IntVar(Solver* const s) : IntExpr(s) {}
@@ -295,48 +338,69 @@ class IntVar : public IntExpr {
   virtual int64 OldMax() const = 0;
   virtual int VarType() const;
 };
-
+}}}
 
 MakeIntVar will create the best range based int var for the bounds given.
 
+{{{
 IntVar* Solver::MakeIntVar(int64 vmin, int64 vmax, const string& name);
 IntVar* Solver::MakeIntVar(int64 vmin, int64 vmax);
+}}}
 
 MakeIntVar will create a variable with the given sparse domain.
 
+{{{
 IntVar* Solver::MakeIntVar(const vector<int64>& values, const string& name);
 IntVar* Solver::MakeIntVar(const vector<int64>& values);
+}}}
 
 MakeBoolVar will create a variable with a {0, 1} domain.
 
+{{{
 IntVar* Solver::MakeBoolVar(const string& name);
 IntVar* Solver::MakeBoolVar();
+}}}
 
 IntConst will create a constant expression.
+
+{{{
 IntVar* Solver::MakeIntConst(int64 val, const string& name);
 IntVar* Solver::MakeIntConst(int64 val);
+}}}
 
 This method will append the vector vars with 'var_count' variables having bounds vmin and vmax and having name "name<i>" where <i> is the index of the variable.
 
+{{{
 void Solver::MakeIntVarArray(int var_count, int64 vmin, int64 vmax, const string& name, vector<IntVar*>* vars);
 void Solver::MakeIntVarArray(int var_count, int64 vmin, int64 vmax, vector<IntVar*>* vars);
+}}}
 
 Same but allocates an array and returns it.
+{{{
 IntVar** Solver::MakeIntVarArray(int var_count, int64 vmin, int64 vmax, const string& name);
-
+}}}
 
 This method will append the vector vars with 'var_count' boolean variables having name "name<i>" where <i> is the index of the variable.
 
+{{{
 void Solver::MakeBoolVarArray(int var_count, const string& name, vector<IntVar*>* vars);
 void Solver::MakeBoolVarArray(int var_count, vector<IntVar*>* vars);
+}}}
+
 Same but allocates an array and returns it.
+
+{{{
 IntVar** Solver::MakeBoolVarArray(int var_count, const string& name);
-Constraints
+}}}
+
+=Constraints=
 
 A constraint is the main modeling object. It proposes two methods:
 
-Post() is responsible for creating the demons and attaching them to immediate demons()
-InitialPropagate() is called once just after the Post and performs the initial propagation. The subsequent propagations will be performed by the demons Posted during the post() method.
+  * Post() is responsible for creating the demons and attaching them to immediate demons()
+  * InitialPropagate() is called once just after the Post and performs the initial propagation. The subsequent propagations will be performed by the demons Posted during the post() method.
+
+{{{
 class Constraint : public PropagationBaseObject {
  public:
   explicit Constraint(Solver* const solver);
@@ -348,15 +412,25 @@ class Constraint : public PropagationBaseObject {
   // Pretty print method.
   virtual string DebugString() const;
 };
+}}}
 
 This method adds the constraint "c" to the solver. 
+
+{{{
 void Solver::AddConstraint(Constraint* const c); 
+}}}
 
 This constraint always succeeds.
+
+{{{
 Constraint* Solver::MakeTrueConstraint();
+}}}
+
 This constraint always fails.
 
+{{{
 Constraint* Solver::MakeFalseConstraint();
+}}}
 
 b == (v == c)
 Constraint* Solver::MakeIsEqualCstCt(IntVar* const v, int64 c, IntVar* const b);
