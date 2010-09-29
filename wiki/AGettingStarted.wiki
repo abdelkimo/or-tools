@@ -1,5 +1,5 @@
-=Getting Started=
-==Content of the Archive==
+#summary Getting Started
+=Content of the Archive=
 
 Upon untarring the given operation_research tar file, you will get the following structure:
 or-tools/
@@ -16,7 +16,7 @@ or-tools/
 || python/ || Python examples ||
 || util/ || More utilities needed by the constraint solver || 
 
-==Installing under Linux and Mac OS X==
+=Installing under Linux and Mac OS X=
 
 This library has been tested under Ubuntu Linux 10.10, and Mac OS X Snow Leopard (10.6) with xcode 3.2.3.
 It is known not to compile with xcode 3.1.x running under Mac OS X Leopard (10.5).
@@ -72,7 +72,7 @@ As in
 This has been tested with python 2.5 and 2.6.
 The wrapping using SWIG has been tested with SWIG 1.3.40 and 1.3.31.
 
-==Installing under Microsoft Windows==
+=Installing under Microsoft Windows=
 
 First, you will need to dowload the google-gflags library. It can be obtained at the following address:
 
