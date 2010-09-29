@@ -1616,7 +1616,7 @@ SearchMonitor* MakeGuidedLocalSearch(bool maximize, IntVar* const objective, Ind
 
 ==Restart Search==
 
-This search monitor will restart the search periodically. At the iteration n, it will restart after scale_factor * Luby(n) failures where Luby is the Luby Strategy (i.e. 1 1 2 1 1 2 4 1 1 2 1 1 2 4 8...). 
+This search monitor will restart the search periodically. At the iteration n, it will restart after scale_factor `*` Luby(n) failures where Luby is the Luby Strategy (i.e. 1 1 2 1 1 2 4 1 1 2 1 1 2 4 8...). 
 
 
 {{{
