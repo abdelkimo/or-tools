@@ -433,109 +433,201 @@ Constraint* Solver::MakeFalseConstraint();
 }}}
 
 b == (v == c)
+
+{{{
 Constraint* Solver::MakeIsEqualCstCt(IntVar* const v, int64 c, IntVar* const b);
+}}}
 
 Status var of (v == c)
+
+{{{
 IntVar* Solver::MakeIsEqualCstVar(IntVar* const var, int64 value);
+}}}
 
 b == (v1 == v2)
+
+{{{
 Constraint* Solver::MakeIsEqualCt(IntExpr* const v1, IntExpr* v2, IntVar* const b);
+}}}
 
 Status var of (v1 == v2)
+
+{{{
 IntVar* Solver::MakeIsEqualVar(IntExpr* const var, IntExpr* v2);
+}}}
 
 Equality constraint
+
+{{{
 Constraint* Solver::MakeEquality(IntVar* const left, IntVar* const right);
 Constraint* Solver::MakeEquality(IntExpr* const expr, int64 value);
 Constraint* Solver::MakeEquality(IntExpr* const expr, int value);
+}}}
 
 
 b == (v != c)
+
+{{{
 Constraint* Solver::MakeIsDifferentCstCt(IntVar* const v, int64 c, IntVar* const b);
+}}}
 
 Status var of (v != c)
+
+{{{
 IntVar* Solver::MakeIsDifferentCstVar(IntVar* const v, int64 c);
+}}}
 
 Status var of (v1 != v2)
+
+{{{
 IntVar* Solver::MakeIsDifferentVar(IntExpr* const v1, IntExpr* const v2);
+}}}
 
 b == (v1 != v2)
+
+{{{
 Constraint* Solver::MakeIsDifferentCt(IntExpr* const v1, IntExpr* const v2, IntVar* const b);
+}}}
 
 Inequality Constraint
+
+{{{
 Constraint* Solver::MakeNonEquality(IntVar* const left, IntVar* const right);
 Constraint* Solver::MakeNonEquality(IntVar* const expr, int64 value);
 Constraint* Solver::MakeNonEquality(IntVar* const expr, int value);
+}}}
 
 b == (v <= c)
+
+{{{
 Constraint* Solver::MakeIsLessOrEqualCstCt(IntVar* const v, int64 c, IntVar* const b);
+}}}
 
 Status var of (v <= c)
+
+{{{
 IntVar* Solver::MakeIsLessOrEqualCstVar(IntVar* const v, int64 c);
+}}}
 
 Status var of (left <= right)
+
+{{{
 IntVar* Solver::MakeIsLessOrEqualVar(IntExpr* const left, IntExpr* const right);
+}}}
 
 b == (left <= right)
+
+{{{
 Constraint* Solver::MakeIsLessOrEqualCt(IntExpr* const left, IntExpr* const right, IntVar* const b);
+}}}
 
 <= constraint
+
+{{{
 Constraint* Solver::MakeLessOrEqual(IntVar* const left, IntVar* const right);
 Constraint* Solver::MakeLessOrEqual(IntExpr* const expr, int64 value);
 Constraint* Solver::MakeLessOrEqual(IntExpr* const expr, int value);
+}}}
 
 b == (v >= c)
+
+{{{
 Constraint* Solver::MakeIsGreaterOrEqualCstCt(IntVar* const v, int64 c, IntVar* const b);
+}}}
 
 Status var of (v >= c)
+
+{{{
 IntVar* Solver::MakeIsGreaterOrEqualCstVar(IntVar* const v, int64 c);
+}}}
 
 Status var of (left >= right)
+
+{{{
 IntVar* Solver::MakeIsGreaterOrEqualVar(IntExpr* const left, IntExpr* const right);
+}}}
 
 b == (left >= right)
+
+{{{
 Constraint* Solver::MakeIsGreaterOrEqualCt(IntExpr* const left, IntExpr* const right, IntVar* const b);
+}}}
 
 Greater or Equal Constraint
+
+{{{
 Constraint* Solver::MakeGreaterOrEqual(IntVar* const left, IntVar* const right);
 Constraint* Solver::MakeGreaterOrEqual(IntExpr* const expr, int64 value);
 Constraint* Solver::MakeGreaterOrEqual(IntExpr* const expr, int value);
+}}}
 
 b == (v > c)
+
+{{{
 Constraint* Solver::MakeIsGreaterCstCt(IntVar* const v, int64 c, IntVar* const b);
+}}}
 
 Status var of (v > c)
+
+{{{
 IntVar* Solver::MakeIsGreaterCstVar(IntVar* const v, int64 c);
+}}}
 
 Status var of (left > right)
+
+{{{
 IntVar* Solver::MakeIsGreaterVar(IntExpr* const left, IntExpr* const right);
+}}}
 
 b == (left > right)
+
+{{{
 Constraint* Solver::MakeIsGreaterCt(IntExpr* const left, IntExpr* const right, IntVar* const b);
+}}}
 
 Greater Constraint
+
+{{{
 Constraint* Solver::MakeGreater(IntVar* const left, IntVar* const right);
 Constraint* Solver::MakeGreater(IntExpr* const expr, int64 value);
 Constraint* Solver::MakeGreater(IntExpr* const expr, int value);
+}}}
 
 b == (v < c)
+
+{{{
 Constraint* Solver::MakeIsLessCstCt(IntVar* const v, int64 c, IntVar* const b);
+}}}
 
 Status var of (v < c)
+
+{{{
 IntVar* Solver::MakeIsLessCstVar(IntVar* const v, int64 c);
+}}}
 
 Status var of (left < right)
+
+{{{
 IntVar* Solver::MakeIsLessVar(IntExpr* const left, IntExpr* const right);
+}}}
 
 b == (left < right)
+
+{{{
 Constraint* Solver::MakeIsLessCt(IntExpr* const left, IntExpr* const right, IntVar* const b);
+}}}
 
 Less Constraint
+
+{{{
 Constraint* Solver::MakeLess(IntVar* const left, IntVar* const right);
 Constraint* Solver::MakeLess(IntExpr* const expr, int64 value);
 Constraint* Solver::MakeLess(IntExpr* const expr, int value);
+}}}
 
 Variation on arrays.
+
+{{{
 Constraint* Solver::MakeSumLessOrEqual(const vector<IntVar*>& vars, int64 cst);
 Constraint* Solver::MakeSumLessOrEqual(IntVar* const* vars, int size, int64 cst);
 Constraint* Solver::MakeSumGreaterOrEqual(const vector<IntVar*>& vars, int64 cst);
@@ -554,68 +646,119 @@ Constraint* Solver::MakeScalProdLessOrEqual(const vector<IntVar*>& vars, const v
 Constraint* Solver::MakeScalProdLessOrEqual(IntVar* const* vars, int size, int64 const * coefficients, int64 cst);
 Constraint* Solver::MakeScalProdLessOrEqual(const vector<IntVar*>& vars, const vector<int>& coefficients, int64 cst);
 Constraint* Solver::MakeScalProdLessOrEqual(IntVar* const* vars, int size, int const * coefficients, int64 cst);
+}}}
 
 This method is a specialized case of the MakeConstraintDemon method to call the InitiatePropagate of the constraint 'ct'.
+
+{{{
 Demon* Solver::MakeConstraintInitialPropagateCallback(Constraint* const ct);
+}}}
 
 The same demon, but with a lower priority.
+
+{{{
 Demon* Solver::MakeDelayedConstraintInitialPropagateCallback(Constraint* const ct);
+}}}
 
 (l <= b <= u)
+
+{{{
 Constraint* Solver::MakeBetweenCt(IntVar* const v, int64 l, int64 u);
+}}}
 
 b == (l <= v <= u)
+
+{{{
 Constraint* Solver::MakeIsBetweenCt(IntVar* const v, int64 l, int64 u, IntVar* const b);
+}}}
 
 b == (v in set)
+
+{{{
 Constraint* Solver::MakeIsMemberCt(IntVar* const v, const int64* const values, int size, IntVar* const b);
 Constraint* Solver::MakeIsMemberCt(IntVar* const v, const vector<int64>& values, IntVar* const b);
+}}}
 
 Status var of (v in set)
+
+{{{
 IntVar* Solver::MakeIsMemberVar(IntVar* const v, const int64* const values, int size);
 IntVar* Solver::MakeIsMemberVar(IntVar* const v, const vector<int64>& values);
+}}}
 
 Membership constraint (v in set). Propagation is lazy, i.e. this constraint does not creates holes in the domain of the variable.
+
+{{{
 Constraint* Solver::MakeMemberCt(IntVar* const v, const int64* const values, int size);
 Constraint* Solver::MakeMemberCt(IntVar* const v, const vector<int64>& values);
+}}}
 
 |{i | v[i] == value}| == count
+
+{{{
 Constraint* Solver::MakeCount(const vector<IntVar*>& v, int64 value, int64 count);
 Constraint* Solver::MakeCount(const vector<IntVar*>& v, int64 value, IntVar* const count);
+}}}
 
 Aggregated version of count: |{i | v[i] == values[j]}| == cards[j]
+
+{{{
 Constraint* Solver::MakeDistribute(const vector<IntVar*>& vars, const vector<int64>& values, const vector<IntVar*>& cards);
+}}}
 
 Aggregated version of count: |{i | v[i] == j}| == cards[j]
+
+{{{
 Constraint* Solver::MakeDistribute(const vector<IntVar*>& vars, const vector<IntVar*>& cards);
+}}}
 
 Aggregated version of count with bounded cardinalities: forall j in 0 .. card_size - 1: card_min <= |{i | v[i] == j}| <= card_max
+
+{{{
 Constraint* Solver::MakeDistribute(const vector<IntVar*>& vars, int64 card_min, int64 card_max, int64 card_size);
+}}}
 
 All variables are pairwise different. If range is true, then the propagation is a bit more costly, and more effective.
+
+{{{
 Constraint* Solver::MakeAllDifferent(const vector<IntVar*>& vars, bool range);
 Constraint* Solver::MakeAllDifferent(const IntVar* const* vars,int size, bool range);
+}}}
 
 Prevent cycles, nexts variables representing the next in the chain. Active variables indicate if the corresponding next variable is active; this could be useful to model unperformed nodes in a routing problem. A callback can be added to specify sink values (by default sink values are values >= vars.size()). Ownership of the callback is passed to the constraint. If assume_paths is either not specified or true, the constraint assumes the 'next' variables represent paths (and performs a faster propagation); otherwise the constraint assumes the 'next' variables represent a forest.
+
+{{{
 Constraint* Solver::MakeNoCycle(const vector<IntVar*>& nexts, const vector<IntVar*>& active, ResultCallback1<bool, int64>* sink_handler = NULL);
 Constraint* Solver::MakeNoCycle(const IntVar* const* nexts, const IntVar* const* active, int size, ResultCallback1<bool, int64>* sink_handler = NULL);
 Constraint* Solver::MakeNoCycle(const vector<IntVar*>& nexts, const vector<IntVar*>& active, ResultCallback1<bool, int64>* sink_handler, bool assume_paths);
 Constraint* Solver::MakeNoCycle(const IntVar* const* nexts, const IntVar* const* active, int size, ResultCallback1<bool, int64>* sink_handler, bool assume_paths);
+}}}
 
 Accumulate values along a path such that: cumuls[next[i]] = cumuls[i] + transits[i].
 Active variables indicate if the corresponding next variable is active; this could be useful to model unperformed nodes in a routing problem.
+
+{{{
 Constraint* Solver::MakePathCumul(const vector<IntVar*>& nexts, const vector<IntVar*>& active,const vector<IntVar*>& cumuls, const vector<IntVar*>& transits);
 Constraint* Solver::MakePathCumul(const IntVar* const* nexts, const IntVar* const* active, const IntVar* const* cumuls, const IntVar* const* transits, int next_size, int cumul_size);
+}}}
 
 This constraint maps the domain of 'var' onto the array of variables 'vars'. That is for all i in [0 .. size - 1]: vars[i] == 1 <=> var->Contains(i);
+
+{{{
 Constraint* Solver::MakeMapDomain(IntVar* const var, IntVar* const * vars, int size);
 Constraint* Solver::MakeMapDomain(IntVar* const var, const vector<IntVar*>& vars);
+}}}
 
 This method creates a constraint where the graph of the relation between the variables is given in extension. There are 'arity' variables involved in the relation and the graph is given by a matrix of size 'tuple_count' x 'arity'.
+
+{{{
 Constraint* Solver::MakeAllowedAssignments(const IntVar* const * vars, const int64* const * tuples, int tuple_count, int arity);
 Constraint* Solver::MakeAllowedAssignments(const vector<IntVar*>& vars, const vector<vector<int64> >& tuples);
+}}}
 
 Packing constraint
+
+{{{
 class Pack : public Constraint {
  public:
   Pack(Solver* const s, const IntVar* const * vars, int vsize, int64 number_of_bins);
@@ -635,15 +778,21 @@ class Pack : public Constraint {
   // This dimension links 'count_var' to the actual number of items assigned to a bin in the pack.
   void AddCountAssignedItemsDimension(IntVar* const count_var);
 };
+}}}
 
 This constraint packs all variables onto 'number_of_bins' variables. For any given variable, a value of 'number_of_bins' indicates that the variable is not assigned to any bin. Dimensions, i.e. cumulative constraints on this packing can be added directly from the pack class.
-Pack* Solver::MakePack(const vector<IntVar*>& vars, int number_of_bins);
-Scheduling
 
-Intervals
+{{{
+Pack* Solver::MakePack(const vector<IntVar*>& vars, int number_of_bins);
+}}}
+
+=Scheduling=
+
+==Intervals==
 
 An interval var is often used in scheduling. Its main characteristics are its start position, its duration and its end date. All these characteristics can be queried, set and demons can be posted on their modifications. An important aspect is optionality. An interval var can be performed or not. If unperformed, then it simply does not exist. Its characteristics cannot be accessed anymore. An interval var is automatically marked as unperformed when it is not consistent anymore (start greater than end, duration < 0...)
 
+{{{
 class IntervalVar : public PropagationBaseObject {
  public:
   IntervalVar(Solver* const s, const string& name);
@@ -687,17 +836,25 @@ class IntervalVar : public PropagationBaseObject {
   IntExpr* EndExpr();
   IntExpr* PerformedExpr();
 };
+}}}
 
 Creates an interval var with a fixed duration. The duration must be greater than 0. If optional is true, then the interval can be performed or unperformed. If optional is false, then the interval is always performed.
 
+{{{
 IntervalVar* Solver::MakeFixedDurationIntervalVar(int64 start_min, int64 start_max, int64 duration, bool optional, const string& name);
+}}}
 
 Creates an fixed and performed interval.
 
+{{{
 IntervalVar* Solver::MakeFixedInterval(int64 start, int64 duration, const string& name);
-Scheduling Constraints
+}}}
+
+==Scheduling Constraints==
 
 This method creates a relation between an interval var and a date.
+
+{{{
 enum UnaryIntervalRelation {
   ENDS_AFTER,
   ENDS_AT,
@@ -709,8 +866,11 @@ enum UnaryIntervalRelation {
   AVOID_DATE
 };
 Constraint* Solver::MakeIntervalVarRelation(IntervalVar* const t, UnaryIntervalRelation r, int64 d);
+}}}
+
 This method creates a relation between two an interval vars.
 
+{{{
 enum BinaryIntervalRelation {
   ENDS_AFTER_END,
   ENDS_AFTER_START,
@@ -722,16 +882,25 @@ enum BinaryIntervalRelation {
   STARTS_AT_START
 };
 Constraint* Solver::MakeIntervalVarRelation(IntervalVar* const t1, BinaryIntervalRelation r, IntervalVar* const t2);
+}}}
 
 This constraint implements a temporal disjunction between two interval vars t1 and t2. 'alt' indicates which alternative was chosen (alt == 0 is equivalent to t1 before t2).
+
+{{{
 Constraint* Solver::MakeTemporalDisjunction(IntervalVar* const t1, IntervalVar* const t2, IntVar* const alt);
+}}}
 
 This constraint implements a temporal disjunction between two interval vars.
+
+{{{
 Constraint* Solver::MakeTemporalDisjunction(IntervalVar* const t1, IntervalVar* const t2);
-Sequence
+}}}
+
+==Sequence==
 
 A sequence is groups an array of interval vars and force them into a sequence. It exports statistics about its interval states such that it can be used in a decision builder. The most important ones are PossibleFirst() which tells if an interval var can be ranked first and RankFirst/RankNotFirst which can be used to create the search decision.
 
+{{{
 class Sequence : public Constraint {
  public:
   enum State { ONE_BEFORE_TWO, TWO_BEFORE_ONE, UNDECIDED };
@@ -770,15 +939,22 @@ class Sequence : public Constraint {
   // Returns the number of interval vars in the sequence.
   int size() const { return size_; }
 };
+}}}
+
 This constraint forces all interval vars into an non overlapping sequence and creates a sequence object.
+
+{{{
 Sequence* Solver::MakeSequence(const vector<IntervalVar*>& intervals, const string& name);
 Sequence* Solver::MakeSequence(const IntervalVar* const * intervals, int size, const string& name);
+}}}
 
-Tree Search Definition
+=Tree Search Definition=
 
-Classes and Enums
+==Classes and Enums==
 
 A Decision represents a choice point in the search tree. The two main methods are Apply() to go left, or Refute() to go right.
+
+{{{
 class Decision : public BaseObject {
  public:
   Decision() {}
@@ -792,21 +968,23 @@ class Decision : public BaseObject {
   // Visits the decision.
   virtual void Accept(DecisionVisitor* const visitor) const;
 };
-
+}}
 
 A DecisionVisitor is used to inspect a decision. It contains virtual methods for all type of 'declared' decisions.
 
+{{{
 class DecisionVisitor : public BaseObject {
  public:
   DecisionVisitor() {}
   virtual ~DecisionVisitor() {}
   virtual void VisitSetVariableValue(IntVar* const var, int64 value);
   virtual void VisitUnknownDecision();
- };
-
+};
+}}}
 
 A DecisionBuilder is responsible for creating the search tree. The important method is Next() that returns the next decision to execute.
 
+{{{
 class DecisionBuilder : public BaseObject {
  public:
   DecisionBuilder() {}
@@ -816,8 +994,11 @@ class DecisionBuilder : public BaseObject {
   // Pretty print method.
   virtual string DebugString() const { return "DecisionBuilder"; }
 };
+}}}
 
 These enums are used to specify predefined strategies.
+
+{{{
 enum IntVarStrategy {
  INT_VAR_DEFAULT,
  INT_VAR_SIMPLE,
@@ -855,22 +1036,31 @@ enum IntervalStrategy {
  INTERVAL_SIMPLE,
  INTERVAL_SET_TIMES_FORWARD
 };
+}}}
 
-Search Decicions and Decision Builders
+==Search Decicions and Decision Builders==
 
 These are the predefined decisions
+
+{{{
 Decision* Solver::MakeAssignVariableValue(IntVar* const var, int64 value);
 Decision* Solver::MakeAssignVariablesValues(const IntVar* const* vars, int size, const int64* const values);
 Decision* Solver::MakeAssignVariablesValues(const vector<IntVar*>& vars, const vector<int64>& values);
 Decision* Solver::MakeFailDecision();
+}}}
 
 Sequential composition of Decision Builders
+
+{{{
 DecisionBuilder* Compose(DecisionBuilder* const db1, DecisionBuilder* const db2);
 DecisionBuilder* Compose(DecisionBuilder* const db1, DecisionBuilder* const db2, DecisionBuilder* const db3);
 DecisionBuilder* Compose(DecisionBuilder* const db1, DecisionBuilder* const db2, DecisionBuilder* const db3, DecisionBuilder* const db4);
 DecisionBuilder* Compose(const vector<DecisionBuilder*>& dbs);
+}}}
 
 Phases on IntVar arrays.
+
+{{{
 DecisionBuilder* MakePhase(const vector<IntVar*>& vars, IntVarStrategy var_str, IntValueStrategy val_str);
 DecisionBuilder* MakePhase(const IntVar* const* vars, int size, IntVarStrategy var_str, IntValueStrategy val_str);
 DecisionBuilder* MakePhase(const vector<IntVar*>& vars, IndexEvaluator1* var_evaluator, IntValueStrategy val_str);
@@ -883,44 +1073,68 @@ DecisionBuilder* MakePhase(const vector<IntVar*>& vars, IntVarStrategy var_str, 
 DecisionBuilder* MakePhase(const IntVar* const* vars, int size, IntVarStrategy var_str, IndexEvaluator2* val_eval, IndexEvaluator1* tie_breaker);
 DecisionBuilder* MakePhase(const vector<IntVar*>& vars, IndexEvaluator1* var_evaluator, IndexEvaluator2* val_eval, IndexEvaluator1* tie_breaker);
 DecisionBuilder* MakePhase(const IntVar* const* vars, int size, IndexEvaluator1* var_evaluator, IndexEvaluator2* val_eval, IndexEvaluator1* tie_breaker);
+}}}
 
 Shortcuts for small arrays.
 
+{{{
 DecisionBuilder* MakePhase(IntVar* const v0, IntVarStrategy var_str, IntValueStrategy val_str);
 DecisionBuilder* MakePhase(IntVar* const v0, IntVar* const v1, IntVarStrategy var_str, IntValueStrategy val_str);
 DecisionBuilder* MakePhase(IntVar* const v0, IntVar* const v1, IntVar* const v2, IntVarStrategy var_str, IntValueStrategy val_str);
 DecisionBuilder* MakePhase(IntVar* const v0, IntVar* const v1, IntVar* const v2, IntVar* const v3, IntVarStrategy var_str, IntValueStrategy val_str);
+}}}
 
 Returns a decision builder which assigns values to variables which minimizes the values returned by the evaluator. The arguments passed to the evaluator callback are the indices of the variables in vars and the values of these variables. Ownership of the callback is passed to the decision builder.
+
+{{{
 DecisionBuilder* MakePhase(const vector<IntVar*>& vars, IndexEvaluator2* evaluator, EvaluatorStrategy str);
 DecisionBuilder* MakePhase(const IntVar* const* vars, int size, IndexEvaluator2* evaluator, EvaluatorStrategy str);
+}}}
 
 Returns a decision builder which assigns values to variables which minimize the values returned by the evaluator. In case of tie breaks, the second callback is used to choose the best index in the array of equivalent pairs with equivalent evaluations. The arguments passed to the evaluator callback are the indices of the variables in vars and the values of these variables. Ownership of the callback is passed to the decision builder.
+
+{{{
 DecisionBuilder* MakePhase(const vector<IntVar*>& vars, IndexEvaluator2* evaluator, IndexEvaluator1* tie_breaker, EvaluatorStrategy str);
 DecisionBuilder* MakePhase(const IntVar* const* vars, int size, IndexEvaluator2* evaluator, IndexEvaluator1* tie_breaker, EvaluatorStrategy str);
+}}}
 
 Scheduling phases.
+
+{{{
 DecisionBuilder* MakePhase(const vector<IntervalVar*>& intervals, IntervalStrategy str);
 DecisionBuilder* MakePhase(const vector<Sequence*>& sequences, SequenceStrategy str);
+}}}
  
 Returns a decision builder for which the left-most leaf corresponds to assignment, the rest of the tree being explored using 'db'.
+
+{{{
 DecisionBuilder* MakeDecisionBuilderFromAssignment(Assignment* const assignment, DecisionBuilder* const db, const IntVar* const* vars, int size);
+}}}
 
 SolveOnce will collapse a search tree described by a 'db' decision builder, and a set of monitors and wrap it into a single point. If there are no solutions to this nested tree, then SolveOnce will fail. If there is a solution, it will find it and returns NULL.
+
+{{{
 DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db);
 DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db, SearchMonitor* const monitor1);
 DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db, SearchMonitor* const monitor1, SearchMonitor* const monitor2);
 DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db, SearchMonitor* const monitor1, SearchMonitor* const monitor2, SearchMonitor* const monitor3);
 DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db, SearchMonitor* const monitor1, SearchMonitor* const monitor2, SearchMonitor* const monitor3, SearchMonitor* const monitor4);
 DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db, const vector<SearchMonitor*>& monitors);
+}}}
 
 Returns a DecisionBuilder which restores an Assignment (calls void Assignment::Restore())
+
+{{{
 DecisionBuilder* MakeRestoreAssignment(Assignment* assignment);
+}}}
 
 Returns a DecisionBuilder which stores an Assignment (calls void Assignment::Store()).
-DecisionBuilder* MakeStoreAssignment(Assignment* assignment);
 
-Searching
+{{{
+DecisionBuilder* MakeStoreAssignment(Assignment* assignment);
+}}}
+
+=Searching=
 
 Top level solve using a decision builder and up to three search monitors, usually one for the objective, one for the limits and one to collect solutions.
 bool Solver::Solve(DecisionBuilder* const db, const vector<SearchMonitor*>& monitors);
