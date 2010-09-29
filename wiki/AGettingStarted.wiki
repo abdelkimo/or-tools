@@ -1,0 +1,134 @@
+=Content of the Archive=
+
+Upon untarring the given operation_research tar file, you will get the following structure:
+or-tools/
+|| LICENSE-2.0.txt || Apache License ||
+|| Makefile || Makefile for unix platform (ubuntu linux, mac os X) ||
+|| Makefile.msv || Makefile for Microsoft Visual Studio ||
+|| README || This file ||
+|| algorithms/ || A collection of OR algorithms (non graph related) ||
+|| base/ || Directory containing basic utilities ||
+|| constraint_solver/ || The main directory for the constraint solver library ||
+|| examples/ || C++ examples ||
+|| graph/ || Standard OR graph algorithms ||
+|| objs/ || Where C++ objs files will be stored ||
+|| python/ || Python examples ||
+|| util/ || More utilities needed by the constraint solver || 
+
+=Installing under Linux and Mac OS X=
+
+This library has been tested under Ubuntu Linux 10.10, and Mac OS X Snow Leopard (10.6) with xcode 3.2.3.
+It is known not to compile with xcode 3.1.x running under Mac OS X Leopard (10.5).
+First, you will need to install the google-gflags library, compile it
+and install it. It can be obtained at the following address:
+
+http://code.google.com/p/google-gflags/
+
+By default, the makefile assumes the installation path is
+../gflags-1.3 from the Makefile, thus at the same level as the
+or-tools directory.
+
+Then you need to install zlib. You can fetch it at http://www.zlib.net/ The makefile default path is ../zlib-1.2.5 from the location of the or-tools Makefile.
+
+Please edit the top of the makefile to accommodate your installation.
+
+You can then compile the library, examples and python wrapping:
+
+
+{{{make all}}}
+
+
+To compile in debug mode, please use
+
+
+{{{make DEBUG=-g all}}}
+
+
+You can clean everything using
+
+
+{{{make clean}}}
+
+
+When everything is compiled, you will find under operations_research:
+  * some libraries (libcp.a, libutil.a and libbase.a, and more)
+  * One binary per C++ example (e.g. nqueens)
+  * A C++ wrapping library (_pywrapcp.so)
+
+You can execute C++ examples just by running then:
+
+{{{./magic_square }}}
+
+
+For the python examples, as we have not installed the constraint_solver module, we need to use the following command:
+
+{{{PYTHONPATH= <python_binary> python/<sample.py>}}}
+
+As in
+
+{{{PYTHONPATH= python2.6 python/golomb8.py}}}
+
+This has been tested with python 2.5 and 2.6.
+The wrapping using SWIG has been tested with SWIG 1.3.40 and 1.3.31.
+
+=Installing under Microsoft Windows=
+
+First, you will need to dowload the google-gflags library. It can be obtained at the following address:
+
+http://code.google.com/p/google-gflags/
+
+then decompress the gflags directory alongside the or-tools directory, do not compile it.
+
+Please modify the Makefile.msv to point to the source of the gflags source directory.
+
+Then install the zlib source archive, step into it, and run  
+
+{{{nmake -f win32/Makefile.msc}}}
+
+directly at this point. (please note that there is a bug in zlib-1.2.5 makefile as the OBJS list of files misses the inffast.obj entry).
+
+Then modify the Makefile.msv in or-tools to point to the root of the zlib source tree.
+
+You can then compile the library and examples :
+
+{{{nmake -f Makefile.msv all}}}
+
+To compile in debug mode, please use
+
+{{{nmake -f Makefile.msv DEBUG="/Od /Zi" all}}}
+
+You can clean everything using
+
+{{{nmake -f Makefile.msv clean}}}
+
+
+When everything is compiled, you will find under or-tools:
+a few libraries (including cp.lib, util.lib, base.lib and gflags.dll) 
+One binary per C++ example (e.g. nqueens.exe)
+
+You can execute C++ examples just by running then:
+
+{{{magic_square.exe}}}
+
+To use Python, you need to install python and swigwin. 
+This has been tested with swigwin-2.0.0 available from there:
+
+http://prdownloads.sourceforge.net/swig/swigwin-2.0.0.zip
+
+and python from 
+
+http://www.python.org/download/releases/2.7/
+
+Now, build the python wrapping:
+
+{{{nmake -f Makefile.msv pylib}}}
+
+Set the correct environment variable
+
+{{{set PYTHONPATH=%PYTHONPATH%;<path to or-tools>}}}
+
+and run the examples as in:
+
+{{{python.exe python\simple_meeting.py}}}
+
+
