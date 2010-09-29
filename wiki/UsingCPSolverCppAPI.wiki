@@ -968,7 +968,7 @@ class Decision : public BaseObject {
   // Visits the decision.
   virtual void Accept(DecisionVisitor* const visitor) const;
 };
-}}
+}}}
 
 A DecisionVisitor is used to inspect a decision. It contains virtual methods for all type of 'declared' decisions.
 
