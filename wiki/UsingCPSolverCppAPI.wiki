@@ -1,12 +1,12 @@
 #summary Reference Manual
 
-<wiki:toc max_depth="1" />
+<wiki:toc max_depth="2" />
 
 =Base Objects, Reversible States and Values=
 
 ==Base Objects==
 
-A BaseObject is the root of all reversibly allocated objects.  A DebugString method is implemented.
+A [BaseObject] is the root of all reversibly allocated objects.  A [DebugString] method is implemented.
 
 {{{
 class BaseObject {
