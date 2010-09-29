@@ -368,7 +368,7 @@ IntVar* Solver::MakeIntConst(int64 val, const string& name);
 IntVar* Solver::MakeIntConst(int64 val);
 }}}
 
-This method will append the vector vars with _`var_count`_ variables having bounds vmin and vmax and having name "name<i>" where <i> is the index of the variable.
+This method will append the vector vars with _`var_count`_ variables having bounds vmin and vmax and having name "name_i_" where _i_ is the index of the variable.
 
 {{{
 void Solver::MakeIntVarArray(int var_count, int64 vmin, int64 vmax, const string& name, vector<IntVar*>* vars);
@@ -380,7 +380,7 @@ Same but allocates an array and returns it.
 IntVar** Solver::MakeIntVarArray(int var_count, int64 vmin, int64 vmax, const string& name);
 }}}
 
-This method will append the vector vars with 'var_count' boolean variables having name `"name<i>"` where `<i>` is the index of the variable.
+This method will append the vector vars with 'var_count' boolean variables having name "name_i_" where _i_ is the index of the variable.
 
 {{{
 void Solver::MakeBoolVarArray(int var_count, const string& name, vector<IntVar*>* vars);
