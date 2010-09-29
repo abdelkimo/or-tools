@@ -6,7 +6,7 @@
 
 ==Base Objects==
 
-A {BaseObject} is the root of all reversibly allocated objects.  A [DebugString] method is implemented.
+A BaseObject is the root of all reversibly allocated objects.  A [DebugString] method is implemented.
 
 {{{
 class BaseObject {
