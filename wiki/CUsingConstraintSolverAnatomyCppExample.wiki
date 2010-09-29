@@ -1,4 +1,4 @@
-#Anatomy of a C++ Example
+#summary Anatomy of a C++ Example
 
 Let's have a look at the magic square example:
 =Full code of examples/magic_square.cc=
