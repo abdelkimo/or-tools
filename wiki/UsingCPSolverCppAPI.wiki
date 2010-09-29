@@ -1137,6 +1137,8 @@ DecisionBuilder* MakeStoreAssignment(Assignment* assignment);
 =Searching=
 
 Top level solve using a decision builder and up to three search monitors, usually one for the objective, one for the limits and one to collect solutions.
+
+{{{
 bool Solver::Solve(DecisionBuilder* const db, const vector<SearchMonitor*>& monitors);
 bool Solver::Solve(DecisionBuilder* const db, SearchMonitor* const * monitors, int size);
 bool Solver::Solve(DecisionBuilder* const db);
@@ -1144,15 +1146,19 @@ bool Solver::Solve(DecisionBuilder* const db, SearchMonitor* const m1);
 bool Solver::Solve(DecisionBuilder* const db, SearchMonitor* const m1, SearchMonitor* const m2);
 bool Solver::Solve(DecisionBuilder* const db, SearchMonitor* const m1, SearchMonitor* const m2, SearchMonitor* const m3);
 bool Solver::Solve(DecisionBuilder* const db, SearchMonitor* const m1, SearchMonitor* const m2, SearchMonitor* const m3, SearchMonitor* const m4);
+}}}
 
 Decomposed top level search. The code should look like 
+
+{{{
 solver->NewSearch(db);
 while (solver->NextSolution()) {
   .. use the current solution
 }
 solver()->EndSearch();
+}}}
 
-
+{{{
 void Solver::NewSearch(DecisionBuilder* const db, const vector<SearchMonitor*>& monitors);
 void Solver::NewSearch(DecisionBuilder* const db, SearchMonitor* const * monitors, int size);
 void Solver::NewSearch(DecisionBuilder* const db);
@@ -1164,18 +1170,28 @@ void Solver::NewSearch(DecisionBuilder* const db, SearchMonitor* const m1, Searc
 bool Solver::NextSolution();
 void Solver::RestartSearch();
 void Solver::EndSearch();
+}}}
 
 Nested solve using a decision builder and up to three search monitors, usually one for the objective, one for the limits and one to collect solutions. The restore parameter indicates if the search should backtrack completely after completion, even in case of success.
+
+{{{
 bool Solver::NestedSolve(DecisionBuilder* const db, bool restore, const vector<SearchMonitor*>& monitors);
 bool Solver::NestedSolve(DecisionBuilder* const db, bool restore, SearchMonitor* const * monitors, int size);
 bool Solver::NestedSolve(DecisionBuilder* const db, bool restore);
 bool Solver::NestedSolve(DecisionBuilder* const db, bool restore, SearchMonitor* const m1);
 bool Solver::NestedSolve(DecisionBuilder* const db, bool restore, SearchMonitor* const m1, SearchMonitor* const m2);
 bool Solver::NestedSolve(DecisionBuilder* const db, bool restore, SearchMonitor* const m1, SearchMonitor* const m2, SearchMonitor* const m3);
+}}}
 
 This method returns the validity of the given assignment against the current model.
+
+{{{
 bool Solver::CheckAssignment(Assignment* const assignment);
+}}}
+
 State of the solver.
+
+{{{
 enum SolverState {
  OUTSIDE_SEARCH,
  IN_SEARCH,
@@ -1185,14 +1201,19 @@ enum SolverState {
 };
 
 SolverState Solver::state() const;
+}}}
 
 Abandon the current branch in the search tree. A backtrack will follow. This should be called from within the search.
+
+{{{
 void Solver::Fail();
+}}}
 
-Local Search
+=Local Search=
 
-Useful Enums
+==Useful Enums==
 
+{{{
 enum LocalSearchOperators { 
 TWOOPT, 
 OROPT, 
@@ -1228,10 +1249,13 @@ PROD,
 MAX, 
 MIN 
 }; 
+}}}
 
-Solution Pool
+==Solution Pool==
 
 This class is used to manage a pool of solutions. It can transform a single point local search into a multi point local search. 
+
+{{{
 class SolutionPool : public BaseObject { 
  public: 
   SolutionPool();
@@ -1244,8 +1268,11 @@ class SolutionPool : public BaseObject {
   // This method checks if the local solution needs to be updated with an external one. 
   virtual bool SyncNeeded(Assignment* const local_assignment) = 0; 
 }; SolutionPool* Solver::MakeDefaultSolutionPool(); 
-Local Search Operators
+}}}
 
+==Local Search Operators==
+
+{{{
 LocalSearchOperator* Solver::MakeOperator(const vector<IntVar*>& vars, LocalSearchOperators op); 
 LocalSearchOperator* Solver::MakeOperator(const IntVar* const* vars, int size, LocalSearchOperators op); 
 LocalSearchOperator* Solver::MakeOperator(const vector<IntVar*>& vars, const vector<IntVar*>& secondary_vars, LocalSearchOperators op); 
@@ -1254,24 +1281,30 @@ LocalSearchOperator* Solver::MakeOperator(const vector<IntVar*>& vars, IndexEval
 LocalSearchOperator* Solver::MakeOperator(const IntVar* const* vars, int size, IndexEvaluator3* evaluator, EvaluatorLocalSearchOperators op); 
 LocalSearchOperator* Solver::MakeOperator(const vector<IntVar*>& vars, const vector<IntVar*>& secondary_vars, IndexEvaluator3* evaluator, EvaluatorLocalSearchOperators op); 
 LocalSearchOperator* Solver::MakeOperator(const IntVar* const* vars, const IntVar* const* secondary_vars, int size, IndexEvaluator3* evaluator, EvaluatorLocalSearchOperators op);
+}}}
 
 Creates a local search operator which concatenates a vector of operators.  Each operator from the vector is called sequentially. By default, when a  neighbor is found the neighborhood exploration restarts from the last active operator (the one which produced the neighbor).  This can be overriden by setting restart to true to force the exploration to start from the first operator in the vector. The default behavior can also be overriden using an evaluation callback to set the order in which the operators are explored (the callback is called in LocalSearchOperator::Start()). The first argument of the callback is the index of the operator which produced the last move, the second argument is the index of the operator to be evaluated. Ownership of the callback is taken by ConcatenateOperators. 
  
 Example: 
+
+{{{
 const int kPriorities = {10, 100, 10, 0}; 
 int64 Evaluate(int active_operator, int current_operator) { 
   return kPriorities[current_operator]; 
 } 
 
 LocalSearchOperator* concat = solver.ConcatenateOperators(operators, NewPermanentCallback(&Evaluate));
+}}}
 
 The elements of the vector operators will be sorted by increasing priority and explored in that order (tie-breaks are handled by keeping the relative operator order in the vector). This would result in the following order: operators[3], operators[0], operators[2], operators[1]. 
 
+{{{
 LocalSearchOperator* Solver::ConcatenateOperators(const vector<LocalSearchOperator*>& ops); 
 LocalSearchOperator* Solver::ConcatenateOperators(const vector<LocalSearchOperator*>& ops, bool restart); 
 LocalSearchOperator* Solver::ConcatenateOperators(const vector<LocalSearchOperator*>& ops, ResultCallback2<int64, int, int>* evaluator);  Randomized version of local search concatenator; calls a random operator at each call to MakeNextNeighbor().  LocalSearchOperator* Solver::RandomConcatenateOperators(const vector<LocalSearchOperator*>& ops);
+}}}
 
-Local Search decision builders factories. 
+==Local Search decision builders factories. ==
 
 Local search is used to improve a given solution. This initial solution can be specified either by an Assignment or by a DecisionBulder, and the corresponding variables, the initial solution being the first solution found by the DecisionBuilder. 
 The LocalSearchPhaseParameters parameter holds the actual definition of the local search phase: 
@@ -1279,32 +1312,42 @@ a local search operator used to explore the neighborhood of the current solution
 a decision builder to instantiate unbound variables once a neighbor has been defined; in the case of LNS-based operators instantiates fragment variables; search monitors can be added to this sub-search by wrapping the decision builder with MakeSolveOnce. 
 a search limit specifying how long local search looks for neighbors before accepting one; the last neighbor is always taken and in the case of a greedy search, this corresponds to the best local neighbor; first-accept (which is the default behavior) can be modeled using a solution found limit of 1, 
 a vector of local search filters used to speed up the search by pruning unfeasible neighbors. Metaheuristics can be added by defining specialized search monitors; currently down/up-hill climbing is available through OptimizeVar, as well as Guided Local Search, Tabu Search and Simulated Annealing. 
+
+{{{
 DecisionBuilder* Solver::MakeLocalSearchPhase(Assignment* assignment, LocalSearchPhaseParameters* parameters); 
 DecisionBuilder* Solver::MakeLocalSearchPhase(const vector<IntVar*>& vars, DecisionBuilder* first_solution, LocalSearchPhaseParameters* parameters); 
 DecisionBuilder* Solver::MakeLocalSearchPhase(IntVar* const* vars, int size, DecisionBuilder* first_solution, LocalSearchPhaseParameters* parameters); 
-Local Search Phase Parameters 
+}}}
 
+==Local Search Phase Parameters ==
+
+{{{
 LocalSearchPhaseParameters* Solver::MakeLocalSearchPhaseParameters(LocalSearchOperator* ls_operator, DecisionBuilder* sub_decision_builder); 
 LocalSearchPhaseParameters* Solver::MakeLocalSearchPhaseParameters(LocalSearchOperator* ls_operator, DecisionBuilder* sub_decision_builder, SearchLimit* const limit); 
 LocalSearchPhaseParameters* Solver::MakeLocalSearchPhaseParameters(LocalSearchOperator* ls_operator, DecisionBuilder* sub_decision_builder, SearchLimit* const limit, const vector<LocalSearchFilter*>& filters); 
 LocalSearchPhaseParameters* Solver::MakeLocalSearchPhaseParameters(SolutionPool* const pool, LocalSearchOperator* ls_operator, DecisionBuilder* sub_decision_builder); 
 LocalSearchPhaseParameters* Solver::MakeLocalSearchPhaseParameters(SolutionPool* const pool, LocalSearchOperator* ls_operator, DecisionBuilder* sub_decision_builder, SearchLimit* const limit); 
 LocalSearchPhaseParameters* Solver::MakeLocalSearchPhaseParameters(SolutionPool* const pool, LocalSearchOperator* ls_operator, DecisionBuilder* sub_decision_builder, SearchLimit* const limit, const vector<LocalSearchFilter*>& filters); 
-Local Search Filters 
+}}}
 
+==Local Search Filters ==
+
+{{{
 LocalSearchFilter* Solver::MakeVariableDomainFilter(); 
 LocalSearchFilter* Solver::MakeLocalSearchObjectiveFilter(const IntVar* const* vars, int size, IndexEvaluator2* values, const IntVar* const objective, Solver::LocalSearchFilterBound filter_enum, Solver::LocalSearchOperation op_enum); 
 LocalSearchFilter* Solver::MakeLocalSearchObjectiveFilter(const vector<IntVar*>& vars, IndexEvaluator2* values, const IntVar* const objective, Solver::LocalSearchFilterBound filter_enum, Solver::LocalSearchOperation op_enum); 
 LocalSearchFilter* Solver::MakeLocalSearchObjectiveFilter(const IntVar* const* vars, const IntVar* const* secondary_vars, int size, ResultCallback3<int64, int64, int64, int64>* values, const IntVar* const objective, Solver::LocalSearchFilterBound filter_enum, Solver::LocalSearchOperation op_enum); 
+}}}
 
-Search Extensions
+=Search Extensions=
 
-Assignments
+==Assignments==
 
 Assignments are used to store solutions or partial solutions of a problem. It is a variable -> domain mapping.
 
 The main class is the Assignment class:
 
+{{{
 class Assignment : public PropagationBaseObject {
  public:
   explicit Assignment(Solver* const s);
@@ -1393,15 +1436,23 @@ class Assignment : public PropagationBaseObject {
   // Copies the intersection of the 2 assignments to the current assignment.
   void Copy(const Assignment* assignment);
 };
-
+}}
 
 This method creates an empty assignment.
+
+{{{
 Assignment* Solver::MakeAssignment();
+}}}
+
 This method creates an assignnment which is a copy of 'a'.
 
+{{{
 Assignment* Solver::MakeAssignment(const Assignment* const a);
-Search Monitors
+}}}
 
+==Search Monitors==
+
+{{{
 class SearchMonitor : public BaseObject {
  public:
   explicit SearchMonitor(Solver* const s) : solver_(s);
@@ -1447,7 +1498,9 @@ class SearchMonitor : public BaseObject {
   // Periodic call to check limits in long running methods.
   virtual void PeriodicCheck();
 };
-Solution Collectors
+}}}
+
+==Solution Collectors==
 
 This class is the root class of all solution collector. It implements a basic query API to be used independently from the collector used.
 
