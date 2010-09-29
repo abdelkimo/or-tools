@@ -1,4 +1,5 @@
 #summary Reference Manual
+#labels Phase-Implementation
 
 <wiki:toc max_depth="2" />
 
@@ -1436,7 +1437,7 @@ class Assignment : public PropagationBaseObject {
   // Copies the intersection of the 2 assignments to the current assignment.
   void Copy(const Assignment* assignment);
 };
-}}
+}}}
 
 This method creates an empty assignment.
 
@@ -1504,6 +1505,7 @@ class SearchMonitor : public BaseObject {
 
 This class is the root class of all solution collector. It implements a basic query API to be used independently from the collector used.
 
+{{{
 class SolutionCollector : public SearchMonitor {
  public:
   SolutionCollector(Solver* const s, const Assignment* a);
@@ -1523,26 +1525,38 @@ class SolutionCollector : public SearchMonitor {
   // Returns the objective value of the nth solution.
   int64 objective_value(int n) const;
 };
-
+}}}
 
 Collects the first solution of the search. 
-SolutionCollector* Solver::MakeFirstSolutionCollector(const Assignment* a);
 
+{{{
+SolutionCollector* Solver::MakeFirstSolutionCollector(const Assignment* a);
+}}}
 
 Collects the last solution of the search. 
+
+{{{
 SolutionCollector* Solver::MakeLastSolutionCollector(const Assignment* a);
+}}}
 
 
 Collect the solution corresponding to the optimal value of the objective of 'a'; if 'a' does not have an objective no solution is collected. This collector only collects one solution corresponding to the best objective value (the first one found). 
-SolutionCollector* Solver::MakeBestValueSolutionCollector(const Assignment* a, bool maximize);
 
+{{{
+SolutionCollector* Solver::MakeBestValueSolutionCollector(const Assignment* a, bool maximize);
+}}}
 
 Collects all solutions of the search. 
+
+{{{
 SolutionCollector* Solver::MakeAllSolutionCollector(const Assignment* a);
-Objective
+}}}
+
+==Objective==
 
 Objective management is based on the OptimizeVar class, itself a subclass of search monitors.
 
+{{{
 class OptimizeVar : public SearchMonitor {
  public:
   OptimizeVar(Solver* const s, bool maximize, IntVar* a, int64 step);
@@ -1552,45 +1566,74 @@ class OptimizeVar : public SearchMonitor {
   // Returns the variable passed in the ctor.
   IntVar* Var() const { return var_; }
 };
-
+}}}
 
 Creates a minimization objective. 
+
+{{{
 OptimizeVar* Solver::MakeMinimize(IntVar* const v, int64 step);
+}}}
 
 Creates a maximization objective. 
+
+{{{
 OptimizeVar* Solver::MakeMaximize(IntVar* const v, int64 step);
+}}}
 
 Creates a objective with a given sense (true = maximization). 
-OptimizeVar* Solver::MakeOptimize(bool maximize, IntVar* const v, int64 step);
 
-Meta-heuristics
+{{{
+OptimizeVar* Solver::MakeOptimize(bool maximize, IntVar* const v, int64 step);
+}}}
+
+==Meta-heuristics==
 
 Meta-heuristics are search monitors which try to get the search out of local optima. 
 
 Creates a Tabu Search monitor. In the context of local search the behavior is similar to MakeOptimize(), creating an objective in a given sense. The behavior differs once a local optimum is reached: thereafter solutions which degrade the value of the objective are allowed if they are not "tabu". A solution is "tabu" if it doesn't respect the following rules:
 improving the best solution found so far
 variables in the "keep" list must keep their value, variables in the "forbid" list must not take the value they have in the list. Variables with new values enter the tabu lists after each new solution found and leave the lists after a given number of iterations (called tenure). Only the variables passed to the method can enter the lists. The tabu criterion is softened by the tabu factor which gives the number of "tabu" violations which is tolerated; a factor of 1 means no violations allowed, a factor of 0 means all violations allowed. 
+
+{{{
 SearchMonitor* Solver::MakeTabuSearch(bool maximize, IntVar* const v, int64 step, const vector<IntVar*>& vars, int64 keep_tenure, int64 forbid_tenure, double tabu_factor); 
 SearchMonitor* Solver::MakeTabuSearch(bool maximize, IntVar* const v, int64 step, const IntVar* const* vars, int size, int64 keep_tenure, int64 forbid_tenure, double tabu_factor); 
+}}}
 
 Creates a Simulated Annealing monitor. 
+
+{{{
 SearchMonitor* Solver::MakeSimulatedAnnealing(bool maximize, IntVar* const v, int64 step, int64 initial_temperature); 
+}}}
 
 Creates a Guided Local Search monitor. (Description here: http://en.wikipedia.org/wiki/Guided_Local_Search) 
+
+{{{
 SearchMonitor* Solver::MakeGuidedLocalSearch(bool maximize, IntVar* const objective, IndexEvaluator2* objective_function, int64 step, const vector<IntVar*>& vars, double penalty_factor); 
 SearchMonitor* MakeGuidedLocalSearch(bool maximize, IntVar* const objective, IndexEvaluator2* objective_function, int64 step, const IntVar* const* vars, int size, double penalty_factor); 
 SearchMonitor* MakeGuidedLocalSearch(bool maximize, IntVar* const objective, IndexEvaluator3* objective_function, int64 step, const vector<IntVar*>& vars, const vector<IntVar*> secondary_vars, double penalty_factor); 
 SearchMonitor* MakeGuidedLocalSearch(bool maximize, IntVar* const objective, IndexEvaluator3* objective_function, int64 step, const IntVar* const* vars, const IntVar* const* secondary_vars, int size, double penalty_factor);
-Restart Search
+}}}
+
+==Restart Search==
 
 This search monitor will restart the search periodically. At the iteration n, it will restart after scale_factor * Luby(n) failures where Luby is the Luby Strategy (i.e. 1 1 2 1 1 2 4 1 1 2 1 1 2 4 8...). 
+
+
+{{{
 SearchMonitor* Solver::MakeLubyRestart(int scale_factor); 
+}}}
 
 This search monitor will restart the search periodically after 'frequency' failures. 
+
+{{{
 SearchMonitor* Solver::MakeConstantRestart(int frequency); 
-Search Limit
+}}}
+
+==Search Limit==
 
 Base class of all search limits
+
+{{{
 class SearchLimit : public SearchMonitor {
  public:
   explicit SearchLimit(Solver* const s);
@@ -1606,42 +1649,77 @@ class SearchLimit : public SearchMonitor {
   // Allocates a clone of the limit 
   virtual SearchLimit* MakeClone() const = 0;
 };
+}}}
 
 Limit the search with the 'time', 'branches', 'failures' and 'solutions' limits.
+
+{{{
 SearchLimit* Solver::MakeLimit(int64 time, int64 branches, int64 failures, int64 solutions); 
+}}}
 
 Version reducing calls to wall timer by estimating number of remaining calls.
+
+{{{
 SearchLimit* Solver::MakeLimit(int64 time, int64 branches, int64 failures, int64 solutions, bool smart_time_check);
+}}}
+
 
 Update a limit with new bounds.
+
+{{{
 void Solver::UpdateLimits(int64 time, int64 branches, int64 failures, int64 solutions, SearchLimit* limit); 
+}}}
 
 Returns 'time' limit of search limit 
+
+{{{
 int64 Solver::GetTime(SearchLimit* limit); 
+}}}
 
 Callback-based search limit. Search stops when limiter returns true; if this happens at a leaf the corresponding solution will be rejected. 
-SearchLimit* Solver::MakeCustomLimit(ResultCallback<bool>* limiter);
 
-Search Log
+{{{
+SearchLimit* Solver::MakeCustomLimit(ResultCallback<bool>* limiter);
+}}}
+
+==Search Log==
 
 Creates a search monitor that will display a periodic search log on LOG(INFO). 
+
+{{{
 SearchMonitor* Solver::MakeSearchLog(int period); 
+}}}
 
 Creates a search monitor that will display a periodic search log on LOG(INFO). At each solution, this monitor will also display the objective value. 
+
+{{{
 SearchMonitor* Solver::MakeSearchLog(int period, IntVar* const objective); 
+}}}
 
 Create a search monitor that will call the display callback at each solution. 
+
+{{{
 SearchMonitor* Solver::MakeSearchLog(int period, ResultCallback<string>* display_callback);
+}}}
  
 Creates a search monitor that will call the display callback and display the objective value at each solution. 
+
+{{{
 SearchMonitor* Solver::MakeSearchLog(int period, IntVar* objective, ResultCallback<string>* display_callback);
-Search Trace
+}}}
+
+==Search Trace==
 
 Create a search monitor that will trace precisely the behavior of the search. Use this only for low level debugging. 
+{{
 SearchMonitor* Solver::MakeSearchTrace(const string& prefix);
+}}}
 
-Branch Selector
+==Branch Selector==
+
 Sets the given branch selector on the current active search. 
+
+{{{
 enum DecisionModification {
   NO_CHANGE,
   KEEP_LEFT,
@@ -1650,88 +1728,163 @@ enum DecisionModification {
   SWITCH_BRANCHES
 };
 void Solver::SetBranchSelector(ResultCallback1<Solver::DecisionModification, Solver*>* const bs); 
+}}}
 
 Creates a decision builder that will set the branch selector. 
+
+{{{
 DecisionBuilder* Solver::MakeApplyBranchSelector(ResultCallback1<Solver::DecisionModification, Solver*>* const bs); 
+}}}
 
-Symmetry Breaking
+==Symmetry Breaking==
 
+{{{
 SearchMonitor* Solver::MakeSymmetryManager(const vector<SymmetryBreaker*>& visitors); 
 SearchMonitor* Solver::MakeSymmetryManager(SymmetryBreaker* const * visitors, int size); 
 SearchMonitor* Solver::MakeSymmetryManager(SymmetryBreaker* const v1); 
 SearchMonitor* Solver::MakeSymmetryManager(SymmetryBreaker* const v1, SymmetryBreaker* const v2); 
 SearchMonitor* Solver::MakeSymmetryManager(SymmetryBreaker* const v1, SymmetryBreaker* const v2, SymmetryBreaker* const v3); 
 SearchMonitor* Solver::MakeSymmetryManager(SymmetryBreaker* const v1, SymmetryBreaker* const v2, SymmetryBreaker* const v3, SymmetryBreaker* const v4); 
+}}}
 
-Solver Statuses and Misc Methods 
+=Solver Statuses and Misc Methods=
 
 Current memory usage in bytes.
+
+{{{
 static int64 Solver::MemoryUsage(); 
+}}}
 
 Wall time in ms since the creation of the solver. 
+
+{{{
 int64 Solver::wall_time() const; 
+}}}
 
 Number of branches explored since the creation of the solver. 
+
+{{{
 int64 Solver::branches() const;
+}}}
 
 Number of solutions found since the start of the search. 
+
+{{{
 int64 Solver::solutions() const; 
+}}}
 
 Number of demons executed during search for a given priority. 
+
+{{{
 int64 Solver::demon_runs(DemonPriority p) const;
+}}}
 
 Number of failures encountered since the creation of the solver. 
+
+{{{
 int64 Solver::failures() const; 
+}}}
 
 Number of neighbors created 
+
+{{{
 int64 Solver::neighbors() const;
+}}}
 
 Number of filtered neighbors (neighbors accepted by filters) 
+
+{{{
 int64 filtered_neighbors() const;
+}}}
 
 Number of accepted neighbors 
+
+{{{
 int64 Solver::accepted_neighbors() const;
+}}}
 
 The stamp indicates how many moves (up or down) in the search tree we have performed.  It is useful to detect if we need to update same lazy structures. 
+
+{{{
 uint64 Solver::stamp() const; 
+}}}
 
 The fail_stamp() is incremented after each backtrack. 
+
+{{{
 uint64 Solver::fail_stamp() const; 
+}}}
 
 Gets the search depth of the current active search. Returns -1 in case there are no active search opened. 
+
+{{{
 int Solver::SearchDepth() const; 
+}}}
+
 
 Gets the search left depth of the current active search. Returns -1 in case there are no active search opened. 
+
+{{{
 int Solver::SearchLeftDepth() const; 
+}}}
 
 Gets the number of nested searches. It returns 0 outside search, 1 during the top level search, 2 if one level of NestedSolve() is used, and more if more solves are nested. 
+
+{{{
 int Solver::SolveDepth() const; 
+}}}
 
 Callback typedefs 
+
+{{{
 typedef ResultCallback1<int64, int64> IndexEvaluator1; 
 typedef ResultCallback2<int64, int64, int64> IndexEvaluator2; 
 typedef ResultCallback3<int64, int64, int64, int64> IndexEvaluator3; 
+}}}
 
 Pretty Print Method
+
+{{{
 string Solver::DebugString() const; 
+}}}
 
 Returns a random value between 0 and 'size' - 1; 
+
+{{{
 int64 Solver::Rand64(int64 size); 
+}}}
 
 Returns a random value between 0 and 'size' - 1; 
+{{{
 int32 Solver::Rand32(int32 size); 
+}}}
 
 Reseed the solver random generator. 
+
+{{{
 void Solver::ReSeed(int32 seed); 
+}}}
 
 Add a fail hook, that is an action that will be called after each failure. 
+
+{{{
 void Solver::AddFailHook(Action* a); 
+}}}
 
 This functions returns true wether the current search has been created using a Solve() call instead of a NewSearch 0ne. It returns false if the solver is not is search at all. 
+
+{{{
 bool Solver::CurrentlyInSolve() const; 
+}}}
 
 This method counts the number of constraints that have been added to the solver before the search, 
+
+{{{
 int Solver::constraints() const;
+}}}
 
 This method returns 0. It is useful when 0 can be cast either as a pointer or as a integer value and thus lead to an ambiguous function call. 
+
+{{{
 inline int64 Zero() { return 0LL; }
+}}}
