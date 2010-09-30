@@ -68,7 +68,7 @@ void MagicSquare(int grid_size) {
   solver.AddConstraint(solver.MakeLess(vars[grid_size - 1], vars[(grid_size - 1) * grid_size]));
   // TODO(user) use local search
 
-  DecisionBuilder* const db = solver.MakePhase(vars, Solver::CHOOSE_FIRST_UNBOUND,                                         Solver::ASSIGN_MIN_VALUE);
+  DecisionBuilder* const db = solver.MakePhase(vars, Solver::CHOOSE_FIRST_UNBOUND, Solver::ASSIGN_MIN_VALUE);
 
   if (solver.Solve(db)) {
     for (int n = 0; n < grid_size; ++n) {
