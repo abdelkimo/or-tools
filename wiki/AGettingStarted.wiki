@@ -4,18 +4,18 @@
 
 Upon untarring the given operation_research tar file, you will get the following structure:
 or-tools/
-|| LICENSE-2.0.txt || Apache License ||
-|| Makefile || Makefile for unix platform (ubuntu linux, mac os X) ||
-|| Makefile.msv || Makefile for Microsoft Visual Studio ||
-|| README || This file ||
-|| algorithms/ || A collection of OR algorithms (non graph related) ||
-|| base/ || Directory containing basic utilities ||
-|| constraint_solver/ || The main directory for the constraint solver library ||
-|| examples/ || C++ examples ||
-|| graph/ || Standard OR graph algorithms ||
-|| objs/ || Where C++ objs files will be stored ||
-|| python/ || Python examples ||
-|| util/ || More utilities needed by the constraint solver || 
+|| LICENSE-2.0.txt | Apache License ||
+|| Makefile | Makefile for unix platform (ubuntu linux, mac os X) ||
+|| Makefile.msv | Makefile for Microsoft Visual Studio ||
+|| README | This file ||
+|| algorithms/ | A collection of OR algorithms (non graph related) ||
+|| base/ | Directory containing basic utilities ||
+|| constraint_solver/ | The main directory for the constraint solver library ||
+|| examples/ | C++ examples ||
+|| graph/ | Standard OR graph algorithms ||
+|| objs/ | Where C++ objs files will be stored ||
+|| python/ | Python examples ||
+|| util/ | More utilities needed by the constraint solver || 
 
 =Installing under Linux and Mac OS X=
 
