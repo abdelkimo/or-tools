@@ -1524,6 +1524,16 @@ class SolutionCollector : public SearchMonitor {
   int64 failures(int n) const;
   // Returns the objective value of the nth solution.
   int64 objective_value(int n) const;
+  // This is a short-cut to get the Value of 'var' in the nth solution.
+  int64 Value(int n, IntVar* const var) const;
+  // This is a short-cut to get the StartValue of 'var' in the nth solution.
+  int64 StartValue(int n, IntervalVar* const var) const;
+  // This is a short-cut to get the DurationValue of 'var' in the nth solution.
+  int64 EndValue(int n, IntervalVar* const var) const;
+  // This is a short-cut to get the StartValue of 'var' in the nth solution.
+  int64 DurationValue(int n, IntervalVar* const var) const;
+  // This is a short-cut to get the PerformedValue of 'var' in the nth solution.
+  int64 PerformedValue(int n, IntervalVar* const var) const;
 };
 }}}
 
