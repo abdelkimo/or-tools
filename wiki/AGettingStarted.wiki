@@ -32,6 +32,11 @@ or-tools directory.
 
 Then you need to install zlib. You can fetch it at http://www.zlib.net/ The makefile default path is ../zlib-1.2.5 from the location of the or-tools Makefile.
 
+Finally, you need to install google-apputils from:
+http://code.google.com/p/google-apputils-python/
+
+Download, untar and then run python setup.py install.
+
 Please edit the top of the makefile to accommodate your installation.
 
 You can then compile the library, examples and python wrapping:
@@ -88,6 +93,11 @@ Then install the zlib source archive, step into it, and run
 {{{nmake -f win32/Makefile.msc}}}
 
 directly at this point. (please note that there is a bug in zlib-1.2.5 makefile as the OBJS list of files misses the inffast.obj entry).
+
+Finally, you need to install google-apputils from:
+http://code.google.com/p/google-apputils-python/
+
+Download, untar and then run python setup.py install.
 
 Then modify the Makefile.msv in or-tools to point to the root of the zlib source tree.
 
