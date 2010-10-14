@@ -9,4 +9,5 @@ Table of Content:
   # [CUsingConstraintSolver1AnatomyCppExample  Anatomy of a C++ example]
   # [CUsingConstraintSolverAnatomyPythonExample   Anatomy of a Python example]
   # [CUsingConstraintSolverPythonExampleWithTreeSearch Example of Tree Search in Python]
+  # [CUsingConstraintSolverPythonExampleWithLargeNeighborhoodSearch Example of Large Neighborhood Search in Python]
   # [UsingCPSolverCppAPI C++ API Reference Manuel]
