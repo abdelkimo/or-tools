@@ -19,15 +19,25 @@ or-tools/
 
 =Installing under Linux and Mac OS X=
 
-This library has been tested under Ubuntu Linux 10.04, and Mac OS X Snow Leopard (10.6) with xcode 3.2.3.
+This library has been tested under Ubuntu Linux 10.04, 10.10, and Mac OS X Snow Leopard (10.6) with xcode 3.2.x.
 It is known not to compile with xcode 3.1.x running under Mac OS X Leopard (10.5).
+
+For linux users, please intall swig, python-setuptools python-dev
+{{{
+sudo apt-get install swig python-setuptools python-dev
+}}}
+
+For Mac OS X users, please install xcode from the apple developer site:
+
+http://developer.apple.com/technologies/tools/xcode.html
+
 First, you will need to install the google-gflags library, compile it
 and install it. It can be obtained at the following address:
 
 http://code.google.com/p/google-gflags/
 
 By default, the makefile assumes the installation path is
-../gflags-1.3 from the Makefile, thus at the same level as the
+../gflags-1.4 from the Makefile, thus at the same level as the
 or-tools directory.
 
 Then you need to install zlib. You can fetch it at http://www.zlib.net/ The makefile default path is ../zlib-1.2.5 from the location of the or-tools Makefile.
