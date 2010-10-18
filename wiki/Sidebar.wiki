@@ -7,6 +7,7 @@
     # [CUsingConstraintSolverAnatomyPythonExample Anatomy of a Python example]
     # [CUsingConstraintSolverUsingObjectiveWithTheGolombRuler Using objective with the Golomb Ruler Problem]
     # [CUsingConstraintSolverSolvingAJobshopSchedulingProblem Jobshop Scheduling in Python]
+    # [CUsingConstraintSolverSchedulingASimpleMeetingInPython Scheduling a meeting with alternative rooms in Python]
     # [UsingCPSolverCppAPI C++ API Reference Manuel]
   # [DExtendingTheConstraintSolver Extending the Constraint Programming Solver]
     # [DExtendingTheConstraintSolverExampleOfPythonCodeWithCustomTreeSearch Example of Custom Tree Search in Python]
