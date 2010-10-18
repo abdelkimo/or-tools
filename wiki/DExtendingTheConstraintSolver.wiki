@@ -1,5 +1,8 @@
 #summary This section describes how to extend the constraint programming solver with new decision builders, new local search, and new constraints.
 
+In order to write a new decision builder and new decisions, you will need to include `constraint_solver/constraint_solver.h`. 
+In order to write new Local Search operators, or new constraints, you will need to include `constraint_solver/constraint_solveri.h`.
+
 Table of Content:
     # [DExtendingTheConstraintSolverExampleOfPythonCodeWithCustomTreeSearch Example of Custom Tree Search in Python]
     # [DExtendingTheConstraintSolverExampleOfPythonCodeWithCustomLargeNeighborhoodSearch Example of Large Neighborhood Search in Python]
