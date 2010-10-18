@@ -1045,6 +1045,7 @@ These are the predefined decisions
 
 {{{
 Decision* Solver::MakeAssignVariableValue(IntVar* const var, int64 value);
+Decision* MakeSplitVariableDomain(IntVar* const var, int64 value, bool start_with_lower_half);
 Decision* Solver::MakeAssignVariablesValues(const IntVar* const* vars, int size, const int64* const values);
 Decision* Solver::MakeAssignVariablesValues(const vector<IntVar*>& vars, const vector<int64>& values);
 Decision* Solver::MakeFailDecision();
@@ -1278,11 +1279,20 @@ LocalSearchOperator* Solver::MakeOperator(const vector<IntVar*>& vars, LocalSear
 LocalSearchOperator* Solver::MakeOperator(const IntVar* const* vars, int size, LocalSearchOperators op); 
 LocalSearchOperator* Solver::MakeOperator(const vector<IntVar*>& vars, const vector<IntVar*>& secondary_vars, LocalSearchOperators op); 
 LocalSearchOperator* Solver::MakeOperator(const IntVar* const* vars, const IntVar* const* secondary_vars, int size, LocalSearchOperators op); 
-LocalSearchOperator* Solver::MakeOperator(const vector<IntVar*>& vars, IndexEvaluator3* evaluator, EvaluatorLocalSearchOperators op); 
-LocalSearchOperator* Solver::MakeOperator(const IntVar* const* vars, int size, IndexEvaluator3* evaluator, EvaluatorLocalSearchOperators op); 
-LocalSearchOperator* Solver::MakeOperator(const vector<IntVar*>& vars, const vector<IntVar*>& secondary_vars, IndexEvaluator3* evaluator, EvaluatorLocalSearchOperators op); 
-LocalSearchOperator* Solver::MakeOperator(const IntVar* const* vars, const IntVar* const* secondary_vars, int size, IndexEvaluator3* evaluator, EvaluatorLocalSearchOperators op);
+LocalSearchOperator* Solver::MakeOperator(const vector<IntVar*>& vars, IndexEvaluator3* const evaluator, EvaluatorLocalSearchOperators op); 
+LocalSearchOperator* Solver::MakeOperator(const IntVar* const* vars, int size, IndexEvaluator3* const evaluator, EvaluatorLocalSearchOperators op); 
+LocalSearchOperator* Solver::MakeOperator(const vector<IntVar*>& vars, const vector<IntVar*>& secondary_vars, IndexEvaluator3* const evaluator, EvaluatorLocalSearchOperators op); 
+LocalSearchOperator* Solver::MakeOperator(const IntVar* const* vars, const IntVar* const* secondary_vars, int size, IndexEvaluator3* const evaluator, EvaluatorLocalSearchOperators op);
 }}}
+
+Creates a large neighborhood search operator which creates fragments (set of relaxed variables) with up to number_of_variables random variables (sampling with replacement is performed meaning that at most number_of_variables variables are selected). Warning: this operator will always return neighbors; using it without a search limit will result in a non-ending search. Optionally a random seed can be specified.
+
+{{{
+LocalSearchOperator* Solver::MakeRandomLNSOperator(const vector<IntVar*>& vars, int number_of_variables);
+LocalSearchOperator* Solver::MakeRandomLNSOperator(const vector<IntVar*>& vars, int number_of_variables, int32 seed);
+LocalSearchOperator* Solver::MakeRandomLNSOperator(const IntVar* const* vars, int size, int number_of_variables);
+LocalSearchOperator* Solver::MakeRandomLNSOperator(const IntVar* const* vars, int size, int number_of_variables, int32 seed);
+
 
 Creates a local search operator which concatenates a vector of operators.  Each operator from the vector is called sequentially. By default, when a  neighbor is found the neighborhood exploration restarts from the last active operator (the one which produced the neighbor).  This can be overriden by setting restart to true to force the exploration to start from the first operator in the vector. The default behavior can also be overriden using an evaluation callback to set the order in which the operators are explored (the callback is called in LocalSearchOperator::Start()). The first argument of the callback is the index of the operator which produced the last move, the second argument is the index of the operator to be evaluated. Ownership of the callback is taken by ConcatenateOperators. 
  
