@@ -1292,6 +1292,7 @@ LocalSearchOperator* Solver::MakeRandomLNSOperator(const vector<IntVar*>& vars, 
 LocalSearchOperator* Solver::MakeRandomLNSOperator(const vector<IntVar*>& vars, int number_of_variables, int32 seed);
 LocalSearchOperator* Solver::MakeRandomLNSOperator(const IntVar* const* vars, int size, int number_of_variables);
 LocalSearchOperator* Solver::MakeRandomLNSOperator(const IntVar* const* vars, int size, int number_of_variables, int32 seed);
+}}}
 
 
 Creates a local search operator which concatenates a vector of operators.  Each operator from the vector is called sequentially. By default, when a  neighbor is found the neighborhood exploration restarts from the last active operator (the one which produced the neighbor).  This can be overriden by setting restart to true to force the exploration to start from the first operator in the vector. The default behavior can also be overriden using an evaluation callback to set the order in which the operators are explored (the callback is called in LocalSearchOperator::Start()). The first argument of the callback is the index of the operator which produced the last move, the second argument is the index of the operator to be evaluated. Ownership of the callback is taken by ConcatenateOperators. 
