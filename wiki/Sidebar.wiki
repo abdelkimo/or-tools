@@ -5,6 +5,7 @@
   # [CUsingConstraintSolver Using the Constraint Programming Solver]
     # [CUsingConstraintSolver1AnatomyCppExample Anatomy of a C++ example]
     # [CUsingConstraintSolverAnatomyPythonExample Anatomy of a Python example]
+    # [CUsingConstraintSolverUsingObjectiveWithTheGolombRuler Using objective with the Golomb Ruler Problem]
     # [CUsingConstraintSolverSolvingAJobshopSchedulingProblem Jobshop Scheduling in Python]
     # [UsingCPSolverCppAPI C++ API Reference Manuel]
   # [DExtendingTheConstraintSolver Extending the Constraint Programming Solver]
