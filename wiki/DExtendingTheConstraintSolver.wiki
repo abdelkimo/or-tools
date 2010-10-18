@@ -1,1 +1,5 @@
 #summary This section describes how to extend the constraint programming solver with new decision builders, new local search, and new constraints.
+
+Table of Content:
+    # [DExtendingTheConstraintSolverExampleOfPythonCodeWithCustomTreeSearch Example of Custom Tree Search in Python]
+    # [DExtendingTheConstraintSolverExampleOfPythonCodeWithCustomLargeNeighborhoodSearch Example of Large Neighborhood Search in Python]
