@@ -3,3 +3,4 @@
 Table of Content:
     # [DExtendingTheConstraintSolverExampleOfPythonCodeWithCustomTreeSearch Example of Custom Tree Search in Python]
     # [DExtendingTheConstraintSolverExampleOfPythonCodeWithCustomLargeNeighborhoodSearch Example of Large Neighborhood Search in Python]
+    # [DExtendingTheConstraintSolverBreakingSymmetriesDuringSearch Breaking Symmetries during Search]
