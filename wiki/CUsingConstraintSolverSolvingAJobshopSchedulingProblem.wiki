@@ -66,11 +66,7 @@ def main(unused_argv):
   all_tasks = {}
   for i in all_jobs:
     for j in all_machines:
-      all_tasks[(i, j)] = solver.FixedDurationIntervalVar(0,
-                                                          horizon,
-                                                          durations[i][j],
-                                                          False,
-                                                          'Job_%i_%i' % (i, j))
+      all_tasks[(i, j)] = solver.FixedDurationIntervalVar(0, horizon, durations[i][j], False, 'Job_%i_%i' % (i, j))
 
   # Create sequence constraints.
   all_sequences = {}
@@ -85,8 +81,7 @@ def main(unused_argv):
     all_sequences[i] = solver.Sequence(machines_jobs, 'machine %i' % i)
 
   # Makespan objective.
-  obj_var = solver.Max([all_tasks[(i, machines_count - 1)].EndExpr()
-                        for i in all_jobs])
+  obj_var = solver.Max([all_tasks[(i, machines_count - 1)].EndExpr() for i in all_jobs])
   objective = solver.Minimize(obj_var, 1)
 
   # Precedences inside a job.
@@ -99,11 +94,8 @@ def main(unused_argv):
     solver.Add(all_sequences[i])
 
   # Create search phases.
-  vars_phase = solver.Phase([obj_var],
-                            solver.CHOOSE_FIRST_UNBOUND,
-                            solver.ASSIGN_MIN_VALUE)
-  sequence_phase = solver.Phase([all_sequences[i] for i in all_machines],
-                                solver.SEQUENCE_DEFAULT)
+  vars_phase = solver.Phase([obj_var],  solver.CHOOSE_FIRST_UNBOUND,  solver.ASSIGN_MIN_VALUE)
+  sequence_phase = solver.Phase([all_sequences[i] for i in all_machines], solver.SEQUENCE_DEFAULT)
   main_phase = solver.Compose([sequence_phase, vars_phase])
 
   # Create the search log.
