@@ -5,6 +5,7 @@
   # [CUsingConstraintSolver Using the Constraint Programming Solver]
     # [CUsingConstraintSolver1AnatomyCppExample Anatomy of a C++ example]
     # [CUsingConstraintSolverAnatomyPythonExample Anatomy of a Python example]
+    # [CUsingConstraintSolverSolvingAJobshopSchedulingProblem Jobshop Scheduling in Python]
     # [UsingCPSolverCppAPI C++ API Reference Manuel]
   # [DExtendingTheConstraintSolver Extending the Constraint Programming Solver]
     # [DExtendingTheConstraintSolverExampleOfPythonCodeWithCustomTreeSearch Example of Custom Tree Search in Python]
