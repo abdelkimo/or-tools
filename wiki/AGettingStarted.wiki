@@ -184,6 +184,8 @@ http://code.google.com/p/google-apputils-python/
 
 Download, untar and then run python setup.py install.
 
+You may need to install python-setuptools for windows. Please fetch it from http://pypi.python.org/pypi/setuptools#files .
+
 Then modify the Makefile.msv in or-tools to point to the root of the zlib source tree.
 
 You can then compile the library and examples :
