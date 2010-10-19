@@ -1,5 +1,8 @@
 #summary Getting Started
 #labels Phase-Deploy
+
+<wiki:toc max_depth="1" />
+
 =Content of the Archive=
 
 Upon untarring the given operation_research tar file, you will get the following structure:
