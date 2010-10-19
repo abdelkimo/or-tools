@@ -52,13 +52,13 @@ Please edit the top of the makefile to accommodate your installation.
 You can then compile the library, examples and python wrapping:
 
 
-{{{make all}}}
+{{{make cpexe pycp}}}
 
 
 To compile in debug mode, please use
 
 
-{{{make DEBUG=-g all}}}
+{{{make DEBUG=-g cpexe pycp}}}
 
 
 You can clean everything using
@@ -109,14 +109,14 @@ First you need to compile the C++ libraries:
     * `make`
     * `make install`
 
-The you can compile the python library.
+Then you can compile the python library.
 
 You will need 3 things: swig, python.h and python dev packages, and python_apputils.
 
 Finally, you need to install google-apputils from:
 http://code.google.com/p/google-apputils-python/
 
-Download, untar it into `_work_/install/google-apputils-0.1` and then run `python setup.py install`.
+Download, untar it into `_work_/install/google-apputils-0.1` (Create the google-apputils-0.1 directory first as the archive does not have a leading directory) and then run `python setup.py install`.
 It will install different packages include python-gflags.
 
 Please edit the top of the makefile to accommodate your installation (in particular make sure PYTHON_INC and SWIG_BINARY are correct)
@@ -185,11 +185,11 @@ Then modify the Makefile.msv in or-tools to point to the root of the zlib source
 
 You can then compile the library and examples :
 
-{{{nmake -f Makefile.msv all}}}
+{{{nmake -f Makefile.msv cpexe}}}
 
 To compile in debug mode, please use
 
-{{{nmake -f Makefile.msv DEBUG="/Od /Zi" all}}}
+{{{nmake -f Makefile.msv DEBUG="/Od /Zi" cpexe}}}
 
 You can clean everything using
 
@@ -215,7 +215,7 @@ http://www.python.org/download/releases/2.7/
 
 Now, build the python wrapping:
 
-{{{nmake -f Makefile.msv pylib}}}
+{{{nmake -f Makefile.msv pycp}}}
 
 Set the correct environment variable
 
