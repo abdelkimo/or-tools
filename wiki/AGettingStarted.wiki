@@ -91,10 +91,10 @@ The wrapping using SWIG has been tested with SWIG 1.3.40 and 1.3.31.
 =Installing under generic Unix/Linux=
 
 First you need to compile the C++ libraries:
-  # Create a repertory that will hold all source code. I will refer to this as _work_.
-  # Create the <work>/install repertory.
-  # Download google-gflags from http://code.google.com/p/google-gflags/ and untar in _work_/install
-  # Step into _work_/install/gflags-1.4 and run the following command:
+  # Create a repertory that will hold all source code. I will refer to this as `_work_`.
+  # Create the `_work_/install` repertory.
+  # Download google-gflags from http://code.google.com/p/google-gflags/ and untar in `_work_/install`
+  # Step into `_work_/install/gflags-1.4` and run the following command:
     * `./configure --prefix=_work_/gflags-1.4`
     * `make`
     * `make install`
@@ -103,8 +103,8 @@ First you need to compile the C++ libraries:
     * Modify the makefile ZLIB_INC and ZLIB_LIB to reflect where to find zlib.h and zlib.so
     * *or*
     * get library from http://www.zlib.net/ 
-    * untar under _work_/install
-    * Step into _work_/install/zlib-1.2.5
+    * untar under `_work_/install`
+    * Step into `_work_/install/zlib-1.2.5`
     * run `./configure --prefix=_work_/zlib-1.2.5`
     * `make`
     * `make install`
@@ -116,7 +116,7 @@ You will need 3 things: swig, python.h and python dev packages, and python_apput
 Finally, you need to install google-apputils from:
 http://code.google.com/p/google-apputils-python/
 
-Download, untar it into _work_/install/google-apputils-0.1 and then run `python setup.py install`.
+Download, untar it into `_work_/install/google-apputils-0.1` and then run `python setup.py install`.
 It will install different packages include python-gflags.
 
 Please edit the top of the makefile to accommodate your installation (in particular make sure PYTHON_INC and SWIG_BINARY are correct)
