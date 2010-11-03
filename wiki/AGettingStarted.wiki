@@ -45,6 +45,8 @@ or-tools directory.
 
 Then you need to install zlib. You can fetch it at http://www.zlib.net/ The makefile default path is ../zlib-1.2.5 from the location of the or-tools Makefile.
 
+Then you need to install protocol buffers. You can fetch them at http://code.google.com/p/protobuf/ . The makefile default path is ../protobuf-2.3.0 from the location of the or-tools Makefile.
+
 Finally, you need to install google-apputils from:
 http://code.google.com/p/google-apputils-python/
 
@@ -111,7 +113,11 @@ First you need to compile the C++ libraries:
     * run `./configure --prefix=_work_/zlib-1.2.5`
     * `make`
     * `make install`
-
+Download protobuf  from http://code.google.com/p/protobuf/ and untar in `_work_/install`
+  # Step into `_work_/install/gprotobuf-2.3.0` and run the following command:
+    * `./configure --prefix=_work_/protobuf-2.3.0`
+    * `make`
+    * `make install`
 Then you can compile the python library.
 
 You will need 3 things: swig, python.h and python dev packages, and python_apputils.
@@ -178,6 +184,9 @@ Then install the zlib source archive, step into it, and run
 {{{nmake -f win32/Makefile.msc}}}
 
 directly at this point. (please note that there is a bug in zlib-1.2.5 makefile as the OBJS list of files misses the inffast.obj entry).
+
+Then you need to install protocol buffers. You can fetch them at http://code.google.com/p/protobuf/ . The makefile default path is ../protobuf-2.3.0 from the location of the or-tools Makefile.msv.
+
 
 Finally, you need to install google-apputils from:
 http://code.google.com/p/google-apputils-python/
