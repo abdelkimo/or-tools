@@ -178,7 +178,7 @@ http://code.google.com/p/google-gflags/
 Decompress alongside the or-tools directory.
 
 To install google gflags libraries on windows:
-  - go in <gflags_dir>/vsprojects/libgflags
+  - go in _gflags_dir_/vsprojects/libgflags
   - load the libgflags.vcproj project
   - You may have to upgrade it on the fly in you are using Visual Studio 2010.
   - If you want to build in 64 bit mode (recommended), follow the instructions here:
