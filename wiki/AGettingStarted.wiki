@@ -175,7 +175,16 @@ First, you will need to dowload the google-gflags library. It can be obtained at
 
 http://code.google.com/p/google-gflags/
 
-then decompress the gflags directory alongside the or-tools directory, do not compile it.
+Decompress alongside the or-tools directory.
+
+To install google gflags libraries on windows:
+  - go in <gflags_dir>/vsprojects/libgflags
+  - load the libgflags.vcproj project
+  - You may have to upgrade it on the fly in you are using Visual Studio 2010.
+  - If you want to build in 64 bit mode (recommended), follow the instructions here:
+      http://code.google.com/p/google-gflags/source/browse/trunk/README_windows.txt
+  - Select Release mode, select win32 or x64
+  - Build the solution.
 
 Please modify the Makefile.msv to point to the source of the gflags source directory.
 
