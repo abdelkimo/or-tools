@@ -211,9 +211,10 @@ Then you need to install protocol buffers. You can fetch them at  http://code.go
 The makefile default path is ../protobuf-2.3.0 from the location of the or-tools Makefile.msv.
 To install do the following:
    * Unzip the archive
+   * rename the directory protobuf-src-2.3.0
    * go into the vsproject subdirectory.
    * load the sln and compile the project in release mode
-   * run the extract_includes.bat script
+   * open a command prompt, go into the protobuf directoryu, run the extract_includes.bat script
    * Create the protobuf-2.3.0 directory at the same level as or-tools
    * move the include directory into the protobuf-2.3.0 directory
    * create protobuf-2.3.0/lib directory and move Release/`*`.lib into this directory
