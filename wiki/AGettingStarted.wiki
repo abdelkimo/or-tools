@@ -192,7 +192,7 @@ Then install the zlib source archive, step into it, and run
 
 {{{nmake -f win32/Makefile.msc}}}
 
-directly at this point. (please note that there is a bug in zlib-1.2.5 makefile as the OBJS list of files misses the inffast.obj entry).
+directly at this point. (please note that there is a bug in zlib-1.2.5 makefile as the OBJS list of files misses the inffast.obj entry). You can get a correct Makefile at the following address: http://code.google.com/p/or-tools/source/browse/resources/Makefile.msc
 
 Then you need to install protocol buffers. You can fetch them at http://code.google.com/p/protobuf/ . The makefile default path is ../protobuf-2.3.0 from the location of the or-tools Makefile.msv.
 To install do the following:
