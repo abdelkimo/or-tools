@@ -171,7 +171,11 @@ The wrapping using SWIG has been tested with SWIG 1.3.40 and 1.3.31.
 
 =Installing under Microsoft Windows=
 
-First, you will need to dowload the google-gflags library. It can be obtained at the following address:
+First, download the or-tools source code.
+
+Then install dependencies:
+
+First, you will need to download the google-gflags library. It can be obtained at the following address:
 
 http://code.google.com/p/google-gflags/downloads/detail?name=gflags-1.4.zip
 
@@ -186,7 +190,7 @@ To install google gflags libraries on windows:
   * Select Release mode, select win32 or x64
   * Build the solution.
 
-Please modify the Makefile.msv to point to the source of the gflags source directory.
+Please modify the Makefile.msv in or-tools to point to the source of the gflags source directory.
 
 Then you need to install zlib.
 First get the archive at: http://zlib.net/zlib125.zip
@@ -196,14 +200,13 @@ install the zlib source archive, step into it.
 First put the correct makefile.msc in win32. You can get it at:
  http://code.google.com/p/or-tools/source/browse/resources/Makefile.msc
 
-Then run:
+Then open a command prompt from the visual studio tools menu, with the correct environment (win32 or x64). Then go to the zlib directory, and run:
 
 {{{nmake -f win32/Makefile.msc}}}
 
 directly at this point. 
 
-Then you need to install protocol buffers. You can fetch them at http://code.google.com/p/protobuf/ . 
-i.e.: http://code.google.com/p/protobuf/downloads/detail?name=protobuf-2.3.0.zip
+Then you need to install protocol buffers. You can fetch them at  http://code.google.com/p/protobuf/downloads/detail?name=protobuf-2.3.0.zip
 
 The makefile default path is ../protobuf-2.3.0 from the location of the or-tools Makefile.msv.
 To install do the following:
