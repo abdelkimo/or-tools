@@ -221,7 +221,6 @@ To install do the following:
    * create protobuf-2.3.0/lib directory and move protobuf-src-2.3.0/vsprojects/Release/`*`.lib into this directory
    * create protobuf-2.3.0/bin directory and move protobuf-src-2.3.0/vsprojects/Release/protoc.exe into this directory.
 
-
 Then modify the Makefile.msv in or-tools to point to the root of the protobuf source tree.
 
 You can then compile the library and examples :
@@ -232,13 +231,12 @@ To compile in debug mode, please use
 
 {{{nmake -f Makefile.msv DEBUG="/Od /Zi" cpexe}}}
 
-You can clean everything using
+If needed, the command to clean everything is:
 
 {{{nmake -f Makefile.msv clean}}}
 
-
 When everything is compiled, you will find under or-tools:
-a few libraries (including cp.lib, util.lib, base.lib and gflags.dll) 
+a few libraries (including cp.lib, util.lib, base.lib) 
 One binary per C++ example (e.g. nqueens.exe)
 
 You can execute C++ examples just by running then:
