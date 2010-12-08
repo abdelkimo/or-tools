@@ -171,9 +171,9 @@ The wrapping using SWIG has been tested with SWIG 1.3.40 and 1.3.31.
 
 =Installing under Microsoft Windows=
 
-First, download the or-tools source code.
+First, download the or-tools source code using the svn command.
 
-Then install dependencies:
+Then install dependencies, they will all be installed alongside the or-tools directory:
 
 First, you will need to download the google-gflags library. It can be obtained at the following address:
 
