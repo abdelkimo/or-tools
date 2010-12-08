@@ -198,7 +198,7 @@ First get the archive at: http://zlib.net/zlib125.zip
 install the zlib source archive, step into it.  
 
 First put the correct makefile.msc in win32. You can get it at:
- http://code.google.com/p/or-tools/source/browse/resources/Makefile.msc
+ http://or-tools.googlecode.com/svn/resources/Makefile.msc
 
 Then open a command prompt from the visual studio tools menu, with the correct environment (win32 or x64). Then go to the zlib directory, and run:
 
