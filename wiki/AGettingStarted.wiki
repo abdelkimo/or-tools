@@ -222,9 +222,7 @@ To install do the following:
    * create protobuf-2.3.0/bin directory and move protobuf-src-2.3.0/vsprojects/Release/protoc.exe into this directory.
 
 
-
-
-Then modify the Makefile.msv in or-tools to point to the root of the zlib source tree.
+Then modify the Makefile.msv in or-tools to point to the root of the protobuf source tree.
 
 You can then compile the library and examples :
 
