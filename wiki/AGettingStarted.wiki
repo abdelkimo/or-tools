@@ -221,12 +221,7 @@ To install do the following:
    * create protobuf-2.3.0/bin directory and move Release/protoc.exe into this directory.
 
 
-Finally, you need to install google-apputils from:
-http://code.google.com/p/google-apputils-python/
 
-Download, untar and then run python setup.py install.
-
-You may need to install python-setuptools for windows. Please fetch it from http://pypi.python.org/pypi/setuptools#files .
 
 Then modify the Makefile.msv in or-tools to point to the root of the zlib source tree.
 
@@ -251,7 +246,8 @@ You can execute C++ examples just by running then:
 
 {{{magic_square.exe}}}
 
-To use Python, you need to install python and swigwin. 
+To use Python, you need to install python and swigwin and some dependencies:
+
 This has been tested with swigwin-2.0.0 available from there:
 
 http://prdownloads.sourceforge.net/swig/swigwin-2.0.0.zip
@@ -259,6 +255,14 @@ http://prdownloads.sourceforge.net/swig/swigwin-2.0.0.zip
 and python from 
 
 http://www.python.org/download/releases/2.7/
+
+You need to install google-apputils from:
+http://code.google.com/p/google-apputils-python/
+
+Download, untar it a clean directory and then run python setup.py install.
+
+You may need to install python-setuptools for windows. Please fetch it from http://pypi.python.org/pypi/setuptools#files .
+
 
 Now, build the python wrapping:
 
