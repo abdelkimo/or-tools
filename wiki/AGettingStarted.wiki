@@ -256,7 +256,7 @@ http://www.python.org/download/releases/2.7/
 You need to install google-apputils from:
 http://code.google.com/p/google-apputils-python/
 
-Download, untar it a clean directory and then run python setup.py install.
+Download, create a google-apputils-0.1 directory, untar the archive in this directory, and then run python setup.py install.
 
 You may need to install python-setuptools for windows. Please fetch it from http://pypi.python.org/pypi/setuptools#files .
 
