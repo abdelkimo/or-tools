@@ -50,6 +50,44 @@ run
 python setup.py install
 }}}
 
+You can then compile the library, examples and python wrapping:
+
+{{{make cpexe pycp}}}
+
+
+To compile in debug mode, please use
+
+
+{{{make DEBUG=-g cpexe pycp}}}
+
+
+You can clean everything using
+
+
+{{{make clean}}}
+
+
+When everything is compiled, you will find under operations_research:
+  * some libraries (libcp.a, libutil.a and libbase.a, and more)
+  * One binary per C++ example (e.g. nqueens)
+  * A C++ wrapping library (_pywrapcp.so)
+
+You can execute C++ examples just by running then:
+
+{{{./magic_square }}}
+
+
+For the python examples, as we have not installed the constraint_solver module, we need to use the following command:
+
+{{{PYTHONPATH= <python_binary> python/<sample.py>}}}
+
+As in
+
+{{{PYTHONPATH= python2.6 python/golomb8.py}}}
+
+This has been tested with python 2.5 and 2.6.
+The wrapping using SWIG has been tested with SWIG 1.3.40 and 1.3.31.
+
 =Installing under Ubuntu Linux and Mac OS X=
 
 This library has been tested under Ubuntu Linux 10.04, 10.10, and Mac OS X Snow Leopard (10.6) with xcode 3.2.x.
@@ -87,7 +125,6 @@ Download, untar and then run python setup.py install.
 Please edit the top of the makefile to accommodate your installation.
 
 You can then compile the library, examples and python wrapping:
-
 
 {{{make cpexe pycp}}}
 
