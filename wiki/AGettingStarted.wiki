@@ -20,10 +20,42 @@ or-tools/
 || python/ || Python examples ||
 || util/ || More utilities needed by the constraint solver || 
 
+=Installing under Ubuntu Linux and Mac OS X with a binary archive for dependencies =
+
+This library has been tested under Ubuntu Linux 10.04, 10.10, and Mac OS X Snow Leopard (10.6) with xcode 3.2.x.
+It is known not to compile with xcode 3.1.x running under Mac OS X Leopard (10.5).
+
+First, create the or-tools svn copy where you want to work. All dependencies will be placed at the same level, along side this directory.
+
+For linux users, please intall swig, python-setuptools python-dev
+{{{
+sudo apt-get install swig python-setuptools python-dev
+}}}
+
+For Mac OS X users, please install xcode from the apple developer site:
+
+http://developer.apple.com/technologies/tools/xcode.html
+
+Then uncompress the archive in the same directory you will create the or-tools svn repository.
+
+{{{
+tar xvzf google-or-tools-dependencies-<OS specific>.tar.gz
+}}}
+
+Go into google-apputils-0.1
+
+run 
+
+{{{
+python setup.py install
+}}}
+
 =Installing under Ubuntu Linux and Mac OS X=
 
 This library has been tested under Ubuntu Linux 10.04, 10.10, and Mac OS X Snow Leopard (10.6) with xcode 3.2.x.
 It is known not to compile with xcode 3.1.x running under Mac OS X Leopard (10.5).
+
+First, create the or-tools svn copy where you want to work. All dependencies will be placed at the same level, along side this directory.
 
 For linux users, please intall swig, python-setuptools python-dev
 {{{
