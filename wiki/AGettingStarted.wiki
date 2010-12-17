@@ -24,6 +24,7 @@ or-tools/
 
 This library has been tested under Ubuntu Linux 10.04, 10.10, and Mac OS X Snow Leopard (10.6) with xcode 3.2.x.
 It is known not to compile with xcode 3.1.x running under Mac OS X Leopard (10.5).
+It is also known not to compile with visual studio 2005, 2008.
 
 First, create the or-tools svn copy where you want to work. All dependencies will be placed at the same level, along side this directory.
 
