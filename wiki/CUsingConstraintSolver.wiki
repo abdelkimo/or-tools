@@ -11,4 +11,3 @@ Table of Content:
   # [CUsingConstraintSolverUsingObjectiveWithTheGolombRuler Using objective with the Golomb Ruler Problem]
   # [CUsingConstraintSolverSolvingAJobshopSchedulingProblem Jobshop Scheduling in Python]
   # [CUsingConstraintSolverSchedulingASimpleMeetingInPython Scheduling a meeting with alternative rooms in Python]
-  # [UsingCPSolverCppAPI C++ API Reference Manuel]
