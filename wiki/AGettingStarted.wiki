@@ -248,7 +248,7 @@ Then install dependencies. They will all be installed alongside the or-tools dir
 
 First, you will need to download the google-gflags library. It can be obtained at the following address:
 
-http://code.google.com/p/google-gflags/downloads/detail?name=gflags-1.4.zip
+http://code.google.com/p/google-gflags/downloads/detail?name=gflags-1.5.zip
 
 Decompress alongside the or-tools directory.
 
@@ -291,19 +291,19 @@ To install do the following:
    * create protobuf-2.3.0/lib directory and move protobuf-src-2.3.0/vsprojects/Release/`*`.lib into this directory
    * create protobuf-2.3.0/bin directory and move protobuf-src-2.3.0/vsprojects/Release/protoc.exe into this directory.
 
-Then modify the Makefile.msv in or-tools to point to the root of the protobuf source tree.
+Then copy Makefile.def to Makefile.local in or-tools, and modify it to point to the root of the protobuf source tree.
 
 You can then compile the library and examples :
 
-{{{nmake -f Makefile.msv cpexe}}}
+{{{make cpexe}}}
 
 To compile in debug mode, please use
 
-{{{nmake -f Makefile.msv DEBUG="/Od /Zi" cpexe}}}
+{{{make DEBUG="/Od /Zi" cpexe}}}
 
 If needed, the command to clean everything is:
 
-{{{nmake -f Makefile.msv clean}}}
+{{{make clean}}}
 
 When everything is compiled, you will find under or-tools:
 a few libraries (including cp.lib, util.lib, base.lib) 
@@ -333,7 +333,7 @@ You may need to install python-setuptools for windows. Please fetch it from http
 
 Now, build the python wrapping:
 
-{{{nmake -f Makefile.msv pycp}}}
+{{{make pycp}}}
 
 Set the correct environment variable
 
