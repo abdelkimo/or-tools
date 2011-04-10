@@ -105,7 +105,7 @@ First you need to compile the C++ libraries:
     * `make`
     * `make install`
 Download protobuf  from http://code.google.com/p/protobuf/ and untar in `_work_/install`
-  # Step into `_work_/install/gprotobuf-2.3.0` and run the following command:
+  # Step into `_work_/install/protobuf-2.3.0` and run the following command:
     * `./configure --prefix=_work_/protobuf-2.3.0`
     * `make`
     * `make install`
