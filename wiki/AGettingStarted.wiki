@@ -102,7 +102,9 @@ Download protobuf  from http://code.google.com/p/protobuf/ and untar in `_work_/
     * `make`
     * `make install`
 
- Install GLPK and Coin Branch and Cut as described above.
+It is recommanded you also install linear solver:
+   * GLPK from http://ftp.gnu.org/gnu/glpk/ . Install it in ../glpk-4.45
+   * Coin Branch and Cut from http://www.coin-or.org/download/source/Cbc/ . Install it in ../cbc-2.6.4
 
 Then you can compile the python library.
 
@@ -168,28 +170,6 @@ To install do the following:
    * create protobuf-2.3.0/lib directory and move protobuf-src-2.3.0/vsprojects/Release/`*`.lib into this directory
    * create protobuf-2.3.0/bin directory and move protobuf-src-2.3.0/vsprojects/Release/protoc.exe into this directory.
 
-Then copy Makefile.def to Makefile.local in or-tools, and modify it to point to the root of the protobuf source tree.
-
-You can then compile the library and examples :
-
-{{{make cpexe}}}
-
-To compile in debug mode, please use
-
-{{{make DEBUG="/Od /Zi" cpexe}}}
-
-If needed, the command to clean everything is:
-
-{{{make clean}}}
-
-When everything is compiled, you will find under or-tools:
-a few libraries (including cp.lib, util.lib, base.lib) 
-One binary per C++ example (e.g. nqueens.exe)
-
-You can execute C++ examples just by running then:
-
-{{{magic_square.exe}}}
-
 To use Python, you need to install python and swigwin and some dependencies:
 
 This has been tested with swigwin-2.0.0 available from there:
@@ -207,14 +187,9 @@ Download, create a google-apputils-0.1 directory, untar the archive in this dire
 
 You may need to install python-setuptools for windows. Please fetch it from http://pypi.python.org/pypi/setuptools#files .
 
+Then copy Makefile.def to Makefile.local in or-tools, and modify it to point to the root of the protobuf source tree.
 
-Now, build the python wrapping:
 
-{{{make pycp}}}
-
-Set the correct environment variable
-
-{{{set PYTHONPATH=%PYTHONPATH%;<path to or-tools>}}}
 
 and run the examples as in:
 
@@ -260,6 +235,12 @@ You can execute C++ examples just by running then:
 
 For the python examples, as we have not installed the constraint_solver module, we need to use the following command:
 
+
+on windows:
+{{{set PYTHONPATH=%PYTHONPATH%;<path to or-tools>}}}, then {{{c:\Python27\python.exe python/sample.py}}}.
+
+
+On unix:
 {{{PYTHONPATH= <python_binary> python/<sample.py>}}}
 
 As in
