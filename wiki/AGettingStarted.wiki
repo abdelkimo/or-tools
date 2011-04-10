@@ -172,9 +172,9 @@ To install do the following:
 
 To use Python, you need to install python and swigwin and some dependencies:
 
-This has been tested with swigwin-2.0.0 available from there:
+This has been tested with swigwin-2.0.x available from there:
 
-http://prdownloads.sourceforge.net/swig/swigwin-2.0.0.zip
+http://prdownloads.sourceforge.net/swig/swigwin-2.0.3.zip
 
 and python from 
 
