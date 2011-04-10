@@ -20,7 +20,7 @@ or-tools/
 || python/ || Python examples ||
 || util/ || More utilities needed by the constraint solver || 
 
-=Installing under Ubuntu Linux and Mac OS X with a binary archive for dependencies =
+=Installing under Ubuntu Linux with a binary archive for dependencies =
 
 This library has been tested under Ubuntu Linux 10.04 and10.10 with xcode 3.2.x.
 
