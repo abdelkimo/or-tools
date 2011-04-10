@@ -22,7 +22,7 @@ or-tools/
 
 =Installing under Ubuntu Linux with a binary archive for dependencies =
 
-This library has been tested under Ubuntu Linux 10.04 and10.10 with xcode 3.2.x.
+This library has been tested under Ubuntu Linux 10.04 and 10.10 with xcode 3.2.x.
 
 First, create the or-tools svn copy where you want to work. All dependencies will be placed at the same level, along side this directory.
 
