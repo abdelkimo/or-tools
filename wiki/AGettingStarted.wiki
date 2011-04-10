@@ -92,8 +92,8 @@ First you need to compile the C++ libraries:
   # Create a repertory that will hold all source code. I will refer to this as `_work_`.
   # Create the `_work_/install` repertory.
   # Download google-gflags from http://code.google.com/p/google-gflags/ and untar in `_work_/install`
-  # Step into `_work_/install/gflags-1.4` and run the following command:
-    * `./configure --prefix=_work_/gflags-1.4`
+  # Step into `_work_/install/gflags-1.5` and run the following command:
+    * `./configure --prefix=_work_/gflags-1.5`
     * `make`
     * `make install`
 Download protobuf  from http://code.google.com/p/protobuf/ and untar in `_work_/install`
@@ -188,8 +188,6 @@ Download, create a google-apputils-0.1 directory, untar the archive in this dire
 You may need to install python-setuptools for windows. Please fetch it from http://pypi.python.org/pypi/setuptools#files .
 
 Then copy Makefile.def to Makefile.local in or-tools, and modify it to point to the root of the protobuf source tree.
-
-
 
 and run the examples as in:
 
