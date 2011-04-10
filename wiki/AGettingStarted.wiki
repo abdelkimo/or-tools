@@ -8,16 +8,25 @@
 Upon untarring the given operation_research tar file, you will get the following structure:
 or-tools/
 || LICENSE-2.0.txt || Apache License ||
-|| Makefile || Makefile for unix platform (ubuntu linux, mac os X) ||
-|| Makefile.msv || Makefile for Microsoft Visual Studio ||
+|| Makefile || Main Makefile ||
+|| Makefile.def || Makefile predefined variables (paths, version numbers) ||
+|| Makefile.unix || Makefile specialization for unix platforms ||
+|| Makefile.win || Makefile specialization for Microsoft Visual Studio ||
+|| Makefile.build.cpp || Build rules for C++examples and libraries ||
+|| Makefile.build.python || Build rules for python wrapping and examples ||
+|| Makefile.build.java || Build rules for java wrapping and examples ||
 || README || This file ||
 || algorithms/ || A collection of OR algorithms (non graph related) ||
 || base/ || Directory containing basic utilities ||
 || constraint_solver/ || The main directory for the constraint solver library ||
+|| com/ || The main directory for the java code ||
+|| gen/ || The root directory for all generated code (java classes, protocol buffers) ||
 || examples/ || C++ examples ||
 || graph/ || Standard OR graph algorithms ||
+|| linear_solver/ || The main directory for the linear solver wrapper library ||
 || objs/ || Where C++ objs files will be stored ||
 || python/ || Python examples ||
+|| tools/ || Binaries and scripts needed by various platforms ||
 || util/ || More utilities needed by the constraint solver || 
 
 =Installing with a binary archives for dependencies =
@@ -49,8 +58,7 @@ Please copy Makefile.def to Makefile.local and edit Makefile.local to accommodat
 
 =Installing under Ubuntu Linux and Mac OS X=
 
-This library has been tested under Ubuntu Linux 10.04, 10.10, and Mac OS X Snow Leopard (10.6) with xcode 3.2.x.
-It is known not to compile with xcode 3.1.x running under Mac OS X Leopard (10.5).
+This library has been tested under Ubuntu Linux 10.04, 10.10, and Mac OS X Snow Leopard (10.6) with xcode 3.2.x, and 4.x.x. It is known not to compile with xcode 3.1.x running under Mac OS X Leopard (10.5).
 
 First, create the or-tools svn copy where you want to work. All dependencies will be placed at the same level, along side this directory.
 
@@ -191,6 +199,7 @@ Then copy Makefile.def to Makefile.local in or-tools, and modify it to point to 
 
 =Compiling libraries and running examples=
 
+All build rules use make (gnu make), even on windows. A make.exe binary is provided in the tools sub-directory.
 
 You can query the list of targets just by typing
 
