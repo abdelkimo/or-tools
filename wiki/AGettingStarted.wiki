@@ -189,10 +189,6 @@ You may need to install python-setuptools for windows. Please fetch it from http
 
 Then copy Makefile.def to Makefile.local in or-tools, and modify it to point to the root of the protobuf source tree.
 
-and run the examples as in:
-
-{{{python.exe python\simple_meeting.py}}}
-
 =Compiling libraries and running examples=
 
 
