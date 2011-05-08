@@ -80,7 +80,7 @@ By default, the makefile assumes the installation path is
 ../gflags-1.5 from the Makefile, thus at the same level as the
 or-tools directory.
 
-Then you need to install protocol buffers. You can fetch them at http://code.google.com/p/protobuf/ . The makefile default path is ../protobuf-2.3.0 from the location of the or-tools Makefile.
+Then you need to install protocol buffers. You can fetch them at http://code.google.com/p/protobuf/ . Please install them alongside or-tools.
 
 It is recommanded you also install linear solver:
    * GLPK from http://ftp.gnu.org/gnu/glpk/ . Install it in ../glpk-4.45
@@ -105,8 +105,8 @@ First you need to compile the C++ libraries:
     * `make`
     * `make install`
 Download protobuf  from http://code.google.com/p/protobuf/ and untar in `_work_/install`
-  # Step into `_work_/install/protobuf-2.3.0` and run the following command:
-    * `./configure --prefix=_work_/protobuf-2.3.0`
+  # Step into `_work_/install/protobuf-2.4.1` and run the following command:
+    * `./configure --prefix=_work_/protobuf-2.4.1`
     * `make`
     * `make install`
 
@@ -121,7 +121,7 @@ You will need 3 things: swig, python.h and python dev packages, and python_apput
 Finally, you need to install google-apputils from:
 http://code.google.com/p/google-apputils-python/
 
-Download, untar it into `_work_/install/google-apputils-0.1` (Create the google-apputils-0.1 directory first as the archive does not have a leading directory) and then run `python setup.py install`.
+Download, untar it into `_work_/install/google-apputils-0.2.1`, and then run `sudo python setup.py install`.
 It will install different packages include python-gflags.
 
 Please copy Makefile.def to Makefile.local and edit Makefile.local to accommodate your installation.
@@ -166,17 +166,17 @@ directly at this point.
 
 Then you need to install protocol buffers. You can fetch them at  http://code.google.com/p/protobuf/downloads/detail?name=protobuf-2.3.0.zip
 
-The makefile default path is ../protobuf-2.3.0 from the location of the or-tools Makefile.msv.
+The makefile default path is ../protobuf-2.4.1 from the location of the or-tools Makefile.msv.
 To install do the following:
    * Unzip the archive
-   * rename the directory protobuf-src-2.3.0
-   * go into the protobuf-src-2.3.0/vsprojects subdirectory.
+   * rename the directory protobuf-src-2.4.1
+   * go into the protobuf-src-2.4.1/vsprojects subdirectory.
    * load the sln and compile the project in release mode (win32 and x64). Please ignore the errors. You will need the protoc executable and the libprotobuf libraries.
-   * go into the protobuf-src-2.3.0/vsprojects directory, run the extract_includes.bat script
-   * Create the protobuf-2.3.0 directory at the same level as or-tools
-   * move the protobuf-src-2.3.0/vsprojects/include directory into the protobuf-2.3.0 directory
-   * create protobuf-2.3.0/lib directory and move protobuf-src-2.3.0/vsprojects/Release/`*`.lib into this directory
-   * create protobuf-2.3.0/bin directory and move protobuf-src-2.3.0/vsprojects/Release/protoc.exe into this directory.
+   * go into the protobuf-src-2.4.1/vsprojects directory, run the extract_includes.bat script
+   * Create the protobuf-2.4.1 directory at the same level as or-tools
+   * move the protobuf-src-2.4.1/vsprojects/include directory into the protobuf-2.4.1 directory
+   * create protobuf-2.4.1/lib directory and move protobuf-src-2.4.1/vsprojects/Release/`*`.lib into this directory
+   * create protobuf-2.4.1/bin directory and move protobuf-src-2.4.1/vsprojects/Release/protoc.exe into this directory.
 
 To use Python, you need to install python and swigwin and some dependencies:
 
@@ -191,11 +191,11 @@ http://www.python.org/download/releases/2.7/
 You need to install google-apputils from:
 http://code.google.com/p/google-apputils-python/
 
-Download, create a google-apputils-0.1 directory, untar the archive in this directory, and then run python setup.py install.
+Download the latest version (0.2.1),  untar the archive alongside or-tools, and then run python setup.py install inside.
 
 You may need to install python-setuptools for windows. Please fetch it from http://pypi.python.org/pypi/setuptools#files .
 
-Then copy Makefile.def to Makefile.local in or-tools, and modify it to point to the root of the protobuf source tree.
+Then copy Makefile.def to Makefile.local in or-tools, and modify it to follow your local installation.
 
 =Compiling libraries and running examples=
 
@@ -254,5 +254,5 @@ You can run java examples with the run[_<name>] makefile target as in:
 
 {{{make run_RabbitsPheasants}}}
 
-This has been tested with python 2.5 and 2.6.
-The wrapping using SWIG has been tested with SWIG 1.3.40, 1.3.31, and 2.0.x.
+This has been tested with python 2.5, 2.6., and 2.7.
+The wrapping using SWIG has been tested with SWIG 1.3.31, 1.3.40, and 2.0.x.
