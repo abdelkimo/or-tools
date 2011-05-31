@@ -77,7 +77,7 @@ and install it. It can be obtained at the following address:
 http://code.google.com/p/google-gflags/
 
 By default, the makefile assumes the installation path is
-../gflags-1.5 from the Makefile, thus at the same level as the
+../gflags-1.4 from the Makefile, thus at the same level as the
 or-tools directory.
 
 Then you need to install protocol buffers. You can fetch them at http://code.google.com/p/protobuf/ . Please install them alongside or-tools.
