@@ -86,6 +86,16 @@ It is recommanded you also install linear solver:
    * GLPK from http://ftp.gnu.org/gnu/glpk/ . Install it in ../glpk-4.45
    * Coin Branch and Cut from http://www.coin-or.org/download/source/Cbc/ . Install it in ../cbc-2.6.4
 
+You can also install scip and soplex. 
+The recommended way is the following:  
+  # Download ZIB Oprimization Suite from http://zibopt.zib.de/download.shtml
+  # Unpack everything with tar cvzf ziboptsuite-2.0.1.tgz alongside or-tools
+  # Change into the directory ziboptsuite-2.0.1
+  # Compile using:
+    * On linux: make ZIMPL=false READLINE=false USRCXXFLAGS=-fPIC CFLAGS=-fPIC
+    * On mac OS X: make ZIMPL=false READLINE=false
+  # Add UNIX_SCIP_DIR=<path to ziboptsuite>scip-2.0.1 in Makefile.local
+
 Finally, you need to install google-apputils from:
 http://code.google.com/p/google-apputils-python/
 
