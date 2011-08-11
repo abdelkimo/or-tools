@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #915221
+      background-color: #927620
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#915221 height=3></td>
+      <td colspan=3 bgcolor=#927620 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#915221><b>Wed Aug 10 22:22:19 PDT 2011</b></font>
+          Generated on: <font color=#927620><b>Thu Aug 11 00:29:03 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#915221>
+            <td bgcolor=#927620>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#915221>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#927620>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -589,7 +589,7 @@
 <a name="l00506"></a>00506     <a class="code" href="classoperations__research_1_1PathOperator.html#2f05e5dce708fd86775e612d08ffc08e" title="Sets the to to be the node after from.">SetNext</a>(chain_end, <a class="code" href="classoperations__research_1_1PathOperator.html#9cb02dcb6c4ee83e896b83af163f189c" title="Returns the index of the node after the node of index node_index in the current assignment...">Next</a>(destination), destination_path);
 <a name="l00507"></a>00507     <span class="keywordflow">if</span> (!<a class="code" href="classoperations__research_1_1PathOperator.html#46728a21c28eaf507a20bba345d9df8f">ignore_path_vars_</a>) {
 <a name="l00508"></a>00508       <span class="keywordtype">int</span> current = destination;
-<a name="l00509"></a>00509       <span class="keywordtype">int</span> next = <a class="code" href="classoperations__research_1_1PathOperator.html#9cb02dcb6c4ee83e896b83af163f189c" title="Returns the index of the node after the node of index node_index in the current assignment...">Next</a>(before_chain);
+<a name="l00509"></a>00509       <span class="keywordtype">int</span> <a class="code" href="constraint__solver_8cc.html#395f613555f398dd389670bb4c2a4599">next</a> = <a class="code" href="classoperations__research_1_1PathOperator.html#9cb02dcb6c4ee83e896b83af163f189c" title="Returns the index of the node after the node of index node_index in the current assignment...">Next</a>(before_chain);
 <a name="l00510"></a>00510       <span class="keywordflow">while</span> (current != chain_end) {
 <a name="l00511"></a>00511         <a class="code" href="classoperations__research_1_1PathOperator.html#2f05e5dce708fd86775e612d08ffc08e" title="Sets the to to be the node after from.">SetNext</a>(current, next, destination_path);
 <a name="l00512"></a>00512         current = next;
@@ -616,7 +616,7 @@
 <a name="l00533"></a>00533     int64 current_next = <a class="code" href="classoperations__research_1_1PathOperator.html#9cb02dcb6c4ee83e896b83af163f189c" title="Returns the index of the node after the node of index node_index in the current assignment...">Next</a>(current);
 <a name="l00534"></a>00534     <a class="code" href="classoperations__research_1_1PathOperator.html#2f05e5dce708fd86775e612d08ffc08e" title="Sets the to to be the node after from.">SetNext</a>(current, after_chain, path);
 <a name="l00535"></a>00535     <span class="keywordflow">while</span> (current_next != after_chain) {
-<a name="l00536"></a>00536       <span class="keyword">const</span> int64 next = <a class="code" href="classoperations__research_1_1PathOperator.html#9cb02dcb6c4ee83e896b83af163f189c" title="Returns the index of the node after the node of index node_index in the current assignment...">Next</a>(current_next);
+<a name="l00536"></a>00536       <span class="keyword">const</span> int64 <a class="code" href="constraint__solver_8cc.html#395f613555f398dd389670bb4c2a4599">next</a> = <a class="code" href="classoperations__research_1_1PathOperator.html#9cb02dcb6c4ee83e896b83af163f189c" title="Returns the index of the node after the node of index node_index in the current assignment...">Next</a>(current_next);
 <a name="l00537"></a>00537       <a class="code" href="classoperations__research_1_1PathOperator.html#2f05e5dce708fd86775e612d08ffc08e" title="Sets the to to be the node after from.">SetNext</a>(current_next, current, path);
 <a name="l00538"></a>00538       current = current_next;
 <a name="l00539"></a>00539       current_next = next;
@@ -646,7 +646,7 @@
 <a name="l00563"></a>00563     <span class="keyword">const</span> int64 after_chain = <a class="code" href="classoperations__research_1_1PathOperator.html#9cb02dcb6c4ee83e896b83af163f189c" title="Returns the index of the node after the node of index node_index in the current assignment...">Next</a>(chain_end);
 <a name="l00564"></a>00564     int64 current = <a class="code" href="classoperations__research_1_1PathOperator.html#9cb02dcb6c4ee83e896b83af163f189c" title="Returns the index of the node after the node of index node_index in the current assignment...">Next</a>(before_chain);
 <a name="l00565"></a>00565     <span class="keywordflow">while</span> (current != after_chain) {
-<a name="l00566"></a>00566       <span class="keyword">const</span> int64 next = <a class="code" href="classoperations__research_1_1PathOperator.html#9cb02dcb6c4ee83e896b83af163f189c" title="Returns the index of the node after the node of index node_index in the current assignment...">Next</a>(current);
+<a name="l00566"></a>00566       <span class="keyword">const</span> int64 <a class="code" href="constraint__solver_8cc.html#395f613555f398dd389670bb4c2a4599">next</a> = <a class="code" href="classoperations__research_1_1PathOperator.html#9cb02dcb6c4ee83e896b83af163f189c" title="Returns the index of the node after the node of index node_index in the current assignment...">Next</a>(current);
 <a name="l00567"></a>00567       <a class="code" href="classoperations__research_1_1PathOperator.html#2f05e5dce708fd86775e612d08ffc08e" title="Sets the to to be the node after from.">SetNext</a>(current, current, kNoPath);
 <a name="l00568"></a>00568       current = next;
 <a name="l00569"></a>00569     }
@@ -700,7 +700,7 @@
 <a name="l00617"></a>00617   path_starts_.clear();
 <a name="l00618"></a>00618   Bitmap has_prevs(<a class="code" href="classoperations__research_1_1PathOperator.html#e108cf2f383928202b506cba66e911ee">number_of_nexts_</a>, <span class="keyword">false</span>);
 <a name="l00619"></a>00619   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="classoperations__research_1_1PathOperator.html#e108cf2f383928202b506cba66e911ee">number_of_nexts_</a>; ++i) {
-<a name="l00620"></a>00620     <span class="keyword">const</span> <span class="keywordtype">int</span> next = <a class="code" href="classoperations__research_1_1PathOperator.html#46b2f4edff03a628d654c2fb6531d696">OldNext</a>(i);
+<a name="l00620"></a>00620     <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="constraint__solver_8cc.html#395f613555f398dd389670bb4c2a4599">next</a> = <a class="code" href="classoperations__research_1_1PathOperator.html#46b2f4edff03a628d654c2fb6531d696">OldNext</a>(i);
 <a name="l00621"></a>00621     <span class="keywordflow">if</span> (next &lt; number_of_nexts_) {
 <a name="l00622"></a>00622       has_prevs.Set(next, <span class="keyword">true</span>);
 <a name="l00623"></a>00623     }
@@ -786,41 +786,41 @@
 <a name="l00703"></a>00703   TwoOpt(<span class="keyword">const</span> IntVar* <span class="keyword">const</span>* vars,
 <a name="l00704"></a>00704          <span class="keyword">const</span> IntVar* <span class="keyword">const</span>* secondary_vars,
 <a name="l00705"></a>00705          <span class="keywordtype">int</span> size)
-<a name="l00706"></a>00706       : <a class="code" href="classoperations__research_1_1PathOperator.html#a1f760408851ccfbc70b4a12479aeb3d" title="namespace">PathOperator</a>(vars, secondary_vars, size, 2), <a class="code" href="local__search_8cc.html#ffac8499a8767632743720c4c3d32115">last_base_</a>(-1), <a class="code" href="local__search_8cc.html#ce15cb86cc6195f048432fe3c9857083">last_</a>(-1) {
+<a name="l00706"></a>00706       : <a class="code" href="classoperations__research_1_1PathOperator.html#a1f760408851ccfbc70b4a12479aeb3d" title="namespace">PathOperator</a>(vars, secondary_vars, size, 2), <a class="code" href="local__search_8cc.html#ffac8499a8767632743720c4c3d32115">last_base_</a>(-1), <a class="code" href="constraint__solver_8cc.html#4a265269d82faeacc90eef4f9668cdbb">last_</a>(-1) {
 <a name="l00707"></a>00707   }
 <a name="l00708"></a>00708   <span class="keyword">virtual</span> ~TwoOpt() {}
 <a name="l00709"></a>00709   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1PathOperator.html#bf884d7efc40fbf9932b64623604c23a">MakeNeighbor</a>();
 <a name="l00710"></a>00710   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1IntVarLocalSearchOperator.html#3aadcb0db97dbb1f9bbdeb6b7027263d">IsIncremental</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="keyword">true</span>; }
 <a name="l00711"></a>00711  <span class="keyword">private</span>:
-<a name="l00712"></a>00712   <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnNodeInitialization() { <a class="code" href="local__search_8cc.html#ce15cb86cc6195f048432fe3c9857083">last_</a> = -1; }
+<a name="l00712"></a>00712   <span class="keyword">virtual</span> <span class="keywordtype">void</span> OnNodeInitialization() { <a class="code" href="constraint__solver_8cc.html#4a265269d82faeacc90eef4f9668cdbb">last_</a> = -1; }
 <a name="l00713"></a>00713 
 <a name="l00714"></a><a class="code" href="local__search_8cc.html#ffac8499a8767632743720c4c3d32115">00714</a>   int64 <a class="code" href="local__search_8cc.html#ffac8499a8767632743720c4c3d32115">last_base_</a>;
-<a name="l00715"></a><a class="code" href="local__search_8cc.html#ce15cb86cc6195f048432fe3c9857083">00715</a>   int64 <a class="code" href="local__search_8cc.html#ce15cb86cc6195f048432fe3c9857083">last_</a>;
+<a name="l00715"></a><a class="code" href="local__search_8cc.html#ce15cb86cc6195f048432fe3c9857083">00715</a>   int64 <a class="code" href="constraint__solver_8cc.html#4a265269d82faeacc90eef4f9668cdbb">last_</a>;
 <a name="l00716"></a>00716 };
 <a name="l00717"></a>00717 
 <a name="l00718"></a>00718 <span class="keywordtype">bool</span> TwoOpt::MakeNeighbor() {
 <a name="l00719"></a>00719   <span class="keywordflow">if</span> (StartNode(0) != StartNode(1)) {
 <a name="l00720"></a>00720     <span class="keywordflow">return</span> <span class="keyword">false</span>;
 <a name="l00721"></a>00721   }
-<a name="l00722"></a>00722   <span class="keywordflow">if</span> (<a class="code" href="local__search_8cc.html#ffac8499a8767632743720c4c3d32115">last_base_</a> != BaseNode(0) || <a class="code" href="local__search_8cc.html#ce15cb86cc6195f048432fe3c9857083">last_</a> == -1) {
+<a name="l00722"></a>00722   <span class="keywordflow">if</span> (<a class="code" href="local__search_8cc.html#ffac8499a8767632743720c4c3d32115">last_base_</a> != BaseNode(0) || <a class="code" href="constraint__solver_8cc.html#4a265269d82faeacc90eef4f9668cdbb">last_</a> == -1) {
 <a name="l00723"></a>00723     RevertChanges(<span class="keyword">false</span>);
 <a name="l00724"></a>00724     <span class="keywordflow">if</span> (IsPathEnd(BaseNode(0))) {
-<a name="l00725"></a>00725       <a class="code" href="local__search_8cc.html#ce15cb86cc6195f048432fe3c9857083">last_</a> = -1;
+<a name="l00725"></a>00725       <a class="code" href="constraint__solver_8cc.html#4a265269d82faeacc90eef4f9668cdbb">last_</a> = -1;
 <a name="l00726"></a>00726       <span class="keywordflow">return</span> <span class="keyword">false</span>;
 <a name="l00727"></a>00727     }
 <a name="l00728"></a>00728     <a class="code" href="local__search_8cc.html#ffac8499a8767632743720c4c3d32115">last_base_</a> = BaseNode(0);
-<a name="l00729"></a>00729     <a class="code" href="local__search_8cc.html#ce15cb86cc6195f048432fe3c9857083">last_</a> = Next(BaseNode(0));
+<a name="l00729"></a>00729     <a class="code" href="constraint__solver_8cc.html#4a265269d82faeacc90eef4f9668cdbb">last_</a> = Next(BaseNode(0));
 <a name="l00730"></a>00730     int64 chain_last;
 <a name="l00731"></a>00731     <span class="keywordflow">if</span> (ReverseChain(BaseNode(0), BaseNode(1), &amp;chain_last)) {
 <a name="l00732"></a>00732       <span class="keywordflow">return</span> <span class="keyword">true</span>;
 <a name="l00733"></a>00733     } <span class="keywordflow">else</span> {
-<a name="l00734"></a>00734       <a class="code" href="local__search_8cc.html#ce15cb86cc6195f048432fe3c9857083">last_</a> = -1;
+<a name="l00734"></a>00734       <a class="code" href="constraint__solver_8cc.html#4a265269d82faeacc90eef4f9668cdbb">last_</a> = -1;
 <a name="l00735"></a>00735       <span class="keywordflow">return</span> <span class="keyword">false</span>;
 <a name="l00736"></a>00736     }
 <a name="l00737"></a>00737   } <span class="keywordflow">else</span> {
-<a name="l00738"></a>00738     <span class="keyword">const</span> int64 to_move = Next(<a class="code" href="local__search_8cc.html#ce15cb86cc6195f048432fe3c9857083">last_</a>);
+<a name="l00738"></a>00738     <span class="keyword">const</span> int64 to_move = Next(<a class="code" href="constraint__solver_8cc.html#4a265269d82faeacc90eef4f9668cdbb">last_</a>);
 <a name="l00739"></a>00739     DCHECK_EQ(Next(to_move), BaseNode(1));
-<a name="l00740"></a>00740     <span class="keywordflow">return</span> MoveChain(<a class="code" href="local__search_8cc.html#ce15cb86cc6195f048432fe3c9857083">last_</a>, to_move, BaseNode(0));
+<a name="l00740"></a>00740     <span class="keywordflow">return</span> MoveChain(<a class="code" href="constraint__solver_8cc.html#4a265269d82faeacc90eef4f9668cdbb">last_</a>, to_move, BaseNode(0));
 <a name="l00741"></a>00741   }
 <a name="l00742"></a>00742 }
 <a name="l00743"></a>00743 
@@ -2260,7 +2260,7 @@
 <a name="l02177"></a><a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">02177</a>   <span class="keyword">const</span> IntVar* <span class="keyword">const</span> <a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>;
 <a name="l02178"></a><a class="code" href="local__search_8cc.html#6fd39ac3fffc21b6844f418b311f6fc3">02178</a>   <a class="code" href="classoperations__research_1_1Solver.html#8e9cbe2323b10c6b49da625f5bae14c0">Solver::LocalSearchFilterBound</a> <a class="code" href="local__search_8cc.html#6fd39ac3fffc21b6844f418b311f6fc3">filter_enum_</a>;
 <a name="l02179"></a><a class="code" href="local__search_8cc.html#1cd6884f47f6bb086001ce6b3d040f2d">02179</a>   scoped_ptr&lt;LSOperation&gt; <a class="code" href="local__search_8cc.html#1cd6884f47f6bb086001ce6b3d040f2d">op_</a>;
-<a name="l02180"></a><a class="code" href="local__search_8cc.html#a49db3b42a1b418ffdd05a42703594f5">02180</a>   int64 <a class="code" href="local__search_8cc.html#a49db3b42a1b418ffdd05a42703594f5">old_value_</a>;
+<a name="l02180"></a><a class="code" href="local__search_8cc.html#a49db3b42a1b418ffdd05a42703594f5">02180</a>   int64 <a class="code" href="constraint__solver_8cc.html#d23798e2eb6681fd68436c2d050a8b24">old_value_</a>;
 <a name="l02181"></a><a class="code" href="local__search_8cc.html#1362f4dd0e01895505bfb44880e02b87">02181</a>   int64 <a class="code" href="local__search_8cc.html#1362f4dd0e01895505bfb44880e02b87">old_delta_value_</a>;
 <a name="l02182"></a><a class="code" href="local__search_8cc.html#c8f969ce45179d0fd0a42ccf7735bcd6">02182</a>   <span class="keywordtype">bool</span> <a class="code" href="local__search_8cc.html#c8f969ce45179d0fd0a42ccf7735bcd6">incremental_</a>;
 <a name="l02183"></a>02183 
@@ -2284,7 +2284,7 @@
 <a name="l02201"></a>02201       <a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>(objective),
 <a name="l02202"></a>02202       <a class="code" href="local__search_8cc.html#6fd39ac3fffc21b6844f418b311f6fc3">filter_enum_</a>(filter_enum),
 <a name="l02203"></a>02203       <a class="code" href="local__search_8cc.html#1cd6884f47f6bb086001ce6b3d040f2d">op_</a>(op),
-<a name="l02204"></a>02204       <a class="code" href="local__search_8cc.html#a49db3b42a1b418ffdd05a42703594f5">old_value_</a>(0),
+<a name="l02204"></a>02204       <a class="code" href="constraint__solver_8cc.html#d23798e2eb6681fd68436c2d050a8b24">old_value_</a>(0),
 <a name="l02205"></a>02205       <a class="code" href="local__search_8cc.html#1362f4dd0e01895505bfb44880e02b87">old_delta_value_</a>(0),
 <a name="l02206"></a>02206       <a class="code" href="local__search_8cc.html#c8f969ce45179d0fd0a42ccf7735bcd6">incremental_</a>(false) {
 <a name="l02207"></a>02207   CHECK(<a class="code" href="local__search_8cc.html#1cd6884f47f6bb086001ce6b3d040f2d">op_</a> != NULL);
@@ -2293,7 +2293,7 @@
 <a name="l02210"></a>02210     <a class="code" href="local__search_8cc.html#734bde319e7f1d598c9bd3a8e795750a">delta_cache_</a>[i] = 0;
 <a name="l02211"></a>02211   }
 <a name="l02212"></a>02212   <a class="code" href="local__search_8cc.html#1cd6884f47f6bb086001ce6b3d040f2d">op_</a>-&gt;Init();
-<a name="l02213"></a>02213   <a class="code" href="local__search_8cc.html#a49db3b42a1b418ffdd05a42703594f5">old_value_</a> = <a class="code" href="local__search_8cc.html#1cd6884f47f6bb086001ce6b3d040f2d">op_</a>-&gt;value();
+<a name="l02213"></a>02213   <a class="code" href="constraint__solver_8cc.html#d23798e2eb6681fd68436c2d050a8b24">old_value_</a> = <a class="code" href="local__search_8cc.html#1cd6884f47f6bb086001ce6b3d040f2d">op_</a>-&gt;value();
 <a name="l02214"></a>02214 }
 <a name="l02215"></a>02215 
 <a name="l02216"></a>02216 ObjectiveFilter::~ObjectiveFilter() {
@@ -2309,7 +2309,7 @@
 <a name="l02226"></a>02226   int64 <a class="code" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a> = 0;
 <a name="l02227"></a>02227   <span class="keywordflow">if</span> (!deltadelta-&gt;Empty()) {
 <a name="l02228"></a>02228     <span class="keywordflow">if</span> (!<a class="code" href="local__search_8cc.html#c8f969ce45179d0fd0a42ccf7735bcd6">incremental_</a>) {
-<a name="l02229"></a>02229       value = Evaluate(delta, <a class="code" href="local__search_8cc.html#a49db3b42a1b418ffdd05a42703594f5">old_value_</a>, <a class="code" href="local__search_8cc.html#f58160877e17fc8ff8c7ae94b20d0336">cache_</a>, <span class="keyword">true</span>);
+<a name="l02229"></a>02229       value = Evaluate(delta, <a class="code" href="constraint__solver_8cc.html#d23798e2eb6681fd68436c2d050a8b24">old_value_</a>, <a class="code" href="local__search_8cc.html#f58160877e17fc8ff8c7ae94b20d0336">cache_</a>, <span class="keyword">true</span>);
 <a name="l02230"></a>02230     } <span class="keywordflow">else</span> {
 <a name="l02231"></a>02231       value = Evaluate(deltadelta, <a class="code" href="local__search_8cc.html#1362f4dd0e01895505bfb44880e02b87">old_delta_value_</a>, <a class="code" href="local__search_8cc.html#734bde319e7f1d598c9bd3a8e795750a">delta_cache_</a>, <span class="keyword">true</span>);
 <a name="l02232"></a>02232     }
@@ -2319,10 +2319,10 @@
 <a name="l02236"></a>02236       <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="local__search_8cc.html#bb9d2b424ab39435d678a29eb290bb7c">primary_vars_size_</a>; ++i) {
 <a name="l02237"></a>02237         <a class="code" href="local__search_8cc.html#734bde319e7f1d598c9bd3a8e795750a">delta_cache_</a>[i] = <a class="code" href="local__search_8cc.html#f58160877e17fc8ff8c7ae94b20d0336">cache_</a>[i];
 <a name="l02238"></a>02238       }
-<a name="l02239"></a>02239       <a class="code" href="local__search_8cc.html#1362f4dd0e01895505bfb44880e02b87">old_delta_value_</a> = <a class="code" href="local__search_8cc.html#a49db3b42a1b418ffdd05a42703594f5">old_value_</a>;
+<a name="l02239"></a>02239       <a class="code" href="local__search_8cc.html#1362f4dd0e01895505bfb44880e02b87">old_delta_value_</a> = <a class="code" href="constraint__solver_8cc.html#d23798e2eb6681fd68436c2d050a8b24">old_value_</a>;
 <a name="l02240"></a>02240     }
 <a name="l02241"></a>02241     <a class="code" href="local__search_8cc.html#c8f969ce45179d0fd0a42ccf7735bcd6">incremental_</a> = <span class="keyword">false</span>;
-<a name="l02242"></a>02242     value = Evaluate(delta, <a class="code" href="local__search_8cc.html#a49db3b42a1b418ffdd05a42703594f5">old_value_</a>, <a class="code" href="local__search_8cc.html#f58160877e17fc8ff8c7ae94b20d0336">cache_</a>, <span class="keyword">false</span>);
+<a name="l02242"></a>02242     value = Evaluate(delta, <a class="code" href="constraint__solver_8cc.html#d23798e2eb6681fd68436c2d050a8b24">old_value_</a>, <a class="code" href="local__search_8cc.html#f58160877e17fc8ff8c7ae94b20d0336">cache_</a>, <span class="keyword">false</span>);
 <a name="l02243"></a>02243   }
 <a name="l02244"></a>02244   <a class="code" href="local__search_8cc.html#1362f4dd0e01895505bfb44880e02b87">old_delta_value_</a> = value;
 <a name="l02245"></a>02245   int64 var_min = <a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>-&gt;Min();
@@ -2356,8 +2356,8 @@
 <a name="l02273"></a>02273     <a class="code" href="local__search_8cc.html#734bde319e7f1d598c9bd3a8e795750a">delta_cache_</a>[i] = obj_value;
 <a name="l02274"></a>02274     <a class="code" href="local__search_8cc.html#1cd6884f47f6bb086001ce6b3d040f2d">op_</a>-&gt;Update(obj_value);
 <a name="l02275"></a>02275   }
-<a name="l02276"></a>02276   <a class="code" href="local__search_8cc.html#a49db3b42a1b418ffdd05a42703594f5">old_value_</a> = <a class="code" href="local__search_8cc.html#1cd6884f47f6bb086001ce6b3d040f2d">op_</a>-&gt;value();
-<a name="l02277"></a>02277   <a class="code" href="local__search_8cc.html#1362f4dd0e01895505bfb44880e02b87">old_delta_value_</a> = <a class="code" href="local__search_8cc.html#a49db3b42a1b418ffdd05a42703594f5">old_value_</a>;
+<a name="l02276"></a>02276   <a class="code" href="constraint__solver_8cc.html#d23798e2eb6681fd68436c2d050a8b24">old_value_</a> = <a class="code" href="local__search_8cc.html#1cd6884f47f6bb086001ce6b3d040f2d">op_</a>-&gt;value();
+<a name="l02277"></a>02277   <a class="code" href="local__search_8cc.html#1362f4dd0e01895505bfb44880e02b87">old_delta_value_</a> = <a class="code" href="constraint__solver_8cc.html#d23798e2eb6681fd68436c2d050a8b24">old_value_</a>;
 <a name="l02278"></a>02278   <a class="code" href="local__search_8cc.html#c8f969ce45179d0fd0a42ccf7735bcd6">incremental_</a> = <span class="keyword">false</span>;
 <a name="l02279"></a>02279 }
 <a name="l02280"></a>02280 
@@ -3165,7 +3165,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#915221 height=3></td>
+      <td colspan=2 bgcolor=#927620 height=3></td>
     </tr>
   </table>
 

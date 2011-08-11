@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #915221
+      background-color: #927620
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#915221 height=3></td>
+      <td colspan=3 bgcolor=#927620 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#915221><b>Wed Aug 10 22:22:19 PDT 2011</b></font>
+          Generated on: <font color=#927620><b>Thu Aug 11 00:29:03 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#915221>
+            <td bgcolor=#927620>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#915221>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#927620>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -475,11 +475,11 @@
 <a name="l00392"></a>00392   <span class="keyword">struct </span>Cell {
 <a name="l00393"></a>00393    <span class="keyword">public</span>:
 <a name="l00394"></a>00394     Cell(<a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span> v, int64 c, <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* b, Cell* n)
-<a name="l00395"></a>00395         : <a class="code" href="expr__array_8cc.html#472a99923cbe11ae7b5a5d157d9ad465">var</a>(v), <a class="code" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>(c), boolvar(b), next(n) {}
+<a name="l00395"></a>00395         : <a class="code" href="expr__array_8cc.html#472a99923cbe11ae7b5a5d157d9ad465">var</a>(v), <a class="code" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>(c), boolvar(b), <a class="code" href="constraint__solver_8cc.html#395f613555f398dd389670bb4c2a4599">next</a>(n) {}
 <a name="l00396"></a>00396     <a class="code" href="classoperations__research_1_1Solver.html#34419e55556ff4e92b447fe895bdb9c3">IntVar</a>* <span class="keyword">const</span> <a class="code" href="expr__array_8cc.html#472a99923cbe11ae7b5a5d157d9ad465">var</a>;
 <a name="l00397"></a>00397     <span class="keyword">const</span> int64 <a class="code" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>;
 <a name="l00398"></a>00398     <a class="code" href="classoperations__research_1_1Solver.html#34419e55556ff4e92b447fe895bdb9c3">IntVar</a>* <span class="keyword">const</span> boolvar;
-<a name="l00399"></a>00399     Cell* next;
+<a name="l00399"></a>00399     Cell* <a class="code" href="constraint__solver_8cc.html#395f613555f398dd389670bb4c2a4599">next</a>;
 <a name="l00400"></a>00400   };
 <a name="l00401"></a>00401 
 <a name="l00402"></a>00402   <span class="keyword">static</span> uint64 HashCode(<a class="code" href="classoperations__research_1_1Solver.html#34419e55556ff4e92b447fe895bdb9c3">IntVar</a>* <span class="keyword">const</span> <a class="code" href="expr__array_8cc.html#472a99923cbe11ae7b5a5d157d9ad465">var</a>, int64 <a class="code" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>) {
@@ -1242,7 +1242,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#915221 height=3></td>
+      <td colspan=2 bgcolor=#927620 height=3></td>
     </tr>
   </table>
 

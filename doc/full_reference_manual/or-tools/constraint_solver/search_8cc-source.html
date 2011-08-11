@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #915221
+      background-color: #927620
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#915221 height=3></td>
+      <td colspan=3 bgcolor=#927620 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#915221><b>Wed Aug 10 22:22:19 PDT 2011</b></font>
+          Generated on: <font color=#927620><b>Thu Aug 11 00:29:03 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#915221>
+            <td bgcolor=#927620>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#915221>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#927620>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -583,25 +583,25 @@
 <a name="l00500"></a>00500 <span class="keyword">class </span>FirstUnboundSelector : <span class="keyword">public</span> VariableSelector {
 <a name="l00501"></a>00501  <span class="keyword">public</span>:
 <a name="l00502"></a>00502   FirstUnboundSelector(<span class="keyword">const</span> IntVar* <span class="keyword">const</span>* vars, <span class="keywordtype">int</span> size)
-<a name="l00503"></a>00503       : VariableSelector(vars, size), <a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>(0) {}
+<a name="l00503"></a>00503       : VariableSelector(vars, size), <a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>(0) {}
 <a name="l00504"></a>00504   <span class="keyword">virtual</span> ~FirstUnboundSelector() {}
 <a name="l00505"></a>00505   <span class="keyword">virtual</span> IntVar* Select(Solver* <span class="keyword">const</span> s, int64* <span class="keywordtype">id</span>);
 <a name="l00506"></a>00506   <span class="keyword">virtual</span> <span class="keywordtype">string</span> DebugString()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="stringliteral">"ChooseFirstUnbound"</span>; }
 <a name="l00507"></a>00507 
 <a name="l00508"></a>00508  <span class="keyword">private</span>:
-<a name="l00509"></a><a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">00509</a>   <span class="keywordtype">int</span> <a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>;
+<a name="l00509"></a><a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">00509</a>   <span class="keywordtype">int</span> <a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>;
 <a name="l00510"></a>00510 };
 <a name="l00511"></a>00511 
 <a name="l00512"></a>00512 IntVar* FirstUnboundSelector::Select(Solver* <span class="keyword">const</span> s, int64* <span class="keywordtype">id</span>) {
-<a name="l00513"></a>00513   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>; i &lt; <a class="code" href="alldiff__cst_8cc.html#6947fa5d6ba628dd62d59ffbad8b8d80">size_</a>; ++i) {
+<a name="l00513"></a>00513   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>; i &lt; <a class="code" href="alldiff__cst_8cc.html#6947fa5d6ba628dd62d59ffbad8b8d80">size_</a>; ++i) {
 <a name="l00514"></a>00514     IntVar* <span class="keyword">const</span> <a class="code" href="expr__array_8cc.html#472a99923cbe11ae7b5a5d157d9ad465">var</a> = <a class="code" href="alldiff__cst_8cc.html#9547583a9de0b0177b68c0f73e1eb563">vars_</a>[i];
 <a name="l00515"></a>00515     <span class="keywordflow">if</span> (!var-&gt;Bound()) {
-<a name="l00516"></a>00516       s-&gt;SaveAndSetValue(&amp;<a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>, i);
+<a name="l00516"></a>00516       s-&gt;SaveAndSetValue(&amp;<a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>, i);
 <a name="l00517"></a>00517       *<span class="keywordtype">id</span> = i;
 <a name="l00518"></a>00518       <span class="keywordflow">return</span> var;
 <a name="l00519"></a>00519     }
 <a name="l00520"></a>00520   }
-<a name="l00521"></a>00521   s-&gt;SaveAndSetValue(&amp;<a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>, size_);
+<a name="l00521"></a>00521   s-&gt;SaveAndSetValue(&amp;<a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>, size_);
 <a name="l00522"></a>00522   *<span class="keywordtype">id</span> = size_;
 <a name="l00523"></a>00523   <span class="keywordflow">return</span> NULL;
 <a name="l00524"></a>00524 }
@@ -825,7 +825,7 @@
 <a name="l00742"></a>00742 <span class="keyword">class </span>PathSelector : <span class="keyword">public</span> VariableSelector {
 <a name="l00743"></a>00743  <span class="keyword">public</span>:
 <a name="l00744"></a>00744   PathSelector(<span class="keyword">const</span> IntVar* <span class="keyword">const</span>* vars, <span class="keywordtype">int</span> size)
-<a name="l00745"></a>00745        : VariableSelector(vars, size), <a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>(kint64max) {}
+<a name="l00745"></a>00745        : VariableSelector(vars, size), <a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>(kint64max) {}
 <a name="l00746"></a>00746   <span class="keyword">virtual</span> ~PathSelector() {}
 <a name="l00747"></a>00747   <span class="keyword">virtual</span> IntVar* Select(Solver* <span class="keyword">const</span> s, int64* <span class="keywordtype">id</span>);
 <a name="l00748"></a>00748   <span class="keyword">virtual</span> <span class="keywordtype">string</span> DebugString()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="stringliteral">"ChooseNextOnPath"</span>; }
@@ -834,11 +834,11 @@
 <a name="l00751"></a>00751   <span class="keywordtype">bool</span> UpdateIndex(int64* index) <span class="keyword">const</span>;
 <a name="l00752"></a>00752   <span class="keywordtype">bool</span> FindPathStart(int64* index) <span class="keyword">const</span>;
 <a name="l00753"></a>00753 
-<a name="l00754"></a>00754   int64 <a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>;
+<a name="l00754"></a>00754   int64 <a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>;
 <a name="l00755"></a>00755 };
 <a name="l00756"></a>00756 
 <a name="l00757"></a>00757 IntVar* PathSelector::Select(Solver* <span class="keyword">const</span> s, int64* <span class="keywordtype">id</span>) {
-<a name="l00758"></a>00758   *<span class="keywordtype">id</span> = <a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>;
+<a name="l00758"></a>00758   *<span class="keywordtype">id</span> = <a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>;
 <a name="l00759"></a>00759   <span class="keywordflow">if</span> (!UpdateIndex(<span class="keywordtype">id</span>)) {
 <a name="l00760"></a>00760     <span class="keywordflow">return</span> NULL;
 <a name="l00761"></a>00761   }
@@ -854,7 +854,7 @@
 <a name="l00771"></a>00771     }
 <a name="l00772"></a>00772   }
 <a name="l00773"></a>00773   IntVar* <span class="keyword">const</span> var = <a class="code" href="alldiff__cst_8cc.html#9547583a9de0b0177b68c0f73e1eb563">vars_</a>[*id];
-<a name="l00774"></a>00774   s-&gt;SaveAndSetValue(&amp;<a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>, *<span class="keywordtype">id</span>);
+<a name="l00774"></a>00774   s-&gt;SaveAndSetValue(&amp;<a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>, *<span class="keywordtype">id</span>);
 <a name="l00775"></a>00775   <span class="keywordflow">return</span> var;
 <a name="l00776"></a>00776 }
 <a name="l00777"></a>00777 
@@ -1136,7 +1136,7 @@
 <a name="l01053"></a>01053   <span class="keyword">virtual</span> <span class="keywordtype">string</span> DebugString() <span class="keyword">const</span>;
 <a name="l01054"></a>01054 
 <a name="l01055"></a>01055  <span class="keyword">private</span>:
-<a name="l01056"></a>01056   <span class="keywordtype">int</span> <a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>;
+<a name="l01056"></a>01056   <span class="keywordtype">int</span> <a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>;
 <a name="l01057"></a>01057   scoped_ptr&lt;ResultCallback1&lt;int64, int64&gt; &gt; <a class="code" href="search_8cc.html#159228fd414f130ed0db8b064d9b3d9f">tie_breaker_</a>;
 <a name="l01058"></a>01058   std::vector&lt;Element&gt; <a class="code" href="local__search_8cc.html#f58160877e17fc8ff8c7ae94b20d0336">cache_</a>;
 <a name="l01059"></a>01059 };
@@ -1146,10 +1146,10 @@
 <a name="l01063"></a>01063     ResultCallback2&lt;int64, int64, int64&gt;* evaluator,
 <a name="l01064"></a>01064     ResultCallback1&lt;int64, int64&gt;* tie_breaker)
 <a name="l01065"></a>01065     : BaseEvaluatorSelector(vars, size, evaluator),
-<a name="l01066"></a>01066       <a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>(-1), <a class="code" href="search_8cc.html#159228fd414f130ed0db8b064d9b3d9f">tie_breaker_</a>(tie_breaker) {}
+<a name="l01066"></a>01066       <a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>(-1), <a class="code" href="search_8cc.html#159228fd414f130ed0db8b064d9b3d9f">tie_breaker_</a>(tie_breaker) {}
 <a name="l01067"></a>01067 
 <a name="l01068"></a>01068 int64 DynamicEvaluatorSelector::SelectValue(<span class="keyword">const</span> IntVar* <span class="keyword">const</span> var, int64 <span class="keywordtype">id</span>) {
-<a name="l01069"></a>01069   <span class="keywordflow">return</span> <a class="code" href="local__search_8cc.html#f58160877e17fc8ff8c7ae94b20d0336">cache_</a>[<a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>].value;
+<a name="l01069"></a>01069   <span class="keywordflow">return</span> <a class="code" href="local__search_8cc.html#f58160877e17fc8ff8c7ae94b20d0336">cache_</a>[<a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>].value;
 <a name="l01070"></a>01070 }
 <a name="l01071"></a>01071 
 <a name="l01072"></a>01072 IntVar* DynamicEvaluatorSelector::SelectVariable(Solver* <span class="keyword">const</span> s, int64* <span class="keywordtype">id</span>) {
@@ -1178,11 +1178,11 @@
 <a name="l01095"></a>01095   }
 <a name="l01096"></a>01096   <span class="keywordflow">if</span> (<a class="code" href="search_8cc.html#159228fd414f130ed0db8b064d9b3d9f">tie_breaker_</a>.get() == NULL || <a class="code" href="local__search_8cc.html#f58160877e17fc8ff8c7ae94b20d0336">cache_</a>.size() == 1) {
 <a name="l01097"></a>01097     *<span class="keywordtype">id</span> = <a class="code" href="local__search_8cc.html#f58160877e17fc8ff8c7ae94b20d0336">cache_</a>[0].var;
-<a name="l01098"></a>01098     <a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a> = 0;
+<a name="l01098"></a>01098     <a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a> = 0;
 <a name="l01099"></a>01099     <span class="keywordflow">return</span> <a class="code" href="alldiff__cst_8cc.html#9547583a9de0b0177b68c0f73e1eb563">vars_</a>[*id];
 <a name="l01100"></a>01100   } <span class="keywordflow">else</span> {
-<a name="l01101"></a>01101     <a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a> = <a class="code" href="search_8cc.html#159228fd414f130ed0db8b064d9b3d9f">tie_breaker_</a>-&gt;Run(<a class="code" href="local__search_8cc.html#f58160877e17fc8ff8c7ae94b20d0336">cache_</a>.size());
-<a name="l01102"></a>01102     *<span class="keywordtype">id</span> = <a class="code" href="local__search_8cc.html#f58160877e17fc8ff8c7ae94b20d0336">cache_</a>[<a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>].var;
+<a name="l01101"></a>01101     <a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a> = <a class="code" href="search_8cc.html#159228fd414f130ed0db8b064d9b3d9f">tie_breaker_</a>-&gt;Run(<a class="code" href="local__search_8cc.html#f58160877e17fc8ff8c7ae94b20d0336">cache_</a>.size());
+<a name="l01102"></a>01102     *<span class="keywordtype">id</span> = <a class="code" href="local__search_8cc.html#f58160877e17fc8ff8c7ae94b20d0336">cache_</a>[<a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>].var;
 <a name="l01103"></a>01103     <span class="keywordflow">return</span> <a class="code" href="alldiff__cst_8cc.html#9547583a9de0b0177b68c0f73e1eb563">vars_</a>[*id];
 <a name="l01104"></a>01104   }
 <a name="l01105"></a>01105 }
@@ -1224,21 +1224,21 @@
 <a name="l01141"></a><a class="code" href="search_8cc.html#435eed4cabf8305fb92c82d9e7a8b1e0">01141</a>   Compare <a class="code" href="search_8cc.html#435eed4cabf8305fb92c82d9e7a8b1e0">comp_</a>;
 <a name="l01142"></a><a class="code" href="search_8cc.html#2dd34f21f337140a40dc3e3aa65666c6">01142</a>   scoped_array&lt;Element&gt; <a class="code" href="search_8cc.html#2dd34f21f337140a40dc3e3aa65666c6">elements_</a>;
 <a name="l01143"></a><a class="code" href="search_8cc.html#04f9a867ab801634d25c2192c669503a">01143</a>   <span class="keywordtype">int</span> <a class="code" href="search_8cc.html#04f9a867ab801634d25c2192c669503a">element_size_</a>;
-<a name="l01144"></a>01144   <span class="keywordtype">int</span> <a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>;
+<a name="l01144"></a>01144   <span class="keywordtype">int</span> <a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>;
 <a name="l01145"></a>01145 };
 <a name="l01146"></a>01146 
 <a name="l01147"></a>01147 StaticEvaluatorSelector::StaticEvaluatorSelector(
 <a name="l01148"></a>01148     <span class="keyword">const</span> IntVar* <span class="keyword">const</span>* vars, <span class="keywordtype">int</span> size,
 <a name="l01149"></a>01149     ResultCallback2&lt;int64, int64, int64&gt;* evaluator)
 <a name="l01150"></a>01150     : BaseEvaluatorSelector(vars, size, evaluator),
-<a name="l01151"></a>01151       <a class="code" href="search_8cc.html#435eed4cabf8305fb92c82d9e7a8b1e0">comp_</a>(evaluator), <a class="code" href="search_8cc.html#2dd34f21f337140a40dc3e3aa65666c6">elements_</a>(NULL), <a class="code" href="search_8cc.html#04f9a867ab801634d25c2192c669503a">element_size_</a>(0), <a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>(-1) {}
+<a name="l01151"></a>01151       <a class="code" href="search_8cc.html#435eed4cabf8305fb92c82d9e7a8b1e0">comp_</a>(evaluator), <a class="code" href="search_8cc.html#2dd34f21f337140a40dc3e3aa65666c6">elements_</a>(NULL), <a class="code" href="search_8cc.html#04f9a867ab801634d25c2192c669503a">element_size_</a>(0), <a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>(-1) {}
 <a name="l01152"></a>01152 
 <a name="l01153"></a>01153 int64 StaticEvaluatorSelector::SelectValue(<span class="keyword">const</span> IntVar* <span class="keyword">const</span> var, int64 <span class="keywordtype">id</span>) {
-<a name="l01154"></a>01154   <span class="keywordflow">return</span> <a class="code" href="search_8cc.html#2dd34f21f337140a40dc3e3aa65666c6">elements_</a>[<a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>].value;
+<a name="l01154"></a>01154   <span class="keywordflow">return</span> <a class="code" href="search_8cc.html#2dd34f21f337140a40dc3e3aa65666c6">elements_</a>[<a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>].value;
 <a name="l01155"></a>01155 }
 <a name="l01156"></a>01156 
 <a name="l01157"></a>01157 IntVar* StaticEvaluatorSelector::SelectVariable(Solver* <span class="keyword">const</span> s, int64* <span class="keywordtype">id</span>) {
-<a name="l01158"></a>01158   <span class="keywordflow">if</span> (<a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a> == -1) {  <span class="comment">// first call to select. update assignment costs</span>
+<a name="l01158"></a>01158   <span class="keywordflow">if</span> (<a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a> == -1) {  <span class="comment">// first call to select. update assignment costs</span>
 <a name="l01159"></a>01159     <span class="comment">// Two phases: compute size then filland sort</span>
 <a name="l01160"></a>01160     <a class="code" href="search_8cc.html#04f9a867ab801634d25c2192c669503a">element_size_</a> = 0;
 <a name="l01161"></a>01161     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size_; ++i) {
@@ -1261,18 +1261,18 @@
 <a name="l01178"></a>01178       }
 <a name="l01179"></a>01179     }
 <a name="l01180"></a>01180     std::sort(<a class="code" href="search_8cc.html#2dd34f21f337140a40dc3e3aa65666c6">elements_</a>.get(), <a class="code" href="search_8cc.html#2dd34f21f337140a40dc3e3aa65666c6">elements_</a>.get() + element_size_, <a class="code" href="search_8cc.html#435eed4cabf8305fb92c82d9e7a8b1e0">comp_</a>);
-<a name="l01181"></a>01181     s-&gt;SaveAndSetValue(&amp;<a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>, 0);
+<a name="l01181"></a>01181     s-&gt;SaveAndSetValue(&amp;<a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>, 0);
 <a name="l01182"></a>01182   }
-<a name="l01183"></a>01183   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>; i &lt; element_size_; ++i) {
+<a name="l01183"></a>01183   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>; i &lt; element_size_; ++i) {
 <a name="l01184"></a>01184     <span class="keyword">const</span> Element&amp; element = <a class="code" href="search_8cc.html#2dd34f21f337140a40dc3e3aa65666c6">elements_</a>[i];
 <a name="l01185"></a>01185     IntVar* <span class="keyword">const</span> var = <a class="code" href="alldiff__cst_8cc.html#9547583a9de0b0177b68c0f73e1eb563">vars_</a>[element.var];
 <a name="l01186"></a>01186     <span class="keywordflow">if</span> (!var-&gt;Bound() &amp;&amp; var-&gt;Contains(element.value)) {
-<a name="l01187"></a>01187       s-&gt;SaveAndSetValue(&amp;<a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>, i);
+<a name="l01187"></a>01187       s-&gt;SaveAndSetValue(&amp;<a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>, i);
 <a name="l01188"></a>01188       *<span class="keywordtype">id</span> = element.var;
 <a name="l01189"></a>01189       <span class="keywordflow">return</span> var;
 <a name="l01190"></a>01190     }
 <a name="l01191"></a>01191   }
-<a name="l01192"></a>01192   s-&gt;SaveAndSetValue(&amp;<a class="code" href="search_8cc.html#35ddc9d794a592418082debfd0f7afc3">first_</a>, element_size_);
+<a name="l01192"></a>01192   s-&gt;SaveAndSetValue(&amp;<a class="code" href="constraint__solver_8cc.html#521cf1d39e05e38857d52dca43a9270e">first_</a>, element_size_);
 <a name="l01193"></a>01193   *<span class="keywordtype">id</span> = size_;
 <a name="l01194"></a>01194   <span class="keywordflow">return</span> NULL;
 <a name="l01195"></a>01195 }
@@ -1520,7 +1520,7 @@
 <a name="l01437"></a>01437 <span class="keyword">class </span>BaseAssignVariables : <span class="keyword">public</span> <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a> {
 <a name="l01438"></a>01438  <span class="keyword">public</span>:
 <a name="l01439"></a>01439   <span class="keyword">explicit</span> BaseAssignVariables(BaseVariableAssignmentSelector* <span class="keyword">const</span> selector)
-<a name="l01440"></a>01440       : <a class="code" href="search_8cc.html#55ed096f6ff13bef2f7e921ffe4dda27">selector_</a>(selector) {}
+<a name="l01440"></a>01440       : <a class="code" href="constraint__solver_8cc.html#9fd084fd29a29f05d55a27331bb63280">selector_</a>(selector) {}
 <a name="l01441"></a>01441   <span class="keyword">virtual</span> ~BaseAssignVariables();
 <a name="l01442"></a>01442   <span class="keyword">virtual</span> Decision* Next(<a class="code" href="classoperations__research_1_1Solver.html#5b0165d313b9e2bfba93da6aff65052f">Solver</a>* <span class="keyword">const</span> s);
 <a name="l01443"></a>01443   <span class="keyword">virtual</span> <span class="keywordtype">string</span> <a class="code" href="classoperations__research_1_1Solver.html#a7a09bf2f27ccbdc1d1d386bd94e142a" title="misc debug string.">DebugString</a>() <span class="keyword">const</span>;
@@ -1591,27 +1591,27 @@
 <a name="l01508"></a>01508   }
 <a name="l01509"></a>01509 
 <a name="l01510"></a>01510   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1Solver.html#88de4c7ed8872eaece9bd09b1a7c882f" title="Accepts the given model visitor.">Accept</a>(ModelVisitor* <span class="keyword">const</span> visitor)<span class="keyword"> const </span>{
-<a name="l01511"></a>01511     <a class="code" href="search_8cc.html#55ed096f6ff13bef2f7e921ffe4dda27">selector_</a>-&gt;Accept(visitor);
+<a name="l01511"></a>01511     <a class="code" href="constraint__solver_8cc.html#9fd084fd29a29f05d55a27331bb63280">selector_</a>-&gt;Accept(visitor);
 <a name="l01512"></a>01512   }
 <a name="l01513"></a>01513 
 <a name="l01514"></a>01514  <span class="keyword">protected</span>:
-<a name="l01515"></a><a class="code" href="search_8cc.html#55ed096f6ff13bef2f7e921ffe4dda27">01515</a>   BaseVariableAssignmentSelector* <span class="keyword">const</span> <a class="code" href="search_8cc.html#55ed096f6ff13bef2f7e921ffe4dda27">selector_</a>;
+<a name="l01515"></a><a class="code" href="search_8cc.html#55ed096f6ff13bef2f7e921ffe4dda27">01515</a>   BaseVariableAssignmentSelector* <span class="keyword">const</span> <a class="code" href="constraint__solver_8cc.html#9fd084fd29a29f05d55a27331bb63280">selector_</a>;
 <a name="l01516"></a>01516 };
 <a name="l01517"></a>01517 
 <a name="l01518"></a>01518 BaseAssignVariables::~BaseAssignVariables() {}
 <a name="l01519"></a>01519 
 <a name="l01520"></a>01520 Decision* <a class="code" href="classoperations__research_1_1DecisionBuilder.html#3bcaa4dd991e8ddb4d0e48cfbca58592" title="This is the main method of the decision builder class.">BaseAssignVariables::Next</a>(Solver* <span class="keyword">const</span> s) {
 <a name="l01521"></a>01521   int64 <span class="keywordtype">id</span> = 0;
-<a name="l01522"></a>01522   IntVar* <span class="keyword">const</span> var = <a class="code" href="search_8cc.html#55ed096f6ff13bef2f7e921ffe4dda27">selector_</a>-&gt;SelectVariable(s, &amp;<span class="keywordtype">id</span>);
+<a name="l01522"></a>01522   IntVar* <span class="keyword">const</span> var = <a class="code" href="constraint__solver_8cc.html#9fd084fd29a29f05d55a27331bb63280">selector_</a>-&gt;SelectVariable(s, &amp;<span class="keywordtype">id</span>);
 <a name="l01523"></a>01523   <span class="keywordflow">if</span> (NULL != var) {
-<a name="l01524"></a>01524     <span class="keyword">const</span> int64 value = <a class="code" href="search_8cc.html#55ed096f6ff13bef2f7e921ffe4dda27">selector_</a>-&gt;SelectValue(var, <span class="keywordtype">id</span>);
+<a name="l01524"></a>01524     <span class="keyword">const</span> int64 value = <a class="code" href="constraint__solver_8cc.html#9fd084fd29a29f05d55a27331bb63280">selector_</a>-&gt;SelectValue(var, <span class="keywordtype">id</span>);
 <a name="l01525"></a>01525     <span class="keywordflow">return</span> s-&gt;RevAlloc(<span class="keyword">new</span> AssignOneVariableValue(var, value));
 <a name="l01526"></a>01526   }
 <a name="l01527"></a>01527   <span class="keywordflow">return</span> NULL;
 <a name="l01528"></a>01528 }
 <a name="l01529"></a>01529 
 <a name="l01530"></a>01530 <span class="keywordtype">string</span> <a class="code" href="classoperations__research_1_1DecisionBuilder.html#b40ddf22d94afceffdf966b2e4a5e60d" title="Decision Builder.">BaseAssignVariables::DebugString</a>()<span class="keyword"> const </span>{
-<a name="l01531"></a>01531   <span class="keywordflow">return</span> <a class="code" href="search_8cc.html#55ed096f6ff13bef2f7e921ffe4dda27">selector_</a>-&gt;DebugString();
+<a name="l01531"></a>01531   <span class="keywordflow">return</span> <a class="code" href="constraint__solver_8cc.html#9fd084fd29a29f05d55a27331bb63280">selector_</a>-&gt;DebugString();
 <a name="l01532"></a>01532 }
 <a name="l01533"></a>01533 
 <a name="l01534"></a>01534 BaseAssignVariables*
@@ -2549,7 +2549,7 @@
 <a name="l02466"></a>02466  <span class="keyword">protected</span>:
 <a name="l02467"></a><a class="code" href="search_8cc.html#9c6d2505b571d11bc113813060f465a3">02467</a>   <a class="code" href="classoperations__research_1_1Solver.html#34419e55556ff4e92b447fe895bdb9c3">IntVar</a>* <span class="keyword">const</span> <a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>;
 <a name="l02468"></a><a class="code" href="search_8cc.html#042310df884fdaff565a8cee946c4e14">02468</a>   int64 <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a>;
-<a name="l02469"></a><a class="code" href="search_8cc.html#864583d6acd955e796a21eb51eedadea">02469</a>   int64 <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a>;
+<a name="l02469"></a><a class="code" href="search_8cc.html#864583d6acd955e796a21eb51eedadea">02469</a>   int64 <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a>;
 <a name="l02470"></a>02470   int64 <a class="code" href="search_8cc.html#62c8c6ddbd6448f66e4f17e34ef8f33b">best_</a>;
 <a name="l02471"></a>02471   <span class="keywordtype">bool</span> <a class="code" href="search_8cc.html#9648c36eafdd6183052aeec5bef2d8b2">maximize_</a>;
 <a name="l02472"></a>02472 };
@@ -2561,16 +2561,16 @@
 <a name="l02478"></a>02478     : <a class="code" href="classoperations__research_1_1Solver.html#ac32a6eabe1d316d7ff5f92fedd1ec5b">SearchMonitor</a>(solver),
 <a name="l02479"></a>02479       <a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>(objective),
 <a name="l02480"></a>02480       <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a>(step),
-<a name="l02481"></a>02481       <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a>(kint64max),
+<a name="l02481"></a>02481       <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a>(kint64max),
 <a name="l02482"></a>02482       <a class="code" href="search_8cc.html#62c8c6ddbd6448f66e4f17e34ef8f33b">best_</a>(kint64max),
 <a name="l02483"></a>02483       <a class="code" href="search_8cc.html#9648c36eafdd6183052aeec5bef2d8b2">maximize_</a>(maximize) {}
 <a name="l02484"></a>02484 
 <a name="l02485"></a>02485 <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1SearchMonitor.html#146c9540ccd639a9bbc6cefbb6756978" title="This method is called when a valid solution is found.">Metaheuristic::AtSolution</a>() {
-<a name="l02486"></a>02486   <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> = <a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>-&gt;Value();
+<a name="l02486"></a>02486   <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> = <a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>-&gt;Value();
 <a name="l02487"></a>02487   <span class="keywordflow">if</span> (<a class="code" href="search_8cc.html#9648c36eafdd6183052aeec5bef2d8b2">maximize_</a>) {
-<a name="l02488"></a>02488     <a class="code" href="search_8cc.html#62c8c6ddbd6448f66e4f17e34ef8f33b">best_</a> = <a class="code" href="alldiff__cst_8cc.html#9d0c202d5fdd62f4fa2c613339ff168a">std::max</a>(<a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a>, <a class="code" href="search_8cc.html#62c8c6ddbd6448f66e4f17e34ef8f33b">best_</a>);
+<a name="l02488"></a>02488     <a class="code" href="search_8cc.html#62c8c6ddbd6448f66e4f17e34ef8f33b">best_</a> = <a class="code" href="alldiff__cst_8cc.html#9d0c202d5fdd62f4fa2c613339ff168a">std::max</a>(<a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a>, <a class="code" href="search_8cc.html#62c8c6ddbd6448f66e4f17e34ef8f33b">best_</a>);
 <a name="l02489"></a>02489   } <span class="keywordflow">else</span> {
-<a name="l02490"></a>02490     <a class="code" href="search_8cc.html#62c8c6ddbd6448f66e4f17e34ef8f33b">best_</a> = <a class="code" href="alldiff__cst_8cc.html#021e695f54a13bd809c34b2f4ca87c37">std::min</a>(<a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a>, <a class="code" href="search_8cc.html#62c8c6ddbd6448f66e4f17e34ef8f33b">best_</a>);
+<a name="l02490"></a>02490     <a class="code" href="search_8cc.html#62c8c6ddbd6448f66e4f17e34ef8f33b">best_</a> = <a class="code" href="alldiff__cst_8cc.html#021e695f54a13bd809c34b2f4ca87c37">std::min</a>(<a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a>, <a class="code" href="search_8cc.html#62c8c6ddbd6448f66e4f17e34ef8f33b">best_</a>);
 <a name="l02491"></a>02491   }
 <a name="l02492"></a>02492   <span class="keywordflow">return</span> <span class="keyword">true</span>;
 <a name="l02493"></a>02493 }
@@ -2578,10 +2578,10 @@
 <a name="l02495"></a>02495 <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1SearchMonitor.html#eb9c7b1f2ebe7f24cf33cdf958bbdd14" title="Beginning of the search.">Metaheuristic::EnterSearch</a>() {
 <a name="l02496"></a>02496   <span class="keywordflow">if</span> (<a class="code" href="search_8cc.html#9648c36eafdd6183052aeec5bef2d8b2">maximize_</a>) {
 <a name="l02497"></a>02497     <a class="code" href="search_8cc.html#62c8c6ddbd6448f66e4f17e34ef8f33b">best_</a> = <a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>-&gt;Min();
-<a name="l02498"></a>02498     <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> = kint64min;
+<a name="l02498"></a>02498     <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> = kint64min;
 <a name="l02499"></a>02499   } <span class="keywordflow">else</span> {
 <a name="l02500"></a>02500     <a class="code" href="search_8cc.html#62c8c6ddbd6448f66e4f17e34ef8f33b">best_</a> = <a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>-&gt;Max();
-<a name="l02501"></a>02501     <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> = kint64max;
+<a name="l02501"></a>02501     <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> = kint64max;
 <a name="l02502"></a>02502   }
 <a name="l02503"></a>02503 }
 <a name="l02504"></a>02504 
@@ -2634,7 +2634,7 @@
 <a name="l02551"></a>02551   scoped_array&lt;IntVar*&gt; <a class="code" href="alldiff__cst_8cc.html#9547583a9de0b0177b68c0f73e1eb563">vars_</a>;
 <a name="l02552"></a>02552   <span class="keyword">const</span> int64 size_;
 <a name="l02553"></a>02553   Assignment <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>;
-<a name="l02554"></a><a class="code" href="search_8cc.html#ce15cb86cc6195f048432fe3c9857083">02554</a>   int64 <a class="code" href="local__search_8cc.html#ce15cb86cc6195f048432fe3c9857083">last_</a>;
+<a name="l02554"></a><a class="code" href="search_8cc.html#ce15cb86cc6195f048432fe3c9857083">02554</a>   int64 <a class="code" href="constraint__solver_8cc.html#4a265269d82faeacc90eef4f9668cdbb">last_</a>;
 <a name="l02555"></a><a class="code" href="search_8cc.html#c01bc3a11391578807ed3d75354d8bc0">02555</a>   TabuList <a class="code" href="search_8cc.html#c01bc3a11391578807ed3d75354d8bc0">keep_tabu_list_</a>;
 <a name="l02556"></a><a class="code" href="search_8cc.html#47c87d4b806dce2e27c21f79aa595fff">02556</a>   int64 <a class="code" href="search_8cc.html#47c87d4b806dce2e27c21f79aa595fff">keep_tenure_</a>;
 <a name="l02557"></a><a class="code" href="search_8cc.html#69890c9cea72e5106a74c2afdc1746c0">02557</a>   TabuList <a class="code" href="search_8cc.html#69890c9cea72e5106a74c2afdc1746c0">forbid_tabu_list_</a>;
@@ -2657,7 +2657,7 @@
 <a name="l02574"></a>02574     : Metaheuristic(s, maximize, objective, step),
 <a name="l02575"></a>02575       size_(size),
 <a name="l02576"></a>02576       <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>(s),
-<a name="l02577"></a>02577       <a class="code" href="local__search_8cc.html#ce15cb86cc6195f048432fe3c9857083">last_</a>(kint64max),
+<a name="l02577"></a>02577       <a class="code" href="constraint__solver_8cc.html#4a265269d82faeacc90eef4f9668cdbb">last_</a>(kint64max),
 <a name="l02578"></a>02578       <a class="code" href="search_8cc.html#47c87d4b806dce2e27c21f79aa595fff">keep_tenure_</a>(keep_tenure),
 <a name="l02579"></a>02579       <a class="code" href="search_8cc.html#3be9712d45d226c1fed5bb4f74579433">forbid_tenure_</a>(forbid_tenure),
 <a name="l02580"></a>02580       <a class="code" href="search_8cc.html#12ab877778657db8191f737a64d088c4">tabu_factor_</a>(tabu_factor),
@@ -2726,16 +2726,16 @@
 <a name="l02643"></a>02643 
 <a name="l02644"></a>02644   <span class="comment">// Go downhill to the next local optimum</span>
 <a name="l02645"></a>02645   <span class="keywordflow">if</span> (<a class="code" href="search_8cc.html#9648c36eafdd6183052aeec5bef2d8b2">maximize_</a>) {
-<a name="l02646"></a>02646     <span class="keyword">const</span> int64 bound = (<a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> &gt; kint64min) ? <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> + <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a> : <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a>;
+<a name="l02646"></a>02646     <span class="keyword">const</span> int64 bound = (<a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> &gt; kint64min) ? <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> + <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a> : <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a>;
 <a name="l02647"></a>02647     s-&gt;AddConstraint(s-&gt;MakeGreaterOrEqual(<a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>, bound));
 <a name="l02648"></a>02648   } <span class="keywordflow">else</span> {
-<a name="l02649"></a>02649     <span class="keyword">const</span> int64 bound = (<a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> &lt; kint64max) ? <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> - <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a> : <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a>;
+<a name="l02649"></a>02649     <span class="keyword">const</span> int64 bound = (<a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> &lt; kint64max) ? <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> - <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a> : <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a>;
 <a name="l02650"></a>02650     s-&gt;AddConstraint(s-&gt;MakeLessOrEqual(<a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>, bound));
 <a name="l02651"></a>02651   }
 <a name="l02652"></a>02652 
 <a name="l02653"></a>02653   <span class="comment">// Avoid cost plateau's which lead to tabu cycles</span>
 <a name="l02654"></a>02654   <span class="keywordflow">if</span> (<a class="code" href="search_8cc.html#7bcea05dd62f2b212dd18322fd22b32e">found_initial_solution_</a>) {
-<a name="l02655"></a>02655     s-&gt;AddConstraint(s-&gt;MakeNonEquality(<a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>, <a class="code" href="local__search_8cc.html#ce15cb86cc6195f048432fe3c9857083">last_</a>));
+<a name="l02655"></a>02655     s-&gt;AddConstraint(s-&gt;MakeNonEquality(<a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>, <a class="code" href="constraint__solver_8cc.html#4a265269d82faeacc90eef4f9668cdbb">last_</a>));
 <a name="l02656"></a>02656   }
 <a name="l02657"></a>02657 }
 <a name="l02658"></a>02658 
@@ -2744,7 +2744,7 @@
 <a name="l02661"></a>02661     <span class="keywordflow">return</span> <span class="keyword">false</span>;
 <a name="l02662"></a>02662   }
 <a name="l02663"></a>02663   <a class="code" href="search_8cc.html#7bcea05dd62f2b212dd18322fd22b32e">found_initial_solution_</a> = <span class="keyword">true</span>;
-<a name="l02664"></a>02664   <a class="code" href="local__search_8cc.html#ce15cb86cc6195f048432fe3c9857083">last_</a> = <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a>;
+<a name="l02664"></a>02664   <a class="code" href="constraint__solver_8cc.html#4a265269d82faeacc90eef4f9668cdbb">last_</a> = <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a>;
 <a name="l02665"></a>02665 
 <a name="l02666"></a>02666   <span class="comment">// New solution found: add new assignments to tabu lists; this is only</span>
 <a name="l02667"></a>02667   <span class="comment">// done after the first local optimum (stamp_ != 0)</span>
@@ -2769,9 +2769,9 @@
 <a name="l02686"></a>02686 <span class="keywordtype">bool</span> TabuSearch::LocalOptimum() {
 <a name="l02687"></a>02687   AgeLists();
 <a name="l02688"></a>02688   <span class="keywordflow">if</span> (<a class="code" href="search_8cc.html#9648c36eafdd6183052aeec5bef2d8b2">maximize_</a>) {
-<a name="l02689"></a>02689     <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> = kint64min;
+<a name="l02689"></a>02689     <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> = kint64min;
 <a name="l02690"></a>02690   } <span class="keywordflow">else</span> {
-<a name="l02691"></a>02691     <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> = kint64max;
+<a name="l02691"></a>02691     <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> = kint64max;
 <a name="l02692"></a>02692   }
 <a name="l02693"></a>02693   <span class="keywordflow">return</span> <span class="keyword">true</span>;
 <a name="l02694"></a>02694 }
@@ -2880,20 +2880,20 @@
 <a name="l02797"></a>02797 <span class="preprocessor">#endif</span>
 <a name="l02798"></a>02798 <span class="preprocessor"></span>  <span class="keywordflow">if</span> (<a class="code" href="search_8cc.html#9648c36eafdd6183052aeec5bef2d8b2">maximize_</a>) {
 <a name="l02799"></a>02799     <span class="keyword">const</span> int64 bound =
-<a name="l02800"></a>02800         (<a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> &gt; kint64min) ? <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> + <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a> + energy_bound : <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a>;
+<a name="l02800"></a>02800         (<a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> &gt; kint64min) ? <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> + <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a> + energy_bound : <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a>;
 <a name="l02801"></a>02801     s-&gt;AddConstraint(s-&gt;MakeGreaterOrEqual(<a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>, bound));
 <a name="l02802"></a>02802   } <span class="keywordflow">else</span> {
 <a name="l02803"></a>02803     <span class="keyword">const</span> int64 bound =
-<a name="l02804"></a>02804         (<a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> &lt; kint64max) ? <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> - <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a> - energy_bound : <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a>;
+<a name="l02804"></a>02804         (<a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> &lt; kint64max) ? <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> - <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a> - energy_bound : <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a>;
 <a name="l02805"></a>02805     s-&gt;AddConstraint(s-&gt;MakeLessOrEqual(<a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>, bound));
 <a name="l02806"></a>02806   }
 <a name="l02807"></a>02807 }
 <a name="l02808"></a>02808 
 <a name="l02809"></a>02809 <span class="keywordtype">bool</span> SimulatedAnnealing::LocalOptimum() {
 <a name="l02810"></a>02810   <span class="keywordflow">if</span> (<a class="code" href="search_8cc.html#9648c36eafdd6183052aeec5bef2d8b2">maximize_</a>) {
-<a name="l02811"></a>02811     <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> = kint64min;
+<a name="l02811"></a>02811     <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> = kint64min;
 <a name="l02812"></a>02812   } <span class="keywordflow">else</span> {
-<a name="l02813"></a>02813     <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> = kint64max;
+<a name="l02813"></a>02813     <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> = kint64max;
 <a name="l02814"></a>02814   }
 <a name="l02815"></a>02815   ++<a class="code" href="search_8cc.html#af25375f6ca4511913da66ed85a71fc8">iteration_</a>;
 <a name="l02816"></a>02816   <span class="keywordflow">return</span> Temperature() &gt; 0;
@@ -3030,7 +3030,7 @@
 <a name="l02947"></a>02947                                          <span class="keywordtype">int</span> index) = 0;
 <a name="l02948"></a>02948   <span class="keyword">virtual</span> int64 AssignmentPenalty(<span class="keyword">const</span> Assignment&amp; assignment,
 <a name="l02949"></a>02949                                   <span class="keywordtype">int</span> index,
-<a name="l02950"></a>02950                                   int64 next) = 0;
+<a name="l02950"></a>02950                                   int64 <a class="code" href="constraint__solver_8cc.html#395f613555f398dd389670bb4c2a4599">next</a>) = 0;
 <a name="l02951"></a>02951   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> EvaluateElementValue(<span class="keyword">const</span> Assignment::IntContainer&amp; container,
 <a name="l02952"></a>02952                                     int64 index,
 <a name="l02953"></a>02953                                     <span class="keywordtype">int</span>* container_index,
@@ -3128,13 +3128,13 @@
 <a name="l03045"></a>03045     <a class="code" href="local__search_8cc.html#c8f969ce45179d0fd0a42ccf7735bcd6">incremental_</a> = <span class="keyword">false</span>;
 <a name="l03046"></a>03046     <a class="code" href="search_8cc.html#82f4c8d4970a96af27990c13d66a2fe3">penalized_objective_</a> = solver()-&gt;MakeSum(elements)-&gt;Var();
 <a name="l03047"></a>03047     <span class="keywordflow">if</span> (<a class="code" href="search_8cc.html#9648c36eafdd6183052aeec5bef2d8b2">maximize_</a>) {
-<a name="l03048"></a>03048       IntExpr* min_pen_exp = solver()-&gt;MakeDifference(<a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> + <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a>,
+<a name="l03048"></a>03048       IntExpr* min_pen_exp = solver()-&gt;MakeDifference(<a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> + <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a>,
 <a name="l03049"></a>03049                                                       <a class="code" href="search_8cc.html#82f4c8d4970a96af27990c13d66a2fe3">penalized_objective_</a>);
 <a name="l03050"></a>03050       IntVar* min_exp = solver()-&gt;MakeMin(min_pen_exp, <a class="code" href="search_8cc.html#62c8c6ddbd6448f66e4f17e34ef8f33b">best_</a> + <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a>)-&gt;Var();
 <a name="l03051"></a>03051       solver()-&gt;AddConstraint(solver()-&gt;MakeGreaterOrEqual(<a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>,
 <a name="l03052"></a>03052                                                            min_exp));
 <a name="l03053"></a>03053     } <span class="keywordflow">else</span> {
-<a name="l03054"></a>03054       IntExpr* max_pen_exp = solver()-&gt;MakeDifference(<a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> - <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a>,
+<a name="l03054"></a>03054       IntExpr* max_pen_exp = solver()-&gt;MakeDifference(<a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> - <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a>,
 <a name="l03055"></a>03055                                                       <a class="code" href="search_8cc.html#82f4c8d4970a96af27990c13d66a2fe3">penalized_objective_</a>);
 <a name="l03056"></a>03056       IntVar* max_exp = solver()-&gt;MakeMax(max_pen_exp, <a class="code" href="search_8cc.html#62c8c6ddbd6448f66e4f17e34ef8f33b">best_</a> - <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a>)-&gt;Var();
 <a name="l03057"></a>03057       solver()-&gt;AddConstraint(solver()-&gt;MakeLessOrEqual(<a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>, max_exp));
@@ -3142,10 +3142,10 @@
 <a name="l03059"></a>03059   } <span class="keywordflow">else</span> {
 <a name="l03060"></a>03060     <a class="code" href="search_8cc.html#82f4c8d4970a96af27990c13d66a2fe3">penalized_objective_</a> = NULL;
 <a name="l03061"></a>03061     <span class="keywordflow">if</span> (<a class="code" href="search_8cc.html#9648c36eafdd6183052aeec5bef2d8b2">maximize_</a>) {
-<a name="l03062"></a>03062       <span class="keyword">const</span> int64 bound = (<a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> &gt; kint64min) ? <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> + <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a> : <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a>;
+<a name="l03062"></a>03062       <span class="keyword">const</span> int64 bound = (<a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> &gt; kint64min) ? <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> + <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a> : <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a>;
 <a name="l03063"></a>03063       <a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>-&gt;SetMin(bound);
 <a name="l03064"></a>03064     } <span class="keywordflow">else</span> {
-<a name="l03065"></a>03065       <span class="keyword">const</span> int64 bound = (<a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> &lt; kint64max) ? <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> - <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a> : <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a>;
+<a name="l03065"></a>03065       <span class="keyword">const</span> int64 bound = (<a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> &lt; kint64max) ? <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> - <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a> : <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a>;
 <a name="l03066"></a>03066       <a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>-&gt;SetMax(bound);
 <a name="l03067"></a>03067     }
 <a name="l03068"></a>03068   }
@@ -3156,7 +3156,7 @@
 <a name="l03073"></a>03073     <span class="keywordflow">return</span> <span class="keyword">false</span>;
 <a name="l03074"></a>03074   }
 <a name="l03075"></a>03075   <span class="keywordflow">if</span> (<a class="code" href="search_8cc.html#82f4c8d4970a96af27990c13d66a2fe3">penalized_objective_</a> != NULL) {  <span class="comment">// In case no move has been found</span>
-<a name="l03076"></a>03076     <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> += <a class="code" href="search_8cc.html#82f4c8d4970a96af27990c13d66a2fe3">penalized_objective_</a>-&gt;Value();
+<a name="l03076"></a>03076     <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> += <a class="code" href="search_8cc.html#82f4c8d4970a96af27990c13d66a2fe3">penalized_objective_</a>-&gt;Value();
 <a name="l03077"></a>03077   }
 <a name="l03078"></a>03078   <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>.Store();
 <a name="l03079"></a>03079   <span class="keywordflow">return</span> <span class="keyword">true</span>;
@@ -3199,11 +3199,11 @@
 <a name="l03116"></a>03116     }
 <a name="l03117"></a>03117     <span class="keywordflow">if</span> (delta-&gt;Objective() == <a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>) {
 <a name="l03118"></a>03118       <span class="keywordflow">if</span> (<a class="code" href="search_8cc.html#9648c36eafdd6183052aeec5bef2d8b2">maximize_</a>) {
-<a name="l03119"></a>03119         delta-&gt;SetObjectiveMin(<a class="code" href="alldiff__cst_8cc.html#9d0c202d5fdd62f4fa2c613339ff168a">std::max</a>(<a class="code" href="alldiff__cst_8cc.html#021e695f54a13bd809c34b2f4ca87c37">std::min</a>(<a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> + <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a> - penalty,
+<a name="l03119"></a>03119         delta-&gt;SetObjectiveMin(<a class="code" href="alldiff__cst_8cc.html#9d0c202d5fdd62f4fa2c613339ff168a">std::max</a>(<a class="code" href="alldiff__cst_8cc.html#021e695f54a13bd809c34b2f4ca87c37">std::min</a>(<a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> + <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a> - penalty,
 <a name="l03120"></a>03120                                                  <a class="code" href="search_8cc.html#62c8c6ddbd6448f66e4f17e34ef8f33b">best_</a> + <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a>),
 <a name="l03121"></a>03121                                         delta-&gt;ObjectiveMin()));
 <a name="l03122"></a>03122       } <span class="keywordflow">else</span> {
-<a name="l03123"></a>03123         delta-&gt;SetObjectiveMax(<a class="code" href="alldiff__cst_8cc.html#021e695f54a13bd809c34b2f4ca87c37">std::min</a>(<a class="code" href="alldiff__cst_8cc.html#9d0c202d5fdd62f4fa2c613339ff168a">std::max</a>(<a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> - <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a> - penalty,
+<a name="l03123"></a>03123         delta-&gt;SetObjectiveMax(<a class="code" href="alldiff__cst_8cc.html#021e695f54a13bd809c34b2f4ca87c37">std::min</a>(<a class="code" href="alldiff__cst_8cc.html#9d0c202d5fdd62f4fa2c613339ff168a">std::max</a>(<a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> - <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a> - penalty,
 <a name="l03124"></a>03124                                                  <a class="code" href="search_8cc.html#62c8c6ddbd6448f66e4f17e34ef8f33b">best_</a> - <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a>),
 <a name="l03125"></a>03125                                         delta-&gt;ObjectiveMax()));
 <a name="l03126"></a>03126       }
@@ -3259,9 +3259,9 @@
 <a name="l03176"></a>03176     <a class="code" href="search_8cc.html#0f6fbd04ce2e3d337a419e6d534b65ea">penalties_</a>-&gt;Increment(utility[i].first);
 <a name="l03177"></a>03177   }
 <a name="l03178"></a>03178   <span class="keywordflow">if</span> (<a class="code" href="search_8cc.html#9648c36eafdd6183052aeec5bef2d8b2">maximize_</a>) {
-<a name="l03179"></a>03179     <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> = kint64min;
+<a name="l03179"></a>03179     <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> = kint64min;
 <a name="l03180"></a>03180   } <span class="keywordflow">else</span> {
-<a name="l03181"></a>03181     <a class="code" href="expressions_8cc.html#864583d6acd955e796a21eb51eedadea">current_</a> = kint64max;
+<a name="l03181"></a>03181     <a class="code" href="constraint__solver_8cc.html#a94ac41f5ae06f3794120fd6dfc00201">current_</a> = kint64max;
 <a name="l03182"></a>03182   }
 <a name="l03183"></a>03183   <span class="keywordflow">return</span> <span class="keyword">true</span>;
 <a name="l03184"></a>03184 }
@@ -3282,7 +3282,7 @@
 <a name="l03199"></a>03199                                          <span class="keywordtype">int</span> index);
 <a name="l03200"></a>03200   <span class="keyword">virtual</span> int64 AssignmentPenalty(<span class="keyword">const</span> Assignment&amp; assignment,
 <a name="l03201"></a>03201                                   <span class="keywordtype">int</span> index,
-<a name="l03202"></a>03202                                   int64 next);
+<a name="l03202"></a>03202                                   int64 <a class="code" href="constraint__solver_8cc.html#395f613555f398dd389670bb4c2a4599">next</a>);
 <a name="l03203"></a>03203   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> EvaluateElementValue(<span class="keyword">const</span> Assignment::IntContainer&amp; container,
 <a name="l03204"></a>03204                                     int64 index,
 <a name="l03205"></a>03205                                     <span class="keywordtype">int</span>* container_index,
@@ -3325,7 +3325,7 @@
 <a name="l03242"></a>03242 int64 BinaryGuidedLocalSearch::AssignmentPenalty(
 <a name="l03243"></a>03243     <span class="keyword">const</span> Assignment&amp; assignment,
 <a name="l03244"></a>03244     <span class="keywordtype">int</span> index,
-<a name="l03245"></a>03245     int64 next) {
+<a name="l03245"></a>03245     int64 <a class="code" href="constraint__solver_8cc.html#395f613555f398dd389670bb4c2a4599">next</a>) {
 <a name="l03246"></a>03246   <span class="keywordflow">return</span> <a class="code" href="search_8cc.html#932c0a3269374d56f6c87bf5263d5e19">objective_function_</a>-&gt;Run(index, next);
 <a name="l03247"></a>03247 }
 <a name="l03248"></a>03248 
@@ -4460,7 +4460,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#915221 height=3></td>
+      <td colspan=2 bgcolor=#927620 height=3></td>
     </tr>
   </table>
 

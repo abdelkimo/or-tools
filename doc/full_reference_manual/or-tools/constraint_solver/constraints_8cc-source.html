@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #915221
+      background-color: #927620
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#915221 height=3></td>
+      <td colspan=3 bgcolor=#927620 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#915221><b>Wed Aug 10 22:22:19 PDT 2011</b></font>
+          Generated on: <font color=#927620><b>Thu Aug 11 00:29:03 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#915221>
+            <td bgcolor=#927620>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#915221>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#927620>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -397,7 +397,7 @@
 <a name="l00314"></a>00314 <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1Constraint.html#64ab23714e57db311ba5b9fe1e742979" title="This method performs the initial propagation of the constraint.">NoCycle::InitialPropagate</a>() {
 <a name="l00315"></a>00315   <span class="comment">// Reduce next domains to sinks + range of nexts</span>
 <a name="l00316"></a>00316   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size_; ++i) {
-<a name="l00317"></a>00317     IntVar* next = <a class="code" href="constraints_8cc.html#7ca6f3af3548a6655eb48a04216ff796">nexts_</a>[i];
+<a name="l00317"></a>00317     IntVar* <a class="code" href="constraint__solver_8cc.html#395f613555f398dd389670bb4c2a4599">next</a> = <a class="code" href="constraints_8cc.html#7ca6f3af3548a6655eb48a04216ff796">nexts_</a>[i];
 <a name="l00318"></a>00318     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = next-&gt;Min(); j &lt; 0; ++j) {
 <a name="l00319"></a>00319       <span class="keywordflow">if</span> (!<a class="code" href="constraints_8cc.html#998e448f4a0a57e922a84ce09e3d4c65">sink_handler_</a>-&gt;Run(j)) {
 <a name="l00320"></a>00320         next-&gt;RemoveValue(j);
@@ -875,7 +875,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#915221 height=3></td>
+      <td colspan=2 bgcolor=#927620 height=3></td>
     </tr>
   </table>
 

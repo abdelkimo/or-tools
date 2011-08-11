@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #915221
+      background-color: #927620
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#915221 height=3></td>
+      <td colspan=3 bgcolor=#927620 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#915221><b>Wed Aug 10 22:22:19 PDT 2011</b></font>
+          Generated on: <font color=#927620><b>Thu Aug 11 00:29:03 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#915221>
+            <td bgcolor=#927620>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#915221>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#927620>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -151,7 +151,7 @@
 <a name="l00068"></a>00068     active_constraint_ = NULL;
 <a name="l00069"></a>00069   }
 <a name="l00070"></a>00070 
-<a name="l00071"></a><a class="code" href="classoperations__research_1_1DemonMonitor.html#1c853977a85a5326dd8c3175b3a475f2">00071</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1DemonMonitor.html#1c853977a85a5326dd8c3175b3a475f2">RegisterDemon</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a>* <span class="keyword">const</span> demon) {
+<a name="l00071"></a><a class="code" href="classoperations__research_1_1DemonMonitor.html#1c853977a85a5326dd8c3175b3a475f2">00071</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1DemonMonitor.html#1c853977a85a5326dd8c3175b3a475f2">RegisterDemon</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a>* <span class="keyword">const</span> <a class="code" href="constraint__solver_8cc.html#f800ac63ce2b6285ec62408b0f17acc3">demon</a>) {
 <a name="l00072"></a>00072     <span class="keywordflow">if</span> (demon_map_.find(demon) == demon_map_.end()) {
 <a name="l00073"></a>00073       CHECK_NOTNULL(active_constraint_);
 <a name="l00074"></a>00074       CHECK(active_demon_ == NULL);
@@ -165,7 +165,7 @@
 <a name="l00082"></a>00082     }
 <a name="l00083"></a>00083   }
 <a name="l00084"></a>00084 
-<a name="l00085"></a><a class="code" href="classoperations__research_1_1DemonMonitor.html#69be054c811cf741b26c73d513435900">00085</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1DemonMonitor.html#69be054c811cf741b26c73d513435900">StartDemonRun</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a>* <span class="keyword">const</span> demon) {
+<a name="l00085"></a><a class="code" href="classoperations__research_1_1DemonMonitor.html#69be054c811cf741b26c73d513435900">00085</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1DemonMonitor.html#69be054c811cf741b26c73d513435900">StartDemonRun</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a>* <span class="keyword">const</span> <a class="code" href="constraint__solver_8cc.html#f800ac63ce2b6285ec62408b0f17acc3">demon</a>) {
 <a name="l00086"></a>00086     CHECK(active_demon_ == NULL);
 <a name="l00087"></a>00087     CHECK_NOTNULL(demon);
 <a name="l00088"></a>00088     active_demon_ = demon;
@@ -173,7 +173,7 @@
 <a name="l00090"></a>00090     demon_run-&gt;add_start_time(<a class="code" href="classoperations__research_1_1DemonMonitor.html#4be96b6ee448af8669792c239d48fe8a">CurrentTime</a>());
 <a name="l00091"></a>00091   }
 <a name="l00092"></a>00092 
-<a name="l00093"></a><a class="code" href="classoperations__research_1_1DemonMonitor.html#c33296cea4846746d35df20c98396d38">00093</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1DemonMonitor.html#c33296cea4846746d35df20c98396d38">EndDemonRun</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a>* <span class="keyword">const</span> demon) {
+<a name="l00093"></a><a class="code" href="classoperations__research_1_1DemonMonitor.html#c33296cea4846746d35df20c98396d38">00093</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1DemonMonitor.html#c33296cea4846746d35df20c98396d38">EndDemonRun</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a>* <span class="keyword">const</span> <a class="code" href="constraint__solver_8cc.html#f800ac63ce2b6285ec62408b0f17acc3">demon</a>) {
 <a name="l00094"></a>00094     CHECK_EQ(active_demon_, demon);
 <a name="l00095"></a>00095     CHECK_NOTNULL(demon);
 <a name="l00096"></a>00096     DemonRuns* <span class="keyword">const</span> demon_run = demon_map_[active_demon_];
@@ -200,7 +200,7 @@
 <a name="l00117"></a>00117   }
 <a name="l00118"></a>00118 
 <a name="l00119"></a>00119   <span class="comment">// Useful for unit tests.</span>
-<a name="l00120"></a><a class="code" href="classoperations__research_1_1DemonMonitor.html#d7bd4b1b62217e7eed49c35451ace689">00120</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1DemonMonitor.html#d7bd4b1b62217e7eed49c35451ace689" title="Useful for unit tests.">AddFakeRun</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a>* <span class="keyword">const</span> demon,
+<a name="l00120"></a><a class="code" href="classoperations__research_1_1DemonMonitor.html#d7bd4b1b62217e7eed49c35451ace689">00120</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1DemonMonitor.html#d7bd4b1b62217e7eed49c35451ace689" title="Useful for unit tests.">AddFakeRun</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a>* <span class="keyword">const</span> <a class="code" href="constraint__solver_8cc.html#f800ac63ce2b6285ec62408b0f17acc3">demon</a>,
 <a name="l00121"></a>00121                   int64 start_time,
 <a name="l00122"></a>00122                   int64 end_time,
 <a name="l00123"></a>00123                   <span class="keywordtype">bool</span> is_fail) {
@@ -389,7 +389,7 @@
 <a name="l00306"></a>00306 <span class="comment">// track the usage and perfomance of the demons.</span>
 <a name="l00307"></a><a class="code" href="classoperations__research_1_1DemonProfiler.html">00307</a> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1DemonProfiler.html" title="DemonProfiler is a wrapper for demons and adds profiling capabilities to track the...">DemonProfiler</a> : <span class="keyword">public</span> <a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a> {
 <a name="l00308"></a>00308  <span class="keyword">public</span>:
-<a name="l00309"></a><a class="code" href="classoperations__research_1_1DemonProfiler.html#9ee02c85db6809a2e93828ffa2c89186">00309</a>   <a class="code" href="classoperations__research_1_1DemonProfiler.html#9ee02c85db6809a2e93828ffa2c89186">DemonProfiler</a>(<a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a>* <span class="keyword">const</span> demon, <a class="code" href="classoperations__research_1_1DemonMonitor.html" title="DemonMonitor manages the profiling of demons and allows access to gathered data.">DemonMonitor</a>* <span class="keyword">const</span> monitor)
+<a name="l00309"></a><a class="code" href="classoperations__research_1_1DemonProfiler.html#9ee02c85db6809a2e93828ffa2c89186">00309</a>   <a class="code" href="classoperations__research_1_1DemonProfiler.html#9ee02c85db6809a2e93828ffa2c89186">DemonProfiler</a>(<a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a>* <span class="keyword">const</span> <a class="code" href="constraint__solver_8cc.html#f800ac63ce2b6285ec62408b0f17acc3">demon</a>, <a class="code" href="classoperations__research_1_1DemonMonitor.html" title="DemonMonitor manages the profiling of demons and allows access to gathered data.">DemonMonitor</a>* <span class="keyword">const</span> monitor)
 <a name="l00310"></a>00310       : demon_(demon), monitor_(monitor) {
 <a name="l00311"></a>00311     CHECK_NOTNULL(demon);
 <a name="l00312"></a>00312     CHECK_NOTNULL(monitor);
@@ -447,13 +447,13 @@
 <a name="l00364"></a>00364 }
 <a name="l00365"></a>00365 
 <a name="l00366"></a><a class="code" href="namespaceoperations__research.html#2c4dc7ca709c9d970910a565532727e6">00366</a> <span class="keywordtype">void</span> <a class="code" href="namespaceoperations__research.html#2c4dc7ca709c9d970910a565532727e6">BuildDemonProfiler</a>(<a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> solver,
-<a name="l00367"></a>00367                         <a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a>* <span class="keyword">const</span> demon,
+<a name="l00367"></a>00367                         <a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a>* <span class="keyword">const</span> <a class="code" href="constraint__solver_8cc.html#f800ac63ce2b6285ec62408b0f17acc3">demon</a>,
 <a name="l00368"></a>00368                         <a class="code" href="classoperations__research_1_1DemonMonitor.html" title="DemonMonitor manages the profiling of demons and allows access to gathered data.">DemonMonitor</a>* <span class="keyword">const</span> monitor) {
 <a name="l00369"></a>00369   monitor-&gt;<a class="code" href="classoperations__research_1_1DemonMonitor.html#1c853977a85a5326dd8c3175b3a475f2">RegisterDemon</a>(demon);
 <a name="l00370"></a>00370   solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1Solver.html#17a56adc8ee57642c3f00a1778319192">DemonProfiler</a>(demon, monitor));
 <a name="l00371"></a>00371 }
 <a name="l00372"></a>00372 
-<a name="l00373"></a><a class="code" href="classoperations__research_1_1Solver.html#586c660a1cca228364985c7345eaf5e6">00373</a> <a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a>* <a class="code" href="classoperations__research_1_1Solver.html#586c660a1cca228364985c7345eaf5e6" title="Adds a new demon and wraps it inside a DemonProfiler if necessary.">Solver::RegisterDemon</a>(<a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a>* <span class="keyword">const</span> demon) {
+<a name="l00373"></a><a class="code" href="classoperations__research_1_1Solver.html#586c660a1cca228364985c7345eaf5e6">00373</a> <a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a>* <a class="code" href="classoperations__research_1_1Solver.html#586c660a1cca228364985c7345eaf5e6" title="Adds a new demon and wraps it inside a DemonProfiler if necessary.">Solver::RegisterDemon</a>(<a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a>* <span class="keyword">const</span> <a class="code" href="constraint__solver_8cc.html#f800ac63ce2b6285ec62408b0f17acc3">demon</a>) {
 <a name="l00374"></a>00374   CHECK_NOTNULL(demon);
 <a name="l00375"></a>00375   <span class="keywordflow">if</span> (parameters_.<a class="code" href="structoperations__research_1_1SolverParameters.html#8fe1248f3b6a31d68cb718a961ea4a06" title="Support for profiling propagation.">profile_level</a> != <a class="code" href="structoperations__research_1_1SolverParameters.html#bb1b746ad99155bea2d44ba46db0718723a03d3fac4ba780d9caa8ae38f5dea9">SolverParameters::NO_PROFILING</a> &amp;&amp;
 <a name="l00376"></a>00376       state_ != <a class="code" href="classoperations__research_1_1Solver.html#5b5712802e63dcd3ee5abfd37e0f2a95066908e143fd988a03767f05e682acaf" title="Executing the search code.">IN_SEARCH</a>) {
@@ -486,7 +486,7 @@
 <a name="l00403"></a>00403 }
 <a name="l00404"></a>00404 
 <a name="l00405"></a><a class="code" href="namespaceoperations__research.html#2a2553f4d61dd6f5a433b356ebd8e485">00405</a> <span class="keywordtype">void</span> <a class="code" href="namespaceoperations__research.html#2a2553f4d61dd6f5a433b356ebd8e485">DemonMonitorAddFakeRun</a>(<a class="code" href="classoperations__research_1_1DemonMonitor.html" title="DemonMonitor manages the profiling of demons and allows access to gathered data.">DemonMonitor</a>* <span class="keyword">const</span> monitor,
-<a name="l00406"></a>00406                             <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a>* <span class="keyword">const</span> demon,
+<a name="l00406"></a>00406                             <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Demon.html" title="A Demon is the base element of a propagation queue.">Demon</a>* <span class="keyword">const</span> <a class="code" href="constraint__solver_8cc.html#f800ac63ce2b6285ec62408b0f17acc3">demon</a>,
 <a name="l00407"></a>00407                             int64 start_time,
 <a name="l00408"></a>00408                             int64 end_time,
 <a name="l00409"></a>00409                             <span class="keywordtype">bool</span> is_fail) {
@@ -516,7 +516,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#915221 height=3></td>
+      <td colspan=2 bgcolor=#927620 height=3></td>
     </tr>
   </table>
 
