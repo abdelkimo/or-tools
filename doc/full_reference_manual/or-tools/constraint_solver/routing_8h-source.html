@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #874340
+      background-color: #115511
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#874340 height=3></td>
+      <td colspan=3 bgcolor=#115511 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#874340><b>Thu Aug 11 12:09:23 PDT 2011</b></font>
+          Generated on: <font color=#115511><b>Thu Aug 11 16:08:43 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#874340>
+            <td bgcolor=#115511>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#874340>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#115511>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -119,298 +119,319 @@
 <a name="l00036"></a>00036 <span class="preprocessor">#include "base/commandlineflags.h"</span>
 <a name="l00037"></a>00037 <span class="preprocessor">#include "base/integral_types.h"</span>
 <a name="l00038"></a>00038 <span class="preprocessor">#include "base/scoped_ptr.h"</span>
-<a name="l00039"></a>00039 <span class="preprocessor">#include "base/hash.h"</span>
-<a name="l00040"></a>00040 <span class="preprocessor">#include "<a class="code" href="constraint__solver_8h.html">constraint_solver/constraint_solver.h</a>"</span>
-<a name="l00041"></a>00041 
-<a name="l00042"></a>00042 <span class="keyword">namespace </span>operations_research {
+<a name="l00039"></a>00039 <span class="preprocessor">#include "base/int-type.h"</span>
+<a name="l00040"></a>00040 <span class="preprocessor">#include "base/int-type-indexed-vector.h"</span>
+<a name="l00041"></a>00041 <span class="preprocessor">#include "base/hash.h"</span>
+<a name="l00042"></a>00042 <span class="preprocessor">#include "<a class="code" href="constraint__solver_8h.html">constraint_solver/constraint_solver.h</a>"</span>
 <a name="l00043"></a>00043 
-<a name="l00044"></a>00044 <span class="keyword">class </span>LocalSearchOperator;
-<a name="l00045"></a>00045 <span class="keyword">class </span>RoutingCache;
-<a name="l00046"></a>00046 
-<a name="l00047"></a><a class="code" href="classoperations__research_1_1RoutingModel.html">00047</a> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1RoutingModel.html">RoutingModel</a> {
-<a name="l00048"></a>00048  <span class="keyword">public</span>:
-<a name="l00049"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d">00049</a>   <span class="keyword">enum</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d">RoutingStrategy</a> {
-<a name="l00050"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d6f1cf5f6e92490db44f50b647f90f56c">00050</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d6f1cf5f6e92490db44f50b647f90f56c" title="choose first unbound, assign min value">ROUTING_DEFAULT_STRATEGY</a>,  <span class="comment">// choose first unbound, assign min value</span>
-<a name="l00051"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6dbb864ec796188b14106446600fd330f8">00051</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6dbb864ec796188b14106446600fd330f8">ROUTING_GLOBAL_CHEAPEST_ARC</a>,
-<a name="l00052"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d4c2534a4236ed8b1c937467da71a55a7">00052</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d4c2534a4236ed8b1c937467da71a55a7">ROUTING_LOCAL_CHEAPEST_ARC</a>,
-<a name="l00053"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6db84d29872d22f4d9cf1a1fd21c05dcf4">00053</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6db84d29872d22f4d9cf1a1fd21c05dcf4">ROUTING_PATH_CHEAPEST_ARC</a>,
-<a name="l00054"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6da62cb62928ab4fdd761e7568e8737083">00054</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6da62cb62928ab4fdd761e7568e8737083">ROUTING_EVALUATOR_STRATEGY</a>
-<a name="l00055"></a>00055   };
-<a name="l00056"></a>00056 
-<a name="l00057"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1">00057</a>   <span class="keyword">enum</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1">RoutingMetaheuristic</a> {
-<a name="l00058"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1582d58f88269611b1065f8c4c5e58fed">00058</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1582d58f88269611b1065f8c4c5e58fed" title="default">ROUTING_GREEDY_DESCENT</a>,  <span class="comment">// default</span>
-<a name="l00059"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e189a5042196881240e6b78a52c87b1588">00059</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e189a5042196881240e6b78a52c87b1588">ROUTING_GUIDED_LOCAL_SEARCH</a>,
-<a name="l00060"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1a166bff87b6170318a34b1af38fc98fe">00060</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1a166bff87b6170318a34b1af38fc98fe">ROUTING_SIMULATED_ANNEALING</a>,
-<a name="l00061"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e10dd042e16dd28cfdd370382de2f51a35">00061</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e10dd042e16dd28cfdd370382de2f51a35">ROUTING_TABU_SEARCH</a>
-<a name="l00062"></a>00062   };
-<a name="l00063"></a>00063 
-<a name="l00064"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044">00064</a>   <span class="keyword">enum</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044">Status</a> {
-<a name="l00065"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc204473b2e79d6934957ec86f60a69036e055">00065</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc204473b2e79d6934957ec86f60a69036e055">ROUTING_NOT_SOLVED</a>,
-<a name="l00066"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044fb2bbe1690a8f9be1575ade98e4e61dd">00066</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044fb2bbe1690a8f9be1575ade98e4e61dd">ROUTING_SUCCESS</a>,
-<a name="l00067"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044caf3d0fb83c0c1be4881362c0e2e0592">00067</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044caf3d0fb83c0c1be4881362c0e2e0592">ROUTING_FAIL</a>,
-<a name="l00068"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044a8b79310730408de7bae61835301a93e">00068</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044a8b79310730408de7bae61835301a93e">ROUTING_FAIL_TIMEOUT</a>
-<a name="l00069"></a>00069   };
-<a name="l00070"></a>00070 
-<a name="l00071"></a>00071   <span class="comment">// Supposes a single depot. A depot is the start and end node of the route of</span>
-<a name="l00072"></a>00072   <span class="comment">// a vehicle.</span>
-<a name="l00073"></a>00073   <a class="code" href="classoperations__research_1_1RoutingModel.html#67e90b8e5fba64a285e2eed07a39b2ca" title="Supposes a single depot.">RoutingModel</a>(<span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>, <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#9236103b3dca8a4112bd2a8be05b0b71">vehicles</a>);
-<a name="l00074"></a>00074   <span class="comment">// Constructor taking a vector of (start node, end node) pairs for each</span>
-<a name="l00075"></a>00075   <span class="comment">// vehicle route. Used to model multiple depots.</span>
-<a name="l00076"></a>00076   <a class="code" href="classoperations__research_1_1RoutingModel.html#67e90b8e5fba64a285e2eed07a39b2ca" title="Supposes a single depot.">RoutingModel</a>(<span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>,
-<a name="l00077"></a>00077                <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#9236103b3dca8a4112bd2a8be05b0b71">vehicles</a>,
-<a name="l00078"></a>00078                <span class="keyword">const</span> std::vector&lt;std::pair&lt;int, int&gt; &gt;&amp; start_end);
-<a name="l00079"></a>00079   <span class="comment">// Constructor taking vectors of start nodes and end nodes for each</span>
-<a name="l00080"></a>00080   <span class="comment">// vehicle route. Used to model multiple depots.</span>
-<a name="l00081"></a>00081   <span class="comment">// TODO(user): added to simplify SWIG wrapping. Remove when swigging</span>
-<a name="l00082"></a>00082   <span class="comment">// std::vector&lt;std::pair&lt;int, int&gt; &gt; is ok.</span>
-<a name="l00083"></a>00083   <a class="code" href="classoperations__research_1_1RoutingModel.html#67e90b8e5fba64a285e2eed07a39b2ca" title="Supposes a single depot.">RoutingModel</a>(<span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>,
-<a name="l00084"></a>00084                <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#9236103b3dca8a4112bd2a8be05b0b71">vehicles</a>,
-<a name="l00085"></a>00085                <span class="keyword">const</span> std::vector&lt;int&gt;&amp; starts,
-<a name="l00086"></a>00086                <span class="keyword">const</span> std::vector&lt;int&gt;&amp; ends);
-<a name="l00087"></a>00087   <a class="code" href="classoperations__research_1_1RoutingModel.html#6ee4a1c4dda01e2138f79ed5ec913754">~RoutingModel</a>();
-<a name="l00088"></a>00088 
-<a name="l00089"></a>00089   <span class="comment">// Model creation</span>
-<a name="l00090"></a>00090 
-<a name="l00091"></a>00091   <span class="comment">// DEPRECATED</span>
-<a name="l00092"></a>00092   <span class="comment">// addition of NoCycle constraint; is automatically added in CloseModel().</span>
-<a name="l00093"></a>00093   <span class="comment">// TODO(user): make private</span>
-<a name="l00094"></a>00094   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#fba056acc7ced3e04d2419f322ab988a" title="Model creation.">AddNoCycleConstraint</a>();
-<a name="l00095"></a>00095 
-<a name="l00096"></a>00096   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#c9b68174cac597b629104a996720fb76">AddDimension</a>(<a class="code" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a>* evaluator,
-<a name="l00097"></a>00097                     int64 slack_max,
-<a name="l00098"></a>00098                     int64 capacity,
-<a name="l00099"></a>00099                     <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef" title="A name for logging purposes.">name</a>);
-<a name="l00100"></a>00100   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#366617606fccc8017b91a5efeae6c4cf">AddConstantDimension</a>(int64 <a class="code" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>, int64 capacity, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef" title="A name for logging purposes.">name</a>);
-<a name="l00101"></a>00101   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#665b56459ca82c4d791477466b8e621c">AddVectorDimension</a>(<span class="keyword">const</span> int64* values,
-<a name="l00102"></a>00102                           int64 capacity,
-<a name="l00103"></a>00103                           <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef" title="A name for logging purposes.">name</a>);
-<a name="l00104"></a>00104   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#7d00a87827f4216f9d209a82034e220a">AddMatrixDimension</a>(<span class="keyword">const</span> int64* <span class="keyword">const</span>* values,
-<a name="l00105"></a>00105                           int64 capacity,
-<a name="l00106"></a>00106                           <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef" title="A name for logging purposes.">name</a>);
-<a name="l00107"></a>00107   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#fa5489925a39e8484fea85ad916ab72b">AddAllActive</a>();
-<a name="l00108"></a>00108   <span class="comment">// Adds a disjunction constraint on the nodes: exactly one of the nodes is</span>
-<a name="l00109"></a>00109   <span class="comment">// active.</span>
-<a name="l00110"></a>00110   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#9411b0d51dcf3d7311ad2627314e0693" title="Adds a disjunction constraint on the nodes: exactly one of the nodes is active.">AddDisjunction</a>(<span class="keyword">const</span> std::vector&lt;int64&gt;&amp; <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>);
-<a name="l00111"></a>00111   <span class="comment">// Adds a penalized disjunction constraint on the nodes: at most one of the</span>
-<a name="l00112"></a>00112   <span class="comment">// nodes is active; if none are active a penalty cost is applied (this cost</span>
-<a name="l00113"></a>00113   <span class="comment">// is added to the global cost function).</span>
-<a name="l00114"></a>00114   <span class="comment">// This is equivalent to adding the constraint:</span>
-<a name="l00115"></a>00115   <span class="comment">// p + Sum(i)active[i] == 1, where p is a boolean variable</span>
-<a name="l00116"></a>00116   <span class="comment">// and the following cost to the cost function:</span>
-<a name="l00117"></a>00117   <span class="comment">// p * penalty.</span>
-<a name="l00118"></a>00118   <span class="comment">// "penalty" must be positive.</span>
-<a name="l00119"></a>00119   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#9411b0d51dcf3d7311ad2627314e0693" title="Adds a disjunction constraint on the nodes: exactly one of the nodes is active.">AddDisjunction</a>(<span class="keyword">const</span> std::vector&lt;int64&gt;&amp; <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>, int64 penalty);
-<a name="l00120"></a>00120   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#421504809966a6abc4cd725c48780060">AddLocalSearchOperator</a>(<a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* ls_operator);
-<a name="l00121"></a>00121   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#ffb6070cc82b66227ae4751c3d6ad58d">SetCost</a>(<a class="code" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a>* evaluator);
-<a name="l00122"></a>00122   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#4b32913c8744e2777597bee4e9a78225">SetVehicleCost</a>(<span class="keywordtype">int</span> vehicle, <a class="code" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a>* evaluator);
-<a name="l00123"></a>00123   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#dc0823e5fd3b472adf49430335f8d7ee">SetDepot</a>(<span class="keywordtype">int</span> depot);
-<a name="l00124"></a>00124   <span class="comment">// Route fixed cost taken into account if the route is not empty, aka there's</span>
-<a name="l00125"></a>00125   <span class="comment">// at least one node on the route other than the first and last nodes.</span>
-<a name="l00126"></a>00126   <span class="comment">// Cost is applied to all vehicle routes; SetRouteFixedCost is equivalent to</span>
-<a name="l00127"></a>00127   <span class="comment">// calling SetVehicleFixedCost on all vehicles.</span>
-<a name="l00128"></a>00128   <span class="comment">// Deprecated by GetVehicleFixedCost and SetVehicleFixedCost.</span>
-<a name="l00129"></a>00129   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#89f79076ce6ef6d5587f2ebe3439a073" title="Route fixed cost taken into account if the route is not empty, aka there&amp;#39;s at...">GetRouteFixedCost</a>() <span class="keyword">const</span>;
-<a name="l00130"></a>00130   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#f387904bbb3960d15461d10e307f28f5">SetRouteFixedCost</a>(int64 cost);
-<a name="l00131"></a>00131   <span class="comment">// Vehicle fixed cost taken into account if the route of the vehicle is not</span>
-<a name="l00132"></a>00132   <span class="comment">// empty, aka there's at least one node on the route other than the first and</span>
-<a name="l00133"></a>00133   <span class="comment">// last nodes.</span>
-<a name="l00134"></a>00134   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#619c7630314932daf1b6338eb2285027" title="Vehicle fixed cost taken into account if the route of the vehicle is not empty, aka...">GetVehicleFixedCost</a>(<span class="keywordtype">int</span> vehicle) <span class="keyword">const</span>;
-<a name="l00135"></a>00135   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#51249142dcbabc08d16ae7f8dac64ab7">SetVehicleFixedCost</a>(<span class="keywordtype">int</span> vehicle, int64 cost);
-<a name="l00136"></a>00136 
-<a name="l00137"></a>00137   <span class="comment">// Search</span>
-<a name="l00138"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#0557e242e3fb2350c80576dc56f6e534">00138</a>   <a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d">RoutingStrategy</a> <a class="code" href="classoperations__research_1_1RoutingModel.html#0557e242e3fb2350c80576dc56f6e534" title="Search.">first_solution_strategy</a>()<span class="keyword"> const </span>{
-<a name="l00139"></a>00139     <span class="keywordflow">return</span> first_solution_strategy_;
-<a name="l00140"></a>00140   }
-<a name="l00141"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#68b6f5c365d384256ff87eff7d8b4920">00141</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#68b6f5c365d384256ff87eff7d8b4920">set_first_solution_strategy</a>(<a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d">RoutingStrategy</a> strategy) {
-<a name="l00142"></a>00142     first_solution_strategy_ = strategy;
-<a name="l00143"></a>00143   }
-<a name="l00144"></a>00144   <span class="comment">// Gets/sets the evaluator used when the first solution heuristic is set to</span>
-<a name="l00145"></a>00145   <span class="comment">// ROUTING_EVALUATOR_STRATEGY (variant of ROUTING_PATH_CHEAPEST_ARC using</span>
-<a name="l00146"></a>00146   <span class="comment">// 'evaluator' to sort arcs).</span>
-<a name="l00147"></a>00147 <span class="preprocessor">#ifndef SWIG</span>
-<a name="l00148"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#81b797890236948ef7aa87d781ad7ec7">00148</a> <span class="preprocessor"></span>  <a class="code" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#81b797890236948ef7aa87d781ad7ec7" title="Gets/sets the evaluator used when the first solution heuristic is set to ROUTING_EVALUATOR_STRATEGY...">first_solution_evaluator</a>()<span class="keyword"> const </span>{
-<a name="l00149"></a>00149     <span class="keywordflow">return</span> first_solution_evaluator_.get();
-<a name="l00150"></a>00150   }
-<a name="l00151"></a>00151 <span class="preprocessor">#endif</span>
-<a name="l00152"></a>00152 <span class="preprocessor"></span>  <span class="comment">// Takes ownership of evaluator.</span>
-<a name="l00153"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#5853301edd4fdc7f45cf38a7bb2ec049">00153</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#5853301edd4fdc7f45cf38a7bb2ec049" title="Takes ownership of evaluator.">SetFirstSolutionEvaluator</a>(<a class="code" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a>* evaluator) {
-<a name="l00154"></a>00154     first_solution_evaluator_.reset(evaluator);
-<a name="l00155"></a>00155   }
-<a name="l00156"></a>00156   <span class="comment">// If a first solution flag has been set (to a value different from Default),</span>
-<a name="l00157"></a>00157   <span class="comment">// returns the corresponding strategy, otherwise returns the strategy which</span>
-<a name="l00158"></a>00158   <span class="comment">// was set.</span>
-<a name="l00159"></a>00159   <a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d">RoutingStrategy</a> <a class="code" href="classoperations__research_1_1RoutingModel.html#da509d882b2aed55dc59021c3a149c7e" title="If a first solution flag has been set (to a value different from Default), returns...">GetSelectedFirstSolutionStrategy</a>() <span class="keyword">const</span>;
-<a name="l00160"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#ac8ac681a6a334db9b808208d616235a">00160</a>   <a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1">RoutingMetaheuristic</a> <a class="code" href="classoperations__research_1_1RoutingModel.html#ac8ac681a6a334db9b808208d616235a">metaheuristic</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> metaheuristic_; }
-<a name="l00161"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#d38e1582f53db33bca76ff9c2a4ab0c1">00161</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#d38e1582f53db33bca76ff9c2a4ab0c1">set_metaheuristic</a>(<a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1">RoutingMetaheuristic</a> <a class="code" href="classoperations__research_1_1RoutingModel.html#ac8ac681a6a334db9b808208d616235a">metaheuristic</a>) {
-<a name="l00162"></a>00162     metaheuristic_ = metaheuristic;
+<a name="l00044"></a>00044 <span class="keyword">namespace </span>operations_research {
+<a name="l00045"></a>00045 
+<a name="l00046"></a>00046 <span class="keyword">class </span>LocalSearchOperator;
+<a name="l00047"></a>00047 <span class="keyword">class </span>RoutingCache;
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049 <span class="comment">// The type must be defined outside the class RoutingModel, SWIG does not parse</span>
+<a name="l00050"></a>00050 <span class="comment">// it correctly if it's inside.</span>
+<a name="l00051"></a>00051 <a class="code" href="namespaceoperations__research.html#30cd29caf636315c7dff36737342b4f8" title="The type must be defined outside the class RoutingModel, SWIG does not parse it correctly...">DEFINE_INT_TYPE</a>(_RoutingModel_NodeIndex, <span class="keywordtype">int</span>);
+<a name="l00052"></a>00052 
+<a name="l00053"></a><a class="code" href="classoperations__research_1_1RoutingModel.html">00053</a> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1RoutingModel.html">RoutingModel</a> {
+<a name="l00054"></a>00054  <span class="keyword">public</span>:
+<a name="l00055"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d">00055</a>   <span class="keyword">enum</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d">RoutingStrategy</a> {
+<a name="l00056"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d6f1cf5f6e92490db44f50b647f90f56c">00056</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d6f1cf5f6e92490db44f50b647f90f56c" title="choose first unbound, assign min value">ROUTING_DEFAULT_STRATEGY</a>,  <span class="comment">// choose first unbound, assign min value</span>
+<a name="l00057"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6dbb864ec796188b14106446600fd330f8">00057</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6dbb864ec796188b14106446600fd330f8">ROUTING_GLOBAL_CHEAPEST_ARC</a>,
+<a name="l00058"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d4c2534a4236ed8b1c937467da71a55a7">00058</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d4c2534a4236ed8b1c937467da71a55a7">ROUTING_LOCAL_CHEAPEST_ARC</a>,
+<a name="l00059"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6db84d29872d22f4d9cf1a1fd21c05dcf4">00059</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6db84d29872d22f4d9cf1a1fd21c05dcf4">ROUTING_PATH_CHEAPEST_ARC</a>,
+<a name="l00060"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6da62cb62928ab4fdd761e7568e8737083">00060</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6da62cb62928ab4fdd761e7568e8737083">ROUTING_EVALUATOR_STRATEGY</a>
+<a name="l00061"></a>00061   };
+<a name="l00062"></a>00062 
+<a name="l00063"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1">00063</a>   <span class="keyword">enum</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1">RoutingMetaheuristic</a> {
+<a name="l00064"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1582d58f88269611b1065f8c4c5e58fed">00064</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1582d58f88269611b1065f8c4c5e58fed" title="default">ROUTING_GREEDY_DESCENT</a>,  <span class="comment">// default</span>
+<a name="l00065"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e189a5042196881240e6b78a52c87b1588">00065</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e189a5042196881240e6b78a52c87b1588">ROUTING_GUIDED_LOCAL_SEARCH</a>,
+<a name="l00066"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1a166bff87b6170318a34b1af38fc98fe">00066</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1a166bff87b6170318a34b1af38fc98fe">ROUTING_SIMULATED_ANNEALING</a>,
+<a name="l00067"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e10dd042e16dd28cfdd370382de2f51a35">00067</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e10dd042e16dd28cfdd370382de2f51a35">ROUTING_TABU_SEARCH</a>
+<a name="l00068"></a>00068   };
+<a name="l00069"></a>00069 
+<a name="l00070"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044">00070</a>   <span class="keyword">enum</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044">Status</a> {
+<a name="l00071"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc204473b2e79d6934957ec86f60a69036e055">00071</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc204473b2e79d6934957ec86f60a69036e055">ROUTING_NOT_SOLVED</a>,
+<a name="l00072"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044fb2bbe1690a8f9be1575ade98e4e61dd">00072</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044fb2bbe1690a8f9be1575ade98e4e61dd">ROUTING_SUCCESS</a>,
+<a name="l00073"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044caf3d0fb83c0c1be4881362c0e2e0592">00073</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044caf3d0fb83c0c1be4881362c0e2e0592">ROUTING_FAIL</a>,
+<a name="l00074"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044a8b79310730408de7bae61835301a93e">00074</a>     <a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044a8b79310730408de7bae61835301a93e">ROUTING_FAIL_TIMEOUT</a>
+<a name="l00075"></a>00075   };
+<a name="l00076"></a>00076 
+<a name="l00077"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">00077</a>   <span class="keyword">typedef</span> _RoutingModel_NodeIndex <a class="code" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a>;
+<a name="l00078"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">00078</a>   <span class="keyword">typedef</span> ResultCallback2&lt;int64, NodeIndex, NodeIndex&gt; <a class="code" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">NodeEvaluator2</a>;
+<a name="l00079"></a>00079 
+<a name="l00080"></a>00080   <span class="comment">// Constants with an index of the first node (to be used in for loops for</span>
+<a name="l00081"></a>00081   <span class="comment">// iteration), and a special index to signalize an invalid/unused value.</span>
+<a name="l00082"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#2fe3671c7bac6070d8c3f03a12722c70">00082</a>   <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> <a class="code" href="classoperations__research_1_1RoutingModel.html#2fe3671c7bac6070d8c3f03a12722c70" title="Constants with an index of the first node (to be used in for loops for iteration)...">kFirstNode</a>;
+<a name="l00083"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#86465650deeb78a3ff59ac0fe5af60bf">00083</a>   <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> <a class="code" href="classoperations__research_1_1RoutingModel.html#86465650deeb78a3ff59ac0fe5af60bf">kInvalidNodeIndex</a>;
+<a name="l00084"></a>00084 
+<a name="l00085"></a>00085   <span class="comment">// Supposes a single depot. A depot is the start and end node of the route of</span>
+<a name="l00086"></a>00086   <span class="comment">// a vehicle.</span>
+<a name="l00087"></a>00087   <a class="code" href="classoperations__research_1_1RoutingModel.html#67e90b8e5fba64a285e2eed07a39b2ca" title="Supposes a single depot.">RoutingModel</a>(<span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>, <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#9236103b3dca8a4112bd2a8be05b0b71">vehicles</a>);
+<a name="l00088"></a>00088   <span class="comment">// Constructor taking a vector of (start node, end node) pairs for each</span>
+<a name="l00089"></a>00089   <span class="comment">// vehicle route. Used to model multiple depots.</span>
+<a name="l00090"></a>00090   <a class="code" href="classoperations__research_1_1RoutingModel.html#67e90b8e5fba64a285e2eed07a39b2ca" title="Supposes a single depot.">RoutingModel</a>(<span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>,
+<a name="l00091"></a>00091                <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#9236103b3dca8a4112bd2a8be05b0b71">vehicles</a>,
+<a name="l00092"></a>00092                <span class="keyword">const</span> std::vector&lt;std::pair&lt;NodeIndex, NodeIndex&gt; &gt;&amp; start_end);
+<a name="l00093"></a>00093   <span class="comment">// Constructor taking vectors of start nodes and end nodes for each</span>
+<a name="l00094"></a>00094   <span class="comment">// vehicle route. Used to model multiple depots.</span>
+<a name="l00095"></a>00095   <span class="comment">// TODO(user): added to simplify SWIG wrapping. Remove when swigging</span>
+<a name="l00096"></a>00096   <span class="comment">// std::vector&lt;std::pair&lt;int, int&gt; &gt; is ok.</span>
+<a name="l00097"></a>00097   <a class="code" href="classoperations__research_1_1RoutingModel.html#67e90b8e5fba64a285e2eed07a39b2ca" title="Supposes a single depot.">RoutingModel</a>(<span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>,
+<a name="l00098"></a>00098                <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#9236103b3dca8a4112bd2a8be05b0b71">vehicles</a>,
+<a name="l00099"></a>00099                <span class="keyword">const</span> std::vector&lt;NodeIndex&gt;&amp; starts,
+<a name="l00100"></a>00100                <span class="keyword">const</span> std::vector&lt;NodeIndex&gt;&amp; ends);
+<a name="l00101"></a>00101   <a class="code" href="classoperations__research_1_1RoutingModel.html#6ee4a1c4dda01e2138f79ed5ec913754">~RoutingModel</a>();
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103   <span class="comment">// Model creation</span>
+<a name="l00104"></a>00104 
+<a name="l00105"></a>00105   <span class="comment">// DEPRECATED</span>
+<a name="l00106"></a>00106   <span class="comment">// addition of NoCycle constraint; is automatically added in CloseModel().</span>
+<a name="l00107"></a>00107   <span class="comment">// TODO(user): make private</span>
+<a name="l00108"></a>00108   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#fba056acc7ced3e04d2419f322ab988a" title="Model creation.">AddNoCycleConstraint</a>();
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#0c519ba1ff5b906df2a576451feb379c">AddDimension</a>(<a class="code" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">NodeEvaluator2</a>* evaluator,
+<a name="l00111"></a>00111                     int64 slack_max,
+<a name="l00112"></a>00112                     int64 capacity,
+<a name="l00113"></a>00113                     <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef" title="A name for logging purposes.">name</a>);
+<a name="l00114"></a>00114   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#366617606fccc8017b91a5efeae6c4cf">AddConstantDimension</a>(int64 <a class="code" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>, int64 capacity, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef" title="A name for logging purposes.">name</a>);
+<a name="l00115"></a>00115   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#665b56459ca82c4d791477466b8e621c">AddVectorDimension</a>(<span class="keyword">const</span> int64* values,
+<a name="l00116"></a>00116                           int64 capacity,
+<a name="l00117"></a>00117                           <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef" title="A name for logging purposes.">name</a>);
+<a name="l00118"></a>00118   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#7d00a87827f4216f9d209a82034e220a">AddMatrixDimension</a>(<span class="keyword">const</span> int64* <span class="keyword">const</span>* values,
+<a name="l00119"></a>00119                           int64 capacity,
+<a name="l00120"></a>00120                           <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef" title="A name for logging purposes.">name</a>);
+<a name="l00121"></a>00121   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#fa5489925a39e8484fea85ad916ab72b">AddAllActive</a>();
+<a name="l00122"></a>00122   <span class="comment">// Adds a disjunction constraint on the nodes: exactly one of the nodes is</span>
+<a name="l00123"></a>00123   <span class="comment">// active. Start and end nodes of any vehicle cannot be part of a disjunction.</span>
+<a name="l00124"></a>00124   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#c2388945ac0d9e706b72c75a82f4baf0" title="Adds a disjunction constraint on the nodes: exactly one of the nodes is active.">AddDisjunction</a>(<span class="keyword">const</span> std::vector&lt;NodeIndex&gt;&amp; <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>);
+<a name="l00125"></a>00125   <span class="comment">// Adds a penalized disjunction constraint on the nodes: at most one of the</span>
+<a name="l00126"></a>00126   <span class="comment">// nodes is active; if none are active a penalty cost is applied (this cost</span>
+<a name="l00127"></a>00127   <span class="comment">// is added to the global cost function).</span>
+<a name="l00128"></a>00128   <span class="comment">// This is equivalent to adding the constraint:</span>
+<a name="l00129"></a>00129   <span class="comment">// p + Sum(i)active[i] == 1, where p is a boolean variable</span>
+<a name="l00130"></a>00130   <span class="comment">// and the following cost to the cost function:</span>
+<a name="l00131"></a>00131   <span class="comment">// p * penalty.</span>
+<a name="l00132"></a>00132   <span class="comment">// "penalty" must be positive.</span>
+<a name="l00133"></a>00133   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#c2388945ac0d9e706b72c75a82f4baf0" title="Adds a disjunction constraint on the nodes: exactly one of the nodes is active.">AddDisjunction</a>(<span class="keyword">const</span> std::vector&lt;NodeIndex&gt;&amp; <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>, int64 penalty);
+<a name="l00134"></a>00134 <span class="preprocessor">#if defined(SWIGPYTHON)</span>
+<a name="l00135"></a>00135 <span class="preprocessor"></span>  <span class="keywordtype">void</span> AddDisjunctionWithPenalty(<span class="keyword">const</span> std::vector&lt;NodeIndex&gt;&amp; <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>,
+<a name="l00136"></a>00136                                  int64 penalty) {
+<a name="l00137"></a>00137     <a class="code" href="classoperations__research_1_1RoutingModel.html#c2388945ac0d9e706b72c75a82f4baf0" title="Adds a disjunction constraint on the nodes: exactly one of the nodes is active.">AddDisjunction</a>(nodes, penalty);
+<a name="l00138"></a>00138   }
+<a name="l00139"></a>00139 <span class="preprocessor">#endif  // SWIGPYTHON</span>
+<a name="l00140"></a>00140 <span class="preprocessor"></span>  <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#421504809966a6abc4cd725c48780060">AddLocalSearchOperator</a>(<a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* ls_operator);
+<a name="l00141"></a>00141   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#ad67d6674b1bbfd192b094a78b98ae00">SetCost</a>(<a class="code" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">NodeEvaluator2</a>* evaluator);
+<a name="l00142"></a>00142   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#5acf5c0059bb744313072e90f9a6c13d">SetVehicleCost</a>(<span class="keywordtype">int</span> vehicle, <a class="code" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">NodeEvaluator2</a>* evaluator);
+<a name="l00143"></a>00143   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#fc62358888d00d45c4769cdc6e3d3cbb">SetDepot</a>(<a class="code" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> depot);
+<a name="l00144"></a>00144   <span class="comment">// Route fixed cost taken into account if the route is not empty, aka there's</span>
+<a name="l00145"></a>00145   <span class="comment">// at least one node on the route other than the first and last nodes.</span>
+<a name="l00146"></a>00146   <span class="comment">// Cost is applied to all vehicle routes; SetRouteFixedCost is equivalent to</span>
+<a name="l00147"></a>00147   <span class="comment">// calling SetVehicleFixedCost on all vehicles.</span>
+<a name="l00148"></a>00148   <span class="comment">// Deprecated by GetVehicleFixedCost and SetVehicleFixedCost.</span>
+<a name="l00149"></a>00149   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#89f79076ce6ef6d5587f2ebe3439a073" title="Route fixed cost taken into account if the route is not empty, aka there&amp;#39;s at...">GetRouteFixedCost</a>() <span class="keyword">const</span>;
+<a name="l00150"></a>00150   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#f387904bbb3960d15461d10e307f28f5">SetRouteFixedCost</a>(int64 cost);
+<a name="l00151"></a>00151   <span class="comment">// Vehicle fixed cost taken into account if the route of the vehicle is not</span>
+<a name="l00152"></a>00152   <span class="comment">// empty, aka there's at least one node on the route other than the first and</span>
+<a name="l00153"></a>00153   <span class="comment">// last nodes.</span>
+<a name="l00154"></a>00154   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#619c7630314932daf1b6338eb2285027" title="Vehicle fixed cost taken into account if the route of the vehicle is not empty, aka...">GetVehicleFixedCost</a>(<span class="keywordtype">int</span> vehicle) <span class="keyword">const</span>;
+<a name="l00155"></a>00155   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#51249142dcbabc08d16ae7f8dac64ab7">SetVehicleFixedCost</a>(<span class="keywordtype">int</span> vehicle, int64 cost);
+<a name="l00156"></a>00156 
+<a name="l00157"></a>00157   <span class="comment">// Search</span>
+<a name="l00158"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#0557e242e3fb2350c80576dc56f6e534">00158</a>   <a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d">RoutingStrategy</a> <a class="code" href="classoperations__research_1_1RoutingModel.html#0557e242e3fb2350c80576dc56f6e534" title="Search.">first_solution_strategy</a>()<span class="keyword"> const </span>{
+<a name="l00159"></a>00159     <span class="keywordflow">return</span> first_solution_strategy_;
+<a name="l00160"></a>00160   }
+<a name="l00161"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#68b6f5c365d384256ff87eff7d8b4920">00161</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#68b6f5c365d384256ff87eff7d8b4920">set_first_solution_strategy</a>(<a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d">RoutingStrategy</a> strategy) {
+<a name="l00162"></a>00162     first_solution_strategy_ = strategy;
 <a name="l00163"></a>00163   }
-<a name="l00164"></a>00164   <span class="comment">// If a metaheuristic flag has been set, returns the corresponding</span>
-<a name="l00165"></a>00165   <span class="comment">// metaheuristic, otherwise returns the metaheuristic which was set.</span>
-<a name="l00166"></a>00166   <a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1">RoutingMetaheuristic</a> <a class="code" href="classoperations__research_1_1RoutingModel.html#22f429a899b1c00cad6e6ff04a117ee4" title="If a metaheuristic flag has been set, returns the corresponding metaheuristic, otherwise...">GetSelectedMetaheuristic</a>() <span class="keyword">const</span>;
-<a name="l00167"></a>00167   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#4928a8a9f21302a215a6f26dda90eef1">AddSearchMonitor</a>(<a class="code" href="classoperations__research_1_1SearchMonitor.html" title="A search monitor is a simple set of callbacks to monitor all search events.">SearchMonitor</a>* <span class="keyword">const</span> monitor);
-<a name="l00168"></a>00168   <span class="comment">// Solves the current routing model; closes the current model.</span>
-<a name="l00169"></a>00169   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#79e79d503b81e378485b402293a5828c" title="Solves the current routing model; closes the current model.">Solve</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* assignment = NULL);
-<a name="l00170"></a>00170   <span class="comment">// Returns current status of the routing model.</span>
-<a name="l00171"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#cc9cbc5c610da66a71220657d366c471">00171</a>   <a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044">Status</a> <a class="code" href="classoperations__research_1_1RoutingModel.html#cc9cbc5c610da66a71220657d366c471" title="Returns current status of the routing model.">status</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> status_; }
-<a name="l00172"></a>00172   <span class="comment">// Applies lock chain to the next search. Returns next var at the end of the</span>
-<a name="l00173"></a>00173   <span class="comment">// locked chain; this variable is not locked. Assignment containing locks</span>
-<a name="l00174"></a>00174   <span class="comment">// can be obtained calling PreAssignment().</span>
-<a name="l00175"></a>00175   <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#4db46f77834dbcbbf4e54ec6b0e76047" title="Applies lock chain to the next search.">ApplyLocks</a>(<span class="keyword">const</span> std::vector&lt;int&gt;&amp; locks);
-<a name="l00176"></a>00176 
-<a name="l00177"></a>00177   <span class="comment">// Inspection</span>
-<a name="l00178"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#fcb255b430c9c51561a344966f32940d">00178</a>   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#fcb255b430c9c51561a344966f32940d" title="Inspection.">Start</a>(<span class="keywordtype">int</span> vehicle)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> starts_[vehicle]; }
-<a name="l00179"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#9d2055447d769bd064f61c150d099b53">00179</a>   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#9d2055447d769bd064f61c150d099b53">End</a>(<span class="keywordtype">int</span> vehicle)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> ends_[vehicle]; }
-<a name="l00180"></a>00180   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#7f1ed907da5e1918e60d7a206e7dc0d7">IsStart</a>(int64 <a class="code" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>) <span class="keyword">const</span>;
-<a name="l00181"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#d542c0716ca8948f8e6240b2ff24d878">00181</a>   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#d542c0716ca8948f8e6240b2ff24d878">IsEnd</a>(int64 <a class="code" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> index &gt;= <a class="code" href="classoperations__research_1_1RoutingModel.html#5a560929b26804990f1e7d6972218f87">Size</a>(); }
-<a name="l00182"></a>00182 
-<a name="l00183"></a>00183   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#d93cf7b05fe7541d808bf73268cb62da">GetCost</a>(int64 i, int64 j, int64 vehicle);
-<a name="l00184"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#6f274d2ace4d354140b9c086ef4dceee">00184</a>   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#6f274d2ace4d354140b9c086ef4dceee">GetHomogeneousCost</a>(int64 i, int64 j) {
-<a name="l00185"></a>00185     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#d93cf7b05fe7541d808bf73268cb62da">GetCost</a>(i, j , 0);
-<a name="l00186"></a>00186   }
-<a name="l00187"></a>00187   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#a48f081ff3936f9133459882f403f000">GetFilterCost</a>(int64 i, int64 j, int64 vehicle);
-<a name="l00188"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#a11733dd92f708c13e9c45aa02641e12">00188</a>   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#a11733dd92f708c13e9c45aa02641e12">GetHomogeneousFilterCost</a>(int64 i, int64 j) {
-<a name="l00189"></a>00189     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#a48f081ff3936f9133459882f403f000">GetFilterCost</a>(i, j , 0);
-<a name="l00190"></a>00190   }
-<a name="l00191"></a>00191   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#1d7c2d652d782ca3930583b98ee3f15d" title="Return high cost if connecting to end node; used in cost-based first solution.">GetFirstSolutionCost</a>(int64 i, int64 j);
-<a name="l00192"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#5a4f31c561411ae89bf266e41ceb509c">00192</a>   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#5a4f31c561411ae89bf266e41ceb509c">homogeneous_costs</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> homogeneous_costs_; }
-<a name="l00193"></a>00193 
-<a name="l00194"></a>00194   <span class="comment">// Variables</span>
-<a name="l00195"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#100397cb143b48549277c70f4afb32e2">00195</a>   <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>** <a class="code" href="classoperations__research_1_1RoutingModel.html#100397cb143b48549277c70f4afb32e2" title="Variables.">Nexts</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> nexts_.get(); }
-<a name="l00196"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#6bf6aeb259ab509d97a5e6c3e5189f61">00196</a>   <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>** <a class="code" href="classoperations__research_1_1RoutingModel.html#6bf6aeb259ab509d97a5e6c3e5189f61">VehicleVars</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> vehicle_vars_.get(); }
-<a name="l00197"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#131f2181343be56fd836b64747fe9f49">00197</a>   <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#131f2181343be56fd836b64747fe9f49">NextVar</a>(int64 <a class="code" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> nexts_[index]; }
-<a name="l00198"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#5254602b653dda44c6f6a6611e8cd6f2">00198</a>   <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#5254602b653dda44c6f6a6611e8cd6f2">ActiveVar</a>(int64 <a class="code" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> active_[index]; }
-<a name="l00199"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#618a961dcb65e02d6d310a83d1f60722">00199</a>   <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#618a961dcb65e02d6d310a83d1f60722">VehicleVar</a>(int64 <a class="code" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> vehicle_vars_[index]; }
-<a name="l00200"></a>00200   <span class="comment">// Returns the variable created by the AddDimension with the same name</span>
-<a name="l00201"></a>00201   <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#a1e366cd50bfdfac06e032d9eb22612f" title="Returns the variable created by the AddDimension with the same name.">CumulVar</a>(int64 <a class="code" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef" title="A name for logging purposes.">name</a>) <span class="keyword">const</span>;
-<a name="l00202"></a>00202   <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#8d0a9a90e331b113628418013cfa813e">TransitVar</a>(int64 <a class="code" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef" title="A name for logging purposes.">name</a>) <span class="keyword">const</span>;
-<a name="l00203"></a>00203   <span class="comment">// Add extra variables to assignments</span>
-<a name="l00204"></a>00204   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#e88d50eeffe3862a00b82de6c69f0e93" title="Add extra variables to assignments.">AddToAssignment</a>(<a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <a class="code" href="expr__array_8cc.html#472a99923cbe11ae7b5a5d157d9ad465">var</a>);
-<a name="l00205"></a>00205 
-<a name="l00206"></a>00206   <span class="comment">// Sizes and indices</span>
-<a name="l00207"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df">00207</a>   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> nodes_; }
-<a name="l00208"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#9236103b3dca8a4112bd2a8be05b0b71">00208</a>   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#9236103b3dca8a4112bd2a8be05b0b71">vehicles</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> vehicles_; }
-<a name="l00209"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#5a560929b26804990f1e7d6972218f87">00209</a>   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#5a560929b26804990f1e7d6972218f87">Size</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> nodes_ + vehicles_ - start_end_count_; }
-<a name="l00210"></a>00210   <span class="comment">// Returns the node index from an index value resulting fron a next variable.</span>
-<a name="l00211"></a>00211   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#7bfcb5eaee4b0459ddf4c67d2dd19b67" title="Returns the node index from an index value resulting fron a next variable.">IndexToNode</a>(int64 <a class="code" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>) <span class="keyword">const</span>;
-<a name="l00212"></a>00212   <span class="comment">// Returns the variable index from a node value.</span>
-<a name="l00213"></a>00213   <span class="comment">//</span>
-<a name="l00214"></a>00214   <span class="comment">// Should not be used for nodes at the start / end of a route,</span>
-<a name="l00215"></a>00215   <span class="comment">// because of node multiplicity.  These cases return -1, which is</span>
-<a name="l00216"></a>00216   <span class="comment">// considered a failure case.  Clients who need start and end</span>
-<a name="l00217"></a>00217   <span class="comment">// variable indices should use RoutingModel::Start and RoutingModel::End.</span>
-<a name="l00218"></a>00218   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#cbe4bfaecf01e5288e10c7fbe01283b9" title="Returns the variable index from a node value.">NodeToIndex</a>(int64 node) <span class="keyword">const</span>;
-<a name="l00219"></a>00219 
-<a name="l00220"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#35a094db917c3c996826285424bb2f54">00220</a>   <a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#35a094db917c3c996826285424bb2f54">solver</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> solver_.get(); }
-<a name="l00221"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#c76b2c7544a4fc56d06945cbde4480a6">00221</a>   <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#c76b2c7544a4fc56d06945cbde4480a6">CostVar</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> cost_; }
-<a name="l00222"></a>00222 
-<a name="l00223"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#814299b5554ee840394457c61fec466f">00223</a>   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#814299b5554ee840394457c61fec466f">TimeLimit</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> time_limit_ms_; }
-<a name="l00224"></a>00224   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#daff11f77b3ff5eec418ca0fe74d5890">UpdateTimeLimit</a>(int64 limit_ms);
-<a name="l00225"></a>00225   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#e5d2063233d64b4c746080d0e3bb429c">UpdateLNSTimeLimit</a>(int64 limit_ms);
-<a name="l00226"></a>00226 
-<a name="l00227"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#db8c703e9d29b2046db433b8c74e338c">00227</a>   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#db8c703e9d29b2046db433b8c74e338c">PreAssignment</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> preassignment_; }
-<a name="l00228"></a>00228 
-<a name="l00229"></a>00229   <span class="comment">// Utilities for swig</span>
-<a name="l00230"></a>00230   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#6d58b03c066bfedc30d6555244bee0f8" title="Utilities for swig.">SetCommandLineOption</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef" title="A name for logging purposes.">name</a>, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>);
-<a name="l00231"></a>00231 
-<a name="l00232"></a>00232  <span class="keyword">private</span>:
-<a name="l00233"></a>00233   <span class="keyword">typedef</span> hash_map&lt;string, IntVar**&gt; VarMap;
-<a name="l00234"></a>00234   <span class="keyword">struct </span>Disjunction {
-<a name="l00235"></a>00235     std::vector&lt;int64&gt; <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>;
-<a name="l00236"></a>00236     int64 penalty;
-<a name="l00237"></a>00237   };
-<a name="l00238"></a>00238 
-<a name="l00239"></a>00239   <span class="keyword">struct </span>CostCacheElement {
-<a name="l00240"></a>00240     int64 node;
-<a name="l00241"></a>00241     int64 vehicle;
-<a name="l00242"></a>00242     int64 cost;
-<a name="l00243"></a>00243   };
-<a name="l00244"></a>00244 
-<a name="l00245"></a>00245   <span class="keywordtype">void</span> Initialize();
-<a name="l00246"></a>00246   <span class="keywordtype">void</span> SetStartEnd(<span class="keyword">const</span> std::vector&lt;std::pair&lt;int, int&gt; &gt;&amp; start_end);
-<a name="l00247"></a>00247   <span class="keywordtype">void</span> AddDisjunctionInternal(<span class="keyword">const</span> std::vector&lt;int64&gt;&amp; <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>, int64 penalty);
-<a name="l00248"></a>00248   <span class="keywordtype">void</span> AddNoCycleConstraintInternal();
-<a name="l00249"></a>00249   <span class="keywordtype">void</span> SetVehicleCostInternal(<span class="keywordtype">int</span> vehicle, <a class="code" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a>* evaluator);
-<a name="l00250"></a>00250   <span class="comment">// Returns NULL if no penalty cost, otherwise returns penalty variable.</span>
-<a name="l00251"></a>00251   IntVar* CreateDisjunction(<span class="keywordtype">int</span> disjunction);
-<a name="l00252"></a>00252   <span class="comment">// Returns the first active node in nodes starting from index + 1.</span>
-<a name="l00253"></a>00253   <span class="keywordtype">int</span> FindNextActive(<span class="keywordtype">int</span> <a class="code" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>, <span class="keyword">const</span> std::vector&lt;int&gt;&amp; <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>) <span class="keyword">const</span>;
-<a name="l00254"></a>00254 
-<a name="l00255"></a>00255   <a class="code" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a>* NewCachedCallback(<a class="code" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a>* callback);
-<a name="l00256"></a>00256   <a class="code" href="classoperations__research_1_1Solver.html#fd80e55c6251fec492c4887f11b5b0e0">Solver::IndexEvaluator3</a>* BuildCostCallback();
-<a name="l00257"></a>00257   <span class="keywordtype">void</span> CheckDepot();
-<a name="l00258"></a>00258   <span class="keywordtype">void</span> CloseModel();
-<a name="l00259"></a>00259   <span class="keywordtype">void</span> SetUpSearch();
-<a name="l00260"></a>00260 
-<a name="l00261"></a>00261   IntVar** GetOrMakeCumuls(int64 capacity, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef" title="A name for logging purposes.">name</a>);
-<a name="l00262"></a>00262   IntVar** GetOrMakeTransits(<a class="code" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a>* evaluator,
-<a name="l00263"></a>00263                              int64 slack_max,
-<a name="l00264"></a>00264                              int64 capacity,
-<a name="l00265"></a>00265                              <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef" title="A name for logging purposes.">name</a>);
-<a name="l00266"></a>00266 
-<a name="l00267"></a>00267   int64 GetArcCost(int64 i, int64 j, int64 vehicle);
-<a name="l00268"></a>00268   int64 GetPenaltyCost(int64 i) <span class="keyword">const</span>;
-<a name="l00269"></a>00269   int64 WrappedEvaluator(<a class="code" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a>* evaluator,
-<a name="l00270"></a>00270                          int64 from,
-<a name="l00271"></a>00271                          int64 to);
-<a name="l00272"></a>00272 
-<a name="l00273"></a>00273   <span class="comment">// Model</span>
-<a name="l00274"></a>00274   scoped_ptr&lt;Solver&gt; solver_;
-<a name="l00275"></a>00275   Constraint* no_cycle_constraint_;
-<a name="l00276"></a>00276   scoped_array&lt;IntVar*&gt; nexts_;
-<a name="l00277"></a>00277   scoped_array&lt;IntVar*&gt; vehicle_vars_;
-<a name="l00278"></a>00278   scoped_array&lt;IntVar*&gt; active_;
-<a name="l00279"></a>00279   std::vector&lt;Solver::IndexEvaluator2*&gt; costs_;
-<a name="l00280"></a>00280   <span class="keywordtype">bool</span> homogeneous_costs_;
-<a name="l00281"></a>00281   std::vector&lt;CostCacheElement&gt; cost_cache_;
-<a name="l00282"></a>00282   std::vector&lt;RoutingCache*&gt; routing_caches_;
-<a name="l00283"></a>00283   std::vector&lt;Disjunction&gt; disjunctions_;
-<a name="l00284"></a>00284   hash_map&lt;int64, int&gt; node_to_disjunction_;
-<a name="l00285"></a>00285   IntVar* cost_;
-<a name="l00286"></a>00286   std::vector&lt;int64&gt; fixed_costs_;
-<a name="l00287"></a>00287   <span class="keywordtype">int</span> nodes_;
-<a name="l00288"></a>00288   <span class="keywordtype">int</span> vehicles_;
-<a name="l00289"></a>00289   std::vector&lt;int&gt; index_to_node_;
-<a name="l00290"></a>00290   std::vector&lt;int&gt; node_to_index_;
-<a name="l00291"></a>00291   std::vector&lt;int&gt; index_to_vehicle_;
-<a name="l00292"></a>00292   std::vector&lt;int&gt; starts_;
-<a name="l00293"></a>00293   std::vector&lt;int&gt; ends_;
-<a name="l00294"></a>00294   <span class="keywordtype">int</span> start_end_count_;
-<a name="l00295"></a>00295   <span class="keywordtype">bool</span> is_depot_set_;
-<a name="l00296"></a>00296   VarMap cumuls_;
-<a name="l00297"></a>00297   VarMap transits_;
-<a name="l00298"></a>00298   hash_map&lt;string, Solver::IndexEvaluator2*&gt; transit_evaluators_;
-<a name="l00299"></a>00299   <span class="keywordtype">bool</span> closed_;
-<a name="l00300"></a>00300   <a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044">Status</a> status_;
-<a name="l00301"></a>00301 
-<a name="l00302"></a>00302   <span class="comment">// Search data</span>
-<a name="l00303"></a>00303   <a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d">RoutingStrategy</a> first_solution_strategy_;
-<a name="l00304"></a>00304   scoped_ptr&lt;Solver::IndexEvaluator2&gt; first_solution_evaluator_;
-<a name="l00305"></a>00305   <a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1">RoutingMetaheuristic</a> metaheuristic_;
-<a name="l00306"></a>00306   std::vector&lt;SearchMonitor*&gt; monitors_;
-<a name="l00307"></a>00307   SolutionCollector* collect_assignments_;
-<a name="l00308"></a>00308   DecisionBuilder* solve_db_;
-<a name="l00309"></a>00309   DecisionBuilder* improve_db_;
-<a name="l00310"></a>00310   DecisionBuilder* restore_assignment_;
-<a name="l00311"></a>00311   Assignment* assignment_;
-<a name="l00312"></a>00312   Assignment* preassignment_;
-<a name="l00313"></a>00313   std::vector&lt;IntVar*&gt; extra_vars_;
-<a name="l00314"></a>00314   std::vector&lt;LocalSearchOperator*&gt; extra_operators_;
-<a name="l00315"></a>00315 
-<a name="l00316"></a>00316   int64 time_limit_ms_;
-<a name="l00317"></a>00317   int64 lns_time_limit_ms_;
-<a name="l00318"></a>00318   SearchLimit* limit_;
-<a name="l00319"></a>00319   SearchLimit* ls_limit_;
-<a name="l00320"></a>00320   SearchLimit* lns_limit_;
+<a name="l00164"></a>00164   <span class="comment">// Gets/sets the evaluator used when the first solution heuristic is set to</span>
+<a name="l00165"></a>00165   <span class="comment">// ROUTING_EVALUATOR_STRATEGY (variant of ROUTING_PATH_CHEAPEST_ARC using</span>
+<a name="l00166"></a>00166   <span class="comment">// 'evaluator' to sort arcs).</span>
+<a name="l00167"></a>00167 <span class="preprocessor">#ifndef SWIG</span>
+<a name="l00168"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#81b797890236948ef7aa87d781ad7ec7">00168</a> <span class="preprocessor"></span>  <a class="code" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#81b797890236948ef7aa87d781ad7ec7" title="Gets/sets the evaluator used when the first solution heuristic is set to ROUTING_EVALUATOR_STRATEGY...">first_solution_evaluator</a>()<span class="keyword"> const </span>{
+<a name="l00169"></a>00169     <span class="keywordflow">return</span> first_solution_evaluator_.get();
+<a name="l00170"></a>00170   }
+<a name="l00171"></a>00171 <span class="preprocessor">#endif</span>
+<a name="l00172"></a>00172 <span class="preprocessor"></span>  <span class="comment">// Takes ownership of evaluator.</span>
+<a name="l00173"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#5853301edd4fdc7f45cf38a7bb2ec049">00173</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#5853301edd4fdc7f45cf38a7bb2ec049" title="Takes ownership of evaluator.">SetFirstSolutionEvaluator</a>(<a class="code" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a>* evaluator) {
+<a name="l00174"></a>00174     first_solution_evaluator_.reset(evaluator);
+<a name="l00175"></a>00175   }
+<a name="l00176"></a>00176   <span class="comment">// If a first solution flag has been set (to a value different from Default),</span>
+<a name="l00177"></a>00177   <span class="comment">// returns the corresponding strategy, otherwise returns the strategy which</span>
+<a name="l00178"></a>00178   <span class="comment">// was set.</span>
+<a name="l00179"></a>00179   <a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d">RoutingStrategy</a> <a class="code" href="classoperations__research_1_1RoutingModel.html#da509d882b2aed55dc59021c3a149c7e" title="If a first solution flag has been set (to a value different from Default), returns...">GetSelectedFirstSolutionStrategy</a>() <span class="keyword">const</span>;
+<a name="l00180"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#ac8ac681a6a334db9b808208d616235a">00180</a>   <a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1">RoutingMetaheuristic</a> <a class="code" href="classoperations__research_1_1RoutingModel.html#ac8ac681a6a334db9b808208d616235a">metaheuristic</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> metaheuristic_; }
+<a name="l00181"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#d38e1582f53db33bca76ff9c2a4ab0c1">00181</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#d38e1582f53db33bca76ff9c2a4ab0c1">set_metaheuristic</a>(<a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1">RoutingMetaheuristic</a> <a class="code" href="classoperations__research_1_1RoutingModel.html#ac8ac681a6a334db9b808208d616235a">metaheuristic</a>) {
+<a name="l00182"></a>00182     metaheuristic_ = metaheuristic;
+<a name="l00183"></a>00183   }
+<a name="l00184"></a>00184   <span class="comment">// If a metaheuristic flag has been set, returns the corresponding</span>
+<a name="l00185"></a>00185   <span class="comment">// metaheuristic, otherwise returns the metaheuristic which was set.</span>
+<a name="l00186"></a>00186   <a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1">RoutingMetaheuristic</a> <a class="code" href="classoperations__research_1_1RoutingModel.html#22f429a899b1c00cad6e6ff04a117ee4" title="If a metaheuristic flag has been set, returns the corresponding metaheuristic, otherwise...">GetSelectedMetaheuristic</a>() <span class="keyword">const</span>;
+<a name="l00187"></a>00187   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#4928a8a9f21302a215a6f26dda90eef1">AddSearchMonitor</a>(<a class="code" href="classoperations__research_1_1SearchMonitor.html" title="A search monitor is a simple set of callbacks to monitor all search events.">SearchMonitor</a>* <span class="keyword">const</span> monitor);
+<a name="l00188"></a>00188   <span class="comment">// Solves the current routing model; closes the current model.</span>
+<a name="l00189"></a>00189   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#79e79d503b81e378485b402293a5828c" title="Solves the current routing model; closes the current model.">Solve</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* assignment = NULL);
+<a name="l00190"></a>00190   <span class="comment">// Returns current status of the routing model.</span>
+<a name="l00191"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#cc9cbc5c610da66a71220657d366c471">00191</a>   <a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044">Status</a> <a class="code" href="classoperations__research_1_1RoutingModel.html#cc9cbc5c610da66a71220657d366c471" title="Returns current status of the routing model.">status</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> status_; }
+<a name="l00192"></a>00192   <span class="comment">// Applies lock chain to the next search. Returns next var at the end of the</span>
+<a name="l00193"></a>00193   <span class="comment">// locked chain; this variable is not locked. Assignment containing locks</span>
+<a name="l00194"></a>00194   <span class="comment">// can be obtained calling PreAssignment().</span>
+<a name="l00195"></a>00195   <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#4db46f77834dbcbbf4e54ec6b0e76047" title="Applies lock chain to the next search.">ApplyLocks</a>(<span class="keyword">const</span> std::vector&lt;int&gt;&amp; locks);
+<a name="l00196"></a>00196 
+<a name="l00197"></a>00197   <span class="comment">// Inspection</span>
+<a name="l00198"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#fcb255b430c9c51561a344966f32940d">00198</a>   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#fcb255b430c9c51561a344966f32940d" title="Inspection.">Start</a>(<span class="keywordtype">int</span> vehicle)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> starts_[vehicle]; }
+<a name="l00199"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#9d2055447d769bd064f61c150d099b53">00199</a>   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#9d2055447d769bd064f61c150d099b53">End</a>(<span class="keywordtype">int</span> vehicle)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> ends_[vehicle]; }
+<a name="l00200"></a>00200   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#7f1ed907da5e1918e60d7a206e7dc0d7">IsStart</a>(int64 <a class="code" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>) <span class="keyword">const</span>;
+<a name="l00201"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#d542c0716ca8948f8e6240b2ff24d878">00201</a>   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#d542c0716ca8948f8e6240b2ff24d878">IsEnd</a>(int64 <a class="code" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> index &gt;= <a class="code" href="classoperations__research_1_1RoutingModel.html#5a560929b26804990f1e7d6972218f87">Size</a>(); }
+<a name="l00202"></a>00202 
+<a name="l00203"></a>00203   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#d93cf7b05fe7541d808bf73268cb62da">GetCost</a>(int64 i, int64 j, int64 vehicle);
+<a name="l00204"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#6f274d2ace4d354140b9c086ef4dceee">00204</a>   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#6f274d2ace4d354140b9c086ef4dceee">GetHomogeneousCost</a>(int64 i, int64 j) {
+<a name="l00205"></a>00205     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#d93cf7b05fe7541d808bf73268cb62da">GetCost</a>(i, j, 0);
+<a name="l00206"></a>00206   }
+<a name="l00207"></a>00207   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#a48f081ff3936f9133459882f403f000">GetFilterCost</a>(int64 i, int64 j, int64 vehicle);
+<a name="l00208"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#a11733dd92f708c13e9c45aa02641e12">00208</a>   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#a11733dd92f708c13e9c45aa02641e12">GetHomogeneousFilterCost</a>(int64 i, int64 j) {
+<a name="l00209"></a>00209     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#a48f081ff3936f9133459882f403f000">GetFilterCost</a>(i, j, 0);
+<a name="l00210"></a>00210   }
+<a name="l00211"></a>00211   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#1d7c2d652d782ca3930583b98ee3f15d" title="Return high cost if connecting to end node; used in cost-based first solution.">GetFirstSolutionCost</a>(int64 i, int64 j);
+<a name="l00212"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#5a4f31c561411ae89bf266e41ceb509c">00212</a>   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#5a4f31c561411ae89bf266e41ceb509c">homogeneous_costs</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> homogeneous_costs_; }
+<a name="l00213"></a>00213 
+<a name="l00214"></a>00214   <span class="comment">// Variables</span>
+<a name="l00215"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#100397cb143b48549277c70f4afb32e2">00215</a>   <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>** <a class="code" href="classoperations__research_1_1RoutingModel.html#100397cb143b48549277c70f4afb32e2" title="Variables.">Nexts</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> nexts_.get(); }
+<a name="l00216"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#6bf6aeb259ab509d97a5e6c3e5189f61">00216</a>   <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>** <a class="code" href="classoperations__research_1_1RoutingModel.html#6bf6aeb259ab509d97a5e6c3e5189f61">VehicleVars</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> vehicle_vars_.get(); }
+<a name="l00217"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#131f2181343be56fd836b64747fe9f49">00217</a>   <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#131f2181343be56fd836b64747fe9f49">NextVar</a>(int64 <a class="code" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> nexts_[index]; }
+<a name="l00218"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#5254602b653dda44c6f6a6611e8cd6f2">00218</a>   <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#5254602b653dda44c6f6a6611e8cd6f2">ActiveVar</a>(int64 <a class="code" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> active_[index]; }
+<a name="l00219"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#618a961dcb65e02d6d310a83d1f60722">00219</a>   <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#618a961dcb65e02d6d310a83d1f60722">VehicleVar</a>(int64 <a class="code" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> vehicle_vars_[index]; }
+<a name="l00220"></a>00220   <span class="comment">// Returns the variable created by the AddDimension with the same name</span>
+<a name="l00221"></a>00221   <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#a1e366cd50bfdfac06e032d9eb22612f" title="Returns the variable created by the AddDimension with the same name.">CumulVar</a>(int64 <a class="code" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef" title="A name for logging purposes.">name</a>) <span class="keyword">const</span>;
+<a name="l00222"></a>00222   <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#8d0a9a90e331b113628418013cfa813e">TransitVar</a>(int64 <a class="code" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef" title="A name for logging purposes.">name</a>) <span class="keyword">const</span>;
+<a name="l00223"></a>00223   <span class="comment">// Add extra variables to assignments</span>
+<a name="l00224"></a>00224   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#e88d50eeffe3862a00b82de6c69f0e93" title="Add extra variables to assignments.">AddToAssignment</a>(<a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <a class="code" href="expr__array_8cc.html#472a99923cbe11ae7b5a5d157d9ad465">var</a>);
+<a name="l00225"></a>00225 
+<a name="l00226"></a>00226   <span class="comment">// Sizes and indices</span>
+<a name="l00227"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df">00227</a>   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> nodes_; }
+<a name="l00228"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#9236103b3dca8a4112bd2a8be05b0b71">00228</a>   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#9236103b3dca8a4112bd2a8be05b0b71">vehicles</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> vehicles_; }
+<a name="l00229"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#5a560929b26804990f1e7d6972218f87">00229</a>   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#5a560929b26804990f1e7d6972218f87">Size</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> nodes_ + vehicles_ - start_end_count_; }
+<a name="l00230"></a>00230   <span class="comment">// Returns the node index from an index value resulting fron a next variable.</span>
+<a name="l00231"></a>00231   <a class="code" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> <a class="code" href="classoperations__research_1_1RoutingModel.html#ca1b6ad06bed2a28e3debeed4512db0d" title="Returns the node index from an index value resulting fron a next variable.">IndexToNode</a>(int64 <a class="code" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>) <span class="keyword">const</span>;
+<a name="l00232"></a>00232   <span class="comment">// Returns the variable index from a node value.</span>
+<a name="l00233"></a>00233   <span class="comment">//</span>
+<a name="l00234"></a>00234   <span class="comment">// Should not be used for nodes at the start / end of a route,</span>
+<a name="l00235"></a>00235   <span class="comment">// because of node multiplicity.  These cases return -1, which is</span>
+<a name="l00236"></a>00236   <span class="comment">// considered a failure case.  Clients who need start and end</span>
+<a name="l00237"></a>00237   <span class="comment">// variable indices should use RoutingModel::Start and RoutingModel::End.</span>
+<a name="l00238"></a>00238   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#6c88d9d5da962886bfe0924bc5ea6457" title="Returns the variable index from a node value.">NodeToIndex</a>(<a class="code" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> node) <span class="keyword">const</span>;
+<a name="l00239"></a>00239 
+<a name="l00240"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#35a094db917c3c996826285424bb2f54">00240</a>   <a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#35a094db917c3c996826285424bb2f54">solver</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> solver_.get(); }
+<a name="l00241"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#c76b2c7544a4fc56d06945cbde4480a6">00241</a>   <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <a class="code" href="classoperations__research_1_1RoutingModel.html#c76b2c7544a4fc56d06945cbde4480a6">CostVar</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> cost_; }
+<a name="l00242"></a>00242 
+<a name="l00243"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#814299b5554ee840394457c61fec466f">00243</a>   int64 <a class="code" href="classoperations__research_1_1RoutingModel.html#814299b5554ee840394457c61fec466f">TimeLimit</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> time_limit_ms_; }
+<a name="l00244"></a>00244   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#daff11f77b3ff5eec418ca0fe74d5890">UpdateTimeLimit</a>(int64 limit_ms);
+<a name="l00245"></a>00245   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#e5d2063233d64b4c746080d0e3bb429c">UpdateLNSTimeLimit</a>(int64 limit_ms);
+<a name="l00246"></a>00246 
+<a name="l00247"></a><a class="code" href="classoperations__research_1_1RoutingModel.html#db8c703e9d29b2046db433b8c74e338c">00247</a>   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#db8c703e9d29b2046db433b8c74e338c">PreAssignment</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> preassignment_; }
+<a name="l00248"></a>00248 
+<a name="l00249"></a>00249   <span class="comment">// Utilities for swig</span>
+<a name="l00250"></a>00250   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1RoutingModel.html#6d58b03c066bfedc30d6555244bee0f8" title="Utilities for swig.">SetCommandLineOption</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef" title="A name for logging purposes.">name</a>, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>);
+<a name="l00251"></a>00251 
+<a name="l00252"></a>00252  <span class="keyword">private</span>:
+<a name="l00253"></a>00253   <span class="keyword">typedef</span> hash_map&lt;string, IntVar**&gt; VarMap;
+<a name="l00254"></a>00254   <span class="keyword">struct </span>Disjunction {
+<a name="l00255"></a>00255     std::vector&lt;int&gt; <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>;
+<a name="l00256"></a>00256     int64 penalty;
+<a name="l00257"></a>00257   };
+<a name="l00258"></a>00258 
+<a name="l00259"></a>00259   <span class="keyword">struct </span>CostCacheElement {
+<a name="l00260"></a>00260     <a class="code" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> node;
+<a name="l00261"></a>00261     <span class="keywordtype">int</span> vehicle;
+<a name="l00262"></a>00262     int64 cost;
+<a name="l00263"></a>00263   };
+<a name="l00264"></a>00264 
+<a name="l00265"></a>00265   <span class="keywordtype">void</span> Initialize();
+<a name="l00266"></a>00266   <span class="keywordtype">void</span> SetStartEnd(<span class="keyword">const</span> std::vector&lt;std::pair&lt;NodeIndex, NodeIndex&gt; &gt;&amp; start_end);
+<a name="l00267"></a>00267   <span class="keywordtype">void</span> AddDisjunctionInternal(<span class="keyword">const</span> std::vector&lt;NodeIndex&gt;&amp; <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>, int64 penalty);
+<a name="l00268"></a>00268   <span class="keywordtype">void</span> AddNoCycleConstraintInternal();
+<a name="l00269"></a>00269   <span class="keywordtype">void</span> SetVehicleCostInternal(<span class="keywordtype">int</span> vehicle, <a class="code" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">NodeEvaluator2</a>* evaluator);
+<a name="l00270"></a>00270   <span class="comment">// Returns NULL if no penalty cost, otherwise returns penalty variable.</span>
+<a name="l00271"></a>00271   IntVar* CreateDisjunction(<span class="keywordtype">int</span> disjunction);
+<a name="l00272"></a>00272   <span class="comment">// Returns the first active node in nodes starting from index + 1.</span>
+<a name="l00273"></a>00273   <span class="keywordtype">int</span> FindNextActive(<span class="keywordtype">int</span> <a class="code" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>, <span class="keyword">const</span> std::vector&lt;int&gt;&amp; <a class="code" href="classoperations__research_1_1RoutingModel.html#20c1bf5b1ac1353c9e132774f3f7e1df" title="Sizes and indices.">nodes</a>) <span class="keyword">const</span>;
+<a name="l00274"></a>00274 
+<a name="l00275"></a>00275   <a class="code" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">NodeEvaluator2</a>* NewCachedCallback(<a class="code" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">NodeEvaluator2</a>* callback);
+<a name="l00276"></a>00276   <a class="code" href="classoperations__research_1_1Solver.html#fd80e55c6251fec492c4887f11b5b0e0">Solver::IndexEvaluator3</a>* BuildCostCallback();
+<a name="l00277"></a>00277   <span class="keywordtype">void</span> CheckDepot();
+<a name="l00278"></a>00278   <span class="keywordtype">void</span> CloseModel();
+<a name="l00279"></a>00279   <span class="keywordtype">void</span> SetUpSearch();
+<a name="l00280"></a>00280 
+<a name="l00281"></a>00281   IntVar** GetOrMakeCumuls(int64 capacity, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef" title="A name for logging purposes.">name</a>);
+<a name="l00282"></a>00282   IntVar** GetOrMakeTransits(<a class="code" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">NodeEvaluator2</a>* evaluator,
+<a name="l00283"></a>00283                              int64 slack_max,
+<a name="l00284"></a>00284                              int64 capacity,
+<a name="l00285"></a>00285                              <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; <a class="code" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef" title="A name for logging purposes.">name</a>);
+<a name="l00286"></a>00286 
+<a name="l00287"></a>00287   int64 GetArcCost(int64 i, int64 j, int64 vehicle);
+<a name="l00288"></a>00288   int64 GetPenaltyCost(int64 i) <span class="keyword">const</span>;
+<a name="l00289"></a>00289   int64 WrappedEvaluator(<a class="code" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">NodeEvaluator2</a>* evaluator,
+<a name="l00290"></a>00290                          int64 from,
+<a name="l00291"></a>00291                          int64 to);
+<a name="l00292"></a>00292 
+<a name="l00293"></a>00293   <span class="comment">// Model</span>
+<a name="l00294"></a>00294   scoped_ptr&lt;Solver&gt; solver_;
+<a name="l00295"></a>00295   Constraint* no_cycle_constraint_;
+<a name="l00296"></a>00296   scoped_array&lt;IntVar*&gt; nexts_;
+<a name="l00297"></a>00297   scoped_array&lt;IntVar*&gt; vehicle_vars_;
+<a name="l00298"></a>00298   scoped_array&lt;IntVar*&gt; active_;
+<a name="l00299"></a>00299   std::vector&lt;NodeEvaluator2*&gt; costs_;
+<a name="l00300"></a>00300   <span class="keywordtype">bool</span> homogeneous_costs_;
+<a name="l00301"></a>00301   std::vector&lt;CostCacheElement&gt; cost_cache_;
+<a name="l00302"></a>00302   std::vector&lt;RoutingCache*&gt; routing_caches_;
+<a name="l00303"></a>00303   std::vector&lt;Disjunction&gt; disjunctions_;
+<a name="l00304"></a>00304   hash_map&lt;int64, int&gt; node_to_disjunction_;
+<a name="l00305"></a>00305   IntVar* cost_;
+<a name="l00306"></a>00306   std::vector&lt;int64&gt; fixed_costs_;
+<a name="l00307"></a>00307   <span class="keywordtype">int</span> nodes_;
+<a name="l00308"></a>00308   <span class="keywordtype">int</span> vehicles_;
+<a name="l00309"></a>00309   std::vector&lt;NodeIndex&gt; index_to_node_;
+<a name="l00310"></a>00310   ITIVector&lt;NodeIndex, int&gt; node_to_index_;
+<a name="l00311"></a>00311   std::vector&lt;int&gt; index_to_vehicle_;
+<a name="l00312"></a>00312   std::vector&lt;int&gt; starts_;
+<a name="l00313"></a>00313   std::vector&lt;int&gt; ends_;
+<a name="l00314"></a>00314   <span class="keywordtype">int</span> start_end_count_;
+<a name="l00315"></a>00315   <span class="keywordtype">bool</span> is_depot_set_;
+<a name="l00316"></a>00316   VarMap cumuls_;
+<a name="l00317"></a>00317   VarMap transits_;
+<a name="l00318"></a>00318   hash_map&lt;string, Solver::IndexEvaluator2*&gt; transit_evaluators_;
+<a name="l00319"></a>00319   <span class="keywordtype">bool</span> closed_;
+<a name="l00320"></a>00320   <a class="code" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044">Status</a> status_;
 <a name="l00321"></a>00321 
-<a name="l00322"></a>00322   <span class="comment">// Callbacks to be deleted</span>
-<a name="l00323"></a>00323   hash_set&lt;Solver::IndexEvaluator2*&gt; owned_callbacks_;
-<a name="l00324"></a>00324 
-<a name="l00325"></a>00325   DISALLOW_COPY_AND_ASSIGN(<a class="code" href="classoperations__research_1_1RoutingModel.html#67e90b8e5fba64a285e2eed07a39b2ca" title="Supposes a single depot.">RoutingModel</a>);
-<a name="l00326"></a>00326 };
-<a name="l00327"></a>00327 
-<a name="l00328"></a>00328 }  <span class="comment">// namespace operations_research</span>
-<a name="l00329"></a>00329 
-<a name="l00330"></a>00330 <span class="preprocessor">#endif  // OR_TOOLS_CONSTRAINT_SOLVER_ROUTING_H_</span>
+<a name="l00322"></a>00322   <span class="comment">// Search data</span>
+<a name="l00323"></a>00323   <a class="code" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d">RoutingStrategy</a> first_solution_strategy_;
+<a name="l00324"></a>00324   scoped_ptr&lt;Solver::IndexEvaluator2&gt; first_solution_evaluator_;
+<a name="l00325"></a>00325   <a class="code" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1">RoutingMetaheuristic</a> metaheuristic_;
+<a name="l00326"></a>00326   std::vector&lt;SearchMonitor*&gt; monitors_;
+<a name="l00327"></a>00327   SolutionCollector* collect_assignments_;
+<a name="l00328"></a>00328   DecisionBuilder* solve_db_;
+<a name="l00329"></a>00329   DecisionBuilder* improve_db_;
+<a name="l00330"></a>00330   DecisionBuilder* restore_assignment_;
+<a name="l00331"></a>00331   Assignment* assignment_;
+<a name="l00332"></a>00332   Assignment* preassignment_;
+<a name="l00333"></a>00333   std::vector&lt;IntVar*&gt; extra_vars_;
+<a name="l00334"></a>00334   std::vector&lt;LocalSearchOperator*&gt; extra_operators_;
+<a name="l00335"></a>00335 
+<a name="l00336"></a>00336   int64 time_limit_ms_;
+<a name="l00337"></a>00337   int64 lns_time_limit_ms_;
+<a name="l00338"></a>00338   SearchLimit* limit_;
+<a name="l00339"></a>00339   SearchLimit* ls_limit_;
+<a name="l00340"></a>00340   SearchLimit* lns_limit_;
+<a name="l00341"></a>00341 
+<a name="l00342"></a>00342   <span class="comment">// Callbacks to be deleted</span>
+<a name="l00343"></a>00343   hash_set&lt;NodeEvaluator2*&gt; owned_node_callbacks_;
+<a name="l00344"></a>00344   hash_set&lt;Solver::IndexEvaluator2*&gt; owned_index_callbacks_;
+<a name="l00345"></a>00345 
+<a name="l00346"></a>00346   DISALLOW_COPY_AND_ASSIGN(<a class="code" href="classoperations__research_1_1RoutingModel.html#67e90b8e5fba64a285e2eed07a39b2ca" title="Supposes a single depot.">RoutingModel</a>);
+<a name="l00347"></a>00347 };
+<a name="l00348"></a>00348 
+<a name="l00349"></a>00349 }  <span class="comment">// namespace operations_research</span>
+<a name="l00350"></a>00350 
+<a name="l00351"></a>00351 <span class="preprocessor">#endif  // OR_TOOLS_CONSTRAINT_SOLVER_ROUTING_H_</span>
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -419,7 +440,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#874340 height=3></td>
+      <td colspan=2 bgcolor=#115511 height=3></td>
     </tr>
   </table>
 

@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #874340
+      background-color: #115511
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#874340 height=3></td>
+      <td colspan=3 bgcolor=#115511 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#874340><b>Thu Aug 11 12:09:23 PDT 2011</b></font>
+          Generated on: <font color=#115511><b>Thu Aug 11 16:08:43 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#874340>
+            <td bgcolor=#115511>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#874340>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#115511>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -121,22 +121,27 @@
 <a class="el" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044a8b79310730408de7bae61835301a93e">ROUTING_FAIL_TIMEOUT</a>
  }</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef _RoutingModel_NodeIndex&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ResultCallback2&lt; int64, <br>
+<a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a>, <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">NodeEvaluator2</a></td></tr>
+
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#67e90b8e5fba64a285e2eed07a39b2ca">RoutingModel</a> (int nodes, int vehicles)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Supposes a single depot.  <a href="#67e90b8e5fba64a285e2eed07a39b2ca"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#71095d87d683a033e16aea18717f5c66">RoutingModel</a> (int nodes, int vehicles, const std::vector&lt; std::pair&lt; int, int &gt; &gt; &amp;start_end)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#445d5e0cd27c08b178becc015f7f03ed">RoutingModel</a> (int nodes, int vehicles, const std::vector&lt; std::pair&lt; <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a>, <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> &gt; &gt; &amp;start_end)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor taking a vector of (start node, end node) pairs for each vehicle route.  <a href="#71095d87d683a033e16aea18717f5c66"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#d5cb2b101e2c5e9c6b56950bf758f369">RoutingModel</a> (int nodes, int vehicles, const std::vector&lt; int &gt; &amp;starts, const std::vector&lt; int &gt; &amp;ends)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor taking a vector of (start node, end node) pairs for each vehicle route.  <a href="#445d5e0cd27c08b178becc015f7f03ed"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#b08e85546822c3b015d371baed218d93">RoutingModel</a> (int nodes, int vehicles, const std::vector&lt; <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> &gt; &amp;starts, const std::vector&lt; <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> &gt; &amp;ends)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor taking vectors of start nodes and end nodes for each vehicle route.  <a href="#d5cb2b101e2c5e9c6b56950bf758f369"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor taking vectors of start nodes and end nodes for each vehicle route.  <a href="#b08e85546822c3b015d371baed218d93"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#6ee4a1c4dda01e2138f79ed5ec913754">~RoutingModel</a> ()</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#fba056acc7ced3e04d2419f322ab988a">AddNoCycleConstraint</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Model creation.  <a href="#fba056acc7ced3e04d2419f322ab988a"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#c9b68174cac597b629104a996720fb76">AddDimension</a> (<a class="el" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a> *evaluator, int64 slack_max, int64 capacity, const string &amp;<a class="el" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef">name</a>)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#0c519ba1ff5b906df2a576451feb379c">AddDimension</a> (<a class="el" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">NodeEvaluator2</a> *evaluator, int64 slack_max, int64 capacity, const string &amp;<a class="el" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef">name</a>)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#366617606fccc8017b91a5efeae6c4cf">AddConstantDimension</a> (int64 <a class="el" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>, int64 capacity, const string &amp;<a class="el" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef">name</a>)</td></tr>
 
@@ -146,19 +151,19 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#fa5489925a39e8484fea85ad916ab72b">AddAllActive</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#9411b0d51dcf3d7311ad2627314e0693">AddDisjunction</a> (const std::vector&lt; int64 &gt; &amp;nodes)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#c2388945ac0d9e706b72c75a82f4baf0">AddDisjunction</a> (const std::vector&lt; <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> &gt; &amp;nodes)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds a disjunction constraint on the nodes: exactly one of the nodes is active.  <a href="#9411b0d51dcf3d7311ad2627314e0693"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#d50995f7f465fd727704557ddd76b53f">AddDisjunction</a> (const std::vector&lt; int64 &gt; &amp;nodes, int64 penalty)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds a disjunction constraint on the nodes: exactly one of the nodes is active.  <a href="#c2388945ac0d9e706b72c75a82f4baf0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#0136e0ccbb01867d754ecf9e6152a2e5">AddDisjunction</a> (const std::vector&lt; <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> &gt; &amp;nodes, int64 penalty)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds a penalized disjunction constraint on the nodes: at most one of the nodes is active; if none are active a penalty cost is applied (this cost is added to the global cost function).  <a href="#d50995f7f465fd727704557ddd76b53f"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds a penalized disjunction constraint on the nodes: at most one of the nodes is active; if none are active a penalty cost is applied (this cost is added to the global cost function).  <a href="#0136e0ccbb01867d754ecf9e6152a2e5"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#421504809966a6abc4cd725c48780060">AddLocalSearchOperator</a> (<a class="el" href="classoperations__research_1_1LocalSearchOperator.html">LocalSearchOperator</a> *ls_operator)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#ffb6070cc82b66227ae4751c3d6ad58d">SetCost</a> (<a class="el" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a> *evaluator)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#ad67d6674b1bbfd192b094a78b98ae00">SetCost</a> (<a class="el" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">NodeEvaluator2</a> *evaluator)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#4b32913c8744e2777597bee4e9a78225">SetVehicleCost</a> (int vehicle, <a class="el" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a> *evaluator)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#5acf5c0059bb744313072e90f9a6c13d">SetVehicleCost</a> (int vehicle, <a class="el" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">NodeEvaluator2</a> *evaluator)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#dc0823e5fd3b472adf49430335f8d7ee">SetDepot</a> (int depot)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#fc62358888d00d45c4769cdc6e3d3cbb">SetDepot</a> (<a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> depot)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#89f79076ce6ef6d5587f2ebe3439a073">GetRouteFixedCost</a> () const </td></tr>
 
@@ -250,12 +255,12 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#5a560929b26804990f1e7d6972218f87">Size</a> () const </td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#7bfcb5eaee4b0459ddf4c67d2dd19b67">IndexToNode</a> (int64 <a class="el" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>) const </td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#ca1b6ad06bed2a28e3debeed4512db0d">IndexToNode</a> (int64 <a class="el" href="pack_8cc.html#750b5d744c39a06bfb13e6eb010e35d0">index</a>) const </td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the node index from an index value resulting fron a next variable.  <a href="#7bfcb5eaee4b0459ddf4c67d2dd19b67"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#cbe4bfaecf01e5288e10c7fbe01283b9">NodeToIndex</a> (int64 node) const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the node index from an index value resulting fron a next variable.  <a href="#ca1b6ad06bed2a28e3debeed4512db0d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#6c88d9d5da962886bfe0924bc5ea6457">NodeToIndex</a> (<a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> node) const </td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the variable index from a node value.  <a href="#cbe4bfaecf01e5288e10c7fbe01283b9"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the variable index from a node value.  <a href="#6c88d9d5da962886bfe0924bc5ea6457"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classoperations__research_1_1Solver.html">Solver</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#35a094db917c3c996826285424bb2f54">solver</a> () const </td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classoperations__research_1_1IntVar.html">IntVar</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#c76b2c7544a4fc56d06945cbde4480a6">CostVar</a> () const </td></tr>
@@ -271,6 +276,12 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#6d58b03c066bfedc30d6555244bee0f8">SetCommandLineOption</a> (const string &amp;<a class="el" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef">name</a>, const string &amp;<a class="el" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Utilities for swig.  <a href="#6d58b03c066bfedc30d6555244bee0f8"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Static Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#2fe3671c7bac6070d8c3f03a12722c70">kFirstNode</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constants with an index of the first node (to be used in for loops for iteration), and a special index to signalize an invalid/unused value.  <a href="#2fe3671c7bac6070d8c3f03a12722c70"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#86465650deeb78a3ff59ac0fe5af60bf">kInvalidNodeIndex</a></td></tr>
+
 <tr><td colspan="2"><br><h2>Classes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>CostCacheElement</b></td></tr>
 
@@ -279,7 +290,42 @@
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00047">47</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00053">53</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<hr><h2>Member Typedef Documentation</h2>
+<a class="anchor" name="2e9f7da1126111a69ee0b7bcf7edeffe"></a><!-- doxytag: member="operations_research::RoutingModel::NodeIndex" ref="2e9f7da1126111a69ee0b7bcf7edeffe" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef _RoutingModel_NodeIndex <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">operations_research::RoutingModel::NodeIndex</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00077">77</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5ad22b1565f2e5b1735601a824629289"></a><!-- doxytag: member="operations_research::RoutingModel::NodeEvaluator2" ref="5ad22b1565f2e5b1735601a824629289" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef ResultCallback2&lt;int64, <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a>, <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a>&gt; <a class="el" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">operations_research::RoutingModel::NodeEvaluator2</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00078">78</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+
+</div>
+</div><p>
 <hr><h2>Member Enumeration Documentation</h2>
 <a class="anchor" name="6f38b3ff9a2e455677856d97e339da6d"></a><!-- doxytag: member="operations_research::RoutingModel::RoutingStrategy" ref="6f38b3ff9a2e455677856d97e339da6d" args="" -->
 <div class="memitem">
@@ -308,7 +354,7 @@ choose first unbound, assign min value </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00049">49</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00055">55</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -337,7 +383,7 @@ default </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00057">57</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00063">63</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -366,7 +412,7 @@ default </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00064">64</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00070">70</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -400,11 +446,11 @@ default </td></tr>
 Supposes a single depot. 
 <p>
 A depot is the start and end node of the route of a vehicle. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00332">332</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00338">338</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="71095d87d683a033e16aea18717f5c66"></a><!-- doxytag: member="operations_research::RoutingModel::RoutingModel" ref="71095d87d683a033e16aea18717f5c66" args="(int nodes, int vehicles, const std::vector&lt; std::pair&lt; int, int &gt; &gt; &amp;start_end)" -->
+<a class="anchor" name="445d5e0cd27c08b178becc015f7f03ed"></a><!-- doxytag: member="operations_research::RoutingModel::RoutingModel" ref="445d5e0cd27c08b178becc015f7f03ed" args="(int nodes, int vehicles, const std::vector&lt; std::pair&lt; NodeIndex, NodeIndex &gt; &gt; &amp;start_end)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -423,7 +469,7 @@ A depot is the start and end node of the route of a vehicle.
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; std::pair&lt; int, int &gt; &gt; &amp;&nbsp;</td>
+          <td class="paramtype">const std::vector&lt; std::pair&lt; <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a>, <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> &gt; &gt; &amp;&nbsp;</td>
           <td class="paramname"> <em>start_end</em></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -439,11 +485,11 @@ A depot is the start and end node of the route of a vehicle.
 Constructor taking a vector of (start node, end node) pairs for each vehicle route. 
 <p>
 Used to model multiple depots. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00366">366</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00372">372</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="d5cb2b101e2c5e9c6b56950bf758f369"></a><!-- doxytag: member="operations_research::RoutingModel::RoutingModel" ref="d5cb2b101e2c5e9c6b56950bf758f369" args="(int nodes, int vehicles, const std::vector&lt; int &gt; &amp;starts, const std::vector&lt; int &gt; &amp;ends)" -->
+<a class="anchor" name="b08e85546822c3b015d371baed218d93"></a><!-- doxytag: member="operations_research::RoutingModel::RoutingModel" ref="b08e85546822c3b015d371baed218d93" args="(int nodes, int vehicles, const std::vector&lt; NodeIndex &gt; &amp;starts, const std::vector&lt; NodeIndex &gt; &amp;ends)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -462,13 +508,13 @@ Used to model multiple depots.
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; int &gt; &amp;&nbsp;</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> &gt; &amp;&nbsp;</td>
           <td class="paramname"> <em>starts</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::vector&lt; int &gt; &amp;&nbsp;</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> &gt; &amp;&nbsp;</td>
           <td class="paramname"> <em>ends</em></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -485,7 +531,7 @@ Constructor taking vectors of start nodes and end nodes for each vehicle route.
 <p>
 Used to model multiple depots. <dl compact><dt><b><a class="el" href="todo.html#_todo000028">Todo:</a></b></dt><dd>TODO(<a href="http://who/user">user</a>): added to simplify SWIG wrapping. Remove when swigging std::vector&lt;std::pair&lt;int, int&gt; &gt; is ok. </dd></dl>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00408">408</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00415">415</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -506,7 +552,7 @@ Used to model multiple depots. <dl compact><dt><b><a class="el" href="todo.html#
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00482">482</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00489">489</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -531,18 +577,18 @@ Model creation.
 <p>
 DEPRECATED addition of NoCycle constraint; is automatically added in CloseModel(). <dl compact><dt><b><a class="el" href="todo.html#_todo000029">Todo:</a></b></dt><dd>TODO(<a href="http://who/user">user</a>): make private </dd></dl>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00487">487</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00495">495</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="c9b68174cac597b629104a996720fb76"></a><!-- doxytag: member="operations_research::RoutingModel::AddDimension" ref="c9b68174cac597b629104a996720fb76" args="(Solver::IndexEvaluator2 *evaluator, int64 slack_max, int64 capacity, const string &amp;name)" -->
+<a class="anchor" name="0c519ba1ff5b906df2a576451feb379c"></a><!-- doxytag: member="operations_research::RoutingModel::AddDimension" ref="0c519ba1ff5b906df2a576451feb379c" args="(NodeEvaluator2 *evaluator, int64 slack_max, int64 capacity, const string &amp;name)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void operations_research::RoutingModel::AddDimension           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a> *&nbsp;</td>
+          <td class="paramtype"><a class="el" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">NodeEvaluator2</a> *&nbsp;</td>
           <td class="paramname"> <em>evaluator</em>, </td>
         </tr>
         <tr>
@@ -574,7 +620,7 @@ DEPRECATED addition of NoCycle constraint; is automatically added in CloseModel(
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00501">501</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00509">509</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -611,7 +657,7 @@ DEPRECATED addition of NoCycle constraint; is automatically added in CloseModel(
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00522">522</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00530">530</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -648,7 +694,7 @@ DEPRECATED addition of NoCycle constraint; is automatically added in CloseModel(
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00531">531</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00539">539</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -685,7 +731,7 @@ DEPRECATED addition of NoCycle constraint; is automatically added in CloseModel(
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00540">540</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00548">548</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -706,18 +752,18 @@ DEPRECATED addition of NoCycle constraint; is automatically added in CloseModel(
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00549">549</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00557">557</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="9411b0d51dcf3d7311ad2627314e0693"></a><!-- doxytag: member="operations_research::RoutingModel::AddDisjunction" ref="9411b0d51dcf3d7311ad2627314e0693" args="(const std::vector&lt; int64 &gt; &amp;nodes)" -->
+<a class="anchor" name="c2388945ac0d9e706b72c75a82f4baf0"></a><!-- doxytag: member="operations_research::RoutingModel::AddDisjunction" ref="c2388945ac0d9e706b72c75a82f4baf0" args="(const std::vector&lt; NodeIndex &gt; &amp;nodes)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void operations_research::RoutingModel::AddDisjunction           </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; int64 &gt; &amp;&nbsp;</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> &gt; &amp;&nbsp;</td>
           <td class="paramname"> <em>nodes</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -729,19 +775,19 @@ DEPRECATED addition of NoCycle constraint; is automatically added in CloseModel(
 <p>
 Adds a disjunction constraint on the nodes: exactly one of the nodes is active. 
 <p>
-
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00599">599</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+Start and end nodes of any vehicle cannot be part of a disjunction. 
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00606">606</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="d50995f7f465fd727704557ddd76b53f"></a><!-- doxytag: member="operations_research::RoutingModel::AddDisjunction" ref="d50995f7f465fd727704557ddd76b53f" args="(const std::vector&lt; int64 &gt; &amp;nodes, int64 penalty)" -->
+<a class="anchor" name="0136e0ccbb01867d754ecf9e6152a2e5"></a><!-- doxytag: member="operations_research::RoutingModel::AddDisjunction" ref="0136e0ccbb01867d754ecf9e6152a2e5" args="(const std::vector&lt; NodeIndex &gt; &amp;nodes, int64 penalty)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void operations_research::RoutingModel::AddDisjunction           </td>
           <td>(</td>
-          <td class="paramtype">const std::vector&lt; int64 &gt; &amp;&nbsp;</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> &gt; &amp;&nbsp;</td>
           <td class="paramname"> <em>nodes</em>, </td>
         </tr>
         <tr>
@@ -762,8 +808,8 @@ Adds a disjunction constraint on the nodes: exactly one of the nodes is active.
 <p>
 Adds a penalized disjunction constraint on the nodes: at most one of the nodes is active; if none are active a penalty cost is applied (this cost is added to the global cost function). 
 <p>
-This is equivalent to adding the constraint: p + Sum(i)active[i] == 1, where p is a boolean variable and the following cost to the cost function: p * penalty. "penalty" must be positive. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00603">603</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+This is equivalent to adding the constraint: p + Sum(i)active[i] == 1, where p is a boolean variable and the following cost to the cost function: p * penalty. "penalty" must be positive. SWIGPYTHON 
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00610">610</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -785,18 +831,18 @@ This is equivalent to adding the constraint: p + Sum(i)active[i] == 1, where p i
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00646">646</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00654">654</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="ffb6070cc82b66227ae4751c3d6ad58d"></a><!-- doxytag: member="operations_research::RoutingModel::SetCost" ref="ffb6070cc82b66227ae4751c3d6ad58d" args="(Solver::IndexEvaluator2 *evaluator)" -->
+<a class="anchor" name="ad67d6674b1bbfd192b094a78b98ae00"></a><!-- doxytag: member="operations_research::RoutingModel::SetCost" ref="ad67d6674b1bbfd192b094a78b98ae00" args="(NodeEvaluator2 *evaluator)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void operations_research::RoutingModel::SetCost           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a> *&nbsp;</td>
+          <td class="paramtype"><a class="el" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">NodeEvaluator2</a> *&nbsp;</td>
           <td class="paramname"> <em>evaluator</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -807,11 +853,11 @@ This is equivalent to adding the constraint: p + Sum(i)active[i] == 1, where p i
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00557">557</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00565">565</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="4b32913c8744e2777597bee4e9a78225"></a><!-- doxytag: member="operations_research::RoutingModel::SetVehicleCost" ref="4b32913c8744e2777597bee4e9a78225" args="(int vehicle, Solver::IndexEvaluator2 *evaluator)" -->
+<a class="anchor" name="5acf5c0059bb744313072e90f9a6c13d"></a><!-- doxytag: member="operations_research::RoutingModel::SetVehicleCost" ref="5acf5c0059bb744313072e90f9a6c13d" args="(int vehicle, NodeEvaluator2 *evaluator)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -824,7 +870,7 @@ This is equivalent to adding the constraint: p + Sum(i)active[i] == 1, where p i
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a> *&nbsp;</td>
+          <td class="paramtype"><a class="el" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">NodeEvaluator2</a> *&nbsp;</td>
           <td class="paramname"> <em>evaluator</em></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -838,18 +884,18 @@ This is equivalent to adding the constraint: p + Sum(i)active[i] == 1, where p i
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00570">570</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00578">578</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="dc0823e5fd3b472adf49430335f8d7ee"></a><!-- doxytag: member="operations_research::RoutingModel::SetDepot" ref="dc0823e5fd3b472adf49430335f8d7ee" args="(int depot)" -->
+<a class="anchor" name="fc62358888d00d45c4769cdc6e3d3cbb"></a><!-- doxytag: member="operations_research::RoutingModel::SetDepot" ref="fc62358888d00d45c4769cdc6e3d3cbb" args="(NodeIndex depot)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void operations_research::RoutingModel::SetDepot           </td>
           <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
+          <td class="paramtype"><a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a>&nbsp;</td>
           <td class="paramname"> <em>depot</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -860,7 +906,7 @@ This is equivalent to adding the constraint: p + Sum(i)active[i] == 1, where p i
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00650">650</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00658">658</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -883,7 +929,7 @@ This is equivalent to adding the constraint: p + Sum(i)active[i] == 1, where p i
 Route fixed cost taken into account if the route is not empty, aka there's at least one node on the route other than the first and last nodes. 
 <p>
 Cost is applied to all vehicle routes; SetRouteFixedCost is equivalent to calling SetVehicleFixedCost on all vehicles. Deprecated by GetVehicleFixedCost and SetVehicleFixedCost. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00566">566</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00574">574</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -905,7 +951,7 @@ Cost is applied to all vehicle routes; SetRouteFixedCost is equivalent to callin
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00583">583</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00590">590</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -929,7 +975,7 @@ Cost is applied to all vehicle routes; SetRouteFixedCost is equivalent to callin
 Vehicle fixed cost taken into account if the route of the vehicle is not empty, aka there's at least one node on the route other than the first and last nodes. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00589">589</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00596">596</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -960,7 +1006,7 @@ Vehicle fixed cost taken into account if the route of the vehicle is not empty, 
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00594">594</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00601">601</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -983,7 +1029,7 @@ Vehicle fixed cost taken into account if the route of the vehicle is not empty, 
 <a class="el" href="classoperations__research_1_1Search.html" title="Search class.">Search</a>. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00138">138</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00158">158</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1005,7 +1051,7 @@ Vehicle fixed cost taken into account if the route of the vehicle is not empty, 
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00141">141</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00161">161</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1028,7 +1074,7 @@ Vehicle fixed cost taken into account if the route of the vehicle is not empty, 
 Gets/sets the evaluator used when the first solution heuristic is set to ROUTING_EVALUATOR_STRATEGY (variant of ROUTING_PATH_CHEAPEST_ARC using 'evaluator' to sort arcs). 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00148">148</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00168">168</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1052,7 +1098,7 @@ Gets/sets the evaluator used when the first solution heuristic is set to ROUTING
 Takes ownership of evaluator. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00153">153</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00173">173</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1075,7 +1121,7 @@ Takes ownership of evaluator.
 If a first solution flag has been set (to a value different from Default), returns the corresponding strategy, otherwise returns the strategy which was set. 
 <p>
 Flags override strategy selection.
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00822">822</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00831">831</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1096,7 +1142,7 @@ Flags override strategy selection.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00160">160</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00180">180</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1118,7 +1164,7 @@ Flags override strategy selection.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00161">161</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00181">181</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1141,7 +1187,7 @@ Flags override strategy selection.
 If a metaheuristic flag has been set, returns the corresponding metaheuristic, otherwise returns the metaheuristic which was set. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00834">834</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00843">843</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1163,7 +1209,7 @@ If a metaheuristic flag has been set, returns the corresponding metaheuristic, o
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00845">845</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00854">854</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1187,7 +1233,7 @@ If a metaheuristic flag has been set, returns the corresponding metaheuristic, o
 Solves the current routing model; closes the current model. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00849">849</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00858">858</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1210,7 +1256,7 @@ Solves the current routing model; closes the current model.
 Returns current status of the routing model. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00171">171</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00191">191</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1234,7 +1280,7 @@ Returns current status of the routing model.
 Applies lock chain to the next search. 
 <p>
 Returns next var at the end of the locked chain; this variable is not locked. <a class="el" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a> containing locks can be obtained calling <a class="el" href="classoperations__research_1_1RoutingModel.html#db8c703e9d29b2046db433b8c74e338c">PreAssignment()</a>. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00884">884</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00893">893</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1258,7 +1304,7 @@ Returns next var at the end of the locked chain; this variable is not locked. <a
 Inspection. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00178">178</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00198">198</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1280,7 +1326,7 @@ Inspection.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00179">179</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00199">199</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1302,7 +1348,7 @@ Inspection.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01000">1000</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01009">1009</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1324,7 +1370,7 @@ Inspection.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00181">181</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00201">201</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1361,7 +1407,7 @@ Inspection.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01004">1004</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01013">1013</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1392,7 +1438,7 @@ Inspection.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00184">184</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00204">204</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1429,7 +1475,7 @@ Inspection.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01012">1012</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01021">1021</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1460,7 +1506,7 @@ Inspection.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00188">188</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00208">208</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1493,7 +1539,7 @@ Inspection.
 Return high cost if connecting to end node; used in cost-based first solution. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01021">1021</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01030">1030</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1514,7 +1560,7 @@ Return high cost if connecting to end node; used in cost-based first solution.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00192">192</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00212">212</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1537,7 +1583,7 @@ Return high cost if connecting to end node; used in cost-based first solution.
 Variables. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00195">195</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00215">215</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1558,7 +1604,7 @@ Variables.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00196">196</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00216">216</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1580,7 +1626,7 @@ Variables.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00197">197</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00217">217</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1602,7 +1648,7 @@ Variables.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00198">198</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00218">218</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1624,7 +1670,7 @@ Variables.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00199">199</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00219">219</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1657,7 +1703,7 @@ Variables.
 Returns the variable created by the AddDimension with the same name. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01351">1351</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01360">1360</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1688,7 +1734,7 @@ Returns the variable created by the AddDimension with the same name.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01360">1360</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01369">1369</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1712,7 +1758,7 @@ Returns the variable created by the AddDimension with the same name.
 Add extra variables to assignments. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01369">1369</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01378">1378</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1735,7 +1781,7 @@ Add extra variables to assignments.
 Sizes and indices. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00207">207</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00227">227</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1756,7 +1802,7 @@ Sizes and indices.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00208">208</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00228">228</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1777,16 +1823,16 @@ Sizes and indices.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00209">209</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00229">229</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="7bfcb5eaee4b0459ddf4c67d2dd19b67"></a><!-- doxytag: member="operations_research::RoutingModel::IndexToNode" ref="7bfcb5eaee4b0459ddf4c67d2dd19b67" args="(int64 index) const " -->
+<a class="anchor" name="ca1b6ad06bed2a28e3debeed4512db0d"></a><!-- doxytag: member="operations_research::RoutingModel::IndexToNode" ref="ca1b6ad06bed2a28e3debeed4512db0d" args="(int64 index) const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int64 operations_research::RoutingModel::IndexToNode           </td>
+          <td class="memname"><a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">RoutingModel::NodeIndex</a> operations_research::RoutingModel::IndexToNode           </td>
           <td>(</td>
           <td class="paramtype">int64&nbsp;</td>
           <td class="paramname"> <em>index</em>          </td>
@@ -1801,18 +1847,18 @@ Sizes and indices.
 Returns the node index from an index value resulting fron a next variable. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00938">938</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00947">947</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="cbe4bfaecf01e5288e10c7fbe01283b9"></a><!-- doxytag: member="operations_research::RoutingModel::NodeToIndex" ref="cbe4bfaecf01e5288e10c7fbe01283b9" args="(int64 node) const " -->
+<a class="anchor" name="6c88d9d5da962886bfe0924bc5ea6457"></a><!-- doxytag: member="operations_research::RoutingModel::NodeToIndex" ref="6c88d9d5da962886bfe0924bc5ea6457" args="(NodeIndex node) const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int64 operations_research::RoutingModel::NodeToIndex           </td>
           <td>(</td>
-          <td class="paramtype">int64&nbsp;</td>
+          <td class="paramtype"><a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a>&nbsp;</td>
           <td class="paramname"> <em>node</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td> const</td>
@@ -1825,7 +1871,7 @@ Returns the node index from an index value resulting fron a next variable.
 Returns the variable index from a node value. 
 <p>
 Should not be used for nodes at the start / end of a route, because of node multiplicity. These cases return -1, which is considered a failure case. Clients who need start and end variable indices should use <a class="el" href="classoperations__research_1_1RoutingModel.html#fcb255b430c9c51561a344966f32940d" title="Inspection.">RoutingModel::Start</a> and <a class="el" href="classoperations__research_1_1RoutingModel.html#9d2055447d769bd064f61c150d099b53">RoutingModel::End</a>. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00943">943</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00952">952</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1846,7 +1892,7 @@ Should not be used for nodes at the start / end of a route, because of node mult
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00220">220</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00240">240</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1867,7 +1913,7 @@ Should not be used for nodes at the start / end of a route, because of node mult
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00221">221</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00241">241</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1888,7 +1934,7 @@ Should not be used for nodes at the start / end of a route, because of node mult
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00223">223</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00243">243</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1910,7 +1956,7 @@ Should not be used for nodes at the start / end of a route, because of node mult
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00903">903</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00912">912</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1932,7 +1978,7 @@ Should not be used for nodes at the start / end of a route, because of node mult
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00921">921</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00930">930</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1953,7 +1999,7 @@ Should not be used for nodes at the start / end of a route, because of node mult
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00227">227</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00247">247</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1986,7 +2032,44 @@ Should not be used for nodes at the start / end of a route, because of node mult
 Utilities for swig. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00932">932</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00941">941</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+
+</div>
+</div><p>
+<hr><h2>Member Data Documentation</h2>
+<a class="anchor" name="2fe3671c7bac6070d8c3f03a12722c70"></a><!-- doxytag: member="operations_research::RoutingModel::kFirstNode" ref="2fe3671c7bac6070d8c3f03a12722c70" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">RoutingModel::NodeIndex</a> <a class="el" href="classoperations__research_1_1RoutingModel.html#2fe3671c7bac6070d8c3f03a12722c70">operations_research::RoutingModel::kFirstNode</a><code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Constants with an index of the first node (to be used in for loops for iteration), and a special index to signalize an invalid/unused value. 
+<p>
+
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00082">82</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="86465650deeb78a3ff59ac0fe5af60bf"></a><!-- doxytag: member="operations_research::RoutingModel::kInvalidNodeIndex" ref="86465650deeb78a3ff59ac0fe5af60bf" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">RoutingModel::NodeIndex</a> <a class="el" href="classoperations__research_1_1RoutingModel.html#86465650deeb78a3ff59ac0fe5af60bf">operations_research::RoutingModel::kInvalidNodeIndex</a><code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00083">83</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -2000,7 +2083,7 @@ Utilities for swig.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#874340 height=3></td>
+      <td colspan=2 bgcolor=#115511 height=3></td>
     </tr>
   </table>
 

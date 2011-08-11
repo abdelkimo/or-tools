@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #874340
+      background-color: #115511
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#874340 height=3></td>
+      <td colspan=3 bgcolor=#115511 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#874340><b>Thu Aug 11 12:09:23 PDT 2011</b></font>
+          Generated on: <font color=#115511><b>Thu Aug 11 16:08:43 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#874340>
+            <td bgcolor=#115511>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#874340>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#115511>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/base/index.html">base</a>/
             </tt></b></font>
@@ -111,7 +111,7 @@
 <a name="l00029"></a>00029 
 <a name="l00030"></a>00030 <span class="preprocessor">#if !defined(_MSC_VER)</span>
 <a name="l00031"></a>00031 <span class="preprocessor"></span><span class="keyword">namespace </span>{
-<a name="l00032"></a><a class="code" href="namespaceoperations__research.html#5ef202d8ac8369100861b3c9d38d71a1">00032</a> <span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="integral__types_8h.html#ecfc3c54bd29ad5964e1c1c3ccbf89df" title="NOLINT.">int64</a> <a class="code" href="namespaceoperations__research.html#5ef202d8ac8369100861b3c9d38d71a1">TimevalToUsec</a>(<span class="keyword">const</span> timeval &amp;tv) {
+<a name="l00032"></a><a class="code" href="namespaceoperations__research.html#8e9dcf8126cb522d7f250f9821f77f0d">00032</a> <span class="keyword">static</span> <span class="keyword">inline</span> <a class="code" href="integral__types_8h.html#ecfc3c54bd29ad5964e1c1c3ccbf89df" title="NOLINT.">int64</a> <a class="code" href="namespaceoperations__research.html#8e9dcf8126cb522d7f250f9821f77f0d">TimevalToUsec</a>(<span class="keyword">const</span> timeval &amp;tv) {
 <a name="l00033"></a>00033   <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="integral__types_8h.html#ecfc3c54bd29ad5964e1c1c3ccbf89df" title="NOLINT.">int64</a><span class="keyword">&gt;</span>(1000000) * tv.tv_sec + tv.tv_usec;
 <a name="l00034"></a>00034 }
 <a name="l00035"></a>00035 }  <span class="comment">// namespace</span>
@@ -126,7 +126,7 @@
 <a name="l00044"></a>00044 <span class="preprocessor">#elif defined(__GNUC__)</span>
 <a name="l00045"></a>00045 <span class="preprocessor"></span>  <span class="keyword">struct </span>timeval tv;
 <a name="l00046"></a>00046   gettimeofday(&amp;tv, NULL);
-<a name="l00047"></a>00047   start_usec_ = <a class="code" href="namespaceoperations__research.html#5ef202d8ac8369100861b3c9d38d71a1">TimevalToUsec</a>(tv);
+<a name="l00047"></a>00047   start_usec_ = <a class="code" href="namespaceoperations__research.html#8e9dcf8126cb522d7f250f9821f77f0d">TimevalToUsec</a>(tv);
 <a name="l00048"></a>00048 <span class="preprocessor">#endif</span>
 <a name="l00049"></a>00049 <span class="preprocessor"></span>  has_started_ = <span class="keyword">true</span>;
 <a name="l00050"></a>00050 }
@@ -138,7 +138,7 @@
 <a name="l00056"></a>00056 <span class="preprocessor">#elif defined(__GNUC__)</span>
 <a name="l00057"></a>00057 <span class="preprocessor"></span>    <span class="keyword">struct </span>timeval tv;
 <a name="l00058"></a>00058     gettimeofday(&amp;tv, NULL);
-<a name="l00059"></a>00059     sum_usec_ += <a class="code" href="namespaceoperations__research.html#5ef202d8ac8369100861b3c9d38d71a1">TimevalToUsec</a>(tv) - start_usec_;
+<a name="l00059"></a>00059     sum_usec_ += <a class="code" href="namespaceoperations__research.html#8e9dcf8126cb522d7f250f9821f77f0d">TimevalToUsec</a>(tv) - start_usec_;
 <a name="l00060"></a>00060 <span class="preprocessor">#endif</span>
 <a name="l00061"></a>00061 <span class="preprocessor"></span>    has_started_ = <span class="keyword">false</span>;
 <a name="l00062"></a>00062   }
@@ -173,7 +173,7 @@
 <a name="l00091"></a>00091   <span class="keywordflow">if</span> (has_started_) {           <span class="comment">// need to include current time too</span>
 <a name="l00092"></a>00092     <span class="keyword">struct </span>timeval tv;
 <a name="l00093"></a>00093     gettimeofday(&amp;tv, NULL);
-<a name="l00094"></a>00094     local_sum_usec += <a class="code" href="namespaceoperations__research.html#5ef202d8ac8369100861b3c9d38d71a1">TimevalToUsec</a>(tv) - start_usec_;
+<a name="l00094"></a>00094     local_sum_usec += <a class="code" href="namespaceoperations__research.html#8e9dcf8126cb522d7f250f9821f77f0d">TimevalToUsec</a>(tv) - start_usec_;
 <a name="l00095"></a>00095   }
 <a name="l00096"></a>00096   <span class="keywordflow">return</span> local_sum_usec / kMilliSecInMicroSec;
 <a name="l00097"></a>00097 <span class="preprocessor">#endif</span>
@@ -250,7 +250,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#874340 height=3></td>
+      <td colspan=2 bgcolor=#115511 height=3></td>
     </tr>
   </table>
 

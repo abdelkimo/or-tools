@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #874340
+      background-color: #115511
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#874340 height=3></td>
+      <td colspan=3 bgcolor=#115511 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#874340><b>Thu Aug 11 12:09:23 PDT 2011</b></font>
+          Generated on: <font color=#115511><b>Thu Aug 11 16:08:43 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#874340>
+            <td bgcolor=#115511>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#874340>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#115511>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/examples/index.html">examples</a>/
             </tt></b></font>
@@ -142,9 +142,9 @@
 <a name="l00059"></a>00059 <span class="comment">// Cost/distance functions.</span>
 <a name="l00060"></a>00060 
 <a name="l00061"></a>00061 <span class="comment">// Sample function.</span>
-<a name="l00062"></a><a class="code" href="tsp_8cc.html#f264a59938e3209ff85bf94d7517366f">00062</a> int64 <a class="code" href="tsp_8cc.html#f264a59938e3209ff85bf94d7517366f" title="Cost/distance functions.">MyDistance</a>(int64 from, int64 to) {
+<a name="l00062"></a><a class="code" href="tsp_8cc.html#755d7b228eaa160e4d3e7435766b521c">00062</a> int64 <a class="code" href="tsp_8cc.html#755d7b228eaa160e4d3e7435766b521c" title="Cost/distance functions.">MyDistance</a>(RoutingModel::NodeIndex from, RoutingModel::NodeIndex to) {
 <a name="l00063"></a>00063   <span class="comment">// Put your distance code here.</span>
-<a name="l00064"></a>00064   <span class="keywordflow">return</span> from + to;  <span class="comment">// for instance</span>
+<a name="l00064"></a>00064   <span class="keywordflow">return</span> (from + to).value();  <span class="comment">// for instance</span>
 <a name="l00065"></a>00065 }
 <a name="l00066"></a>00066 
 <a name="l00067"></a>00067 <span class="comment">// Random matrix.</span>
@@ -155,87 +155,91 @@
 <a name="l00072"></a>00072     matrix_.reset(<span class="keyword">new</span> int64[size_ * size_]);
 <a name="l00073"></a>00073     <span class="keyword">const</span> int64 kDistanceMax = 100;
 <a name="l00074"></a>00074     ACMRandom randomizer(<a class="code" href="cvrptw_8cc.html#78eab8c50cc47334014eea87f8dcdc54" title="Random seed generator.">GetSeed</a>());
-<a name="l00075"></a>00075     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> from = 0; from &lt; size_; ++from) {
-<a name="l00076"></a>00076       <span class="keywordflow">for</span> (<span class="keywordtype">int</span> to = 0; to &lt; size_; ++to) {
-<a name="l00077"></a>00077         <span class="keywordflow">if</span> (to != from) {
-<a name="l00078"></a>00078           matrix_[MatrixIndex(from, to)] = randomizer.Uniform(kDistanceMax);
-<a name="l00079"></a>00079         } <span class="keywordflow">else</span> {
-<a name="l00080"></a>00080           matrix_[MatrixIndex(from, to)] = 0LL;
-<a name="l00081"></a>00081         }
-<a name="l00082"></a>00082       }
-<a name="l00083"></a>00083     }
-<a name="l00084"></a>00084   }
-<a name="l00085"></a><a class="code" href="classRandomMatrix.html#46991ca631e5648377d9093092553c8d">00085</a>   int64 <a class="code" href="classRandomMatrix.html#46991ca631e5648377d9093092553c8d">Distance</a>(int64 from, int64 to)<span class="keyword"> const </span>{
-<a name="l00086"></a>00086     <span class="keywordflow">return</span> matrix_[MatrixIndex(from, to)];
-<a name="l00087"></a>00087   }
-<a name="l00088"></a>00088  <span class="keyword">private</span>:
-<a name="l00089"></a>00089   int64 MatrixIndex(int64 from, int64 to)<span class="keyword"> const </span>{
-<a name="l00090"></a>00090     <span class="keywordflow">return</span> from * size_ + to;
-<a name="l00091"></a>00091   }
-<a name="l00092"></a>00092   scoped_array&lt;int64&gt; matrix_;
-<a name="l00093"></a>00093   <span class="keyword">const</span> <span class="keywordtype">int</span> size_;
-<a name="l00094"></a>00094 };
-<a name="l00095"></a>00095 
-<a name="l00096"></a><a class="code" href="tsp_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00096</a> <span class="keywordtype">int</span> <a class="code" href="costas__array_8cc.html#3c04138a5bfe5d72780bb7e82a18e627" title="namespace operations_research">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {
-<a name="l00097"></a>00097   google::ParseCommandLineFlags(&amp;argc, &amp;argv, <span class="keyword">true</span>);
-<a name="l00098"></a>00098   <span class="keywordflow">if</span> (FLAGS_tsp_size &gt; 0) {
-<a name="l00099"></a>00099     <span class="comment">// TSP of size FLAGS_tsp_size.</span>
-<a name="l00100"></a>00100     <span class="comment">// Second argument = 1 to build a single tour (it's a TSP).</span>
-<a name="l00101"></a>00101     <span class="comment">// Nodes are indexed from 0 to FLAGS_tsp_size - 1, by default the start of</span>
-<a name="l00102"></a>00102     <span class="comment">// the route is node 0.</span>
-<a name="l00103"></a>00103     RoutingModel routing(FLAGS_tsp_size, 1);
-<a name="l00104"></a>00104     <span class="comment">// Setting first solution heuristic (cheapest addition).</span>
-<a name="l00105"></a>00105     routing.SetCommandLineOption(<span class="stringliteral">"routing_first_solution"</span>, <span class="stringliteral">"PathCheapestArc"</span>);
-<a name="l00106"></a>00106     <span class="comment">// Disabling Large Neighborhood Search, comment out to activate it.</span>
-<a name="l00107"></a>00107     routing.SetCommandLineOption(<span class="stringliteral">"routing_no_lns"</span>, <span class="stringliteral">"true"</span>);
-<a name="l00108"></a>00108 
-<a name="l00109"></a>00109     <span class="comment">// Setting the cost function.</span>
-<a name="l00110"></a>00110     <span class="comment">// Put a permanent callback to the distance accessor here. The callback</span>
-<a name="l00111"></a>00111     <span class="comment">// has the following signature: ResultCallback2&lt;int64, int64, int64&gt;.</span>
-<a name="l00112"></a>00112     <span class="comment">// The two arguments are the from and to node inidices.</span>
-<a name="l00113"></a>00113     <a class="code" href="classRandomMatrix.html" title="Random matrix.">RandomMatrix</a> matrix(FLAGS_tsp_size);
-<a name="l00114"></a>00114     <span class="keywordflow">if</span> (FLAGS_tsp_use_random_matrix) {
-<a name="l00115"></a>00115       matrix.<a class="code" href="classRandomMatrix.html#ce6fb68cc26e25d441fbe68a5b4373f9">Initialize</a>();
-<a name="l00116"></a>00116       routing.SetCost(NewPermanentCallback(&amp;matrix, &amp;<a class="code" href="classRandomMatrix.html#46991ca631e5648377d9093092553c8d">RandomMatrix::Distance</a>));
-<a name="l00117"></a>00117     } <span class="keywordflow">else</span> {
-<a name="l00118"></a>00118       routing.SetCost(NewPermanentCallback(<a class="code" href="tsp_8cc.html#f264a59938e3209ff85bf94d7517366f" title="Cost/distance functions.">MyDistance</a>));
-<a name="l00119"></a>00119     }
-<a name="l00120"></a>00120     <span class="comment">// Forbid node connections (randomly).</span>
-<a name="l00121"></a>00121     ACMRandom randomizer(<a class="code" href="cvrptw_8cc.html#78eab8c50cc47334014eea87f8dcdc54" title="Random seed generator.">GetSeed</a>());
-<a name="l00122"></a>00122     int64 forbidden_connections = 0;
-<a name="l00123"></a>00123     <span class="keywordflow">while</span> (forbidden_connections &lt; FLAGS_tsp_random_forbidden_connections) {
-<a name="l00124"></a>00124       <span class="keyword">const</span> int64 from = randomizer.Uniform(FLAGS_tsp_size - 1);
-<a name="l00125"></a>00125       <span class="keyword">const</span> int64 to = randomizer.Uniform(FLAGS_tsp_size - 1) + 1;
-<a name="l00126"></a>00126       <span class="keywordflow">if</span> (routing.NextVar(from)-&gt;Contains(to)) {
-<a name="l00127"></a>00127         LG &lt;&lt; <span class="stringliteral">"Forbidding connection "</span> &lt;&lt; from &lt;&lt; <span class="stringliteral">" -&gt; "</span> &lt;&lt; to;
-<a name="l00128"></a>00128         routing.NextVar(from)-&gt;RemoveValue(to);
-<a name="l00129"></a>00129         ++forbidden_connections;
-<a name="l00130"></a>00130       }
-<a name="l00131"></a>00131     }
-<a name="l00132"></a>00132     <span class="comment">// Solve, returns a solution if any (owned by RoutingModel).</span>
-<a name="l00133"></a>00133     <span class="keyword">const</span> Assignment* solution = routing.Solve();
-<a name="l00134"></a>00134     <span class="keywordflow">if</span> (solution != NULL) {
-<a name="l00135"></a>00135       <span class="comment">// Solution cost.</span>
-<a name="l00136"></a>00136       LG &lt;&lt; <span class="stringliteral">"Cost "</span> &lt;&lt; solution-&gt;ObjectiveValue();
-<a name="l00137"></a>00137       <span class="comment">// Inspect solution.</span>
-<a name="l00138"></a>00138       <span class="comment">// Only one route here; otherwise iterate from 0 to routing.vehicles() - 1</span>
-<a name="l00139"></a>00139       <span class="keyword">const</span> <span class="keywordtype">int</span> route_number = 0;
-<a name="l00140"></a>00140       <span class="keywordtype">string</span> route;
-<a name="l00141"></a>00141       <span class="keywordflow">for</span> (int64 node = routing.Start(route_number);
-<a name="l00142"></a>00142            !routing.IsEnd(node);
-<a name="l00143"></a>00143            node = solution-&gt;Value(routing.NextVar(node))) {
-<a name="l00144"></a>00144         route = StrCat(route, StrCat(node, <span class="stringliteral">" -&gt; "</span>));
-<a name="l00145"></a>00145       }
-<a name="l00146"></a>00146       route = StrCat(route, <span class="stringliteral">"0"</span>);
-<a name="l00147"></a>00147       LG &lt;&lt; route;
-<a name="l00148"></a>00148     } <span class="keywordflow">else</span> {
-<a name="l00149"></a>00149       LG &lt;&lt; <span class="stringliteral">"No solution found."</span>;
-<a name="l00150"></a>00150     }
-<a name="l00151"></a>00151   } <span class="keywordflow">else</span> {
-<a name="l00152"></a>00152     LG &lt;&lt; <span class="stringliteral">"Specify an instance size greater than 0."</span>;
-<a name="l00153"></a>00153   }
-<a name="l00154"></a>00154   <span class="keywordflow">return</span> 0;
-<a name="l00155"></a>00155 }
+<a name="l00075"></a>00075     <span class="keywordflow">for</span> (RoutingModel::NodeIndex from = RoutingModel::kFirstNode; from &lt; size_;
+<a name="l00076"></a>00076          ++from) {
+<a name="l00077"></a>00077       <span class="keywordflow">for</span> (RoutingModel::NodeIndex to = RoutingModel::kFirstNode; to &lt; size_;
+<a name="l00078"></a>00078            ++to) {
+<a name="l00079"></a>00079         <span class="keywordflow">if</span> (to != from) {
+<a name="l00080"></a>00080           matrix_[MatrixIndex(from, to)] = randomizer.Uniform(kDistanceMax);
+<a name="l00081"></a>00081         } <span class="keywordflow">else</span> {
+<a name="l00082"></a>00082           matrix_[MatrixIndex(from, to)] = 0LL;
+<a name="l00083"></a>00083         }
+<a name="l00084"></a>00084       }
+<a name="l00085"></a>00085     }
+<a name="l00086"></a>00086   }
+<a name="l00087"></a><a class="code" href="classRandomMatrix.html#6156d3223e8878a77bf9cf2f7f8f8c71">00087</a>   int64 <a class="code" href="classRandomMatrix.html#6156d3223e8878a77bf9cf2f7f8f8c71">Distance</a>(RoutingModel::NodeIndex from,
+<a name="l00088"></a>00088                  RoutingModel::NodeIndex to)<span class="keyword"> const </span>{
+<a name="l00089"></a>00089     <span class="keywordflow">return</span> matrix_[MatrixIndex(from, to)];
+<a name="l00090"></a>00090   }
+<a name="l00091"></a>00091  <span class="keyword">private</span>:
+<a name="l00092"></a>00092   int64 MatrixIndex(RoutingModel::NodeIndex from,
+<a name="l00093"></a>00093                     RoutingModel::NodeIndex to)<span class="keyword"> const </span>{
+<a name="l00094"></a>00094     <span class="keywordflow">return</span> (from * size_ + to).value();
+<a name="l00095"></a>00095   }
+<a name="l00096"></a>00096   scoped_array&lt;int64&gt; matrix_;
+<a name="l00097"></a>00097   <span class="keyword">const</span> <span class="keywordtype">int</span> size_;
+<a name="l00098"></a>00098 };
+<a name="l00099"></a>00099 
+<a name="l00100"></a><a class="code" href="tsp_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00100</a> <span class="keywordtype">int</span> <a class="code" href="costas__array_8cc.html#3c04138a5bfe5d72780bb7e82a18e627" title="namespace operations_research">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {
+<a name="l00101"></a>00101   google::ParseCommandLineFlags(&amp;argc, &amp;argv, <span class="keyword">true</span>);
+<a name="l00102"></a>00102   <span class="keywordflow">if</span> (FLAGS_tsp_size &gt; 0) {
+<a name="l00103"></a>00103     <span class="comment">// TSP of size FLAGS_tsp_size.</span>
+<a name="l00104"></a>00104     <span class="comment">// Second argument = 1 to build a single tour (it's a TSP).</span>
+<a name="l00105"></a>00105     <span class="comment">// Nodes are indexed from 0 to FLAGS_tsp_size - 1, by default the start of</span>
+<a name="l00106"></a>00106     <span class="comment">// the route is node 0.</span>
+<a name="l00107"></a>00107     RoutingModel routing(FLAGS_tsp_size, 1);
+<a name="l00108"></a>00108     <span class="comment">// Setting first solution heuristic (cheapest addition).</span>
+<a name="l00109"></a>00109     routing.SetCommandLineOption(<span class="stringliteral">"routing_first_solution"</span>, <span class="stringliteral">"PathCheapestArc"</span>);
+<a name="l00110"></a>00110     <span class="comment">// Disabling Large Neighborhood Search, comment out to activate it.</span>
+<a name="l00111"></a>00111     routing.SetCommandLineOption(<span class="stringliteral">"routing_no_lns"</span>, <span class="stringliteral">"true"</span>);
+<a name="l00112"></a>00112 
+<a name="l00113"></a>00113     <span class="comment">// Setting the cost function.</span>
+<a name="l00114"></a>00114     <span class="comment">// Put a permanent callback to the distance accessor here. The callback</span>
+<a name="l00115"></a>00115     <span class="comment">// has the following signature: ResultCallback2&lt;int64, int64, int64&gt;.</span>
+<a name="l00116"></a>00116     <span class="comment">// The two arguments are the from and to node inidices.</span>
+<a name="l00117"></a>00117     <a class="code" href="classRandomMatrix.html" title="Random matrix.">RandomMatrix</a> matrix(FLAGS_tsp_size);
+<a name="l00118"></a>00118     <span class="keywordflow">if</span> (FLAGS_tsp_use_random_matrix) {
+<a name="l00119"></a>00119       matrix.<a class="code" href="classRandomMatrix.html#ce6fb68cc26e25d441fbe68a5b4373f9">Initialize</a>();
+<a name="l00120"></a>00120       routing.SetCost(NewPermanentCallback(&amp;matrix, &amp;<a class="code" href="classRandomMatrix.html#6156d3223e8878a77bf9cf2f7f8f8c71">RandomMatrix::Distance</a>));
+<a name="l00121"></a>00121     } <span class="keywordflow">else</span> {
+<a name="l00122"></a>00122       routing.SetCost(NewPermanentCallback(<a class="code" href="tsp_8cc.html#755d7b228eaa160e4d3e7435766b521c" title="Cost/distance functions.">MyDistance</a>));
+<a name="l00123"></a>00123     }
+<a name="l00124"></a>00124     <span class="comment">// Forbid node connections (randomly).</span>
+<a name="l00125"></a>00125     ACMRandom randomizer(<a class="code" href="cvrptw_8cc.html#78eab8c50cc47334014eea87f8dcdc54" title="Random seed generator.">GetSeed</a>());
+<a name="l00126"></a>00126     int64 forbidden_connections = 0;
+<a name="l00127"></a>00127     <span class="keywordflow">while</span> (forbidden_connections &lt; FLAGS_tsp_random_forbidden_connections) {
+<a name="l00128"></a>00128       <span class="keyword">const</span> int64 from = randomizer.Uniform(FLAGS_tsp_size - 1);
+<a name="l00129"></a>00129       <span class="keyword">const</span> int64 to = randomizer.Uniform(FLAGS_tsp_size - 1) + 1;
+<a name="l00130"></a>00130       <span class="keywordflow">if</span> (routing.NextVar(from)-&gt;Contains(to)) {
+<a name="l00131"></a>00131         LG &lt;&lt; <span class="stringliteral">"Forbidding connection "</span> &lt;&lt; from &lt;&lt; <span class="stringliteral">" -&gt; "</span> &lt;&lt; to;
+<a name="l00132"></a>00132         routing.NextVar(from)-&gt;RemoveValue(to);
+<a name="l00133"></a>00133         ++forbidden_connections;
+<a name="l00134"></a>00134       }
+<a name="l00135"></a>00135     }
+<a name="l00136"></a>00136     <span class="comment">// Solve, returns a solution if any (owned by RoutingModel).</span>
+<a name="l00137"></a>00137     <span class="keyword">const</span> Assignment* solution = routing.Solve();
+<a name="l00138"></a>00138     <span class="keywordflow">if</span> (solution != NULL) {
+<a name="l00139"></a>00139       <span class="comment">// Solution cost.</span>
+<a name="l00140"></a>00140       LG &lt;&lt; <span class="stringliteral">"Cost "</span> &lt;&lt; solution-&gt;ObjectiveValue();
+<a name="l00141"></a>00141       <span class="comment">// Inspect solution.</span>
+<a name="l00142"></a>00142       <span class="comment">// Only one route here; otherwise iterate from 0 to routing.vehicles() - 1</span>
+<a name="l00143"></a>00143       <span class="keyword">const</span> <span class="keywordtype">int</span> route_number = 0;
+<a name="l00144"></a>00144       <span class="keywordtype">string</span> route;
+<a name="l00145"></a>00145       <span class="keywordflow">for</span> (int64 node = routing.Start(route_number);
+<a name="l00146"></a>00146            !routing.IsEnd(node);
+<a name="l00147"></a>00147            node = solution-&gt;Value(routing.NextVar(node))) {
+<a name="l00148"></a>00148         route = StrCat(route, StrCat(node, <span class="stringliteral">" -&gt; "</span>));
+<a name="l00149"></a>00149       }
+<a name="l00150"></a>00150       route = StrCat(route, <span class="stringliteral">"0"</span>);
+<a name="l00151"></a>00151       LG &lt;&lt; route;
+<a name="l00152"></a>00152     } <span class="keywordflow">else</span> {
+<a name="l00153"></a>00153       LG &lt;&lt; <span class="stringliteral">"No solution found."</span>;
+<a name="l00154"></a>00154     }
+<a name="l00155"></a>00155   } <span class="keywordflow">else</span> {
+<a name="l00156"></a>00156     LG &lt;&lt; <span class="stringliteral">"Specify an instance size greater than 0."</span>;
+<a name="l00157"></a>00157   }
+<a name="l00158"></a>00158   <span class="keywordflow">return</span> 0;
+<a name="l00159"></a>00159 }
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -244,7 +248,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#874340 height=3></td>
+      <td colspan=2 bgcolor=#115511 height=3></td>
     </tr>
   </table>
 
