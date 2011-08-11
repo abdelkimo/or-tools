@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #927620
+      background-color: #874340
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#927620 height=3></td>
+      <td colspan=3 bgcolor=#874340 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#927620><b>Thu Aug 11 00:29:03 PDT 2011</b></font>
+          Generated on: <font color=#874340><b>Thu Aug 11 12:09:23 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#927620>
+            <td bgcolor=#874340>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#927620>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#874340>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/examples/index.html">examples</a>/
             </tt></b></font>
@@ -134,24 +134,27 @@
 <a name="l00051"></a>00051             &lt;&lt; <span class="stringliteral">", reduced cost = "</span> &lt;&lt; x2-&gt;reduced_cost();
 <a name="l00052"></a>00052   LOG(INFO) &lt;&lt; <span class="stringliteral">"x3 = "</span> &lt;&lt; x3-&gt;solution_value()
 <a name="l00053"></a>00053             &lt;&lt; <span class="stringliteral">", reduced cost = "</span> &lt;&lt; x3-&gt;reduced_cost();
-<a name="l00054"></a>00054   LOG(INFO) &lt;&lt; <span class="stringliteral">"c0 dual value = "</span> &lt;&lt; c0-&gt;dual_value();
-<a name="l00055"></a>00055   LOG(INFO) &lt;&lt; <span class="stringliteral">"c1 dual value = "</span> &lt;&lt; c1-&gt;dual_value();
-<a name="l00056"></a>00056   LOG(INFO) &lt;&lt; <span class="stringliteral">"c2 dual value = "</span> &lt;&lt; c2-&gt;dual_value();
-<a name="l00057"></a>00057 }
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059 <span class="keywordtype">void</span> <a class="code" href="namespaceoperations__research.html#3fafcf4e24f817fdb90281c9d725d179">RunAllExamples</a>() {
-<a name="l00060"></a>00060   LOG(INFO) &lt;&lt; <span class="stringliteral">"----- Running Max Example with GLPK -----"</span>;
-<a name="l00061"></a>00061   <a class="code" href="namespaceoperations__research.html#c5c1513cae1a081952fc6af98e6800d8">BuildLinearProgrammingMaxExample</a>(MPSolver::GLPK_LINEAR_PROGRAMMING);
-<a name="l00062"></a>00062   LOG(INFO) &lt;&lt; <span class="stringliteral">"----- Running Max Example with Coin LP -----"</span>;
-<a name="l00063"></a>00063   <a class="code" href="namespaceoperations__research.html#c5c1513cae1a081952fc6af98e6800d8">BuildLinearProgrammingMaxExample</a>(MPSolver::CLP_LINEAR_PROGRAMMING);
-<a name="l00064"></a>00064 }
-<a name="l00065"></a>00065 }  <span class="comment">// namespace operations_research</span>
-<a name="l00066"></a>00066 
-<a name="l00067"></a><a class="code" href="linear__solver__example_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00067</a> <span class="keywordtype">int</span> <a class="code" href="costas__array_8cc.html#3c04138a5bfe5d72780bb7e82a18e627" title="namespace operations_research">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {
-<a name="l00068"></a>00068   google::ParseCommandLineFlags(&amp;argc, &amp;argv, <span class="keyword">true</span>);
-<a name="l00069"></a>00069   <a class="code" href="namespaceoperations__research.html#3fafcf4e24f817fdb90281c9d725d179">operations_research::RunAllExamples</a>();
-<a name="l00070"></a>00070   <span class="keywordflow">return</span> 0;
-<a name="l00071"></a>00071 }
+<a name="l00054"></a>00054   LOG(INFO) &lt;&lt; <span class="stringliteral">"c0 dual value = "</span> &lt;&lt; c0-&gt;dual_value()
+<a name="l00055"></a>00055             &lt;&lt; <span class="stringliteral">" activity = "</span> &lt;&lt; c0-&gt;activity();
+<a name="l00056"></a>00056   LOG(INFO) &lt;&lt; <span class="stringliteral">"c1 dual value = "</span> &lt;&lt; c1-&gt;dual_value()
+<a name="l00057"></a>00057             &lt;&lt; <span class="stringliteral">" activity = "</span> &lt;&lt; c1-&gt;activity();
+<a name="l00058"></a>00058   LOG(INFO) &lt;&lt; <span class="stringliteral">"c2 dual value = "</span> &lt;&lt; c2-&gt;dual_value()
+<a name="l00059"></a>00059             &lt;&lt; <span class="stringliteral">" activity = "</span> &lt;&lt; c2-&gt;activity();
+<a name="l00060"></a>00060 }
+<a name="l00061"></a>00061 
+<a name="l00062"></a>00062 <span class="keywordtype">void</span> <a class="code" href="namespaceoperations__research.html#3fafcf4e24f817fdb90281c9d725d179">RunAllExamples</a>() {
+<a name="l00063"></a>00063   LOG(INFO) &lt;&lt; <span class="stringliteral">"----- Running Max Example with GLPK -----"</span>;
+<a name="l00064"></a>00064   <a class="code" href="namespaceoperations__research.html#c5c1513cae1a081952fc6af98e6800d8">BuildLinearProgrammingMaxExample</a>(MPSolver::GLPK_LINEAR_PROGRAMMING);
+<a name="l00065"></a>00065   LOG(INFO) &lt;&lt; <span class="stringliteral">"----- Running Max Example with Coin LP -----"</span>;
+<a name="l00066"></a>00066   <a class="code" href="namespaceoperations__research.html#c5c1513cae1a081952fc6af98e6800d8">BuildLinearProgrammingMaxExample</a>(MPSolver::CLP_LINEAR_PROGRAMMING);
+<a name="l00067"></a>00067 }
+<a name="l00068"></a>00068 }  <span class="comment">// namespace operations_research</span>
+<a name="l00069"></a>00069 
+<a name="l00070"></a><a class="code" href="linear__solver__example_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00070</a> <span class="keywordtype">int</span> <a class="code" href="costas__array_8cc.html#3c04138a5bfe5d72780bb7e82a18e627" title="namespace operations_research">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {
+<a name="l00071"></a>00071   google::ParseCommandLineFlags(&amp;argc, &amp;argv, <span class="keyword">true</span>);
+<a name="l00072"></a>00072   <a class="code" href="namespaceoperations__research.html#3fafcf4e24f817fdb90281c9d725d179">operations_research::RunAllExamples</a>();
+<a name="l00073"></a>00073   <span class="keywordflow">return</span> 0;
+<a name="l00074"></a>00074 }
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -160,7 +163,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#927620 height=3></td>
+      <td colspan=2 bgcolor=#874340 height=3></td>
     </tr>
   </table>
 

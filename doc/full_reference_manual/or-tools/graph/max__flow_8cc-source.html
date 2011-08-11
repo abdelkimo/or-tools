@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #927620
+      background-color: #874340
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#927620 height=3></td>
+      <td colspan=3 bgcolor=#874340 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#927620><b>Thu Aug 11 00:29:03 PDT 2011</b></font>
+          Generated on: <font color=#874340><b>Thu Aug 11 12:09:23 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#927620>
+            <td bgcolor=#874340>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#927620>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#874340>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/graph/index.html">graph</a>/
             </tt></b></font>
@@ -146,37 +146,37 @@
 <a name="l00063"></a>00063   <span class="keywordflow">return</span> ok;
 <a name="l00064"></a>00064 }
 <a name="l00065"></a>00065 
-<a name="l00066"></a>00066 <span class="comment">// Sets the capacity for arc.</span>
-<a name="l00067"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#857d5c99a5aed728dafea95bd834d95d">00067</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#857d5c99a5aed728dafea95bd834d95d" title="Sets the capacity for arc to new_capacity.">MaxFlow::SetArcCapacity</a>(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc, <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> new_capacity) {
-<a name="l00068"></a>00068   DCHECK_LE(0, new_capacity);
-<a name="l00069"></a>00069   DCHECK(<a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>-&gt;<a class="code" href="classoperations__research_1_1EbertGraph.html#8d6877ac937a2ce4159ccf05f16f50f5" title="Utility function to check that an arc index is within the bounds AND different from...">CheckArcValidity</a>(arc));
-<a name="l00070"></a>00070   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> free_capacity = <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[arc];
-<a name="l00071"></a>00071   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> capacity_delta = new_capacity - <a class="code" href="classoperations__research_1_1MaxFlow.html#f9042fb6c072933c7823a60df45cc23a" title="Returns the capacity of arc using the equations given in the comment on residual_arc_capacity_...">Capacity</a>(arc);
-<a name="l00072"></a>00072   VLOG(2) &lt;&lt; <span class="stringliteral">"Changing capacity on arc "</span> &lt;&lt; arc
-<a name="l00073"></a>00073           &lt;&lt; <span class="stringliteral">" from "</span> &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#f9042fb6c072933c7823a60df45cc23a" title="Returns the capacity of arc using the equations given in the comment on residual_arc_capacity_...">Capacity</a>(arc) &lt;&lt; <span class="stringliteral">" to "</span> &lt;&lt; new_capacity
-<a name="l00074"></a>00074           &lt;&lt; <span class="stringliteral">". Current free capacity = "</span> &lt;&lt; free_capacity;
-<a name="l00075"></a>00075   <span class="keywordflow">if</span> (capacity_delta == 0) {
-<a name="l00076"></a>00076     <span class="keywordflow">return</span>;  <span class="comment">// Nothing to do.</span>
-<a name="l00077"></a>00077   }
-<a name="l00078"></a>00078   <a class="code" href="classoperations__research_1_1MaxFlow.html#659ba26955faa75e8369d0ffab4fcc0d" title="The status of the problem.">status_</a> = <a class="code" href="classoperations__research_1_1MaxFlow.html#4625a8499a147b60fcf1630a388cbc16d0d7f465b5b5c75344fc714da13a0fad" title="The problem was not solved, or its data were edited.">NOT_SOLVED</a>;
-<a name="l00079"></a>00079   <span class="keywordflow">if</span> (free_capacity + capacity_delta &gt;= 0) {
-<a name="l00080"></a>00080     <span class="comment">// The above condition is true if one of the two conditions is true:</span>
-<a name="l00081"></a>00081     <span class="comment">// 1/ (capacity_delta &gt; 0), meaning we are increasing the capacity</span>
-<a name="l00082"></a>00082     <span class="comment">// 2/ (capacity_delta &lt; 0 &amp;&amp; free_capacity + capacity_delta &gt;= 0)</span>
-<a name="l00083"></a>00083     <span class="comment">//    meaning we are reducing the capacity, but that the capacity</span>
-<a name="l00084"></a>00084     <span class="comment">//    reduction is not larger than the free capacity.</span>
-<a name="l00085"></a>00085     <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>.Set(arc, free_capacity + capacity_delta);
-<a name="l00086"></a>00086     DCHECK_LE(0, <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[arc]);
-<a name="l00087"></a>00087     VLOG(2) &lt;&lt; <span class="stringliteral">"Now: capacity = "</span> &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#f9042fb6c072933c7823a60df45cc23a" title="Returns the capacity of arc using the equations given in the comment on residual_arc_capacity_...">Capacity</a>(arc) &lt;&lt; <span class="stringliteral">" flow = "</span> &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#aa69f5dc647dcde9c974950bc95f2658" title="Returns the flow on arc using the equations given in the comment on residual_arc_capacity_...">Flow</a>(arc);
-<a name="l00088"></a>00088   } <span class="keywordflow">else</span> {
-<a name="l00089"></a>00089     <span class="comment">// We have to reduce the flow on the arc, and update the excesses</span>
-<a name="l00090"></a>00090     <span class="comment">// accordingly.</span>
-<a name="l00091"></a>00091     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> flow = <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[<a class="code" href="classoperations__research_1_1MaxFlow.html#56e0f3db4d40eae22754af07790100ae">Opposite</a>(arc)];
-<a name="l00092"></a>00092     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> flow_excess = flow - new_capacity;
-<a name="l00093"></a>00093     VLOG(2) &lt;&lt; <span class="stringliteral">"Flow value "</span> &lt;&lt; flow &lt;&lt; <span class="stringliteral">" exceeds new capacity "</span>
-<a name="l00094"></a>00094             &lt;&lt; new_capacity &lt;&lt; <span class="stringliteral">" by "</span> &lt;&lt; flow_excess;
-<a name="l00095"></a>00095     <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>.Set(arc, 0);
-<a name="l00096"></a>00096     <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>.Set(<a class="code" href="classoperations__research_1_1MaxFlow.html#56e0f3db4d40eae22754af07790100ae">Opposite</a>(arc), new_capacity);
+<a name="l00066"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#857d5c99a5aed728dafea95bd834d95d">00066</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#857d5c99a5aed728dafea95bd834d95d" title="Sets the capacity for arc to new_capacity.">MaxFlow::SetArcCapacity</a>(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc, <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> new_capacity) {
+<a name="l00067"></a>00067   DCHECK_LE(0, new_capacity);
+<a name="l00068"></a>00068   DCHECK(<a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>-&gt;<a class="code" href="classoperations__research_1_1EbertGraph.html#8d6877ac937a2ce4159ccf05f16f50f5" title="Utility function to check that an arc index is within the bounds AND different from...">CheckArcValidity</a>(arc));
+<a name="l00069"></a>00069   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> free_capacity = <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[arc];
+<a name="l00070"></a>00070   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> capacity_delta = new_capacity - <a class="code" href="classoperations__research_1_1MaxFlow.html#f9042fb6c072933c7823a60df45cc23a" title="Returns the capacity of arc using the equations given in the comment on residual_arc_capacity_...">Capacity</a>(arc);
+<a name="l00071"></a>00071   VLOG(2) &lt;&lt; <span class="stringliteral">"Changing capacity on arc "</span> &lt;&lt; arc
+<a name="l00072"></a>00072           &lt;&lt; <span class="stringliteral">" from "</span> &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#f9042fb6c072933c7823a60df45cc23a" title="Returns the capacity of arc using the equations given in the comment on residual_arc_capacity_...">Capacity</a>(arc) &lt;&lt; <span class="stringliteral">" to "</span> &lt;&lt; new_capacity
+<a name="l00073"></a>00073           &lt;&lt; <span class="stringliteral">". Current free capacity = "</span> &lt;&lt; free_capacity;
+<a name="l00074"></a>00074   <span class="keywordflow">if</span> (capacity_delta == 0) {
+<a name="l00075"></a>00075     <span class="keywordflow">return</span>;  <span class="comment">// Nothing to do.</span>
+<a name="l00076"></a>00076   }
+<a name="l00077"></a>00077   <a class="code" href="classoperations__research_1_1MaxFlow.html#659ba26955faa75e8369d0ffab4fcc0d" title="The status of the problem.">status_</a> = <a class="code" href="classoperations__research_1_1MaxFlow.html#4625a8499a147b60fcf1630a388cbc16d0d7f465b5b5c75344fc714da13a0fad" title="The problem was not solved, or its data were edited.">NOT_SOLVED</a>;
+<a name="l00078"></a>00078   <span class="keywordflow">if</span> (free_capacity + capacity_delta &gt;= 0) {
+<a name="l00079"></a>00079     <span class="comment">// The above condition is true if one of the two conditions is true:</span>
+<a name="l00080"></a>00080     <span class="comment">// 1/ (capacity_delta &gt; 0), meaning we are increasing the capacity</span>
+<a name="l00081"></a>00081     <span class="comment">// 2/ (capacity_delta &lt; 0 &amp;&amp; free_capacity + capacity_delta &gt;= 0)</span>
+<a name="l00082"></a>00082     <span class="comment">//    meaning we are reducing the capacity, but that the capacity</span>
+<a name="l00083"></a>00083     <span class="comment">//    reduction is not larger than the free capacity.</span>
+<a name="l00084"></a>00084     DCHECK((capacity_delta &gt; 0) ||
+<a name="l00085"></a>00085            (capacity_delta &lt; 0 &amp;&amp; free_capacity + capacity_delta &gt;= 0));
+<a name="l00086"></a>00086     <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>.Set(arc, free_capacity + capacity_delta);
+<a name="l00087"></a>00087     DCHECK_LE(0, <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[arc]);
+<a name="l00088"></a>00088     VLOG(2) &lt;&lt; <span class="stringliteral">"Now: capacity = "</span> &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#f9042fb6c072933c7823a60df45cc23a" title="Returns the capacity of arc using the equations given in the comment on residual_arc_capacity_...">Capacity</a>(arc) &lt;&lt; <span class="stringliteral">" flow = "</span> &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#aa69f5dc647dcde9c974950bc95f2658" title="Returns the flow on arc using the equations given in the comment on residual_arc_capacity_...">Flow</a>(arc);
+<a name="l00089"></a>00089   } <span class="keywordflow">else</span> {
+<a name="l00090"></a>00090     <span class="comment">// We have to reduce the flow on the arc, and update the excesses</span>
+<a name="l00091"></a>00091     <span class="comment">// accordingly.</span>
+<a name="l00092"></a>00092     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> flow = <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[<a class="code" href="classoperations__research_1_1MaxFlow.html#56e0f3db4d40eae22754af07790100ae">Opposite</a>(arc)];
+<a name="l00093"></a>00093     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> flow_excess = flow - new_capacity;
+<a name="l00094"></a>00094     VLOG(2) &lt;&lt; <span class="stringliteral">"Flow value "</span> &lt;&lt; flow &lt;&lt; <span class="stringliteral">" exceeds new capacity "</span>
+<a name="l00095"></a>00095             &lt;&lt; new_capacity &lt;&lt; <span class="stringliteral">" by "</span> &lt;&lt; flow_excess;
+<a name="l00096"></a>00096     <a class="code" href="classoperations__research_1_1MaxFlow.html#7f2840328a7a867dd5138b384806dcc5" title="Sets the capacity of arc to &amp;#39;capacity&amp;#39; and saturates the flow on arc.">SetCapacitySaturate</a>(arc, new_capacity);
 <a name="l00097"></a>00097     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> head = <a class="code" href="classoperations__research_1_1MaxFlow.html#ed9585407579ffb5a006c4e04ea6df4b" title="Handy member functions to make the code more compact.">Head</a>(arc);
 <a name="l00098"></a>00098     <a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>.Set(head, <a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>[head] + flow_excess);
 <a name="l00099"></a>00099     DCHECK_LE(0, <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[arc]);
@@ -204,12 +204,12 @@
 <a name="l00121"></a>00121     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> opposite_capacity = <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[opposite];
 <a name="l00122"></a>00122     <span class="keywordflow">if</span> (direct_capacity &lt; 0) {
 <a name="l00123"></a>00123       LOG(DFATAL) &lt;&lt; <span class="stringliteral">"residual_arc_capacity_["</span> &lt;&lt; arc &lt;&lt; <span class="stringliteral">"] = "</span>
-<a name="l00124"></a>00124                   &lt;&lt; direct_capacity &lt;&lt; <span class="stringliteral">" != 0"</span>;
+<a name="l00124"></a>00124                   &lt;&lt; direct_capacity &lt;&lt; <span class="stringliteral">" &lt; 0"</span>;
 <a name="l00125"></a>00125       ok = <span class="keyword">false</span>;
 <a name="l00126"></a>00126     }
 <a name="l00127"></a>00127     <span class="keywordflow">if</span> (opposite_capacity &lt; 0) {
 <a name="l00128"></a>00128       LOG(DFATAL) &lt;&lt; <span class="stringliteral">"residual_arc_capacity_["</span> &lt;&lt; opposite &lt;&lt; <span class="stringliteral">"] = "</span>
-<a name="l00129"></a>00129                   &lt;&lt; opposite_capacity &lt;&lt; <span class="stringliteral">" != 0"</span>;
+<a name="l00129"></a>00129                   &lt;&lt; opposite_capacity &lt;&lt; <span class="stringliteral">" &lt; 0"</span>;
 <a name="l00130"></a>00130       ok = <span class="keyword">false</span>;
 <a name="l00131"></a>00131     }
 <a name="l00132"></a>00132     <span class="comment">// The initial capacity of the direct arcs is non-negative.</span>
@@ -287,122 +287,114 @@
 <a name="l00204"></a>00204   <a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>.Assign(0);
 <a name="l00205"></a>00205   <span class="keywordflow">for</span> (<a class="code" href="classoperations__research_1_1EbertGraph_1_1ArcIterator.html" title="Iterator class for traversing the arcs in the graph.">StarGraph::ArcIterator</a> arc_it(*<a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>); arc_it.Ok(); arc_it.Next()) {
 <a name="l00206"></a>00206     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc = arc_it.Index();
-<a name="l00207"></a>00207     <span class="comment">// Reset the residual capacities of direct arc to their initial values.</span>
-<a name="l00208"></a>00208     <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>.Set(arc, <a class="code" href="classoperations__research_1_1MaxFlow.html#f9042fb6c072933c7823a60df45cc23a" title="Returns the capacity of arc using the equations given in the comment on residual_arc_capacity_...">Capacity</a>(arc));
-<a name="l00209"></a>00209     <span class="comment">// The initial residual capacities on reverse arcs are set to 0.</span>
-<a name="l00210"></a>00210     <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>.Set(<a class="code" href="classoperations__research_1_1MaxFlow.html#56e0f3db4d40eae22754af07790100ae">Opposite</a>(arc), 0);
-<a name="l00211"></a>00211   }
-<a name="l00212"></a>00212   <span class="comment">// The initial height of the source is equal to the number of nodes.</span>
-<a name="l00213"></a>00213   <a class="code" href="classoperations__research_1_1MaxFlow.html#f401ed17b5386e38a6a5c27cd7dc0107" title="A packed array representing the height function for each node in graph_.">node_potential_</a>.Set(<a class="code" href="classoperations__research_1_1MaxFlow.html#93d73f59e8d99a81832e047c390c0150" title="The index of the source node in graph_.">source_</a>, <a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>-&gt;<a class="code" href="classoperations__research_1_1EbertGraph.html#9913def68b3deecb203994b8fa6340a3" title="Returns the number of nodes in the graph.">num_nodes</a>());
-<a name="l00214"></a>00214   <span class="keywordflow">for</span> (<a class="code" href="classoperations__research_1_1EbertGraph_1_1OutgoingArcIterator.html" title="Iterator class for traversing the outgoing arcs associated to a given node.">StarGraph::OutgoingArcIterator</a> arc_it(*<a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>, <a class="code" href="classoperations__research_1_1MaxFlow.html#93d73f59e8d99a81832e047c390c0150" title="The index of the source node in graph_.">source_</a>);
-<a name="l00215"></a>00215        arc_it.Ok();
-<a name="l00216"></a>00216        arc_it.Next()) {
-<a name="l00217"></a>00217     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc = arc_it.Index();
-<a name="l00218"></a>00218     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> arc_capacity = <a class="code" href="classoperations__research_1_1MaxFlow.html#f9042fb6c072933c7823a60df45cc23a" title="Returns the capacity of arc using the equations given in the comment on residual_arc_capacity_...">Capacity</a>(arc);
-<a name="l00219"></a>00219     <span class="comment">// Saturate arcs outgoing from the source. This is not really a PushFlow,</span>
-<a name="l00220"></a>00220     <span class="comment">// since the preconditions for PushFlow are not (yet) met, and we do not</span>
-<a name="l00221"></a>00221     <span class="comment">// need to update the excess at the source.</span>
-<a name="l00222"></a>00222     <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>.Set(arc, 0);
-<a name="l00223"></a>00223     <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>.Set(<a class="code" href="classoperations__research_1_1MaxFlow.html#56e0f3db4d40eae22754af07790100ae">Opposite</a>(arc), arc_capacity);
-<a name="l00224"></a>00224     <a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>.Set(<a class="code" href="classoperations__research_1_1MaxFlow.html#ed9585407579ffb5a006c4e04ea6df4b" title="Handy member functions to make the code more compact.">Head</a>(arc), arc_capacity);
-<a name="l00225"></a>00225     VLOG(2) &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#ea43a5e8891b3a18a57f4d0fdb9533e9" title="Returns context concatenated with information about arc in a human-friendly way.">DebugString</a>(<span class="stringliteral">"InitializePreflow:"</span>, arc);
-<a name="l00226"></a>00226   }
-<a name="l00227"></a>00227 }
-<a name="l00228"></a>00228 
-<a name="l00229"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#3101e35ef6cd5511ea9f819a084eae70">00229</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#3101e35ef6cd5511ea9f819a084eae70" title="Pushes flow on arc, i.e.">MaxFlow::PushFlow</a>(<a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> flow, <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc) {
-<a name="l00230"></a>00230   DCHECK_GT(<a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[arc], 0);
-<a name="l00231"></a>00231   DCHECK_GT(<a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>[<a class="code" href="classoperations__research_1_1MaxFlow.html#dcdc151ec36ba26b824ec09475e1f0ff">Tail</a>(arc)], 0);
-<a name="l00232"></a>00232   VLOG(2) &lt;&lt; <span class="stringliteral">"PushFlow: pushing "</span> &lt;&lt; flow &lt;&lt; <span class="stringliteral">" on arc "</span> &lt;&lt; arc
-<a name="l00233"></a>00233           &lt;&lt; <span class="stringliteral">" from node "</span> &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#dcdc151ec36ba26b824ec09475e1f0ff">Tail</a>(arc) &lt;&lt; <span class="stringliteral">" to node "</span> &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#ed9585407579ffb5a006c4e04ea6df4b" title="Handy member functions to make the code more compact.">Head</a>(arc);
-<a name="l00234"></a>00234   <span class="comment">// Reduce the residual capacity on arc by flow.</span>
-<a name="l00235"></a>00235   <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>.Set(arc, <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[arc] - flow);
-<a name="l00236"></a>00236   <span class="comment">// Increase the residual capacity on opposite arc by flow.</span>
-<a name="l00237"></a>00237   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> opposite = <a class="code" href="classoperations__research_1_1MaxFlow.html#56e0f3db4d40eae22754af07790100ae">Opposite</a>(arc);
-<a name="l00238"></a>00238   <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>.Set(opposite, <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[opposite] + flow);
-<a name="l00239"></a>00239   <span class="comment">// Update the excesses at the tail and head of the arc.</span>
-<a name="l00240"></a>00240   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> tail = <a class="code" href="classoperations__research_1_1MaxFlow.html#dcdc151ec36ba26b824ec09475e1f0ff">Tail</a>(arc);
-<a name="l00241"></a>00241   <a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>.Set(tail, <a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>[tail] - flow);
-<a name="l00242"></a>00242   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> head = <a class="code" href="classoperations__research_1_1MaxFlow.html#ed9585407579ffb5a006c4e04ea6df4b" title="Handy member functions to make the code more compact.">Head</a>(arc);
-<a name="l00243"></a>00243   <a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>.Set(head, <a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>[head] + flow);
-<a name="l00244"></a>00244   VLOG(3) &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#ea43a5e8891b3a18a57f4d0fdb9533e9" title="Returns context concatenated with information about arc in a human-friendly way.">DebugString</a>(<span class="stringliteral">"PushFlow: "</span>, arc);
-<a name="l00245"></a>00245 }
-<a name="l00246"></a>00246 
-<a name="l00247"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#5b98bb2c6b288bafa040ff2d1e723bc9">00247</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#5b98bb2c6b288bafa040ff2d1e723bc9" title="Initializes the stack active_nodes_.">MaxFlow::InitializeActiveNodeStack</a>() {
-<a name="l00248"></a>00248   DCHECK(<a class="code" href="classoperations__research_1_1MaxFlow.html#4305cb5b1c07a37a07ccab146f924688" title="A stack used for managing active nodes in the algorithm.">active_nodes_</a>.empty());
-<a name="l00249"></a>00249   <span class="keywordflow">for</span> (<a class="code" href="classoperations__research_1_1EbertGraph_1_1NodeIterator.html" title="Iterator class for traversing all the nodes in the graph.">StarGraph::NodeIterator</a> node_it(*<a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>); node_it.Ok(); node_it.Next()) {
-<a name="l00250"></a>00250     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node = node_it.Index();
-<a name="l00251"></a>00251     <span class="keywordflow">if</span> (<a class="code" href="classoperations__research_1_1MaxFlow.html#3826fa08c70c14313f6d0d36602161d1" title="Returns true if node is active, i.e.">IsActive</a>(node)) {
-<a name="l00252"></a>00252       <a class="code" href="classoperations__research_1_1MaxFlow.html#4305cb5b1c07a37a07ccab146f924688" title="A stack used for managing active nodes in the algorithm.">active_nodes_</a>.push(node);
-<a name="l00253"></a>00253       VLOG(2) &lt;&lt; <span class="stringliteral">"InitializeActiveNodeStack: node "</span> &lt;&lt; node &lt;&lt; <span class="stringliteral">" added."</span>;
-<a name="l00254"></a>00254     }
-<a name="l00255"></a>00255   }
-<a name="l00256"></a>00256 }
-<a name="l00257"></a>00257 
-<a name="l00258"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#e1369b6a7c9bd2e1f1d482e805e9ed7f">00258</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#e1369b6a7c9bd2e1f1d482e805e9ed7f" title="Performs optimization step.">MaxFlow::Refine</a>() {
-<a name="l00259"></a>00259   <a class="code" href="classoperations__research_1_1MaxFlow.html#5b98bb2c6b288bafa040ff2d1e723bc9" title="Initializes the stack active_nodes_.">InitializeActiveNodeStack</a>();
-<a name="l00260"></a>00260   <span class="keywordflow">while</span> (!<a class="code" href="classoperations__research_1_1MaxFlow.html#4305cb5b1c07a37a07ccab146f924688" title="A stack used for managing active nodes in the algorithm.">active_nodes_</a>.empty()) {
-<a name="l00261"></a>00261     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node = <a class="code" href="classoperations__research_1_1MaxFlow.html#4305cb5b1c07a37a07ccab146f924688" title="A stack used for managing active nodes in the algorithm.">active_nodes_</a>.top();
-<a name="l00262"></a>00262     <a class="code" href="classoperations__research_1_1MaxFlow.html#4305cb5b1c07a37a07ccab146f924688" title="A stack used for managing active nodes in the algorithm.">active_nodes_</a>.pop();
-<a name="l00263"></a>00263     <span class="keywordflow">if</span> (<a class="code" href="classoperations__research_1_1MaxFlow.html#3826fa08c70c14313f6d0d36602161d1" title="Returns true if node is active, i.e.">IsActive</a>(node)) {
-<a name="l00264"></a>00264       VLOG(2) &lt;&lt; <span class="stringliteral">"Refine: calling Discharge for node "</span> &lt;&lt; node;
-<a name="l00265"></a>00265       <a class="code" href="classoperations__research_1_1MaxFlow.html#64020c6d8447cd0e53424836ab3314fd" title="Discharges an active node node by saturating its admissible adjacent arcs, if any...">Discharge</a>(node);
-<a name="l00266"></a>00266     }
-<a name="l00267"></a>00267   }
-<a name="l00268"></a>00268 }
-<a name="l00269"></a>00269 
-<a name="l00270"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#64020c6d8447cd0e53424836ab3314fd">00270</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#64020c6d8447cd0e53424836ab3314fd" title="Discharges an active node node by saturating its admissible adjacent arcs, if any...">MaxFlow::Discharge</a>(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node) {
-<a name="l00271"></a>00271   DCHECK(<a class="code" href="classoperations__research_1_1MaxFlow.html#3826fa08c70c14313f6d0d36602161d1" title="Returns true if node is active, i.e.">IsActive</a>(node));
-<a name="l00272"></a>00272   VLOG(2) &lt;&lt; <span class="stringliteral">"Discharging node "</span> &lt;&lt; node &lt;&lt; <span class="stringliteral">", excess = "</span> &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>[node];
-<a name="l00273"></a>00273   <span class="keywordflow">while</span> (<a class="code" href="classoperations__research_1_1MaxFlow.html#3826fa08c70c14313f6d0d36602161d1" title="Returns true if node is active, i.e.">IsActive</a>(node)) {
-<a name="l00274"></a>00274     <span class="keywordflow">for</span> (<a class="code" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html" title="Iterator class for traversing the arcs incident to a given node in the graph.">StarGraph::IncidentArcIterator</a> arc_it(*<a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>, node,
-<a name="l00275"></a>00275                                                <a class="code" href="classoperations__research_1_1MaxFlow.html#4f4f0f5069d03879eaeb7e1f714425bd" title="A packed array representing the first admissible arc for each node in graph_.">first_admissible_arc_</a>[node]);
-<a name="l00276"></a>00276          arc_it.Ok();
-<a name="l00277"></a>00277          arc_it.Next()) {
-<a name="l00278"></a>00278       <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc = arc_it.Index();
-<a name="l00279"></a>00279       VLOG(3) &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#ea43a5e8891b3a18a57f4d0fdb9533e9" title="Returns context concatenated with information about arc in a human-friendly way.">DebugString</a>(<span class="stringliteral">"Discharge: considering"</span>, arc);
-<a name="l00280"></a>00280       <span class="keywordflow">if</span> (<a class="code" href="classoperations__research_1_1MaxFlow.html#0c3e4b1b07c5cf06a5738f33f0cb2a43" title="Returns true if arc is admissible.">IsAdmissible</a>(arc)) {
-<a name="l00281"></a>00281         <span class="keywordflow">if</span> (node_excess_[node] != 0) {
-<a name="l00282"></a>00282           VLOG(2) &lt;&lt; <span class="stringliteral">"Discharge: calling PushFlow."</span>;
-<a name="l00283"></a>00283           <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> head = <a class="code" href="classoperations__research_1_1MaxFlow.html#ed9585407579ffb5a006c4e04ea6df4b" title="Handy member functions to make the code more compact.">Head</a>(arc);
-<a name="l00284"></a>00284           <span class="keyword">const</span> <span class="keywordtype">bool</span> head_active_before_push = <a class="code" href="classoperations__research_1_1MaxFlow.html#3826fa08c70c14313f6d0d36602161d1" title="Returns true if node is active, i.e.">IsActive</a>(head);
-<a name="l00285"></a>00285           <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> delta = std::min(node_excess_[node],
-<a name="l00286"></a>00286                                               <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[arc]);
-<a name="l00287"></a>00287           <a class="code" href="classoperations__research_1_1MaxFlow.html#3101e35ef6cd5511ea9f819a084eae70" title="Pushes flow on arc, i.e.">PushFlow</a>(delta, arc);
-<a name="l00288"></a>00288           <span class="keywordflow">if</span> (<a class="code" href="classoperations__research_1_1MaxFlow.html#3826fa08c70c14313f6d0d36602161d1" title="Returns true if node is active, i.e.">IsActive</a>(head) &amp;&amp; !head_active_before_push) {
-<a name="l00289"></a>00289             <a class="code" href="classoperations__research_1_1MaxFlow.html#4305cb5b1c07a37a07ccab146f924688" title="A stack used for managing active nodes in the algorithm.">active_nodes_</a>.push(<a class="code" href="classoperations__research_1_1MaxFlow.html#ed9585407579ffb5a006c4e04ea6df4b" title="Handy member functions to make the code more compact.">Head</a>(arc));
-<a name="l00290"></a>00290           }
-<a name="l00291"></a>00291         }
-<a name="l00292"></a>00292         <span class="keywordflow">if</span> (node_excess_[node] == 0) {
-<a name="l00293"></a>00293           <a class="code" href="classoperations__research_1_1MaxFlow.html#4f4f0f5069d03879eaeb7e1f714425bd" title="A packed array representing the first admissible arc for each node in graph_.">first_admissible_arc_</a>.Set(node, arc);  <span class="comment">// arc may still be admissible.</span>
-<a name="l00294"></a>00294           <span class="keywordflow">return</span>;
-<a name="l00295"></a>00295         }
-<a name="l00296"></a>00296       }
-<a name="l00297"></a>00297     }
-<a name="l00298"></a>00298     <a class="code" href="classoperations__research_1_1MaxFlow.html#1e937e3836680407a09c4eab24f6ff0a" title="Relabels a node, i.e. increases its height by the minimum necessary amount.">Relabel</a>(node);
-<a name="l00299"></a>00299   }
-<a name="l00300"></a>00300 }
-<a name="l00301"></a>00301 
-<a name="l00302"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#1e937e3836680407a09c4eab24f6ff0a">00302</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#1e937e3836680407a09c4eab24f6ff0a" title="Relabels a node, i.e. increases its height by the minimum necessary amount.">MaxFlow::Relabel</a>(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node) {
-<a name="l00303"></a>00303   DCHECK(<a class="code" href="classoperations__research_1_1MaxFlow.html#7ca126f0e156d6a315cd014a820867a3" title="Returns true if a precondition for Relabel is met, i.e.">CheckRelabelPrecondition</a>(node));
-<a name="l00304"></a>00304   <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> min_height = <a class="code" href="classoperations__research_1_1MaxFlow.html#f401ed17b5386e38a6a5c27cd7dc0107" title="A packed array representing the height function for each node in graph_.">node_potential_</a>[node];
-<a name="l00305"></a>00305   <span class="keywordflow">for</span> (<a class="code" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html" title="Iterator class for traversing the arcs incident to a given node in the graph.">StarGraph::IncidentArcIterator</a> arc_it(*<a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>, node);
-<a name="l00306"></a>00306        arc_it.Ok();
-<a name="l00307"></a>00307        arc_it.Next()) {
-<a name="l00308"></a>00308     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc = arc_it.Index();
-<a name="l00309"></a>00309     DCHECK_EQ(<a class="code" href="classoperations__research_1_1MaxFlow.html#dcdc151ec36ba26b824ec09475e1f0ff">Tail</a>(arc), node);
-<a name="l00310"></a>00310     <span class="keywordflow">if</span> (<a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[arc] &gt; 0) {
-<a name="l00311"></a>00311       <span class="comment">// Update min_height only for arcs with available capacity.</span>
-<a name="l00312"></a>00312       min_height = std::min(min_height, <a class="code" href="classoperations__research_1_1MaxFlow.html#f401ed17b5386e38a6a5c27cd7dc0107" title="A packed array representing the height function for each node in graph_.">node_potential_</a>[<a class="code" href="classoperations__research_1_1MaxFlow.html#ed9585407579ffb5a006c4e04ea6df4b" title="Handy member functions to make the code more compact.">Head</a>(arc)]);
-<a name="l00313"></a>00313     }
-<a name="l00314"></a>00314   }
-<a name="l00315"></a>00315   VLOG(2) &lt;&lt; <span class="stringliteral">"Relabel: height("</span> &lt;&lt; node &lt;&lt; <span class="stringliteral">") relabeled from "</span>
-<a name="l00316"></a>00316           &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#f401ed17b5386e38a6a5c27cd7dc0107" title="A packed array representing the height function for each node in graph_.">node_potential_</a>[node] &lt;&lt; <span class="stringliteral">" to "</span> &lt;&lt; min_height + 1;
-<a name="l00317"></a>00317   <a class="code" href="classoperations__research_1_1MaxFlow.html#f401ed17b5386e38a6a5c27cd7dc0107" title="A packed array representing the height function for each node in graph_.">node_potential_</a>.Set(node, min_height + 1);
-<a name="l00318"></a>00318   <a class="code" href="classoperations__research_1_1MaxFlow.html#4f4f0f5069d03879eaeb7e1f714425bd" title="A packed array representing the first admissible arc for each node in graph_.">first_admissible_arc_</a>.Set(node, <a class="code" href="classoperations__research_1_1MaxFlow.html#f9a8629b879a3ce411249d0594903999" title="Returns the first incident arc of node.">GetFirstIncidentArc</a>(node));
-<a name="l00319"></a>00319 }
-<a name="l00320"></a>00320 
-<a name="l00321"></a>00321 }  <span class="comment">// namespace operations_research</span>
-<a name="l00322"></a>00322 
+<a name="l00207"></a>00207     <a class="code" href="classoperations__research_1_1MaxFlow.html#b7b64e27e2980b4f2ec2e68511fa5bfa" title="Sets the capacity of arc to &amp;#39;capacity&amp;#39; and clears the flow on arc.">SetCapacityResetFlow</a>(arc, <a class="code" href="classoperations__research_1_1MaxFlow.html#f9042fb6c072933c7823a60df45cc23a" title="Returns the capacity of arc using the equations given in the comment on residual_arc_capacity_...">Capacity</a>(arc));
+<a name="l00208"></a>00208   }
+<a name="l00209"></a>00209   <span class="comment">// The initial height of the source is equal to the number of nodes.</span>
+<a name="l00210"></a>00210   <a class="code" href="classoperations__research_1_1MaxFlow.html#f401ed17b5386e38a6a5c27cd7dc0107" title="A packed array representing the height function for each node in graph_.">node_potential_</a>.Set(<a class="code" href="classoperations__research_1_1MaxFlow.html#93d73f59e8d99a81832e047c390c0150" title="The index of the source node in graph_.">source_</a>, <a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>-&gt;<a class="code" href="classoperations__research_1_1EbertGraph.html#9913def68b3deecb203994b8fa6340a3" title="Returns the number of nodes in the graph.">num_nodes</a>());
+<a name="l00211"></a>00211   <span class="keywordflow">for</span> (<a class="code" href="classoperations__research_1_1EbertGraph_1_1OutgoingArcIterator.html" title="Iterator class for traversing the outgoing arcs associated to a given node.">StarGraph::OutgoingArcIterator</a> arc_it(*<a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>, <a class="code" href="classoperations__research_1_1MaxFlow.html#93d73f59e8d99a81832e047c390c0150" title="The index of the source node in graph_.">source_</a>);
+<a name="l00212"></a>00212        arc_it.Ok();
+<a name="l00213"></a>00213        arc_it.Next()) {
+<a name="l00214"></a>00214     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc = arc_it.Index();
+<a name="l00215"></a>00215     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> arc_capacity = <a class="code" href="classoperations__research_1_1MaxFlow.html#f9042fb6c072933c7823a60df45cc23a" title="Returns the capacity of arc using the equations given in the comment on residual_arc_capacity_...">Capacity</a>(arc);
+<a name="l00216"></a>00216     <span class="comment">// Saturate arcs outgoing from the source. This is different from PushFlow,</span>
+<a name="l00217"></a>00217     <span class="comment">// since the preconditions for PushFlow are not (yet) met, and we do not</span>
+<a name="l00218"></a>00218     <span class="comment">// need to update the excess at the source.</span>
+<a name="l00219"></a>00219     <a class="code" href="classoperations__research_1_1MaxFlow.html#7f2840328a7a867dd5138b384806dcc5" title="Sets the capacity of arc to &amp;#39;capacity&amp;#39; and saturates the flow on arc.">SetCapacitySaturate</a>(arc, arc_capacity);
+<a name="l00220"></a>00220     <a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>.Set(<a class="code" href="classoperations__research_1_1MaxFlow.html#ed9585407579ffb5a006c4e04ea6df4b" title="Handy member functions to make the code more compact.">Head</a>(arc), arc_capacity);
+<a name="l00221"></a>00221     VLOG(2) &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#ea43a5e8891b3a18a57f4d0fdb9533e9" title="Returns context concatenated with information about arc in a human-friendly way.">DebugString</a>(<span class="stringliteral">"InitializePreflow:"</span>, arc);
+<a name="l00222"></a>00222   }
+<a name="l00223"></a>00223 }
+<a name="l00224"></a>00224 
+<a name="l00225"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#3101e35ef6cd5511ea9f819a084eae70">00225</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#3101e35ef6cd5511ea9f819a084eae70" title="Pushes flow on arc, i.e.">MaxFlow::PushFlow</a>(<a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> flow, <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc) {
+<a name="l00226"></a>00226   DCHECK_GT(<a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[arc], 0);
+<a name="l00227"></a>00227   DCHECK_GT(<a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>[<a class="code" href="classoperations__research_1_1MaxFlow.html#dcdc151ec36ba26b824ec09475e1f0ff">Tail</a>(arc)], 0);
+<a name="l00228"></a>00228   VLOG(2) &lt;&lt; <span class="stringliteral">"PushFlow: pushing "</span> &lt;&lt; flow &lt;&lt; <span class="stringliteral">" on arc "</span> &lt;&lt; arc
+<a name="l00229"></a>00229           &lt;&lt; <span class="stringliteral">" from node "</span> &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#dcdc151ec36ba26b824ec09475e1f0ff">Tail</a>(arc) &lt;&lt; <span class="stringliteral">" to node "</span> &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#ed9585407579ffb5a006c4e04ea6df4b" title="Handy member functions to make the code more compact.">Head</a>(arc);
+<a name="l00230"></a>00230   <a class="code" href="classoperations__research_1_1MaxFlow.html#46d67427f63a3089b11790507479e03d" title="Reduces the residual capacity on arc by flow.">PushFlowUnsafe</a>(arc, flow);
+<a name="l00231"></a>00231   <span class="comment">// Update the excesses at the tail and head of the arc.</span>
+<a name="l00232"></a>00232   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> tail = <a class="code" href="classoperations__research_1_1MaxFlow.html#dcdc151ec36ba26b824ec09475e1f0ff">Tail</a>(arc);
+<a name="l00233"></a>00233   <a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>.Set(tail, <a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>[tail] - flow);
+<a name="l00234"></a>00234   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> head = <a class="code" href="classoperations__research_1_1MaxFlow.html#ed9585407579ffb5a006c4e04ea6df4b" title="Handy member functions to make the code more compact.">Head</a>(arc);
+<a name="l00235"></a>00235   <a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>.Set(head, <a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>[head] + flow);
+<a name="l00236"></a>00236   VLOG(3) &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#ea43a5e8891b3a18a57f4d0fdb9533e9" title="Returns context concatenated with information about arc in a human-friendly way.">DebugString</a>(<span class="stringliteral">"PushFlow: "</span>, arc);
+<a name="l00237"></a>00237 }
+<a name="l00238"></a>00238 
+<a name="l00239"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#5b98bb2c6b288bafa040ff2d1e723bc9">00239</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#5b98bb2c6b288bafa040ff2d1e723bc9" title="Initializes the stack active_nodes_.">MaxFlow::InitializeActiveNodeStack</a>() {
+<a name="l00240"></a>00240   DCHECK(<a class="code" href="classoperations__research_1_1MaxFlow.html#4305cb5b1c07a37a07ccab146f924688" title="A stack used for managing active nodes in the algorithm.">active_nodes_</a>.empty());
+<a name="l00241"></a>00241   <span class="keywordflow">for</span> (<a class="code" href="classoperations__research_1_1EbertGraph_1_1NodeIterator.html" title="Iterator class for traversing all the nodes in the graph.">StarGraph::NodeIterator</a> node_it(*<a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>); node_it.Ok(); node_it.Next()) {
+<a name="l00242"></a>00242     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node = node_it.Index();
+<a name="l00243"></a>00243     <span class="keywordflow">if</span> (<a class="code" href="classoperations__research_1_1MaxFlow.html#3826fa08c70c14313f6d0d36602161d1" title="Returns true if node is active, i.e.">IsActive</a>(node)) {
+<a name="l00244"></a>00244       <a class="code" href="classoperations__research_1_1MaxFlow.html#4305cb5b1c07a37a07ccab146f924688" title="A stack used for managing active nodes in the algorithm.">active_nodes_</a>.push(node);
+<a name="l00245"></a>00245       VLOG(2) &lt;&lt; <span class="stringliteral">"InitializeActiveNodeStack: node "</span> &lt;&lt; node &lt;&lt; <span class="stringliteral">" added."</span>;
+<a name="l00246"></a>00246     }
+<a name="l00247"></a>00247   }
+<a name="l00248"></a>00248 }
+<a name="l00249"></a>00249 
+<a name="l00250"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#e1369b6a7c9bd2e1f1d482e805e9ed7f">00250</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#e1369b6a7c9bd2e1f1d482e805e9ed7f" title="Performs optimization step.">MaxFlow::Refine</a>() {
+<a name="l00251"></a>00251   <a class="code" href="classoperations__research_1_1MaxFlow.html#5b98bb2c6b288bafa040ff2d1e723bc9" title="Initializes the stack active_nodes_.">InitializeActiveNodeStack</a>();
+<a name="l00252"></a>00252   <span class="keywordflow">while</span> (!<a class="code" href="classoperations__research_1_1MaxFlow.html#4305cb5b1c07a37a07ccab146f924688" title="A stack used for managing active nodes in the algorithm.">active_nodes_</a>.empty()) {
+<a name="l00253"></a>00253     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node = <a class="code" href="classoperations__research_1_1MaxFlow.html#4305cb5b1c07a37a07ccab146f924688" title="A stack used for managing active nodes in the algorithm.">active_nodes_</a>.top();
+<a name="l00254"></a>00254     <a class="code" href="classoperations__research_1_1MaxFlow.html#4305cb5b1c07a37a07ccab146f924688" title="A stack used for managing active nodes in the algorithm.">active_nodes_</a>.pop();
+<a name="l00255"></a>00255     <span class="keywordflow">if</span> (<a class="code" href="classoperations__research_1_1MaxFlow.html#3826fa08c70c14313f6d0d36602161d1" title="Returns true if node is active, i.e.">IsActive</a>(node)) {
+<a name="l00256"></a>00256       VLOG(2) &lt;&lt; <span class="stringliteral">"Refine: calling Discharge for node "</span> &lt;&lt; node;
+<a name="l00257"></a>00257       <a class="code" href="classoperations__research_1_1MaxFlow.html#64020c6d8447cd0e53424836ab3314fd" title="Discharges an active node node by saturating its admissible adjacent arcs, if any...">Discharge</a>(node);
+<a name="l00258"></a>00258     }
+<a name="l00259"></a>00259   }
+<a name="l00260"></a>00260 }
+<a name="l00261"></a>00261 
+<a name="l00262"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#64020c6d8447cd0e53424836ab3314fd">00262</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#64020c6d8447cd0e53424836ab3314fd" title="Discharges an active node node by saturating its admissible adjacent arcs, if any...">MaxFlow::Discharge</a>(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node) {
+<a name="l00263"></a>00263   DCHECK(<a class="code" href="classoperations__research_1_1MaxFlow.html#3826fa08c70c14313f6d0d36602161d1" title="Returns true if node is active, i.e.">IsActive</a>(node));
+<a name="l00264"></a>00264   VLOG(2) &lt;&lt; <span class="stringliteral">"Discharging node "</span> &lt;&lt; node &lt;&lt; <span class="stringliteral">", excess = "</span> &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>[node];
+<a name="l00265"></a>00265   <span class="keywordflow">while</span> (<a class="code" href="classoperations__research_1_1MaxFlow.html#3826fa08c70c14313f6d0d36602161d1" title="Returns true if node is active, i.e.">IsActive</a>(node)) {
+<a name="l00266"></a>00266     <span class="keywordflow">for</span> (<a class="code" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html" title="Iterator class for traversing the arcs incident to a given node in the graph.">StarGraph::IncidentArcIterator</a> arc_it(*<a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>, node,
+<a name="l00267"></a>00267                                                <a class="code" href="classoperations__research_1_1MaxFlow.html#4f4f0f5069d03879eaeb7e1f714425bd" title="A packed array representing the first admissible arc for each node in graph_.">first_admissible_arc_</a>[node]);
+<a name="l00268"></a>00268          arc_it.Ok();
+<a name="l00269"></a>00269          arc_it.Next()) {
+<a name="l00270"></a>00270       <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc = arc_it.Index();
+<a name="l00271"></a>00271       VLOG(3) &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#ea43a5e8891b3a18a57f4d0fdb9533e9" title="Returns context concatenated with information about arc in a human-friendly way.">DebugString</a>(<span class="stringliteral">"Discharge: considering"</span>, arc);
+<a name="l00272"></a>00272       <span class="keywordflow">if</span> (<a class="code" href="classoperations__research_1_1MaxFlow.html#0c3e4b1b07c5cf06a5738f33f0cb2a43" title="Returns true if arc is admissible.">IsAdmissible</a>(arc)) {
+<a name="l00273"></a>00273         <span class="keywordflow">if</span> (node_excess_[node] != 0) {
+<a name="l00274"></a>00274           VLOG(2) &lt;&lt; <span class="stringliteral">"Discharge: calling PushFlow."</span>;
+<a name="l00275"></a>00275           <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> head = <a class="code" href="classoperations__research_1_1MaxFlow.html#ed9585407579ffb5a006c4e04ea6df4b" title="Handy member functions to make the code more compact.">Head</a>(arc);
+<a name="l00276"></a>00276           <span class="keyword">const</span> <span class="keywordtype">bool</span> head_active_before_push = <a class="code" href="classoperations__research_1_1MaxFlow.html#3826fa08c70c14313f6d0d36602161d1" title="Returns true if node is active, i.e.">IsActive</a>(head);
+<a name="l00277"></a>00277           <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> delta = std::min(node_excess_[node],
+<a name="l00278"></a>00278                                               <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[arc]);
+<a name="l00279"></a>00279           <a class="code" href="classoperations__research_1_1MaxFlow.html#3101e35ef6cd5511ea9f819a084eae70" title="Pushes flow on arc, i.e.">PushFlow</a>(delta, arc);
+<a name="l00280"></a>00280           <span class="keywordflow">if</span> (<a class="code" href="classoperations__research_1_1MaxFlow.html#3826fa08c70c14313f6d0d36602161d1" title="Returns true if node is active, i.e.">IsActive</a>(head) &amp;&amp; !head_active_before_push) {
+<a name="l00281"></a>00281             <a class="code" href="classoperations__research_1_1MaxFlow.html#4305cb5b1c07a37a07ccab146f924688" title="A stack used for managing active nodes in the algorithm.">active_nodes_</a>.push(<a class="code" href="classoperations__research_1_1MaxFlow.html#ed9585407579ffb5a006c4e04ea6df4b" title="Handy member functions to make the code more compact.">Head</a>(arc));
+<a name="l00282"></a>00282           }
+<a name="l00283"></a>00283         }
+<a name="l00284"></a>00284         <span class="keywordflow">if</span> (node_excess_[node] == 0) {
+<a name="l00285"></a>00285           <a class="code" href="classoperations__research_1_1MaxFlow.html#4f4f0f5069d03879eaeb7e1f714425bd" title="A packed array representing the first admissible arc for each node in graph_.">first_admissible_arc_</a>.Set(node, arc);  <span class="comment">// arc may still be admissible.</span>
+<a name="l00286"></a>00286           <span class="keywordflow">return</span>;
+<a name="l00287"></a>00287         }
+<a name="l00288"></a>00288       }
+<a name="l00289"></a>00289     }
+<a name="l00290"></a>00290     <a class="code" href="classoperations__research_1_1MaxFlow.html#1e937e3836680407a09c4eab24f6ff0a" title="Relabels a node, i.e. increases its height by the minimum necessary amount.">Relabel</a>(node);
+<a name="l00291"></a>00291   }
+<a name="l00292"></a>00292 }
+<a name="l00293"></a>00293 
+<a name="l00294"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#1e937e3836680407a09c4eab24f6ff0a">00294</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#1e937e3836680407a09c4eab24f6ff0a" title="Relabels a node, i.e. increases its height by the minimum necessary amount.">MaxFlow::Relabel</a>(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node) {
+<a name="l00295"></a>00295   DCHECK(<a class="code" href="classoperations__research_1_1MaxFlow.html#7ca126f0e156d6a315cd014a820867a3" title="Returns true if a precondition for Relabel is met, i.e.">CheckRelabelPrecondition</a>(node));
+<a name="l00296"></a>00296   <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> min_height = <a class="code" href="classoperations__research_1_1MaxFlow.html#f401ed17b5386e38a6a5c27cd7dc0107" title="A packed array representing the height function for each node in graph_.">node_potential_</a>[node];
+<a name="l00297"></a>00297   <span class="keywordflow">for</span> (<a class="code" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html" title="Iterator class for traversing the arcs incident to a given node in the graph.">StarGraph::IncidentArcIterator</a> arc_it(*<a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>, node);
+<a name="l00298"></a>00298        arc_it.Ok();
+<a name="l00299"></a>00299        arc_it.Next()) {
+<a name="l00300"></a>00300     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc = arc_it.Index();
+<a name="l00301"></a>00301     DCHECK_EQ(<a class="code" href="classoperations__research_1_1MaxFlow.html#dcdc151ec36ba26b824ec09475e1f0ff">Tail</a>(arc), node);
+<a name="l00302"></a>00302     <span class="keywordflow">if</span> (<a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[arc] &gt; 0) {
+<a name="l00303"></a>00303       <span class="comment">// Update min_height only for arcs with available capacity.</span>
+<a name="l00304"></a>00304       min_height = std::min(min_height, <a class="code" href="classoperations__research_1_1MaxFlow.html#f401ed17b5386e38a6a5c27cd7dc0107" title="A packed array representing the height function for each node in graph_.">node_potential_</a>[<a class="code" href="classoperations__research_1_1MaxFlow.html#ed9585407579ffb5a006c4e04ea6df4b" title="Handy member functions to make the code more compact.">Head</a>(arc)]);
+<a name="l00305"></a>00305     }
+<a name="l00306"></a>00306   }
+<a name="l00307"></a>00307   VLOG(2) &lt;&lt; <span class="stringliteral">"Relabel: height("</span> &lt;&lt; node &lt;&lt; <span class="stringliteral">") relabeled from "</span>
+<a name="l00308"></a>00308           &lt;&lt; <a class="code" href="classoperations__research_1_1MaxFlow.html#f401ed17b5386e38a6a5c27cd7dc0107" title="A packed array representing the height function for each node in graph_.">node_potential_</a>[node] &lt;&lt; <span class="stringliteral">" to "</span> &lt;&lt; min_height + 1;
+<a name="l00309"></a>00309   <a class="code" href="classoperations__research_1_1MaxFlow.html#f401ed17b5386e38a6a5c27cd7dc0107" title="A packed array representing the height function for each node in graph_.">node_potential_</a>.Set(node, min_height + 1);
+<a name="l00310"></a>00310   <a class="code" href="classoperations__research_1_1MaxFlow.html#4f4f0f5069d03879eaeb7e1f714425bd" title="A packed array representing the first admissible arc for each node in graph_.">first_admissible_arc_</a>.Set(node, <a class="code" href="classoperations__research_1_1MaxFlow.html#f9a8629b879a3ce411249d0594903999" title="Returns the first incident arc of node.">GetFirstIncidentArc</a>(node));
+<a name="l00311"></a>00311 }
+<a name="l00312"></a>00312 
+<a name="l00313"></a>00313 }  <span class="comment">// namespace operations_research</span>
+<a name="l00314"></a>00314 
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -411,7 +403,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#927620 height=3></td>
+      <td colspan=2 bgcolor=#874340 height=3></td>
     </tr>
   </table>
 

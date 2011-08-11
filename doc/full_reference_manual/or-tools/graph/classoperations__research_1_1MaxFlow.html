@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #927620
+      background-color: #874340
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#927620 height=3></td>
+      <td colspan=3 bgcolor=#874340 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#927620><b>Thu Aug 11 00:29:03 PDT 2011</b></font>
+          Generated on: <font color=#874340><b>Thu Aug 11 12:09:23 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#927620>
+            <td bgcolor=#874340>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#927620>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#874340>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/graph/index.html">graph</a>/
             </tt></b></font>
@@ -156,6 +156,15 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MaxFlow.html#f9a8629b879a3ce411249d0594903999">GetFirstIncidentArc</a> (<a class="el" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node) const </td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the first incident arc of node.  <a href="#f9a8629b879a3ce411249d0594903999"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MaxFlow.html#46d67427f63a3089b11790507479e03d">PushFlowUnsafe</a> (<a class="el" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc, <a class="el" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> flow)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reduces the residual capacity on arc by flow.  <a href="#46d67427f63a3089b11790507479e03d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MaxFlow.html#b7b64e27e2980b4f2ec2e68511fa5bfa">SetCapacityResetFlow</a> (<a class="el" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc, <a class="el" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> capacity)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the capacity of arc to 'capacity' and clears the flow on arc.  <a href="#b7b64e27e2980b4f2ec2e68511fa5bfa"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MaxFlow.html#7f2840328a7a867dd5138b384806dcc5">SetCapacitySaturate</a> (<a class="el" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc, <a class="el" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> capacity)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the capacity of arc to 'capacity' and saturates the flow on arc.  <a href="#7f2840328a7a867dd5138b384806dcc5"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MaxFlow.html#0ad53f4750408f8a3106c976d3e50e48">CheckInputConsistency</a> () const </td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Checks the consistency of the input, i.e.  <a href="#0ad53f4750408f8a3106c976d3e50e48"></a><br></td></tr>
@@ -451,8 +460,8 @@ Returns the index of the node corresponding to the sink of the network.
 <p>
 Sets the capacity for arc to new_capacity. 
 <p>
-Sets the capacity for arc. 
-<p>Definition at line <a class="el" href="max__flow_8cc-source.html#l00067">67</a> of file <a class="el" href="max__flow_8cc-source.html">max_flow.cc</a>.</p>
+
+<p>Definition at line <a class="el" href="max__flow_8cc-source.html#l00066">66</a> of file <a class="el" href="max__flow_8cc-source.html">max_flow.cc</a>.</p>
 
 </div>
 </div><p>
@@ -655,6 +664,105 @@ Returns the first incident arc of node.
 
 </div>
 </div><p>
+<a class="anchor" name="46d67427f63a3089b11790507479e03d"></a><!-- doxytag: member="operations_research::MaxFlow::PushFlowUnsafe" ref="46d67427f63a3089b11790507479e03d" args="(ArcIndex arc, FlowQuantity flow)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::MaxFlow::PushFlowUnsafe           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a>&nbsp;</td>
+          <td class="paramname"> <em>arc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a>&nbsp;</td>
+          <td class="paramname"> <em>flow</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Reduces the residual capacity on arc by flow. 
+<p>
+Increase the residual capacity on opposite arc by flow. Does not update the excesses at the tail and head of arc. No check is performed either. 
+<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00217">217</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b7b64e27e2980b4f2ec2e68511fa5bfa"></a><!-- doxytag: member="operations_research::MaxFlow::SetCapacityResetFlow" ref="b7b64e27e2980b4f2ec2e68511fa5bfa" args="(ArcIndex arc, FlowQuantity capacity)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::MaxFlow::SetCapacityResetFlow           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a>&nbsp;</td>
+          <td class="paramname"> <em>arc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a>&nbsp;</td>
+          <td class="paramname"> <em>capacity</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Sets the capacity of arc to 'capacity' and clears the flow on arc. 
+<p>
+
+<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00225">225</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7f2840328a7a867dd5138b384806dcc5"></a><!-- doxytag: member="operations_research::MaxFlow::SetCapacitySaturate" ref="7f2840328a7a867dd5138b384806dcc5" args="(ArcIndex arc, FlowQuantity capacity)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::MaxFlow::SetCapacitySaturate           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a>&nbsp;</td>
+          <td class="paramname"> <em>arc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a>&nbsp;</td>
+          <td class="paramname"> <em>capacity</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Sets the capacity of arc to 'capacity' and saturates the flow on arc. 
+<p>
+
+<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00231">231</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
+
+</div>
+</div><p>
 <a class="anchor" name="0ad53f4750408f8a3106c976d3e50e48"></a><!-- doxytag: member="operations_research::MaxFlow::CheckInputConsistency" ref="0ad53f4750408f8a3106c976d3e50e48" args="() const " -->
 <div class="memitem">
 <div class="memproto">
@@ -777,7 +885,7 @@ Returns context concatenated with information about arc in a human-friendly way.
 Initializes the stack active_nodes_. 
 <p>
 
-<p>Definition at line <a class="el" href="max__flow_8cc-source.html#l00247">247</a> of file <a class="el" href="max__flow_8cc-source.html">max_flow.cc</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8cc-source.html#l00239">239</a> of file <a class="el" href="max__flow_8cc-source.html">max_flow.cc</a>.</p>
 
 </div>
 </div><p>
@@ -800,7 +908,7 @@ Initializes the stack active_nodes_.
 Performs optimization step. 
 <p>
 
-<p>Definition at line <a class="el" href="max__flow_8cc-source.html#l00258">258</a> of file <a class="el" href="max__flow_8cc-source.html">max_flow.cc</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8cc-source.html#l00250">250</a> of file <a class="el" href="max__flow_8cc-source.html">max_flow.cc</a>.</p>
 
 </div>
 </div><p>
@@ -824,7 +932,7 @@ Performs optimization step.
 Discharges an active node node by saturating its admissible adjacent arcs, if any, and by relabelling it when it becomes inactive. 
 <p>
 
-<p>Definition at line <a class="el" href="max__flow_8cc-source.html#l00270">270</a> of file <a class="el" href="max__flow_8cc-source.html">max_flow.cc</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8cc-source.html#l00262">262</a> of file <a class="el" href="max__flow_8cc-source.html">max_flow.cc</a>.</p>
 
 </div>
 </div><p>
@@ -903,7 +1011,7 @@ Initializes the preflow to a state that enables to run Optimize.
 Pushes flow on arc, i.e. 
 <p>
 consumes flow on residual_arc_capacity_[arc], and consumes -flow on residual_arc_capacity_[Opposite(arc)]. Updates node_excess_ at the tail and head of arc accordingly. 
-<p>Definition at line <a class="el" href="max__flow_8cc-source.html#l00229">229</a> of file <a class="el" href="max__flow_8cc-source.html">max_flow.cc</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8cc-source.html#l00225">225</a> of file <a class="el" href="max__flow_8cc-source.html">max_flow.cc</a>.</p>
 
 </div>
 </div><p>
@@ -927,7 +1035,7 @@ consumes flow on residual_arc_capacity_[arc], and consumes -flow on residual_arc
 Relabels a node, i.e. increases its height by the minimum necessary amount. 
 <p>
 
-<p>Definition at line <a class="el" href="max__flow_8cc-source.html#l00302">302</a> of file <a class="el" href="max__flow_8cc-source.html">max_flow.cc</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8cc-source.html#l00294">294</a> of file <a class="el" href="max__flow_8cc-source.html">max_flow.cc</a>.</p>
 
 </div>
 </div><p>
@@ -951,7 +1059,7 @@ Relabels a node, i.e. increases its height by the minimum necessary amount.
 Handy member functions to make the code more compact. 
 <p>
 
-<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00257">257</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00280">280</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
 
 </div>
 </div><p>
@@ -973,7 +1081,7 @@ Handy member functions to make the code more compact.
 
 <p>
 
-<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00259">259</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00282">282</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
 
 </div>
 </div><p>
@@ -995,7 +1103,7 @@ Handy member functions to make the code more compact.
 
 <p>
 
-<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00261">261</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00284">284</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
 
 </div>
 </div><p>
@@ -1017,7 +1125,7 @@ Handy member functions to make the code more compact.
 
 <p>
 
-<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00263">263</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00286">286</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
 
 </div>
 </div><p>
@@ -1057,7 +1165,7 @@ Handy member functions to make the code more compact.
 A pointer to the graph passed as argument. 
 <p>
 
-<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00266">266</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00289">289</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
 
 </div>
 </div><p>
@@ -1076,7 +1184,7 @@ A pointer to the graph passed as argument.
 A packed array representing the excess for each node in graph_. 
 <p>
 
-<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00269">269</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00292">292</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
 
 </div>
 </div><p>
@@ -1095,7 +1203,7 @@ A packed array representing the excess for each node in graph_.
 A packed array representing the height function for each node in graph_. 
 <p>
 
-<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00272">272</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00295">295</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
 
 </div>
 </div><p>
@@ -1116,7 +1224,7 @@ A packed array representing the residual_capacity for each arc in graph_.
 Residual capacities enable one to represent the capacity and flow for all arcs in the graph in the following manner. For all arc, residual_arc_capacity_[arc] = capacity[arc] - flow[arc] Moreover, for reverse arcs, capacity[arc] = 0 by definition, Also flow[Opposite(arc)] = -flow[arc] by definition. Therefore:<ul>
 <li>for a direct arc: flow[arc] = 0 - flow[Opposite(arc)] = capacity[Opposite(arc)] - flow[Opposite(arc)] = residual_arc_capacity_[Opposite(arc)]</li><li>for a reverse arc: flow[arc] = -residual_arc_capacity_[arc] Using these facts enables one to only maintain residual_arc_capacity_, instead of both capacity and flow, for each direct and indirect arc. This reduces the amount of memory for this information by a factor 2.s reduces the amount of memory for this information by a factor 2. </li></ul>
 
-<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00291">291</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00314">314</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
 
 </div>
 </div><p>
@@ -1135,7 +1243,7 @@ Residual capacities enable one to represent the capacity and flow for all arcs i
 A packed array representing the first admissible arc for each node in graph_. 
 <p>
 
-<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00295">295</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00318">318</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
 
 </div>
 </div><p>
@@ -1154,7 +1262,7 @@ A packed array representing the first admissible arc for each node in graph_.
 A stack used for managing active nodes in the algorithm. 
 <p>
 Note that the papers cited above recommend the use of a queue, but benchmarking so far has not proved it is better. 
-<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00300">300</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00323">323</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
 
 </div>
 </div><p>
@@ -1173,7 +1281,7 @@ Note that the papers cited above recommend the use of a queue, but benchmarking 
 The index of the source node in graph_. 
 <p>
 
-<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00303">303</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00326">326</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
 
 </div>
 </div><p>
@@ -1192,7 +1300,7 @@ The index of the source node in graph_.
 The index of the sink node in graph_. 
 <p>
 
-<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00306">306</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00329">329</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
 
 </div>
 </div><p>
@@ -1211,7 +1319,7 @@ The index of the sink node in graph_.
 The total flow. 
 <p>
 
-<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00309">309</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00332">332</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
 
 </div>
 </div><p>
@@ -1230,7 +1338,7 @@ The total flow.
 The status of the problem. 
 <p>
 
-<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00312">312</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
+<p>Definition at line <a class="el" href="max__flow_8h-source.html#l00335">335</a> of file <a class="el" href="max__flow_8h-source.html">max_flow.h</a>.</p>
 
 </div>
 </div><p>
@@ -1244,7 +1352,7 @@ The status of the problem.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#927620 height=3></td>
+      <td colspan=2 bgcolor=#874340 height=3></td>
     </tr>
   </table>
 

@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #927620
+      background-color: #874340
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#927620 height=3></td>
+      <td colspan=3 bgcolor=#874340 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#927620><b>Thu Aug 11 00:29:03 PDT 2011</b></font>
+          Generated on: <font color=#874340><b>Thu Aug 11 12:09:23 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#927620>
+            <td bgcolor=#874340>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#927620>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#874340>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -2682,7 +2682,7 @@
 <a name="l02599"></a>02599   <span class="keywordtype">void</span> SynchronizeFilters(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* assignment);
 <a name="l02600"></a>02600 
 <a name="l02601"></a>02601   <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* <span class="keyword">const</span> <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>;
-<a name="l02602"></a>02602   scoped_ptr&lt;Assignment&gt; reference_assignment_;
+<a name="l02602"></a>02602   scoped_ptr&lt;Assignment&gt; <a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>;
 <a name="l02603"></a>02603   <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> pool_;
 <a name="l02604"></a>02604   <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator_;
 <a name="l02605"></a>02605   <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder_;
@@ -2702,7 +2702,7 @@
 <a name="l02619"></a>02619                                  <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> limit,
 <a name="l02620"></a>02620                                  <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters)
 <a name="l02621"></a>02621     : <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>(assignment),
-<a name="l02622"></a>02622       reference_assignment_(new <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>(<a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>)),
+<a name="l02622"></a>02622       <a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>(new <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>(<a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>)),
 <a name="l02623"></a>02623       pool_(pool),
 <a name="l02624"></a>02624       ls_operator_(ls_operator),
 <a name="l02625"></a>02625       sub_decision_builder_(sub_decision_builder),
@@ -3093,70 +3093,72 @@
 <a name="l03010"></a>03010       solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1NestedSolveDecision.html" title="NestedSolve decision wrapper This decision calls a nested Solve on the given DecisionBuilder...">NestedSolveDecision</a>(find_neighbors, <span class="keyword">false</span>)));
 <a name="l03011"></a>03011 }
 <a name="l03012"></a>03012 
-<a name="l03013"></a><a class="code" href="classoperations__research_1_1DefaultSolutionPool.html">03013</a> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1DefaultSolutionPool.html">DefaultSolutionPool</a> : <span class="keyword">public</span> <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a> {
-<a name="l03014"></a>03014  <span class="keyword">public</span>:
-<a name="l03015"></a><a class="code" href="classoperations__research_1_1DefaultSolutionPool.html#17b38a534c234f87bfa992a262320c20">03015</a>   <a class="code" href="classoperations__research_1_1DefaultSolutionPool.html">DefaultSolutionPool</a>() : reference_assignment_(NULL) {}
-<a name="l03016"></a>03016 
-<a name="l03017"></a><a class="code" href="classoperations__research_1_1DefaultSolutionPool.html#61cb42c25d9336732d720c04d4c896e1">03017</a>   <span class="keyword">virtual</span> ~<a class="code" href="classoperations__research_1_1DefaultSolutionPool.html">DefaultSolutionPool</a>() {}
-<a name="l03018"></a>03018 
-<a name="l03019"></a><a class="code" href="classoperations__research_1_1DefaultSolutionPool.html#98887b8bded0d6b7029db597e42a2ffb">03019</a>   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Initialize(<a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* <span class="keyword">const</span> assignment) {
-<a name="l03020"></a>03020     reference_assignment_.reset(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>(assignment));
-<a name="l03021"></a>03021   }
-<a name="l03022"></a>03022 
-<a name="l03023"></a><a class="code" href="classoperations__research_1_1DefaultSolutionPool.html#c3d34e1320572dafe7553fbcdc214bca">03023</a>   <span class="keyword">virtual</span> <span class="keywordtype">void</span> RegisterNewSolution(<a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* <span class="keyword">const</span> assignment) {
-<a name="l03024"></a>03024     reference_assignment_-&gt;Copy(assignment);
-<a name="l03025"></a>03025   }
-<a name="l03026"></a>03026 
-<a name="l03027"></a><a class="code" href="classoperations__research_1_1DefaultSolutionPool.html#8e89560268207219abf69e81f876832f">03027</a>   <span class="keyword">virtual</span> <span class="keywordtype">void</span> GetNextSolution(<a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* <span class="keyword">const</span> assignment) {
-<a name="l03028"></a>03028     assignment-&gt;<a class="code" href="classoperations__research_1_1Assignment.html#8640e47c57ef2d95a6c94d383a9641a4" title="Copies the intersection of the 2 assignments to the current assignment.">Copy</a>(reference_assignment_.get());
-<a name="l03029"></a>03029   }
-<a name="l03030"></a>03030 
-<a name="l03031"></a><a class="code" href="classoperations__research_1_1DefaultSolutionPool.html#27654ad812a91899683851ad1b056440">03031</a>   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> SyncNeeded(<a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* <span class="keyword">const</span> local_assignment) {
-<a name="l03032"></a>03032     <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l03033"></a>03033   }
-<a name="l03034"></a>03034  <span class="keyword">private</span>:
-<a name="l03035"></a>03035   scoped_ptr&lt;Assignment&gt; reference_assignment_;
-<a name="l03036"></a>03036 };
-<a name="l03037"></a>03037 
-<a name="l03038"></a><a class="code" href="classoperations__research_1_1Solver.html#71d2ee2d6714d7faa834b31a7c7753a6">03038</a> <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <a class="code" href="classoperations__research_1_1Solver.html#71d2ee2d6714d7faa834b31a7c7753a6" title="Solution Pool.">Solver::MakeDefaultSolutionPool</a>() {
-<a name="l03039"></a>03039   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1DefaultSolutionPool.html">DefaultSolutionPool</a>());
-<a name="l03040"></a>03040 }
-<a name="l03041"></a>03041 
-<a name="l03042"></a><a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d">03042</a> <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d" title="Local Search decision builders factories.">Solver::MakeLocalSearchPhase</a>(
-<a name="l03043"></a>03043     <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* assignment,
-<a name="l03044"></a>03044     <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b52d4efd0ccb1880d2f1bc794166872" title="Read-only Parameters.">parameters</a>) {
-<a name="l03045"></a>03045   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1LocalSearch.html" title="Local search decision builder.">LocalSearch</a>(assignment,
-<a name="l03046"></a>03046                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#6ffb119e946430226df7002254bc8d13">solution_pool</a>(),
-<a name="l03047"></a>03047                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#26bb0cb4dca27b5b3050abb13c0a75e0">ls_operator</a>(),
-<a name="l03048"></a>03048                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#095b809504a71c349e3f0dd3aca5e89d">sub_decision_builder</a>(),
-<a name="l03049"></a>03049                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#2b0643bc1871ce13b447bb50b4868760">limit</a>(),
-<a name="l03050"></a>03050                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#478156cabd760a885c3f8fb85d85cf90">filters</a>()));
-<a name="l03051"></a>03051 }
-<a name="l03052"></a>03052 
-<a name="l03053"></a><a class="code" href="classoperations__research_1_1Solver.html#ce179300a3bc8f8566f13142d21913e8">03053</a> <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d" title="Local Search decision builders factories.">Solver::MakeLocalSearchPhase</a>(
-<a name="l03054"></a>03054     <span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; vars,
-<a name="l03055"></a>03055     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* first_solution,
-<a name="l03056"></a>03056     <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b52d4efd0ccb1880d2f1bc794166872" title="Read-only Parameters.">parameters</a>) {
-<a name="l03057"></a>03057   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d" title="Local Search decision builders factories.">MakeLocalSearchPhase</a>(vars.data(),
-<a name="l03058"></a>03058                               vars.size(),
-<a name="l03059"></a>03059                               first_solution,
-<a name="l03060"></a>03060                               parameters);
-<a name="l03061"></a>03061 }
-<a name="l03062"></a>03062 
-<a name="l03063"></a><a class="code" href="classoperations__research_1_1Solver.html#1b28fea17e1107fd33c5fcf77efc1049">03063</a> <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d" title="Local Search decision builders factories.">Solver::MakeLocalSearchPhase</a>(
-<a name="l03064"></a>03064     <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span>* vars, <span class="keywordtype">int</span> size,
-<a name="l03065"></a>03065     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* first_solution,
-<a name="l03066"></a>03066     <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b52d4efd0ccb1880d2f1bc794166872" title="Read-only Parameters.">parameters</a>) {
-<a name="l03067"></a>03067   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1LocalSearch.html" title="Local search decision builder.">LocalSearch</a>(vars, size,
-<a name="l03068"></a>03068                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#6ffb119e946430226df7002254bc8d13">solution_pool</a>(),
-<a name="l03069"></a>03069                                   first_solution,
-<a name="l03070"></a>03070                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#26bb0cb4dca27b5b3050abb13c0a75e0">ls_operator</a>(),
-<a name="l03071"></a>03071                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#095b809504a71c349e3f0dd3aca5e89d">sub_decision_builder</a>(),
-<a name="l03072"></a>03072                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#2b0643bc1871ce13b447bb50b4868760">limit</a>(),
-<a name="l03073"></a>03073                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#478156cabd760a885c3f8fb85d85cf90">filters</a>()));
-<a name="l03074"></a>03074 }
-<a name="l03075"></a>03075 
-<a name="l03076"></a>03076 }  <span class="comment">// namespace operations_research</span>
+<a name="l03013"></a>03013 <span class="keyword">namespace </span>{
+<a name="l03014"></a>03014 <span class="keyword">class </span>DefaultSolutionPool : <span class="keyword">public</span> <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a> {
+<a name="l03015"></a>03015  <span class="keyword">public</span>:
+<a name="l03016"></a>03016   DefaultSolutionPool() : <a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>(NULL) {}
+<a name="l03017"></a>03017 
+<a name="l03018"></a>03018   <span class="keyword">virtual</span> ~DefaultSolutionPool() {}
+<a name="l03019"></a>03019 
+<a name="l03020"></a>03020   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Initialize(Assignment* <span class="keyword">const</span> assignment) {
+<a name="l03021"></a>03021     <a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>.reset(<span class="keyword">new</span> Assignment(assignment));
+<a name="l03022"></a>03022   }
+<a name="l03023"></a>03023 
+<a name="l03024"></a>03024   <span class="keyword">virtual</span> <span class="keywordtype">void</span> RegisterNewSolution(Assignment* <span class="keyword">const</span> assignment) {
+<a name="l03025"></a>03025     <a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>-&gt;Copy(assignment);
+<a name="l03026"></a>03026   }
+<a name="l03027"></a>03027 
+<a name="l03028"></a>03028   <span class="keyword">virtual</span> <span class="keywordtype">void</span> GetNextSolution(Assignment* <span class="keyword">const</span> assignment) {
+<a name="l03029"></a>03029     assignment-&gt;Copy(<a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>.get());
+<a name="l03030"></a>03030   }
+<a name="l03031"></a>03031 
+<a name="l03032"></a>03032   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> SyncNeeded(Assignment* <span class="keyword">const</span> local_assignment) {
+<a name="l03033"></a>03033     <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l03034"></a>03034   }
+<a name="l03035"></a>03035  <span class="keyword">private</span>:
+<a name="l03036"></a><a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">03036</a>   scoped_ptr&lt;Assignment&gt; <a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>;
+<a name="l03037"></a>03037 };
+<a name="l03038"></a>03038 }  <span class="comment">// namespace</span>
+<a name="l03039"></a>03039 
+<a name="l03040"></a><a class="code" href="classoperations__research_1_1Solver.html#71d2ee2d6714d7faa834b31a7c7753a6">03040</a> <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <a class="code" href="classoperations__research_1_1Solver.html#71d2ee2d6714d7faa834b31a7c7753a6" title="Solution Pool.">Solver::MakeDefaultSolutionPool</a>() {
+<a name="l03041"></a>03041   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> DefaultSolutionPool());
+<a name="l03042"></a>03042 }
+<a name="l03043"></a>03043 
+<a name="l03044"></a><a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d">03044</a> <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d" title="Local Search decision builders factories.">Solver::MakeLocalSearchPhase</a>(
+<a name="l03045"></a>03045     <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* assignment,
+<a name="l03046"></a>03046     <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b52d4efd0ccb1880d2f1bc794166872" title="Read-only Parameters.">parameters</a>) {
+<a name="l03047"></a>03047   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1LocalSearch.html" title="Local search decision builder.">LocalSearch</a>(assignment,
+<a name="l03048"></a>03048                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#6ffb119e946430226df7002254bc8d13">solution_pool</a>(),
+<a name="l03049"></a>03049                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#26bb0cb4dca27b5b3050abb13c0a75e0">ls_operator</a>(),
+<a name="l03050"></a>03050                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#095b809504a71c349e3f0dd3aca5e89d">sub_decision_builder</a>(),
+<a name="l03051"></a>03051                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#2b0643bc1871ce13b447bb50b4868760">limit</a>(),
+<a name="l03052"></a>03052                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#478156cabd760a885c3f8fb85d85cf90">filters</a>()));
+<a name="l03053"></a>03053 }
+<a name="l03054"></a>03054 
+<a name="l03055"></a><a class="code" href="classoperations__research_1_1Solver.html#ce179300a3bc8f8566f13142d21913e8">03055</a> <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d" title="Local Search decision builders factories.">Solver::MakeLocalSearchPhase</a>(
+<a name="l03056"></a>03056     <span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; vars,
+<a name="l03057"></a>03057     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* first_solution,
+<a name="l03058"></a>03058     <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b52d4efd0ccb1880d2f1bc794166872" title="Read-only Parameters.">parameters</a>) {
+<a name="l03059"></a>03059   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d" title="Local Search decision builders factories.">MakeLocalSearchPhase</a>(vars.data(),
+<a name="l03060"></a>03060                               vars.size(),
+<a name="l03061"></a>03061                               first_solution,
+<a name="l03062"></a>03062                               parameters);
+<a name="l03063"></a>03063 }
+<a name="l03064"></a>03064 
+<a name="l03065"></a><a class="code" href="classoperations__research_1_1Solver.html#1b28fea17e1107fd33c5fcf77efc1049">03065</a> <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d" title="Local Search decision builders factories.">Solver::MakeLocalSearchPhase</a>(
+<a name="l03066"></a>03066     <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span>* vars, <span class="keywordtype">int</span> size,
+<a name="l03067"></a>03067     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* first_solution,
+<a name="l03068"></a>03068     <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b52d4efd0ccb1880d2f1bc794166872" title="Read-only Parameters.">parameters</a>) {
+<a name="l03069"></a>03069   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1LocalSearch.html" title="Local search decision builder.">LocalSearch</a>(vars, size,
+<a name="l03070"></a>03070                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#6ffb119e946430226df7002254bc8d13">solution_pool</a>(),
+<a name="l03071"></a>03071                                   first_solution,
+<a name="l03072"></a>03072                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#26bb0cb4dca27b5b3050abb13c0a75e0">ls_operator</a>(),
+<a name="l03073"></a>03073                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#095b809504a71c349e3f0dd3aca5e89d">sub_decision_builder</a>(),
+<a name="l03074"></a>03074                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#2b0643bc1871ce13b447bb50b4868760">limit</a>(),
+<a name="l03075"></a>03075                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#478156cabd760a885c3f8fb85d85cf90">filters</a>()));
+<a name="l03076"></a>03076 }
+<a name="l03077"></a>03077 
+<a name="l03078"></a>03078 }  <span class="comment">// namespace operations_research</span>
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -3165,7 +3167,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#927620 height=3></td>
+      <td colspan=2 bgcolor=#874340 height=3></td>
     </tr>
   </table>
 
