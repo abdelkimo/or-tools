@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #704131
+      background-color: #915221
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#704131 height=3></td>
+      <td colspan=3 bgcolor=#915221 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#704131><b>Fri Aug  5 10:40:09 PDT 2011</b></font>
+          Generated on: <font color=#915221><b>Wed Aug 10 22:22:19 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#704131>
+            <td bgcolor=#915221>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#704131>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#915221>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/graph/index.html">graph</a>/
             </tt></b></font>
@@ -105,9 +105,9 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph.html#44b1463a5b82395b80bf6a9d08f4d82a">~EbertGraph</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph.html#2acf3de64a7dd003f86fb1fb8f1519b3">Reserve</a> (<a class="el" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> new_max_num_nodes, <a class="el" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> new_max_num_arcs)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph.html#a695e719d56407f88e34f2d497fce5d6">Reserve</a> (<a class="el" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> new_max_num_nodes, <a class="el" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> new_max_num_arcs)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reserves memory needed for max_num_nodes nodes and max_num_arcs arcs.  <a href="#2acf3de64a7dd003f86fb1fb8f1519b3"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reserves memory needed for max_num_nodes nodes and max_num_arcs arcs.  <a href="#a695e719d56407f88e34f2d497fce5d6"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph.html#9913def68b3deecb203994b8fa6340a3">num_nodes</a> () const </td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the number of nodes in the graph.  <a href="#9913def68b3deecb203994b8fa6340a3"></a><br></td></tr>
@@ -132,6 +132,9 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph.html#c21b7c298961101f1c402bce41272d28">max_end_arc_index</a> () const </td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns one more than the largest valid index of a direct arc.  <a href="#c21b7c298961101f1c402bce41272d28"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph.html#d3a600f13724b9a88d2efeac93957ddf">IsNodeValid</a> (<a class="el" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node) const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns true if node is in the range [kFirstNode .. max_num_nodes_).  <a href="#d3a600f13724b9a88d2efeac93957ddf"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph.html#c826a731614e0a1e2c4450dfaf02c543">AddArc</a> (<a class="el" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> tail, <a class="el" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> head)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds an arc to the graph and returns its index.  <a href="#c826a731614e0a1e2c4450dfaf02c543"></a><br></td></tr>
@@ -323,19 +326,19 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00154">154</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00157">157</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
-<a class="anchor" name="2acf3de64a7dd003f86fb1fb8f1519b3"></a><!-- doxytag: member="operations_research::EbertGraph::Reserve" ref="2acf3de64a7dd003f86fb1fb8f1519b3" args="(NodeIndex new_max_num_nodes, ArcIndex new_max_num_arcs)" -->
+<a class="anchor" name="a695e719d56407f88e34f2d497fce5d6"></a><!-- doxytag: member="operations_research::EbertGraph::Reserve" ref="a695e719d56407f88e34f2d497fce5d6" args="(NodeIndex new_max_num_nodes, ArcIndex new_max_num_arcs)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classoperations__research_1_1EbertGraph.html">operations_research::EbertGraph</a>&lt; NodeIndexSize, ArcIndexSize &gt;::Reserve           </td>
+          <td class="memname">bool <a class="el" href="classoperations__research_1_1EbertGraph.html">operations_research::EbertGraph</a>&lt; NodeIndexSize, ArcIndexSize &gt;::Reserve           </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a>&nbsp;</td>
           <td class="paramname"> <em>new_max_num_nodes</em>, </td>
@@ -358,8 +361,8 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 <p>
 Reserves memory needed for max_num_nodes nodes and max_num_arcs arcs. 
 <p>
-It can be used to enlarge the graph, but does not shrink memory if called with smaller values. 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00159">159</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+Returns false if the parameters passed are not OK. It can be used to enlarge the graph, but does not shrink memory if called with smaller values. 
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00163">163</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -384,7 +387,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns the number of nodes in the graph. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00183">183</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00190">190</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -409,7 +412,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns the number of original arcs in the graph (The ones with positive indices. 
 <p>
 ) 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00187">187</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00194">194</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -434,7 +437,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns one more than the largest index of an extant node. 
 <p>
 To be used as a helper when clients need to dimension or iterate over arrays of node annotation information. 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00192">192</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00199">199</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -459,7 +462,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns one more than the largest index of an extant direct arc. 
 <p>
 To be used as a helper when clients need to dimension or iterate over arrays of arc annotation information. 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00197">197</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00204">204</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -484,7 +487,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns the maximum possible number of nodes in the graph. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00200">200</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00207">207</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -509,7 +512,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns the maximum possible number of original arcs in the graph. 
 <p>
 (The ones with positive indices.) 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00204">204</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00211">211</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -534,7 +537,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns one more than the largest valid index of a node. 
 <p>
 To be used as a helper when clients need to dimension or iterate over arrays of node annotation information. 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00209">209</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00216">216</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -559,7 +562,33 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns one more than the largest valid index of a direct arc. 
 <p>
 To be used as a helper when clients need to dimension or iterate over arrays of arc annotation information. 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00214">214</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00221">221</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="d3a600f13724b9a88d2efeac93957ddf"></a><!-- doxytag: member="operations_research::EbertGraph::IsNodeValid" ref="d3a600f13724b9a88d2efeac93957ddf" args="(NodeIndex node) const " -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classoperations__research_1_1EbertGraph.html">operations_research::EbertGraph</a>&lt; NodeIndexSize, ArcIndexSize &gt;::IsNodeValid           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a>&nbsp;</td>
+          <td class="paramname"> <em>node</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Returns true if node is in the range [kFirstNode .. max_num_nodes_). 
+<p>
+
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00224">224</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -593,8 +622,8 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 <p>
 Adds an arc to the graph and returns its index. 
 <p>
-
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00217">217</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+Returns kNilArc if the arc could not be added. 
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00230">230</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -631,7 +660,7 @@ template&lt;typename ArcIndexStrictWeakOrderingFunctor&gt; </div>
 For some reason SWIG seems unable to handle the definition of class <a class="el" href="classoperations__research_1_1EbertGraph_1_1CycleHandlerForAnnotatedArcs.html">CycleHandlerForAnnotatedArcs</a>. 
 <p>
 I have no idea why we use such a horrible tool that doesn't say anything except "error." 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00238">238</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00250">250</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -657,7 +686,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Utility function to check that an arc index is within the bounds. 
 <p>
 It is exported so that users of the <a class="el" href="classoperations__research_1_1EbertGraph.html">EbertGraph</a> class can use it. To be used in a DCHECK. 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00539">539</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00551">551</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -683,7 +712,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Utility function to check that an arc index is within the bounds AND different from kNilArc. 
 <p>
 It is exported so that users of the <a class="el" href="classoperations__research_1_1EbertGraph.html">EbertGraph</a> class can use it. To be used in a DCHECK. 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00550">550</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00559">559</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -709,7 +738,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Utility function to check that a node index is within the bounds AND different from kNilNode. 
 <p>
 It is exported so that users of the <a class="el" href="classoperations__research_1_1EbertGraph.html">EbertGraph</a> class can use it. To be used in a DCHECK. 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00561">561</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00567">567</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -735,7 +764,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns the tail or start-node of arc. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00568">568</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00572">572</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -761,7 +790,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns the head or end-node of arc. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00574">574</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00578">578</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -796,7 +825,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns the first arc going from tail to head, if it exists, or kNilArc if such an arc does not exist. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00581">581</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00585">585</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -822,7 +851,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns the tail or start-node of arc if it is positive (i.e. 
 <p>
 it is taken in the direction it was entered in the graph), and the head or end-node otherwise. 'This' in Ebert's paper. 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00595">595</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00599">599</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -848,7 +877,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns the head or end-node of arc if it is positive (i.e. 
 <p>
 it is taken in the direction it was entered in the graph), and the tail or start-node otherwise. 'That' in Ebert's paper. 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00602">602</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00606">606</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -874,7 +903,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns the arc in normal/direct direction. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00607">607</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00611">611</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -900,7 +929,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns the arc in reverse direction. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00613">613</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00617">617</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -926,7 +955,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns the opposite arc, i.e the direct arc is the arc is in reverse direction, and the reverse arc if the arc is direct. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00620">620</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00624">624</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -952,7 +981,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns true if the arc is direct. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00628">628</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00632">632</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -978,7 +1007,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns true if the arc is in the reverse direction. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00634">634</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00638">638</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -1013,7 +1042,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns true if arc is incident to node. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00640">640</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00644">644</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -1048,7 +1077,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns true if arc is incoming to node. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00645">645</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00649">649</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -1083,7 +1112,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns true if arc is outgoing from node. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00650">650</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00654">654</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -1108,7 +1137,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Recreates the next_adjacent_arc_ and first_incident_arc_ variables from the array node_ in O(n + m) time. 
 <p>
 This is useful if node_ array has been sorted according to a given criterion, for example. 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00658">658</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00662">662</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -1133,7 +1162,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns a debug string containing all the information contained in the data structure in raw form. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00668">668</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00672">672</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -1157,7 +1186,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00683">683</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00687">687</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -1181,7 +1210,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00691">691</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00695">695</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -1373,7 +1402,7 @@ Useful when using <a class="el" href="classoperations__research_1_1EbertGraph.ht
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#704131 height=3></td>
+      <td colspan=2 bgcolor=#915221 height=3></td>
     </tr>
   </table>
 

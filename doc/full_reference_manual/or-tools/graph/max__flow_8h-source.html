@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #704131
+      background-color: #915221
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#704131 height=3></td>
+      <td colspan=3 bgcolor=#915221 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#704131><b>Fri Aug  5 10:40:09 PDT 2011</b></font>
+          Generated on: <font color=#915221><b>Wed Aug 10 22:22:19 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#704131>
+            <td bgcolor=#915221>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#704131>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#915221>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/graph/index.html">graph</a>/
             </tt></b></font>
@@ -216,186 +216,188 @@
 <a name="l00133"></a>00133 
 <a name="l00134"></a>00134   <a class="code" href="classoperations__research_1_1MaxFlow.html#13a87ef36714bce2a634ff7b45b11e12">MaxFlow</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1EbertGraph.html">StarGraph</a>* <a class="code" href="classoperations__research_1_1MaxFlow.html#1481414855981e33b7fba2f1660b656e" title="Returns the graph associated to the current object.">graph</a>, <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> source, <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> target);
 <a name="l00135"></a>00135 
-<a name="l00136"></a>00136   <span class="comment">// Returns the graph associated to the current object.</span>
-<a name="l00137"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#1481414855981e33b7fba2f1660b656e">00137</a>   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1EbertGraph.html">StarGraph</a>* <a class="code" href="classoperations__research_1_1MaxFlow.html#1481414855981e33b7fba2f1660b656e" title="Returns the graph associated to the current object.">graph</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> graph_; }
-<a name="l00138"></a>00138 
-<a name="l00139"></a>00139   <span class="comment">// Returns the status of last call to Solve(). NOT_SOLVED is returned Solve()</span>
-<a name="l00140"></a>00140   <span class="comment">// has never been called or if the problem has been modified in such a way</span>
-<a name="l00141"></a>00141   <span class="comment">// that the previous solution becomes invalid.</span>
-<a name="l00142"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#e9b0df121878d89140cd11f47f5ad408">00142</a>   <a class="code" href="classoperations__research_1_1MaxFlow.html#4625a8499a147b60fcf1630a388cbc16" title="Different statuses for a given problem.">Status</a> <a class="code" href="classoperations__research_1_1MaxFlow.html#e9b0df121878d89140cd11f47f5ad408" title="Returns the status of last call to Solve().">status</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> status_; }
-<a name="l00143"></a>00143 
-<a name="l00144"></a>00144   <span class="comment">// Returns the index of the node corresponding to the source of the network.</span>
-<a name="l00145"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#c78a1525b1d66a2873eac30ff576e6eb">00145</a>   <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> <a class="code" href="classoperations__research_1_1MaxFlow.html#c78a1525b1d66a2873eac30ff576e6eb" title="Returns the index of the node corresponding to the source of the network.">GetSourceNodeIndex</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> source_; }
-<a name="l00146"></a>00146 
-<a name="l00147"></a>00147   <span class="comment">// Returns the index of the node corresponding to the sink of the network.</span>
-<a name="l00148"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#cb84ed8e0fa9a53c1ca69ea9c35cb161">00148</a>   <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> <a class="code" href="classoperations__research_1_1MaxFlow.html#cb84ed8e0fa9a53c1ca69ea9c35cb161" title="Returns the index of the node corresponding to the sink of the network.">GetSinkNodeIndex</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> sink_; }
-<a name="l00149"></a>00149 
-<a name="l00150"></a>00150   <span class="comment">// Sets the capacity for arc to new_capacity.</span>
-<a name="l00151"></a>00151   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#857d5c99a5aed728dafea95bd834d95d" title="Sets the capacity for arc to new_capacity.">SetArcCapacity</a>(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc, <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> new_capacity);
-<a name="l00152"></a>00152 
-<a name="l00153"></a>00153   <span class="comment">// Sets the flow for arc.</span>
-<a name="l00154"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#9ec9bcc72771b64279a19b899ad15fe1">00154</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#9ec9bcc72771b64279a19b899ad15fe1" title="Sets the flow for arc.">SetArcFlow</a>(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc, <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> new_flow) {
-<a name="l00155"></a>00155     DCHECK(graph_-&gt;<a class="code" href="classoperations__research_1_1EbertGraph.html#8d6877ac937a2ce4159ccf05f16f50f5" title="Utility function to check that an arc index is within the bounds AND different from...">CheckArcValidity</a>(arc));
-<a name="l00156"></a>00156     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> capacity = <a class="code" href="classoperations__research_1_1MaxFlow.html#f9042fb6c072933c7823a60df45cc23a" title="Returns the capacity of arc using the equations given in the comment on residual_arc_capacity_...">Capacity</a>(arc);
-<a name="l00157"></a>00157     DCHECK_GE(capacity, new_flow);
-<a name="l00158"></a>00158     residual_arc_capacity_.Set(Opposite(arc), -new_flow);
-<a name="l00159"></a>00159     residual_arc_capacity_.Set(arc, capacity - new_flow);
-<a name="l00160"></a>00160     status_ = <a class="code" href="classoperations__research_1_1MaxFlow.html#4625a8499a147b60fcf1630a388cbc16d0d7f465b5b5c75344fc714da13a0fad" title="The problem was not solved, or its data were edited.">NOT_SOLVED</a>;
-<a name="l00161"></a>00161   }
-<a name="l00162"></a>00162 
-<a name="l00163"></a>00163   <span class="comment">// Returns true if a maximum flow was solved.</span>
-<a name="l00164"></a>00164   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#63161f3bb48fbf6b957b3c81c4f29803" title="Returns true if a maximum flow was solved.">Solve</a>();
-<a name="l00165"></a>00165 
-<a name="l00166"></a>00166   <span class="comment">// Returns the total flow found by the algorithm.</span>
-<a name="l00167"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#389e046415ec2804ec0e2cedde2ae07a">00167</a>   <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> <a class="code" href="classoperations__research_1_1MaxFlow.html#389e046415ec2804ec0e2cedde2ae07a" title="Returns the total flow found by the algorithm.">GetOptimalFlow</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> total_flow_; }
-<a name="l00168"></a>00168 
-<a name="l00169"></a>00169   <span class="comment">// Returns the flow on arc using the equations given in the comment on</span>
-<a name="l00170"></a>00170   <span class="comment">// residual_arc_capacity_.</span>
-<a name="l00171"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#aa69f5dc647dcde9c974950bc95f2658">00171</a>   <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> <a class="code" href="classoperations__research_1_1MaxFlow.html#aa69f5dc647dcde9c974950bc95f2658" title="Returns the flow on arc using the equations given in the comment on residual_arc_capacity_...">Flow</a>(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc)<span class="keyword"> const </span>{
-<a name="l00172"></a>00172     DCHECK(graph_-&gt;<a class="code" href="classoperations__research_1_1EbertGraph.html#8d6877ac937a2ce4159ccf05f16f50f5" title="Utility function to check that an arc index is within the bounds AND different from...">CheckArcValidity</a>(arc));
-<a name="l00173"></a>00173     <span class="keywordflow">if</span> (IsDirect(arc)) {
-<a name="l00174"></a>00174       <span class="keywordflow">return</span> residual_arc_capacity_[Opposite(arc)];
-<a name="l00175"></a>00175     } <span class="keywordflow">else</span> {
-<a name="l00176"></a>00176       <span class="keywordflow">return</span> -residual_arc_capacity_[arc];
-<a name="l00177"></a>00177     }
-<a name="l00178"></a>00178   }
-<a name="l00179"></a>00179 
-<a name="l00180"></a>00180   <span class="comment">// Returns the capacity of arc using the equations given in the comment on</span>
-<a name="l00181"></a>00181   <span class="comment">// residual_arc_capacity_.</span>
-<a name="l00182"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#f9042fb6c072933c7823a60df45cc23a">00182</a>   <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> <a class="code" href="classoperations__research_1_1MaxFlow.html#f9042fb6c072933c7823a60df45cc23a" title="Returns the capacity of arc using the equations given in the comment on residual_arc_capacity_...">Capacity</a>(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc)<span class="keyword"> const </span>{
-<a name="l00183"></a>00183     DCHECK(graph_-&gt;<a class="code" href="classoperations__research_1_1EbertGraph.html#8d6877ac937a2ce4159ccf05f16f50f5" title="Utility function to check that an arc index is within the bounds AND different from...">CheckArcValidity</a>(arc));
-<a name="l00184"></a>00184     <span class="keywordflow">if</span> (IsDirect(arc)) {
-<a name="l00185"></a>00185       <span class="keywordflow">return</span> residual_arc_capacity_[arc]
-<a name="l00186"></a>00186            + residual_arc_capacity_[Opposite(arc)];
-<a name="l00187"></a>00187     } <span class="keywordflow">else</span> {
-<a name="l00188"></a>00188       <span class="keywordflow">return</span> 0;
-<a name="l00189"></a>00189     }
-<a name="l00190"></a>00190   }
-<a name="l00191"></a>00191 
-<a name="l00192"></a>00192  <span class="keyword">private</span>:
-<a name="l00193"></a>00193   <span class="comment">// Returns true if arc is admissible.</span>
-<a name="l00194"></a>00194   <span class="keywordtype">bool</span> IsAdmissible(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc)<span class="keyword"> const </span>{
-<a name="l00195"></a>00195     <span class="keywordflow">return</span> residual_arc_capacity_[arc] &gt; 0
-<a name="l00196"></a>00196         &amp;&amp; node_potential_[Tail(arc)] == node_potential_[Head(arc)] + 1;
-<a name="l00197"></a>00197   }
-<a name="l00198"></a>00198 
-<a name="l00199"></a>00199   <span class="comment">// Returns true if node is active, i.e. if its supply is positive and it</span>
-<a name="l00200"></a>00200   <span class="comment">// is neither the source or the target of the graph.</span>
-<a name="l00201"></a>00201   <span class="keywordtype">bool</span> IsActive(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node)<span class="keyword"> const </span>{
-<a name="l00202"></a>00202     <span class="keywordflow">return</span> (node != source_) &amp;&amp; (node != sink_) &amp;&amp; (node_excess_[node] &gt; 0);
-<a name="l00203"></a>00203   }
-<a name="l00204"></a>00204 
-<a name="l00205"></a>00205   <span class="comment">// Returns the first incident arc of node.</span>
-<a name="l00206"></a>00206   <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> GetFirstIncidentArc(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node)<span class="keyword"> const </span>{
-<a name="l00207"></a>00207     StarGraph::IncidentArcIterator arc_it(*graph_, node);
-<a name="l00208"></a>00208     <span class="keywordflow">return</span> arc_it.Index();
-<a name="l00209"></a>00209   }
-<a name="l00210"></a>00210 
-<a name="l00211"></a>00211   <span class="comment">// Checks the consistency of the input, i.e. that capacities on the arcs are</span>
-<a name="l00212"></a>00212   <span class="comment">// non-negative (&gt;=0.)</span>
-<a name="l00213"></a>00213   <span class="keywordtype">bool</span> CheckInputConsistency() <span class="keyword">const</span>;
-<a name="l00214"></a>00214 
-<a name="l00215"></a>00215   <span class="comment">// Checks whether the result is valid, i.e. that node excesses are all equal</span>
-<a name="l00216"></a>00216   <span class="comment">// to zero (we have a flow) and that residual capacities are all non-negative</span>
-<a name="l00217"></a>00217   <span class="comment">// (&gt;=0.)</span>
-<a name="l00218"></a>00218   <span class="keywordtype">bool</span> CheckResult() <span class="keyword">const</span>;
-<a name="l00219"></a>00219 
-<a name="l00220"></a>00220   <span class="comment">// Returns true if a precondition for Relabel is met, i.e. the outgoing arcs</span>
-<a name="l00221"></a>00221   <span class="comment">// of node are all either saturated or the heights of their heads are greater</span>
-<a name="l00222"></a>00222   <span class="comment">// or equal to the height of node.</span>
-<a name="l00223"></a>00223   <span class="keywordtype">bool</span> CheckRelabelPrecondition(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node) <span class="keyword">const</span>;
-<a name="l00224"></a>00224 
-<a name="l00225"></a>00225   <span class="comment">// Returns context concatenated with information about arc</span>
-<a name="l00226"></a>00226   <span class="comment">// in a human-friendly way.</span>
-<a name="l00227"></a>00227   <span class="keywordtype">string</span> DebugString(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; context, <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc) <span class="keyword">const</span>;
-<a name="l00228"></a>00228 
-<a name="l00229"></a>00229   <span class="comment">// Initializes the stack active_nodes_.</span>
-<a name="l00230"></a>00230   <span class="keywordtype">void</span> InitializeActiveNodeStack();
-<a name="l00231"></a>00231 
-<a name="l00232"></a>00232   <span class="comment">// Performs optimization step.</span>
-<a name="l00233"></a>00233   <span class="keywordtype">void</span> Refine();
-<a name="l00234"></a>00234 
-<a name="l00235"></a>00235   <span class="comment">// Discharges an active node node by saturating its admissible adjacent arcs,</span>
-<a name="l00236"></a>00236   <span class="comment">// if any, and by relabelling it when it becomes inactive.</span>
-<a name="l00237"></a>00237   <span class="keywordtype">void</span> Discharge(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node);
-<a name="l00238"></a>00238 
-<a name="l00239"></a>00239   <span class="comment">// Resets the first_admissible_arc_ array to the first incident arc of each</span>
-<a name="l00240"></a>00240   <span class="comment">// node.</span>
-<a name="l00241"></a>00241   <span class="keywordtype">void</span> ResetFirstAdmissibleArcs();
-<a name="l00242"></a>00242 
-<a name="l00243"></a>00243   <span class="comment">// Initializes the preflow to a state that enables to run Optimize.</span>
-<a name="l00244"></a>00244   <span class="keywordtype">void</span> InitializePreflow();
-<a name="l00245"></a>00245 
-<a name="l00246"></a>00246   <span class="comment">// Pushes flow on arc,  i.e. consumes flow on residual_arc_capacity_[arc],</span>
-<a name="l00247"></a>00247   <span class="comment">// and consumes -flow on residual_arc_capacity_[Opposite(arc)]. Updates</span>
-<a name="l00248"></a>00248   <span class="comment">// node_excess_ at the tail and head of arc accordingly.</span>
-<a name="l00249"></a>00249   <span class="keywordtype">void</span> PushFlow(<a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> flow, <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc);
-<a name="l00250"></a>00250 
-<a name="l00251"></a>00251   <span class="comment">// Relabels a node, i.e. increases its height by the minimum necessary amount.</span>
-<a name="l00252"></a>00252   <span class="keywordtype">void</span> Relabel(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node);
-<a name="l00253"></a>00253 
-<a name="l00254"></a>00254   <span class="comment">// Handy member functions to make the code more compact.</span>
-<a name="l00255"></a>00255   <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> Head(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> graph_-&gt;Head(arc); }
-<a name="l00256"></a>00256 
-<a name="l00257"></a>00257   <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> Tail(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> graph_-&gt;Tail(arc); }
+<a name="l00136"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#a32bb999b11f97ae6a59107fa4f9c0c1">00136</a>   <span class="keyword">virtual</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#a32bb999b11f97ae6a59107fa4f9c0c1">~MaxFlow</a>() {}
+<a name="l00137"></a>00137 
+<a name="l00138"></a>00138   <span class="comment">// Returns the graph associated to the current object.</span>
+<a name="l00139"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#1481414855981e33b7fba2f1660b656e">00139</a>   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1EbertGraph.html">StarGraph</a>* <a class="code" href="classoperations__research_1_1MaxFlow.html#1481414855981e33b7fba2f1660b656e" title="Returns the graph associated to the current object.">graph</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>; }
+<a name="l00140"></a>00140 
+<a name="l00141"></a>00141   <span class="comment">// Returns the status of last call to Solve(). NOT_SOLVED is returned Solve()</span>
+<a name="l00142"></a>00142   <span class="comment">// has never been called or if the problem has been modified in such a way</span>
+<a name="l00143"></a>00143   <span class="comment">// that the previous solution becomes invalid.</span>
+<a name="l00144"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#e9b0df121878d89140cd11f47f5ad408">00144</a>   <a class="code" href="classoperations__research_1_1MaxFlow.html#4625a8499a147b60fcf1630a388cbc16" title="Different statuses for a given problem.">Status</a> <a class="code" href="classoperations__research_1_1MaxFlow.html#e9b0df121878d89140cd11f47f5ad408" title="Returns the status of last call to Solve().">status</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#659ba26955faa75e8369d0ffab4fcc0d" title="The status of the problem.">status_</a>; }
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146   <span class="comment">// Returns the index of the node corresponding to the source of the network.</span>
+<a name="l00147"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#c78a1525b1d66a2873eac30ff576e6eb">00147</a>   <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> <a class="code" href="classoperations__research_1_1MaxFlow.html#c78a1525b1d66a2873eac30ff576e6eb" title="Returns the index of the node corresponding to the source of the network.">GetSourceNodeIndex</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#93d73f59e8d99a81832e047c390c0150" title="The index of the source node in graph_.">source_</a>; }
+<a name="l00148"></a>00148 
+<a name="l00149"></a>00149   <span class="comment">// Returns the index of the node corresponding to the sink of the network.</span>
+<a name="l00150"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#cb84ed8e0fa9a53c1ca69ea9c35cb161">00150</a>   <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> <a class="code" href="classoperations__research_1_1MaxFlow.html#cb84ed8e0fa9a53c1ca69ea9c35cb161" title="Returns the index of the node corresponding to the sink of the network.">GetSinkNodeIndex</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#78c90d9a1adcdf5e04f608eef063eafc" title="The index of the sink node in graph_.">sink_</a>; }
+<a name="l00151"></a>00151 
+<a name="l00152"></a>00152   <span class="comment">// Sets the capacity for arc to new_capacity.</span>
+<a name="l00153"></a>00153   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#857d5c99a5aed728dafea95bd834d95d" title="Sets the capacity for arc to new_capacity.">SetArcCapacity</a>(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc, <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> new_capacity);
+<a name="l00154"></a>00154 
+<a name="l00155"></a>00155   <span class="comment">// Sets the flow for arc.</span>
+<a name="l00156"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#9ec9bcc72771b64279a19b899ad15fe1">00156</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#9ec9bcc72771b64279a19b899ad15fe1" title="Sets the flow for arc.">SetArcFlow</a>(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc, <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> new_flow) {
+<a name="l00157"></a>00157     DCHECK(<a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>-&gt;<a class="code" href="classoperations__research_1_1EbertGraph.html#8d6877ac937a2ce4159ccf05f16f50f5" title="Utility function to check that an arc index is within the bounds AND different from...">CheckArcValidity</a>(arc));
+<a name="l00158"></a>00158     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> capacity = <a class="code" href="classoperations__research_1_1MaxFlow.html#f9042fb6c072933c7823a60df45cc23a" title="Returns the capacity of arc using the equations given in the comment on residual_arc_capacity_...">Capacity</a>(arc);
+<a name="l00159"></a>00159     DCHECK_GE(capacity, new_flow);
+<a name="l00160"></a>00160     <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>.Set(<a class="code" href="classoperations__research_1_1MaxFlow.html#56e0f3db4d40eae22754af07790100ae">Opposite</a>(arc), -new_flow);
+<a name="l00161"></a>00161     <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>.Set(arc, capacity - new_flow);
+<a name="l00162"></a>00162     <a class="code" href="classoperations__research_1_1MaxFlow.html#659ba26955faa75e8369d0ffab4fcc0d" title="The status of the problem.">status_</a> = <a class="code" href="classoperations__research_1_1MaxFlow.html#4625a8499a147b60fcf1630a388cbc16d0d7f465b5b5c75344fc714da13a0fad" title="The problem was not solved, or its data were edited.">NOT_SOLVED</a>;
+<a name="l00163"></a>00163   }
+<a name="l00164"></a>00164 
+<a name="l00165"></a>00165   <span class="comment">// Returns true if a maximum flow was solved.</span>
+<a name="l00166"></a>00166   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#63161f3bb48fbf6b957b3c81c4f29803" title="Returns true if a maximum flow was solved.">Solve</a>();
+<a name="l00167"></a>00167 
+<a name="l00168"></a>00168   <span class="comment">// Returns the total flow found by the algorithm.</span>
+<a name="l00169"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#389e046415ec2804ec0e2cedde2ae07a">00169</a>   <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> <a class="code" href="classoperations__research_1_1MaxFlow.html#389e046415ec2804ec0e2cedde2ae07a" title="Returns the total flow found by the algorithm.">GetOptimalFlow</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#d6e66d61793f8e215201ad8478586455" title="The total flow.">total_flow_</a>; }
+<a name="l00170"></a>00170 
+<a name="l00171"></a>00171   <span class="comment">// Returns the flow on arc using the equations given in the comment on</span>
+<a name="l00172"></a>00172   <span class="comment">// residual_arc_capacity_.</span>
+<a name="l00173"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#aa69f5dc647dcde9c974950bc95f2658">00173</a>   <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> <a class="code" href="classoperations__research_1_1MaxFlow.html#aa69f5dc647dcde9c974950bc95f2658" title="Returns the flow on arc using the equations given in the comment on residual_arc_capacity_...">Flow</a>(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc)<span class="keyword"> const </span>{
+<a name="l00174"></a>00174     DCHECK(<a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>-&gt;<a class="code" href="classoperations__research_1_1EbertGraph.html#8d6877ac937a2ce4159ccf05f16f50f5" title="Utility function to check that an arc index is within the bounds AND different from...">CheckArcValidity</a>(arc));
+<a name="l00175"></a>00175     <span class="keywordflow">if</span> (<a class="code" href="classoperations__research_1_1MaxFlow.html#39ac09d53c1fa6f8a561fe3bf53e133e">IsDirect</a>(arc)) {
+<a name="l00176"></a>00176       <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[<a class="code" href="classoperations__research_1_1MaxFlow.html#56e0f3db4d40eae22754af07790100ae">Opposite</a>(arc)];
+<a name="l00177"></a>00177     } <span class="keywordflow">else</span> {
+<a name="l00178"></a>00178       <span class="keywordflow">return</span> -<a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[arc];
+<a name="l00179"></a>00179     }
+<a name="l00180"></a>00180   }
+<a name="l00181"></a>00181 
+<a name="l00182"></a>00182   <span class="comment">// Returns the capacity of arc using the equations given in the comment on</span>
+<a name="l00183"></a>00183   <span class="comment">// residual_arc_capacity_.</span>
+<a name="l00184"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#f9042fb6c072933c7823a60df45cc23a">00184</a>   <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> <a class="code" href="classoperations__research_1_1MaxFlow.html#f9042fb6c072933c7823a60df45cc23a" title="Returns the capacity of arc using the equations given in the comment on residual_arc_capacity_...">Capacity</a>(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc)<span class="keyword"> const </span>{
+<a name="l00185"></a>00185     DCHECK(<a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>-&gt;<a class="code" href="classoperations__research_1_1EbertGraph.html#8d6877ac937a2ce4159ccf05f16f50f5" title="Utility function to check that an arc index is within the bounds AND different from...">CheckArcValidity</a>(arc));
+<a name="l00186"></a>00186     <span class="keywordflow">if</span> (<a class="code" href="classoperations__research_1_1MaxFlow.html#39ac09d53c1fa6f8a561fe3bf53e133e">IsDirect</a>(arc)) {
+<a name="l00187"></a>00187       <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[arc]
+<a name="l00188"></a>00188            + <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[<a class="code" href="classoperations__research_1_1MaxFlow.html#56e0f3db4d40eae22754af07790100ae">Opposite</a>(arc)];
+<a name="l00189"></a>00189     } <span class="keywordflow">else</span> {
+<a name="l00190"></a>00190       <span class="keywordflow">return</span> 0;
+<a name="l00191"></a>00191     }
+<a name="l00192"></a>00192   }
+<a name="l00193"></a>00193 
+<a name="l00194"></a>00194  <span class="keyword">protected</span>:
+<a name="l00195"></a>00195   <span class="comment">// Returns true if arc is admissible.</span>
+<a name="l00196"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#0c3e4b1b07c5cf06a5738f33f0cb2a43">00196</a>   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#0c3e4b1b07c5cf06a5738f33f0cb2a43" title="Returns true if arc is admissible.">IsAdmissible</a>(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc)<span class="keyword"> const </span>{
+<a name="l00197"></a>00197     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>[arc] &gt; 0
+<a name="l00198"></a>00198         &amp;&amp; <a class="code" href="classoperations__research_1_1MaxFlow.html#f401ed17b5386e38a6a5c27cd7dc0107" title="A packed array representing the height function for each node in graph_.">node_potential_</a>[<a class="code" href="classoperations__research_1_1MaxFlow.html#dcdc151ec36ba26b824ec09475e1f0ff">Tail</a>(arc)] == node_potential_[<a class="code" href="classoperations__research_1_1MaxFlow.html#ed9585407579ffb5a006c4e04ea6df4b" title="Handy member functions to make the code more compact.">Head</a>(arc)] + 1;
+<a name="l00199"></a>00199   }
+<a name="l00200"></a>00200 
+<a name="l00201"></a>00201   <span class="comment">// Returns true if node is active, i.e. if its supply is positive and it</span>
+<a name="l00202"></a>00202   <span class="comment">// is neither the source or the target of the graph.</span>
+<a name="l00203"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#3826fa08c70c14313f6d0d36602161d1">00203</a>   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#3826fa08c70c14313f6d0d36602161d1" title="Returns true if node is active, i.e.">IsActive</a>(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node)<span class="keyword"> const </span>{
+<a name="l00204"></a>00204     <span class="keywordflow">return</span> (node != <a class="code" href="classoperations__research_1_1MaxFlow.html#93d73f59e8d99a81832e047c390c0150" title="The index of the source node in graph_.">source_</a>) &amp;&amp; (node != <a class="code" href="classoperations__research_1_1MaxFlow.html#78c90d9a1adcdf5e04f608eef063eafc" title="The index of the sink node in graph_.">sink_</a>) &amp;&amp; (<a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>[node] &gt; 0);
+<a name="l00205"></a>00205   }
+<a name="l00206"></a>00206 
+<a name="l00207"></a>00207   <span class="comment">// Returns the first incident arc of node.</span>
+<a name="l00208"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#f9a8629b879a3ce411249d0594903999">00208</a>   <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> <a class="code" href="classoperations__research_1_1MaxFlow.html#f9a8629b879a3ce411249d0594903999" title="Returns the first incident arc of node.">GetFirstIncidentArc</a>(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node)<span class="keyword"> const </span>{
+<a name="l00209"></a>00209     <a class="code" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html" title="Iterator class for traversing the arcs incident to a given node in the graph.">StarGraph::IncidentArcIterator</a> arc_it(*<a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>, node);
+<a name="l00210"></a>00210     <span class="keywordflow">return</span> arc_it.<a class="code" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html#d1282bd4fd6f77b0bceb9384bfce341c" title="Returns the index of the arc currently pointed to by the iterator.">Index</a>();
+<a name="l00211"></a>00211   }
+<a name="l00212"></a>00212 
+<a name="l00213"></a>00213   <span class="comment">// Checks the consistency of the input, i.e. that capacities on the arcs are</span>
+<a name="l00214"></a>00214   <span class="comment">// non-negative (&gt;=0.)</span>
+<a name="l00215"></a>00215   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#0ad53f4750408f8a3106c976d3e50e48" title="Checks the consistency of the input, i.e.">CheckInputConsistency</a>() <span class="keyword">const</span>;
+<a name="l00216"></a>00216 
+<a name="l00217"></a>00217   <span class="comment">// Checks whether the result is valid, i.e. that node excesses are all equal</span>
+<a name="l00218"></a>00218   <span class="comment">// to zero (we have a flow) and that residual capacities are all non-negative</span>
+<a name="l00219"></a>00219   <span class="comment">// (&gt;=0.)</span>
+<a name="l00220"></a>00220   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#3a9ff4ba8d505c803f506fc2825b0cd7" title="Checks whether the result is valid, i.e.">CheckResult</a>() <span class="keyword">const</span>;
+<a name="l00221"></a>00221 
+<a name="l00222"></a>00222   <span class="comment">// Returns true if a precondition for Relabel is met, i.e. the outgoing arcs</span>
+<a name="l00223"></a>00223   <span class="comment">// of node are all either saturated or the heights of their heads are greater</span>
+<a name="l00224"></a>00224   <span class="comment">// or equal to the height of node.</span>
+<a name="l00225"></a>00225   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#7ca126f0e156d6a315cd014a820867a3" title="Returns true if a precondition for Relabel is met, i.e.">CheckRelabelPrecondition</a>(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node) <span class="keyword">const</span>;
+<a name="l00226"></a>00226 
+<a name="l00227"></a>00227   <span class="comment">// Returns context concatenated with information about arc</span>
+<a name="l00228"></a>00228   <span class="comment">// in a human-friendly way.</span>
+<a name="l00229"></a>00229   <span class="keywordtype">string</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#ea43a5e8891b3a18a57f4d0fdb9533e9" title="Returns context concatenated with information about arc in a human-friendly way.">DebugString</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; context, <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc) <span class="keyword">const</span>;
+<a name="l00230"></a>00230 
+<a name="l00231"></a>00231   <span class="comment">// Initializes the stack active_nodes_.</span>
+<a name="l00232"></a>00232   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#5b98bb2c6b288bafa040ff2d1e723bc9" title="Initializes the stack active_nodes_.">InitializeActiveNodeStack</a>();
+<a name="l00233"></a>00233 
+<a name="l00234"></a>00234   <span class="comment">// Performs optimization step.</span>
+<a name="l00235"></a>00235   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#e1369b6a7c9bd2e1f1d482e805e9ed7f" title="Performs optimization step.">Refine</a>();
+<a name="l00236"></a>00236 
+<a name="l00237"></a>00237   <span class="comment">// Discharges an active node node by saturating its admissible adjacent arcs,</span>
+<a name="l00238"></a>00238   <span class="comment">// if any, and by relabelling it when it becomes inactive.</span>
+<a name="l00239"></a>00239   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#64020c6d8447cd0e53424836ab3314fd" title="Discharges an active node node by saturating its admissible adjacent arcs, if any...">Discharge</a>(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node);
+<a name="l00240"></a>00240 
+<a name="l00241"></a>00241   <span class="comment">// Resets the first_admissible_arc_ array to the first incident arc of each</span>
+<a name="l00242"></a>00242   <span class="comment">// node.</span>
+<a name="l00243"></a>00243   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#5651d66f3f8cffa6abd455c50c67f260" title="Resets the first_admissible_arc_ array to the first incident arc of each node.">ResetFirstAdmissibleArcs</a>();
+<a name="l00244"></a>00244 
+<a name="l00245"></a>00245   <span class="comment">// Initializes the preflow to a state that enables to run Optimize.</span>
+<a name="l00246"></a>00246   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#385b00b1afa1c5c6d9c913f8d92945e3" title="Initializes the preflow to a state that enables to run Optimize.">InitializePreflow</a>();
+<a name="l00247"></a>00247 
+<a name="l00248"></a>00248   <span class="comment">// Pushes flow on arc,  i.e. consumes flow on residual_arc_capacity_[arc],</span>
+<a name="l00249"></a>00249   <span class="comment">// and consumes -flow on residual_arc_capacity_[Opposite(arc)]. Updates</span>
+<a name="l00250"></a>00250   <span class="comment">// node_excess_ at the tail and head of arc accordingly.</span>
+<a name="l00251"></a>00251   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#3101e35ef6cd5511ea9f819a084eae70" title="Pushes flow on arc, i.e.">PushFlow</a>(<a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a> flow, <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc);
+<a name="l00252"></a>00252 
+<a name="l00253"></a>00253   <span class="comment">// Relabels a node, i.e. increases its height by the minimum necessary amount.</span>
+<a name="l00254"></a>00254   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#1e937e3836680407a09c4eab24f6ff0a" title="Relabels a node, i.e. increases its height by the minimum necessary amount.">Relabel</a>(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node);
+<a name="l00255"></a>00255 
+<a name="l00256"></a>00256   <span class="comment">// Handy member functions to make the code more compact.</span>
+<a name="l00257"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#ed9585407579ffb5a006c4e04ea6df4b">00257</a>   <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> <a class="code" href="classoperations__research_1_1MaxFlow.html#ed9585407579ffb5a006c4e04ea6df4b" title="Handy member functions to make the code more compact.">Head</a>(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>-&gt;<a class="code" href="classoperations__research_1_1EbertGraph.html#6ca23f1eb0648002884ecca3852c1de9" title="Returns the head or end-node of arc.">Head</a>(arc); }
 <a name="l00258"></a>00258 
-<a name="l00259"></a>00259   <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> Opposite(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> graph_-&gt;Opposite(arc); }
+<a name="l00259"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#dcdc151ec36ba26b824ec09475e1f0ff">00259</a>   <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> <a class="code" href="classoperations__research_1_1MaxFlow.html#dcdc151ec36ba26b824ec09475e1f0ff">Tail</a>(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>-&gt;<a class="code" href="classoperations__research_1_1EbertGraph.html#21c07d3ab7fafc0491811a56be3745db" title="Returns the tail or start-node of arc.">Tail</a>(arc); }
 <a name="l00260"></a>00260 
-<a name="l00261"></a>00261   <span class="keywordtype">bool</span> IsDirect(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> graph_-&gt;IsDirect(arc); }
+<a name="l00261"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#56e0f3db4d40eae22754af07790100ae">00261</a>   <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> <a class="code" href="classoperations__research_1_1MaxFlow.html#56e0f3db4d40eae22754af07790100ae">Opposite</a>(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>-&gt;<a class="code" href="classoperations__research_1_1EbertGraph.html#9bc601f3ee5f7ab92cf17716f35f19a5" title="Returns the opposite arc, i.e the direct arc is the arc is in reverse direction,...">Opposite</a>(arc); }
 <a name="l00262"></a>00262 
-<a name="l00263"></a>00263   <span class="comment">// A pointer to the graph passed as argument.</span>
-<a name="l00264"></a>00264   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#ed5bb564de2974655b4759919bdadc10">StarGraph</a>* graph_;
-<a name="l00265"></a>00265 
-<a name="l00266"></a>00266   <span class="comment">// A packed array representing the excess for each node in graph_.</span>
-<a name="l00267"></a>00267   Int64PackedArray    node_excess_;
-<a name="l00268"></a>00268 
-<a name="l00269"></a>00269   <span class="comment">// A packed array representing the height function for each node in graph_.</span>
-<a name="l00270"></a>00270   Int64PackedArray    node_potential_;
-<a name="l00271"></a>00271 
-<a name="l00272"></a>00272   <span class="comment">// A packed array representing the residual_capacity for each arc in graph_.</span>
-<a name="l00273"></a>00273   <span class="comment">// Residual capacities enable one to represent the capacity and flow for all</span>
-<a name="l00274"></a>00274   <span class="comment">// arcs in the graph in the following manner.</span>
-<a name="l00275"></a>00275   <span class="comment">// For all arc, residual_arc_capacity_[arc] = capacity[arc] - flow[arc]</span>
-<a name="l00276"></a>00276   <span class="comment">// Moreover, for reverse arcs, capacity[arc] = 0 by definition,</span>
-<a name="l00277"></a>00277   <span class="comment">// Also flow[Opposite(arc)] = -flow[arc] by definition.</span>
-<a name="l00278"></a>00278   <span class="comment">// Therefore:</span>
-<a name="l00279"></a>00279   <span class="comment">// - for a direct arc:</span>
-<a name="l00280"></a>00280   <span class="comment">//    flow[arc] = 0 - flow[Opposite(arc)]</span>
-<a name="l00281"></a>00281   <span class="comment">//              = capacity[Opposite(arc)] - flow[Opposite(arc)]</span>
-<a name="l00282"></a>00282   <span class="comment">//              = residual_arc_capacity_[Opposite(arc)]</span>
-<a name="l00283"></a>00283   <span class="comment">// - for a reverse arc:</span>
-<a name="l00284"></a>00284   <span class="comment">//    flow[arc] = -residual_arc_capacity_[arc]</span>
-<a name="l00285"></a>00285   <span class="comment">// Using these facts enables one to only maintain residual_arc_capacity_,</span>
-<a name="l00286"></a>00286   <span class="comment">// instead of both capacity and flow, for each direct and indirect arc. This</span>
-<a name="l00287"></a>00287   <span class="comment">// reduces the amount of memory for this information by a factor 2.s reduces</span>
-<a name="l00288"></a>00288   <span class="comment">// the amount of memory for this information by a factor 2.</span>
-<a name="l00289"></a>00289   Int64PackedArray    residual_arc_capacity_;
-<a name="l00290"></a>00290 
-<a name="l00291"></a>00291   <span class="comment">// A packed array representing the first admissible arc for each node</span>
-<a name="l00292"></a>00292   <span class="comment">// in graph_.</span>
-<a name="l00293"></a>00293   <a class="code" href="namespaceoperations__research.html#509c2504105f455e02cb920c85ec0828">ArcIndexArray</a>       first_admissible_arc_;
-<a name="l00294"></a>00294 
-<a name="l00295"></a>00295   <span class="comment">// A stack used for managing active nodes in the algorithm.</span>
-<a name="l00296"></a>00296   <span class="comment">// Note that the papers cited above recommend the use of a queue, but</span>
-<a name="l00297"></a>00297   <span class="comment">// benchmarking so far has not proved it is better.</span>
-<a name="l00298"></a>00298   std::stack&lt;NodeIndex&gt;    active_nodes_;
-<a name="l00299"></a>00299 
-<a name="l00300"></a>00300   <span class="comment">// The index of the source node in graph_.</span>
-<a name="l00301"></a>00301   <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> source_;
-<a name="l00302"></a>00302 
-<a name="l00303"></a>00303   <span class="comment">// The index of the sink node in graph_.</span>
-<a name="l00304"></a>00304   <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> sink_;
-<a name="l00305"></a>00305 
-<a name="l00306"></a>00306   <span class="comment">// The total flow.</span>
-<a name="l00307"></a>00307   <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a>     total_flow_;
-<a name="l00308"></a>00308 
-<a name="l00309"></a>00309   <span class="comment">// The status of the problem.</span>
-<a name="l00310"></a>00310   <a class="code" href="classoperations__research_1_1MaxFlow.html#4625a8499a147b60fcf1630a388cbc16" title="Different statuses for a given problem.">Status</a>           status_;
-<a name="l00311"></a>00311 
-<a name="l00312"></a>00312   DISALLOW_COPY_AND_ASSIGN(<a class="code" href="classoperations__research_1_1MaxFlow.html#13a87ef36714bce2a634ff7b45b11e12">MaxFlow</a>);
-<a name="l00313"></a>00313 };
-<a name="l00314"></a>00314 }  <span class="comment">// namespace operations_research</span>
-<a name="l00315"></a>00315 <span class="preprocessor">#endif  // OR_TOOLS_GRAPH_MAX_FLOW_H_</span>
+<a name="l00263"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#39ac09d53c1fa6f8a561fe3bf53e133e">00263</a>   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#39ac09d53c1fa6f8a561fe3bf53e133e">IsDirect</a>(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>-&gt;<a class="code" href="classoperations__research_1_1EbertGraph.html#4116c129c76be001d4db8e0649a108af" title="Returns true if the arc is direct.">IsDirect</a>(arc); }
+<a name="l00264"></a>00264 
+<a name="l00265"></a>00265   <span class="comment">// A pointer to the graph passed as argument.</span>
+<a name="l00266"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603">00266</a>   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1EbertGraph.html">StarGraph</a>* <a class="code" href="classoperations__research_1_1MaxFlow.html#d567ece28564582ddb876cbafa842603" title="A pointer to the graph passed as argument.">graph_</a>;
+<a name="l00267"></a>00267 
+<a name="l00268"></a>00268   <span class="comment">// A packed array representing the excess for each node in graph_.</span>
+<a name="l00269"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70">00269</a>   Int64PackedArray    <a class="code" href="classoperations__research_1_1MaxFlow.html#855588a2e290bc70aa71b8d16a766e70" title="A packed array representing the excess for each node in graph_.">node_excess_</a>;
+<a name="l00270"></a>00270 
+<a name="l00271"></a>00271   <span class="comment">// A packed array representing the height function for each node in graph_.</span>
+<a name="l00272"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#f401ed17b5386e38a6a5c27cd7dc0107">00272</a>   Int64PackedArray    <a class="code" href="classoperations__research_1_1MaxFlow.html#f401ed17b5386e38a6a5c27cd7dc0107" title="A packed array representing the height function for each node in graph_.">node_potential_</a>;
+<a name="l00273"></a>00273 
+<a name="l00274"></a>00274   <span class="comment">// A packed array representing the residual_capacity for each arc in graph_.</span>
+<a name="l00275"></a>00275   <span class="comment">// Residual capacities enable one to represent the capacity and flow for all</span>
+<a name="l00276"></a>00276   <span class="comment">// arcs in the graph in the following manner.</span>
+<a name="l00277"></a>00277   <span class="comment">// For all arc, residual_arc_capacity_[arc] = capacity[arc] - flow[arc]</span>
+<a name="l00278"></a>00278   <span class="comment">// Moreover, for reverse arcs, capacity[arc] = 0 by definition,</span>
+<a name="l00279"></a>00279   <span class="comment">// Also flow[Opposite(arc)] = -flow[arc] by definition.</span>
+<a name="l00280"></a>00280   <span class="comment">// Therefore:</span>
+<a name="l00281"></a>00281   <span class="comment">// - for a direct arc:</span>
+<a name="l00282"></a>00282   <span class="comment">//    flow[arc] = 0 - flow[Opposite(arc)]</span>
+<a name="l00283"></a>00283   <span class="comment">//              = capacity[Opposite(arc)] - flow[Opposite(arc)]</span>
+<a name="l00284"></a>00284   <span class="comment">//              = residual_arc_capacity_[Opposite(arc)]</span>
+<a name="l00285"></a>00285   <span class="comment">// - for a reverse arc:</span>
+<a name="l00286"></a>00286   <span class="comment">//    flow[arc] = -residual_arc_capacity_[arc]</span>
+<a name="l00287"></a>00287   <span class="comment">// Using these facts enables one to only maintain residual_arc_capacity_,</span>
+<a name="l00288"></a>00288   <span class="comment">// instead of both capacity and flow, for each direct and indirect arc. This</span>
+<a name="l00289"></a>00289   <span class="comment">// reduces the amount of memory for this information by a factor 2.s reduces</span>
+<a name="l00290"></a>00290   <span class="comment">// the amount of memory for this information by a factor 2.</span>
+<a name="l00291"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f">00291</a>   Int64PackedArray    <a class="code" href="classoperations__research_1_1MaxFlow.html#f2e21fd38108e7daf0807cee68c9dc3f" title="A packed array representing the residual_capacity for each arc in graph_.">residual_arc_capacity_</a>;
+<a name="l00292"></a>00292 
+<a name="l00293"></a>00293   <span class="comment">// A packed array representing the first admissible arc for each node</span>
+<a name="l00294"></a>00294   <span class="comment">// in graph_.</span>
+<a name="l00295"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#4f4f0f5069d03879eaeb7e1f714425bd">00295</a>   <a class="code" href="namespaceoperations__research.html#509c2504105f455e02cb920c85ec0828">ArcIndexArray</a>       <a class="code" href="classoperations__research_1_1MaxFlow.html#4f4f0f5069d03879eaeb7e1f714425bd" title="A packed array representing the first admissible arc for each node in graph_.">first_admissible_arc_</a>;
+<a name="l00296"></a>00296 
+<a name="l00297"></a>00297   <span class="comment">// A stack used for managing active nodes in the algorithm.</span>
+<a name="l00298"></a>00298   <span class="comment">// Note that the papers cited above recommend the use of a queue, but</span>
+<a name="l00299"></a>00299   <span class="comment">// benchmarking so far has not proved it is better.</span>
+<a name="l00300"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#4305cb5b1c07a37a07ccab146f924688">00300</a>   std::stack&lt;NodeIndex&gt;    <a class="code" href="classoperations__research_1_1MaxFlow.html#4305cb5b1c07a37a07ccab146f924688" title="A stack used for managing active nodes in the algorithm.">active_nodes_</a>;
+<a name="l00301"></a>00301 
+<a name="l00302"></a>00302   <span class="comment">// The index of the source node in graph_.</span>
+<a name="l00303"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#93d73f59e8d99a81832e047c390c0150">00303</a>   <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> <a class="code" href="classoperations__research_1_1MaxFlow.html#93d73f59e8d99a81832e047c390c0150" title="The index of the source node in graph_.">source_</a>;
+<a name="l00304"></a>00304 
+<a name="l00305"></a>00305   <span class="comment">// The index of the sink node in graph_.</span>
+<a name="l00306"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#78c90d9a1adcdf5e04f608eef063eafc">00306</a>   <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> <a class="code" href="classoperations__research_1_1MaxFlow.html#78c90d9a1adcdf5e04f608eef063eafc" title="The index of the sink node in graph_.">sink_</a>;
+<a name="l00307"></a>00307 
+<a name="l00308"></a>00308   <span class="comment">// The total flow.</span>
+<a name="l00309"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#d6e66d61793f8e215201ad8478586455">00309</a>   <a class="code" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a>     <a class="code" href="classoperations__research_1_1MaxFlow.html#d6e66d61793f8e215201ad8478586455" title="The total flow.">total_flow_</a>;
+<a name="l00310"></a>00310 
+<a name="l00311"></a>00311   <span class="comment">// The status of the problem.</span>
+<a name="l00312"></a><a class="code" href="classoperations__research_1_1MaxFlow.html#659ba26955faa75e8369d0ffab4fcc0d">00312</a>   <a class="code" href="classoperations__research_1_1MaxFlow.html#4625a8499a147b60fcf1630a388cbc16" title="Different statuses for a given problem.">Status</a>           <a class="code" href="classoperations__research_1_1MaxFlow.html#659ba26955faa75e8369d0ffab4fcc0d" title="The status of the problem.">status_</a>;
+<a name="l00313"></a>00313 
+<a name="l00314"></a>00314   <a class="code" href="classoperations__research_1_1MaxFlow.html#53d9cb7085df8eeb7fd82aa23234076e">DISALLOW_COPY_AND_ASSIGN</a>(<a class="code" href="classoperations__research_1_1MaxFlow.html">MaxFlow</a>);
+<a name="l00315"></a>00315 };
+<a name="l00316"></a>00316 }  <span class="comment">// namespace operations_research</span>
+<a name="l00317"></a>00317 <span class="preprocessor">#endif  // OR_TOOLS_GRAPH_MAX_FLOW_H_</span>
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -404,7 +406,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#704131 height=3></td>
+      <td colspan=2 bgcolor=#915221 height=3></td>
     </tr>
   </table>
 

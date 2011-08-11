@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #704131
+      background-color: #915221
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#704131 height=3></td>
+      <td colspan=3 bgcolor=#915221 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#704131><b>Fri Aug  5 10:40:09 PDT 2011</b></font>
+          Generated on: <font color=#915221><b>Wed Aug 10 22:22:19 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#704131>
+            <td bgcolor=#915221>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#704131>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#915221>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/util/index.html">util</a>/
             </tt></b></font>
@@ -145,304 +145,320 @@
 <a name="l00062"></a>00062         size_in_bytes_(0),
 <a name="l00063"></a>00063         storage_() {}
 <a name="l00064"></a>00064   <span class="comment">// Reserves memory for new minimum and new maximum indices.</span>
-<a name="l00065"></a>00065   <span class="comment">// Never shrinks the memory allocated.</span>
-<a name="l00066"></a><a class="code" href="classoperations__research_1_1PackedArrayAllocator.html#84d79a55e671017b345b73e07100bf8c">00066</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1PackedArrayAllocator.html#84d79a55e671017b345b73e07100bf8c" title="Reserves memory for new minimum and new maximum indices.">Reserve</a>(int64 new_min_index, int64 new_max_index) {
-<a name="l00067"></a>00067     DCHECK_LE(new_min_index, new_max_index);
-<a name="l00068"></a>00068     <span class="keywordflow">if</span> (base_ != NULL
-<a name="l00069"></a>00069         &amp;&amp; new_min_index &gt;= min_index_
-<a name="l00070"></a>00070         &amp;&amp; new_max_index &lt;= max_index_) {
-<a name="l00071"></a>00071       <span class="keywordflow">return</span>;
-<a name="l00072"></a>00072     }
-<a name="l00073"></a>00073     DCHECK(base_ == NULL || new_min_index &lt;= min_index_);
-<a name="l00074"></a>00074     DCHECK(base_ == NULL || new_max_index &gt;= max_index_);
-<a name="l00075"></a>00075     <span class="keyword">const</span> uint64 max_uint64 = std::numeric_limits&lt;uint64&gt;::max();
-<a name="l00076"></a>00076     <span class="keyword">const</span> uint64 new_size = new_max_index - new_min_index + 1;
-<a name="l00077"></a>00077     DCHECK_GT(max_uint64 / NumBytes, new_size);
-<a name="l00078"></a>00078     <span class="comment">// We need to pad the array to allow reading the last element as an int64.</span>
-<a name="l00079"></a>00079     <span class="keyword">const</span> uint64 new_size_in_bytes = new_size * NumBytes
-<a name="l00080"></a>00080                                    + <span class="keyword">sizeof</span>(int64) - NumBytes; <span class="comment">// NOLINT</span>
-<a name="l00081"></a>00081     <a class="code" href="namespaceoperations__research.html#038fd9956774dc3224cda8ac268babbc">byte</a>* new_storage = <span class="keyword">new</span> <a class="code" href="namespaceoperations__research.html#038fd9956774dc3224cda8ac268babbc">byte</a>[new_size_in_bytes];
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083     <a class="code" href="namespaceoperations__research.html#038fd9956774dc3224cda8ac268babbc">byte</a>* <span class="keyword">const</span> new_base = new_storage - new_min_index * NumBytes;
-<a name="l00084"></a>00084     <span class="keywordflow">if</span> (base_ != NULL) {
-<a name="l00085"></a>00085       <a class="code" href="namespaceoperations__research.html#038fd9956774dc3224cda8ac268babbc">byte</a>* <span class="keyword">const</span> destination = new_base + min_index_ * NumBytes;
-<a name="l00086"></a>00086       memcpy(destination, storage_.get(), size_in_bytes_);
-<a name="l00087"></a>00087     }
-<a name="l00088"></a>00088 
-<a name="l00089"></a>00089     base_ = <span class="keyword">reinterpret_cast&lt;</span>T*<span class="keyword">&gt;</span>(new_base);
-<a name="l00090"></a>00090     min_index_ = new_min_index;
-<a name="l00091"></a>00091     max_index_ = new_max_index;
-<a name="l00092"></a>00092     size_in_bytes_ = new_size_in_bytes;
-<a name="l00093"></a>00093     storage_.reset(reinterpret_cast&lt;T*&gt;(new_storage));
-<a name="l00094"></a>00094   }
-<a name="l00095"></a>00095 
-<a name="l00096"></a><a class="code" href="classoperations__research_1_1PackedArrayAllocator.html#dae2294e7e5bf0489fbed3a2e3373e49">00096</a>   int64 <a class="code" href="classoperations__research_1_1PackedArrayAllocator.html#dae2294e7e5bf0489fbed3a2e3373e49">min_index</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> min_index_; }
-<a name="l00097"></a>00097 
-<a name="l00098"></a><a class="code" href="classoperations__research_1_1PackedArrayAllocator.html#1c3a58e7ab17fc6c134d1bc3e110b6e3">00098</a>   int64 <a class="code" href="classoperations__research_1_1PackedArrayAllocator.html#1c3a58e7ab17fc6c134d1bc3e110b6e3">max_index</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> max_index_; }
-<a name="l00099"></a>00099 
-<a name="l00100"></a><a class="code" href="classoperations__research_1_1PackedArrayAllocator.html#f23aa69b7334a54116240b13e22a0bad">00100</a>   T* <a class="code" href="classoperations__research_1_1PackedArrayAllocator.html#f23aa69b7334a54116240b13e22a0bad">Base</a>()<span class="keyword"> const </span>{
-<a name="l00101"></a>00101     DCHECK(base_ != NULL);
-<a name="l00102"></a>00102     <span class="keywordflow">return</span> base_;
-<a name="l00103"></a>00103   }
+<a name="l00065"></a>00065   <span class="comment">// Returns true if the memory could be reserved.</span>
+<a name="l00066"></a>00066   <span class="comment">// Never shrinks the memory allocated.</span>
+<a name="l00067"></a><a class="code" href="classoperations__research_1_1PackedArrayAllocator.html#655146b64b75b8fa4783f696dba9869f">00067</a>   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1PackedArrayAllocator.html#655146b64b75b8fa4783f696dba9869f" title="Reserves memory for new minimum and new maximum indices.">Reserve</a>(int64 new_min_index, int64 new_max_index) {
+<a name="l00068"></a>00068     DCHECK_LE(new_min_index, new_max_index);
+<a name="l00069"></a>00069     <span class="keywordflow">if</span> (base_ != NULL
+<a name="l00070"></a>00070         &amp;&amp; new_min_index &gt;= min_index_
+<a name="l00071"></a>00071         &amp;&amp; new_max_index &lt;= max_index_) {
+<a name="l00072"></a>00072       <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00073"></a>00073     }
+<a name="l00074"></a>00074     DCHECK(base_ == NULL || new_min_index &lt;= min_index_);
+<a name="l00075"></a>00075     DCHECK(base_ == NULL || new_max_index &gt;= max_index_);
+<a name="l00076"></a>00076     <span class="keyword">const</span> uint64 max_uint64 = std::numeric_limits&lt;uint64&gt;::max();
+<a name="l00077"></a>00077     <span class="keyword">const</span> uint64 new_size = new_max_index - new_min_index + 1;
+<a name="l00078"></a>00078     DCHECK_GT(max_uint64 / NumBytes, new_size);
+<a name="l00079"></a>00079     <span class="comment">// We need to pad the array to allow reading the last element as an int64.</span>
+<a name="l00080"></a>00080     <span class="keyword">const</span> uint64 new_size_in_bytes = new_size * NumBytes
+<a name="l00081"></a>00081                                    + <span class="keyword">sizeof</span>(int64) - NumBytes; <span class="comment">// NOLINT</span>
+<a name="l00082"></a>00082     <a class="code" href="namespaceoperations__research.html#038fd9956774dc3224cda8ac268babbc">byte</a>* new_storage = <span class="keyword">new</span> <a class="code" href="namespaceoperations__research.html#038fd9956774dc3224cda8ac268babbc">byte</a>[new_size_in_bytes];
+<a name="l00083"></a>00083     <span class="keywordflow">if</span> (new_storage == NULL) {
+<a name="l00084"></a>00084       <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00085"></a>00085     }
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087     <a class="code" href="namespaceoperations__research.html#038fd9956774dc3224cda8ac268babbc">byte</a>* <span class="keyword">const</span> new_base = new_storage - new_min_index * NumBytes;
+<a name="l00088"></a>00088     <span class="keywordflow">if</span> (base_ != NULL) {
+<a name="l00089"></a>00089       <a class="code" href="namespaceoperations__research.html#038fd9956774dc3224cda8ac268babbc">byte</a>* <span class="keyword">const</span> destination = new_base + min_index_ * NumBytes;
+<a name="l00090"></a>00090       memcpy(destination, storage_.get(), size_in_bytes_);
+<a name="l00091"></a>00091     }
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093     base_ = <span class="keyword">reinterpret_cast&lt;</span>T*<span class="keyword">&gt;</span>(new_base);
+<a name="l00094"></a>00094     min_index_ = new_min_index;
+<a name="l00095"></a>00095     max_index_ = new_max_index;
+<a name="l00096"></a>00096     size_in_bytes_ = new_size_in_bytes;
+<a name="l00097"></a>00097     storage_.reset(reinterpret_cast&lt;T*&gt;(new_storage));
+<a name="l00098"></a>00098     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00099"></a>00099   }
+<a name="l00100"></a>00100 
+<a name="l00101"></a><a class="code" href="classoperations__research_1_1PackedArrayAllocator.html#dae2294e7e5bf0489fbed3a2e3373e49">00101</a>   int64 <a class="code" href="classoperations__research_1_1PackedArrayAllocator.html#dae2294e7e5bf0489fbed3a2e3373e49">min_index</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> min_index_; }
+<a name="l00102"></a>00102 
+<a name="l00103"></a><a class="code" href="classoperations__research_1_1PackedArrayAllocator.html#1c3a58e7ab17fc6c134d1bc3e110b6e3">00103</a>   int64 <a class="code" href="classoperations__research_1_1PackedArrayAllocator.html#1c3a58e7ab17fc6c134d1bc3e110b6e3">max_index</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> max_index_; }
 <a name="l00104"></a>00104 
-<a name="l00105"></a>00105  <span class="keyword">private</span>:
-<a name="l00106"></a>00106   <span class="comment">// Pointer to the element indexed by zero in the array.</span>
-<a name="l00107"></a>00107   T*                 base_;
-<a name="l00108"></a>00108 
-<a name="l00109"></a>00109   <span class="comment">// Minimum index for the array.</span>
-<a name="l00110"></a>00110   int64              min_index_;
-<a name="l00111"></a>00111 
-<a name="l00112"></a>00112   <span class="comment">// Maximum index for the array.</span>
-<a name="l00113"></a>00113   int64              max_index_;
-<a name="l00114"></a>00114 
-<a name="l00115"></a>00115   <span class="comment">// The size of the array in bytes.</span>
-<a name="l00116"></a>00116   uint64             size_in_bytes_;
-<a name="l00117"></a>00117 
-<a name="l00118"></a>00118   <span class="comment">// Storage memory for the array.</span>
-<a name="l00119"></a>00119   scoped_array&lt;T&gt; storage_;
-<a name="l00120"></a>00120 };
-<a name="l00121"></a>00121 
-<a name="l00122"></a><a class="code" href="classoperations__research_1_1PackedArray.html">00122</a> <span class="keyword">template</span>&lt;<span class="keywordtype">int</span> NumBytes&gt; <span class="keyword">class </span><a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray</a> {
-<a name="l00123"></a>00123  <span class="keyword">public</span>:
-<a name="l00124"></a><a class="code" href="classoperations__research_1_1PackedArray.html#77bf8638b6b360a8e5b5d6055d6a2ac0">00124</a>   <a class="code" href="classoperations__research_1_1PackedArray.html#77bf8638b6b360a8e5b5d6055d6a2ac0">PackedArray</a>() : allocator_() {}
-<a name="l00125"></a>00125 
-<a name="l00126"></a>00126   <span class="comment">// The constructor for PackedArray takes a mininum index and a maximum index.</span>
-<a name="l00127"></a>00127   <span class="comment">// These can be positive or negative, and the value for minimum_index</span>
-<a name="l00128"></a>00128   <span class="comment">// and for maximun_index can be set and read (i.e. the bounds are inclusive.)</span>
-<a name="l00129"></a><a class="code" href="classoperations__research_1_1PackedArray.html#4a64641b36350199795a1562a8c63323">00129</a>   <a class="code" href="classoperations__research_1_1PackedArray.html#77bf8638b6b360a8e5b5d6055d6a2ac0">PackedArray</a>(int64 <a class="code" href="classoperations__research_1_1PackedArray.html#20af7ec328dc116d46e8ca5ba7326cf5" title="Returns the minimum possible index for the array.">min_index</a>, int64 <a class="code" href="classoperations__research_1_1PackedArray.html#17b4fafa106c6456e9a3588acbd0e9ea" title="Returns the maximum possible index for the array.">max_index</a>) : allocator_() {
-<a name="l00130"></a>00130     <a class="code" href="classoperations__research_1_1PackedArray.html#77b9436ce42dace4f8aaee927f4c5d09" title="Reserves memory for new minimum and new maximum indices.">Reserve</a>(min_index, max_index);
-<a name="l00131"></a>00131   }
-<a name="l00132"></a>00132 
-<a name="l00133"></a><a class="code" href="classoperations__research_1_1PackedArray.html#fe7ecfa2d84628e96db732e941db53de">00133</a>   <a class="code" href="classoperations__research_1_1PackedArray.html#fe7ecfa2d84628e96db732e941db53de">~PackedArray</a>() {}
-<a name="l00134"></a>00134 
-<a name="l00135"></a>00135   <span class="comment">// Returns the minimum possible index for the array.</span>
-<a name="l00136"></a><a class="code" href="classoperations__research_1_1PackedArray.html#20af7ec328dc116d46e8ca5ba7326cf5">00136</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#20af7ec328dc116d46e8ca5ba7326cf5" title="Returns the minimum possible index for the array.">min_index</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> allocator_.min_index(); }
-<a name="l00137"></a>00137 
-<a name="l00138"></a>00138   <span class="comment">// Returns the maximum possible index for the array.</span>
-<a name="l00139"></a><a class="code" href="classoperations__research_1_1PackedArray.html#17b4fafa106c6456e9a3588acbd0e9ea">00139</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#17b4fafa106c6456e9a3588acbd0e9ea" title="Returns the maximum possible index for the array.">max_index</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> allocator_.max_index(); }
+<a name="l00105"></a><a class="code" href="classoperations__research_1_1PackedArrayAllocator.html#f23aa69b7334a54116240b13e22a0bad">00105</a>   T* <a class="code" href="classoperations__research_1_1PackedArrayAllocator.html#f23aa69b7334a54116240b13e22a0bad">Base</a>()<span class="keyword"> const </span>{
+<a name="l00106"></a>00106     DCHECK(base_ != NULL);
+<a name="l00107"></a>00107     <span class="keywordflow">return</span> base_;
+<a name="l00108"></a>00108   }
+<a name="l00109"></a>00109 
+<a name="l00110"></a>00110  <span class="keyword">private</span>:
+<a name="l00111"></a>00111   <span class="comment">// Pointer to the element indexed by zero in the array.</span>
+<a name="l00112"></a>00112   T*                 base_;
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114   <span class="comment">// Minimum index for the array.</span>
+<a name="l00115"></a>00115   int64              min_index_;
+<a name="l00116"></a>00116 
+<a name="l00117"></a>00117   <span class="comment">// Maximum index for the array.</span>
+<a name="l00118"></a>00118   int64              max_index_;
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120   <span class="comment">// The size of the array in bytes.</span>
+<a name="l00121"></a>00121   uint64             size_in_bytes_;
+<a name="l00122"></a>00122 
+<a name="l00123"></a>00123   <span class="comment">// Storage memory for the array.</span>
+<a name="l00124"></a>00124   scoped_array&lt;T&gt; storage_;
+<a name="l00125"></a>00125 };
+<a name="l00126"></a>00126 
+<a name="l00127"></a><a class="code" href="classoperations__research_1_1PackedArray.html">00127</a> <span class="keyword">template</span>&lt;<span class="keywordtype">int</span> NumBytes&gt; <span class="keyword">class </span><a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray</a> {
+<a name="l00128"></a>00128  <span class="keyword">public</span>:
+<a name="l00129"></a><a class="code" href="classoperations__research_1_1PackedArray.html#77bf8638b6b360a8e5b5d6055d6a2ac0">00129</a>   <a class="code" href="classoperations__research_1_1PackedArray.html#77bf8638b6b360a8e5b5d6055d6a2ac0">PackedArray</a>() : allocator_() {}
+<a name="l00130"></a>00130 
+<a name="l00131"></a>00131   <span class="comment">// The constructor for PackedArray takes a mininum index and a maximum index.</span>
+<a name="l00132"></a>00132   <span class="comment">// These can be positive or negative, and the value for minimum_index</span>
+<a name="l00133"></a>00133   <span class="comment">// and for maximun_index can be set and read (i.e. the bounds are inclusive.)</span>
+<a name="l00134"></a><a class="code" href="classoperations__research_1_1PackedArray.html#4a64641b36350199795a1562a8c63323">00134</a>   <a class="code" href="classoperations__research_1_1PackedArray.html#77bf8638b6b360a8e5b5d6055d6a2ac0">PackedArray</a>(int64 <a class="code" href="classoperations__research_1_1PackedArray.html#20af7ec328dc116d46e8ca5ba7326cf5" title="Returns the minimum possible index for the array.">min_index</a>, int64 <a class="code" href="classoperations__research_1_1PackedArray.html#17b4fafa106c6456e9a3588acbd0e9ea" title="Returns the maximum possible index for the array.">max_index</a>) : allocator_() {
+<a name="l00135"></a>00135     <span class="keywordflow">if</span> (!<a class="code" href="classoperations__research_1_1PackedArray.html#8eaa68bfef6945eb75e480d31657dda0" title="Reserves memory for new minimum and new maximum indices.">Reserve</a>(min_index, max_index)) {
+<a name="l00136"></a>00136       LOG(DFATAL) &lt;&lt; <span class="stringliteral">"Could not reserve memory for indices ranging from "</span>
+<a name="l00137"></a>00137                   &lt;&lt; min_index &lt;&lt; <span class="stringliteral">" to "</span> &lt;&lt; max_index;
+<a name="l00138"></a>00138     }
+<a name="l00139"></a>00139   }
 <a name="l00140"></a>00140 
-<a name="l00141"></a>00141   <span class="comment">// Returns the value stored at index.</span>
-<a name="l00142"></a>00142   <span class="comment">// This assumes that the underlying architecture is little-endian. In</span>
-<a name="l00143"></a>00143   <span class="comment">// particular, we select the value to return from the low-address NumBytes</span>
-<a name="l00144"></a>00144   <span class="comment">// bytes of the int64 beginning at the location determined by the given index.</span>
-<a name="l00145"></a>00145   <span class="comment">// To extract those NumBytes from the int64 loaded from memory, we choose the</span>
-<a name="l00146"></a>00146   <span class="comment">// bytes of low arithmetic significance. Code for a big-endian system would</span>
-<a name="l00147"></a>00147   <span class="comment">// need to choose the bytes of high arithmetic significance.</span>
-<a name="l00148"></a><a class="code" href="classoperations__research_1_1PackedArray.html#a6532ca16db6fb783df06b06af2de7d8">00148</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#a6532ca16db6fb783df06b06af2de7d8" title="Returns the value stored at index.">Value</a>(int64 index)<span class="keyword"> const </span>{
-<a name="l00149"></a>00149     DCHECK_LE(allocator_.min_index(), index);
-<a name="l00150"></a>00150     DCHECK_GE(allocator_.max_index(), index);
-<a name="l00151"></a>00151     int64 value =
-<a name="l00152"></a>00152         *<span class="keyword">reinterpret_cast&lt;</span>int64*<span class="keyword">&gt;</span>(allocator_.Base() + index * NumBytes);
-<a name="l00153"></a>00153     <span class="keyword">const</span> <span class="keywordtype">int</span> shift = (<span class="keyword">sizeof</span>(value) - NumBytes) * CHAR_BIT;
-<a name="l00154"></a>00154     value &lt;&lt;= shift;  <span class="comment">// These two lines are</span>
-<a name="l00155"></a>00155     value &gt;&gt;= shift;  <span class="comment">// for sign extension.</span>
-<a name="l00156"></a>00156     <span class="keywordflow">return</span> value;
-<a name="l00157"></a>00157   }
-<a name="l00158"></a>00158 
-<a name="l00159"></a>00159 <span class="preprocessor">#if !defined(SWIG)</span>
-<a name="l00160"></a>00160 <span class="preprocessor"></span>  <span class="comment">// Shortcut for returning the value stored at index.</span>
-<a name="l00161"></a><a class="code" href="classoperations__research_1_1PackedArray.html#8d240f632ffbd6d1719ce1213d58c56e">00161</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#8d240f632ffbd6d1719ce1213d58c56e" title="Shortcut for returning the value stored at index.">operator[]</a>(int64 index)<span class="keyword"> const </span>{
-<a name="l00162"></a>00162     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1PackedArray.html#a6532ca16db6fb783df06b06af2de7d8" title="Returns the value stored at index.">Value</a>(index);
-<a name="l00163"></a>00163   }
-<a name="l00164"></a>00164 <span class="preprocessor">#endif</span>
-<a name="l00165"></a>00165 <span class="preprocessor"></span>
-<a name="l00166"></a>00166 <span class="comment">// Let n by the number of bytes (i.e. sizeof) of type.</span>
-<a name="l00167"></a>00167 <span class="comment">// PACKED_ARRAY_WRITE_IF_ENOUGH_BYTES_AND_ADVANCE writes the first n lowest</span>
-<a name="l00168"></a>00168 <span class="comment">// significant bytes of value at address. It then shifts value by n bytes to</span>
-<a name="l00169"></a>00169 <span class="comment">// the right, and advances address by n bytes.</span>
-<a name="l00170"></a>00170 <span class="comment">// This assumes that the underlying architecture is little-endian, since</span>
-<a name="l00171"></a>00171 <span class="comment">// we write the lowest n bytes for value. Code for a big-endian system would</span>
-<a name="l00172"></a>00172 <span class="comment">// need to write the bytes of high arithmetic significance.</span>
-<a name="l00173"></a><a class="code" href="packed__array_8h.html#f0797ab5e0c586f69f18c3fb03262fc8">00173</a> <span class="preprocessor">#define PACKED_ARRAY_WRITE_IF_ENOUGH_BYTES_AND_ADVANCE(type, address, value)  \</span>
-<a name="l00174"></a>00174 <span class="preprocessor">{                                                                             \</span>
-<a name="l00175"></a>00175 <span class="preprocessor">  const int64 kSize = sizeof(type);                                           \</span>
-<a name="l00176"></a>00176 <span class="preprocessor">  if (NumBytes &amp; kSize) {                                                     \</span>
-<a name="l00177"></a>00177 <span class="preprocessor">    const int64 k1 = GG_LONGLONG(1);                                          \</span>
-<a name="l00178"></a>00178 <span class="preprocessor">    const int64 kSizeInBits = sizeof(type) * CHAR_BIT;                        \</span>
-<a name="l00179"></a>00179 <span class="preprocessor">    const int64 kMask = (k1 &lt;&lt; kSizeInBits) - 1;                              \</span>
-<a name="l00180"></a>00180 <span class="preprocessor">    reinterpret_cast&lt;type*&gt;(address)[0] = value &amp; kMask;                      \</span>
-<a name="l00181"></a>00181 <span class="preprocessor">    value &gt;&gt;= kSizeInBits;                                                    \</span>
-<a name="l00182"></a>00182 <span class="preprocessor">    address += kSize;                                                         \</span>
-<a name="l00183"></a>00183 <span class="preprocessor">  }                                                                           \</span>
-<a name="l00184"></a>00184 <span class="preprocessor">}</span>
-<a name="l00185"></a>00185 <span class="preprocessor"></span>
-<a name="l00186"></a>00186   <span class="comment">// Sets to value the content of the array at index.</span>
-<a name="l00187"></a><a class="code" href="classoperations__research_1_1PackedArray.html#ccc251bda770eec6ea9f7131f7a98697">00187</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1PackedArray.html#ccc251bda770eec6ea9f7131f7a98697" title="Sets to value the content of the array at index.">Set</a>(int64 index, int64 value) {
-<a name="l00188"></a>00188     DCHECK_LE(allocator_.min_index(), index);
-<a name="l00189"></a>00189     DCHECK_GE(allocator_.max_index(), index);
-<a name="l00190"></a>00190     DCHECK_LE(kMinInteger, value);
-<a name="l00191"></a>00191     DCHECK_GE(kMaxInteger, value);
-<a name="l00192"></a>00192     <a class="code" href="namespaceoperations__research.html#038fd9956774dc3224cda8ac268babbc">byte</a>* current = allocator_.Base() + index * NumBytes;
-<a name="l00193"></a>00193     <a class="code" href="packed__array_8h.html#f0797ab5e0c586f69f18c3fb03262fc8" title="Let n by the number of bytes (i.e.">PACKED_ARRAY_WRITE_IF_ENOUGH_BYTES_AND_ADVANCE</a>(int32, current, value);
-<a name="l00194"></a>00194     <a class="code" href="packed__array_8h.html#f0797ab5e0c586f69f18c3fb03262fc8" title="Let n by the number of bytes (i.e.">PACKED_ARRAY_WRITE_IF_ENOUGH_BYTES_AND_ADVANCE</a>(int16, current, value);
-<a name="l00195"></a>00195     <a class="code" href="packed__array_8h.html#f0797ab5e0c586f69f18c3fb03262fc8" title="Let n by the number of bytes (i.e.">PACKED_ARRAY_WRITE_IF_ENOUGH_BYTES_AND_ADVANCE</a>(<a class="code" href="namespaceoperations__research.html#038fd9956774dc3224cda8ac268babbc">byte</a>, current, value);
-<a name="l00196"></a>00196   }
-<a name="l00197"></a>00197 
-<a name="l00198"></a>00198   <span class="comment">// Reserves memory for new minimum and new maximum indices.</span>
-<a name="l00199"></a>00199   <span class="comment">// Never shrinks the memory allocated.</span>
-<a name="l00200"></a><a class="code" href="classoperations__research_1_1PackedArray.html#77b9436ce42dace4f8aaee927f4c5d09">00200</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1PackedArray.html#77b9436ce42dace4f8aaee927f4c5d09" title="Reserves memory for new minimum and new maximum indices.">Reserve</a>(int64 new_min_index, int64 new_max_index) {
-<a name="l00201"></a>00201     allocator_.Reserve(new_min_index, new_max_index);
-<a name="l00202"></a>00202   }
-<a name="l00203"></a>00203 
-<a name="l00204"></a>00204   <span class="comment">// Sets all the elements in the array to value. Set is bypassed to maximize</span>
-<a name="l00205"></a>00205   <span class="comment">// performance.</span>
-<a name="l00206"></a><a class="code" href="classoperations__research_1_1PackedArray.html#1f0eed8261cc4a4a18569d8ddda0eea2">00206</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1PackedArray.html#1f0eed8261cc4a4a18569d8ddda0eea2" title="Sets all the elements in the array to value.">Assign</a>(int64 value) {
-<a name="l00207"></a>00207     DCHECK_LE(kMinInteger, value);
-<a name="l00208"></a>00208     DCHECK_GE(kMaxInteger, value);
-<a name="l00209"></a>00209     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#038fd9956774dc3224cda8ac268babbc">byte</a>* end = allocator_.Base() + allocator_.max_index() * NumBytes;
-<a name="l00210"></a>00210     <a class="code" href="namespaceoperations__research.html#038fd9956774dc3224cda8ac268babbc">byte</a>* current = allocator_.Base() + allocator_.min_index() * NumBytes;
-<a name="l00211"></a>00211     <span class="keywordflow">while</span> (current &lt;= end) {
-<a name="l00212"></a>00212       int64 v = value;  <span class="comment">// v is going to be modified by the following macro.</span>
-<a name="l00213"></a>00213       <a class="code" href="packed__array_8h.html#f0797ab5e0c586f69f18c3fb03262fc8" title="Let n by the number of bytes (i.e.">PACKED_ARRAY_WRITE_IF_ENOUGH_BYTES_AND_ADVANCE</a>(int32, current, v);
-<a name="l00214"></a>00214       <a class="code" href="packed__array_8h.html#f0797ab5e0c586f69f18c3fb03262fc8" title="Let n by the number of bytes (i.e.">PACKED_ARRAY_WRITE_IF_ENOUGH_BYTES_AND_ADVANCE</a>(int16, current, v);
-<a name="l00215"></a>00215       <a class="code" href="packed__array_8h.html#f0797ab5e0c586f69f18c3fb03262fc8" title="Let n by the number of bytes (i.e.">PACKED_ARRAY_WRITE_IF_ENOUGH_BYTES_AND_ADVANCE</a>(<a class="code" href="namespaceoperations__research.html#038fd9956774dc3224cda8ac268babbc">byte</a>, current, v);
-<a name="l00216"></a>00216     }
-<a name="l00217"></a>00217   }
-<a name="l00218"></a>00218 <span class="preprocessor">#undef PACKED_ARRAY_WRITE_IF_ENOUGH_BYTES_AND_ADVANCE</span>
-<a name="l00219"></a>00219 <span class="preprocessor"></span>
-<a name="l00220"></a>00220  <span class="keyword">private</span>:
-<a name="l00221"></a>00221   <span class="comment">// The bitmask corresponding to all the bits in Numbytes bytes set.</span>
-<a name="l00222"></a>00222   <span class="keyword">static</span> <span class="keyword">const</span> uint64 kBitMask = (GG_ULONGLONG(1) &lt;&lt; (CHAR_BIT * NumBytes)) - 1;
-<a name="l00223"></a>00223 
-<a name="l00224"></a>00224   <span class="comment">// The maximum signed integer representable with NumBytes bytes.</span>
-<a name="l00225"></a>00225   <span class="keyword">static</span> <span class="keyword">const</span> int64 kMaxInteger = kBitMask &gt;&gt; 1;
-<a name="l00226"></a>00226 
-<a name="l00227"></a>00227   <span class="comment">// The minimum signed integer representable with NumBytes bytes.</span>
-<a name="l00228"></a>00228   <span class="keyword">static</span> <span class="keyword">const</span> int64 kMinInteger = ~kMaxInteger;
-<a name="l00229"></a>00229 
-<a name="l00230"></a>00230   <a class="code" href="classoperations__research_1_1PackedArrayAllocator.html">PackedArrayAllocator&lt;byte, NumBytes&gt;</a> allocator_;
-<a name="l00231"></a>00231 };
-<a name="l00232"></a>00232 
-<a name="l00233"></a>00233 <span class="comment">// A specialization of the template for int32 (NumBytes = 4.)</span>
-<a name="l00234"></a>00234 <span class="comment">// TODO(user): also make a specialization for int16 if needed(?).</span>
-<a name="l00235"></a>00235 
-<a name="l00236"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html">00236</a> <span class="keyword">template</span>&lt;&gt; <span class="keyword">class </span><a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray</a>&lt;4&gt; {
-<a name="l00237"></a>00237  <span class="keyword">public</span>:
-<a name="l00238"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html#ebb21f01ae2cbe2faa5018eccb5e622f">00238</a>   <a class="code" href="classoperations__research_1_1PackedArray.html#77bf8638b6b360a8e5b5d6055d6a2ac0">PackedArray</a>() : allocator_() {}
-<a name="l00239"></a>00239 
-<a name="l00240"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html#224cd154c0249cc8ac00b821387b1af7">00240</a>   <a class="code" href="classoperations__research_1_1PackedArray.html#77bf8638b6b360a8e5b5d6055d6a2ac0">PackedArray</a>(int64 <a class="code" href="classoperations__research_1_1PackedArray.html#20af7ec328dc116d46e8ca5ba7326cf5" title="Returns the minimum possible index for the array.">min_index</a>, int64 <a class="code" href="classoperations__research_1_1PackedArray.html#17b4fafa106c6456e9a3588acbd0e9ea" title="Returns the maximum possible index for the array.">max_index</a>) : allocator_() {
-<a name="l00241"></a>00241     <a class="code" href="classoperations__research_1_1PackedArray.html#77b9436ce42dace4f8aaee927f4c5d09" title="Reserves memory for new minimum and new maximum indices.">Reserve</a>(min_index, max_index);
-<a name="l00242"></a>00242   }
+<a name="l00141"></a><a class="code" href="classoperations__research_1_1PackedArray.html#fe7ecfa2d84628e96db732e941db53de">00141</a>   <a class="code" href="classoperations__research_1_1PackedArray.html#fe7ecfa2d84628e96db732e941db53de">~PackedArray</a>() {}
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143   <span class="comment">// Returns the minimum possible index for the array.</span>
+<a name="l00144"></a><a class="code" href="classoperations__research_1_1PackedArray.html#20af7ec328dc116d46e8ca5ba7326cf5">00144</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#20af7ec328dc116d46e8ca5ba7326cf5" title="Returns the minimum possible index for the array.">min_index</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> allocator_.min_index(); }
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146   <span class="comment">// Returns the maximum possible index for the array.</span>
+<a name="l00147"></a><a class="code" href="classoperations__research_1_1PackedArray.html#17b4fafa106c6456e9a3588acbd0e9ea">00147</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#17b4fafa106c6456e9a3588acbd0e9ea" title="Returns the maximum possible index for the array.">max_index</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> allocator_.max_index(); }
+<a name="l00148"></a>00148 
+<a name="l00149"></a>00149   <span class="comment">// Returns the value stored at index.</span>
+<a name="l00150"></a>00150   <span class="comment">// This assumes that the underlying architecture is little-endian. In</span>
+<a name="l00151"></a>00151   <span class="comment">// particular, we select the value to return from the low-address NumBytes</span>
+<a name="l00152"></a>00152   <span class="comment">// bytes of the int64 beginning at the location determined by the given index.</span>
+<a name="l00153"></a>00153   <span class="comment">// To extract those NumBytes from the int64 loaded from memory, we choose the</span>
+<a name="l00154"></a>00154   <span class="comment">// bytes of low arithmetic significance. Code for a big-endian system would</span>
+<a name="l00155"></a>00155   <span class="comment">// need to choose the bytes of high arithmetic significance.</span>
+<a name="l00156"></a><a class="code" href="classoperations__research_1_1PackedArray.html#a6532ca16db6fb783df06b06af2de7d8">00156</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#a6532ca16db6fb783df06b06af2de7d8" title="Returns the value stored at index.">Value</a>(int64 index)<span class="keyword"> const </span>{
+<a name="l00157"></a>00157     DCHECK_LE(allocator_.min_index(), index);
+<a name="l00158"></a>00158     DCHECK_GE(allocator_.max_index(), index);
+<a name="l00159"></a>00159     int64 value =
+<a name="l00160"></a>00160         *<span class="keyword">reinterpret_cast&lt;</span>int64*<span class="keyword">&gt;</span>(allocator_.Base() + index * NumBytes);
+<a name="l00161"></a>00161     <span class="keyword">const</span> <span class="keywordtype">int</span> shift = (<span class="keyword">sizeof</span>(value) - NumBytes) * CHAR_BIT;
+<a name="l00162"></a>00162     value &lt;&lt;= shift;  <span class="comment">// These two lines are</span>
+<a name="l00163"></a>00163     value &gt;&gt;= shift;  <span class="comment">// for sign extension.</span>
+<a name="l00164"></a>00164     <span class="keywordflow">return</span> value;
+<a name="l00165"></a>00165   }
+<a name="l00166"></a>00166 
+<a name="l00167"></a>00167 <span class="preprocessor">#if !defined(SWIG)</span>
+<a name="l00168"></a>00168 <span class="preprocessor"></span>  <span class="comment">// Shortcut for returning the value stored at index.</span>
+<a name="l00169"></a><a class="code" href="classoperations__research_1_1PackedArray.html#8d240f632ffbd6d1719ce1213d58c56e">00169</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#8d240f632ffbd6d1719ce1213d58c56e" title="Shortcut for returning the value stored at index.">operator[]</a>(int64 index)<span class="keyword"> const </span>{
+<a name="l00170"></a>00170     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1PackedArray.html#a6532ca16db6fb783df06b06af2de7d8" title="Returns the value stored at index.">Value</a>(index);
+<a name="l00171"></a>00171   }
+<a name="l00172"></a>00172 <span class="preprocessor">#endif</span>
+<a name="l00173"></a>00173 <span class="preprocessor"></span>
+<a name="l00174"></a>00174 <span class="comment">// Let n by the number of bytes (i.e. sizeof) of type.</span>
+<a name="l00175"></a>00175 <span class="comment">// PACKED_ARRAY_WRITE_IF_ENOUGH_BYTES_AND_ADVANCE writes the first n lowest</span>
+<a name="l00176"></a>00176 <span class="comment">// significant bytes of value at address. It then shifts value by n bytes to</span>
+<a name="l00177"></a>00177 <span class="comment">// the right, and advances address by n bytes.</span>
+<a name="l00178"></a>00178 <span class="comment">// This assumes that the underlying architecture is little-endian, since</span>
+<a name="l00179"></a>00179 <span class="comment">// we write the lowest n bytes for value. Code for a big-endian system would</span>
+<a name="l00180"></a>00180 <span class="comment">// need to write the bytes of high arithmetic significance.</span>
+<a name="l00181"></a><a class="code" href="packed__array_8h.html#f0797ab5e0c586f69f18c3fb03262fc8">00181</a> <span class="preprocessor">#define PACKED_ARRAY_WRITE_IF_ENOUGH_BYTES_AND_ADVANCE(type, address, value)  \</span>
+<a name="l00182"></a>00182 <span class="preprocessor">{                                                                             \</span>
+<a name="l00183"></a>00183 <span class="preprocessor">  const int64 kSize = sizeof(type);                                           \</span>
+<a name="l00184"></a>00184 <span class="preprocessor">  if (NumBytes &amp; kSize) {                                                     \</span>
+<a name="l00185"></a>00185 <span class="preprocessor">    const int64 k1 = GG_LONGLONG(1);                                          \</span>
+<a name="l00186"></a>00186 <span class="preprocessor">    const int64 kSizeInBits = sizeof(type) * CHAR_BIT;                        \</span>
+<a name="l00187"></a>00187 <span class="preprocessor">    const int64 kMask = (k1 &lt;&lt; kSizeInBits) - 1;                              \</span>
+<a name="l00188"></a>00188 <span class="preprocessor">    reinterpret_cast&lt;type*&gt;(address)[0] = value &amp; kMask;                      \</span>
+<a name="l00189"></a>00189 <span class="preprocessor">    value &gt;&gt;= kSizeInBits;                                                    \</span>
+<a name="l00190"></a>00190 <span class="preprocessor">    address += kSize;                                                         \</span>
+<a name="l00191"></a>00191 <span class="preprocessor">  }                                                                           \</span>
+<a name="l00192"></a>00192 <span class="preprocessor">}</span>
+<a name="l00193"></a>00193 <span class="preprocessor"></span>
+<a name="l00194"></a>00194   <span class="comment">// Sets to value the content of the array at index.</span>
+<a name="l00195"></a><a class="code" href="classoperations__research_1_1PackedArray.html#ccc251bda770eec6ea9f7131f7a98697">00195</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1PackedArray.html#ccc251bda770eec6ea9f7131f7a98697" title="Sets to value the content of the array at index.">Set</a>(int64 index, int64 value) {
+<a name="l00196"></a>00196     DCHECK_LE(allocator_.min_index(), index);
+<a name="l00197"></a>00197     DCHECK_GE(allocator_.max_index(), index);
+<a name="l00198"></a>00198     DCHECK_LE(kMinInteger, value);
+<a name="l00199"></a>00199     DCHECK_GE(kMaxInteger, value);
+<a name="l00200"></a>00200     <a class="code" href="namespaceoperations__research.html#038fd9956774dc3224cda8ac268babbc">byte</a>* current = allocator_.Base() + index * NumBytes;
+<a name="l00201"></a>00201     <a class="code" href="packed__array_8h.html#f0797ab5e0c586f69f18c3fb03262fc8" title="Let n by the number of bytes (i.e.">PACKED_ARRAY_WRITE_IF_ENOUGH_BYTES_AND_ADVANCE</a>(int32, current, value);
+<a name="l00202"></a>00202     <a class="code" href="packed__array_8h.html#f0797ab5e0c586f69f18c3fb03262fc8" title="Let n by the number of bytes (i.e.">PACKED_ARRAY_WRITE_IF_ENOUGH_BYTES_AND_ADVANCE</a>(int16, current, value);
+<a name="l00203"></a>00203     <a class="code" href="packed__array_8h.html#f0797ab5e0c586f69f18c3fb03262fc8" title="Let n by the number of bytes (i.e.">PACKED_ARRAY_WRITE_IF_ENOUGH_BYTES_AND_ADVANCE</a>(<a class="code" href="namespaceoperations__research.html#038fd9956774dc3224cda8ac268babbc">byte</a>, current, value);
+<a name="l00204"></a>00204   }
+<a name="l00205"></a>00205 
+<a name="l00206"></a>00206   <span class="comment">// Reserves memory for new minimum and new maximum indices.</span>
+<a name="l00207"></a>00207   <span class="comment">// Never shrinks the memory allocated.</span>
+<a name="l00208"></a><a class="code" href="classoperations__research_1_1PackedArray.html#8eaa68bfef6945eb75e480d31657dda0">00208</a>   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1PackedArray.html#8eaa68bfef6945eb75e480d31657dda0" title="Reserves memory for new minimum and new maximum indices.">Reserve</a>(int64 new_min_index, int64 new_max_index) {
+<a name="l00209"></a>00209     <span class="keywordflow">return</span> allocator_.Reserve(new_min_index, new_max_index);
+<a name="l00210"></a>00210   }
+<a name="l00211"></a>00211 
+<a name="l00212"></a>00212   <span class="comment">// Sets all the elements in the array to value. Set is bypassed to maximize</span>
+<a name="l00213"></a>00213   <span class="comment">// performance.</span>
+<a name="l00214"></a><a class="code" href="classoperations__research_1_1PackedArray.html#1f0eed8261cc4a4a18569d8ddda0eea2">00214</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1PackedArray.html#1f0eed8261cc4a4a18569d8ddda0eea2" title="Sets all the elements in the array to value.">Assign</a>(int64 value) {
+<a name="l00215"></a>00215     DCHECK_LE(kMinInteger, value);
+<a name="l00216"></a>00216     DCHECK_GE(kMaxInteger, value);
+<a name="l00217"></a>00217     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#038fd9956774dc3224cda8ac268babbc">byte</a>* end = allocator_.Base() + allocator_.max_index() * NumBytes;
+<a name="l00218"></a>00218     <a class="code" href="namespaceoperations__research.html#038fd9956774dc3224cda8ac268babbc">byte</a>* current = allocator_.Base() + allocator_.min_index() * NumBytes;
+<a name="l00219"></a>00219     <span class="keywordflow">while</span> (current &lt;= end) {
+<a name="l00220"></a>00220       int64 v = value;  <span class="comment">// v is going to be modified by the following macro.</span>
+<a name="l00221"></a>00221       <a class="code" href="packed__array_8h.html#f0797ab5e0c586f69f18c3fb03262fc8" title="Let n by the number of bytes (i.e.">PACKED_ARRAY_WRITE_IF_ENOUGH_BYTES_AND_ADVANCE</a>(int32, current, v);
+<a name="l00222"></a>00222       <a class="code" href="packed__array_8h.html#f0797ab5e0c586f69f18c3fb03262fc8" title="Let n by the number of bytes (i.e.">PACKED_ARRAY_WRITE_IF_ENOUGH_BYTES_AND_ADVANCE</a>(int16, current, v);
+<a name="l00223"></a>00223       <a class="code" href="packed__array_8h.html#f0797ab5e0c586f69f18c3fb03262fc8" title="Let n by the number of bytes (i.e.">PACKED_ARRAY_WRITE_IF_ENOUGH_BYTES_AND_ADVANCE</a>(<a class="code" href="namespaceoperations__research.html#038fd9956774dc3224cda8ac268babbc">byte</a>, current, v);
+<a name="l00224"></a>00224     }
+<a name="l00225"></a>00225   }
+<a name="l00226"></a>00226 <span class="preprocessor">#undef PACKED_ARRAY_WRITE_IF_ENOUGH_BYTES_AND_ADVANCE</span>
+<a name="l00227"></a>00227 <span class="preprocessor"></span>
+<a name="l00228"></a>00228  <span class="keyword">private</span>:
+<a name="l00229"></a>00229   <span class="comment">// The bitmask corresponding to all the bits in Numbytes bytes set.</span>
+<a name="l00230"></a>00230   <span class="keyword">static</span> <span class="keyword">const</span> uint64 kBitMask = (GG_ULONGLONG(1) &lt;&lt; (CHAR_BIT * NumBytes)) - 1;
+<a name="l00231"></a>00231 
+<a name="l00232"></a>00232   <span class="comment">// The maximum signed integer representable with NumBytes bytes.</span>
+<a name="l00233"></a>00233   <span class="keyword">static</span> <span class="keyword">const</span> int64 kMaxInteger = kBitMask &gt;&gt; 1;
+<a name="l00234"></a>00234 
+<a name="l00235"></a>00235   <span class="comment">// The minimum signed integer representable with NumBytes bytes.</span>
+<a name="l00236"></a>00236   <span class="keyword">static</span> <span class="keyword">const</span> int64 kMinInteger = ~kMaxInteger;
+<a name="l00237"></a>00237 
+<a name="l00238"></a>00238   <a class="code" href="classoperations__research_1_1PackedArrayAllocator.html">PackedArrayAllocator&lt;byte, NumBytes&gt;</a> allocator_;
+<a name="l00239"></a>00239 };
+<a name="l00240"></a>00240 
+<a name="l00241"></a>00241 <span class="comment">// A specialization of the template for int32 (NumBytes = 4.)</span>
+<a name="l00242"></a>00242 <span class="comment">// TODO(user): also make a specialization for int16 if needed(?).</span>
 <a name="l00243"></a>00243 
-<a name="l00244"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html#b2dca664ff888864a5bbfb2d84b92243">00244</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#20af7ec328dc116d46e8ca5ba7326cf5" title="Returns the minimum possible index for the array.">min_index</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> allocator_.min_index(); }
-<a name="l00245"></a>00245 
-<a name="l00246"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html#c32cc37e7dd7dce2c5d5921f91c12857">00246</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#17b4fafa106c6456e9a3588acbd0e9ea" title="Returns the maximum possible index for the array.">max_index</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> allocator_.max_index(); }
+<a name="l00244"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html">00244</a> <span class="keyword">template</span>&lt;&gt; <span class="keyword">class </span><a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray</a>&lt;4&gt; {
+<a name="l00245"></a>00245  <span class="keyword">public</span>:
+<a name="l00246"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html#ebb21f01ae2cbe2faa5018eccb5e622f">00246</a>   <a class="code" href="classoperations__research_1_1PackedArray.html#77bf8638b6b360a8e5b5d6055d6a2ac0">PackedArray</a>() : allocator_() {}
 <a name="l00247"></a>00247 
-<a name="l00248"></a>00248   <span class="comment">// Returns the value stored at index.</span>
-<a name="l00249"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html#afb5e9040b73be18cd0c4673ea24f411">00249</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#a6532ca16db6fb783df06b06af2de7d8" title="Returns the value stored at index.">Value</a>(int64 index)<span class="keyword"> const </span>{
-<a name="l00250"></a>00250     DCHECK_LE(allocator_.min_index(), index);
-<a name="l00251"></a>00251     DCHECK_GE(allocator_.max_index(), index);
-<a name="l00252"></a>00252     <span class="keywordflow">return</span> allocator_.Base()[index];
+<a name="l00248"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html#224cd154c0249cc8ac00b821387b1af7">00248</a>   <a class="code" href="classoperations__research_1_1PackedArray.html#77bf8638b6b360a8e5b5d6055d6a2ac0">PackedArray</a>(int64 <a class="code" href="classoperations__research_1_1PackedArray.html#20af7ec328dc116d46e8ca5ba7326cf5" title="Returns the minimum possible index for the array.">min_index</a>, int64 <a class="code" href="classoperations__research_1_1PackedArray.html#17b4fafa106c6456e9a3588acbd0e9ea" title="Returns the maximum possible index for the array.">max_index</a>) : allocator_() {
+<a name="l00249"></a>00249     <span class="keywordflow">if</span> (!<a class="code" href="classoperations__research_1_1PackedArray.html#8eaa68bfef6945eb75e480d31657dda0" title="Reserves memory for new minimum and new maximum indices.">Reserve</a>(min_index, max_index)) {
+<a name="l00250"></a>00250       LOG(DFATAL) &lt;&lt; <span class="stringliteral">"Could not reserve memory for indices ranging from "</span>
+<a name="l00251"></a>00251                   &lt;&lt; min_index &lt;&lt; <span class="stringliteral">" to "</span> &lt;&lt; max_index;
+<a name="l00252"></a>00252     }
 <a name="l00253"></a>00253   }
 <a name="l00254"></a>00254 
-<a name="l00255"></a>00255 <span class="preprocessor">#if !defined(SWIG)</span>
-<a name="l00256"></a>00256 <span class="preprocessor"></span>  <span class="comment">// Shortcut for returning the value stored at index.</span>
-<a name="l00257"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html#f334f8cd079cc64c453dcd4ab9306b6e">00257</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#8d240f632ffbd6d1719ce1213d58c56e" title="Shortcut for returning the value stored at index.">operator[]</a>(int64 index)<span class="keyword"> const </span>{
-<a name="l00258"></a>00258     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1PackedArray.html#a6532ca16db6fb783df06b06af2de7d8" title="Returns the value stored at index.">Value</a>(index);
-<a name="l00259"></a>00259   }
-<a name="l00260"></a>00260 <span class="preprocessor">#endif</span>
-<a name="l00261"></a>00261 <span class="preprocessor"></span>
-<a name="l00262"></a>00262   <span class="comment">// Sets to value the content of the array at index.</span>
-<a name="l00263"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html#9b31d04bca18f3d65551d6aa178501cc">00263</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1PackedArray.html#ccc251bda770eec6ea9f7131f7a98697" title="Sets to value the content of the array at index.">Set</a>(int64 index, int64 value) {
-<a name="l00264"></a>00264     DCHECK_LE(allocator_.min_index(), index);
-<a name="l00265"></a>00265     DCHECK_GE(allocator_.max_index(), index);
-<a name="l00266"></a>00266     DCHECK_LE(std::numeric_limits&lt;int32&gt;::min(), value);
-<a name="l00267"></a>00267     DCHECK_GE(std::numeric_limits&lt;int32&gt;::max(), value);
-<a name="l00268"></a>00268     allocator_.Base()[index] = value;
-<a name="l00269"></a>00269   }
-<a name="l00270"></a>00270 
-<a name="l00271"></a>00271   <span class="comment">// Reserves memory for new minimum and new maximum indices.</span>
-<a name="l00272"></a>00272   <span class="comment">// Never shrinks the memory allocated.</span>
-<a name="l00273"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html#e454a89721a5d1c071369c7524b4f664">00273</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1PackedArray.html#77b9436ce42dace4f8aaee927f4c5d09" title="Reserves memory for new minimum and new maximum indices.">Reserve</a>(int64 new_min_index, int64 new_max_index) {
-<a name="l00274"></a>00274     allocator_.Reserve(new_min_index, new_max_index);
-<a name="l00275"></a>00275   }
-<a name="l00276"></a>00276 
-<a name="l00277"></a>00277   <span class="comment">// Sets all the elements in the array to value.</span>
-<a name="l00278"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html#73e089e2ad05f837daa5d88bb3c6e387">00278</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1PackedArray.html#1f0eed8261cc4a4a18569d8ddda0eea2" title="Sets all the elements in the array to value.">Assign</a>(int64 value) {
-<a name="l00279"></a>00279     DCHECK_LE(std::numeric_limits&lt;int32&gt;::min(), value);
-<a name="l00280"></a>00280     DCHECK_GE(std::numeric_limits&lt;int32&gt;::max(), value);
-<a name="l00281"></a>00281     int32 v = value;  <span class="comment">// Do the type conversion only once.</span>
-<a name="l00282"></a>00282     <span class="keyword">const</span> int32* end = allocator_.Base() + allocator_.max_index();
-<a name="l00283"></a>00283     <span class="keywordflow">for</span> (int32* current = allocator_.Base() + allocator_.min_index();
-<a name="l00284"></a>00284          current &lt;= end;
-<a name="l00285"></a>00285          ++current) {
-<a name="l00286"></a>00286       *current = v;
-<a name="l00287"></a>00287     }
-<a name="l00288"></a>00288   }
-<a name="l00289"></a>00289 
-<a name="l00290"></a>00290  <span class="keyword">private</span>:
-<a name="l00291"></a>00291   <a class="code" href="classoperations__research_1_1PackedArrayAllocator.html">PackedArrayAllocator&lt;int32, 4&gt;</a> allocator_;
-<a name="l00292"></a>00292 };
-<a name="l00293"></a>00293 
-<a name="l00294"></a>00294 <span class="comment">//</span>
-<a name="l00295"></a>00295 <span class="comment">// A specialization of the template for int64 (NumBytes = 8.)</span>
-<a name="l00296"></a>00296 <span class="comment">// There is some duplicated code with PackedArray&lt;4&gt;.</span>
-<a name="l00297"></a>00297 <span class="comment">//</span>
-<a name="l00298"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html">00298</a> <span class="keyword">template</span>&lt;&gt; <span class="keyword">class </span><a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray</a>&lt;8&gt; {
-<a name="l00299"></a>00299  <span class="keyword">public</span>:
-<a name="l00300"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html#d706c119b053d9057ce3ab75fd34523d">00300</a>   <a class="code" href="classoperations__research_1_1PackedArray.html#77bf8638b6b360a8e5b5d6055d6a2ac0">PackedArray</a>() : allocator_() {}
+<a name="l00255"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html#b2dca664ff888864a5bbfb2d84b92243">00255</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#20af7ec328dc116d46e8ca5ba7326cf5" title="Returns the minimum possible index for the array.">min_index</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> allocator_.min_index(); }
+<a name="l00256"></a>00256 
+<a name="l00257"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html#c32cc37e7dd7dce2c5d5921f91c12857">00257</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#17b4fafa106c6456e9a3588acbd0e9ea" title="Returns the maximum possible index for the array.">max_index</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> allocator_.max_index(); }
+<a name="l00258"></a>00258 
+<a name="l00259"></a>00259   <span class="comment">// Returns the value stored at index.</span>
+<a name="l00260"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html#afb5e9040b73be18cd0c4673ea24f411">00260</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#a6532ca16db6fb783df06b06af2de7d8" title="Returns the value stored at index.">Value</a>(int64 index)<span class="keyword"> const </span>{
+<a name="l00261"></a>00261     DCHECK_LE(allocator_.min_index(), index);
+<a name="l00262"></a>00262     DCHECK_GE(allocator_.max_index(), index);
+<a name="l00263"></a>00263     <span class="keywordflow">return</span> allocator_.Base()[index];
+<a name="l00264"></a>00264   }
+<a name="l00265"></a>00265 
+<a name="l00266"></a>00266 <span class="preprocessor">#if !defined(SWIG)</span>
+<a name="l00267"></a>00267 <span class="preprocessor"></span>  <span class="comment">// Shortcut for returning the value stored at index.</span>
+<a name="l00268"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html#f334f8cd079cc64c453dcd4ab9306b6e">00268</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#8d240f632ffbd6d1719ce1213d58c56e" title="Shortcut for returning the value stored at index.">operator[]</a>(int64 index)<span class="keyword"> const </span>{
+<a name="l00269"></a>00269     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1PackedArray.html#a6532ca16db6fb783df06b06af2de7d8" title="Returns the value stored at index.">Value</a>(index);
+<a name="l00270"></a>00270   }
+<a name="l00271"></a>00271 <span class="preprocessor">#endif</span>
+<a name="l00272"></a>00272 <span class="preprocessor"></span>
+<a name="l00273"></a>00273   <span class="comment">// Sets to value the content of the array at index.</span>
+<a name="l00274"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html#9b31d04bca18f3d65551d6aa178501cc">00274</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1PackedArray.html#ccc251bda770eec6ea9f7131f7a98697" title="Sets to value the content of the array at index.">Set</a>(int64 index, int64 value) {
+<a name="l00275"></a>00275     DCHECK_LE(allocator_.min_index(), index);
+<a name="l00276"></a>00276     DCHECK_GE(allocator_.max_index(), index);
+<a name="l00277"></a>00277     DCHECK_LE(std::numeric_limits&lt;int32&gt;::min(), value);
+<a name="l00278"></a>00278     DCHECK_GE(std::numeric_limits&lt;int32&gt;::max(), value);
+<a name="l00279"></a>00279     allocator_.Base()[index] = value;
+<a name="l00280"></a>00280   }
+<a name="l00281"></a>00281 
+<a name="l00282"></a>00282   <span class="comment">// Reserves memory for new minimum and new maximum indices.</span>
+<a name="l00283"></a>00283   <span class="comment">// Returns true if the memory could be reserved.</span>
+<a name="l00284"></a>00284   <span class="comment">// Never shrinks the memory allocated.</span>
+<a name="l00285"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html#d7efd032b898e2042bfe843f4ac266ec">00285</a>   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1PackedArray.html#8eaa68bfef6945eb75e480d31657dda0" title="Reserves memory for new minimum and new maximum indices.">Reserve</a>(int64 new_min_index, int64 new_max_index) {
+<a name="l00286"></a>00286     <span class="keywordflow">return</span> allocator_.Reserve(new_min_index, new_max_index);
+<a name="l00287"></a>00287   }
+<a name="l00288"></a>00288 
+<a name="l00289"></a>00289   <span class="comment">// Sets all the elements in the array to value.</span>
+<a name="l00290"></a><a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html#73e089e2ad05f837daa5d88bb3c6e387">00290</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1PackedArray.html#1f0eed8261cc4a4a18569d8ddda0eea2" title="Sets all the elements in the array to value.">Assign</a>(int64 value) {
+<a name="l00291"></a>00291     DCHECK_LE(std::numeric_limits&lt;int32&gt;::min(), value);
+<a name="l00292"></a>00292     DCHECK_GE(std::numeric_limits&lt;int32&gt;::max(), value);
+<a name="l00293"></a>00293     int32 v = value;  <span class="comment">// Do the type conversion only once.</span>
+<a name="l00294"></a>00294     <span class="keyword">const</span> int32* end = allocator_.Base() + allocator_.max_index();
+<a name="l00295"></a>00295     <span class="keywordflow">for</span> (int32* current = allocator_.Base() + allocator_.min_index();
+<a name="l00296"></a>00296          current &lt;= end;
+<a name="l00297"></a>00297          ++current) {
+<a name="l00298"></a>00298       *current = v;
+<a name="l00299"></a>00299     }
+<a name="l00300"></a>00300   }
 <a name="l00301"></a>00301 
-<a name="l00302"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html#3f00dcf2d2f07045e43448a706bbaa7e">00302</a>   <a class="code" href="classoperations__research_1_1PackedArray.html#77bf8638b6b360a8e5b5d6055d6a2ac0">PackedArray</a>(int64 <a class="code" href="classoperations__research_1_1PackedArray.html#20af7ec328dc116d46e8ca5ba7326cf5" title="Returns the minimum possible index for the array.">min_index</a>, int64 <a class="code" href="classoperations__research_1_1PackedArray.html#17b4fafa106c6456e9a3588acbd0e9ea" title="Returns the maximum possible index for the array.">max_index</a>) : allocator_() {
-<a name="l00303"></a>00303     <a class="code" href="classoperations__research_1_1PackedArray.html#77b9436ce42dace4f8aaee927f4c5d09" title="Reserves memory for new minimum and new maximum indices.">Reserve</a>(min_index, max_index);
-<a name="l00304"></a>00304   }
+<a name="l00302"></a>00302  <span class="keyword">private</span>:
+<a name="l00303"></a>00303   <a class="code" href="classoperations__research_1_1PackedArrayAllocator.html">PackedArrayAllocator&lt;int32, 4&gt;</a> allocator_;
+<a name="l00304"></a>00304 };
 <a name="l00305"></a>00305 
-<a name="l00306"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html#a71d1800ad3c2d7174162323f398db91">00306</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#20af7ec328dc116d46e8ca5ba7326cf5" title="Returns the minimum possible index for the array.">min_index</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> allocator_.min_index(); }
-<a name="l00307"></a>00307 
-<a name="l00308"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html#5e6d8ecb849b82a75891c790b880f94b">00308</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#17b4fafa106c6456e9a3588acbd0e9ea" title="Returns the maximum possible index for the array.">max_index</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> allocator_.max_index(); }
-<a name="l00309"></a>00309 
-<a name="l00310"></a>00310   <span class="comment">// Returns the value stored at index.</span>
-<a name="l00311"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html#24c9e5a458c5cb338118ed72ec9835f9">00311</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#a6532ca16db6fb783df06b06af2de7d8" title="Returns the value stored at index.">Value</a>(int64 index)<span class="keyword"> const </span>{
-<a name="l00312"></a>00312     DCHECK_LE(allocator_.min_index(), index);
-<a name="l00313"></a>00313     DCHECK_GE(allocator_.max_index(), index);
-<a name="l00314"></a>00314     <span class="keywordflow">return</span> allocator_.Base()[index];
-<a name="l00315"></a>00315   }
-<a name="l00316"></a>00316 
-<a name="l00317"></a>00317 <span class="preprocessor">#if !defined(SWIG)</span>
-<a name="l00318"></a>00318 <span class="preprocessor"></span>  <span class="comment">// Shortcut for returning the value stored at index.</span>
-<a name="l00319"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html#ea5c2df5351e30b6588f1ef201a9cb18">00319</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#8d240f632ffbd6d1719ce1213d58c56e" title="Shortcut for returning the value stored at index.">operator[]</a>(int64 index)<span class="keyword"> const </span>{
-<a name="l00320"></a>00320     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1PackedArray.html#a6532ca16db6fb783df06b06af2de7d8" title="Returns the value stored at index.">Value</a>(index);
-<a name="l00321"></a>00321   }
-<a name="l00322"></a>00322 <span class="preprocessor">#endif</span>
-<a name="l00323"></a>00323 <span class="preprocessor"></span>
-<a name="l00324"></a>00324   <span class="comment">// Sets to value the content of the array at index.</span>
-<a name="l00325"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html#9b1567e8bc7b797728bbbe6a4f69d84a">00325</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1PackedArray.html#ccc251bda770eec6ea9f7131f7a98697" title="Sets to value the content of the array at index.">Set</a>(int64 index, int64 value) {
-<a name="l00326"></a>00326     DCHECK_LE(allocator_.min_index(), index);
-<a name="l00327"></a>00327     DCHECK_GE(allocator_.max_index(), index);
-<a name="l00328"></a>00328     allocator_.Base()[index] = value;
-<a name="l00329"></a>00329   }
-<a name="l00330"></a>00330 
-<a name="l00331"></a>00331   <span class="comment">// Reserves memory for new minimum and new maximum indices.</span>
-<a name="l00332"></a>00332   <span class="comment">// Never shrinks the memory allocated.</span>
-<a name="l00333"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html#18fbee2ab62b609bb7b81785947d3074">00333</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1PackedArray.html#77b9436ce42dace4f8aaee927f4c5d09" title="Reserves memory for new minimum and new maximum indices.">Reserve</a>(int64 new_min_index, int64 new_max_index) {
-<a name="l00334"></a>00334     allocator_.Reserve(new_min_index, new_max_index);
-<a name="l00335"></a>00335   }
-<a name="l00336"></a>00336 
-<a name="l00337"></a>00337   <span class="comment">// Sets all the elements in the array to value.</span>
-<a name="l00338"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html#5058d94ac9dd9ca004986c6d53506752">00338</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1PackedArray.html#1f0eed8261cc4a4a18569d8ddda0eea2" title="Sets all the elements in the array to value.">Assign</a>(int64 value) {
-<a name="l00339"></a>00339     <span class="keyword">const</span> int64* end = allocator_.Base() + allocator_.max_index();
-<a name="l00340"></a>00340     <span class="keywordflow">for</span> (int64* current = allocator_.Base() + allocator_.min_index();
-<a name="l00341"></a>00341          current &lt;= end;
-<a name="l00342"></a>00342          ++current) {
-<a name="l00343"></a>00343       *current = value;
-<a name="l00344"></a>00344     }
-<a name="l00345"></a>00345   }
-<a name="l00346"></a>00346 
-<a name="l00347"></a>00347  <span class="keyword">private</span>:
-<a name="l00348"></a>00348   <a class="code" href="classoperations__research_1_1PackedArrayAllocator.html">PackedArrayAllocator&lt;int64, 8&gt;</a> allocator_;
-<a name="l00349"></a>00349 };
-<a name="l00350"></a>00350 
-<a name="l00351"></a>00351 <span class="comment">// Shorthands for all the types of PackedArray's.</span>
-<a name="l00352"></a><a class="code" href="namespaceoperations__research.html#26b432c1b95b58d815893ed924c7db2b">00352</a> <span class="keyword">typedef</span> <a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray&lt;1&gt;</a> <a class="code" href="classoperations__research_1_1PackedArray.html">Int8PackedArray</a>;
-<a name="l00353"></a><a class="code" href="namespaceoperations__research.html#c0fb83b00ec16e03c127486b4d23c457">00353</a> <span class="keyword">typedef</span> <a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray&lt;2&gt;</a> <a class="code" href="classoperations__research_1_1PackedArray.html">Int16PackedArray</a>;
-<a name="l00354"></a><a class="code" href="namespaceoperations__research.html#30634e925379f1343dd61fdc87d6f7dc">00354</a> <span class="keyword">typedef</span> <a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray&lt;3&gt;</a> <a class="code" href="classoperations__research_1_1PackedArray.html">Int24PackedArray</a>;
-<a name="l00355"></a><a class="code" href="namespaceoperations__research.html#c7c88a1df5bcc5b2ab8505991ec7133a">00355</a> <span class="keyword">typedef</span> <a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray&lt;4&gt;</a> <a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html" title="A specialization of the template for int32 (NumBytes = 4.">Int32PackedArray</a>;
-<a name="l00356"></a><a class="code" href="namespaceoperations__research.html#4a9defe487ff25dabae1ba1f39563d5e">00356</a> <span class="keyword">typedef</span> <a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray&lt;5&gt;</a> <a class="code" href="classoperations__research_1_1PackedArray.html">Int40PackedArray</a>;
-<a name="l00357"></a><a class="code" href="namespaceoperations__research.html#0513f268ca9496ac9f86368091e38c45">00357</a> <span class="keyword">typedef</span> <a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray&lt;6&gt;</a> <a class="code" href="classoperations__research_1_1PackedArray.html">Int48PackedArray</a>;
-<a name="l00358"></a><a class="code" href="namespaceoperations__research.html#484b5a63e93ddf0e3cd22a70041b5eda">00358</a> <span class="keyword">typedef</span> <a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray&lt;7&gt;</a> <a class="code" href="classoperations__research_1_1PackedArray.html">Int56PackedArray</a>;
-<a name="l00359"></a><a class="code" href="namespaceoperations__research.html#e2b92c54f75364b40e3d65f0f6ca10d2">00359</a> <span class="keyword">typedef</span> <a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray&lt;8&gt;</a> <a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html" title="A specialization of the template for int64 (NumBytes = 8.">Int64PackedArray</a>;
-<a name="l00360"></a>00360 }  <span class="comment">// namespace operations_research</span>
-<a name="l00361"></a>00361 
-<a name="l00362"></a>00362 <span class="preprocessor">#endif  // OR_TOOLS_UTIL_PACKED_ARRAY_H_</span>
+<a name="l00306"></a>00306 <span class="comment">//</span>
+<a name="l00307"></a>00307 <span class="comment">// A specialization of the template for int64 (NumBytes = 8.)</span>
+<a name="l00308"></a>00308 <span class="comment">// There is some duplicated code with PackedArray&lt;4&gt;.</span>
+<a name="l00309"></a>00309 <span class="comment">//</span>
+<a name="l00310"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html">00310</a> <span class="keyword">template</span>&lt;&gt; <span class="keyword">class </span><a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray</a>&lt;8&gt; {
+<a name="l00311"></a>00311  <span class="keyword">public</span>:
+<a name="l00312"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html#d706c119b053d9057ce3ab75fd34523d">00312</a>   <a class="code" href="classoperations__research_1_1PackedArray.html#77bf8638b6b360a8e5b5d6055d6a2ac0">PackedArray</a>() : allocator_() {}
+<a name="l00313"></a>00313 
+<a name="l00314"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html#3f00dcf2d2f07045e43448a706bbaa7e">00314</a>   <a class="code" href="classoperations__research_1_1PackedArray.html#77bf8638b6b360a8e5b5d6055d6a2ac0">PackedArray</a>(int64 <a class="code" href="classoperations__research_1_1PackedArray.html#20af7ec328dc116d46e8ca5ba7326cf5" title="Returns the minimum possible index for the array.">min_index</a>, int64 <a class="code" href="classoperations__research_1_1PackedArray.html#17b4fafa106c6456e9a3588acbd0e9ea" title="Returns the maximum possible index for the array.">max_index</a>) : allocator_() {
+<a name="l00315"></a>00315     <span class="keywordflow">if</span> (!<a class="code" href="classoperations__research_1_1PackedArray.html#8eaa68bfef6945eb75e480d31657dda0" title="Reserves memory for new minimum and new maximum indices.">Reserve</a>(min_index, max_index)) {
+<a name="l00316"></a>00316       LOG(DFATAL) &lt;&lt; <span class="stringliteral">"Could not reserve memory for indices ranging from "</span>
+<a name="l00317"></a>00317                   &lt;&lt; min_index &lt;&lt; <span class="stringliteral">" to "</span> &lt;&lt; max_index;
+<a name="l00318"></a>00318     }
+<a name="l00319"></a>00319   }
+<a name="l00320"></a>00320 
+<a name="l00321"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html#a71d1800ad3c2d7174162323f398db91">00321</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#20af7ec328dc116d46e8ca5ba7326cf5" title="Returns the minimum possible index for the array.">min_index</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> allocator_.min_index(); }
+<a name="l00322"></a>00322 
+<a name="l00323"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html#5e6d8ecb849b82a75891c790b880f94b">00323</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#17b4fafa106c6456e9a3588acbd0e9ea" title="Returns the maximum possible index for the array.">max_index</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> allocator_.max_index(); }
+<a name="l00324"></a>00324 
+<a name="l00325"></a>00325   <span class="comment">// Returns the value stored at index.</span>
+<a name="l00326"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html#24c9e5a458c5cb338118ed72ec9835f9">00326</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#a6532ca16db6fb783df06b06af2de7d8" title="Returns the value stored at index.">Value</a>(int64 index)<span class="keyword"> const </span>{
+<a name="l00327"></a>00327     DCHECK_LE(allocator_.min_index(), index);
+<a name="l00328"></a>00328     DCHECK_GE(allocator_.max_index(), index);
+<a name="l00329"></a>00329     <span class="keywordflow">return</span> allocator_.Base()[index];
+<a name="l00330"></a>00330   }
+<a name="l00331"></a>00331 
+<a name="l00332"></a>00332 <span class="preprocessor">#if !defined(SWIG)</span>
+<a name="l00333"></a>00333 <span class="preprocessor"></span>  <span class="comment">// Shortcut for returning the value stored at index.</span>
+<a name="l00334"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html#ea5c2df5351e30b6588f1ef201a9cb18">00334</a>   int64 <a class="code" href="classoperations__research_1_1PackedArray.html#8d240f632ffbd6d1719ce1213d58c56e" title="Shortcut for returning the value stored at index.">operator[]</a>(int64 index)<span class="keyword"> const </span>{
+<a name="l00335"></a>00335     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1PackedArray.html#a6532ca16db6fb783df06b06af2de7d8" title="Returns the value stored at index.">Value</a>(index);
+<a name="l00336"></a>00336   }
+<a name="l00337"></a>00337 <span class="preprocessor">#endif</span>
+<a name="l00338"></a>00338 <span class="preprocessor"></span>
+<a name="l00339"></a>00339   <span class="comment">// Sets to value the content of the array at index.</span>
+<a name="l00340"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html#9b1567e8bc7b797728bbbe6a4f69d84a">00340</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1PackedArray.html#ccc251bda770eec6ea9f7131f7a98697" title="Sets to value the content of the array at index.">Set</a>(int64 index, int64 value) {
+<a name="l00341"></a>00341     DCHECK_LE(allocator_.min_index(), index);
+<a name="l00342"></a>00342     DCHECK_GE(allocator_.max_index(), index);
+<a name="l00343"></a>00343     allocator_.Base()[index] = value;
+<a name="l00344"></a>00344   }
+<a name="l00345"></a>00345 
+<a name="l00346"></a>00346   <span class="comment">// Reserves memory for new minimum and new maximum indices.</span>
+<a name="l00347"></a>00347   <span class="comment">// Returns true if the memory could be reserved.</span>
+<a name="l00348"></a>00348   <span class="comment">// Never shrinks the memory allocated.</span>
+<a name="l00349"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html#3a4bbc966842434b128c8c44d01dec4e">00349</a>   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1PackedArray.html#8eaa68bfef6945eb75e480d31657dda0" title="Reserves memory for new minimum and new maximum indices.">Reserve</a>(int64 new_min_index, int64 new_max_index) {
+<a name="l00350"></a>00350     <span class="keywordflow">return</span> allocator_.Reserve(new_min_index, new_max_index);
+<a name="l00351"></a>00351   }
+<a name="l00352"></a>00352 
+<a name="l00353"></a>00353   <span class="comment">// Sets all the elements in the array to value.</span>
+<a name="l00354"></a><a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html#5058d94ac9dd9ca004986c6d53506752">00354</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1PackedArray.html#1f0eed8261cc4a4a18569d8ddda0eea2" title="Sets all the elements in the array to value.">Assign</a>(int64 value) {
+<a name="l00355"></a>00355     <span class="keyword">const</span> int64* end = allocator_.Base() + allocator_.max_index();
+<a name="l00356"></a>00356     <span class="keywordflow">for</span> (int64* current = allocator_.Base() + allocator_.min_index();
+<a name="l00357"></a>00357          current &lt;= end;
+<a name="l00358"></a>00358          ++current) {
+<a name="l00359"></a>00359       *current = value;
+<a name="l00360"></a>00360     }
+<a name="l00361"></a>00361   }
+<a name="l00362"></a>00362 
+<a name="l00363"></a>00363  <span class="keyword">private</span>:
+<a name="l00364"></a>00364   <a class="code" href="classoperations__research_1_1PackedArrayAllocator.html">PackedArrayAllocator&lt;int64, 8&gt;</a> allocator_;
+<a name="l00365"></a>00365 };
+<a name="l00366"></a>00366 
+<a name="l00367"></a>00367 <span class="comment">// Shorthands for all the types of PackedArray's.</span>
+<a name="l00368"></a><a class="code" href="namespaceoperations__research.html#26b432c1b95b58d815893ed924c7db2b">00368</a> <span class="keyword">typedef</span> <a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray&lt;1&gt;</a> <a class="code" href="classoperations__research_1_1PackedArray.html">Int8PackedArray</a>;
+<a name="l00369"></a><a class="code" href="namespaceoperations__research.html#c0fb83b00ec16e03c127486b4d23c457">00369</a> <span class="keyword">typedef</span> <a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray&lt;2&gt;</a> <a class="code" href="classoperations__research_1_1PackedArray.html">Int16PackedArray</a>;
+<a name="l00370"></a><a class="code" href="namespaceoperations__research.html#30634e925379f1343dd61fdc87d6f7dc">00370</a> <span class="keyword">typedef</span> <a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray&lt;3&gt;</a> <a class="code" href="classoperations__research_1_1PackedArray.html">Int24PackedArray</a>;
+<a name="l00371"></a><a class="code" href="namespaceoperations__research.html#c7c88a1df5bcc5b2ab8505991ec7133a">00371</a> <span class="keyword">typedef</span> <a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray&lt;4&gt;</a> <a class="code" href="classoperations__research_1_1PackedArray_3_014_01_4.html" title="A specialization of the template for int32 (NumBytes = 4.">Int32PackedArray</a>;
+<a name="l00372"></a><a class="code" href="namespaceoperations__research.html#4a9defe487ff25dabae1ba1f39563d5e">00372</a> <span class="keyword">typedef</span> <a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray&lt;5&gt;</a> <a class="code" href="classoperations__research_1_1PackedArray.html">Int40PackedArray</a>;
+<a name="l00373"></a><a class="code" href="namespaceoperations__research.html#0513f268ca9496ac9f86368091e38c45">00373</a> <span class="keyword">typedef</span> <a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray&lt;6&gt;</a> <a class="code" href="classoperations__research_1_1PackedArray.html">Int48PackedArray</a>;
+<a name="l00374"></a><a class="code" href="namespaceoperations__research.html#484b5a63e93ddf0e3cd22a70041b5eda">00374</a> <span class="keyword">typedef</span> <a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray&lt;7&gt;</a> <a class="code" href="classoperations__research_1_1PackedArray.html">Int56PackedArray</a>;
+<a name="l00375"></a><a class="code" href="namespaceoperations__research.html#e2b92c54f75364b40e3d65f0f6ca10d2">00375</a> <span class="keyword">typedef</span> <a class="code" href="classoperations__research_1_1PackedArray.html">PackedArray&lt;8&gt;</a> <a class="code" href="classoperations__research_1_1PackedArray_3_018_01_4.html" title="A specialization of the template for int64 (NumBytes = 8.">Int64PackedArray</a>;
+<a name="l00376"></a>00376 }  <span class="comment">// namespace operations_research</span>
+<a name="l00377"></a>00377 
+<a name="l00378"></a>00378 <span class="preprocessor">#endif  // OR_TOOLS_UTIL_PACKED_ARRAY_H_</span>
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -451,7 +467,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#704131 height=3></td>
+      <td colspan=2 bgcolor=#915221 height=3></td>
     </tr>
   </table>
 

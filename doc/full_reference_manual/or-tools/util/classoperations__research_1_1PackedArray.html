@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #704131
+      background-color: #915221
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#704131 height=3></td>
+      <td colspan=3 bgcolor=#915221 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#704131><b>Fri Aug  5 10:40:09 PDT 2011</b></font>
+          Generated on: <font color=#915221><b>Wed Aug 10 22:22:19 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#704131>
+            <td bgcolor=#915221>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#704131>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#915221>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/util/index.html">util</a>/
             </tt></b></font>
@@ -121,9 +121,9 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1PackedArray.html#ccc251bda770eec6ea9f7131f7a98697">Set</a> (int64 index, int64 value)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets to value the content of the array at index.  <a href="#ccc251bda770eec6ea9f7131f7a98697"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1PackedArray.html#77b9436ce42dace4f8aaee927f4c5d09">Reserve</a> (int64 new_min_index, int64 new_max_index)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1PackedArray.html#8eaa68bfef6945eb75e480d31657dda0">Reserve</a> (int64 new_min_index, int64 new_max_index)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reserves memory for new minimum and new maximum indices.  <a href="#77b9436ce42dace4f8aaee927f4c5d09"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reserves memory for new minimum and new maximum indices.  <a href="#8eaa68bfef6945eb75e480d31657dda0"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1PackedArray.html#1f0eed8261cc4a4a18569d8ddda0eea2">Assign</a> (int64 value)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets all the elements in the array to value.  <a href="#1f0eed8261cc4a4a18569d8ddda0eea2"></a><br></td></tr>
@@ -133,7 +133,7 @@
  class operations_research::PackedArray&lt; NumBytes &gt;</h3>
 
 
-<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00122">122</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
+<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00127">127</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="77bf8638b6b360a8e5b5d6055d6a2ac0"></a><!-- doxytag: member="operations_research::PackedArray::PackedArray" ref="77bf8638b6b360a8e5b5d6055d6a2ac0" args="()" -->
 <div class="memitem">
@@ -154,7 +154,7 @@ template&lt;int NumBytes&gt; </div>
 
 <p>
 
-<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00124">124</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
+<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00129">129</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -189,7 +189,7 @@ template&lt;int NumBytes&gt; </div>
 The constructor for <a class="el" href="classoperations__research_1_1PackedArray.html">PackedArray</a> takes a mininum index and a maximum index. 
 <p>
 These can be positive or negative, and the value for minimum_index and for maximun_index can be set and read (i.e. the bounds are inclusive.) 
-<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00129">129</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
+<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00134">134</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -212,7 +212,7 @@ template&lt;int NumBytes&gt; </div>
 
 <p>
 
-<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00133">133</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
+<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00141">141</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -238,7 +238,7 @@ template&lt;int NumBytes&gt; </div>
 Returns the minimum possible index for the array. 
 <p>
 
-<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00136">136</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
+<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00144">144</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -263,7 +263,7 @@ template&lt;int NumBytes&gt; </div>
 Returns the maximum possible index for the array. 
 <p>
 
-<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00139">139</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
+<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00147">147</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -289,7 +289,7 @@ template&lt;int NumBytes&gt; </div>
 Returns the value stored at index. 
 <p>
 This assumes that the underlying architecture is little-endian. In particular, we select the value to return from the low-address NumBytes bytes of the int64 beginning at the location determined by the given index. To extract those NumBytes from the int64 loaded from memory, we choose the bytes of low arithmetic significance. Code for a big-endian system would need to choose the bytes of high arithmetic significance. 
-<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00148">148</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
+<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00156">156</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -315,7 +315,7 @@ template&lt;int NumBytes&gt; </div>
 Shortcut for returning the value stored at index. 
 <p>
 
-<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00161">161</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
+<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00169">169</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -350,18 +350,18 @@ template&lt;int NumBytes&gt; </div>
 Sets to value the content of the array at index. 
 <p>
 
-<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00187">187</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
+<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00195">195</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="77b9436ce42dace4f8aaee927f4c5d09"></a><!-- doxytag: member="operations_research::PackedArray::Reserve" ref="77b9436ce42dace4f8aaee927f4c5d09" args="(int64 new_min_index, int64 new_max_index)" -->
+<a class="anchor" name="8eaa68bfef6945eb75e480d31657dda0"></a><!-- doxytag: member="operations_research::PackedArray::Reserve" ref="8eaa68bfef6945eb75e480d31657dda0" args="(int64 new_min_index, int64 new_max_index)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;int NumBytes&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classoperations__research_1_1PackedArray.html">operations_research::PackedArray</a>&lt; NumBytes &gt;::Reserve           </td>
+          <td class="memname">bool <a class="el" href="classoperations__research_1_1PackedArray.html">operations_research::PackedArray</a>&lt; NumBytes &gt;::Reserve           </td>
           <td>(</td>
           <td class="paramtype">int64&nbsp;</td>
           <td class="paramname"> <em>new_min_index</em>, </td>
@@ -385,7 +385,7 @@ template&lt;int NumBytes&gt; </div>
 Reserves memory for new minimum and new maximum indices. 
 <p>
 Never shrinks the memory allocated. 
-<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00200">200</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
+<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00208">208</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -411,7 +411,7 @@ template&lt;int NumBytes&gt; </div>
 Sets all the elements in the array to value. 
 <p>
 Set is bypassed to maximize performance. 
-<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00206">206</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
+<p>Definition at line <a class="el" href="packed__array_8h-source.html#l00214">214</a> of file <a class="el" href="packed__array_8h-source.html">packed_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -425,7 +425,7 @@ Set is bypassed to maximize performance.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#704131 height=3></td>
+      <td colspan=2 bgcolor=#915221 height=3></td>
     </tr>
   </table>
 
