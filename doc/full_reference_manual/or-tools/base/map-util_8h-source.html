@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #115511
+      background-color: #439154
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#115511 height=3></td>
+      <td colspan=3 bgcolor=#439154 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#115511><b>Thu Aug 11 16:08:43 PDT 2011</b></font>
+          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#115511>
+            <td bgcolor=#439154>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#115511>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/base/index.html">base</a>/
             </tt></b></font>
@@ -188,42 +188,62 @@
 <a name="l00106"></a>00106   <span class="keywordflow">return</span> ret.second;
 <a name="l00107"></a>00107 }
 <a name="l00108"></a>00108 
-<a name="l00109"></a>00109 <span class="comment">// Perform a lookup in map or hash_map.</span>
-<a name="l00110"></a>00110 <span class="comment">// If the key is present and value is non-NULL then a copy of the value</span>
-<a name="l00111"></a>00111 <span class="comment">// associated with the key is made into *value. Returns whether key was present.</span>
-<a name="l00112"></a>00112 <span class="keyword">template</span> &lt;<span class="keyword">class</span> Collection, <span class="keyword">class</span> Key, <span class="keyword">class</span> Value&gt;
-<a name="l00113"></a><a class="code" href="namespaceoperations__research.html#df964e8253d1fd9cf94b44d7fbd13476">00113</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceoperations__research.html#df964e8253d1fd9cf94b44d7fbd13476" title="Perform a lookup in map or hash_map.">FindCopy</a>(<span class="keyword">const</span> Collection&amp; collection,
-<a name="l00114"></a>00114               <span class="keyword">const</span> Key&amp; key,
-<a name="l00115"></a>00115               Value* <span class="keyword">const</span> value) {
-<a name="l00116"></a>00116   <span class="keyword">typename</span> Collection::const_iterator it = collection.find(key);
-<a name="l00117"></a>00117   <span class="keywordflow">if</span> (it == collection.end()) {
-<a name="l00118"></a>00118     <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00119"></a>00119   }
-<a name="l00120"></a>00120   <span class="keywordflow">if</span> (value) {
-<a name="l00121"></a>00121     *value = it-&gt;second;
-<a name="l00122"></a>00122   }
-<a name="l00123"></a>00123   <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00124"></a>00124 }
-<a name="l00125"></a>00125 
-<a name="l00126"></a>00126 <span class="comment">// Test to see if a set, map, hash_set or hash_map contains a particular key.</span>
-<a name="l00127"></a>00127 <span class="comment">// Returns true if the key is in the collection.</span>
-<a name="l00128"></a>00128 <span class="keyword">template</span> &lt;<span class="keyword">class</span> Collection, <span class="keyword">class</span> Key&gt;
-<a name="l00129"></a><a class="code" href="namespaceoperations__research.html#8931adc07d6ce40dbf76f4276b62866e">00129</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceoperations__research.html#8931adc07d6ce40dbf76f4276b62866e" title="Test to see if a set, map, hash_set or hash_map contains a particular key.">ContainsKey</a>(<span class="keyword">const</span> Collection&amp; collection, <span class="keyword">const</span> Key&amp; key) {
-<a name="l00130"></a>00130   <span class="keyword">typename</span> Collection::const_iterator it = collection.find(key);
-<a name="l00131"></a>00131   <span class="keywordflow">return</span> it != collection.end();
-<a name="l00132"></a>00132 }
-<a name="l00133"></a>00133 
-<a name="l00134"></a>00134 <span class="keyword">template</span> &lt;<span class="keyword">class</span> Collection&gt;
-<a name="l00135"></a>00135 <span class="keyword">const</span> <span class="keyword">typename</span> Collection::value_type::second_type&amp;
-<a name="l00136"></a><a class="code" href="namespaceoperations__research.html#19d13a6decfd83351e3a989f91089a63">00136</a> <a class="code" href="namespaceoperations__research.html#19d13a6decfd83351e3a989f91089a63">FindOrDie</a>(<span class="keyword">const</span> Collection&amp; collection,
-<a name="l00137"></a>00137           <span class="keyword">const</span> <span class="keyword">typename</span> Collection::value_type::first_type&amp; key) {
-<a name="l00138"></a>00138   <span class="keyword">typename</span> Collection::const_iterator it = collection.find(key);
-<a name="l00139"></a>00139   <a class="code" href="logging_8h.html#763ffd798508592c5092ac77daa5a659" title="Always-on checking.">CHECK</a>(it != collection.end()) &lt;&lt; <span class="stringliteral">"Map key not found: "</span> &lt;&lt; key;
-<a name="l00140"></a>00140   <span class="keywordflow">return</span> it-&gt;second;
-<a name="l00141"></a>00141 }
-<a name="l00142"></a>00142 }  <span class="comment">// namespace operations_research</span>
-<a name="l00143"></a>00143 
-<a name="l00144"></a>00144 <span class="preprocessor">#endif  // OR_TOOLS_BASE_MAP_UTIL_H_</span>
+<a name="l00109"></a>00109 <span class="comment">// Inserts a new pair&lt;key,value&gt; into a map or hash_map.</span>
+<a name="l00110"></a>00110 <span class="comment">// Insert a new key into a set or hash_set.</span>
+<a name="l00111"></a>00111 <span class="comment">// Dies if the key is already present.</span>
+<a name="l00112"></a>00112 <span class="keyword">template</span>&lt;<span class="keyword">class</span> Collection&gt;
+<a name="l00113"></a><a class="code" href="namespaceoperations__research.html#23725068115fcc04ae3d8596055bd102">00113</a> <span class="keywordtype">void</span> <a class="code" href="namespaceoperations__research.html#23725068115fcc04ae3d8596055bd102" title="Inserts a new pair&amp;lt;key,value&amp;gt; into a map or hash_map.">InsertOrDie</a>(Collection* <span class="keyword">const</span> collection,
+<a name="l00114"></a>00114                  <span class="keyword">const</span> <span class="keyword">typename</span> Collection::value_type&amp; value) {
+<a name="l00115"></a>00115   <a class="code" href="logging_8h.html#763ffd798508592c5092ac77daa5a659" title="Always-on checking.">CHECK</a>(collection-&gt;insert(value).second) &lt;&lt; <span class="stringliteral">"duplicate value: "</span> &lt;&lt; value;
+<a name="l00116"></a>00116 }
+<a name="l00117"></a>00117 
+<a name="l00118"></a>00118 <span class="comment">// Inserts a new key/value into a map or hash_map.</span>
+<a name="l00119"></a>00119 <span class="comment">// Dies if the key is already present.</span>
+<a name="l00120"></a>00120 <span class="keyword">template</span>&lt;<span class="keyword">class</span> Collection&gt;
+<a name="l00121"></a><a class="code" href="namespaceoperations__research.html#2c2cba4ebee51039b52ccaf948ddaffb">00121</a> <span class="keywordtype">void</span> <a class="code" href="namespaceoperations__research.html#23725068115fcc04ae3d8596055bd102" title="Inserts a new pair&amp;lt;key,value&amp;gt; into a map or hash_map.">InsertOrDie</a>(Collection* <span class="keyword">const</span> collection,
+<a name="l00122"></a>00122                  <span class="keyword">const</span> <span class="keyword">typename</span> Collection::value_type::first_type&amp; key,
+<a name="l00123"></a>00123                  <span class="keyword">const</span> <span class="keyword">typename</span> Collection::value_type::second_type&amp; data) {
+<a name="l00124"></a>00124   <span class="keyword">typedef</span> <span class="keyword">typename</span> Collection::value_type value_type;
+<a name="l00125"></a>00125   <a class="code" href="logging_8h.html#763ffd798508592c5092ac77daa5a659" title="Always-on checking.">CHECK</a>(collection-&gt;insert(value_type(key, data)).second)
+<a name="l00126"></a>00126     &lt;&lt; <span class="stringliteral">"duplicate key: "</span> &lt;&lt; key;
+<a name="l00127"></a>00127 }
+<a name="l00128"></a>00128 
+<a name="l00129"></a>00129 <span class="comment">// Perform a lookup in map or hash_map.</span>
+<a name="l00130"></a>00130 <span class="comment">// If the key is present and value is non-NULL then a copy of the value</span>
+<a name="l00131"></a>00131 <span class="comment">// associated with the key is made into *value. Returns whether key was present.</span>
+<a name="l00132"></a>00132 <span class="keyword">template</span> &lt;<span class="keyword">class</span> Collection, <span class="keyword">class</span> Key, <span class="keyword">class</span> Value&gt;
+<a name="l00133"></a><a class="code" href="namespaceoperations__research.html#df964e8253d1fd9cf94b44d7fbd13476">00133</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceoperations__research.html#df964e8253d1fd9cf94b44d7fbd13476" title="Perform a lookup in map or hash_map.">FindCopy</a>(<span class="keyword">const</span> Collection&amp; collection,
+<a name="l00134"></a>00134               <span class="keyword">const</span> Key&amp; key,
+<a name="l00135"></a>00135               Value* <span class="keyword">const</span> value) {
+<a name="l00136"></a>00136   <span class="keyword">typename</span> Collection::const_iterator it = collection.find(key);
+<a name="l00137"></a>00137   <span class="keywordflow">if</span> (it == collection.end()) {
+<a name="l00138"></a>00138     <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00139"></a>00139   }
+<a name="l00140"></a>00140   <span class="keywordflow">if</span> (value) {
+<a name="l00141"></a>00141     *value = it-&gt;second;
+<a name="l00142"></a>00142   }
+<a name="l00143"></a>00143   <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00144"></a>00144 }
+<a name="l00145"></a>00145 
+<a name="l00146"></a>00146 <span class="comment">// Test to see if a set, map, hash_set or hash_map contains a particular key.</span>
+<a name="l00147"></a>00147 <span class="comment">// Returns true if the key is in the collection.</span>
+<a name="l00148"></a>00148 <span class="keyword">template</span> &lt;<span class="keyword">class</span> Collection, <span class="keyword">class</span> Key&gt;
+<a name="l00149"></a><a class="code" href="namespaceoperations__research.html#8931adc07d6ce40dbf76f4276b62866e">00149</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceoperations__research.html#8931adc07d6ce40dbf76f4276b62866e" title="Test to see if a set, map, hash_set or hash_map contains a particular key.">ContainsKey</a>(<span class="keyword">const</span> Collection&amp; collection, <span class="keyword">const</span> Key&amp; key) {
+<a name="l00150"></a>00150   <span class="keyword">typename</span> Collection::const_iterator it = collection.find(key);
+<a name="l00151"></a>00151   <span class="keywordflow">return</span> it != collection.end();
+<a name="l00152"></a>00152 }
+<a name="l00153"></a>00153 
+<a name="l00154"></a>00154 <span class="keyword">template</span> &lt;<span class="keyword">class</span> Collection&gt;
+<a name="l00155"></a>00155 <span class="keyword">const</span> <span class="keyword">typename</span> Collection::value_type::second_type&amp;
+<a name="l00156"></a><a class="code" href="namespaceoperations__research.html#19d13a6decfd83351e3a989f91089a63">00156</a> <a class="code" href="namespaceoperations__research.html#19d13a6decfd83351e3a989f91089a63">FindOrDie</a>(<span class="keyword">const</span> Collection&amp; collection,
+<a name="l00157"></a>00157           <span class="keyword">const</span> <span class="keyword">typename</span> Collection::value_type::first_type&amp; key) {
+<a name="l00158"></a>00158   <span class="keyword">typename</span> Collection::const_iterator it = collection.find(key);
+<a name="l00159"></a>00159   <a class="code" href="logging_8h.html#763ffd798508592c5092ac77daa5a659" title="Always-on checking.">CHECK</a>(it != collection.end()) &lt;&lt; <span class="stringliteral">"Map key not found: "</span> &lt;&lt; key;
+<a name="l00160"></a>00160   <span class="keywordflow">return</span> it-&gt;second;
+<a name="l00161"></a>00161 }
+<a name="l00162"></a>00162 }  <span class="comment">// namespace operations_research</span>
+<a name="l00163"></a>00163 
+<a name="l00164"></a>00164 <span class="preprocessor">#endif  // OR_TOOLS_BASE_MAP_UTIL_H_</span>
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -232,7 +252,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#115511 height=3></td>
+      <td colspan=2 bgcolor=#439154 height=3></td>
     </tr>
   </table>
 

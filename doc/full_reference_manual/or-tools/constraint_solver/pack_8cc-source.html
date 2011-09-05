@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #115511
+      background-color: #439154
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#115511 height=3></td>
+      <td colspan=3 bgcolor=#439154 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#115511><b>Thu Aug 11 16:08:43 PDT 2011</b></font>
+          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#115511>
+            <td bgcolor=#439154>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#115511>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -539,7 +539,7 @@
 <a name="l00456"></a>00456   <span class="keywordtype">bool</span> operator&lt;(<span class="keyword">const</span> WeightContainer&amp; c)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> (<a class="code" href="pack_8cc.html#e42ca38a167164c07831993889216903">weight</a> &lt; c.weight); }
 <a name="l00457"></a>00457 };
 <a name="l00458"></a>00458 
-<a name="l00459"></a><a class="code" href="namespaceoperations__research.html#a6315b4ac80eb579b40674c52d0fe836">00459</a> <span class="keywordtype">int</span> <a class="code" href="namespaceoperations__research.html#a6315b4ac80eb579b40674c52d0fe836">SortIndexByWeight</a>(int64* <span class="keyword">const</span> indices,
+<a name="l00459"></a><a class="code" href="namespaceoperations__research.html#8b28395a9aa670149fd3c5c417616b3b">00459</a> <span class="keywordtype">int</span> <a class="code" href="namespaceoperations__research.html#8b28395a9aa670149fd3c5c417616b3b">SortIndexByWeight</a>(int64* <span class="keyword">const</span> indices,
 <a name="l00460"></a>00460                       <span class="keyword">const</span> int64* <span class="keyword">const</span> weights,
 <a name="l00461"></a>00461                       <span class="keywordtype">int</span> size) {
 <a name="l00462"></a>00462   std::vector&lt;WeightContainer&gt; to_sort;
@@ -584,7 +584,7 @@
 <a name="l00501"></a>00501     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="pack_8cc.html#a515faf14123ffc767641ddc7904630f">vars_count_</a>; ++i) {
 <a name="l00502"></a>00502       <a class="code" href="pack_8cc.html#a5162ab5ab6854d756464659d5dd5769">ranked_</a>[i] = i;
 <a name="l00503"></a>00503     }
-<a name="l00504"></a>00504     <a class="code" href="pack_8cc.html#bb9ebc28c331e29e96dec06d744d9240">ranked_size_</a> = <a class="code" href="namespaceoperations__research.html#a6315b4ac80eb579b40674c52d0fe836">SortIndexByWeight</a>(<a class="code" href="pack_8cc.html#a5162ab5ab6854d756464659d5dd5769">ranked_</a>, <a class="code" href="pack_8cc.html#d56a8d34c59f1fa25b7b64dd9dedd77a">weights_</a>, vars_count_);
+<a name="l00504"></a>00504     <a class="code" href="pack_8cc.html#bb9ebc28c331e29e96dec06d744d9240">ranked_size_</a> = <a class="code" href="namespaceoperations__research.html#8b28395a9aa670149fd3c5c417616b3b">SortIndexByWeight</a>(<a class="code" href="pack_8cc.html#a5162ab5ab6854d756464659d5dd5769">ranked_</a>, <a class="code" href="pack_8cc.html#d56a8d34c59f1fa25b7b64dd9dedd77a">weights_</a>, vars_count_);
 <a name="l00505"></a>00505   }
 <a name="l00506"></a>00506 
 <a name="l00507"></a>00507   <span class="keyword">virtual</span> ~DimensionLessThanConstant() {
@@ -717,7 +717,7 @@
 <a name="l00634"></a>00634     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="pack_8cc.html#a515faf14123ffc767641ddc7904630f">vars_count_</a>; ++i) {
 <a name="l00635"></a>00635       <a class="code" href="pack_8cc.html#a5162ab5ab6854d756464659d5dd5769">ranked_</a>[i] = i;
 <a name="l00636"></a>00636     }
-<a name="l00637"></a>00637     <a class="code" href="pack_8cc.html#bb9ebc28c331e29e96dec06d744d9240">ranked_size_</a> = <a class="code" href="namespaceoperations__research.html#a6315b4ac80eb579b40674c52d0fe836">SortIndexByWeight</a>(<a class="code" href="pack_8cc.html#a5162ab5ab6854d756464659d5dd5769">ranked_</a>, <a class="code" href="pack_8cc.html#d56a8d34c59f1fa25b7b64dd9dedd77a">weights_</a>, vars_count_);
+<a name="l00637"></a>00637     <a class="code" href="pack_8cc.html#bb9ebc28c331e29e96dec06d744d9240">ranked_size_</a> = <a class="code" href="namespaceoperations__research.html#8b28395a9aa670149fd3c5c417616b3b">SortIndexByWeight</a>(<a class="code" href="pack_8cc.html#a5162ab5ab6854d756464659d5dd5769">ranked_</a>, <a class="code" href="pack_8cc.html#d56a8d34c59f1fa25b7b64dd9dedd77a">weights_</a>, vars_count_);
 <a name="l00638"></a>00638   }
 <a name="l00639"></a>00639 
 <a name="l00640"></a>00640   <span class="keyword">virtual</span> ~DimensionWeightedSumEqVar() {
@@ -868,7 +868,7 @@
 <a name="l00785"></a>00785     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="pack_8cc.html#a515faf14123ffc767641ddc7904630f">vars_count_</a>; ++i) {
 <a name="l00786"></a>00786       <a class="code" href="pack_8cc.html#a5162ab5ab6854d756464659d5dd5769">ranked_</a>[i] = i;
 <a name="l00787"></a>00787     }
-<a name="l00788"></a>00788     <a class="code" href="pack_8cc.html#bb9ebc28c331e29e96dec06d744d9240">ranked_size_</a> = <a class="code" href="namespaceoperations__research.html#a6315b4ac80eb579b40674c52d0fe836">SortIndexByWeight</a>(<a class="code" href="pack_8cc.html#a5162ab5ab6854d756464659d5dd5769">ranked_</a>, <a class="code" href="pack_8cc.html#d56a8d34c59f1fa25b7b64dd9dedd77a">weights_</a>, vars_count_);
+<a name="l00788"></a>00788     <a class="code" href="pack_8cc.html#bb9ebc28c331e29e96dec06d744d9240">ranked_size_</a> = <a class="code" href="namespaceoperations__research.html#8b28395a9aa670149fd3c5c417616b3b">SortIndexByWeight</a>(<a class="code" href="pack_8cc.html#a5162ab5ab6854d756464659d5dd5769">ranked_</a>, <a class="code" href="pack_8cc.html#d56a8d34c59f1fa25b7b64dd9dedd77a">weights_</a>, vars_count_);
 <a name="l00789"></a>00789     <a class="code" href="expr__array_8cc.html#cd841fa2cfe450e9e031ff4353766607">first_unbound_backward_</a>.SetValue(s, <a class="code" href="pack_8cc.html#bb9ebc28c331e29e96dec06d744d9240">ranked_size_</a> - 1);
 <a name="l00790"></a>00790   }
 <a name="l00791"></a>00791 
@@ -1301,7 +1301,7 @@
 <a name="l01218"></a>01218   dims_.push_back(dim);
 <a name="l01219"></a>01219 }
 <a name="l01220"></a>01220 
-<a name="l01221"></a><a class="code" href="classoperations__research_1_1Pack.html#cbb9380640b30f024e9986f96d5fe582">01221</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1Pack.html#cbb9380640b30f024e9986f96d5fe582" title="This dimension enforces that cost_var == sum of weights[i] for all objects &amp;#39;i&amp;#39;...">Pack::AddWeightedSumOfAssignedDimension</a>(<span class="keyword">const</span> std::vector&lt;int64&gt;&amp; weights,
+<a name="l01221"></a><a class="code" href="classoperations__research_1_1Pack.html#cbb9380640b30f024e9986f96d5fe582">01221</a> <span class="keywordtype">void</span> <a class="code" href="namespaceoperations__research.html#a268d2951761f84e47e83724d28a20c3">Pack::AddWeightedSumOfAssignedDimension</a>(<span class="keyword">const</span> std::vector&lt;int64&gt;&amp; weights,
 <a name="l01222"></a>01222                                              <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span> cost_var) {
 <a name="l01223"></a>01223   CHECK_EQ(weights.size(), vsize_);
 <a name="l01224"></a>01224   <a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> s = <a class="code" href="classoperations__research_1_1PropagationBaseObject.html#2851ada2b74b1f107fb50d84043471dc">solver</a>();
@@ -1318,35 +1318,37 @@
 <a name="l01235"></a><a class="code" href="classoperations__research_1_1Pack.html#c10fc9713119dbfba15d95c9abdfb193">01235</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1Pack.html#c10fc9713119dbfba15d95c9abdfb193" title="This dimension imposes: forall b in bins, sum (i in items: weight[i] * is_assigned(i...">Pack::AddSumVariableWeightsLessOrEqualConstantDimension</a>(
 <a name="l01236"></a>01236     <span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; usage,
 <a name="l01237"></a>01237     <span class="keyword">const</span> std::vector&lt;int64&gt;&amp; capacity) {
-<a name="l01238"></a>01238   <a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> s = <a class="code" href="classoperations__research_1_1PropagationBaseObject.html#2851ada2b74b1f107fb50d84043471dc">solver</a>();
-<a name="l01239"></a>01239   <a class="code" href="classoperations__research_1_1Dimension.html">Dimension</a>* <span class="keyword">const</span> dim =
-<a name="l01240"></a>01240       s-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> VariableUsageDimension(s,
-<a name="l01241"></a>01241                                              <span class="keyword">this</span>,
-<a name="l01242"></a>01242                                              capacity,
-<a name="l01243"></a>01243                                              usage));
-<a name="l01244"></a>01244   dims_.push_back(dim);
-<a name="l01245"></a>01245 }
-<a name="l01246"></a>01246 
-<a name="l01247"></a>01247 
-<a name="l01248"></a><a class="code" href="classoperations__research_1_1Pack.html#3030c379670033531aab20df788376ed">01248</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1Pack.html#3030c379670033531aab20df788376ed" title="This dimension links &amp;#39;count_var&amp;#39; to the actual number of bins used in the...">Pack::AddCountUsedBinDimension</a>(<a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span> count_var) {
-<a name="l01249"></a>01249   <a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> s = <a class="code" href="classoperations__research_1_1PropagationBaseObject.html#2851ada2b74b1f107fb50d84043471dc">solver</a>();
-<a name="l01250"></a>01250   <a class="code" href="classoperations__research_1_1Dimension.html">Dimension</a>* <span class="keyword">const</span> dim =
-<a name="l01251"></a>01251       s-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> CountUsedBinDimension(s, <span class="keyword">this</span>, vsize_, bins_, count_var));
-<a name="l01252"></a>01252   dims_.push_back(dim);
-<a name="l01253"></a>01253 }
-<a name="l01254"></a>01254 
-<a name="l01255"></a><a class="code" href="classoperations__research_1_1Pack.html#a8c9281df8ab547dbed84de1364267d4">01255</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1Pack.html#a8c9281df8ab547dbed84de1364267d4" title="This dimension links &amp;#39;count_var&amp;#39; to the actual number of items assigned to...">Pack::AddCountAssignedItemsDimension</a>(<a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span> count_var) {
-<a name="l01256"></a>01256   <a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> s = <a class="code" href="classoperations__research_1_1PropagationBaseObject.html#2851ada2b74b1f107fb50d84043471dc">solver</a>();
-<a name="l01257"></a>01257   <a class="code" href="classoperations__research_1_1Dimension.html">Dimension</a>* <span class="keyword">const</span> dim =
-<a name="l01258"></a>01258       s-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> CountAssignedItemsDimension(s, <span class="keyword">this</span>, vsize_,
-<a name="l01259"></a>01259                                                   bins_, count_var));
-<a name="l01260"></a>01260   dims_.push_back(dim);
-<a name="l01261"></a>01261 }
-<a name="l01262"></a>01262 
-<a name="l01263"></a><a class="code" href="classoperations__research_1_1Solver.html#8dcb66edad9b49ce8fca640183558a94">01263</a> <a class="code" href="classoperations__research_1_1Pack.html" title="Pack Constraint.">Pack</a>* <a class="code" href="classoperations__research_1_1Solver.html#8dcb66edad9b49ce8fca640183558a94" title="Packing constraint.">Solver::MakePack</a>(<span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; vars, <span class="keywordtype">int</span> number_of_bins) {
-<a name="l01264"></a>01264   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1Pack.html" title="Pack Constraint.">Pack</a>(<span class="keyword">this</span>, vars.data(), vars.size(), number_of_bins));
-<a name="l01265"></a>01265 }
-<a name="l01266"></a>01266 }  <span class="comment">// Namespace operations_research</span>
+<a name="l01238"></a>01238   CHECK_EQ(usage.size(), vsize_);
+<a name="l01239"></a>01239   CHECK_EQ(capacity.size(), bins_);
+<a name="l01240"></a>01240   <a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> s = <a class="code" href="classoperations__research_1_1PropagationBaseObject.html#2851ada2b74b1f107fb50d84043471dc">solver</a>();
+<a name="l01241"></a>01241   <a class="code" href="classoperations__research_1_1Dimension.html">Dimension</a>* <span class="keyword">const</span> dim =
+<a name="l01242"></a>01242       s-&gt;RevAlloc(<span class="keyword">new</span> VariableUsageDimension(s,
+<a name="l01243"></a>01243                                              <span class="keyword">this</span>,
+<a name="l01244"></a>01244                                              capacity,
+<a name="l01245"></a>01245                                              usage));
+<a name="l01246"></a>01246   dims_.push_back(dim);
+<a name="l01247"></a>01247 }
+<a name="l01248"></a>01248 
+<a name="l01249"></a>01249 
+<a name="l01250"></a><a class="code" href="classoperations__research_1_1Pack.html#3030c379670033531aab20df788376ed">01250</a> <span class="keywordtype">void</span> <a class="code" href="namespaceoperations__research.html#610c6b58b08ccdf20c186449e5640361">Pack::AddCountUsedBinDimension</a>(<a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span> count_var) {
+<a name="l01251"></a>01251   <a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> s = <a class="code" href="classoperations__research_1_1PropagationBaseObject.html#2851ada2b74b1f107fb50d84043471dc">solver</a>();
+<a name="l01252"></a>01252   <a class="code" href="classoperations__research_1_1Dimension.html">Dimension</a>* <span class="keyword">const</span> dim =
+<a name="l01253"></a>01253       s-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> CountUsedBinDimension(s, <span class="keyword">this</span>, vsize_, bins_, count_var));
+<a name="l01254"></a>01254   dims_.push_back(dim);
+<a name="l01255"></a>01255 }
+<a name="l01256"></a>01256 
+<a name="l01257"></a><a class="code" href="classoperations__research_1_1Pack.html#a8c9281df8ab547dbed84de1364267d4">01257</a> <span class="keywordtype">void</span> <a class="code" href="namespaceoperations__research.html#a5dfc2901a9d9890f1a6e01effc32859">Pack::AddCountAssignedItemsDimension</a>(<a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span> count_var) {
+<a name="l01258"></a>01258   <a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> s = <a class="code" href="classoperations__research_1_1PropagationBaseObject.html#2851ada2b74b1f107fb50d84043471dc">solver</a>();
+<a name="l01259"></a>01259   <a class="code" href="classoperations__research_1_1Dimension.html">Dimension</a>* <span class="keyword">const</span> dim =
+<a name="l01260"></a>01260       s-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> CountAssignedItemsDimension(s, <span class="keyword">this</span>, vsize_,
+<a name="l01261"></a>01261                                                   bins_, count_var));
+<a name="l01262"></a>01262   dims_.push_back(dim);
+<a name="l01263"></a>01263 }
+<a name="l01264"></a>01264 
+<a name="l01265"></a><a class="code" href="classoperations__research_1_1Solver.html#8dcb66edad9b49ce8fca640183558a94">01265</a> <a class="code" href="classoperations__research_1_1Pack.html" title="Pack Constraint.">Pack</a>* <a class="code" href="classoperations__research_1_1Solver.html#8dcb66edad9b49ce8fca640183558a94" title="Packing constraint.">Solver::MakePack</a>(<span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; vars, <span class="keywordtype">int</span> number_of_bins) {
+<a name="l01266"></a>01266   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1Pack.html" title="Pack Constraint.">Pack</a>(<span class="keyword">this</span>, vars.data(), vars.size(), number_of_bins));
+<a name="l01267"></a>01267 }
+<a name="l01268"></a>01268 }  <span class="comment">// Namespace operations_research</span>
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -1355,7 +1357,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#115511 height=3></td>
+      <td colspan=2 bgcolor=#439154 height=3></td>
     </tr>
   </table>
 

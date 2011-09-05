@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #115511
+      background-color: #439154
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#115511 height=3></td>
+      <td colspan=3 bgcolor=#439154 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#115511><b>Thu Aug 11 16:08:43 PDT 2011</b></font>
+          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#115511>
+            <td bgcolor=#439154>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#115511>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -1803,7 +1803,7 @@
 <a name="l01720"></a>01720   <span class="keywordflow">return</span> <span class="keyword">false</span>;
 <a name="l01721"></a>01721 }
 <a name="l01722"></a>01722 
-<a name="l01723"></a><a class="code" href="namespaceoperations__research.html#f6d6f41a400420ba3734638dea2703ff">01723</a> int64 <a class="code" href="namespaceoperations__research.html#f6d6f41a400420ba3734638dea2703ff">CompoundOperatorNoRestart</a>(<span class="keywordtype">int</span> size,
+<a name="l01723"></a><a class="code" href="namespaceoperations__research.html#75d1a08b50c563046cae66dd587b2ed1">01723</a> int64 <a class="code" href="namespaceoperations__research.html#75d1a08b50c563046cae66dd587b2ed1">CompoundOperatorNoRestart</a>(<span class="keywordtype">int</span> size,
 <a name="l01724"></a>01724                                 <span class="keywordtype">int</span> active_index,
 <a name="l01725"></a>01725                                 <span class="keywordtype">int</span> operator_index) {
 <a name="l01726"></a>01726   <span class="keywordflow">if</span> (operator_index &lt; active_index) {
@@ -1813,7 +1813,7 @@
 <a name="l01730"></a>01730   }
 <a name="l01731"></a>01731 }
 <a name="l01732"></a>01732 
-<a name="l01733"></a><a class="code" href="namespaceoperations__research.html#9a3a9c0607ed44ae3d7e6b8b6194c33c">01733</a> int64 <a class="code" href="namespaceoperations__research.html#9a3a9c0607ed44ae3d7e6b8b6194c33c">CompoundOperatorRestart</a>(<span class="keywordtype">int</span> active_index, <span class="keywordtype">int</span> operator_index) {
+<a name="l01733"></a><a class="code" href="namespaceoperations__research.html#7f18315b3f5644bf353a4608e6c2948b">01733</a> int64 <a class="code" href="namespaceoperations__research.html#7f18315b3f5644bf353a4608e6c2948b">CompoundOperatorRestart</a>(<span class="keywordtype">int</span> active_index, <span class="keywordtype">int</span> operator_index) {
 <a name="l01734"></a>01734   <span class="keywordflow">return</span> 0;
 <a name="l01735"></a>01735 }
 <a name="l01736"></a>01736 }  <span class="comment">// namespace</span>
@@ -1829,11 +1829,11 @@
 <a name="l01746"></a>01746   <span class="keywordflow">if</span> (restart) {
 <a name="l01747"></a>01747     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#2d5e12aea6d0bdcc0d0763a6fb620ce2" title="Creates a local search operator which concatenates a vector of operators.">ConcatenateOperators</a>(
 <a name="l01748"></a>01748         ops,
-<a name="l01749"></a>01749         NewPermanentCallback(&amp;<a class="code" href="namespaceoperations__research.html#9a3a9c0607ed44ae3d7e6b8b6194c33c">CompoundOperatorRestart</a>));
+<a name="l01749"></a>01749         NewPermanentCallback(&amp;<a class="code" href="namespaceoperations__research.html#7f18315b3f5644bf353a4608e6c2948b">CompoundOperatorRestart</a>));
 <a name="l01750"></a>01750   } <span class="keywordflow">else</span> {
 <a name="l01751"></a>01751     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#2d5e12aea6d0bdcc0d0763a6fb620ce2" title="Creates a local search operator which concatenates a vector of operators.">ConcatenateOperators</a>(
 <a name="l01752"></a>01752         ops,
-<a name="l01753"></a>01753         NewPermanentCallback(&amp;<a class="code" href="namespaceoperations__research.html#f6d6f41a400420ba3734638dea2703ff">CompoundOperatorNoRestart</a>,
+<a name="l01753"></a>01753         NewPermanentCallback(&amp;<a class="code" href="namespaceoperations__research.html#75d1a08b50c563046cae66dd587b2ed1">CompoundOperatorNoRestart</a>,
 <a name="l01754"></a>01754                              static_cast&lt;int&gt;(ops.size())));
 <a name="l01755"></a>01755   }
 <a name="l01756"></a>01756 }
@@ -2523,7 +2523,7 @@
 <a name="l02440"></a>02440 
 <a name="l02441"></a>02441 <span class="comment">// ---- Local search filter factory ----</span>
 <a name="l02442"></a>02442 
-<a name="l02443"></a><a class="code" href="namespaceoperations__research.html#4d0c40a9aad8e7be218ab8e6ac1afeb3">02443</a> LSOperation* <a class="code" href="namespaceoperations__research.html#4d0c40a9aad8e7be218ab8e6ac1afeb3" title="Local search filter factory.">OperationFromEnum</a>(<a class="code" href="classoperations__research_1_1Solver.html#33dcc7075bc4e16ae357cfd975822abc">Solver::LocalSearchOperation</a> op_enum) {
+<a name="l02443"></a><a class="code" href="namespaceoperations__research.html#c5da61242fecfd25108f265364999638">02443</a> LSOperation* <a class="code" href="namespaceoperations__research.html#c5da61242fecfd25108f265364999638" title="Local search filter factory.">OperationFromEnum</a>(<a class="code" href="classoperations__research_1_1Solver.html#33dcc7075bc4e16ae357cfd975822abc">Solver::LocalSearchOperation</a> op_enum) {
 <a name="l02444"></a>02444   LSOperation* operation = NULL;
 <a name="l02445"></a>02445   <span class="keywordflow">switch</span> (op_enum) {
 <a name="l02446"></a>02446     <span class="keywordflow">case</span> Solver::SUM: {
@@ -2561,7 +2561,7 @@
 <a name="l02478"></a>02478                                             values,
 <a name="l02479"></a>02479                                             objective,
 <a name="l02480"></a>02480                                             filter_enum,
-<a name="l02481"></a>02481                                             <a class="code" href="namespaceoperations__research.html#4d0c40a9aad8e7be218ab8e6ac1afeb3" title="Local search filter factory.">OperationFromEnum</a>(op_enum)));
+<a name="l02481"></a>02481                                             <a class="code" href="namespaceoperations__research.html#c5da61242fecfd25108f265364999638" title="Local search filter factory.">OperationFromEnum</a>(op_enum)));
 <a name="l02482"></a>02482 }
 <a name="l02483"></a>02483 
 <a name="l02484"></a><a class="code" href="classoperations__research_1_1Solver.html#bc4594132d20b7cf0bf68deb8d68adca">02484</a> <a class="code" href="classoperations__research_1_1LocalSearchFilter.html" title="Local Search Filters For fast neighbor pruning.">LocalSearchFilter</a>* <a class="code" href="classoperations__research_1_1Solver.html#4edf645400c8e4760d72042f289c7f97" title="namespace">Solver::MakeLocalSearchObjectiveFilter</a>(
@@ -2592,7 +2592,7 @@
 <a name="l02509"></a>02509                                              values,
 <a name="l02510"></a>02510                                              objective,
 <a name="l02511"></a>02511                                              filter_enum,
-<a name="l02512"></a>02512                                              <a class="code" href="namespaceoperations__research.html#4d0c40a9aad8e7be218ab8e6ac1afeb3" title="Local search filter factory.">OperationFromEnum</a>(op_enum)));
+<a name="l02512"></a>02512                                              <a class="code" href="namespaceoperations__research.html#c5da61242fecfd25108f265364999638" title="Local search filter factory.">OperationFromEnum</a>(op_enum)));
 <a name="l02513"></a>02513 }
 <a name="l02514"></a>02514 
 <a name="l02515"></a>02515 <span class="comment">// ----- NestedSolve decision wrapper -----</span>
@@ -3167,7 +3167,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#115511 height=3></td>
+      <td colspan=2 bgcolor=#439154 height=3></td>
     </tr>
   </table>
 

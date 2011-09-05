@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #115511
+      background-color: #439154
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#115511 height=3></td>
+      <td colspan=3 bgcolor=#439154 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#115511><b>Thu Aug 11 16:08:43 PDT 2011</b></font>
+          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#115511>
+            <td bgcolor=#439154>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#115511>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -378,8 +378,8 @@
 <a name="l00295"></a>00295 
 <a name="l00296"></a><a class="code" href="classoperations__research_1_1Assignment.html#e25cd4c0ce5b86a12bdf6b71e9f97201">00296</a> <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1Assignment.html#e25cd4c0ce5b86a12bdf6b71e9f97201" title="Loads an assignment from a file; does not add variables to the assignment (only the...">Assignment::Load</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; filename) {
 <a name="l00297"></a>00297   File::Init();
-<a name="l00298"></a>00298   File* file = File::Create(filename, <span class="stringliteral">"r"</span>);
-<a name="l00299"></a>00299   <span class="keywordflow">if</span> (file == NULL || !file-&gt;Open()) {
+<a name="l00298"></a>00298   File* file = File::Open(filename, <span class="stringliteral">"r"</span>);
+<a name="l00299"></a>00299   <span class="keywordflow">if</span> (file == NULL) {
 <a name="l00300"></a>00300     LOG(INFO) &lt;&lt; <span class="stringliteral">"Cannot open "</span> &lt;&lt; filename;
 <a name="l00301"></a>00301     <span class="keywordflow">return</span> <span class="keyword">false</span>;
 <a name="l00302"></a>00302   }
@@ -465,8 +465,8 @@
 <a name="l00382"></a>00382 
 <a name="l00383"></a><a class="code" href="classoperations__research_1_1Assignment.html#a24832c5145a8065790f11ab08cd45d1">00383</a> <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1Assignment.html#a24832c5145a8065790f11ab08cd45d1" title="Saves the assignment to a file.">Assignment::Save</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; filename) {
 <a name="l00384"></a>00384   File::Init();
-<a name="l00385"></a>00385   File* file = File::Create(filename, <span class="stringliteral">"w"</span>);
-<a name="l00386"></a>00386   <span class="keywordflow">if</span> (file == NULL || !file-&gt;Open()) {
+<a name="l00385"></a>00385   File* file = File::Open(filename, <span class="stringliteral">"w"</span>);
+<a name="l00386"></a>00386   <span class="keywordflow">if</span> (file == NULL) {
 <a name="l00387"></a>00387     LOG(INFO) &lt;&lt; <span class="stringliteral">"Cannot open "</span> &lt;&lt; filename;
 <a name="l00388"></a>00388     <span class="keywordflow">return</span> <span class="keyword">false</span>;
 <a name="l00389"></a>00389   }
@@ -929,7 +929,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#115511 height=3></td>
+      <td colspan=2 bgcolor=#439154 height=3></td>
     </tr>
   </table>
 

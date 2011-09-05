@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #115511
+      background-color: #439154
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#115511 height=3></td>
+      <td colspan=3 bgcolor=#439154 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#115511><b>Thu Aug 11 16:08:43 PDT 2011</b></font>
+          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#115511>
+            <td bgcolor=#439154>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#115511>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -154,7 +154,7 @@
 <a name="l00071"></a>00071 <span class="comment">// Search control</span>
 <a name="l00072"></a>00072 <a class="code" href="constraint__solver_8cc.html#0bc4cb4a7755f6e45514113e6d9f393f" title="Licensed under the Apache License, Version 2.0 (the &amp;quot;License&amp;quot;); you may...">DEFINE_bool</a>(routing_dfs, <span class="keyword">false</span>,
 <a name="l00073"></a>00073             <span class="stringliteral">"Routing: use a complete deoth-first search."</span>);
-<a name="l00074"></a>00074 <a class="code" href="routing_8cc.html#4de83d942d51ea53519a5a0c0e46dc5e">DEFINE_string</a>(routing_first_solution, <span class="stringliteral">""</span>,
+<a name="l00074"></a>00074 <a class="code" href="constraint__solver_8cc.html#fdb7c9c90654efc5e495f1b1cd3aa7ac">DEFINE_string</a>(routing_first_solution, <span class="stringliteral">""</span>,
 <a name="l00075"></a>00075               <span class="stringliteral">"Routing: first solution heuristic;possible values are "</span>
 <a name="l00076"></a>00076               <span class="stringliteral">"Default, GlobalCheapestArc, LocalCheapestArc, PathCheapestArc."</span>);
 <a name="l00077"></a>00077 <a class="code" href="constraint__solver_8cc.html#0bc4cb4a7755f6e45514113e6d9f393f" title="Licensed under the Apache License, Version 2.0 (the &amp;quot;License&amp;quot;); you may...">DEFINE_bool</a>(routing_use_first_solution_dive, <span class="keyword">false</span>,
@@ -339,7 +339,7 @@
 <a name="l00256"></a>00256 
 <a name="l00257"></a>00257 <span class="comment">// Evaluators</span>
 <a name="l00258"></a>00258 
-<a name="l00259"></a><a class="code" href="namespaceoperations__research.html#5cfd56776f09c7c1998b1e4f71f45a27">00259</a> int64 <a class="code" href="namespaceoperations__research.html#5cfd56776f09c7c1998b1e4f71f45a27" title="Evaluators.">CostFunction</a>(int64** eval, int64 i, int64 j) {
+<a name="l00259"></a><a class="code" href="namespaceoperations__research.html#3be51d9438b671f548f9182489f5c70f">00259</a> int64 <a class="code" href="namespaceoperations__research.html#3be51d9438b671f548f9182489f5c70f" title="Evaluators.">CostFunction</a>(int64** eval, int64 i, int64 j) {
 <a name="l00260"></a>00260   <span class="keywordflow">return</span> eval[i][j];
 <a name="l00261"></a>00261 }
 <a name="l00262"></a>00262 
@@ -404,7 +404,7 @@
 <a name="l00321"></a>00321 
 <a name="l00322"></a>00322 <span class="comment">// Left-branch dive branch selector</span>
 <a name="l00323"></a>00323 
-<a name="l00324"></a><a class="code" href="namespaceoperations__research.html#e59099a79fabce0f50c3b9880947f5e8">00324</a> <a class="code" href="classoperations__research_1_1Solver.html#5f87c832967334179f0f9c8d05380847">Solver::DecisionModification</a> <a class="code" href="namespaceoperations__research.html#e59099a79fabce0f50c3b9880947f5e8" title="Left-branch dive branch selector.">LeftDive</a>(<a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> s) {
+<a name="l00324"></a><a class="code" href="namespaceoperations__research.html#ff3ac2f3f9759e7ed2aa231d19a843c2">00324</a> <a class="code" href="classoperations__research_1_1Solver.html#5f87c832967334179f0f9c8d05380847">Solver::DecisionModification</a> <a class="code" href="namespaceoperations__research.html#ff3ac2f3f9759e7ed2aa231d19a843c2" title="Left-branch dive branch selector.">LeftDive</a>(<a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> s) {
 <a name="l00325"></a>00325   <span class="keywordflow">return</span> Solver::KEEP_LEFT;
 <a name="l00326"></a>00326 }
 <a name="l00327"></a>00327 
@@ -1343,7 +1343,7 @@
 <a name="l01260"></a>01260   }
 <a name="l01261"></a>01261   <span class="keywordflow">if</span> (FLAGS_routing_use_first_solution_dive) {
 <a name="l01262"></a>01262     DecisionBuilder* apply =
-<a name="l01263"></a>01263         <a class="code" href="expressions_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeApplyBranchSelector(NewPermanentCallback(&amp;<a class="code" href="namespaceoperations__research.html#e59099a79fabce0f50c3b9880947f5e8" title="Left-branch dive branch selector.">LeftDive</a>));
+<a name="l01263"></a>01263         <a class="code" href="expressions_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeApplyBranchSelector(NewPermanentCallback(&amp;<a class="code" href="namespaceoperations__research.html#ff3ac2f3f9759e7ed2aa231d19a843c2" title="Left-branch dive branch selector.">LeftDive</a>));
 <a name="l01264"></a>01264     first_solution = <a class="code" href="expressions_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;Compose(apply, first_solution);
 <a name="l01265"></a>01265   }
 <a name="l01266"></a>01266 
@@ -1548,7 +1548,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#115511 height=3></td>
+      <td colspan=2 bgcolor=#439154 height=3></td>
     </tr>
   </table>
 

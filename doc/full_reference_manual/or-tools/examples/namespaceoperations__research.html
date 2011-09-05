@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #115511
+      background-color: #439154
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#115511 height=3></td>
+      <td colspan=3 bgcolor=#439154 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#115511><b>Thu Aug 11 16:08:43 PDT 2011</b></font>
+          Generated on: <font color=#439154><b>Mon Sep  5 08:02:19 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#115511>
+            <td bgcolor=#439154>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#115511>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/examples/index.html">examples</a>/
             </tt></b></font>
@@ -215,6 +215,32 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#c841d485180fcd24cfa85a541048b4ab">MagicSquare</a> (int grid_size)</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#0c6c2bf157215007dfa680a438d508c5">Write</a> (File *const file, const string &amp;string)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Export to .dot file.  <a href="#0c6c2bf157215007dfa680a438d508c5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#339bf200e042bbe6b3490248eda8fa65">WriteExprLink</a> (const string &amp;origin, int index, const string &amp;label, File *const file)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds one link in the generated graph.  <a href="#339bf200e042bbe6b3490248eda8fa65"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#42a9170935c48165dcb353190acd2a3e">WriteIntervalLink</a> (const string &amp;origin, int index, const string &amp;label, File *const file)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds one link in the generated graph.  <a href="#42a9170935c48165dcb353190acd2a3e"></a><br></td></tr>
+<tr><td class="memTemplParams" nowrap colspan="2">template&lt;class T&gt; </td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#e945cf6d49fc1946e8f56f47cde46804">ExportLinks</a> (const CPModelProto &amp;model, const string &amp;origin, const T &amp;proto, File *const file)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scans argument to add links in the graph.  <a href="#e945cf6d49fc1946e8f56f47cde46804"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#33fdcb3997edd2e39566b1774f873555">DeclareExpression</a> (int index, const CPModelProto &amp;proto, File *const file)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Declares a labelled expression in the .dot file.  <a href="#33fdcb3997edd2e39566b1774f873555"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#cfd77b58e4d36e62691023cee9097ef5">DeclareInterval</a> (int index, const CPModelProto &amp;proto, File *const file)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#de3d7e9d8b9a9947669165cf945cd84d">DeclareConstraint</a> (int index, const CPModelProto &amp;proto, File *const file)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#8f2abdb34af6e6e382361ca21fa6b322">ExportToDot</a> (const CPModelProto &amp;proto, File *const file)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Parses the proto and exports it to a .dot file.  <a href="#8f2abdb34af6e6e382361ca21fa6b322"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#a0f820c1e673b6461855daadded396b7">Run</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Main Method.  <a href="#a0f820c1e673b6461855daadded396b7"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#e075f50035e3244bdf973a0ff53d264c">NQueens</a> (int size)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#fecce1dacbfcb87a0bcbcbccc645ceff">ParseProblemLine</a> (const char *line, <a class="el" href="structoperations__research_1_1ParserState.html">ParserState</a> *state, StarGraph **graph)</td></tr>
@@ -242,6 +268,10 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#cb3256853e57e9afa6c265a01774b695">solve_dimacs_assignment</a> (int argc, char *argv[])</td></tr>
 
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#71edf6fb703a48b776368d88039dad82">kProblem</a> = -1</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#e3fad1c21562dd1fcf23844425ff13ae">kOk</a> = 0</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#749f6bdbd2b2e953272453ad5d17cf08">kDisconnectedDistance</a> = -1LL</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Data and Data Generation.  <a href="#749f6bdbd2b2e953272453ad5d17cf08"></a><br></td></tr>
@@ -518,6 +548,119 @@ Instead of enforcing that all distance vectors are unique, we minimize the numbe
 
 </div>
 </div><p>
+<a class="anchor" name="de3d7e9d8b9a9947669165cf945cd84d"></a><!-- doxytag: member="operations_research::DeclareConstraint" ref="de3d7e9d8b9a9947669165cf945cd84d" args="(int index, const CPModelProto &amp;proto, File *const file)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::DeclareConstraint           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const CPModelProto &amp;&nbsp;</td>
+          <td class="paramname"> <em>proto</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">File *const &nbsp;</td>
+          <td class="paramname"> <em>file</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="model__util_8cc-source.html#l00126">126</a> of file <a class="el" href="model__util_8cc-source.html">model_util.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="33fdcb3997edd2e39566b1774f873555"></a><!-- doxytag: member="operations_research::DeclareExpression" ref="33fdcb3997edd2e39566b1774f873555" args="(int index, const CPModelProto &amp;proto, File *const file)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::DeclareExpression           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const CPModelProto &amp;&nbsp;</td>
+          <td class="paramname"> <em>proto</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">File *const &nbsp;</td>
+          <td class="paramname"> <em>file</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Declares a labelled expression in the .dot file. 
+<p>
+
+<p>Definition at line <a class="el" href="model__util_8cc-source.html#l00096">96</a> of file <a class="el" href="model__util_8cc-source.html">model_util.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="cfd77b58e4d36e62691023cee9097ef5"></a><!-- doxytag: member="operations_research::DeclareInterval" ref="cfd77b58e4d36e62691023cee9097ef5" args="(int index, const CPModelProto &amp;proto, File *const file)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::DeclareInterval           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const CPModelProto &amp;&nbsp;</td>
+          <td class="paramname"> <em>proto</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">File *const &nbsp;</td>
+          <td class="paramname"> <em>file</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="model__util_8cc-source.html#l00111">111</a> of file <a class="el" href="model__util_8cc-source.html">model_util.cc</a>.</p>
+
+</div>
+</div><p>
 <a class="anchor" name="e1eae5788c8b95fe86e11b265fd06397"></a><!-- doxytag: member="operations_research::DisplayAssignment" ref="e1eae5788c8b95fe86e11b265fd06397" args="(const LinearSumAssignment &amp;assignment)" -->
 <div class="memitem">
 <div class="memproto">
@@ -537,6 +680,86 @@ Instead of enforcing that all distance vectors are unique, we minimize the numbe
 <p>
 
 <p>Definition at line <a class="el" href="solve__dimacs__assignment_8cc-source.html#l00089">89</a> of file <a class="el" href="solve__dimacs__assignment_8cc-source.html">solve_dimacs_assignment.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e945cf6d49fc1946e8f56f47cde46804"></a><!-- doxytag: member="operations_research::ExportLinks" ref="e945cf6d49fc1946e8f56f47cde46804" args="(const CPModelProto &amp;model, const string &amp;origin, const T &amp;proto, File *const file)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::ExportLinks           </td>
+          <td>(</td>
+          <td class="paramtype">const CPModelProto &amp;&nbsp;</td>
+          <td class="paramname"> <em>model</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&nbsp;</td>
+          <td class="paramname"> <em>origin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const T &amp;&nbsp;</td>
+          <td class="paramname"> <em>proto</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">File *const &nbsp;</td>
+          <td class="paramname"> <em>file</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Scans argument to add links in the graph. 
+<p>
+
+<p>Definition at line <a class="el" href="model__util_8cc-source.html#l00076">76</a> of file <a class="el" href="model__util_8cc-source.html">model_util.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="8f2abdb34af6e6e382361ca21fa6b322"></a><!-- doxytag: member="operations_research::ExportToDot" ref="8f2abdb34af6e6e382361ca21fa6b322" args="(const CPModelProto &amp;proto, File *const file)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::ExportToDot           </td>
+          <td>(</td>
+          <td class="paramtype">const CPModelProto &amp;&nbsp;</td>
+          <td class="paramname"> <em>proto</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">File *const &nbsp;</td>
+          <td class="paramname"> <em>file</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Parses the proto and exports it to a .dot file. 
+<p>
+
+<p>Definition at line <a class="el" href="model__util_8cc-source.html#l00136">136</a> of file <a class="el" href="model__util_8cc-source.html">model_util.cc</a>.</p>
 
 </div>
 </div><p>
@@ -903,6 +1126,29 @@ Parameters out of style-guide order because this function is used as a callback 
 
 </div>
 </div><p>
+<a class="anchor" name="a0f820c1e673b6461855daadded396b7"></a><!-- doxytag: member="operations_research::Run" ref="a0f820c1e673b6461855daadded396b7" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int operations_research::Run           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Main Method. 
+<p>
+
+<p>Definition at line <a class="el" href="model__util_8cc-source.html#l00196">196</a> of file <a class="el" href="model__util_8cc-source.html">model_util.cc</a>.</p>
+
+</div>
+</div><p>
 <a class="anchor" name="3fafcf4e24f817fdb90281c9d725d179"></a><!-- doxytag: member="operations_research::RunAllExamples" ref="3fafcf4e24f817fdb90281c9d725d179" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -992,6 +1238,129 @@ Parameters out of style-guide order because this function is used as a callback 
 
 </div>
 </div><p>
+<a class="anchor" name="0c6c2bf157215007dfa680a438d508c5"></a><!-- doxytag: member="operations_research::Write" ref="0c6c2bf157215007dfa680a438d508c5" args="(File *const file, const string &amp;string)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::Write           </td>
+          <td>(</td>
+          <td class="paramtype">File *const &nbsp;</td>
+          <td class="paramname"> <em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&nbsp;</td>
+          <td class="paramname"> <em>string</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Export to .dot file. 
+<p>
+Appends a string to te file. 
+<p>Definition at line <a class="el" href="model__util_8cc-source.html#l00047">47</a> of file <a class="el" href="model__util_8cc-source.html">model_util.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="339bf200e042bbe6b3490248eda8fa65"></a><!-- doxytag: member="operations_research::WriteExprLink" ref="339bf200e042bbe6b3490248eda8fa65" args="(const string &amp;origin, int index, const string &amp;label, File *const file)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::WriteExprLink           </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&nbsp;</td>
+          <td class="paramname"> <em>origin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&nbsp;</td>
+          <td class="paramname"> <em>label</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">File *const &nbsp;</td>
+          <td class="paramname"> <em>file</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Adds one link in the generated graph. 
+<p>
+
+<p>Definition at line <a class="el" href="model__util_8cc-source.html#l00052">52</a> of file <a class="el" href="model__util_8cc-source.html">model_util.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="42a9170935c48165dcb353190acd2a3e"></a><!-- doxytag: member="operations_research::WriteIntervalLink" ref="42a9170935c48165dcb353190acd2a3e" args="(const string &amp;origin, int index, const string &amp;label, File *const file)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::WriteIntervalLink           </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&nbsp;</td>
+          <td class="paramname"> <em>origin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const string &amp;&nbsp;</td>
+          <td class="paramname"> <em>label</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">File *const &nbsp;</td>
+          <td class="paramname"> <em>file</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Adds one link in the generated graph. 
+<p>
+
+<p>Definition at line <a class="el" href="model__util_8cc-source.html#l00064">64</a> of file <a class="el" href="model__util_8cc-source.html">model_util.cc</a>.</p>
+
+</div>
+</div><p>
 <a class="anchor" name="2994448ae44ee56797cd73d87714c3e8"></a><!-- doxytag: member="operations_research::WriteOrDie" ref="2994448ae44ee56797cd73d87714c3e8" args="(const char *buffer, size_t item_size, size_t buffer_length, FILE *fp)" -->
 <div class="memitem">
 <div class="memproto">
@@ -1055,6 +1424,40 @@ Data and Data Generation.
 
 </div>
 </div><p>
+<a class="anchor" name="e3fad1c21562dd1fcf23844425ff13ae"></a><!-- doxytag: member="operations_research::kOk" ref="e3fad1c21562dd1fcf23844425ff13ae" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int <a class="el" href="namespaceoperations__research.html#e3fad1c21562dd1fcf23844425ff13ae">operations_research::kOk</a> = 0<code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="model__util_8cc-source.html#l00042">42</a> of file <a class="el" href="model__util_8cc-source.html">model_util.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="71edf6fb703a48b776368d88039dad82"></a><!-- doxytag: member="operations_research::kProblem" ref="71edf6fb703a48b776368d88039dad82" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int <a class="el" href="namespaceoperations__research.html#71edf6fb703a48b776368d88039dad82">operations_research::kProblem</a> = -1<code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="model__util_8cc-source.html#l00041">41</a> of file <a class="el" href="model__util_8cc-source.html">model_util.cc</a>.</p>
+
+</div>
+</div><p>
 <a class="anchor" name="c2cb052d5973a171c13f3f5ecdfab7b9"></a><!-- doxytag: member="operations_research::kUsageTemplate" ref="c2cb052d5973a171c13f3f5ecdfab7b9" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -1080,7 +1483,7 @@ Data and Data Generation.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#115511 height=3></td>
+      <td colspan=2 bgcolor=#439154 height=3></td>
     </tr>
   </table>
 

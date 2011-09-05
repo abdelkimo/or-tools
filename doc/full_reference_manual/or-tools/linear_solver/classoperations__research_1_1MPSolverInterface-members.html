@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #115511
+      background-color: #439154
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#115511 height=3></td>
+      <td colspan=3 bgcolor=#439154 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#115511><b>Thu Aug 11 16:08:43 PDT 2011</b></font>
+          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#115511>
+            <td bgcolor=#439154>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#115511>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/linear_solver/index.html">linear_solver</a>/
             </tt></b></font>
@@ -97,6 +97,7 @@
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html#6807643e6c70f358671990b086008cdf">CheckSolutionIsSynchronized</a>() const </td><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html">operations_research::MPSolverInterface</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html#38ad5df166aef299c76fac71eb785523">ClearConstraint</a>(MPConstraint *const constraint)=0</td><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html">operations_research::MPSolverInterface</a></td><td><code> [pure virtual]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html#1d0c4924c375cd234f4a17bf2b8c1a8b">ClearObjective</a>()=0</td><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html">operations_research::MPSolverInterface</a></td><td><code> [pure virtual]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html#5a2299c6d83d21a0917d0661fb704dbe">column_status</a>(int variable_index) const =0</td><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html">operations_research::MPSolverInterface</a></td><td><code> [pure virtual]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html#9ae99b901839c7f1e29193d8a619b728">ExtractModel</a>()</td><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html">operations_research::MPSolverInterface</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html#1363e1a1c4a1535b0cb92f46a9efd4b5">ExtractNewConstraints</a>()=0</td><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html">operations_research::MPSolverInterface</a></td><td><code> [protected, pure virtual]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html#945992529aaaa827d7c9307e996ab2ef">ExtractNewVariables</a>()=0</td><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html">operations_research::MPSolverInterface</a></td><td><code> [protected, pure virtual]</code></td></tr>
@@ -127,6 +128,7 @@
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html#3fd73560f782eaf5093a435c61783d09">ResetExtractionInformation</a>()</td><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html">operations_research::MPSolverInterface</a></td><td><code> [protected]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html#5580f9fd40daec05809a769125484232">result_status</a>() const </td><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html">operations_research::MPSolverInterface</a></td><td><code> [inline]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html#dd7194b3e70938a6bb7fb8e7c6532e56">result_status_</a></td><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html">operations_research::MPSolverInterface</a></td><td><code> [protected]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html#ad9285c25e1671edfac7a7748b166770">row_status</a>(int constraint_index) const =0</td><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html">operations_research::MPSolverInterface</a></td><td><code> [pure virtual]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html#dc4579b45ae778e4c61b5c35cffc0eaf">set_quiet</a>(bool quiet_value)</td><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html">operations_research::MPSolverInterface</a></td><td><code> [inline]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html#3d2b52d41904bd0b65be9ce8124e19bf">SetCoefficient</a>(MPConstraint *const constraint, MPVariable *const variable, double new_value, double old_value)=0</td><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html">operations_research::MPSolverInterface</a></td><td><code> [pure virtual]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html#d237855fa79fc36fbf9baedce589384c">SetCommonParameters</a>(const MPSolverParameters &amp;param)</td><td><a class="el" href="classoperations__research_1_1MPSolverInterface.html">operations_research::MPSolverInterface</a></td><td><code> [protected]</code></td></tr>
@@ -163,7 +165,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#115511 height=3></td>
+      <td colspan=2 bgcolor=#439154 height=3></td>
     </tr>
   </table>
 

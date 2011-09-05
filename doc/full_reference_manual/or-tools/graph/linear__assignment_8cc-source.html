@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #115511
+      background-color: #439154
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#115511 height=3></td>
+      <td colspan=3 bgcolor=#439154 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#115511><b>Thu Aug 11 16:08:43 PDT 2011</b></font>
+          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#115511>
+            <td bgcolor=#439154>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#115511>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/graph/index.html">graph</a>/
             </tt></b></font>
@@ -131,437 +131,452 @@
 <a name="l00048"></a>00048       total_excess_(0),
 <a name="l00049"></a>00049       price_(num_left_nodes + <a class="code" href="classoperations__research_1_1EbertGraph.html">StarGraph</a>::kFirstNode,
 <a name="l00050"></a>00050              graph.max_end_node_index() - 1),
-<a name="l00051"></a>00051       matched_(<a class="code" href="classoperations__research_1_1EbertGraph.html">StarGraph</a>::kFirstNode,
-<a name="l00052"></a>00052                graph.max_end_node_index() - 1),
-<a name="l00053"></a>00053       scaled_arc_cost_(<a class="code" href="classoperations__research_1_1EbertGraph.html">StarGraph</a>::kFirstArc,
-<a name="l00054"></a>00054                        graph.max_end_arc_index() - 1),
-<a name="l00055"></a>00055       active_nodes_(
-<a name="l00056"></a>00056           FLAGS_assignment_stack_order ?
-<a name="l00057"></a>00057           static_cast&lt;ActiveNodeContainerInterface*&gt;(new ActiveNodeStack()) :
-<a name="l00058"></a>00058           static_cast&lt;ActiveNodeContainerInterface*&gt;(new ActiveNodeQueue())) { }
-<a name="l00059"></a>00059 
-<a name="l00060"></a><a class="code" href="classoperations__research_1_1LinearSumAssignment.html#acfa4ae371871a378152ec036865f2ab">00060</a> <span class="keywordtype">void</span> LinearSumAssignment::SetArcCost(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc,
-<a name="l00061"></a>00061                                      <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> cost) {
-<a name="l00062"></a>00062   DCHECK(graph_.<a class="code" href="classoperations__research_1_1EbertGraph.html#8d6877ac937a2ce4159ccf05f16f50f5" title="Utility function to check that an arc index is within the bounds AND different from...">CheckArcValidity</a>(arc));
-<a name="l00063"></a>00063   <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> tail = <a class="code" href="classoperations__research_1_1LinearSumAssignment.html#01aef4cc2006876af6cf1b7241645bb8">Tail</a>(arc);
-<a name="l00064"></a>00064   <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> head = <a class="code" href="classoperations__research_1_1LinearSumAssignment.html#dffa9ab066495251df0881f060f0ca21" title="These handy member functions make the code more compact, and we expose them to clients...">Head</a>(arc);
-<a name="l00065"></a>00065   DCHECK_GT(num_left_nodes_, tail);
-<a name="l00066"></a>00066   DCHECK_LE(num_left_nodes_, head);
-<a name="l00067"></a>00067   cost *= cost_scaling_factor_;
-<a name="l00068"></a>00068   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> cost_magnitude = std::abs(cost);
-<a name="l00069"></a>00069   largest_scaled_cost_magnitude_ = std::max(largest_scaled_cost_magnitude_,
-<a name="l00070"></a>00070                                             cost_magnitude);
-<a name="l00071"></a>00071   scaled_arc_cost_.Set(arc, cost);
-<a name="l00072"></a>00072 }
-<a name="l00073"></a>00073 
-<a name="l00074"></a><a class="code" href="classoperations__research_1_1CostValueCycleHandler.html">00074</a> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1CostValueCycleHandler.html">CostValueCycleHandler</a>
-<a name="l00075"></a>00075     : <span class="keyword">public</span> <a class="code" href="classPermutationCycleHandler.html">PermutationCycleHandler</a>&lt;ArcIndex&gt; {
-<a name="l00076"></a>00076  <span class="keyword">public</span>:
-<a name="l00077"></a><a class="code" href="classoperations__research_1_1CostValueCycleHandler.html#1224ff19ec301c1f7062b3a84f1487b8">00077</a>   <span class="keyword">explicit</span> <a class="code" href="classoperations__research_1_1CostValueCycleHandler.html">CostValueCycleHandler</a>(Int64PackedArray* cost)
-<a name="l00078"></a>00078       : temp_(0),
-<a name="l00079"></a>00079         cost_(cost) { }
-<a name="l00080"></a>00080 
-<a name="l00081"></a><a class="code" href="classoperations__research_1_1CostValueCycleHandler.html#fdd8a29c3911b07ef976fe0f228cb0b7">00081</a>   <span class="keyword">virtual</span> <span class="keywordtype">void</span> SetTempFromIndex(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> source) {
-<a name="l00082"></a>00082     temp_ = cost_-&gt;Value(source);
-<a name="l00083"></a>00083   }
-<a name="l00084"></a>00084 
-<a name="l00085"></a><a class="code" href="classoperations__research_1_1CostValueCycleHandler.html#3d0110655d0aa54892b543659964e7ec">00085</a>   <span class="keyword">virtual</span> <span class="keywordtype">void</span> SetIndexFromIndex(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> source,
-<a name="l00086"></a>00086                                  <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> destination)<span class="keyword"> const </span>{
-<a name="l00087"></a>00087     cost_-&gt;Set(destination, cost_-&gt;Value(source));
-<a name="l00088"></a>00088   }
-<a name="l00089"></a>00089 
-<a name="l00090"></a><a class="code" href="classoperations__research_1_1CostValueCycleHandler.html#ec4678e1070a0bf0bdc254dc6fff9b41">00090</a>   <span class="keyword">virtual</span> <span class="keywordtype">void</span> SetIndexFromTemp(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> destination)<span class="keyword"> const </span>{
-<a name="l00091"></a>00091     cost_-&gt;Set(destination, temp_);
-<a name="l00092"></a>00092   }
-<a name="l00093"></a>00093 
-<a name="l00094"></a><a class="code" href="classoperations__research_1_1CostValueCycleHandler.html#7bab18f81a4abdbafe2c0500ba1b6970">00094</a>   <span class="keyword">virtual</span> ~<a class="code" href="classoperations__research_1_1CostValueCycleHandler.html">CostValueCycleHandler</a>() { }
+<a name="l00051"></a>00051       matched_arc_(<a class="code" href="classoperations__research_1_1EbertGraph.html">StarGraph</a>::kFirstNode,
+<a name="l00052"></a>00052                    num_left_nodes - 1),
+<a name="l00053"></a>00053       matched_node_(num_left_nodes,
+<a name="l00054"></a>00054                     graph.max_end_node_index() - 1),
+<a name="l00055"></a>00055       scaled_arc_cost_(<a class="code" href="classoperations__research_1_1EbertGraph.html">StarGraph</a>::kFirstArc,
+<a name="l00056"></a>00056                        graph.max_end_arc_index() - 1),
+<a name="l00057"></a>00057       active_nodes_(
+<a name="l00058"></a>00058           FLAGS_assignment_stack_order ?
+<a name="l00059"></a>00059           static_cast&lt;ActiveNodeContainerInterface*&gt;(new ActiveNodeStack()) :
+<a name="l00060"></a>00060           static_cast&lt;ActiveNodeContainerInterface*&gt;(new ActiveNodeQueue())) { }
+<a name="l00061"></a>00061 
+<a name="l00062"></a><a class="code" href="classoperations__research_1_1LinearSumAssignment.html#acfa4ae371871a378152ec036865f2ab">00062</a> <span class="keywordtype">void</span> LinearSumAssignment::SetArcCost(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc,
+<a name="l00063"></a>00063                                      <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> cost) {
+<a name="l00064"></a>00064   DCHECK(graph_.<a class="code" href="classoperations__research_1_1EbertGraph.html#8d6877ac937a2ce4159ccf05f16f50f5" title="Utility function to check that an arc index is within the bounds AND different from...">CheckArcValidity</a>(arc));
+<a name="l00065"></a>00065   <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> tail = <a class="code" href="classoperations__research_1_1LinearSumAssignment.html#01aef4cc2006876af6cf1b7241645bb8">Tail</a>(arc);
+<a name="l00066"></a>00066   <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> head = <a class="code" href="classoperations__research_1_1LinearSumAssignment.html#dffa9ab066495251df0881f060f0ca21" title="These handy member functions make the code more compact, and we expose them to clients...">Head</a>(arc);
+<a name="l00067"></a>00067   DCHECK_GT(num_left_nodes_, tail);
+<a name="l00068"></a>00068   DCHECK_LE(num_left_nodes_, head);
+<a name="l00069"></a>00069   cost *= cost_scaling_factor_;
+<a name="l00070"></a>00070   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> cost_magnitude = std::abs(cost);
+<a name="l00071"></a>00071   largest_scaled_cost_magnitude_ = std::max(largest_scaled_cost_magnitude_,
+<a name="l00072"></a>00072                                             cost_magnitude);
+<a name="l00073"></a>00073   scaled_arc_cost_.Set(arc, cost);
+<a name="l00074"></a>00074 }
+<a name="l00075"></a>00075 
+<a name="l00076"></a><a class="code" href="classoperations__research_1_1CostValueCycleHandler.html">00076</a> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1CostValueCycleHandler.html">CostValueCycleHandler</a>
+<a name="l00077"></a>00077     : <span class="keyword">public</span> <a class="code" href="classPermutationCycleHandler.html">PermutationCycleHandler</a>&lt;ArcIndex&gt; {
+<a name="l00078"></a>00078  <span class="keyword">public</span>:
+<a name="l00079"></a><a class="code" href="classoperations__research_1_1CostValueCycleHandler.html#1224ff19ec301c1f7062b3a84f1487b8">00079</a>   <span class="keyword">explicit</span> <a class="code" href="classoperations__research_1_1CostValueCycleHandler.html">CostValueCycleHandler</a>(Int64PackedArray* cost)
+<a name="l00080"></a>00080       : temp_(0),
+<a name="l00081"></a>00081         cost_(cost) { }
+<a name="l00082"></a>00082 
+<a name="l00083"></a><a class="code" href="classoperations__research_1_1CostValueCycleHandler.html#fdd8a29c3911b07ef976fe0f228cb0b7">00083</a>   <span class="keyword">virtual</span> <span class="keywordtype">void</span> SetTempFromIndex(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> source) {
+<a name="l00084"></a>00084     temp_ = cost_-&gt;Value(source);
+<a name="l00085"></a>00085   }
+<a name="l00086"></a>00086 
+<a name="l00087"></a><a class="code" href="classoperations__research_1_1CostValueCycleHandler.html#3d0110655d0aa54892b543659964e7ec">00087</a>   <span class="keyword">virtual</span> <span class="keywordtype">void</span> SetIndexFromIndex(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> source,
+<a name="l00088"></a>00088                                  <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> destination)<span class="keyword"> const </span>{
+<a name="l00089"></a>00089     cost_-&gt;Set(destination, cost_-&gt;Value(source));
+<a name="l00090"></a>00090   }
+<a name="l00091"></a>00091 
+<a name="l00092"></a><a class="code" href="classoperations__research_1_1CostValueCycleHandler.html#ec4678e1070a0bf0bdc254dc6fff9b41">00092</a>   <span class="keyword">virtual</span> <span class="keywordtype">void</span> SetIndexFromTemp(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> destination)<span class="keyword"> const </span>{
+<a name="l00093"></a>00093     cost_-&gt;Set(destination, temp_);
+<a name="l00094"></a>00094   }
 <a name="l00095"></a>00095 
-<a name="l00096"></a>00096  <span class="keyword">private</span>:
-<a name="l00097"></a>00097   <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> temp_;
-<a name="l00098"></a>00098 
-<a name="l00099"></a>00099   Int64PackedArray* cost_;
+<a name="l00096"></a><a class="code" href="classoperations__research_1_1CostValueCycleHandler.html#7bab18f81a4abdbafe2c0500ba1b6970">00096</a>   <span class="keyword">virtual</span> ~<a class="code" href="classoperations__research_1_1CostValueCycleHandler.html">CostValueCycleHandler</a>() { }
+<a name="l00097"></a>00097 
+<a name="l00098"></a>00098  <span class="keyword">private</span>:
+<a name="l00099"></a>00099   <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> temp_;
 <a name="l00100"></a>00100 
-<a name="l00101"></a>00101   DISALLOW_COPY_AND_ASSIGN(<a class="code" href="classoperations__research_1_1CostValueCycleHandler.html">CostValueCycleHandler</a>);
-<a name="l00102"></a>00102 };
-<a name="l00103"></a>00103 
-<a name="l00104"></a>00104 <span class="comment">// Logically this class should be defined inside OptimizeGraphLayout,</span>
-<a name="l00105"></a>00105 <span class="comment">// but compilation fails if we do that because C++98 doesn't allow</span>
-<a name="l00106"></a>00106 <span class="comment">// instantiation of member templates with function-scoped types as</span>
-<a name="l00107"></a>00107 <span class="comment">// template parameters, which in turn is because those function-scoped</span>
-<a name="l00108"></a>00108 <span class="comment">// types lack linkage.</span>
-<a name="l00109"></a><a class="code" href="classoperations__research_1_1ArcIndexOrderingByTailNode.html">00109</a> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1ArcIndexOrderingByTailNode.html" title="Logically this class should be defined inside OptimizeGraphLayout, but compilation...">ArcIndexOrderingByTailNode</a> {
-<a name="l00110"></a>00110  <span class="keyword">public</span>:
-<a name="l00111"></a><a class="code" href="classoperations__research_1_1ArcIndexOrderingByTailNode.html#8fb9e63eb73881d22d3260a631351d5c">00111</a>   <span class="keyword">explicit</span> <a class="code" href="classoperations__research_1_1ArcIndexOrderingByTailNode.html" title="Logically this class should be defined inside OptimizeGraphLayout, but compilation...">ArcIndexOrderingByTailNode</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1EbertGraph.html">StarGraph</a>&amp; graph)
-<a name="l00112"></a>00112       : <a class="code" href="bron__kerbosch_8cc.html#79331751ee35b7d4ae15bb12c951449c">graph_</a>(graph) { }
-<a name="l00113"></a>00113 
-<a name="l00114"></a>00114   <span class="comment">// Says ArcIndex a is less than ArcIndex b if arc a's tail is less</span>
-<a name="l00115"></a>00115   <span class="comment">// than arc b's tail. If their tails are equal, orders according to</span>
-<a name="l00116"></a>00116   <span class="comment">// heads.</span>
-<a name="l00117"></a><a class="code" href="classoperations__research_1_1ArcIndexOrderingByTailNode.html#b49778fedadd108924172620d230deaf">00117</a>   <span class="keywordtype">bool</span> operator()(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> a, <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> b)<span class="keyword"> const </span>{
-<a name="l00118"></a>00118     <span class="keywordflow">return</span> ((<a class="code" href="bron__kerbosch_8cc.html#79331751ee35b7d4ae15bb12c951449c">graph_</a>.Tail(a) &lt; <a class="code" href="bron__kerbosch_8cc.html#79331751ee35b7d4ae15bb12c951449c">graph_</a>.Tail(b)) ||
-<a name="l00119"></a>00119             ((<a class="code" href="bron__kerbosch_8cc.html#79331751ee35b7d4ae15bb12c951449c">graph_</a>.Tail(a) == <a class="code" href="bron__kerbosch_8cc.html#79331751ee35b7d4ae15bb12c951449c">graph_</a>.Tail(b)) &amp;&amp;
-<a name="l00120"></a>00120              (<a class="code" href="bron__kerbosch_8cc.html#79331751ee35b7d4ae15bb12c951449c">graph_</a>.Head(a) &lt; <a class="code" href="bron__kerbosch_8cc.html#79331751ee35b7d4ae15bb12c951449c">graph_</a>.Head(b))));
-<a name="l00121"></a>00121   }
-<a name="l00122"></a>00122 
-<a name="l00123"></a>00123  <span class="keyword">private</span>:
-<a name="l00124"></a>00124   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1EbertGraph.html">StarGraph</a>&amp; <a class="code" href="bron__kerbosch_8cc.html#79331751ee35b7d4ae15bb12c951449c">graph_</a>;
-<a name="l00125"></a>00125 
-<a name="l00126"></a>00126   <span class="comment">// Copy and assign are allowed; they have to be for STL to work</span>
-<a name="l00127"></a>00127   <span class="comment">// with this functor, although it seems like a bug for STL to be</span>
-<a name="l00128"></a>00128   <span class="comment">// written that way.</span>
-<a name="l00129"></a>00129 };
-<a name="l00130"></a>00130 
-<a name="l00131"></a><a class="code" href="classoperations__research_1_1LinearSumAssignment.html#ae1038d114a2c2de233baff16b356de2">00131</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1LinearSumAssignment.html#ae1038d114a2c2de233baff16b356de2" title="Optimizes the layout of the graph for the access pattern our implementation will...">LinearSumAssignment::OptimizeGraphLayout</a>(<a class="code" href="classoperations__research_1_1EbertGraph.html">StarGraph</a>* graph) {
-<a name="l00132"></a>00132   <span class="comment">// The graph argument is only to give us a non-const-qualified</span>
-<a name="l00133"></a>00133   <span class="comment">// handle on the graph we already have. Any different graph is</span>
-<a name="l00134"></a>00134   <span class="comment">// nonsense.</span>
-<a name="l00135"></a>00135   DCHECK_EQ(&amp;graph_, graph);
-<a name="l00136"></a>00136   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1ArcIndexOrderingByTailNode.html" title="Logically this class should be defined inside OptimizeGraphLayout, but compilation...">ArcIndexOrderingByTailNode</a> compare(graph_);
-<a name="l00137"></a>00137   <a class="code" href="classoperations__research_1_1CostValueCycleHandler.html">CostValueCycleHandler</a> cycle_handler(&amp;scaled_arc_cost_);
-<a name="l00138"></a>00138   graph-&gt;<a class="code" href="classoperations__research_1_1EbertGraph.html#5f7f2f6d921782f24d8eb37b01f39ec2" title="For some reason SWIG seems unable to handle the definition of class CycleHandlerForAnnotatedArcs...">GroupForwardArcsByFunctor</a>(compare, &amp;cycle_handler);
-<a name="l00139"></a>00139 }
-<a name="l00140"></a>00140 
-<a name="l00141"></a>00141 <span class="keywordtype">bool</span> LinearSumAssignment::UpdateEpsilon() {
-<a name="l00142"></a>00142   <span class="comment">// There are some somewhat subtle issues around using integer</span>
-<a name="l00143"></a>00143   <span class="comment">// arithmetic to compute successive values of epsilon_, the error</span>
-<a name="l00144"></a>00144   <span class="comment">// parameter.</span>
-<a name="l00145"></a>00145   <span class="comment">//</span>
-<a name="l00146"></a>00146   <span class="comment">// First, the value of price_reduction_bound_ is chosen under the</span>
-<a name="l00147"></a>00147   <span class="comment">// assumption that it is truly an upper bound on the amount by which</span>
-<a name="l00148"></a>00148   <span class="comment">// a node's price can change during the current iteration. The value</span>
-<a name="l00149"></a>00149   <span class="comment">// of this bound in turn depends on the assumption that the flow</span>
-<a name="l00150"></a>00150   <span class="comment">// computed by the previous iteration was</span>
-<a name="l00151"></a>00151   <span class="comment">// (epsilon_ * alpha_)-optimal. If epsilon_ decreases by more than a</span>
-<a name="l00152"></a>00152   <span class="comment">// factor of alpha_ due to truncating arithmetic, that bound might</span>
-<a name="l00153"></a>00153   <span class="comment">// not hold, and the consequence is that BestArcAndGap could return</span>
-<a name="l00154"></a>00154   <span class="comment">// an overly cautious admissibility gap in the case where a</span>
-<a name="l00155"></a>00155   <span class="comment">// left-side node has only one incident arc. This is not a big deal</span>
-<a name="l00156"></a>00156   <span class="comment">// at all. At worst it could lead to a few extra relabelings.</span>
-<a name="l00157"></a>00157   <span class="comment">//</span>
-<a name="l00158"></a>00158   <span class="comment">// Second, it is not a problem currently, but in the future if we</span>
-<a name="l00159"></a>00159   <span class="comment">// use an arc-fixing heuristic, we cannot permit truncating integer</span>
-<a name="l00160"></a>00160   <span class="comment">// division to decrease epsilon_ by a factor greater than alpha_</span>
-<a name="l00161"></a>00161   <span class="comment">// because our bounds on price changes (and hence on the reduced</span>
-<a name="l00162"></a>00162   <span class="comment">// cost of an arc that might ever become admissible in the future)</span>
-<a name="l00163"></a>00163   <span class="comment">// depend on the ratio between the values of the error parameter at</span>
-<a name="l00164"></a>00164   <span class="comment">// successive iterations. One consequence will be that we might</span>
-<a name="l00165"></a>00165   <span class="comment">// occasionally do an extra iteration today in the interest of being</span>
-<a name="l00166"></a>00166   <span class="comment">// able to "price arcs out" (which we don't do today). Today we</span>
-<a name="l00167"></a>00167   <span class="comment">// simply use truncating integer division, but note that this will</span>
-<a name="l00168"></a>00168   <span class="comment">// have to change if we ever price arcs out.</span>
-<a name="l00169"></a>00169   <span class="comment">//</span>
-<a name="l00170"></a>00170   <span class="comment">// Since neither of those issues is a problem today, we simply use</span>
-<a name="l00171"></a>00171   <span class="comment">// truncating integer arithmetic. But future changes might</span>
-<a name="l00172"></a>00172   <span class="comment">// necessitate rounding epsilon upward in the division.</span>
-<a name="l00173"></a>00173   epsilon_ = std::max(epsilon_ / alpha_, kMinEpsilon);
-<a name="l00174"></a>00174   VLOG(3) &lt;&lt; <span class="stringliteral">"Updated: epsilon_ == "</span> &lt;&lt; epsilon_;
-<a name="l00175"></a>00175   price_reduction_bound_ = PriceChangeBound(1, NULL);
-<a name="l00176"></a>00176   DCHECK_GT(price_reduction_bound_, 0);
-<a name="l00177"></a>00177   <span class="comment">// For today we always return true; in the future updating epsilon</span>
-<a name="l00178"></a>00178   <span class="comment">// in sophisticated ways could conceivably detect infeasibility.</span>
-<a name="l00179"></a>00179   <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00180"></a>00180 }
-<a name="l00181"></a>00181 
-<a name="l00182"></a>00182 <span class="keyword">inline</span> <span class="keywordtype">bool</span> LinearSumAssignment::IsActive(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node)<span class="keyword"> const </span>{
-<a name="l00183"></a>00183   <span class="comment">// In a non-debug compilation we could assert that this is a</span>
-<a name="l00184"></a>00184   <span class="comment">// left-side node, but in debug compilations we use this routine to</span>
-<a name="l00185"></a>00185   <span class="comment">// check invariants for right-side nodes. So no assertion.</span>
-<a name="l00186"></a>00186   <span class="keywordflow">return</span> matched_[node] == <a class="code" href="classoperations__research_1_1EbertGraph.html#2cf0a089f017042eef0262e2ae0ef9a4" title="The index of the &amp;#39;nil&amp;#39; arc in the graph.">StarGraph::kNilArc</a>;
-<a name="l00187"></a>00187 }
-<a name="l00188"></a>00188 
-<a name="l00189"></a>00189 <span class="keywordtype">void</span> LinearSumAssignment::InitializeActiveNodeContainer() {
-<a name="l00190"></a>00190   DCHECK(active_nodes_-&gt;Empty());
-<a name="l00191"></a>00191   <span class="keywordflow">for</span> (BipartiteLeftNodeIterator node_it(graph_, num_left_nodes_);
-<a name="l00192"></a>00192        node_it.Ok();
-<a name="l00193"></a>00193        node_it.Next()) {
-<a name="l00194"></a>00194     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node = node_it.Index();
-<a name="l00195"></a>00195     <span class="keywordflow">if</span> (IsActive(node)) {
-<a name="l00196"></a>00196       active_nodes_-&gt;Add(node);
-<a name="l00197"></a>00197     }
-<a name="l00198"></a>00198   }
-<a name="l00199"></a>00199 }
-<a name="l00200"></a>00200 
-<a name="l00201"></a>00201 <span class="comment">// There exists a price function such that the admissible arcs at the</span>
-<a name="l00202"></a>00202 <span class="comment">// beginning of an iteration are exactly the reverse arcs of all</span>
-<a name="l00203"></a>00203 <span class="comment">// matching arcs. Saturating all admissible arcs with respect to that</span>
-<a name="l00204"></a>00204 <span class="comment">// price function therefore means simply unmatching every matched</span>
-<a name="l00205"></a>00205 <span class="comment">// node.</span>
-<a name="l00206"></a>00206 <span class="comment">//</span>
-<a name="l00207"></a>00207 <span class="comment">// In the future we will price out arcs, which will reduce the set of</span>
-<a name="l00208"></a>00208 <span class="comment">// nodes we unmatch here. If a matching arc is priced out, we will not</span>
-<a name="l00209"></a>00209 <span class="comment">// unmatch its endpoints since that element of the matching is</span>
-<a name="l00210"></a>00210 <span class="comment">// guaranteed not to change.</span>
-<a name="l00211"></a>00211 <span class="keywordtype">void</span> LinearSumAssignment::SaturateNegativeArcs() {
-<a name="l00212"></a>00212   total_excess_ = 0;
-<a name="l00213"></a>00213   <span class="keywordflow">for</span> (BipartiteLeftNodeIterator node_it(graph_, num_left_nodes_);
-<a name="l00214"></a>00214        node_it.Ok();
-<a name="l00215"></a>00215        node_it.Next()) {
-<a name="l00216"></a>00216     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node = node_it.Index();
-<a name="l00217"></a>00217     <span class="keywordflow">if</span> (IsActive(node)) {
-<a name="l00218"></a>00218       <span class="comment">// This can happen in the first iteration when nothing is</span>
-<a name="l00219"></a>00219       <span class="comment">// matched yet.</span>
-<a name="l00220"></a>00220       total_excess_ += 1;
-<a name="l00221"></a>00221     } <span class="keywordflow">else</span> {
-<a name="l00222"></a>00222       <span class="comment">// We're about to create a unit of excess by unmatching these nodes.</span>
-<a name="l00223"></a>00223       total_excess_ += 1;
-<a name="l00224"></a>00224       <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> mate = <a class="code" href="classoperations__research_1_1LinearSumAssignment.html#6658c4c44fb00b68849ae782abd08d0d" title="Returns the node to which the given node is matched.">GetMate</a>(node);
-<a name="l00225"></a>00225       matched_.Set(mate, <a class="code" href="classoperations__research_1_1EbertGraph.html#2cf0a089f017042eef0262e2ae0ef9a4" title="The index of the &amp;#39;nil&amp;#39; arc in the graph.">StarGraph::kNilArc</a>);
-<a name="l00226"></a>00226       matched_.Set(node, <a class="code" href="classoperations__research_1_1EbertGraph.html#2cf0a089f017042eef0262e2ae0ef9a4" title="The index of the &amp;#39;nil&amp;#39; arc in the graph.">StarGraph::kNilArc</a>);
-<a name="l00227"></a>00227     }
-<a name="l00228"></a>00228   }
-<a name="l00229"></a>00229 }
-<a name="l00230"></a>00230 
-<a name="l00231"></a>00231 <span class="comment">// Returns true for success, false for infeasible.</span>
-<a name="l00232"></a>00232 <span class="keywordtype">bool</span> LinearSumAssignment::DoublePush(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> source) {
-<a name="l00233"></a>00233     DCHECK(IsActive(source));
-<a name="l00234"></a>00234   ImplicitPriceSummary summary = BestArcAndGap(source);
-<a name="l00235"></a>00235   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> best_arc = summary.first;
-<a name="l00236"></a>00236   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> gap = summary.second;
-<a name="l00237"></a>00237   <span class="comment">// Now we have the best arc incident to source, i.e., the one with</span>
-<a name="l00238"></a>00238   <span class="comment">// minimum reduced cost. Match that arc, unmatching its head if</span>
-<a name="l00239"></a>00239   <span class="comment">// necessary.</span>
-<a name="l00240"></a>00240   <span class="keywordflow">if</span> (best_arc == <a class="code" href="classoperations__research_1_1EbertGraph.html#2cf0a089f017042eef0262e2ae0ef9a4" title="The index of the &amp;#39;nil&amp;#39; arc in the graph.">StarGraph::kNilArc</a>) {
-<a name="l00241"></a>00241     <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00242"></a>00242   }
-<a name="l00243"></a>00243   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> new_mate = <a class="code" href="classoperations__research_1_1LinearSumAssignment.html#dffa9ab066495251df0881f060f0ca21" title="These handy member functions make the code more compact, and we expose them to clients...">Head</a>(best_arc);
-<a name="l00244"></a>00244   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> to_unmatch = matched_[new_mate];
-<a name="l00245"></a>00245   <span class="keywordflow">if</span> (to_unmatch != <a class="code" href="classoperations__research_1_1EbertGraph.html#2cf0a089f017042eef0262e2ae0ef9a4" title="The index of the &amp;#39;nil&amp;#39; arc in the graph.">StarGraph::kNilArc</a>) {
-<a name="l00246"></a>00246     <span class="comment">// Unmatch new_mate from its current mate, pushing the unit of</span>
-<a name="l00247"></a>00247     <span class="comment">// flow back to a node on the left side as a unit of excess.</span>
-<a name="l00248"></a>00248     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> destination = <a class="code" href="classoperations__research_1_1LinearSumAssignment.html#01aef4cc2006876af6cf1b7241645bb8">Tail</a>(to_unmatch);
-<a name="l00249"></a>00249     matched_.Set(destination, <a class="code" href="classoperations__research_1_1EbertGraph.html#2cf0a089f017042eef0262e2ae0ef9a4" title="The index of the &amp;#39;nil&amp;#39; arc in the graph.">StarGraph::kNilArc</a>);
-<a name="l00250"></a>00250     active_nodes_-&gt;Add(destination);
-<a name="l00251"></a>00251     <span class="comment">// This counts as a double push.</span>
-<a name="l00252"></a>00252     iteration_stats_.double_pushes_ += 1;
-<a name="l00253"></a>00253   } <span class="keywordflow">else</span> {
-<a name="l00254"></a>00254     <span class="comment">// We are about to increase the cardinality of the matching.</span>
-<a name="l00255"></a>00255     total_excess_ -= 1;
-<a name="l00256"></a>00256     <span class="comment">// This counts as a single push.</span>
-<a name="l00257"></a>00257     iteration_stats_.pushes_ += 1;
-<a name="l00258"></a>00258   }
-<a name="l00259"></a>00259   matched_.Set(source, best_arc);
-<a name="l00260"></a>00260   matched_.Set(new_mate, best_arc);
-<a name="l00261"></a>00261   <span class="comment">// Finally, relabel new_mate.</span>
-<a name="l00262"></a>00262   iteration_stats_.relabelings_ += 1;
-<a name="l00263"></a>00263   price_.Set(new_mate, price_[new_mate] - gap - epsilon_);
-<a name="l00264"></a>00264   <span class="keywordflow">return</span> price_[new_mate] &gt;= price_lower_bound_;
-<a name="l00265"></a>00265 }
-<a name="l00266"></a>00266 
-<a name="l00267"></a>00267 <span class="keywordtype">bool</span> LinearSumAssignment::Refine() {
-<a name="l00268"></a>00268   SaturateNegativeArcs();
-<a name="l00269"></a>00269   InitializeActiveNodeContainer();
-<a name="l00270"></a>00270   <span class="keywordflow">while</span> (total_excess_ &gt; 0) {
-<a name="l00271"></a>00271     <span class="comment">// Get an active node (i.e., one with excess == 1) and discharge</span>
-<a name="l00272"></a>00272     <span class="comment">// it using DoublePush.</span>
-<a name="l00273"></a>00273     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node = active_nodes_-&gt;Get();
-<a name="l00274"></a>00274     <span class="keywordflow">if</span> (!DoublePush(node)) {
-<a name="l00275"></a>00275       <span class="comment">// Infeasibility detected.</span>
-<a name="l00276"></a>00276       <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00277"></a>00277     }
-<a name="l00278"></a>00278   }
-<a name="l00279"></a>00279   DCHECK(active_nodes_-&gt;Empty());
-<a name="l00280"></a>00280   iteration_stats_.refinements_ += 1;
-<a name="l00281"></a>00281   <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00282"></a>00282 }
-<a name="l00283"></a>00283 
-<a name="l00284"></a>00284 <span class="comment">// Computes best_arc, the minimum reduced-cost arc incident to</span>
-<a name="l00285"></a>00285 <span class="comment">// left_node and admissibility_gap, the amount by which the reduced</span>
-<a name="l00286"></a>00286 <span class="comment">// cost of best_arc must be increased to make it equal in reduced cost</span>
-<a name="l00287"></a>00287 <span class="comment">// to another residual arc incident to left_node.</span>
-<a name="l00288"></a>00288 <span class="comment">//</span>
-<a name="l00289"></a>00289 <span class="comment">// Precondition: left_node is unmatched. This allows us to simplify</span>
-<a name="l00290"></a>00290 <span class="comment">// the code. The debug-only counterpart to this routine is</span>
-<a name="l00291"></a>00291 <span class="comment">// LinearSumAssignment::ImplicitPrice() and it does not assume this</span>
-<a name="l00292"></a>00292 <span class="comment">// precondition.</span>
-<a name="l00293"></a>00293 <span class="comment">//</span>
-<a name="l00294"></a>00294 <span class="comment">// This function is large enough that our suggestion that the compiler</span>
-<a name="l00295"></a>00295 <span class="comment">// inline it might be pointless.</span>
-<a name="l00296"></a>00296 <span class="keyword">inline</span> LinearSumAssignment::ImplicitPriceSummary
-<a name="l00297"></a>00297 LinearSumAssignment::BestArcAndGap(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> left_node)<span class="keyword"> const </span>{
-<a name="l00298"></a>00298     DCHECK(IsActive(left_node));
-<a name="l00299"></a>00299   DCHECK_GT(epsilon_, 0);
-<a name="l00300"></a>00300   <span class="comment">// During any scaling iteration, the price of an active node</span>
-<a name="l00301"></a>00301   <span class="comment">// decreases by at most price_reduction_bound_ and all left-side</span>
-<a name="l00302"></a>00302   <span class="comment">// nodes are made active at the beginning of Refine(), so the bound</span>
-<a name="l00303"></a>00303   <span class="comment">// applies to all left-side nodes.</span>
-<a name="l00304"></a>00304   StarGraph::OutgoingArcIterator arc_it(graph_, left_node);
-<a name="l00305"></a>00305   <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> best_arc = arc_it.Index();
-<a name="l00306"></a>00306   <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> min_partial_reduced_cost = PartialReducedCost(best_arc);
-<a name="l00307"></a>00307   <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> second_min_partial_reduced_cost =
-<a name="l00308"></a>00308       min_partial_reduced_cost + price_reduction_bound_;
-<a name="l00309"></a>00309   <span class="keywordflow">for</span> (arc_it.Next(); arc_it.Ok(); arc_it.Next()) {
-<a name="l00310"></a>00310     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc = arc_it.Index();
-<a name="l00311"></a>00311     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> partial_reduced_cost = PartialReducedCost(arc);
-<a name="l00312"></a>00312     <span class="keywordflow">if</span> (partial_reduced_cost &lt; min_partial_reduced_cost) {
-<a name="l00313"></a>00313       best_arc = arc;
-<a name="l00314"></a>00314       second_min_partial_reduced_cost = min_partial_reduced_cost;
-<a name="l00315"></a>00315       min_partial_reduced_cost = partial_reduced_cost;
-<a name="l00316"></a>00316     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (partial_reduced_cost &lt; second_min_partial_reduced_cost) {
-<a name="l00317"></a>00317       second_min_partial_reduced_cost = partial_reduced_cost;
-<a name="l00318"></a>00318     }
-<a name="l00319"></a>00319   }
-<a name="l00320"></a>00320   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> gap =
-<a name="l00321"></a>00321       second_min_partial_reduced_cost - min_partial_reduced_cost;
-<a name="l00322"></a>00322   DCHECK_GE(gap, 0);
-<a name="l00323"></a>00323   <span class="keywordflow">return</span> std::make_pair(best_arc, gap);
-<a name="l00324"></a>00324 }
-<a name="l00325"></a>00325 
-<a name="l00326"></a>00326 <span class="comment">// Only for debugging.</span>
-<a name="l00327"></a>00327 <span class="keyword">inline</span> <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a>
-<a name="l00328"></a>00328 LinearSumAssignment::ImplicitPrice(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> left_node)<span class="keyword"> const </span>{
-<a name="l00329"></a>00329   DCHECK_GT(epsilon_, 0);
-<a name="l00330"></a>00330   StarGraph::OutgoingArcIterator arc_it(graph_, left_node);
-<a name="l00331"></a>00331   <span class="comment">// If the input problem is feasible, it is always the case that</span>
-<a name="l00332"></a>00332   <span class="comment">// arc_it.Ok(), i.e., that there is at least one arc incident to</span>
-<a name="l00333"></a>00333   <span class="comment">// left_node.</span>
-<a name="l00334"></a>00334   DCHECK(arc_it.Ok());
-<a name="l00335"></a>00335   <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> best_arc = arc_it.Index();
-<a name="l00336"></a>00336   <span class="keywordflow">if</span> (best_arc == matched_[left_node]) {
-<a name="l00337"></a>00337     arc_it.Next();
-<a name="l00338"></a>00338     <span class="keywordflow">if</span> (arc_it.Ok()) {
-<a name="l00339"></a>00339       best_arc = arc_it.Index();
-<a name="l00340"></a>00340     }
-<a name="l00341"></a>00341   }
-<a name="l00342"></a>00342   <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> min_partial_reduced_cost = PartialReducedCost(best_arc);
-<a name="l00343"></a>00343   <span class="keywordflow">if</span> (!arc_it.Ok()) {
-<a name="l00344"></a>00344     <span class="comment">// Only one arc is incident to left_node, and the node is</span>
-<a name="l00345"></a>00345     <span class="comment">// currently matched along that arc, which must be the case in any</span>
-<a name="l00346"></a>00346     <span class="comment">// feasible solution. Therefore we implicitly price this node so</span>
-<a name="l00347"></a>00347     <span class="comment">// low that we will never consider unmatching it.</span>
-<a name="l00348"></a>00348     <span class="keywordflow">return</span> -(min_partial_reduced_cost + price_reduction_bound_);
-<a name="l00349"></a>00349   }
-<a name="l00350"></a>00350   <span class="keywordflow">for</span> (arc_it.Next(); arc_it.Ok(); arc_it.Next()) {
-<a name="l00351"></a>00351     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc = arc_it.Index();
-<a name="l00352"></a>00352     <span class="keywordflow">if</span> (arc != matched_[left_node]) {
-<a name="l00353"></a>00353       <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> partial_reduced_cost = PartialReducedCost(arc);
-<a name="l00354"></a>00354       <span class="keywordflow">if</span> (partial_reduced_cost &lt; min_partial_reduced_cost) {
-<a name="l00355"></a>00355         min_partial_reduced_cost = partial_reduced_cost;
-<a name="l00356"></a>00356       }
-<a name="l00357"></a>00357     }
-<a name="l00358"></a>00358   }
-<a name="l00359"></a>00359   <span class="keywordflow">return</span> -min_partial_reduced_cost;
-<a name="l00360"></a>00360 }
-<a name="l00361"></a>00361 
-<a name="l00362"></a>00362 <span class="comment">// Only for debugging.</span>
-<a name="l00363"></a>00363 <span class="keywordtype">bool</span> LinearSumAssignment::AllMatched()<span class="keyword"> const </span>{
-<a name="l00364"></a>00364   <span class="keywordflow">for</span> (StarGraph::NodeIterator node_it(graph_);
-<a name="l00365"></a>00365        node_it.Ok();
-<a name="l00366"></a>00366        node_it.Next()) {
-<a name="l00367"></a>00367     <span class="keywordflow">if</span> (IsActive(node_it.Index())) {
-<a name="l00368"></a>00368       <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00369"></a>00369     }
-<a name="l00370"></a>00370   }
-<a name="l00371"></a>00371   <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00372"></a>00372 }
-<a name="l00373"></a>00373 
-<a name="l00374"></a>00374 <span class="comment">// Only for debugging.</span>
-<a name="l00375"></a>00375 <span class="keywordtype">bool</span> LinearSumAssignment::EpsilonOptimal()<span class="keyword"> const </span>{
-<a name="l00376"></a>00376   <span class="keywordflow">for</span> (BipartiteLeftNodeIterator node_it(graph_, num_left_nodes_);
-<a name="l00377"></a>00377        node_it.Ok();
-<a name="l00378"></a>00378        node_it.Next()) {
-<a name="l00379"></a>00379     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> left_node = node_it.Index();
-<a name="l00380"></a>00380     <span class="comment">// Get the implicit price of left_node and make sure the reduced</span>
-<a name="l00381"></a>00381     <span class="comment">// costs of left_node's incident arcs are in bounds.</span>
-<a name="l00382"></a>00382     <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> left_node_price = ImplicitPrice(left_node);
-<a name="l00383"></a>00383     <span class="keywordflow">for</span> (StarGraph::OutgoingArcIterator arc_it(graph_, left_node);
-<a name="l00384"></a>00384          arc_it.Ok();
-<a name="l00385"></a>00385          arc_it.Next()) {
-<a name="l00386"></a>00386       <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc = arc_it.Index();
-<a name="l00387"></a>00387       <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> reduced_cost =
-<a name="l00388"></a>00388           left_node_price + PartialReducedCost(arc);
-<a name="l00389"></a>00389       <span class="comment">// Note the asymmetric definition of epsilon-optimality that we</span>
-<a name="l00390"></a>00390       <span class="comment">// use because it means we can saturate all admissible arcs in</span>
-<a name="l00391"></a>00391       <span class="comment">// the beginning of Refine() just by unmatching all matched</span>
-<a name="l00392"></a>00392       <span class="comment">// nodes.</span>
-<a name="l00393"></a>00393       <span class="keywordflow">if</span> (matched_[left_node] == arc) {
-<a name="l00394"></a>00394         <span class="comment">// The reverse arc is residual. Epsilon-optimality requires</span>
-<a name="l00395"></a>00395         <span class="comment">// that the reduced cost of the forward arc be at most</span>
-<a name="l00396"></a>00396         <span class="comment">// epsilon_.</span>
-<a name="l00397"></a>00397         <span class="keywordflow">if</span> (reduced_cost &gt; epsilon_) {
-<a name="l00398"></a>00398           <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00399"></a>00399         }
-<a name="l00400"></a>00400       } <span class="keywordflow">else</span> {
-<a name="l00401"></a>00401         <span class="comment">// The forward arc is residual. Epsilon-optimality requires</span>
-<a name="l00402"></a>00402         <span class="comment">// that the reduced cost of the forward arc be at least zero.</span>
-<a name="l00403"></a>00403         <span class="keywordflow">if</span> (reduced_cost &lt; 0) {
-<a name="l00404"></a>00404           <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l00405"></a>00405         }
-<a name="l00406"></a>00406       }
-<a name="l00407"></a>00407     }
-<a name="l00408"></a>00408   }
-<a name="l00409"></a>00409   <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00410"></a>00410 }
-<a name="l00411"></a>00411 
-<a name="l00412"></a>00412 <span class="keywordtype">bool</span> LinearSumAssignment::FinalizeSetup() {
-<a name="l00413"></a>00413   epsilon_ = largest_scaled_cost_magnitude_;
-<a name="l00414"></a>00414   VLOG(2) &lt;&lt; <span class="stringliteral">"Largest given cost magnitude: "</span> &lt;&lt;
-<a name="l00415"></a>00415       largest_scaled_cost_magnitude_ / cost_scaling_factor_;
-<a name="l00416"></a>00416   <span class="comment">// Initialize left-side node-indexed arrays.</span>
-<a name="l00417"></a>00417   StarGraph::NodeIterator node_it(graph_);
-<a name="l00418"></a>00418   <span class="keywordflow">for</span> (; node_it.Ok(); node_it.Next()) {
-<a name="l00419"></a>00419     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node = node_it.Index();
-<a name="l00420"></a>00420     <span class="keywordflow">if</span> (node &gt;= num_left_nodes_) {
-<a name="l00421"></a>00421       <span class="keywordflow">break</span>;
-<a name="l00422"></a>00422     }
-<a name="l00423"></a>00423     matched_.Set(node, <a class="code" href="classoperations__research_1_1EbertGraph.html#2cf0a089f017042eef0262e2ae0ef9a4" title="The index of the &amp;#39;nil&amp;#39; arc in the graph.">StarGraph::kNilArc</a>);
-<a name="l00424"></a>00424   }
-<a name="l00425"></a>00425   <span class="comment">// Initialize right-side node-indexed arrays. Example: prices are</span>
-<a name="l00426"></a>00426   <span class="comment">// stored only for right-side nodes.</span>
-<a name="l00427"></a>00427   <span class="keywordflow">for</span> (; node_it.Ok(); node_it.Next()) {
-<a name="l00428"></a>00428     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node = node_it.Index();
-<a name="l00429"></a>00429     price_.Set(node, 0);
-<a name="l00430"></a>00430     matched_.Set(node, <a class="code" href="classoperations__research_1_1EbertGraph.html#2cf0a089f017042eef0262e2ae0ef9a4" title="The index of the &amp;#39;nil&amp;#39; arc in the graph.">StarGraph::kNilArc</a>);
-<a name="l00431"></a>00431   }
-<a name="l00432"></a>00432   <span class="keywordtype">bool</span> in_range;
-<a name="l00433"></a>00433   price_lower_bound_ = -PriceChangeBound(alpha_ - 1, &amp;in_range);
-<a name="l00434"></a>00434   DCHECK_LE(price_lower_bound_, 0);
-<a name="l00435"></a>00435   <span class="keywordflow">if</span> (!in_range) {
-<a name="l00436"></a>00436     LOG(WARNING) &lt;&lt; <span class="stringliteral">"Price change bound exceeds range of representable "</span>
-<a name="l00437"></a>00437                  &lt;&lt; <span class="stringliteral">"costs; arithmetic overflow is not ruled out."</span>;
+<a name="l00101"></a>00101   Int64PackedArray* cost_;
+<a name="l00102"></a>00102 
+<a name="l00103"></a>00103   DISALLOW_COPY_AND_ASSIGN(<a class="code" href="classoperations__research_1_1CostValueCycleHandler.html">CostValueCycleHandler</a>);
+<a name="l00104"></a>00104 };
+<a name="l00105"></a>00105 
+<a name="l00106"></a>00106 <span class="comment">// Logically this class should be defined inside OptimizeGraphLayout,</span>
+<a name="l00107"></a>00107 <span class="comment">// but compilation fails if we do that because C++98 doesn't allow</span>
+<a name="l00108"></a>00108 <span class="comment">// instantiation of member templates with function-scoped types as</span>
+<a name="l00109"></a>00109 <span class="comment">// template parameters, which in turn is because those function-scoped</span>
+<a name="l00110"></a>00110 <span class="comment">// types lack linkage.</span>
+<a name="l00111"></a><a class="code" href="classoperations__research_1_1ArcIndexOrderingByTailNode.html">00111</a> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1ArcIndexOrderingByTailNode.html" title="Logically this class should be defined inside OptimizeGraphLayout, but compilation...">ArcIndexOrderingByTailNode</a> {
+<a name="l00112"></a>00112  <span class="keyword">public</span>:
+<a name="l00113"></a><a class="code" href="classoperations__research_1_1ArcIndexOrderingByTailNode.html#8fb9e63eb73881d22d3260a631351d5c">00113</a>   <span class="keyword">explicit</span> <a class="code" href="classoperations__research_1_1ArcIndexOrderingByTailNode.html" title="Logically this class should be defined inside OptimizeGraphLayout, but compilation...">ArcIndexOrderingByTailNode</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1EbertGraph.html">StarGraph</a>&amp; graph)
+<a name="l00114"></a>00114       : <a class="code" href="bron__kerbosch_8cc.html#79331751ee35b7d4ae15bb12c951449c">graph_</a>(graph) { }
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116   <span class="comment">// Says ArcIndex a is less than ArcIndex b if arc a's tail is less</span>
+<a name="l00117"></a>00117   <span class="comment">// than arc b's tail. If their tails are equal, orders according to</span>
+<a name="l00118"></a>00118   <span class="comment">// heads.</span>
+<a name="l00119"></a><a class="code" href="classoperations__research_1_1ArcIndexOrderingByTailNode.html#b49778fedadd108924172620d230deaf">00119</a>   <span class="keywordtype">bool</span> operator()(<a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> a, <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> b)<span class="keyword"> const </span>{
+<a name="l00120"></a>00120     <span class="keywordflow">return</span> ((<a class="code" href="bron__kerbosch_8cc.html#79331751ee35b7d4ae15bb12c951449c">graph_</a>.Tail(a) &lt; <a class="code" href="bron__kerbosch_8cc.html#79331751ee35b7d4ae15bb12c951449c">graph_</a>.Tail(b)) ||
+<a name="l00121"></a>00121             ((<a class="code" href="bron__kerbosch_8cc.html#79331751ee35b7d4ae15bb12c951449c">graph_</a>.Tail(a) == <a class="code" href="bron__kerbosch_8cc.html#79331751ee35b7d4ae15bb12c951449c">graph_</a>.Tail(b)) &amp;&amp;
+<a name="l00122"></a>00122              (<a class="code" href="bron__kerbosch_8cc.html#79331751ee35b7d4ae15bb12c951449c">graph_</a>.Head(a) &lt; <a class="code" href="bron__kerbosch_8cc.html#79331751ee35b7d4ae15bb12c951449c">graph_</a>.Head(b))));
+<a name="l00123"></a>00123   }
+<a name="l00124"></a>00124 
+<a name="l00125"></a>00125  <span class="keyword">private</span>:
+<a name="l00126"></a>00126   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1EbertGraph.html">StarGraph</a>&amp; <a class="code" href="bron__kerbosch_8cc.html#79331751ee35b7d4ae15bb12c951449c">graph_</a>;
+<a name="l00127"></a>00127 
+<a name="l00128"></a>00128   <span class="comment">// Copy and assign are allowed; they have to be for STL to work</span>
+<a name="l00129"></a>00129   <span class="comment">// with this functor, although it seems like a bug for STL to be</span>
+<a name="l00130"></a>00130   <span class="comment">// written that way.</span>
+<a name="l00131"></a>00131 };
+<a name="l00132"></a>00132 
+<a name="l00133"></a><a class="code" href="classoperations__research_1_1LinearSumAssignment.html#ae1038d114a2c2de233baff16b356de2">00133</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1LinearSumAssignment.html#ae1038d114a2c2de233baff16b356de2" title="Optimizes the layout of the graph for the access pattern our implementation will...">LinearSumAssignment::OptimizeGraphLayout</a>(<a class="code" href="classoperations__research_1_1EbertGraph.html">StarGraph</a>* graph) {
+<a name="l00134"></a>00134   <span class="comment">// The graph argument is only to give us a non-const-qualified</span>
+<a name="l00135"></a>00135   <span class="comment">// handle on the graph we already have. Any different graph is</span>
+<a name="l00136"></a>00136   <span class="comment">// nonsense.</span>
+<a name="l00137"></a>00137   DCHECK_EQ(&amp;graph_, graph);
+<a name="l00138"></a>00138   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1ArcIndexOrderingByTailNode.html" title="Logically this class should be defined inside OptimizeGraphLayout, but compilation...">ArcIndexOrderingByTailNode</a> compare(graph_);
+<a name="l00139"></a>00139   <a class="code" href="classoperations__research_1_1CostValueCycleHandler.html">CostValueCycleHandler</a> cycle_handler(&amp;scaled_arc_cost_);
+<a name="l00140"></a>00140   graph-&gt;<a class="code" href="classoperations__research_1_1EbertGraph.html#5f7f2f6d921782f24d8eb37b01f39ec2" title="For some reason SWIG seems unable to handle the definition of class CycleHandlerForAnnotatedArcs...">GroupForwardArcsByFunctor</a>(compare, &amp;cycle_handler);
+<a name="l00141"></a>00141 }
+<a name="l00142"></a>00142 
+<a name="l00143"></a>00143 <span class="keywordtype">bool</span> LinearSumAssignment::UpdateEpsilon() {
+<a name="l00144"></a>00144   <span class="comment">// There are some somewhat subtle issues around using integer</span>
+<a name="l00145"></a>00145   <span class="comment">// arithmetic to compute successive values of epsilon_, the error</span>
+<a name="l00146"></a>00146   <span class="comment">// parameter.</span>
+<a name="l00147"></a>00147   <span class="comment">//</span>
+<a name="l00148"></a>00148   <span class="comment">// First, the value of price_reduction_bound_ is chosen under the</span>
+<a name="l00149"></a>00149   <span class="comment">// assumption that it is truly an upper bound on the amount by which</span>
+<a name="l00150"></a>00150   <span class="comment">// a node's price can change during the current iteration. The value</span>
+<a name="l00151"></a>00151   <span class="comment">// of this bound in turn depends on the assumption that the flow</span>
+<a name="l00152"></a>00152   <span class="comment">// computed by the previous iteration was</span>
+<a name="l00153"></a>00153   <span class="comment">// (epsilon_ * alpha_)-optimal. If epsilon_ decreases by more than a</span>
+<a name="l00154"></a>00154   <span class="comment">// factor of alpha_ due to truncating arithmetic, that bound might</span>
+<a name="l00155"></a>00155   <span class="comment">// not hold, and the consequence is that BestArcAndGap could return</span>
+<a name="l00156"></a>00156   <span class="comment">// an overly cautious admissibility gap in the case where a</span>
+<a name="l00157"></a>00157   <span class="comment">// left-side node has only one incident arc. This is not a big deal</span>
+<a name="l00158"></a>00158   <span class="comment">// at all. At worst it could lead to a few extra relabelings.</span>
+<a name="l00159"></a>00159   <span class="comment">//</span>
+<a name="l00160"></a>00160   <span class="comment">// Second, it is not a problem currently, but in the future if we</span>
+<a name="l00161"></a>00161   <span class="comment">// use an arc-fixing heuristic, we cannot permit truncating integer</span>
+<a name="l00162"></a>00162   <span class="comment">// division to decrease epsilon_ by a factor greater than alpha_</span>
+<a name="l00163"></a>00163   <span class="comment">// because our bounds on price changes (and hence on the reduced</span>
+<a name="l00164"></a>00164   <span class="comment">// cost of an arc that might ever become admissible in the future)</span>
+<a name="l00165"></a>00165   <span class="comment">// depend on the ratio between the values of the error parameter at</span>
+<a name="l00166"></a>00166   <span class="comment">// successive iterations. One consequence will be that we might</span>
+<a name="l00167"></a>00167   <span class="comment">// occasionally do an extra iteration today in the interest of being</span>
+<a name="l00168"></a>00168   <span class="comment">// able to "price arcs out" (which we don't do today). Today we</span>
+<a name="l00169"></a>00169   <span class="comment">// simply use truncating integer division, but note that this will</span>
+<a name="l00170"></a>00170   <span class="comment">// have to change if we ever price arcs out.</span>
+<a name="l00171"></a>00171   <span class="comment">//</span>
+<a name="l00172"></a>00172   <span class="comment">// Since neither of those issues is a problem today, we simply use</span>
+<a name="l00173"></a>00173   <span class="comment">// truncating integer arithmetic. But future changes might</span>
+<a name="l00174"></a>00174   <span class="comment">// necessitate rounding epsilon upward in the division.</span>
+<a name="l00175"></a>00175   epsilon_ = std::max(epsilon_ / alpha_, kMinEpsilon);
+<a name="l00176"></a>00176   VLOG(3) &lt;&lt; <span class="stringliteral">"Updated: epsilon_ == "</span> &lt;&lt; epsilon_;
+<a name="l00177"></a>00177   price_reduction_bound_ = PriceChangeBound(1, NULL);
+<a name="l00178"></a>00178   DCHECK_GT(price_reduction_bound_, 0);
+<a name="l00179"></a>00179   <span class="comment">// For today we always return true; in the future updating epsilon</span>
+<a name="l00180"></a>00180   <span class="comment">// in sophisticated ways could conceivably detect infeasibility.</span>
+<a name="l00181"></a>00181   <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00182"></a>00182 }
+<a name="l00183"></a>00183 
+<a name="l00184"></a>00184 <span class="comment">// For production code that checks whether a left-side node is active.</span>
+<a name="l00185"></a>00185 <span class="keyword">inline</span> <span class="keywordtype">bool</span> LinearSumAssignment::IsActive(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> left_node)<span class="keyword"> const </span>{
+<a name="l00186"></a>00186   DCHECK_LT(left_node, num_left_nodes_);
+<a name="l00187"></a>00187   <span class="keywordflow">return</span> matched_arc_[left_node] == <a class="code" href="classoperations__research_1_1EbertGraph.html#2cf0a089f017042eef0262e2ae0ef9a4" title="The index of the &amp;#39;nil&amp;#39; arc in the graph.">StarGraph::kNilArc</a>;
+<a name="l00188"></a>00188 }
+<a name="l00189"></a>00189 
+<a name="l00190"></a>00190 <span class="comment">// Only for debugging. Separate from the production IsActive() method</span>
+<a name="l00191"></a>00191 <span class="comment">// so that method can assert that its argument is a left-side node,</span>
+<a name="l00192"></a>00192 <span class="comment">// while for debugging we need to be able to test any node.</span>
+<a name="l00193"></a>00193 <span class="keyword">inline</span> <span class="keywordtype">bool</span> LinearSumAssignment::IsActiveForDebugging(
+<a name="l00194"></a>00194     <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node)<span class="keyword"> const </span>{
+<a name="l00195"></a>00195   <span class="keywordflow">if</span> (node &lt; num_left_nodes_) {
+<a name="l00196"></a>00196     <span class="keywordflow">return</span> IsActive(node);
+<a name="l00197"></a>00197   } <span class="keywordflow">else</span> {
+<a name="l00198"></a>00198     <span class="keywordflow">return</span> matched_node_[node] == <a class="code" href="classoperations__research_1_1EbertGraph.html#719bc0f1c611924f2a295e6d13906190" title="The index of the &amp;#39;nil&amp;#39; node in the graph.">StarGraph::kNilNode</a>;
+<a name="l00199"></a>00199   }
+<a name="l00200"></a>00200 }
+<a name="l00201"></a>00201 
+<a name="l00202"></a>00202 <span class="keywordtype">void</span> LinearSumAssignment::InitializeActiveNodeContainer() {
+<a name="l00203"></a>00203   DCHECK(active_nodes_-&gt;Empty());
+<a name="l00204"></a>00204   <span class="keywordflow">for</span> (BipartiteLeftNodeIterator node_it(graph_, num_left_nodes_);
+<a name="l00205"></a>00205        node_it.Ok();
+<a name="l00206"></a>00206        node_it.Next()) {
+<a name="l00207"></a>00207     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node = node_it.Index();
+<a name="l00208"></a>00208     <span class="keywordflow">if</span> (IsActive(node)) {
+<a name="l00209"></a>00209       active_nodes_-&gt;Add(node);
+<a name="l00210"></a>00210     }
+<a name="l00211"></a>00211   }
+<a name="l00212"></a>00212 }
+<a name="l00213"></a>00213 
+<a name="l00214"></a>00214 <span class="comment">// There exists a price function such that the admissible arcs at the</span>
+<a name="l00215"></a>00215 <span class="comment">// beginning of an iteration are exactly the reverse arcs of all</span>
+<a name="l00216"></a>00216 <span class="comment">// matching arcs. Saturating all admissible arcs with respect to that</span>
+<a name="l00217"></a>00217 <span class="comment">// price function therefore means simply unmatching every matched</span>
+<a name="l00218"></a>00218 <span class="comment">// node.</span>
+<a name="l00219"></a>00219 <span class="comment">//</span>
+<a name="l00220"></a>00220 <span class="comment">// In the future we will price out arcs, which will reduce the set of</span>
+<a name="l00221"></a>00221 <span class="comment">// nodes we unmatch here. If a matching arc is priced out, we will not</span>
+<a name="l00222"></a>00222 <span class="comment">// unmatch its endpoints since that element of the matching is</span>
+<a name="l00223"></a>00223 <span class="comment">// guaranteed not to change.</span>
+<a name="l00224"></a>00224 <span class="keywordtype">void</span> LinearSumAssignment::SaturateNegativeArcs() {
+<a name="l00225"></a>00225   total_excess_ = 0;
+<a name="l00226"></a>00226   <span class="keywordflow">for</span> (BipartiteLeftNodeIterator node_it(graph_, num_left_nodes_);
+<a name="l00227"></a>00227        node_it.Ok();
+<a name="l00228"></a>00228        node_it.Next()) {
+<a name="l00229"></a>00229     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node = node_it.Index();
+<a name="l00230"></a>00230     <span class="keywordflow">if</span> (IsActive(node)) {
+<a name="l00231"></a>00231       <span class="comment">// This can happen in the first iteration when nothing is</span>
+<a name="l00232"></a>00232       <span class="comment">// matched yet.</span>
+<a name="l00233"></a>00233       total_excess_ += 1;
+<a name="l00234"></a>00234     } <span class="keywordflow">else</span> {
+<a name="l00235"></a>00235       <span class="comment">// We're about to create a unit of excess by unmatching these nodes.</span>
+<a name="l00236"></a>00236       total_excess_ += 1;
+<a name="l00237"></a>00237       <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> mate = <a class="code" href="classoperations__research_1_1LinearSumAssignment.html#6658c4c44fb00b68849ae782abd08d0d" title="Returns the node to which the given node is matched.">GetMate</a>(node);
+<a name="l00238"></a>00238       matched_arc_.Set(node, <a class="code" href="classoperations__research_1_1EbertGraph.html#2cf0a089f017042eef0262e2ae0ef9a4" title="The index of the &amp;#39;nil&amp;#39; arc in the graph.">StarGraph::kNilArc</a>);
+<a name="l00239"></a>00239       matched_node_.Set(mate, <a class="code" href="classoperations__research_1_1EbertGraph.html#719bc0f1c611924f2a295e6d13906190" title="The index of the &amp;#39;nil&amp;#39; node in the graph.">StarGraph::kNilNode</a>);
+<a name="l00240"></a>00240     }
+<a name="l00241"></a>00241   }
+<a name="l00242"></a>00242 }
+<a name="l00243"></a>00243 
+<a name="l00244"></a>00244 <span class="comment">// Returns true for success, false for infeasible.</span>
+<a name="l00245"></a>00245 <span class="keywordtype">bool</span> LinearSumAssignment::DoublePush(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> source) {
+<a name="l00246"></a>00246   DCHECK_GT(num_left_nodes_, source);
+<a name="l00247"></a>00247   DCHECK(IsActive(source));
+<a name="l00248"></a>00248   ImplicitPriceSummary summary = BestArcAndGap(source);
+<a name="l00249"></a>00249   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> best_arc = summary.first;
+<a name="l00250"></a>00250   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> gap = summary.second;
+<a name="l00251"></a>00251   <span class="comment">// Now we have the best arc incident to source, i.e., the one with</span>
+<a name="l00252"></a>00252   <span class="comment">// minimum reduced cost. Match that arc, unmatching its head if</span>
+<a name="l00253"></a>00253   <span class="comment">// necessary.</span>
+<a name="l00254"></a>00254   <span class="keywordflow">if</span> (best_arc == <a class="code" href="classoperations__research_1_1EbertGraph.html#2cf0a089f017042eef0262e2ae0ef9a4" title="The index of the &amp;#39;nil&amp;#39; arc in the graph.">StarGraph::kNilArc</a>) {
+<a name="l00255"></a>00255     <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00256"></a>00256   }
+<a name="l00257"></a>00257   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> new_mate = <a class="code" href="classoperations__research_1_1LinearSumAssignment.html#dffa9ab066495251df0881f060f0ca21" title="These handy member functions make the code more compact, and we expose them to clients...">Head</a>(best_arc);
+<a name="l00258"></a>00258   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> to_unmatch = matched_node_[new_mate];
+<a name="l00259"></a>00259   <span class="keywordflow">if</span> (to_unmatch != <a class="code" href="classoperations__research_1_1EbertGraph.html#719bc0f1c611924f2a295e6d13906190" title="The index of the &amp;#39;nil&amp;#39; node in the graph.">StarGraph::kNilNode</a>) {
+<a name="l00260"></a>00260     <span class="comment">// Unmatch new_mate from its current mate, pushing the unit of</span>
+<a name="l00261"></a>00261     <span class="comment">// flow back to a node on the left side as a unit of excess.</span>
+<a name="l00262"></a>00262     matched_arc_.Set(to_unmatch, <a class="code" href="classoperations__research_1_1EbertGraph.html#2cf0a089f017042eef0262e2ae0ef9a4" title="The index of the &amp;#39;nil&amp;#39; arc in the graph.">StarGraph::kNilArc</a>);
+<a name="l00263"></a>00263     active_nodes_-&gt;Add(to_unmatch);
+<a name="l00264"></a>00264     <span class="comment">// This counts as a double push.</span>
+<a name="l00265"></a>00265     iteration_stats_.double_pushes_ += 1;
+<a name="l00266"></a>00266   } <span class="keywordflow">else</span> {
+<a name="l00267"></a>00267     <span class="comment">// We are about to increase the cardinality of the matching.</span>
+<a name="l00268"></a>00268     total_excess_ -= 1;
+<a name="l00269"></a>00269     <span class="comment">// This counts as a single push.</span>
+<a name="l00270"></a>00270     iteration_stats_.pushes_ += 1;
+<a name="l00271"></a>00271   }
+<a name="l00272"></a>00272   matched_arc_.Set(source, best_arc);
+<a name="l00273"></a>00273   matched_node_.Set(new_mate, source);
+<a name="l00274"></a>00274   <span class="comment">// Finally, relabel new_mate.</span>
+<a name="l00275"></a>00275   iteration_stats_.relabelings_ += 1;
+<a name="l00276"></a>00276   price_.Set(new_mate, price_[new_mate] - gap - epsilon_);
+<a name="l00277"></a>00277   <span class="keywordflow">return</span> price_[new_mate] &gt;= price_lower_bound_;
+<a name="l00278"></a>00278 }
+<a name="l00279"></a>00279 
+<a name="l00280"></a>00280 <span class="keywordtype">bool</span> LinearSumAssignment::Refine() {
+<a name="l00281"></a>00281   SaturateNegativeArcs();
+<a name="l00282"></a>00282   InitializeActiveNodeContainer();
+<a name="l00283"></a>00283   <span class="keywordflow">while</span> (total_excess_ &gt; 0) {
+<a name="l00284"></a>00284     <span class="comment">// Get an active node (i.e., one with excess == 1) and discharge</span>
+<a name="l00285"></a>00285     <span class="comment">// it using DoublePush.</span>
+<a name="l00286"></a>00286     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node = active_nodes_-&gt;Get();
+<a name="l00287"></a>00287     <span class="keywordflow">if</span> (!DoublePush(node)) {
+<a name="l00288"></a>00288       <span class="comment">// Infeasibility detected.</span>
+<a name="l00289"></a>00289       <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00290"></a>00290     }
+<a name="l00291"></a>00291   }
+<a name="l00292"></a>00292   DCHECK(active_nodes_-&gt;Empty());
+<a name="l00293"></a>00293   iteration_stats_.refinements_ += 1;
+<a name="l00294"></a>00294   <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00295"></a>00295 }
+<a name="l00296"></a>00296 
+<a name="l00297"></a>00297 <span class="comment">// Computes best_arc, the minimum reduced-cost arc incident to</span>
+<a name="l00298"></a>00298 <span class="comment">// left_node and admissibility_gap, the amount by which the reduced</span>
+<a name="l00299"></a>00299 <span class="comment">// cost of best_arc must be increased to make it equal in reduced cost</span>
+<a name="l00300"></a>00300 <span class="comment">// to another residual arc incident to left_node.</span>
+<a name="l00301"></a>00301 <span class="comment">//</span>
+<a name="l00302"></a>00302 <span class="comment">// Precondition: left_node is unmatched. This allows us to simplify</span>
+<a name="l00303"></a>00303 <span class="comment">// the code. The debug-only counterpart to this routine is</span>
+<a name="l00304"></a>00304 <span class="comment">// LinearSumAssignment::ImplicitPrice() and it does not assume this</span>
+<a name="l00305"></a>00305 <span class="comment">// precondition.</span>
+<a name="l00306"></a>00306 <span class="comment">//</span>
+<a name="l00307"></a>00307 <span class="comment">// This function is large enough that our suggestion that the compiler</span>
+<a name="l00308"></a>00308 <span class="comment">// inline it might be pointless.</span>
+<a name="l00309"></a>00309 <span class="keyword">inline</span> LinearSumAssignment::ImplicitPriceSummary
+<a name="l00310"></a>00310 LinearSumAssignment::BestArcAndGap(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> left_node)<span class="keyword"> const </span>{
+<a name="l00311"></a>00311     DCHECK(IsActive(left_node));
+<a name="l00312"></a>00312   DCHECK_GT(epsilon_, 0);
+<a name="l00313"></a>00313   <span class="comment">// During any scaling iteration, the price of an active node</span>
+<a name="l00314"></a>00314   <span class="comment">// decreases by at most price_reduction_bound_ and all left-side</span>
+<a name="l00315"></a>00315   <span class="comment">// nodes are made active at the beginning of Refine(), so the bound</span>
+<a name="l00316"></a>00316   <span class="comment">// applies to all left-side nodes.</span>
+<a name="l00317"></a>00317   StarGraph::OutgoingArcIterator arc_it(graph_, left_node);
+<a name="l00318"></a>00318   <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> best_arc = arc_it.Index();
+<a name="l00319"></a>00319   <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> min_partial_reduced_cost = PartialReducedCost(best_arc);
+<a name="l00320"></a>00320   <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> second_min_partial_reduced_cost =
+<a name="l00321"></a>00321       min_partial_reduced_cost + price_reduction_bound_;
+<a name="l00322"></a>00322   <span class="keywordflow">for</span> (arc_it.Next(); arc_it.Ok(); arc_it.Next()) {
+<a name="l00323"></a>00323     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc = arc_it.Index();
+<a name="l00324"></a>00324     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> partial_reduced_cost = PartialReducedCost(arc);
+<a name="l00325"></a>00325     <span class="keywordflow">if</span> (partial_reduced_cost &lt; min_partial_reduced_cost) {
+<a name="l00326"></a>00326       best_arc = arc;
+<a name="l00327"></a>00327       second_min_partial_reduced_cost = min_partial_reduced_cost;
+<a name="l00328"></a>00328       min_partial_reduced_cost = partial_reduced_cost;
+<a name="l00329"></a>00329     } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (partial_reduced_cost &lt; second_min_partial_reduced_cost) {
+<a name="l00330"></a>00330       second_min_partial_reduced_cost = partial_reduced_cost;
+<a name="l00331"></a>00331     }
+<a name="l00332"></a>00332   }
+<a name="l00333"></a>00333   <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> gap =
+<a name="l00334"></a>00334       second_min_partial_reduced_cost - min_partial_reduced_cost;
+<a name="l00335"></a>00335   DCHECK_GE(gap, 0);
+<a name="l00336"></a>00336   <span class="keywordflow">return</span> std::make_pair(best_arc, gap);
+<a name="l00337"></a>00337 }
+<a name="l00338"></a>00338 
+<a name="l00339"></a>00339 <span class="comment">// Only for debugging.</span>
+<a name="l00340"></a>00340 <span class="keyword">inline</span> <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a>
+<a name="l00341"></a>00341 LinearSumAssignment::ImplicitPrice(<a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> left_node)<span class="keyword"> const </span>{
+<a name="l00342"></a>00342   DCHECK_GT(num_left_nodes_, left_node);
+<a name="l00343"></a>00343   DCHECK_GT(epsilon_, 0);
+<a name="l00344"></a>00344   StarGraph::OutgoingArcIterator arc_it(graph_, left_node);
+<a name="l00345"></a>00345   <span class="comment">// If the input problem is feasible, it is always the case that</span>
+<a name="l00346"></a>00346   <span class="comment">// arc_it.Ok(), i.e., that there is at least one arc incident to</span>
+<a name="l00347"></a>00347   <span class="comment">// left_node.</span>
+<a name="l00348"></a>00348   DCHECK(arc_it.Ok());
+<a name="l00349"></a>00349   <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> best_arc = arc_it.Index();
+<a name="l00350"></a>00350   <span class="keywordflow">if</span> (best_arc == matched_arc_[left_node]) {
+<a name="l00351"></a>00351     arc_it.Next();
+<a name="l00352"></a>00352     <span class="keywordflow">if</span> (arc_it.Ok()) {
+<a name="l00353"></a>00353       best_arc = arc_it.Index();
+<a name="l00354"></a>00354     }
+<a name="l00355"></a>00355   }
+<a name="l00356"></a>00356   <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> min_partial_reduced_cost = PartialReducedCost(best_arc);
+<a name="l00357"></a>00357   <span class="keywordflow">if</span> (!arc_it.Ok()) {
+<a name="l00358"></a>00358     <span class="comment">// Only one arc is incident to left_node, and the node is</span>
+<a name="l00359"></a>00359     <span class="comment">// currently matched along that arc, which must be the case in any</span>
+<a name="l00360"></a>00360     <span class="comment">// feasible solution. Therefore we implicitly price this node so</span>
+<a name="l00361"></a>00361     <span class="comment">// low that we will never consider unmatching it.</span>
+<a name="l00362"></a>00362     <span class="keywordflow">return</span> -(min_partial_reduced_cost + price_reduction_bound_);
+<a name="l00363"></a>00363   }
+<a name="l00364"></a>00364   <span class="keywordflow">for</span> (arc_it.Next(); arc_it.Ok(); arc_it.Next()) {
+<a name="l00365"></a>00365     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc = arc_it.Index();
+<a name="l00366"></a>00366     <span class="keywordflow">if</span> (arc != matched_arc_[left_node]) {
+<a name="l00367"></a>00367       <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> partial_reduced_cost = PartialReducedCost(arc);
+<a name="l00368"></a>00368       <span class="keywordflow">if</span> (partial_reduced_cost &lt; min_partial_reduced_cost) {
+<a name="l00369"></a>00369         min_partial_reduced_cost = partial_reduced_cost;
+<a name="l00370"></a>00370       }
+<a name="l00371"></a>00371     }
+<a name="l00372"></a>00372   }
+<a name="l00373"></a>00373   <span class="keywordflow">return</span> -min_partial_reduced_cost;
+<a name="l00374"></a>00374 }
+<a name="l00375"></a>00375 
+<a name="l00376"></a>00376 <span class="comment">// Only for debugging.</span>
+<a name="l00377"></a>00377 <span class="keywordtype">bool</span> LinearSumAssignment::AllMatched()<span class="keyword"> const </span>{
+<a name="l00378"></a>00378   <span class="keywordflow">for</span> (StarGraph::NodeIterator node_it(graph_);
+<a name="l00379"></a>00379        node_it.Ok();
+<a name="l00380"></a>00380        node_it.Next()) {
+<a name="l00381"></a>00381     <span class="keywordflow">if</span> (IsActiveForDebugging(node_it.Index())) {
+<a name="l00382"></a>00382       <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00383"></a>00383     }
+<a name="l00384"></a>00384   }
+<a name="l00385"></a>00385   <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00386"></a>00386 }
+<a name="l00387"></a>00387 
+<a name="l00388"></a>00388 <span class="comment">// Only for debugging.</span>
+<a name="l00389"></a>00389 <span class="keywordtype">bool</span> LinearSumAssignment::EpsilonOptimal()<span class="keyword"> const </span>{
+<a name="l00390"></a>00390   <span class="keywordflow">for</span> (BipartiteLeftNodeIterator node_it(graph_, num_left_nodes_);
+<a name="l00391"></a>00391        node_it.Ok();
+<a name="l00392"></a>00392        node_it.Next()) {
+<a name="l00393"></a>00393     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> left_node = node_it.Index();
+<a name="l00394"></a>00394     <span class="comment">// Get the implicit price of left_node and make sure the reduced</span>
+<a name="l00395"></a>00395     <span class="comment">// costs of left_node's incident arcs are in bounds.</span>
+<a name="l00396"></a>00396     <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> left_node_price = ImplicitPrice(left_node);
+<a name="l00397"></a>00397     <span class="keywordflow">for</span> (StarGraph::OutgoingArcIterator arc_it(graph_, left_node);
+<a name="l00398"></a>00398          arc_it.Ok();
+<a name="l00399"></a>00399          arc_it.Next()) {
+<a name="l00400"></a>00400       <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc = arc_it.Index();
+<a name="l00401"></a>00401       <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> reduced_cost =
+<a name="l00402"></a>00402           left_node_price + PartialReducedCost(arc);
+<a name="l00403"></a>00403       <span class="comment">// Note the asymmetric definition of epsilon-optimality that we</span>
+<a name="l00404"></a>00404       <span class="comment">// use because it means we can saturate all admissible arcs in</span>
+<a name="l00405"></a>00405       <span class="comment">// the beginning of Refine() just by unmatching all matched</span>
+<a name="l00406"></a>00406       <span class="comment">// nodes.</span>
+<a name="l00407"></a>00407       <span class="keywordflow">if</span> (matched_arc_[left_node] == arc) {
+<a name="l00408"></a>00408         <span class="comment">// The reverse arc is residual. Epsilon-optimality requires</span>
+<a name="l00409"></a>00409         <span class="comment">// that the reduced cost of the forward arc be at most</span>
+<a name="l00410"></a>00410         <span class="comment">// epsilon_.</span>
+<a name="l00411"></a>00411         <span class="keywordflow">if</span> (reduced_cost &gt; epsilon_) {
+<a name="l00412"></a>00412           <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00413"></a>00413         }
+<a name="l00414"></a>00414       } <span class="keywordflow">else</span> {
+<a name="l00415"></a>00415         <span class="comment">// The forward arc is residual. Epsilon-optimality requires</span>
+<a name="l00416"></a>00416         <span class="comment">// that the reduced cost of the forward arc be at least zero.</span>
+<a name="l00417"></a>00417         <span class="keywordflow">if</span> (reduced_cost &lt; 0) {
+<a name="l00418"></a>00418           <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l00419"></a>00419         }
+<a name="l00420"></a>00420       }
+<a name="l00421"></a>00421     }
+<a name="l00422"></a>00422   }
+<a name="l00423"></a>00423   <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00424"></a>00424 }
+<a name="l00425"></a>00425 
+<a name="l00426"></a>00426 <span class="keywordtype">bool</span> LinearSumAssignment::FinalizeSetup() {
+<a name="l00427"></a>00427   epsilon_ = largest_scaled_cost_magnitude_;
+<a name="l00428"></a>00428   VLOG(2) &lt;&lt; <span class="stringliteral">"Largest given cost magnitude: "</span> &lt;&lt;
+<a name="l00429"></a>00429       largest_scaled_cost_magnitude_ / cost_scaling_factor_;
+<a name="l00430"></a>00430   <span class="comment">// Initialize left-side node-indexed arrays.</span>
+<a name="l00431"></a>00431   StarGraph::NodeIterator node_it(graph_);
+<a name="l00432"></a>00432   <span class="keywordflow">for</span> (; node_it.Ok(); node_it.Next()) {
+<a name="l00433"></a>00433     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node = node_it.Index();
+<a name="l00434"></a>00434     <span class="keywordflow">if</span> (node &gt;= num_left_nodes_) {
+<a name="l00435"></a>00435       <span class="keywordflow">break</span>;
+<a name="l00436"></a>00436     }
+<a name="l00437"></a>00437     matched_arc_.Set(node, <a class="code" href="classoperations__research_1_1EbertGraph.html#2cf0a089f017042eef0262e2ae0ef9a4" title="The index of the &amp;#39;nil&amp;#39; arc in the graph.">StarGraph::kNilArc</a>);
 <a name="l00438"></a>00438   }
-<a name="l00439"></a>00439   <span class="keywordflow">return</span> in_range;
-<a name="l00440"></a>00440 }
-<a name="l00441"></a>00441 
-<a name="l00442"></a>00442 <span class="keywordtype">void</span> LinearSumAssignment::ReportAndAccumulateStats() {
-<a name="l00443"></a>00443   total_stats_.Add(iteration_stats_);
-<a name="l00444"></a>00444   VLOG(3) &lt;&lt; <span class="stringliteral">"Iteration stats: "</span> &lt;&lt; iteration_stats_.StatsString();
-<a name="l00445"></a>00445   iteration_stats_.Clear();
-<a name="l00446"></a>00446 }
-<a name="l00447"></a>00447 
-<a name="l00448"></a><a class="code" href="classoperations__research_1_1LinearSumAssignment.html#c2e84c5f21607d335d7f6dacb4439276">00448</a> <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1LinearSumAssignment.html#c2e84c5f21607d335d7f6dacb4439276" title="Computes the optimum assignment.">LinearSumAssignment::ComputeAssignment</a>() {
-<a name="l00449"></a>00449   <span class="comment">// Note: FinalizeSetup() might have been called already by white-box</span>
-<a name="l00450"></a>00450   <span class="comment">// test code or by a client that wants to react to the possibility</span>
-<a name="l00451"></a>00451   <span class="comment">// of overflow before solving the given problem, but FinalizeSetup()</span>
-<a name="l00452"></a>00452   <span class="comment">// is idempotent and reasonably fast, so we call it unconditionally</span>
-<a name="l00453"></a>00453   <span class="comment">// here.</span>
-<a name="l00454"></a>00454   FinalizeSetup();
-<a name="l00455"></a>00455   <span class="keywordtype">bool</span> ok = graph_.<a class="code" href="classoperations__research_1_1EbertGraph.html#9913def68b3deecb203994b8fa6340a3" title="Returns the number of nodes in the graph.">num_nodes</a>() == 2 * num_left_nodes_;
-<a name="l00456"></a>00456   DCHECK(!ok || EpsilonOptimal());
-<a name="l00457"></a>00457   <span class="keywordflow">while</span> (ok &amp;&amp; epsilon_ &gt; kMinEpsilon) {
-<a name="l00458"></a>00458     ok &amp;= UpdateEpsilon();
-<a name="l00459"></a>00459     ok &amp;= Refine();
-<a name="l00460"></a>00460     ReportAndAccumulateStats();
-<a name="l00461"></a>00461     DCHECK(!ok || EpsilonOptimal());
-<a name="l00462"></a>00462     DCHECK(!ok || AllMatched());
-<a name="l00463"></a>00463   }
-<a name="l00464"></a>00464   success_ = ok;
-<a name="l00465"></a>00465   <span class="keywordflow">return</span> ok;
-<a name="l00466"></a>00466 }
-<a name="l00467"></a>00467 
-<a name="l00468"></a><a class="code" href="classoperations__research_1_1LinearSumAssignment.html#72ef84e228afbe2d50b79129962befb0">00468</a> <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> <a class="code" href="classoperations__research_1_1LinearSumAssignment.html#72ef84e228afbe2d50b79129962befb0" title="Returns the cost of the minimum-cost perfect matching.">LinearSumAssignment::GetCost</a>()<span class="keyword"> const </span>{
-<a name="l00469"></a>00469   <span class="comment">// It is illegal to call this method unless we successfully computed</span>
-<a name="l00470"></a>00470   <span class="comment">// an optimum assignment.</span>
-<a name="l00471"></a>00471   DCHECK(success_);
-<a name="l00472"></a>00472   <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> cost = 0;
-<a name="l00473"></a>00473   <span class="keywordflow">for</span> (<a class="code" href="classoperations__research_1_1LinearSumAssignment_1_1BipartiteLeftNodeIterator.html">BipartiteLeftNodeIterator</a> node_it(*<span class="keyword">this</span>);
-<a name="l00474"></a>00474        node_it.Ok();
-<a name="l00475"></a>00475        node_it.Next()) {
-<a name="l00476"></a>00476     cost += <a class="code" href="classoperations__research_1_1LinearSumAssignment.html#af1c0a27720b7452985456fb5d926d66" title="Returns the cost of the assignment arc incident to the given node.">GetAssignmentCost</a>(node_it.Index());
+<a name="l00439"></a>00439   <span class="comment">// Initialize right-side node-indexed arrays. Example: prices are</span>
+<a name="l00440"></a>00440   <span class="comment">// stored only for right-side nodes.</span>
+<a name="l00441"></a>00441   <span class="keywordflow">for</span> (; node_it.Ok(); node_it.Next()) {
+<a name="l00442"></a>00442     <span class="keyword">const</span> <a class="code" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node = node_it.Index();
+<a name="l00443"></a>00443     price_.Set(node, 0);
+<a name="l00444"></a>00444     matched_node_.Set(node, <a class="code" href="classoperations__research_1_1EbertGraph.html#719bc0f1c611924f2a295e6d13906190" title="The index of the &amp;#39;nil&amp;#39; node in the graph.">StarGraph::kNilNode</a>);
+<a name="l00445"></a>00445   }
+<a name="l00446"></a>00446   <span class="keywordtype">bool</span> in_range;
+<a name="l00447"></a>00447   price_lower_bound_ = -PriceChangeBound(alpha_ - 1, &amp;in_range);
+<a name="l00448"></a>00448   DCHECK_LE(price_lower_bound_, 0);
+<a name="l00449"></a>00449   <span class="keywordflow">if</span> (!in_range) {
+<a name="l00450"></a>00450     LOG(WARNING) &lt;&lt; <span class="stringliteral">"Price change bound exceeds range of representable "</span>
+<a name="l00451"></a>00451                  &lt;&lt; <span class="stringliteral">"costs; arithmetic overflow is not ruled out."</span>;
+<a name="l00452"></a>00452   }
+<a name="l00453"></a>00453   <span class="keywordflow">return</span> in_range;
+<a name="l00454"></a>00454 }
+<a name="l00455"></a>00455 
+<a name="l00456"></a>00456 <span class="keywordtype">void</span> LinearSumAssignment::ReportAndAccumulateStats() {
+<a name="l00457"></a>00457   total_stats_.Add(iteration_stats_);
+<a name="l00458"></a>00458   VLOG(3) &lt;&lt; <span class="stringliteral">"Iteration stats: "</span> &lt;&lt; iteration_stats_.StatsString();
+<a name="l00459"></a>00459   iteration_stats_.Clear();
+<a name="l00460"></a>00460 }
+<a name="l00461"></a>00461 
+<a name="l00462"></a><a class="code" href="classoperations__research_1_1LinearSumAssignment.html#c2e84c5f21607d335d7f6dacb4439276">00462</a> <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1LinearSumAssignment.html#c2e84c5f21607d335d7f6dacb4439276" title="Computes the optimum assignment.">LinearSumAssignment::ComputeAssignment</a>() {
+<a name="l00463"></a>00463   <span class="comment">// Note: FinalizeSetup() might have been called already by white-box</span>
+<a name="l00464"></a>00464   <span class="comment">// test code or by a client that wants to react to the possibility</span>
+<a name="l00465"></a>00465   <span class="comment">// of overflow before solving the given problem, but FinalizeSetup()</span>
+<a name="l00466"></a>00466   <span class="comment">// is idempotent and reasonably fast, so we call it unconditionally</span>
+<a name="l00467"></a>00467   <span class="comment">// here.</span>
+<a name="l00468"></a>00468   FinalizeSetup();
+<a name="l00469"></a>00469   <span class="keywordtype">bool</span> ok = graph_.<a class="code" href="classoperations__research_1_1EbertGraph.html#9913def68b3deecb203994b8fa6340a3" title="Returns the number of nodes in the graph.">num_nodes</a>() == 2 * num_left_nodes_;
+<a name="l00470"></a>00470   DCHECK(!ok || EpsilonOptimal());
+<a name="l00471"></a>00471   <span class="keywordflow">while</span> (ok &amp;&amp; epsilon_ &gt; kMinEpsilon) {
+<a name="l00472"></a>00472     ok &amp;= UpdateEpsilon();
+<a name="l00473"></a>00473     ok &amp;= Refine();
+<a name="l00474"></a>00474     ReportAndAccumulateStats();
+<a name="l00475"></a>00475     DCHECK(!ok || EpsilonOptimal());
+<a name="l00476"></a>00476     DCHECK(!ok || AllMatched());
 <a name="l00477"></a>00477   }
-<a name="l00478"></a>00478   <span class="keywordflow">return</span> cost;
-<a name="l00479"></a>00479 }
-<a name="l00480"></a>00480 
-<a name="l00481"></a>00481 }  <span class="comment">// namespace operations_research</span>
+<a name="l00478"></a>00478   success_ = ok;
+<a name="l00479"></a>00479   VLOG(1) &lt;&lt; <span class="stringliteral">"Overall stats: "</span> &lt;&lt; total_stats_.StatsString();
+<a name="l00480"></a>00480   <span class="keywordflow">return</span> ok;
+<a name="l00481"></a>00481 }
+<a name="l00482"></a>00482 
+<a name="l00483"></a><a class="code" href="classoperations__research_1_1LinearSumAssignment.html#72ef84e228afbe2d50b79129962befb0">00483</a> <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> <a class="code" href="classoperations__research_1_1LinearSumAssignment.html#72ef84e228afbe2d50b79129962befb0" title="Returns the cost of the minimum-cost perfect matching.">LinearSumAssignment::GetCost</a>()<span class="keyword"> const </span>{
+<a name="l00484"></a>00484   <span class="comment">// It is illegal to call this method unless we successfully computed</span>
+<a name="l00485"></a>00485   <span class="comment">// an optimum assignment.</span>
+<a name="l00486"></a>00486   DCHECK(success_);
+<a name="l00487"></a>00487   <a class="code" href="namespaceoperations__research.html#a7950685633ee869aa9471b2ec5fbcfa">CostValue</a> cost = 0;
+<a name="l00488"></a>00488   <span class="keywordflow">for</span> (<a class="code" href="classoperations__research_1_1LinearSumAssignment_1_1BipartiteLeftNodeIterator.html">BipartiteLeftNodeIterator</a> node_it(*<span class="keyword">this</span>);
+<a name="l00489"></a>00489        node_it.Ok();
+<a name="l00490"></a>00490        node_it.Next()) {
+<a name="l00491"></a>00491     cost += <a class="code" href="classoperations__research_1_1LinearSumAssignment.html#af1c0a27720b7452985456fb5d926d66" title="Returns the cost of the assignment arc incident to the given node.">GetAssignmentCost</a>(node_it.Index());
+<a name="l00492"></a>00492   }
+<a name="l00493"></a>00493   <span class="keywordflow">return</span> cost;
+<a name="l00494"></a>00494 }
+<a name="l00495"></a>00495 
+<a name="l00496"></a>00496 }  <span class="comment">// namespace operations_research</span>
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -570,7 +585,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#115511 height=3></td>
+      <td colspan=2 bgcolor=#439154 height=3></td>
     </tr>
   </table>
 
