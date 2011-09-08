@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #439154
+      background-color: #371311
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#439154 height=3></td>
+      <td colspan=3 bgcolor=#371311 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
+          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#439154>
+            <td bgcolor=#371311>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -1135,7 +1135,7 @@
 <a name="l01052"></a>01052 };
 <a name="l01053"></a>01053 
 <a name="l01054"></a>01054 
-<a name="l01055"></a><a class="code" href="namespaceoperations__research.html#a7cc1c3b4f08e3479558b66642c7f18b">01055</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceoperations__research.html#a7cc1c3b4f08e3479558b66642c7f18b">HasCompactDomains</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span> * vars, <span class="keywordtype">int</span> arity) {
+<a name="l01055"></a><a class="code" href="namespaceoperations__research.html#82e4be918d34bfe3cacb7e1072451faa">01055</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceoperations__research.html#82e4be918d34bfe3cacb7e1072451faa">HasCompactDomains</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span> * vars, <span class="keywordtype">int</span> arity) {
 <a name="l01056"></a>01056   int64 sum_of_spans = 0LL;
 <a name="l01057"></a>01057   int64 sum_of_sizes = 0LL;
 <a name="l01058"></a>01058   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; arity; ++i) {
@@ -1152,7 +1152,7 @@
 <a name="l01069"></a>01069                                            <span class="keyword">const</span> int64* <span class="keyword">const</span> * tuples,
 <a name="l01070"></a>01070                                            <span class="keywordtype">int</span> tuple_count,
 <a name="l01071"></a>01071                                            <span class="keywordtype">int</span> arity) {
-<a name="l01072"></a>01072   <span class="keywordflow">if</span> (FLAGS_cp_use_compact_table &amp;&amp; <a class="code" href="namespaceoperations__research.html#a7cc1c3b4f08e3479558b66642c7f18b">HasCompactDomains</a>(vars, arity)) {
+<a name="l01072"></a>01072   <span class="keywordflow">if</span> (FLAGS_cp_use_compact_table &amp;&amp; <a class="code" href="namespaceoperations__research.html#82e4be918d34bfe3cacb7e1072451faa">HasCompactDomains</a>(vars, arity)) {
 <a name="l01073"></a>01073     <span class="keywordflow">if</span> (tuple_count &lt; kBitsInUint64 &amp;&amp; FLAGS_cp_use_small_table) {
 <a name="l01074"></a>01074       <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> SmallCompactPositiveTableConstraint(<span class="keyword">this</span>,
 <a name="l01075"></a>01075                                                               vars,
@@ -1177,7 +1177,7 @@
 <a name="l01094"></a><a class="code" href="classoperations__research_1_1Solver.html#35af818d0f0eb1a885fb6dbb35f1198b">01094</a> <a class="code" href="classoperations__research_1_1Constraint.html" title="A constraint is the main modeling object.">Constraint</a>* Solver::MakeAllowedAssignments(
 <a name="l01095"></a>01095     <span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; vars, <span class="keyword">const</span> std::vector&lt;std::vector&lt;int64&gt; &gt;&amp; tuples) {
 <a name="l01096"></a>01096   <span class="keywordflow">if</span> (FLAGS_cp_use_compact_table
-<a name="l01097"></a>01097       &amp;&amp; <a class="code" href="namespaceoperations__research.html#a7cc1c3b4f08e3479558b66642c7f18b">HasCompactDomains</a>(vars.data(), vars.size())) {
+<a name="l01097"></a>01097       &amp;&amp; <a class="code" href="namespaceoperations__research.html#82e4be918d34bfe3cacb7e1072451faa">HasCompactDomains</a>(vars.data(), vars.size())) {
 <a name="l01098"></a>01098     <span class="keywordflow">if</span> (tuples.size() &lt; kBitsInUint64 &amp;&amp; FLAGS_cp_use_small_table) {
 <a name="l01099"></a>01099       <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(
 <a name="l01100"></a>01100           <span class="keyword">new</span> SmallCompactPositiveTableConstraint(<span class="keyword">this</span>, vars, tuples));
@@ -1192,7 +1192,7 @@
 <a name="l01109"></a>01109                                            <span class="keyword">const</span> <span class="keywordtype">int</span>* <span class="keyword">const</span> * tuples,
 <a name="l01110"></a>01110                                            <span class="keywordtype">int</span> tuple_count,
 <a name="l01111"></a>01111                                            <span class="keywordtype">int</span> arity) {
-<a name="l01112"></a>01112   <span class="keywordflow">if</span> (FLAGS_cp_use_compact_table &amp;&amp; <a class="code" href="namespaceoperations__research.html#a7cc1c3b4f08e3479558b66642c7f18b">HasCompactDomains</a>(vars, arity)) {
+<a name="l01112"></a>01112   <span class="keywordflow">if</span> (FLAGS_cp_use_compact_table &amp;&amp; <a class="code" href="namespaceoperations__research.html#82e4be918d34bfe3cacb7e1072451faa">HasCompactDomains</a>(vars, arity)) {
 <a name="l01113"></a>01113     <span class="keywordflow">if</span> (tuple_count &lt; kBitsInUint64 &amp;&amp; FLAGS_cp_use_small_table) {
 <a name="l01114"></a>01114       <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> SmallCompactPositiveTableConstraint(<span class="keyword">this</span>,
 <a name="l01115"></a>01115                                                               vars,
@@ -1217,7 +1217,7 @@
 <a name="l01134"></a><a class="code" href="classoperations__research_1_1Solver.html#0cb9535a876b8825f270c8ff843e8552">01134</a> <a class="code" href="classoperations__research_1_1Constraint.html" title="A constraint is the main modeling object.">Constraint</a>* <a class="code" href="classoperations__research_1_1Solver.html#0bef6d735a9070e00742a8255c4da5d3" title="This method creates a constraint where the graph of the relation between the variables...">Solver::MakeAllowedAssignments</a>(
 <a name="l01135"></a>01135     <span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; vars, <span class="keyword">const</span> std::vector&lt;std::vector&lt;int&gt; &gt;&amp; tuples) {
 <a name="l01136"></a>01136   <span class="keywordflow">if</span> (FLAGS_cp_use_compact_table
-<a name="l01137"></a>01137       &amp;&amp; <a class="code" href="namespaceoperations__research.html#a7cc1c3b4f08e3479558b66642c7f18b">HasCompactDomains</a>(vars.data(), vars.size())) {
+<a name="l01137"></a>01137       &amp;&amp; <a class="code" href="namespaceoperations__research.html#82e4be918d34bfe3cacb7e1072451faa">HasCompactDomains</a>(vars.data(), vars.size())) {
 <a name="l01138"></a>01138     <span class="keywordflow">if</span> (tuples.size() &lt; kBitsInUint64 &amp;&amp; FLAGS_cp_use_small_table) {
 <a name="l01139"></a>01139       <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(
 <a name="l01140"></a>01140           <span class="keyword">new</span> SmallCompactPositiveTableConstraint(<span class="keyword">this</span>, vars, tuples));
@@ -1391,7 +1391,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#439154 height=3></td>
+      <td colspan=2 bgcolor=#371311 height=3></td>
     </tr>
   </table>
 

@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #439154
+      background-color: #371311
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#439154 height=3></td>
+      <td colspan=3 bgcolor=#371311 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#439154><b>Mon Sep  5 08:02:19 PDT 2011</b></font>
+          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#439154>
+            <td bgcolor=#371311>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/examples/index.html">examples</a>/
             </tt></b></font>
@@ -241,6 +241,8 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#a0f820c1e673b6461855daadded396b7">Run</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Main Method.  <a href="#a0f820c1e673b6461855daadded396b7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#cc406a5679440f7ac4c0d18481ee1900">CheckNumberOfSolutions</a> (int size, int num_solutions)</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#e075f50035e3244bdf973a0ff53d264c">NQueens</a> (int size)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#fecce1dacbfcb87a0bcbcbccc645ceff">ParseProblemLine</a> (const char *line, <a class="el" href="structoperations__research_1_1ParserState.html">ParserState</a> *state, StarGraph **graph)</td></tr>
@@ -254,9 +256,9 @@
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Parameters out of style-guide order because this function is used as a callback that varies the input line.  <a href="#873d7e9bacf009a6303caeccf0904271"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#360c446ab6b99c99069c34dba92b0b3b">ParseFileByLines</a> (const string &amp;filename, Callback1&lt; char * &gt; *line_parser)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">LinearSumAssignment *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#9874f88b30feff0e804ebc096cfa11b1">ParseDimacsAssignment</a> (const string &amp;filename, string *error_message)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">LinearSumAssignment *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#c3837c6612433eb3c13a6e605afe271c">ParseDimacsAssignment</a> (const string &amp;filename, string *error_message, StarGraph **graph_handle)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reads an assignment problem description from the given file in DIMACS format and returns a LinearSumAssignment object representing the problem description.  <a href="#9874f88b30feff0e804ebc096cfa11b1"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reads an assignment problem description from the given file in DIMACS format and returns a LinearSumAssignment object representing the problem description.  <a href="#c3837c6612433eb3c13a6e605afe271c"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#2994448ae44ee56797cd73d87714c3e8">WriteOrDie</a> (const char *buffer, size_t item_size, size_t buffer_length, FILE *fp)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#f8aa503c000db7cb61c7afb652c4270c">PrintDimacsAssignmentProblem</a> (const LinearSumAssignment &amp;assignment, const string &amp;output_filename)</td></tr>
@@ -476,6 +478,37 @@ Check that all pairwise differences are unique.
 <p>
 
 <p>Definition at line <a class="el" href="costas__array_8cc-source.html#l00080">80</a> of file <a class="el" href="costas__array_8cc-source.html">costas_array.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="cc406a5679440f7ac4c0d18481ee1900"></a><!-- doxytag: member="operations_research::CheckNumberOfSolutions" ref="cc406a5679440f7ac4c0d18481ee1900" args="(int size, int num_solutions)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::CheckNumberOfSolutions           </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>size</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>num_solutions</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="nqueens_8cc-source.html#l00175">175</a> of file <a class="el" href="nqueens_8cc-source.html">nqueens.cc</a>.</p>
 
 </div>
 </div><p>
@@ -871,7 +904,7 @@ Test on a 4x4 matrix. Example taken from <a href="http://www.ee.oulu.fi/~mpa/mat
 
 <p>
 
-<p>Definition at line <a class="el" href="nqueens_8cc-source.html#l00175">175</a> of file <a class="el" href="nqueens_8cc-source.html">nqueens.cc</a>.</p>
+<p>Definition at line <a class="el" href="nqueens_8cc-source.html#l00191">191</a> of file <a class="el" href="nqueens_8cc-source.html">nqueens.cc</a>.</p>
 
 </div>
 </div><p>
@@ -918,7 +951,7 @@ Test on a 4x4 matrix. Example taken from <a href="http://www.ee.oulu.fi/~mpa/mat
 
 </div>
 </div><p>
-<a class="anchor" name="9874f88b30feff0e804ebc096cfa11b1"></a><!-- doxytag: member="operations_research::ParseDimacsAssignment" ref="9874f88b30feff0e804ebc096cfa11b1" args="(const string &amp;filename, string *error_message)" -->
+<a class="anchor" name="c3837c6612433eb3c13a6e605afe271c"></a><!-- doxytag: member="operations_research::ParseDimacsAssignment" ref="c3837c6612433eb3c13a6e605afe271c" args="(const string &amp;filename, string *error_message, StarGraph **graph_handle)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -932,7 +965,13 @@ Test on a 4x4 matrix. Example taken from <a href="http://www.ee.oulu.fi/~mpa/mat
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">string *&nbsp;</td>
-          <td class="paramname"> <em>error_message</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>error_message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">StarGraph **&nbsp;</td>
+          <td class="paramname"> <em>graph_handle</em></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -946,8 +985,9 @@ Test on a 4x4 matrix. Example taken from <a href="http://www.ee.oulu.fi/~mpa/mat
 <p>
 Reads an assignment problem description from the given file in DIMACS format and returns a LinearSumAssignment object representing the problem description. 
 <p>
-For a description of the format, see <a href="http://lpsolve.sourceforge.net/5.5/DIMACS_asn.htm">http://lpsolve.sourceforge.net/5.5/DIMACS_asn.htm</a> 
-<p>Definition at line <a class="el" href="parse__dimacs__assignment_8cc-source.html#l00206">206</a> of file <a class="el" href="parse__dimacs__assignment_8cc-source.html">parse_dimacs_assignment.cc</a>.</p>
+For a description of the format, see <a href="http://lpsolve.sourceforge.net/5.5/DIMACS_asn.htm">http://lpsolve.sourceforge.net/5.5/DIMACS_asn.htm</a><p>
+Also returns an error message (empty if no error) and a handle on the underlying graph representation. The error_message pointer must not be NULL because we insist on returning an explanatory message in the case of error. The graph_handle pointer must not be NULL because unless we pass a non-const pointer to the graph representation back to the caller, the caller lacks a good way to free the underlying graph (which isn't owned by the LinearAssignment instance). 
+<p>Definition at line <a class="el" href="parse__dimacs__assignment_8cc-source.html#l00215">215</a> of file <a class="el" href="parse__dimacs__assignment_8cc-source.html">parse_dimacs_assignment.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1483,7 +1523,7 @@ Data and Data Generation.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#439154 height=3></td>
+      <td colspan=2 bgcolor=#371311 height=3></td>
     </tr>
   </table>
 

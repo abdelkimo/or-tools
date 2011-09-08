@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #439154
+      background-color: #371311
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#439154 height=3></td>
+      <td colspan=3 bgcolor=#371311 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
+          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#439154>
+            <td bgcolor=#371311>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/base/index.html">base</a>/
             </tt></b></font>
@@ -150,22 +150,23 @@
 <a name="l00068"></a>00068     <span class="keywordflow">if</span> (file_-&gt;<a class="code" href="classoperations__research_1_1File.html#2ae8ebf84e6cadcd5a5ee5db2e1cb0f2" title="Reads &amp;quot;size&amp;quot; bytes to buff from file, buff should be pre-allocated.">Read</a>(&amp;size, <span class="keyword">sizeof</span>(size)) != <span class="keyword">sizeof</span>(size)) {
 <a name="l00069"></a>00069       <span class="keywordflow">return</span> <span class="keyword">false</span>;
 <a name="l00070"></a>00070     }
-<a name="l00071"></a>00071     <a class="code" href="classoperations__research_1_1scoped__ptr.html" title="A scoped_ptr&amp;lt;T&amp;gt; is like a T*, except that the destructor of scoped_ptr&amp;lt;T&amp;gt;...">scoped_ptr&lt;char&gt;</a> buffer(<span class="keyword">new</span> <span class="keywordtype">char</span>[size + 1]);
-<a name="l00072"></a>00072     <span class="keywordflow">if</span> (file_-&gt;<a class="code" href="classoperations__research_1_1File.html#2ae8ebf84e6cadcd5a5ee5db2e1cb0f2" title="Reads &amp;quot;size&amp;quot; bytes to buff from file, buff should be pre-allocated.">Read</a>(buffer.<a class="code" href="classoperations__research_1_1scoped__ptr.html#10357852a92d4dcd3958c1433f786f23">get</a>(), size) != size) {
+<a name="l00071"></a>00071     <a class="code" href="classoperations__research_1_1scoped__array.html" title="scoped_array&amp;lt;C&amp;gt; is like scoped_ptr&amp;lt;C&amp;gt;, except that the caller must allocate...">scoped_array&lt;char&gt;</a> buffer(<span class="keyword">new</span> <span class="keywordtype">char</span>[size + 1]);
+<a name="l00072"></a>00072     <span class="keywordflow">if</span> (file_-&gt;<a class="code" href="classoperations__research_1_1File.html#2ae8ebf84e6cadcd5a5ee5db2e1cb0f2" title="Reads &amp;quot;size&amp;quot; bytes to buff from file, buff should be pre-allocated.">Read</a>(buffer.<a class="code" href="classoperations__research_1_1scoped__array.html#4ec92a6d767c1cb3c7f0ead9c32105a4" title="Get a pointer to the zeroth element of the current object.">get</a>(), size) != size) {
 <a name="l00073"></a>00073       <span class="keywordflow">return</span> <span class="keyword">false</span>;
 <a name="l00074"></a>00074     }
-<a name="l00075"></a>00075     proto-&gt;ParseFromString(buffer.<a class="code" href="classoperations__research_1_1scoped__ptr.html#10357852a92d4dcd3958c1433f786f23">get</a>());
-<a name="l00076"></a>00076     <span class="keywordflow">return</span> <span class="keyword">true</span>;
-<a name="l00077"></a>00077   }
-<a name="l00078"></a>00078   <span class="comment">// Closes the underlying file.</span>
-<a name="l00079"></a>00079   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1RecordReader.html#e6b52a66f9763c5f906b5424e415598d" title="Closes the underlying file.">Close</a>();
-<a name="l00080"></a>00080 
-<a name="l00081"></a>00081  <span class="keyword">private</span>:
-<a name="l00082"></a>00082   <a class="code" href="classoperations__research_1_1File.html">File</a>* <span class="keyword">const</span> file_;
-<a name="l00083"></a>00083 };
-<a name="l00084"></a>00084 }  <span class="comment">// namespace operations_research</span>
-<a name="l00085"></a>00085 
-<a name="l00086"></a>00086 <span class="preprocessor">#endif  // OR_TOOLS_BASE_RECORDIO_H_</span>
+<a name="l00075"></a>00075     buffer[size] = 0;
+<a name="l00076"></a>00076     proto-&gt;ParseFromArray(buffer.<a class="code" href="classoperations__research_1_1scoped__array.html#4ec92a6d767c1cb3c7f0ead9c32105a4" title="Get a pointer to the zeroth element of the current object.">get</a>(), size);
+<a name="l00077"></a>00077     <span class="keywordflow">return</span> <span class="keyword">true</span>;
+<a name="l00078"></a>00078   }
+<a name="l00079"></a>00079   <span class="comment">// Closes the underlying file.</span>
+<a name="l00080"></a>00080   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1RecordReader.html#e6b52a66f9763c5f906b5424e415598d" title="Closes the underlying file.">Close</a>();
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082  <span class="keyword">private</span>:
+<a name="l00083"></a>00083   <a class="code" href="classoperations__research_1_1File.html">File</a>* <span class="keyword">const</span> file_;
+<a name="l00084"></a>00084 };
+<a name="l00085"></a>00085 }  <span class="comment">// namespace operations_research</span>
+<a name="l00086"></a>00086 
+<a name="l00087"></a>00087 <span class="preprocessor">#endif  // OR_TOOLS_BASE_RECORDIO_H_</span>
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -174,7 +175,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#439154 height=3></td>
+      <td colspan=2 bgcolor=#371311 height=3></td>
     </tr>
   </table>
 

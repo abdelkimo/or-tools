@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #439154
+      background-color: #371311
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#439154 height=3></td>
+      <td colspan=3 bgcolor=#371311 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
+          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#439154>
+            <td bgcolor=#371311>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -541,35 +541,35 @@
 <a name="l00458"></a>00458 
 <a name="l00459"></a>00459 <span class="comment">// Comparison methods, used by the STL sort.</span>
 <a name="l00460"></a>00460 <span class="keyword">template</span>&lt;<span class="keyword">class</span> Task&gt;
-<a name="l00461"></a><a class="code" href="namespaceoperations__research.html#76b58b15c1d8bd518380d6d60e6c9965">00461</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceoperations__research.html#76b58b15c1d8bd518380d6d60e6c9965" title="Comparison methods, used by the STL sort.">StartMinLessThan</a>(<span class="keyword">const</span> IndexedTask&lt;Task&gt;* <span class="keyword">const</span> w1,
+<a name="l00461"></a><a class="code" href="namespaceoperations__research.html#e4d805b26336fea919a2298cde8611aa">00461</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceoperations__research.html#e4d805b26336fea919a2298cde8611aa" title="Comparison methods, used by the STL sort.">StartMinLessThan</a>(<span class="keyword">const</span> IndexedTask&lt;Task&gt;* <span class="keyword">const</span> w1,
 <a name="l00462"></a>00462                       <span class="keyword">const</span> IndexedTask&lt;Task&gt;* <span class="keyword">const</span> w2) {
 <a name="l00463"></a>00463   <span class="keywordflow">return</span> (w1-&gt;StartMin() &lt; w2-&gt;StartMin());
 <a name="l00464"></a>00464 }
 <a name="l00465"></a>00465 
 <a name="l00466"></a>00466 <span class="keyword">template</span>&lt;<span class="keyword">class</span> Task&gt;
-<a name="l00467"></a><a class="code" href="namespaceoperations__research.html#1c00c1fd7588a7db83cda013a6d9e2a5">00467</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceoperations__research.html#1c00c1fd7588a7db83cda013a6d9e2a5">EndMaxLessThan</a>(<span class="keyword">const</span> IndexedTask&lt;Task&gt;* <span class="keyword">const</span> w1,
+<a name="l00467"></a><a class="code" href="namespaceoperations__research.html#4e041445a6ea79381db472b74144b2b0">00467</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceoperations__research.html#4e041445a6ea79381db472b74144b2b0">EndMaxLessThan</a>(<span class="keyword">const</span> IndexedTask&lt;Task&gt;* <span class="keyword">const</span> w1,
 <a name="l00468"></a>00468                     <span class="keyword">const</span> IndexedTask&lt;Task&gt;* <span class="keyword">const</span> w2) {
 <a name="l00469"></a>00469   <span class="keywordflow">return</span> (w1-&gt;EndMax() &lt; w2-&gt;EndMax());
 <a name="l00470"></a>00470 }
 <a name="l00471"></a>00471 
 <a name="l00472"></a>00472 <span class="keyword">template</span>&lt;<span class="keyword">class</span> Task&gt;
-<a name="l00473"></a><a class="code" href="namespaceoperations__research.html#a212b886d802b9f299cf6e1cd92ec670">00473</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceoperations__research.html#a212b886d802b9f299cf6e1cd92ec670">StartMaxLessThan</a>(<span class="keyword">const</span> IndexedTask&lt;Task&gt;* <span class="keyword">const</span> w1,
+<a name="l00473"></a><a class="code" href="namespaceoperations__research.html#e333f8fe44a4dac4ca8c86e0bb6b20b5">00473</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceoperations__research.html#e333f8fe44a4dac4ca8c86e0bb6b20b5">StartMaxLessThan</a>(<span class="keyword">const</span> IndexedTask&lt;Task&gt;* <span class="keyword">const</span> w1,
 <a name="l00474"></a>00474                       <span class="keyword">const</span> IndexedTask&lt;Task&gt;* <span class="keyword">const</span> w2) {
 <a name="l00475"></a>00475   <span class="keywordflow">return</span> (w1-&gt;StartMax() &lt; w2-&gt;StartMax());
 <a name="l00476"></a>00476 }
 <a name="l00477"></a>00477 
 <a name="l00478"></a>00478 <span class="keyword">template</span>&lt;<span class="keyword">class</span> Task&gt;
-<a name="l00479"></a><a class="code" href="namespaceoperations__research.html#686dd3689961ad05e1436fbf2e726c7f">00479</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceoperations__research.html#686dd3689961ad05e1436fbf2e726c7f">EndMinLessThan</a>(<span class="keyword">const</span> IndexedTask&lt;Task&gt;* <span class="keyword">const</span> w1,
+<a name="l00479"></a><a class="code" href="namespaceoperations__research.html#99ae229498a00de77425ea0b8af9e8f1">00479</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceoperations__research.html#99ae229498a00de77425ea0b8af9e8f1">EndMinLessThan</a>(<span class="keyword">const</span> IndexedTask&lt;Task&gt;* <span class="keyword">const</span> w1,
 <a name="l00480"></a>00480                     <span class="keyword">const</span> IndexedTask&lt;Task&gt;* <span class="keyword">const</span> w2) {
 <a name="l00481"></a>00481   <span class="keywordflow">return</span> (w1-&gt;EndMin() &lt; w2-&gt;EndMin());
 <a name="l00482"></a>00482 }
 <a name="l00483"></a>00483 
 <a name="l00484"></a>00484 <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> Compare&gt;
-<a name="l00485"></a><a class="code" href="namespaceoperations__research.html#43be46424d0415574952add3cd435ab1">00485</a> <span class="keywordtype">void</span> <a class="code" href="namespaceoperations__research.html#43be46424d0415574952add3cd435ab1">Sort</a>(std::vector&lt;T&gt;* vector, Compare compare) {
+<a name="l00485"></a><a class="code" href="namespaceoperations__research.html#f6400b832c19f432de600b3bceaca4cf">00485</a> <span class="keywordtype">void</span> <a class="code" href="namespaceoperations__research.html#f6400b832c19f432de600b3bceaca4cf">Sort</a>(std::vector&lt;T&gt;* vector, Compare compare) {
 <a name="l00486"></a>00486   std::sort(vector-&gt;begin(), vector-&gt;end(), compare);
 <a name="l00487"></a>00487 }
 <a name="l00488"></a>00488 
-<a name="l00489"></a><a class="code" href="namespaceoperations__research.html#938d991bdd427f8900653a1df9b002ea">00489</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceoperations__research.html#938d991bdd427f8900653a1df9b002ea">TaskStartMinLessThan</a>(<span class="keyword">const</span> CumulativeTask* <span class="keyword">const</span> task1,
+<a name="l00489"></a><a class="code" href="namespaceoperations__research.html#dfd3d54e15bd386652d96603ac4ce0c7">00489</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceoperations__research.html#dfd3d54e15bd386652d96603ac4ce0c7">TaskStartMinLessThan</a>(<span class="keyword">const</span> CumulativeTask* <span class="keyword">const</span> task1,
 <a name="l00490"></a>00490                           <span class="keyword">const</span> CumulativeTask* <span class="keyword">const</span> task2) {
 <a name="l00491"></a>00491   <span class="keywordflow">return</span> (task1-&gt;interval()-&gt;StartMin() &lt; task2-&gt;interval()-&gt;StartMin());
 <a name="l00492"></a>00492 }
@@ -904,10 +904,10 @@
 <a name="l00821"></a>00821 
 <a name="l00822"></a>00822 <span class="keywordtype">bool</span> NotLast::Propagate() {
 <a name="l00823"></a>00823   <span class="comment">// ---- Init ----</span>
-<a name="l00824"></a>00824   <a class="code" href="namespaceoperations__research.html#43be46424d0415574952add3cd435ab1">Sort</a>(&amp;<a class="code" href="resource_8cc.html#63ed1993ccca4e27f9857a9e43087f03">by_start_max_</a>, StartMaxLessThan&lt;DisjunctiveTask&gt;);
-<a name="l00825"></a>00825   <a class="code" href="namespaceoperations__research.html#43be46424d0415574952add3cd435ab1">Sort</a>(&amp;<a class="code" href="resource_8cc.html#22c4aa6617f6dcda50d3921f643fac27" title="Cumulative tasks, ordered by non-decreasing end max.">by_end_max_</a>, EndMaxLessThan&lt;DisjunctiveTask&gt;);
+<a name="l00824"></a>00824   <a class="code" href="namespaceoperations__research.html#f6400b832c19f432de600b3bceaca4cf">Sort</a>(&amp;<a class="code" href="resource_8cc.html#63ed1993ccca4e27f9857a9e43087f03">by_start_max_</a>, StartMaxLessThan&lt;DisjunctiveTask&gt;);
+<a name="l00825"></a>00825   <a class="code" href="namespaceoperations__research.html#f6400b832c19f432de600b3bceaca4cf">Sort</a>(&amp;<a class="code" href="resource_8cc.html#22c4aa6617f6dcda50d3921f643fac27" title="Cumulative tasks, ordered by non-decreasing end max.">by_end_max_</a>, EndMaxLessThan&lt;DisjunctiveTask&gt;);
 <a name="l00826"></a>00826   <span class="comment">// Update start min positions</span>
-<a name="l00827"></a>00827   <a class="code" href="namespaceoperations__research.html#43be46424d0415574952add3cd435ab1">Sort</a>(&amp;<a class="code" href="resource_8cc.html#b07cb9e15defc48fd0f027a1073d0b2e" title="Cumulative tasks, ordered by non-decreasing start min.">by_start_min_</a>, StartMinLessThan&lt;DisjunctiveTask&gt;);
+<a name="l00827"></a>00827   <a class="code" href="namespaceoperations__research.html#f6400b832c19f432de600b3bceaca4cf">Sort</a>(&amp;<a class="code" href="resource_8cc.html#b07cb9e15defc48fd0f027a1073d0b2e" title="Cumulative tasks, ordered by non-decreasing start min.">by_start_min_</a>, StartMinLessThan&lt;DisjunctiveTask&gt;);
 <a name="l00828"></a>00828   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="alldiff__cst_8cc.html#6947fa5d6ba628dd62d59ffbad8b8d80">size_</a>; ++i) {
 <a name="l00829"></a>00829     <a class="code" href="resource_8cc.html#b07cb9e15defc48fd0f027a1073d0b2e" title="Cumulative tasks, ordered by non-decreasing start min.">by_start_min_</a>[i]-&gt;set_start_min_index(i);
 <a name="l00830"></a>00830   }
@@ -1030,7 +1030,7 @@
 <a name="l00947"></a>00947 }
 <a name="l00948"></a>00948 
 <a name="l00949"></a>00949 <span class="keywordtype">void</span> EdgeFinderAndDetectablePrecedences::UpdateEst() {
-<a name="l00950"></a>00950   <a class="code" href="namespaceoperations__research.html#43be46424d0415574952add3cd435ab1">Sort</a>(&amp;<a class="code" href="resource_8cc.html#b07cb9e15defc48fd0f027a1073d0b2e" title="Cumulative tasks, ordered by non-decreasing start min.">by_start_min_</a>, StartMinLessThan&lt;DisjunctiveTask&gt;);
+<a name="l00950"></a>00950   <a class="code" href="namespaceoperations__research.html#f6400b832c19f432de600b3bceaca4cf">Sort</a>(&amp;<a class="code" href="resource_8cc.html#b07cb9e15defc48fd0f027a1073d0b2e" title="Cumulative tasks, ordered by non-decreasing start min.">by_start_min_</a>, StartMinLessThan&lt;DisjunctiveTask&gt;);
 <a name="l00951"></a>00951   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size_; ++i) {
 <a name="l00952"></a>00952     <a class="code" href="resource_8cc.html#b07cb9e15defc48fd0f027a1073d0b2e" title="Cumulative tasks, ordered by non-decreasing start min.">by_start_min_</a>[i]-&gt;set_start_min_index(i);
 <a name="l00953"></a>00953   }
@@ -1039,7 +1039,7 @@
 <a name="l00956"></a>00956 <span class="keywordtype">void</span> EdgeFinderAndDetectablePrecedences::OverloadChecking() {
 <a name="l00957"></a>00957   <span class="comment">// Init</span>
 <a name="l00958"></a>00958   UpdateEst();
-<a name="l00959"></a>00959   <a class="code" href="namespaceoperations__research.html#43be46424d0415574952add3cd435ab1">Sort</a>(&amp;<a class="code" href="resource_8cc.html#22c4aa6617f6dcda50d3921f643fac27" title="Cumulative tasks, ordered by non-decreasing end max.">by_end_max_</a>, EndMaxLessThan&lt;DisjunctiveTask&gt;);
+<a name="l00959"></a>00959   <a class="code" href="namespaceoperations__research.html#f6400b832c19f432de600b3bceaca4cf">Sort</a>(&amp;<a class="code" href="resource_8cc.html#22c4aa6617f6dcda50d3921f643fac27" title="Cumulative tasks, ordered by non-decreasing end max.">by_end_max_</a>, EndMaxLessThan&lt;DisjunctiveTask&gt;);
 <a name="l00960"></a>00960   <a class="code" href="resource_8cc.html#0bd5707aac7836c5cf6acc411e8d16d5" title="All the following member variables are essentially used as local ones: no invariant...">theta_tree_</a>.Clear();
 <a name="l00961"></a>00961 
 <a name="l00962"></a>00962   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size_; ++i) {
@@ -1059,8 +1059,8 @@
 <a name="l00976"></a>00976   }
 <a name="l00977"></a>00977 
 <a name="l00978"></a>00978   <span class="comment">// Propagate in one direction</span>
-<a name="l00979"></a>00979   <a class="code" href="namespaceoperations__research.html#43be46424d0415574952add3cd435ab1">Sort</a>(&amp;<a class="code" href="resource_8cc.html#5286e81174033a54706d8ff74ee478c2" title="Cumulative tasks, ordered by non-decreasing end min.">by_end_min_</a>, EndMinLessThan&lt;DisjunctiveTask&gt;);
-<a name="l00980"></a>00980   <a class="code" href="namespaceoperations__research.html#43be46424d0415574952add3cd435ab1">Sort</a>(&amp;<a class="code" href="resource_8cc.html#63ed1993ccca4e27f9857a9e43087f03">by_start_max_</a>, StartMaxLessThan&lt;DisjunctiveTask&gt;);
+<a name="l00979"></a>00979   <a class="code" href="namespaceoperations__research.html#f6400b832c19f432de600b3bceaca4cf">Sort</a>(&amp;<a class="code" href="resource_8cc.html#5286e81174033a54706d8ff74ee478c2" title="Cumulative tasks, ordered by non-decreasing end min.">by_end_min_</a>, EndMinLessThan&lt;DisjunctiveTask&gt;);
+<a name="l00980"></a>00980   <a class="code" href="namespaceoperations__research.html#f6400b832c19f432de600b3bceaca4cf">Sort</a>(&amp;<a class="code" href="resource_8cc.html#63ed1993ccca4e27f9857a9e43087f03">by_start_max_</a>, StartMaxLessThan&lt;DisjunctiveTask&gt;);
 <a name="l00981"></a>00981   <a class="code" href="resource_8cc.html#0bd5707aac7836c5cf6acc411e8d16d5" title="All the following member variables are essentially used as local ones: no invariant...">theta_tree_</a>.Clear();
 <a name="l00982"></a>00982   <span class="keywordtype">int</span> j = 0;
 <a name="l00983"></a>00983   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size_; ++i) {
@@ -1110,7 +1110,7 @@
 <a name="l01027"></a>01027   }
 <a name="l01028"></a>01028 
 <a name="l01029"></a>01029   <span class="comment">// Push in one direction.</span>
-<a name="l01030"></a>01030   <a class="code" href="namespaceoperations__research.html#43be46424d0415574952add3cd435ab1">Sort</a>(&amp;<a class="code" href="resource_8cc.html#22c4aa6617f6dcda50d3921f643fac27" title="Cumulative tasks, ordered by non-decreasing end max.">by_end_max_</a>, EndMaxLessThan&lt;DisjunctiveTask&gt;);
+<a name="l01030"></a>01030   <a class="code" href="namespaceoperations__research.html#f6400b832c19f432de600b3bceaca4cf">Sort</a>(&amp;<a class="code" href="resource_8cc.html#22c4aa6617f6dcda50d3921f643fac27" title="Cumulative tasks, ordered by non-decreasing end max.">by_end_max_</a>, EndMaxLessThan&lt;DisjunctiveTask&gt;);
 <a name="l01031"></a>01031   <a class="code" href="resource_8cc.html#27d3bf892939e964a3e650ab1a8f822d" title="Cumulative theta-lamba tree.">lt_tree_</a>.Clear();
 <a name="l01032"></a>01032   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size_; ++i) {
 <a name="l01033"></a>01033     <a class="code" href="resource_8cc.html#27d3bf892939e964a3e650ab1a8f822d" title="Cumulative theta-lamba tree.">lt_tree_</a>.Insert(<a class="code" href="resource_8cc.html#b07cb9e15defc48fd0f027a1073d0b2e" title="Cumulative tasks, ordered by non-decreasing start min.">by_start_min_</a>[i]);
@@ -1224,7 +1224,7 @@
 <a name="l01141"></a>01141 
 <a name="l01142"></a>01142 <span class="keyword">namespace </span>{
 <a name="l01143"></a>01143 
-<a name="l01144"></a><a class="code" href="namespaceoperations__research.html#48388dc0f8bae0ff813cf2ce25ab254f">01144</a> CumulativeTask* <a class="code" href="namespaceoperations__research.html#48388dc0f8bae0ff813cf2ce25ab254f">MakeTask</a>(<a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* solver, <a class="code" href="classoperations__research_1_1IntervalVar.html" title="Interval Var.">IntervalVar</a>* interval, int64 demand) {
+<a name="l01144"></a><a class="code" href="namespaceoperations__research.html#06db4600e0012b1bcf9214e23e5957c0">01144</a> CumulativeTask* <a class="code" href="namespaceoperations__research.html#06db4600e0012b1bcf9214e23e5957c0">MakeTask</a>(<a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* solver, <a class="code" href="classoperations__research_1_1IntervalVar.html" title="Interval Var.">IntervalVar</a>* interval, int64 demand) {
 <a name="l01145"></a>01145   <span class="keywordflow">return</span> solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> CumulativeTask(interval, demand));
 <a name="l01146"></a>01146 }
 <a name="l01147"></a>01147 
@@ -1445,7 +1445,7 @@
 <a name="l01362"></a>01362 };
 <a name="l01363"></a>01363 
 <a name="l01364"></a>01364 <span class="comment">// Returns min(a * b, kint64max). a is positive.</span>
-<a name="l01365"></a><a class="code" href="namespaceoperations__research.html#cc55c1934db3cf183e4bf318fdb93b6f">01365</a> int64 <a class="code" href="namespaceoperations__research.html#cc55c1934db3cf183e4bf318fdb93b6f" title="Returns min(a * b, kint64max). a is positive.">SafeProduct</a>(int64 a, int64 b) {
+<a name="l01365"></a><a class="code" href="namespaceoperations__research.html#2c47a7506d9a97158ca539922f43f931">01365</a> int64 <a class="code" href="namespaceoperations__research.html#2c47a7506d9a97158ca539922f43f931" title="Returns min(a * b, kint64max). a is positive.">SafeProduct</a>(int64 a, int64 b) {
 <a name="l01366"></a>01366   DCHECK_GE(a, 0);
 <a name="l01367"></a>01367 
 <a name="l01368"></a>01368   <span class="keyword">const</span> <span class="keywordtype">bool</span> is_positive = b &gt;= 0;
@@ -1537,14 +1537,14 @@
 <a name="l01454"></a>01454     <span class="comment">// Clear the update stack</span>
 <a name="l01455"></a>01455     <a class="code" href="interval_8cc.html#1732cc9d39eb95d3bb54b7c06f8165a6">new_start_min_</a>.clear();
 <a name="l01456"></a>01456     <span class="comment">// Sort by start min.</span>
-<a name="l01457"></a>01457     <a class="code" href="namespaceoperations__research.html#43be46424d0415574952add3cd435ab1">Sort</a>(&amp;<a class="code" href="resource_8cc.html#b07cb9e15defc48fd0f027a1073d0b2e" title="Cumulative tasks, ordered by non-decreasing start min.">by_start_min_</a>, StartMinLessThan&lt;CumulativeTask&gt;);
+<a name="l01457"></a>01457     <a class="code" href="namespaceoperations__research.html#f6400b832c19f432de600b3bceaca4cf">Sort</a>(&amp;<a class="code" href="resource_8cc.html#b07cb9e15defc48fd0f027a1073d0b2e" title="Cumulative tasks, ordered by non-decreasing start min.">by_start_min_</a>, StartMinLessThan&lt;CumulativeTask&gt;);
 <a name="l01458"></a>01458     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size_; ++i) {
 <a name="l01459"></a>01459       <a class="code" href="resource_8cc.html#b07cb9e15defc48fd0f027a1073d0b2e" title="Cumulative tasks, ordered by non-decreasing start min.">by_start_min_</a>[i]-&gt;set_start_min_index(i);
 <a name="l01460"></a>01460     }
 <a name="l01461"></a>01461     <span class="comment">// Sort by end max.</span>
-<a name="l01462"></a>01462     <a class="code" href="namespaceoperations__research.html#43be46424d0415574952add3cd435ab1">Sort</a>(&amp;<a class="code" href="resource_8cc.html#22c4aa6617f6dcda50d3921f643fac27" title="Cumulative tasks, ordered by non-decreasing end max.">by_end_max_</a>, EndMaxLessThan&lt;CumulativeTask&gt;);
+<a name="l01462"></a>01462     <a class="code" href="namespaceoperations__research.html#f6400b832c19f432de600b3bceaca4cf">Sort</a>(&amp;<a class="code" href="resource_8cc.html#22c4aa6617f6dcda50d3921f643fac27" title="Cumulative tasks, ordered by non-decreasing end max.">by_end_max_</a>, EndMaxLessThan&lt;CumulativeTask&gt;);
 <a name="l01463"></a>01463     <span class="comment">// Sort by end min.</span>
-<a name="l01464"></a>01464     <a class="code" href="namespaceoperations__research.html#43be46424d0415574952add3cd435ab1">Sort</a>(&amp;<a class="code" href="resource_8cc.html#5286e81174033a54706d8ff74ee478c2" title="Cumulative tasks, ordered by non-decreasing end min.">by_end_min_</a>, EndMinLessThan&lt;CumulativeTask&gt;);
+<a name="l01464"></a>01464     <a class="code" href="namespaceoperations__research.html#f6400b832c19f432de600b3bceaca4cf">Sort</a>(&amp;<a class="code" href="resource_8cc.html#5286e81174033a54706d8ff74ee478c2" title="Cumulative tasks, ordered by non-decreasing end min.">by_end_min_</a>, EndMinLessThan&lt;CumulativeTask&gt;);
 <a name="l01465"></a>01465     <span class="comment">// Clear tree.</span>
 <a name="l01466"></a>01466     <a class="code" href="resource_8cc.html#27d3bf892939e964a3e650ab1a8f822d" title="Cumulative theta-lamba tree.">lt_tree_</a>.Clear();
 <a name="l01467"></a>01467     <span class="comment">// Clear updates</span>
@@ -1647,7 +1647,7 @@
 <a name="l01564"></a>01564       CumulativeIndexedTask* <span class="keyword">const</span> indexed_task = <a class="code" href="resource_8cc.html#22c4aa6617f6dcda50d3921f643fac27" title="Cumulative tasks, ordered by non-decreasing end max.">by_end_max_</a>[i];
 <a name="l01565"></a>01565       <a class="code" href="resource_8cc.html#27d3bf892939e964a3e650ab1a8f822d" title="Cumulative theta-lamba tree.">lt_tree_</a>.Insert(indexed_task);
 <a name="l01566"></a>01566       <span class="comment">// Maximum energetic end min without overload.</span>
-<a name="l01567"></a>01567       <span class="keyword">const</span> int64 max_feasible = <a class="code" href="namespaceoperations__research.html#cc55c1934db3cf183e4bf318fdb93b6f" title="Returns min(a * b, kint64max). a is positive.">SafeProduct</a>(<a class="code" href="resource_8cc.html#374593167ca4482ee084274e3e4617a1" title="Capacity of the cumulative resource.">capacity_</a>, indexed_task-&gt;EndMax());
+<a name="l01567"></a>01567       <span class="keyword">const</span> int64 max_feasible = <a class="code" href="namespaceoperations__research.html#2c47a7506d9a97158ca539922f43f931" title="Returns min(a * b, kint64max). a is positive.">SafeProduct</a>(<a class="code" href="resource_8cc.html#374593167ca4482ee084274e3e4617a1" title="Capacity of the cumulative resource.">capacity_</a>, indexed_task-&gt;EndMax());
 <a name="l01568"></a>01568       <span class="keywordflow">if</span> (<a class="code" href="resource_8cc.html#27d3bf892939e964a3e650ab1a8f822d" title="Cumulative theta-lamba tree.">lt_tree_</a>.energetic_end_min() &gt; max_feasible) {
 <a name="l01569"></a>01569         solver()-&gt;Fail();
 <a name="l01570"></a>01570       }
@@ -1661,7 +1661,7 @@
 <a name="l01578"></a>01578       <a class="code" href="resource_8cc.html#27d3bf892939e964a3e650ab1a8f822d" title="Cumulative theta-lamba tree.">lt_tree_</a>.Grey(<a class="code" href="resource_8cc.html#22c4aa6617f6dcda50d3921f643fac27" title="Cumulative tasks, ordered by non-decreasing end max.">by_end_max_</a>[j+1]);
 <a name="l01579"></a>01579       CumulativeIndexedTask* <span class="keyword">const</span> twj = <a class="code" href="resource_8cc.html#22c4aa6617f6dcda50d3921f643fac27" title="Cumulative tasks, ordered by non-decreasing end max.">by_end_max_</a>[j];
 <a name="l01580"></a>01580       <span class="comment">// We should have checked for overload earlier.</span>
-<a name="l01581"></a>01581       <span class="keyword">const</span> int64 max_feasible = <a class="code" href="namespaceoperations__research.html#cc55c1934db3cf183e4bf318fdb93b6f" title="Returns min(a * b, kint64max). a is positive.">SafeProduct</a>(<a class="code" href="resource_8cc.html#374593167ca4482ee084274e3e4617a1" title="Capacity of the cumulative resource.">capacity_</a>, twj-&gt;EndMax());
+<a name="l01581"></a>01581       <span class="keyword">const</span> int64 max_feasible = <a class="code" href="namespaceoperations__research.html#2c47a7506d9a97158ca539922f43f931" title="Returns min(a * b, kint64max). a is positive.">SafeProduct</a>(<a class="code" href="resource_8cc.html#374593167ca4482ee084274e3e4617a1" title="Capacity of the cumulative resource.">capacity_</a>, twj-&gt;EndMax());
 <a name="l01582"></a>01582       DCHECK_LE(<a class="code" href="resource_8cc.html#27d3bf892939e964a3e650ab1a8f822d" title="Cumulative theta-lamba tree.">lt_tree_</a>.energetic_end_min(), max_feasible);
 <a name="l01583"></a>01583       <span class="keywordflow">while</span> (<a class="code" href="resource_8cc.html#27d3bf892939e964a3e650ab1a8f822d" title="Cumulative theta-lamba tree.">lt_tree_</a>.energetic_end_min_opt() &gt; max_feasible) {
 <a name="l01584"></a>01584         <span class="keyword">const</span> <span class="keywordtype">int</span> i = <a class="code" href="resource_8cc.html#27d3bf892939e964a3e650ab1a8f822d" title="Cumulative theta-lamba tree.">lt_tree_</a>.argmax_energetic_end_min_opt();
@@ -1746,7 +1746,7 @@
 <a name="l01663"></a><a class="code" href="resource_8cc.html#73461c37822b6ebb75b54ba1a9ffb442">01663</a>   int64 <a class="code" href="resource_8cc.html#73461c37822b6ebb75b54ba1a9ffb442">delta</a>;
 <a name="l01664"></a>01664 };
 <a name="l01665"></a>01665 
-<a name="l01666"></a><a class="code" href="namespaceoperations__research.html#e722892a5f34c12e0f3977cda6f24d6b">01666</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceoperations__research.html#e722892a5f34c12e0f3977cda6f24d6b">TimeLessThan</a>(<span class="keyword">const</span> ProfileDelta&amp; delta1, <span class="keyword">const</span> ProfileDelta&amp; delta2) {
+<a name="l01666"></a><a class="code" href="namespaceoperations__research.html#2dc39885da45e3f5e7d2eb7f223641ba">01666</a> <span class="keywordtype">bool</span> <a class="code" href="namespaceoperations__research.html#2dc39885da45e3f5e7d2eb7f223641ba">TimeLessThan</a>(<span class="keyword">const</span> ProfileDelta&amp; delta1, <span class="keyword">const</span> ProfileDelta&amp; delta2) {
 <a name="l01667"></a>01667   <span class="keywordflow">return</span> delta1.time &lt; delta2.time;
 <a name="l01668"></a>01668 }
 <a name="l01669"></a>01669 
@@ -1815,7 +1815,7 @@
 <a name="l01732"></a>01732     <span class="comment">// Sort</span>
 <a name="l01733"></a>01733     std::sort(<a class="code" href="resource_8cc.html#140b28fbd1e0c8e81cca33fe613c4b90">profile_non_unique_time_</a>.begin(),
 <a name="l01734"></a>01734               <a class="code" href="resource_8cc.html#140b28fbd1e0c8e81cca33fe613c4b90">profile_non_unique_time_</a>.end(),
-<a name="l01735"></a>01735               <a class="code" href="namespaceoperations__research.html#e722892a5f34c12e0f3977cda6f24d6b">TimeLessThan</a>);
+<a name="l01735"></a>01735               <a class="code" href="namespaceoperations__research.html#2dc39885da45e3f5e7d2eb7f223641ba">TimeLessThan</a>);
 <a name="l01736"></a>01736     <span class="comment">// Build profile with unique times</span>
 <a name="l01737"></a>01737     int64 usage = 0;
 <a name="l01738"></a>01738     <a class="code" href="resource_8cc.html#102b7911abcee3a90e8a93f8b686d8f2">profile_unique_time_</a>.clear();
@@ -1838,7 +1838,7 @@
 <a name="l01755"></a>01755 
 <a name="l01756"></a>01756   <span class="comment">// Update the start min for all tasks. Runs in O(n^2) and Omega(n).</span>
 <a name="l01757"></a>01757   <span class="keywordtype">void</span> PushTasks() {
-<a name="l01758"></a>01758     <a class="code" href="namespaceoperations__research.html#43be46424d0415574952add3cd435ab1">Sort</a>(&amp;<a class="code" href="resource_8cc.html#b07cb9e15defc48fd0f027a1073d0b2e" title="Cumulative tasks, ordered by non-decreasing start min.">by_start_min_</a>, <a class="code" href="namespaceoperations__research.html#938d991bdd427f8900653a1df9b002ea">TaskStartMinLessThan</a>);
+<a name="l01758"></a>01758     <a class="code" href="namespaceoperations__research.html#f6400b832c19f432de600b3bceaca4cf">Sort</a>(&amp;<a class="code" href="resource_8cc.html#b07cb9e15defc48fd0f027a1073d0b2e" title="Cumulative tasks, ordered by non-decreasing start min.">by_start_min_</a>, <a class="code" href="namespaceoperations__research.html#dfd3d54e15bd386652d96603ac4ce0c7">TaskStartMinLessThan</a>);
 <a name="l01759"></a>01759     int64 usage = 0;
 <a name="l01760"></a>01760     <span class="keywordtype">int</span> profile_index = 0;
 <a name="l01761"></a>01761     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> task_index = 0 ; task_index &lt; NumTasks(); ++task_index) {
@@ -1944,7 +1944,7 @@
 <a name="l01861"></a>01861       <a class="code" href="alldiff__cst_8cc.html#426e67c66da70477f2f0abf85a4ec778">intervals_</a>(new IntervalVar*[size]),
 <a name="l01862"></a>01862       <a class="code" href="resource_8cc.html#279cd74c1c9f2e41632129dc6e49caa4" title="Array of demands for the visitor.">demands_</a>(new int64[size]) {
 <a name="l01863"></a>01863     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; ++i) {
-<a name="l01864"></a>01864       <a class="code" href="resource_8cc.html#4396a9efd9c38ddde2cf1d64d508a805" title="The tasks that share the cumulative resource.">tasks_</a>[i] = <a class="code" href="namespaceoperations__research.html#48388dc0f8bae0ff813cf2ce25ab254f">MakeTask</a>(solver(), intervals[i], demands[i]);
+<a name="l01864"></a>01864       <a class="code" href="resource_8cc.html#4396a9efd9c38ddde2cf1d64d508a805" title="The tasks that share the cumulative resource.">tasks_</a>[i] = <a class="code" href="namespaceoperations__research.html#06db4600e0012b1bcf9214e23e5957c0">MakeTask</a>(solver(), intervals[i], demands[i]);
 <a name="l01865"></a>01865       <a class="code" href="alldiff__cst_8cc.html#426e67c66da70477f2f0abf85a4ec778">intervals_</a>[i] = intervals[i];
 <a name="l01866"></a>01866       <a class="code" href="resource_8cc.html#279cd74c1c9f2e41632129dc6e49caa4" title="Array of demands for the visitor.">demands_</a>[i] = demands[i];
 <a name="l01867"></a>01867     }
@@ -1963,7 +1963,7 @@
 <a name="l01880"></a>01880       <a class="code" href="alldiff__cst_8cc.html#426e67c66da70477f2f0abf85a4ec778">intervals_</a>(new IntervalVar*[size]),
 <a name="l01881"></a>01881       <a class="code" href="resource_8cc.html#279cd74c1c9f2e41632129dc6e49caa4" title="Array of demands for the visitor.">demands_</a>(new int64[size]) {
 <a name="l01882"></a>01882     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; ++i) {
-<a name="l01883"></a>01883       <a class="code" href="resource_8cc.html#4396a9efd9c38ddde2cf1d64d508a805" title="The tasks that share the cumulative resource.">tasks_</a>[i] = <a class="code" href="namespaceoperations__research.html#48388dc0f8bae0ff813cf2ce25ab254f">MakeTask</a>(solver(), intervals[i], demands[i]);
+<a name="l01883"></a>01883       <a class="code" href="resource_8cc.html#4396a9efd9c38ddde2cf1d64d508a805" title="The tasks that share the cumulative resource.">tasks_</a>[i] = <a class="code" href="namespaceoperations__research.html#06db4600e0012b1bcf9214e23e5957c0">MakeTask</a>(solver(), intervals[i], demands[i]);
 <a name="l01884"></a>01884       <a class="code" href="alldiff__cst_8cc.html#426e67c66da70477f2f0abf85a4ec778">intervals_</a>[i] = intervals[i];
 <a name="l01885"></a>01885       <a class="code" href="resource_8cc.html#279cd74c1c9f2e41632129dc6e49caa4" title="Array of demands for the visitor.">demands_</a>[i] = demands[i];
 <a name="l01886"></a>01886     }
@@ -2189,7 +2189,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#439154 height=3></td>
+      <td colspan=2 bgcolor=#371311 height=3></td>
     </tr>
   </table>
 

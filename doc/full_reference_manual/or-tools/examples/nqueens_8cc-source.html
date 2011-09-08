@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #439154
+      background-color: #371311
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#439154 height=3></td>
+      <td colspan=3 bgcolor=#371311 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#439154><b>Mon Sep  5 08:02:19 PDT 2011</b></font>
+          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#439154>
+            <td bgcolor=#371311>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/examples/index.html">examples</a>/
             </tt></b></font>
@@ -255,103 +255,107 @@
 <a name="l00172"></a>00172   }
 <a name="l00173"></a>00173 };
 <a name="l00174"></a>00174 
-<a name="l00175"></a><a class="code" href="namespaceoperations__research.html#e075f50035e3244bdf973a0ff53d264c">00175</a> <span class="keywordtype">void</span> <a class="code" href="namespaceoperations__research.html#e075f50035e3244bdf973a0ff53d264c">NQueens</a>(<span class="keywordtype">int</span> size) {
-<a name="l00176"></a>00176   CHECK_GE(size, 1);
-<a name="l00177"></a>00177   Solver s(<span class="stringliteral">"nqueens"</span>);
-<a name="l00178"></a>00178 
-<a name="l00179"></a>00179   <span class="comment">// model</span>
-<a name="l00180"></a>00180   std::vector&lt;IntVar*&gt; queens;
-<a name="l00181"></a>00181   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; ++i) {
-<a name="l00182"></a>00182     queens.push_back(s.MakeIntVar(0, size - 1, StringPrintf(<span class="stringliteral">"queen%04d"</span>, i)));
-<a name="l00183"></a>00183   }
-<a name="l00184"></a>00184   s.AddConstraint(s.MakeAllDifferent(queens, FLAGS_use_range));
-<a name="l00185"></a>00185 
-<a name="l00186"></a>00186   std::vector&lt;IntVar*&gt; vars(size);
-<a name="l00187"></a>00187   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; ++i) {
-<a name="l00188"></a>00188     vars[i] = s.MakeSum(queens[i], i)-&gt;Var();
-<a name="l00189"></a>00189   }
-<a name="l00190"></a>00190   s.AddConstraint(s.MakeAllDifferent(vars, FLAGS_use_range));
-<a name="l00191"></a>00191   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; ++i) {
-<a name="l00192"></a>00192     vars[i] = s.MakeSum(queens[i], -i)-&gt;Var();
-<a name="l00193"></a>00193   }
-<a name="l00194"></a>00194   s.AddConstraint(s.MakeAllDifferent(vars, FLAGS_use_range));
-<a name="l00195"></a>00195 
-<a name="l00196"></a>00196   SolutionCollector* <span class="keyword">const</span> solution_counter = s.MakeAllSolutionCollector(NULL);
-<a name="l00197"></a>00197   SolutionCollector* <span class="keyword">const</span> collector = s.MakeFirstSolutionCollector();
-<a name="l00198"></a>00198   collector-&gt;Add(queens);
-<a name="l00199"></a>00199   std::vector&lt;SearchMonitor*&gt; monitors;
-<a name="l00200"></a>00200   monitors.push_back(solution_counter);
-<a name="l00201"></a>00201   monitors.push_back(collector);
-<a name="l00202"></a>00202   <a class="code" href="classDecisionBuilder.html">DecisionBuilder</a>* <span class="keyword">const</span> db = s.MakePhase(queens,
-<a name="l00203"></a>00203                                           Solver::CHOOSE_FIRST_UNBOUND,
-<a name="l00204"></a>00204                                           Solver::ASSIGN_MIN_VALUE);
-<a name="l00205"></a>00205   <span class="keywordflow">if</span> (FLAGS_use_symmetry) {
-<a name="l00206"></a>00206     std::vector&lt;SymmetryBreaker*&gt; breakers;
-<a name="l00207"></a>00207     <a class="code" href="classoperations__research_1_1NQueenSymmetry.html">NQueenSymmetry</a>* <span class="keyword">const</span> sx = s.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1SX.html" title="Symmetry vertical axis.">SX</a>(&amp;s, queens));
-<a name="l00208"></a>00208     breakers.push_back(sx);
-<a name="l00209"></a>00209     <a class="code" href="classoperations__research_1_1NQueenSymmetry.html">NQueenSymmetry</a>* <span class="keyword">const</span> sy = s.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1SY.html" title="Symmetry horizontal axis.">SY</a>(&amp;s, queens));
-<a name="l00210"></a>00210     breakers.push_back(sy);
-<a name="l00211"></a>00211     <a class="code" href="classoperations__research_1_1NQueenSymmetry.html">NQueenSymmetry</a>* <span class="keyword">const</span> sd1 = s.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1SD1.html" title="Symmetry first diagonal axis.">SD1</a>(&amp;s, queens));
-<a name="l00212"></a>00212     breakers.push_back(sd1);
-<a name="l00213"></a>00213     <a class="code" href="classoperations__research_1_1NQueenSymmetry.html">NQueenSymmetry</a>* <span class="keyword">const</span> sd2 = s.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1SD2.html" title="Symmetry second diagonal axis.">SD2</a>(&amp;s, queens));
-<a name="l00214"></a>00214     breakers.push_back(sd2);
-<a name="l00215"></a>00215     <a class="code" href="classoperations__research_1_1NQueenSymmetry.html">NQueenSymmetry</a>* <span class="keyword">const</span> r90 = s.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1R90.html" title="Rotate 1/4 turn.">R90</a>(&amp;s, queens));
-<a name="l00216"></a>00216     breakers.push_back(r90);
-<a name="l00217"></a>00217     <a class="code" href="classoperations__research_1_1NQueenSymmetry.html">NQueenSymmetry</a>* <span class="keyword">const</span> r180 = s.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1R180.html" title="Rotate 1/2 turn.">R180</a>(&amp;s, queens));
-<a name="l00218"></a>00218     breakers.push_back(r180);
-<a name="l00219"></a>00219     <a class="code" href="classoperations__research_1_1NQueenSymmetry.html">NQueenSymmetry</a>* <span class="keyword">const</span> r270 = s.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1R270.html" title="Rotate 3/4 turn.">R270</a>(&amp;s, queens));
-<a name="l00220"></a>00220     breakers.push_back(r270);
-<a name="l00221"></a>00221     SearchMonitor* <span class="keyword">const</span> symmetry_manager = s.MakeSymmetryManager(breakers);
-<a name="l00222"></a>00222     monitors.push_back(symmetry_manager);
-<a name="l00223"></a>00223   }
-<a name="l00224"></a>00224 
-<a name="l00225"></a>00225   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> loop = 0; loop &lt; FLAGS_nb_loops; ++loop) {
-<a name="l00226"></a>00226     s.Solve(db, monitors);  <span class="comment">// go!</span>
-<a name="l00227"></a>00227   }
-<a name="l00228"></a>00228 
-<a name="l00229"></a>00229   <span class="keyword">const</span> <span class="keywordtype">int</span> num_solutions = solution_counter-&gt;solution_count();
-<a name="l00230"></a>00230   <span class="keywordflow">if</span> (num_solutions &gt; 0 &amp;&amp; size &lt; <a class="code" href="golomb_8cc.html#29c038c789424e67403d8b1a96519c4e">kKnownSolutions</a>) {
-<a name="l00231"></a>00231     <span class="keywordtype">int</span> print_max = FLAGS_print_all ? num_solutions : FLAGS_print ? 1 : 0;
-<a name="l00232"></a>00232     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> n = 0; n &lt; print_max; ++n) {
-<a name="l00233"></a>00233       printf(<span class="stringliteral">"--- solution #%d\n"</span>, n);
-<a name="l00234"></a>00234       <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; ++i) {
-<a name="l00235"></a>00235         <span class="keyword">const</span> <span class="keywordtype">int</span> pos = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(collector-&gt;Value(n, queens[i]));
-<a name="l00236"></a>00236         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k = 0; k &lt; pos; ++k) printf(<span class="stringliteral">" . "</span>);
-<a name="l00237"></a>00237         printf(<span class="stringliteral">"%2d "</span>, i);
-<a name="l00238"></a>00238         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k = pos + 1; k &lt; size; ++k) printf(<span class="stringliteral">" . "</span>);
-<a name="l00239"></a>00239         printf(<span class="stringliteral">"\n"</span>);
-<a name="l00240"></a>00240       }
-<a name="l00241"></a>00241     }
-<a name="l00242"></a>00242   }
-<a name="l00243"></a>00243   printf(<span class="stringliteral">"========= number of solutions:%d\n"</span>, num_solutions);
-<a name="l00244"></a>00244   printf(<span class="stringliteral">"          number of failures: %lld\n"</span>, s.failures());
-<a name="l00245"></a>00245   <span class="keywordflow">if</span> (FLAGS_use_symmetry) {
-<a name="l00246"></a>00246     <span class="keywordflow">if</span> (size - 1 &lt; <a class="code" href="nqueens_8cc.html#74f7f9a253b8f671c3d800994ffeacfa">kKnownUniqueSolutions</a>) {
-<a name="l00247"></a>00247       CHECK_EQ(num_solutions, <a class="code" href="nqueens_8cc.html#fce630a5bad3b04d229b64190c3d5c93">kNumUniqueSolutions</a>[size - 1] * FLAGS_nb_loops);
-<a name="l00248"></a>00248     } <span class="keywordflow">else</span> {
-<a name="l00249"></a>00249       CHECK_GT(num_solutions, 0);
-<a name="l00250"></a>00250     }
-<a name="l00251"></a>00251   } <span class="keywordflow">else</span> {
-<a name="l00252"></a>00252     <span class="keywordflow">if</span> (size - 1 &lt; <a class="code" href="golomb_8cc.html#29c038c789424e67403d8b1a96519c4e">kKnownSolutions</a>) {
-<a name="l00253"></a>00253       CHECK_EQ(num_solutions, <a class="code" href="nqueens_8cc.html#976bf2e29afbd3deb1f4c6fac8d53fcb">kNumSolutions</a>[size - 1] * FLAGS_nb_loops);
-<a name="l00254"></a>00254     } <span class="keywordflow">else</span> {
-<a name="l00255"></a>00255       CHECK_GT(num_solutions, 0);
-<a name="l00256"></a>00256     }
-<a name="l00257"></a>00257   }
-<a name="l00258"></a>00258 }
-<a name="l00259"></a>00259 }   <span class="comment">// namespace operations_research</span>
-<a name="l00260"></a>00260 
-<a name="l00261"></a><a class="code" href="nqueens_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00261</a> <span class="keywordtype">int</span> <a class="code" href="costas__array_8cc.html#3c04138a5bfe5d72780bb7e82a18e627" title="namespace operations_research">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {
-<a name="l00262"></a>00262   google::ParseCommandLineFlags(&amp;argc, &amp;argv, <span class="keyword">true</span>);
-<a name="l00263"></a>00263   <span class="keywordflow">if</span> (FLAGS_size != 0) {
-<a name="l00264"></a>00264     <a class="code" href="namespaceoperations__research.html#e075f50035e3244bdf973a0ff53d264c">operations_research::NQueens</a>(FLAGS_size);
-<a name="l00265"></a>00265   } <span class="keywordflow">else</span> {
-<a name="l00266"></a>00266     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> n = 1; n &lt; 12; ++n) {
-<a name="l00267"></a>00267       <a class="code" href="namespaceoperations__research.html#e075f50035e3244bdf973a0ff53d264c">operations_research::NQueens</a>(n);
-<a name="l00268"></a>00268     }
-<a name="l00269"></a>00269   }
-<a name="l00270"></a>00270   <span class="keywordflow">return</span> 0;
-<a name="l00271"></a>00271 }
+<a name="l00175"></a><a class="code" href="namespaceoperations__research.html#cc406a5679440f7ac4c0d18481ee1900">00175</a> <span class="keywordtype">void</span> <a class="code" href="namespaceoperations__research.html#cc406a5679440f7ac4c0d18481ee1900">CheckNumberOfSolutions</a>(<span class="keywordtype">int</span> size, <span class="keywordtype">int</span> num_solutions) {
+<a name="l00176"></a>00176   <span class="keywordflow">if</span> (FLAGS_use_symmetry) {
+<a name="l00177"></a>00177     <span class="keywordflow">if</span> (size - 1 &lt; <a class="code" href="nqueens_8cc.html#74f7f9a253b8f671c3d800994ffeacfa">kKnownUniqueSolutions</a>) {
+<a name="l00178"></a>00178       CHECK_EQ(num_solutions, <a class="code" href="nqueens_8cc.html#fce630a5bad3b04d229b64190c3d5c93">kNumUniqueSolutions</a>[size - 1]);
+<a name="l00179"></a>00179     } <span class="keywordflow">else</span> {
+<a name="l00180"></a>00180       CHECK_GT(num_solutions, 0);
+<a name="l00181"></a>00181     }
+<a name="l00182"></a>00182   } <span class="keywordflow">else</span> {
+<a name="l00183"></a>00183     <span class="keywordflow">if</span> (size - 1 &lt; <a class="code" href="golomb_8cc.html#29c038c789424e67403d8b1a96519c4e">kKnownSolutions</a>) {
+<a name="l00184"></a>00184       CHECK_EQ(num_solutions, <a class="code" href="nqueens_8cc.html#976bf2e29afbd3deb1f4c6fac8d53fcb">kNumSolutions</a>[size - 1]);
+<a name="l00185"></a>00185     } <span class="keywordflow">else</span> {
+<a name="l00186"></a>00186       CHECK_GT(num_solutions, 0);
+<a name="l00187"></a>00187     }
+<a name="l00188"></a>00188   }
+<a name="l00189"></a>00189 }
+<a name="l00190"></a>00190 
+<a name="l00191"></a><a class="code" href="namespaceoperations__research.html#e075f50035e3244bdf973a0ff53d264c">00191</a> <span class="keywordtype">void</span> <a class="code" href="namespaceoperations__research.html#e075f50035e3244bdf973a0ff53d264c">NQueens</a>(<span class="keywordtype">int</span> size) {
+<a name="l00192"></a>00192   CHECK_GE(size, 1);
+<a name="l00193"></a>00193   Solver s(<span class="stringliteral">"nqueens"</span>);
+<a name="l00194"></a>00194 
+<a name="l00195"></a>00195   <span class="comment">// model</span>
+<a name="l00196"></a>00196   std::vector&lt;IntVar*&gt; queens;
+<a name="l00197"></a>00197   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; ++i) {
+<a name="l00198"></a>00198     queens.push_back(s.MakeIntVar(0, size - 1, StringPrintf(<span class="stringliteral">"queen%04d"</span>, i)));
+<a name="l00199"></a>00199   }
+<a name="l00200"></a>00200   s.AddConstraint(s.MakeAllDifferent(queens, FLAGS_use_range));
+<a name="l00201"></a>00201 
+<a name="l00202"></a>00202   std::vector&lt;IntVar*&gt; vars(size);
+<a name="l00203"></a>00203   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; ++i) {
+<a name="l00204"></a>00204     vars[i] = s.MakeSum(queens[i], i)-&gt;Var();
+<a name="l00205"></a>00205   }
+<a name="l00206"></a>00206   s.AddConstraint(s.MakeAllDifferent(vars, FLAGS_use_range));
+<a name="l00207"></a>00207   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; ++i) {
+<a name="l00208"></a>00208     vars[i] = s.MakeSum(queens[i], -i)-&gt;Var();
+<a name="l00209"></a>00209   }
+<a name="l00210"></a>00210   s.AddConstraint(s.MakeAllDifferent(vars, FLAGS_use_range));
+<a name="l00211"></a>00211 
+<a name="l00212"></a>00212   SolutionCollector* <span class="keyword">const</span> solution_counter = s.MakeAllSolutionCollector(NULL);
+<a name="l00213"></a>00213   SolutionCollector* <span class="keyword">const</span> collector = s.MakeFirstSolutionCollector();
+<a name="l00214"></a>00214   collector-&gt;Add(queens);
+<a name="l00215"></a>00215   std::vector&lt;SearchMonitor*&gt; monitors;
+<a name="l00216"></a>00216   monitors.push_back(solution_counter);
+<a name="l00217"></a>00217   monitors.push_back(collector);
+<a name="l00218"></a>00218   <a class="code" href="classDecisionBuilder.html">DecisionBuilder</a>* <span class="keyword">const</span> db = s.MakePhase(queens,
+<a name="l00219"></a>00219                                           Solver::CHOOSE_FIRST_UNBOUND,
+<a name="l00220"></a>00220                                           Solver::ASSIGN_MIN_VALUE);
+<a name="l00221"></a>00221   <span class="keywordflow">if</span> (FLAGS_use_symmetry) {
+<a name="l00222"></a>00222     std::vector&lt;SymmetryBreaker*&gt; breakers;
+<a name="l00223"></a>00223     <a class="code" href="classoperations__research_1_1NQueenSymmetry.html">NQueenSymmetry</a>* <span class="keyword">const</span> sx = s.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1SX.html" title="Symmetry vertical axis.">SX</a>(&amp;s, queens));
+<a name="l00224"></a>00224     breakers.push_back(sx);
+<a name="l00225"></a>00225     <a class="code" href="classoperations__research_1_1NQueenSymmetry.html">NQueenSymmetry</a>* <span class="keyword">const</span> sy = s.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1SY.html" title="Symmetry horizontal axis.">SY</a>(&amp;s, queens));
+<a name="l00226"></a>00226     breakers.push_back(sy);
+<a name="l00227"></a>00227     <a class="code" href="classoperations__research_1_1NQueenSymmetry.html">NQueenSymmetry</a>* <span class="keyword">const</span> sd1 = s.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1SD1.html" title="Symmetry first diagonal axis.">SD1</a>(&amp;s, queens));
+<a name="l00228"></a>00228     breakers.push_back(sd1);
+<a name="l00229"></a>00229     <a class="code" href="classoperations__research_1_1NQueenSymmetry.html">NQueenSymmetry</a>* <span class="keyword">const</span> sd2 = s.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1SD2.html" title="Symmetry second diagonal axis.">SD2</a>(&amp;s, queens));
+<a name="l00230"></a>00230     breakers.push_back(sd2);
+<a name="l00231"></a>00231     <a class="code" href="classoperations__research_1_1NQueenSymmetry.html">NQueenSymmetry</a>* <span class="keyword">const</span> r90 = s.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1R90.html" title="Rotate 1/4 turn.">R90</a>(&amp;s, queens));
+<a name="l00232"></a>00232     breakers.push_back(r90);
+<a name="l00233"></a>00233     <a class="code" href="classoperations__research_1_1NQueenSymmetry.html">NQueenSymmetry</a>* <span class="keyword">const</span> r180 = s.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1R180.html" title="Rotate 1/2 turn.">R180</a>(&amp;s, queens));
+<a name="l00234"></a>00234     breakers.push_back(r180);
+<a name="l00235"></a>00235     <a class="code" href="classoperations__research_1_1NQueenSymmetry.html">NQueenSymmetry</a>* <span class="keyword">const</span> r270 = s.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1R270.html" title="Rotate 3/4 turn.">R270</a>(&amp;s, queens));
+<a name="l00236"></a>00236     breakers.push_back(r270);
+<a name="l00237"></a>00237     SearchMonitor* <span class="keyword">const</span> symmetry_manager = s.MakeSymmetryManager(breakers);
+<a name="l00238"></a>00238     monitors.push_back(symmetry_manager);
+<a name="l00239"></a>00239   }
+<a name="l00240"></a>00240 
+<a name="l00241"></a>00241   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> loop = 0; loop &lt; FLAGS_nb_loops; ++loop) {
+<a name="l00242"></a>00242     s.Solve(db, monitors);  <span class="comment">// go!</span>
+<a name="l00243"></a>00243     <a class="code" href="namespaceoperations__research.html#cc406a5679440f7ac4c0d18481ee1900">CheckNumberOfSolutions</a>(size, solution_counter-&gt;solution_count());
+<a name="l00244"></a>00244   }
+<a name="l00245"></a>00245 
+<a name="l00246"></a>00246   <span class="keyword">const</span> <span class="keywordtype">int</span> num_solutions = solution_counter-&gt;solution_count();
+<a name="l00247"></a>00247   <span class="keywordflow">if</span> (num_solutions &gt; 0 &amp;&amp; size &lt; <a class="code" href="golomb_8cc.html#29c038c789424e67403d8b1a96519c4e">kKnownSolutions</a>) {
+<a name="l00248"></a>00248     <span class="keywordtype">int</span> print_max = FLAGS_print_all ? num_solutions : FLAGS_print ? 1 : 0;
+<a name="l00249"></a>00249     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> n = 0; n &lt; print_max; ++n) {
+<a name="l00250"></a>00250       printf(<span class="stringliteral">"--- solution #%d\n"</span>, n);
+<a name="l00251"></a>00251       <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; size; ++i) {
+<a name="l00252"></a>00252         <span class="keyword">const</span> <span class="keywordtype">int</span> pos = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(collector-&gt;Value(n, queens[i]));
+<a name="l00253"></a>00253         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k = 0; k &lt; pos; ++k) printf(<span class="stringliteral">" . "</span>);
+<a name="l00254"></a>00254         printf(<span class="stringliteral">"%2d "</span>, i);
+<a name="l00255"></a>00255         <span class="keywordflow">for</span> (<span class="keywordtype">int</span> k = pos + 1; k &lt; size; ++k) printf(<span class="stringliteral">" . "</span>);
+<a name="l00256"></a>00256         printf(<span class="stringliteral">"\n"</span>);
+<a name="l00257"></a>00257       }
+<a name="l00258"></a>00258     }
+<a name="l00259"></a>00259   }
+<a name="l00260"></a>00260   printf(<span class="stringliteral">"========= number of solutions:%d\n"</span>, num_solutions);
+<a name="l00261"></a>00261   printf(<span class="stringliteral">"          number of failures: %lld\n"</span>, s.failures());
+<a name="l00262"></a>00262 }
+<a name="l00263"></a>00263 }   <span class="comment">// namespace operations_research</span>
+<a name="l00264"></a>00264 
+<a name="l00265"></a><a class="code" href="nqueens_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00265</a> <span class="keywordtype">int</span> <a class="code" href="costas__array_8cc.html#3c04138a5bfe5d72780bb7e82a18e627" title="namespace operations_research">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {
+<a name="l00266"></a>00266   google::ParseCommandLineFlags(&amp;argc, &amp;argv, <span class="keyword">true</span>);
+<a name="l00267"></a>00267   <span class="keywordflow">if</span> (FLAGS_size != 0) {
+<a name="l00268"></a>00268     <a class="code" href="namespaceoperations__research.html#e075f50035e3244bdf973a0ff53d264c">operations_research::NQueens</a>(FLAGS_size);
+<a name="l00269"></a>00269   } <span class="keywordflow">else</span> {
+<a name="l00270"></a>00270     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> n = 1; n &lt; 12; ++n) {
+<a name="l00271"></a>00271       <a class="code" href="namespaceoperations__research.html#e075f50035e3244bdf973a0ff53d264c">operations_research::NQueens</a>(n);
+<a name="l00272"></a>00272     }
+<a name="l00273"></a>00273   }
+<a name="l00274"></a>00274   <span class="keywordflow">return</span> 0;
+<a name="l00275"></a>00275 }
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -360,7 +364,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#439154 height=3></td>
+      <td colspan=2 bgcolor=#371311 height=3></td>
     </tr>
   </table>
 

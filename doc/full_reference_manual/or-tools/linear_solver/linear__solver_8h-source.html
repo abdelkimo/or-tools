@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #439154
+      background-color: #371311
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#439154 height=3></td>
+      <td colspan=3 bgcolor=#371311 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
+          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#439154>
+            <td bgcolor=#371311>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/linear_solver/index.html">linear_solver</a>/
             </tt></b></font>
@@ -619,298 +619,330 @@
 <a name="l00537"></a>00537 
 <a name="l00538"></a>00538 
 <a name="l00539"></a>00539 <span class="comment">// This class stores parameter settings for LP and MIP solvers.</span>
-<a name="l00540"></a>00540 <span class="comment">// How to add a new parameter:</span>
-<a name="l00541"></a>00541 <span class="comment">// - Add the new Foo parameter in the DoubleParam or IntegerParam enum.</span>
-<a name="l00542"></a>00542 <span class="comment">// - If it is a categorical param, add a FooValues enum.</span>
-<a name="l00543"></a>00543 <span class="comment">// - Decide if the wrapper should define a default value for it: yes</span>
-<a name="l00544"></a>00544 <span class="comment">//   if it controls the properties of the solution (example:</span>
-<a name="l00545"></a>00545 <span class="comment">//   tolerances) or if it consistently improves performance, no</span>
-<a name="l00546"></a>00546 <span class="comment">//   otherwise. If yes, define kDefaultFoo.</span>
-<a name="l00547"></a>00547 <span class="comment">// - Add a foo_value_ member and, if no default value is defined, a</span>
-<a name="l00548"></a>00548 <span class="comment">//   foo_is_default_ member.</span>
-<a name="l00549"></a>00549 <span class="comment">// - Add code to handle Foo in Set...Param, Reset...Param,</span>
-<a name="l00550"></a>00550 <span class="comment">//   Get...Param, Reset and the constructor.</span>
-<a name="l00551"></a>00551 <span class="comment">// - In class MPSolverInterface, add a virtual method SetFoo and</span>
-<a name="l00552"></a>00552 <span class="comment">//   implement it for each solver.</span>
-<a name="l00553"></a>00553 <span class="comment">// - Add a test in linear_solver_test.cc.</span>
-<a name="l00554"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html">00554</a> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1MPSolverParameters.html" title="This class stores parameter settings for LP and MIP solvers.">MPSolverParameters</a> {
-<a name="l00555"></a>00555  <span class="keyword">public</span>:
-<a name="l00556"></a>00556   <span class="comment">// Enumeration of parameters that take continuous values.</span>
-<a name="l00557"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e">00557</a>   <span class="keyword">enum</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">DoubleParam</a> {
-<a name="l00558"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265eca78b129ceb19e286889b3274bb8cab3">00558</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265eca78b129ceb19e286889b3274bb8cab3" title="Limit for relative MIP gap.">RELATIVE_MIP_GAP</a> = 0,        <span class="comment">// Limit for relative MIP gap.</span>
-<a name="l00559"></a>00559   };
-<a name="l00560"></a>00560 
-<a name="l00561"></a>00561   <span class="comment">// Enumeration of parameters that take integer or categorical values.</span>
-<a name="l00562"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0">00562</a>   <span class="keyword">enum</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">IntegerParam</a> {
-<a name="l00563"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a01f92ab900139fd7649eace59942f1e0f">00563</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a01f92ab900139fd7649eace59942f1e0f" title="Presolve mode.">PRESOLVE</a> = 1000,        <span class="comment">// Presolve mode.</span>
-<a name="l00564"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a028abd1bbac3e861d5a74f841f8263e05">00564</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a028abd1bbac3e861d5a74f841f8263e05" title="Algorithm to solve linear programs.">LP_ALGORITHM</a> = 1001     <span class="comment">// Algorithm to solve linear programs.</span>
-<a name="l00565"></a>00565   };
-<a name="l00566"></a>00566 
-<a name="l00567"></a>00567   <span class="comment">// For each categorical parameter, enumeration of possible values.</span>
-<a name="l00568"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a4">00568</a>   <span class="keyword">enum</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a4" title="For each categorical parameter, enumeration of possible values.">PresolveValues</a> {
-<a name="l00569"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a46e658228fc28195fb00675d3dfec2c85">00569</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a46e658228fc28195fb00675d3dfec2c85" title="Presolve is off.">PRESOLVE_OFF</a> = 0,  <span class="comment">// Presolve is off.</span>
-<a name="l00570"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a4c8e04ac3295af6c505a22757490bb018">00570</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a4c8e04ac3295af6c505a22757490bb018" title="Presolve is on.">PRESOLVE_ON</a> = 1    <span class="comment">// Presolve is on.</span>
+<a name="l00540"></a>00540 <span class="comment">// Some parameters are marked as advanced: do not change their values</span>
+<a name="l00541"></a>00541 <span class="comment">// unless you know what you are doing!</span>
+<a name="l00542"></a>00542 <span class="comment">// How to add a new parameter:</span>
+<a name="l00543"></a>00543 <span class="comment">// - Add the new Foo parameter in the DoubleParam or IntegerParam enum.</span>
+<a name="l00544"></a>00544 <span class="comment">// - If it is a categorical param, add a FooValues enum.</span>
+<a name="l00545"></a>00545 <span class="comment">// - Decide if the wrapper should define a default value for it: yes</span>
+<a name="l00546"></a>00546 <span class="comment">//   if it controls the properties of the solution (example:</span>
+<a name="l00547"></a>00547 <span class="comment">//   tolerances) or if it consistently improves performance, no</span>
+<a name="l00548"></a>00548 <span class="comment">//   otherwise. If yes, define kDefaultFoo.</span>
+<a name="l00549"></a>00549 <span class="comment">// - Add a foo_value_ member and, if no default value is defined, a</span>
+<a name="l00550"></a>00550 <span class="comment">//   foo_is_default_ member.</span>
+<a name="l00551"></a>00551 <span class="comment">// - Add code to handle Foo in Set...Param, Reset...Param,</span>
+<a name="l00552"></a>00552 <span class="comment">//   Get...Param, Reset and the constructor.</span>
+<a name="l00553"></a>00553 <span class="comment">// - In class MPSolverInterface, add a virtual method SetFoo, add it</span>
+<a name="l00554"></a>00554 <span class="comment">//   to SetCommonParameters or SetMIPParameters, and implement it for</span>
+<a name="l00555"></a>00555 <span class="comment">//   each solver. Sometimes, parameters need to be implemented</span>
+<a name="l00556"></a>00556 <span class="comment">//   differently, see for example the INCREMENTALITY implementation.</span>
+<a name="l00557"></a>00557 <span class="comment">// - Add a test in linear_solver_test.cc.</span>
+<a name="l00558"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html">00558</a> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1MPSolverParameters.html" title="This class stores parameter settings for LP and MIP solvers.">MPSolverParameters</a> {
+<a name="l00559"></a>00559  <span class="keyword">public</span>:
+<a name="l00560"></a>00560   <span class="comment">// Enumeration of parameters that take continuous values.</span>
+<a name="l00561"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e">00561</a>   <span class="keyword">enum</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">DoubleParam</a> {
+<a name="l00562"></a>00562     <span class="comment">// Limit for relative MIP gap.</span>
+<a name="l00563"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265eca78b129ceb19e286889b3274bb8cab3">00563</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265eca78b129ceb19e286889b3274bb8cab3" title="Limit for relative MIP gap.">RELATIVE_MIP_GAP</a> = 0,
+<a name="l00564"></a>00564     <span class="comment">// Tolerance for primal feasibility of basic solutions</span>
+<a name="l00565"></a>00565     <span class="comment">// (advanced). This does not control the integer feasibility</span>
+<a name="l00566"></a>00566     <span class="comment">// tolerance of integer solutions for MIP or the tolerance used</span>
+<a name="l00567"></a>00567     <span class="comment">// during presolve.</span>
+<a name="l00568"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e57e959f9c5ede1f3e683169609fb0488">00568</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e57e959f9c5ede1f3e683169609fb0488" title="Tolerance for primal feasibility of basic solutions (advanced).">PRIMAL_TOLERANCE</a> = 1,
+<a name="l00569"></a>00569     <span class="comment">// Tolerance for dual feasibility of basic solutions (advanced).</span>
+<a name="l00570"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e313eaed42edf309599e71ca7563cce22">00570</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e313eaed42edf309599e71ca7563cce22" title="Tolerance for dual feasibility of basic solutions (advanced).">DUAL_TOLERANCE</a> = 2
 <a name="l00571"></a>00571   };
 <a name="l00572"></a>00572 
-<a name="l00573"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a9058012361376762">00573</a>   <span class="keyword">enum</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a9058012361376762">LpAlgorithmValues</a> {
-<a name="l00574"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a90580123613767622aca0e0bfd9807b5a938bb3bbc2bea07">00574</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a90580123613767622aca0e0bfd9807b5a938bb3bbc2bea07" title="Dual simplex.">DUAL</a> = 10,      <span class="comment">// Dual simplex.</span>
-<a name="l00575"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a90580123613767629fa228e5a51b8e22346b46d0f866e68d">00575</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a90580123613767629fa228e5a51b8e22346b46d0f866e68d" title="Primal simplex.">PRIMAL</a> = 11,    <span class="comment">// Primal simplex.</span>
-<a name="l00576"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a9058012361376762f55a23df7a5ec299bb9ca742ef9004ed">00576</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a9058012361376762f55a23df7a5ec299bb9ca742ef9004ed" title="Barrier algorithm.">BARRIER</a> = 12    <span class="comment">// Barrier algorithm.</span>
-<a name="l00577"></a>00577   };
-<a name="l00578"></a>00578 
-<a name="l00579"></a>00579   <span class="comment">// Values to indicate that a parameter is set to the solver's</span>
-<a name="l00580"></a>00580   <span class="comment">// default value.</span>
-<a name="l00581"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#f0e4fbb80499756bc3edf88fd495d7f7">00581</a>   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#f0e4fbb80499756bc3edf88fd495d7f7" title="Values to indicate that a parameter is set to the solver&amp;#39;s default value.">kDefaultDoubleParamValue</a>;
-<a name="l00582"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#9bac90a88459ac4dd9629beeada24a66">00582</a>   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#9bac90a88459ac4dd9629beeada24a66">kDefaultIntegerParamValue</a>;
-<a name="l00583"></a>00583   <span class="comment">// Values to indicate that a parameter is unknown.</span>
-<a name="l00584"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#561c73d056eef04db4b4703abd972868">00584</a>   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#561c73d056eef04db4b4703abd972868" title="Values to indicate that a parameter is unknown.">kUnknownDoubleParamValue</a>;
-<a name="l00585"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#6c81985cecabbd5f054974d362db551a">00585</a>   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#6c81985cecabbd5f054974d362db551a">kUnknownIntegerParamValue</a>;
-<a name="l00586"></a>00586 
-<a name="l00587"></a>00587   <span class="comment">// Default values for parameters. Only parameters that define the</span>
-<a name="l00588"></a>00588   <span class="comment">// properties of the solution returned need to have a default value</span>
-<a name="l00589"></a>00589   <span class="comment">// (that is the same for all solvers). You can also define a default</span>
-<a name="l00590"></a>00590   <span class="comment">// value for performance parameters when you are confident it is a</span>
-<a name="l00591"></a>00591   <span class="comment">// good choice (example: always turn presolve on).</span>
-<a name="l00592"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#d6b31b12f9e1944b355809efd56fec98">00592</a>   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d6b31b12f9e1944b355809efd56fec98" title="Default values for parameters.">kDefaultRelativeMipGap</a>;
-<a name="l00593"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#0b1b827cbc32fab02b3fbbe52dbb71f3">00593</a>   <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a4" title="For each categorical parameter, enumeration of possible values.">PresolveValues</a> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#0b1b827cbc32fab02b3fbbe52dbb71f3">kDefaultPresolve</a>;
+<a name="l00573"></a>00573   <span class="comment">// Enumeration of parameters that take integer or categorical values.</span>
+<a name="l00574"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0">00574</a>   <span class="keyword">enum</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">IntegerParam</a> {
+<a name="l00575"></a>00575     <span class="comment">// Presolve mode (advanced).</span>
+<a name="l00576"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a01f92ab900139fd7649eace59942f1e0f">00576</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a01f92ab900139fd7649eace59942f1e0f" title="Presolve mode (advanced).">PRESOLVE</a> = 1000,
+<a name="l00577"></a>00577     <span class="comment">// Algorithm to solve linear programs.</span>
+<a name="l00578"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a028abd1bbac3e861d5a74f841f8263e05">00578</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a028abd1bbac3e861d5a74f841f8263e05" title="Algorithm to solve linear programs.">LP_ALGORITHM</a> = 1001,
+<a name="l00579"></a>00579     <span class="comment">// Incrementality from one solve to the next (advanced).</span>
+<a name="l00580"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a00ea983a7a805bc98c2cf9a1000c1ef95">00580</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a00ea983a7a805bc98c2cf9a1000c1ef95" title="Incrementality from one solve to the next (advanced).">INCREMENTALITY</a> = 1002
+<a name="l00581"></a>00581   };
+<a name="l00582"></a>00582 
+<a name="l00583"></a>00583   <span class="comment">// For each categorical parameter, enumeration of possible values.</span>
+<a name="l00584"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a4">00584</a>   <span class="keyword">enum</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a4" title="For each categorical parameter, enumeration of possible values.">PresolveValues</a> {
+<a name="l00585"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a46e658228fc28195fb00675d3dfec2c85">00585</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a46e658228fc28195fb00675d3dfec2c85" title="Presolve is off.">PRESOLVE_OFF</a> = 0,  <span class="comment">// Presolve is off.</span>
+<a name="l00586"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a4c8e04ac3295af6c505a22757490bb018">00586</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a4c8e04ac3295af6c505a22757490bb018" title="Presolve is on.">PRESOLVE_ON</a> = 1    <span class="comment">// Presolve is on.</span>
+<a name="l00587"></a>00587   };
+<a name="l00588"></a>00588 
+<a name="l00589"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a9058012361376762">00589</a>   <span class="keyword">enum</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a9058012361376762">LpAlgorithmValues</a> {
+<a name="l00590"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a90580123613767622aca0e0bfd9807b5a938bb3bbc2bea07">00590</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a90580123613767622aca0e0bfd9807b5a938bb3bbc2bea07" title="Dual simplex.">DUAL</a> = 10,      <span class="comment">// Dual simplex.</span>
+<a name="l00591"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a90580123613767629fa228e5a51b8e22346b46d0f866e68d">00591</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a90580123613767629fa228e5a51b8e22346b46d0f866e68d" title="Primal simplex.">PRIMAL</a> = 11,    <span class="comment">// Primal simplex.</span>
+<a name="l00592"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a9058012361376762f55a23df7a5ec299bb9ca742ef9004ed">00592</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a9058012361376762f55a23df7a5ec299bb9ca742ef9004ed" title="Barrier algorithm.">BARRIER</a> = 12    <span class="comment">// Barrier algorithm.</span>
+<a name="l00593"></a>00593   };
 <a name="l00594"></a>00594 
-<a name="l00595"></a>00595   <span class="comment">// The constructor sets all parameters to their default value.</span>
-<a name="l00596"></a>00596   <a class="code" href="classoperations__research_1_1MPSolverParameters.html#ccb1cea31a73bd0b09bb75882baa9e5f" title="The constructor sets all parameters to their default value.">MPSolverParameters</a>();
-<a name="l00597"></a>00597 
-<a name="l00598"></a>00598   <span class="comment">// Set parameter to a specific value.</span>
-<a name="l00599"></a>00599   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297ed394e3996ebb0cc43d931deaa16" title="Set parameter to a specific value.">SetDoubleParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param, <span class="keywordtype">double</span> value);
-<a name="l00600"></a>00600   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#fcfb05b6d356807556f65f1b845897a8">SetIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param, <span class="keywordtype">int</span> value);
-<a name="l00601"></a>00601   <span class="comment">// Reset parameter to the default value.</span>
-<a name="l00602"></a>00602   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#7bc16e5febd0604a3400572c0e35c490" title="Reset parameter to the default value.">ResetDoubleParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param);
-<a name="l00603"></a>00603   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#100330795edeb8c1b12c7b8ff74611df">ResetIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param);
-<a name="l00604"></a>00604   <span class="comment">// Set all parameters to their default value.</span>
-<a name="l00605"></a>00605   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#da3cdf5254959f2807c3d27bb7e18e27" title="Set all parameters to their default value.">Reset</a>();
-<a name="l00606"></a>00606   <span class="comment">// Get parameter's value.</span>
-<a name="l00607"></a>00607   <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d7027f1b5abc07a4e85b64bbaced86fc" title="Get parameter&amp;#39;s value.">GetDoubleParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param) <span class="keyword">const</span>;
-<a name="l00608"></a>00608   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#4855741ebf5e9f5038a96fec5ebecf03">GetIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param) <span class="keyword">const</span>;
-<a name="l00609"></a>00609 
-<a name="l00610"></a>00610  <span class="keyword">private</span>:
-<a name="l00611"></a>00611   <span class="comment">// Parameter value for each parameter.</span>
-<a name="l00612"></a>00612   <span class="keywordtype">double</span> relative_mip_gap_value_;
-<a name="l00613"></a>00613   <span class="keywordtype">int</span> presolve_value_;
-<a name="l00614"></a>00614   <span class="keywordtype">int</span> lp_algorithm_value_;
-<a name="l00615"></a>00615   <span class="comment">// Boolean value indicating whether each parameter is set to the</span>
-<a name="l00616"></a>00616   <span class="comment">// solver's default value. Only parameters for which the wrapper</span>
-<a name="l00617"></a>00617   <span class="comment">// does not define a default value need such an indicator.</span>
-<a name="l00618"></a>00618   <span class="keywordtype">bool</span> lp_algorithm_is_default_;
-<a name="l00619"></a>00619 
-<a name="l00620"></a>00620   DISALLOW_COPY_AND_ASSIGN(<a class="code" href="classoperations__research_1_1MPSolverParameters.html" title="This class stores parameter settings for LP and MIP solvers.">MPSolverParameters</a>);
-<a name="l00621"></a>00621 };
-<a name="l00622"></a>00622 
-<a name="l00623"></a>00623 
-<a name="l00624"></a>00624 <span class="comment">// This class serves as a proxy to mathematical programming linear solvers.</span>
-<a name="l00625"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html">00625</a> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1MPSolverInterface.html" title="This class serves as a proxy to mathematical programming linear solvers.">MPSolverInterface</a> {
-<a name="l00626"></a>00626  <span class="keyword">public</span>:
-<a name="l00627"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#912394f09fe0aee694df2e9c962853a0">00627</a>   <span class="keyword">enum</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#912394f09fe0aee694df2e9c962853a0">SynchronizationStatus</a> {
-<a name="l00628"></a>00628     <span class="comment">// The underlying solver (CLP, GLPK, ...) and MPSolver are not in</span>
-<a name="l00629"></a>00629     <span class="comment">// sync for the model nor for the solution.</span>
-<a name="l00630"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#912394f09fe0aee694df2e9c962853a05e5dccb6be46f13fd046ebf8dd63fc0b">00630</a>     <a class="code" href="classoperations__research_1_1MPSolverInterface.html#912394f09fe0aee694df2e9c962853a05e5dccb6be46f13fd046ebf8dd63fc0b" title="The underlying solver (CLP, GLPK, .">MUST_RELOAD</a>,
-<a name="l00631"></a>00631     <span class="comment">// The underlying solver and MPSolver are in sync for the model</span>
-<a name="l00632"></a>00632     <span class="comment">// but not for the solution: the model has changed since the</span>
-<a name="l00633"></a>00633     <span class="comment">// solution was computed last.</span>
-<a name="l00634"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#912394f09fe0aee694df2e9c962853a0bb904e2bd71f6c8f7612f5bb41a0b8f0">00634</a>     <a class="code" href="classoperations__research_1_1MPSolverInterface.html#912394f09fe0aee694df2e9c962853a0bb904e2bd71f6c8f7612f5bb41a0b8f0" title="The underlying solver and MPSolver are in sync for the model but not for the solution:...">MODEL_SYNCHRONIZED</a>,
-<a name="l00635"></a>00635     <span class="comment">// The underlying solver and MPSolver are in sync for the model and</span>
-<a name="l00636"></a>00636     <span class="comment">// the solution.</span>
-<a name="l00637"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#912394f09fe0aee694df2e9c962853a01a93fdf313f6e448af723eb80bbbb7ba">00637</a>     <a class="code" href="classoperations__research_1_1MPSolverInterface.html#912394f09fe0aee694df2e9c962853a01a93fdf313f6e448af723eb80bbbb7ba" title="The underlying solver and MPSolver are in sync for the model and the solution.">SOLUTION_SYNCHRONIZED</a>
-<a name="l00638"></a>00638   };
-<a name="l00639"></a>00639 
-<a name="l00640"></a>00640   <span class="comment">// When the underlying solver does not provide the number of simplex</span>
-<a name="l00641"></a>00641   <span class="comment">// iterations.</span>
-<a name="l00642"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#156255f5e27fd48b7ee43539b52f644f">00642</a>   <span class="keyword">static</span> <span class="keyword">const</span> int64 <a class="code" href="classoperations__research_1_1MPSolverInterface.html#156255f5e27fd48b7ee43539b52f644f" title="When the underlying solver does not provide the number of simplex iterations.">kUnknownNumberOfIterations</a>;
-<a name="l00643"></a>00643   <span class="comment">// When the underlying solver does not provide the number of simplex</span>
-<a name="l00644"></a>00644   <span class="comment">// nodes.</span>
-<a name="l00645"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#25b846bdb22eb75b6c0f3b9922556c46">00645</a>   <span class="keyword">static</span> <span class="keyword">const</span> int64 <a class="code" href="classoperations__research_1_1MPSolverInterface.html#25b846bdb22eb75b6c0f3b9922556c46" title="When the underlying solver does not provide the number of simplex nodes.">kUnknownNumberOfNodes</a>;
-<a name="l00646"></a>00646   <span class="comment">// When the index of a variable or constraint has not been assigned yet.</span>
-<a name="l00647"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#dc9100f427a90ab1537fa382893c56c3">00647</a>   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#dc9100f427a90ab1537fa382893c56c3" title="When the index of a variable or constraint has not been assigned yet.">kNoIndex</a>;
-<a name="l00648"></a>00648 
-<a name="l00649"></a>00649   <span class="comment">// Constructor that takes a name for the underlying glpk solver.</span>
-<a name="l00650"></a>00650   <span class="keyword">explicit</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#152b3f16428c0a1c58247ba88d95f0a4" title="Constructor that takes a name for the underlying glpk solver.">MPSolverInterface</a>(<a class="code" href="classoperations__research_1_1MPSolver.html">MPSolver</a>* <span class="keyword">const</span> solver);
-<a name="l00651"></a>00651   <span class="keyword">virtual</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#bba9200b7bd7df46cf9429f150d9bcf3">~MPSolverInterface</a>();
+<a name="l00595"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#d58cb8cf98c288843ab0d1fd644f6116">00595</a>   <span class="keyword">enum</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d58cb8cf98c288843ab0d1fd644f6116">IncrementalityValues</a> {
+<a name="l00596"></a>00596     <span class="comment">// Start solve from scratch.</span>
+<a name="l00597"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#d58cb8cf98c288843ab0d1fd644f611627013e436bfe1d34ebb6da476c590eee">00597</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d58cb8cf98c288843ab0d1fd644f611627013e436bfe1d34ebb6da476c590eee" title="Start solve from scratch.">INCREMENTALITY_OFF</a> = 0,
+<a name="l00598"></a>00598     <span class="comment">// Reuse results from previous solve as much as the underlying</span>
+<a name="l00599"></a>00599     <span class="comment">// solver allows.</span>
+<a name="l00600"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#d58cb8cf98c288843ab0d1fd644f6116ef000bbd88ef3ff2715d53a0e1dfbd37">00600</a>     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d58cb8cf98c288843ab0d1fd644f6116ef000bbd88ef3ff2715d53a0e1dfbd37" title="Reuse results from previous solve as much as the underlying solver allows.">INCREMENTALITY_ON</a> = 1
+<a name="l00601"></a>00601   };
+<a name="l00602"></a>00602 
+<a name="l00603"></a>00603   <span class="comment">// Values to indicate that a parameter is set to the solver's</span>
+<a name="l00604"></a>00604   <span class="comment">// default value.</span>
+<a name="l00605"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#f0e4fbb80499756bc3edf88fd495d7f7">00605</a>   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#f0e4fbb80499756bc3edf88fd495d7f7" title="Values to indicate that a parameter is set to the solver&amp;#39;s default value.">kDefaultDoubleParamValue</a>;
+<a name="l00606"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#9bac90a88459ac4dd9629beeada24a66">00606</a>   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#9bac90a88459ac4dd9629beeada24a66">kDefaultIntegerParamValue</a>;
+<a name="l00607"></a>00607   <span class="comment">// Values to indicate that a parameter is unknown.</span>
+<a name="l00608"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#561c73d056eef04db4b4703abd972868">00608</a>   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#561c73d056eef04db4b4703abd972868" title="Values to indicate that a parameter is unknown.">kUnknownDoubleParamValue</a>;
+<a name="l00609"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#6c81985cecabbd5f054974d362db551a">00609</a>   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#6c81985cecabbd5f054974d362db551a">kUnknownIntegerParamValue</a>;
+<a name="l00610"></a>00610 
+<a name="l00611"></a>00611   <span class="comment">// Default values for parameters. Only parameters that define the</span>
+<a name="l00612"></a>00612   <span class="comment">// properties of the solution returned need to have a default value</span>
+<a name="l00613"></a>00613   <span class="comment">// (that is the same for all solvers). You can also define a default</span>
+<a name="l00614"></a>00614   <span class="comment">// value for performance parameters when you are confident it is a</span>
+<a name="l00615"></a>00615   <span class="comment">// good choice (example: always turn presolve on).</span>
+<a name="l00616"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#d6b31b12f9e1944b355809efd56fec98">00616</a>   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d6b31b12f9e1944b355809efd56fec98" title="Default values for parameters.">kDefaultRelativeMipGap</a>;
+<a name="l00617"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#3369c0b857cf02ddf742acc5ef1feec5">00617</a>   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3369c0b857cf02ddf742acc5ef1feec5" title="For the primal and dual tolerances, choose the same default as CLP and GLPK.">kDefaultPrimalTolerance</a>;
+<a name="l00618"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#15fd57d45c522be9c8340ba9d1244e3f">00618</a>   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#15fd57d45c522be9c8340ba9d1244e3f">kDefaultDualTolerance</a>;
+<a name="l00619"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#0b1b827cbc32fab02b3fbbe52dbb71f3">00619</a>   <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a4" title="For each categorical parameter, enumeration of possible values.">PresolveValues</a> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#0b1b827cbc32fab02b3fbbe52dbb71f3">kDefaultPresolve</a>;
+<a name="l00620"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#d25e3c5903cba913fdcaffadd006af53">00620</a>   <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d58cb8cf98c288843ab0d1fd644f6116">IncrementalityValues</a> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d25e3c5903cba913fdcaffadd006af53">kDefaultIncrementality</a>;
+<a name="l00621"></a>00621 
+<a name="l00622"></a>00622   <span class="comment">// The constructor sets all parameters to their default value.</span>
+<a name="l00623"></a>00623   <a class="code" href="classoperations__research_1_1MPSolverParameters.html#ccb1cea31a73bd0b09bb75882baa9e5f" title="The constructor sets all parameters to their default value.">MPSolverParameters</a>();
+<a name="l00624"></a>00624 
+<a name="l00625"></a>00625   <span class="comment">// Set parameter to a specific value.</span>
+<a name="l00626"></a>00626   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297ed394e3996ebb0cc43d931deaa16" title="Set parameter to a specific value.">SetDoubleParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param, <span class="keywordtype">double</span> value);
+<a name="l00627"></a>00627   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#fcfb05b6d356807556f65f1b845897a8">SetIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param, <span class="keywordtype">int</span> value);
+<a name="l00628"></a>00628   <span class="comment">// Reset parameter to the default value.</span>
+<a name="l00629"></a>00629   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#7bc16e5febd0604a3400572c0e35c490" title="Reset parameter to the default value.">ResetDoubleParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param);
+<a name="l00630"></a>00630   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#100330795edeb8c1b12c7b8ff74611df">ResetIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param);
+<a name="l00631"></a>00631   <span class="comment">// Set all parameters to their default value.</span>
+<a name="l00632"></a>00632   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#da3cdf5254959f2807c3d27bb7e18e27" title="Set all parameters to their default value.">Reset</a>();
+<a name="l00633"></a>00633   <span class="comment">// Get parameter's value.</span>
+<a name="l00634"></a>00634   <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d7027f1b5abc07a4e85b64bbaced86fc" title="Get parameter&amp;#39;s value.">GetDoubleParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param) <span class="keyword">const</span>;
+<a name="l00635"></a>00635   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#4855741ebf5e9f5038a96fec5ebecf03">GetIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param) <span class="keyword">const</span>;
+<a name="l00636"></a>00636 
+<a name="l00637"></a>00637  <span class="keyword">private</span>:
+<a name="l00638"></a>00638   <span class="comment">// Parameter value for each parameter.</span>
+<a name="l00639"></a>00639   <span class="keywordtype">double</span> relative_mip_gap_value_;
+<a name="l00640"></a>00640   <span class="keywordtype">double</span> primal_tolerance_value_;
+<a name="l00641"></a>00641   <span class="keywordtype">double</span> dual_tolerance_value_;
+<a name="l00642"></a>00642   <span class="keywordtype">int</span> presolve_value_;
+<a name="l00643"></a>00643   <span class="keywordtype">int</span> lp_algorithm_value_;
+<a name="l00644"></a>00644   <span class="keywordtype">int</span> incrementality_value_;
+<a name="l00645"></a>00645   <span class="comment">// Boolean value indicating whether each parameter is set to the</span>
+<a name="l00646"></a>00646   <span class="comment">// solver's default value. Only parameters for which the wrapper</span>
+<a name="l00647"></a>00647   <span class="comment">// does not define a default value need such an indicator.</span>
+<a name="l00648"></a>00648   <span class="keywordtype">bool</span> lp_algorithm_is_default_;
+<a name="l00649"></a>00649 
+<a name="l00650"></a>00650   DISALLOW_COPY_AND_ASSIGN(<a class="code" href="classoperations__research_1_1MPSolverParameters.html" title="This class stores parameter settings for LP and MIP solvers.">MPSolverParameters</a>);
+<a name="l00651"></a>00651 };
 <a name="l00652"></a>00652 
-<a name="l00653"></a>00653   <span class="comment">// ----- Solve -----</span>
-<a name="l00654"></a>00654   <span class="comment">// Solves problem with specified parameter values. Returns true if the</span>
-<a name="l00655"></a>00655   <span class="comment">// solution is optimal. Calls WriteModelToPredefinedFiles as a</span>
-<a name="l00656"></a>00656   <span class="comment">// temporary solution to allow the user to write the model to a</span>
-<a name="l00657"></a>00657   <span class="comment">// file.</span>
-<a name="l00658"></a>00658   <span class="keyword">virtual</span> <a class="code" href="classoperations__research_1_1MPSolver.html#16bca30fdb1b048d987631b757c63192">MPSolver::ResultStatus</a> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#99d3df0f2e02937e56473d9f3df68965" title="Solve Solves problem with specified parameter values.">Solve</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html" title="This class stores parameter settings for LP and MIP solvers.">MPSolverParameters</a>&amp; param) = 0;
-<a name="l00659"></a>00659 
-<a name="l00660"></a>00660   <span class="comment">// ----- Model modifications and extraction -----</span>
-<a name="l00661"></a>00661   <span class="comment">// Resets extracted model</span>
-<a name="l00662"></a>00662   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#d4ce4ee159f4c2db5a02923c886c136b" title="Model modifications and extraction Resets extracted model.">Reset</a>() = 0;
-<a name="l00663"></a>00663 
-<a name="l00664"></a>00664   <span class="comment">// Sets the optimization direction (min/max).</span>
-<a name="l00665"></a>00665   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#20b213809c471578eabcf5738acbf119" title="Sets the optimization direction (min/max).">SetOptimizationDirection</a>(<span class="keywordtype">bool</span> minimize) = 0;
-<a name="l00666"></a>00666 
-<a name="l00667"></a>00667   <span class="comment">// Modify bounds of an extracted variable.</span>
-<a name="l00668"></a>00668   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#f80b8873e1b07fedcac24c5704a889cf" title="Modify bounds of an extracted variable.">SetVariableBounds</a>(<span class="keywordtype">int</span> index, <span class="keywordtype">double</span> lb, <span class="keywordtype">double</span> ub) = 0;
+<a name="l00653"></a>00653 
+<a name="l00654"></a>00654 <span class="comment">// This class serves as a proxy to mathematical programming linear solvers.</span>
+<a name="l00655"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html">00655</a> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1MPSolverInterface.html" title="This class serves as a proxy to mathematical programming linear solvers.">MPSolverInterface</a> {
+<a name="l00656"></a>00656  <span class="keyword">public</span>:
+<a name="l00657"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#912394f09fe0aee694df2e9c962853a0">00657</a>   <span class="keyword">enum</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#912394f09fe0aee694df2e9c962853a0">SynchronizationStatus</a> {
+<a name="l00658"></a>00658     <span class="comment">// The underlying solver (CLP, GLPK, ...) and MPSolver are not in</span>
+<a name="l00659"></a>00659     <span class="comment">// sync for the model nor for the solution.</span>
+<a name="l00660"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#912394f09fe0aee694df2e9c962853a05e5dccb6be46f13fd046ebf8dd63fc0b">00660</a>     <a class="code" href="classoperations__research_1_1MPSolverInterface.html#912394f09fe0aee694df2e9c962853a05e5dccb6be46f13fd046ebf8dd63fc0b" title="The underlying solver (CLP, GLPK, .">MUST_RELOAD</a>,
+<a name="l00661"></a>00661     <span class="comment">// The underlying solver and MPSolver are in sync for the model</span>
+<a name="l00662"></a>00662     <span class="comment">// but not for the solution: the model has changed since the</span>
+<a name="l00663"></a>00663     <span class="comment">// solution was computed last.</span>
+<a name="l00664"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#912394f09fe0aee694df2e9c962853a0bb904e2bd71f6c8f7612f5bb41a0b8f0">00664</a>     <a class="code" href="classoperations__research_1_1MPSolverInterface.html#912394f09fe0aee694df2e9c962853a0bb904e2bd71f6c8f7612f5bb41a0b8f0" title="The underlying solver and MPSolver are in sync for the model but not for the solution:...">MODEL_SYNCHRONIZED</a>,
+<a name="l00665"></a>00665     <span class="comment">// The underlying solver and MPSolver are in sync for the model and</span>
+<a name="l00666"></a>00666     <span class="comment">// the solution.</span>
+<a name="l00667"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#912394f09fe0aee694df2e9c962853a01a93fdf313f6e448af723eb80bbbb7ba">00667</a>     <a class="code" href="classoperations__research_1_1MPSolverInterface.html#912394f09fe0aee694df2e9c962853a01a93fdf313f6e448af723eb80bbbb7ba" title="The underlying solver and MPSolver are in sync for the model and the solution.">SOLUTION_SYNCHRONIZED</a>
+<a name="l00668"></a>00668   };
 <a name="l00669"></a>00669 
-<a name="l00670"></a>00670   <span class="comment">// Modify integrality of an extracted variable.</span>
-<a name="l00671"></a>00671   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#5e445125231a8febc619d3a81cb8c12f" title="Modify integrality of an extracted variable.">SetVariableInteger</a>(<span class="keywordtype">int</span> index, <span class="keywordtype">bool</span> integer) = 0;
-<a name="l00672"></a>00672 
-<a name="l00673"></a>00673   <span class="comment">// Modify bounds of an extracted variable.</span>
-<a name="l00674"></a>00674   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#e63369de591dfd558df4c74c1143d84a" title="Modify bounds of an extracted variable.">SetConstraintBounds</a>(<span class="keywordtype">int</span> index, <span class="keywordtype">double</span> lb, <span class="keywordtype">double</span> ub) = 0;
-<a name="l00675"></a>00675 
-<a name="l00676"></a>00676   <span class="comment">// Add a constraint.</span>
-<a name="l00677"></a>00677   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#4c06cfd4d3c34ca0a96ad90f50a1abd8" title="Add a constraint.">AddRowConstraint</a>(<a class="code" href="classoperations__research_1_1MPConstraint.html" title="A class to express constraints for a linear programming problem.">MPConstraint</a>* <span class="keyword">const</span> ct) = 0;
+<a name="l00670"></a>00670   <span class="comment">// When the underlying solver does not provide the number of simplex</span>
+<a name="l00671"></a>00671   <span class="comment">// iterations.</span>
+<a name="l00672"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#156255f5e27fd48b7ee43539b52f644f">00672</a>   <span class="keyword">static</span> <span class="keyword">const</span> int64 <a class="code" href="classoperations__research_1_1MPSolverInterface.html#156255f5e27fd48b7ee43539b52f644f" title="When the underlying solver does not provide the number of simplex iterations.">kUnknownNumberOfIterations</a>;
+<a name="l00673"></a>00673   <span class="comment">// When the underlying solver does not provide the number of simplex</span>
+<a name="l00674"></a>00674   <span class="comment">// nodes.</span>
+<a name="l00675"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#25b846bdb22eb75b6c0f3b9922556c46">00675</a>   <span class="keyword">static</span> <span class="keyword">const</span> int64 <a class="code" href="classoperations__research_1_1MPSolverInterface.html#25b846bdb22eb75b6c0f3b9922556c46" title="When the underlying solver does not provide the number of simplex nodes.">kUnknownNumberOfNodes</a>;
+<a name="l00676"></a>00676   <span class="comment">// When the index of a variable or constraint has not been assigned yet.</span>
+<a name="l00677"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#dc9100f427a90ab1537fa382893c56c3">00677</a>   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#dc9100f427a90ab1537fa382893c56c3" title="When the index of a variable or constraint has not been assigned yet.">kNoIndex</a>;
 <a name="l00678"></a>00678 
-<a name="l00679"></a>00679   <span class="comment">// Add a variable.</span>
-<a name="l00680"></a>00680   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#94980bb46c791363fe9ce55d57e2a79a" title="Add a variable.">AddVariable</a>(<a class="code" href="classoperations__research_1_1MPVariable.html" title="A class to express a variable that will appear in a constraint.">MPVariable</a>* <span class="keyword">const</span> var) = 0;
-<a name="l00681"></a>00681 
-<a name="l00682"></a>00682   <span class="comment">// Change a coefficient in a constraint.</span>
-<a name="l00683"></a>00683   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#3d2b52d41904bd0b65be9ce8124e19bf" title="Change a coefficient in a constraint.">SetCoefficient</a>(<a class="code" href="classoperations__research_1_1MPConstraint.html" title="A class to express constraints for a linear programming problem.">MPConstraint</a>* <span class="keyword">const</span> constraint,
-<a name="l00684"></a>00684                               <a class="code" href="classoperations__research_1_1MPVariable.html" title="A class to express a variable that will appear in a constraint.">MPVariable</a>* <span class="keyword">const</span> variable,
-<a name="l00685"></a>00685                               <span class="keywordtype">double</span> new_value,
-<a name="l00686"></a>00686                               <span class="keywordtype">double</span> old_value) = 0;
-<a name="l00687"></a>00687 
-<a name="l00688"></a>00688   <span class="comment">// Clear a constraint from all its terms.</span>
-<a name="l00689"></a>00689   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#38ad5df166aef299c76fac71eb785523" title="Clear a constraint from all its terms.">ClearConstraint</a>(<a class="code" href="classoperations__research_1_1MPConstraint.html" title="A class to express constraints for a linear programming problem.">MPConstraint</a>* <span class="keyword">const</span> constraint) = 0;
-<a name="l00690"></a>00690 
-<a name="l00691"></a>00691   <span class="comment">// Change a coefficient in the linear objective.</span>
-<a name="l00692"></a>00692   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#6b0311ddc34486d1a6575d4b70153ce3" title="Change a coefficient in the linear objective.">SetObjectiveCoefficient</a>(<a class="code" href="classoperations__research_1_1MPVariable.html" title="A class to express a variable that will appear in a constraint.">MPVariable</a>* <span class="keyword">const</span> variable,
-<a name="l00693"></a>00693                                        <span class="keywordtype">double</span> coefficient) = 0;
-<a name="l00694"></a>00694 
-<a name="l00695"></a>00695   <span class="comment">// Change the constant term in the linear objective.</span>
-<a name="l00696"></a>00696   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#6a0b90433ed94679a6065000b384fb64" title="Change the constant term in the linear objective.">SetObjectiveOffset</a>(<span class="keywordtype">double</span> value) = 0;
-<a name="l00697"></a>00697 
-<a name="l00698"></a>00698   <span class="comment">// Clear the objective from all its terms.</span>
-<a name="l00699"></a>00699   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#1d0c4924c375cd234f4a17bf2b8c1a8b" title="Clear the objective from all its terms.">ClearObjective</a>() = 0;
-<a name="l00700"></a>00700 
-<a name="l00701"></a>00701   <span class="comment">// ------ Query statistics on the solution and the solve ------</span>
-<a name="l00702"></a>00702   <span class="comment">// Number of simplex iterations</span>
-<a name="l00703"></a>00703   <span class="keyword">virtual</span> int64 <a class="code" href="classoperations__research_1_1MPSolverInterface.html#a7ef7e2f076fc9208d13fdfb4ec33c76" title="Query statistics on the solution and the solve Number of simplex iterations.">iterations</a>() <span class="keyword">const</span> = 0;
-<a name="l00704"></a>00704   <span class="comment">// Number of branch-and-bound nodes</span>
-<a name="l00705"></a>00705   <span class="keyword">virtual</span> int64 <a class="code" href="classoperations__research_1_1MPSolverInterface.html#6ca427f3c6266f86e41f4b5b1905c7d3" title="Number of branch-and-bound nodes.">nodes</a>() <span class="keyword">const</span> = 0;
-<a name="l00706"></a>00706   <span class="comment">// Best objective bound. Only available for discrete problems.</span>
-<a name="l00707"></a>00707   <span class="keyword">virtual</span> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#1e4b520fcd965a7a2b975035e1a906b5" title="Best objective bound. Only available for discrete problems.">best_objective_bound</a>() <span class="keyword">const</span> = 0;
-<a name="l00708"></a>00708   <span class="comment">// Objective value of the best solution found so far.</span>
-<a name="l00709"></a>00709   <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#59b59de084db0d08603d7f292eeee591" title="Objective value of the best solution found so far.">objective_value</a>() <span class="keyword">const</span>;
-<a name="l00710"></a>00710 
-<a name="l00711"></a>00711   <span class="comment">// Returns the basis status of a row.</span>
-<a name="l00712"></a>00712   <span class="keyword">virtual</span> <a class="code" href="classoperations__research_1_1MPSolver.html#7e2a34816b22749e70e23d26f49cf743" title="Advanced usage: possible basis status values for a variable and the slack variable...">MPSolver::BasisStatus</a> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#ad9285c25e1671edfac7a7748b166770" title="Returns the basis status of a row.">row_status</a>(<span class="keywordtype">int</span> constraint_index) <span class="keyword">const</span> = 0;
-<a name="l00713"></a>00713   <span class="comment">// Returns the basis status of a constraint.</span>
-<a name="l00714"></a>00714   <span class="keyword">virtual</span> <a class="code" href="classoperations__research_1_1MPSolver.html#7e2a34816b22749e70e23d26f49cf743" title="Advanced usage: possible basis status values for a variable and the slack variable...">MPSolver::BasisStatus</a> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#5a2299c6d83d21a0917d0661fb704dbe" title="Returns the basis status of a constraint.">column_status</a>(<span class="keywordtype">int</span> variable_index) <span class="keyword">const</span> = 0;
-<a name="l00715"></a>00715 
-<a name="l00716"></a>00716   <span class="comment">// Checks whether the solution is synchronized with the model,</span>
-<a name="l00717"></a>00717   <span class="comment">// i.e. whether the model has changed since the solution was</span>
-<a name="l00718"></a>00718   <span class="comment">// computed last.</span>
-<a name="l00719"></a>00719   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#6807643e6c70f358671990b086008cdf" title="Checks whether the solution is synchronized with the model, i.e.">CheckSolutionIsSynchronized</a>() <span class="keyword">const</span>;
-<a name="l00720"></a>00720   <span class="comment">// Checks whether a feasible solution exists.</span>
-<a name="l00721"></a>00721   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#9a9bad2740370574e7841e563b9ba53c" title="Checks whether a feasible solution exists.">CheckSolutionExists</a>() <span class="keyword">const</span>;
-<a name="l00722"></a>00722   <span class="comment">// Checks whether information on the best objective bound exists.</span>
-<a name="l00723"></a>00723   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#83a7646b81f0e63a09da2f3cd521651a" title="Checks whether information on the best objective bound exists.">CheckBestObjectiveBoundExists</a>() <span class="keyword">const</span>;
+<a name="l00679"></a>00679   <span class="comment">// Constructor that takes a name for the underlying glpk solver.</span>
+<a name="l00680"></a>00680   <span class="keyword">explicit</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#152b3f16428c0a1c58247ba88d95f0a4" title="Constructor that takes a name for the underlying glpk solver.">MPSolverInterface</a>(<a class="code" href="classoperations__research_1_1MPSolver.html">MPSolver</a>* <span class="keyword">const</span> solver);
+<a name="l00681"></a>00681   <span class="keyword">virtual</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#bba9200b7bd7df46cf9429f150d9bcf3">~MPSolverInterface</a>();
+<a name="l00682"></a>00682 
+<a name="l00683"></a>00683   <span class="comment">// ----- Solve -----</span>
+<a name="l00684"></a>00684   <span class="comment">// Solves problem with specified parameter values. Returns true if the</span>
+<a name="l00685"></a>00685   <span class="comment">// solution is optimal. Calls WriteModelToPredefinedFiles as a</span>
+<a name="l00686"></a>00686   <span class="comment">// temporary solution to allow the user to write the model to a</span>
+<a name="l00687"></a>00687   <span class="comment">// file.</span>
+<a name="l00688"></a>00688   <span class="keyword">virtual</span> <a class="code" href="classoperations__research_1_1MPSolver.html#16bca30fdb1b048d987631b757c63192">MPSolver::ResultStatus</a> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#99d3df0f2e02937e56473d9f3df68965" title="Solve Solves problem with specified parameter values.">Solve</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html" title="This class stores parameter settings for LP and MIP solvers.">MPSolverParameters</a>&amp; param) = 0;
+<a name="l00689"></a>00689 
+<a name="l00690"></a>00690   <span class="comment">// ----- Model modifications and extraction -----</span>
+<a name="l00691"></a>00691   <span class="comment">// Resets extracted model</span>
+<a name="l00692"></a>00692   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#d4ce4ee159f4c2db5a02923c886c136b" title="Model modifications and extraction Resets extracted model.">Reset</a>() = 0;
+<a name="l00693"></a>00693 
+<a name="l00694"></a>00694   <span class="comment">// Sets the optimization direction (min/max).</span>
+<a name="l00695"></a>00695   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#20b213809c471578eabcf5738acbf119" title="Sets the optimization direction (min/max).">SetOptimizationDirection</a>(<span class="keywordtype">bool</span> minimize) = 0;
+<a name="l00696"></a>00696 
+<a name="l00697"></a>00697   <span class="comment">// Modify bounds of an extracted variable.</span>
+<a name="l00698"></a>00698   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#f80b8873e1b07fedcac24c5704a889cf" title="Modify bounds of an extracted variable.">SetVariableBounds</a>(<span class="keywordtype">int</span> index, <span class="keywordtype">double</span> lb, <span class="keywordtype">double</span> ub) = 0;
+<a name="l00699"></a>00699 
+<a name="l00700"></a>00700   <span class="comment">// Modify integrality of an extracted variable.</span>
+<a name="l00701"></a>00701   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#5e445125231a8febc619d3a81cb8c12f" title="Modify integrality of an extracted variable.">SetVariableInteger</a>(<span class="keywordtype">int</span> index, <span class="keywordtype">bool</span> integer) = 0;
+<a name="l00702"></a>00702 
+<a name="l00703"></a>00703   <span class="comment">// Modify bounds of an extracted variable.</span>
+<a name="l00704"></a>00704   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#e63369de591dfd558df4c74c1143d84a" title="Modify bounds of an extracted variable.">SetConstraintBounds</a>(<span class="keywordtype">int</span> index, <span class="keywordtype">double</span> lb, <span class="keywordtype">double</span> ub) = 0;
+<a name="l00705"></a>00705 
+<a name="l00706"></a>00706   <span class="comment">// Add a constraint.</span>
+<a name="l00707"></a>00707   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#4c06cfd4d3c34ca0a96ad90f50a1abd8" title="Add a constraint.">AddRowConstraint</a>(<a class="code" href="classoperations__research_1_1MPConstraint.html" title="A class to express constraints for a linear programming problem.">MPConstraint</a>* <span class="keyword">const</span> ct) = 0;
+<a name="l00708"></a>00708 
+<a name="l00709"></a>00709   <span class="comment">// Add a variable.</span>
+<a name="l00710"></a>00710   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#94980bb46c791363fe9ce55d57e2a79a" title="Add a variable.">AddVariable</a>(<a class="code" href="classoperations__research_1_1MPVariable.html" title="A class to express a variable that will appear in a constraint.">MPVariable</a>* <span class="keyword">const</span> var) = 0;
+<a name="l00711"></a>00711 
+<a name="l00712"></a>00712   <span class="comment">// Change a coefficient in a constraint.</span>
+<a name="l00713"></a>00713   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#3d2b52d41904bd0b65be9ce8124e19bf" title="Change a coefficient in a constraint.">SetCoefficient</a>(<a class="code" href="classoperations__research_1_1MPConstraint.html" title="A class to express constraints for a linear programming problem.">MPConstraint</a>* <span class="keyword">const</span> constraint,
+<a name="l00714"></a>00714                               <a class="code" href="classoperations__research_1_1MPVariable.html" title="A class to express a variable that will appear in a constraint.">MPVariable</a>* <span class="keyword">const</span> variable,
+<a name="l00715"></a>00715                               <span class="keywordtype">double</span> new_value,
+<a name="l00716"></a>00716                               <span class="keywordtype">double</span> old_value) = 0;
+<a name="l00717"></a>00717 
+<a name="l00718"></a>00718   <span class="comment">// Clear a constraint from all its terms.</span>
+<a name="l00719"></a>00719   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#38ad5df166aef299c76fac71eb785523" title="Clear a constraint from all its terms.">ClearConstraint</a>(<a class="code" href="classoperations__research_1_1MPConstraint.html" title="A class to express constraints for a linear programming problem.">MPConstraint</a>* <span class="keyword">const</span> constraint) = 0;
+<a name="l00720"></a>00720 
+<a name="l00721"></a>00721   <span class="comment">// Change a coefficient in the linear objective.</span>
+<a name="l00722"></a>00722   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#6b0311ddc34486d1a6575d4b70153ce3" title="Change a coefficient in the linear objective.">SetObjectiveCoefficient</a>(<a class="code" href="classoperations__research_1_1MPVariable.html" title="A class to express a variable that will appear in a constraint.">MPVariable</a>* <span class="keyword">const</span> variable,
+<a name="l00723"></a>00723                                        <span class="keywordtype">double</span> coefficient) = 0;
 <a name="l00724"></a>00724 
-<a name="l00725"></a>00725   <span class="comment">// ----- Misc -----</span>
-<a name="l00726"></a>00726   <span class="comment">// Write model to file.</span>
-<a name="l00727"></a>00727   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#26fcf164eef82b953592fa0fd6c330fe" title="Misc Write model to file.">WriteModel</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; filename) = 0;
-<a name="l00728"></a>00728 
-<a name="l00729"></a>00729   <span class="comment">// Query problem type. For simplicity, the distinction between</span>
-<a name="l00730"></a>00730   <span class="comment">// continuous and discrete is based on the declaration of the user</span>
-<a name="l00731"></a>00731   <span class="comment">// when the solver is created (example: GLPK_LINEAR_PROGRAMMING</span>
-<a name="l00732"></a>00732   <span class="comment">// vs. GLPK_MIXED_INTEGER_PROGRAMMING), not on the actual content of</span>
-<a name="l00733"></a>00733   <span class="comment">// the model.</span>
-<a name="l00734"></a>00734   <span class="comment">// Returns true if the problem is continuous.</span>
-<a name="l00735"></a>00735   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#77db27f245bbe7fec03763cb0f81210a" title="Query problem type.">IsContinuous</a>() <span class="keyword">const</span> = 0;
-<a name="l00736"></a>00736   <span class="comment">// Returns true if the problem is continuous and linear.</span>
-<a name="l00737"></a>00737   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#8410c2213e0f2faec9a202b5b670ad6c" title="Returns true if the problem is continuous and linear.">IsLP</a>() <span class="keyword">const</span> = 0;
-<a name="l00738"></a>00738   <span class="comment">// Returns true if the problem is discrete and linear.</span>
-<a name="l00739"></a>00739   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#3cb924945c7c8ebd6964ba982ffdf276" title="Returns true if the problem is discrete and linear.">IsMIP</a>() <span class="keyword">const</span> = 0;
+<a name="l00725"></a>00725   <span class="comment">// Change the constant term in the linear objective.</span>
+<a name="l00726"></a>00726   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#6a0b90433ed94679a6065000b384fb64" title="Change the constant term in the linear objective.">SetObjectiveOffset</a>(<span class="keywordtype">double</span> value) = 0;
+<a name="l00727"></a>00727 
+<a name="l00728"></a>00728   <span class="comment">// Clear the objective from all its terms.</span>
+<a name="l00729"></a>00729   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#1d0c4924c375cd234f4a17bf2b8c1a8b" title="Clear the objective from all its terms.">ClearObjective</a>() = 0;
+<a name="l00730"></a>00730 
+<a name="l00731"></a>00731   <span class="comment">// ------ Query statistics on the solution and the solve ------</span>
+<a name="l00732"></a>00732   <span class="comment">// Number of simplex iterations</span>
+<a name="l00733"></a>00733   <span class="keyword">virtual</span> int64 <a class="code" href="classoperations__research_1_1MPSolverInterface.html#a7ef7e2f076fc9208d13fdfb4ec33c76" title="Query statistics on the solution and the solve Number of simplex iterations.">iterations</a>() <span class="keyword">const</span> = 0;
+<a name="l00734"></a>00734   <span class="comment">// Number of branch-and-bound nodes</span>
+<a name="l00735"></a>00735   <span class="keyword">virtual</span> int64 <a class="code" href="classoperations__research_1_1MPSolverInterface.html#6ca427f3c6266f86e41f4b5b1905c7d3" title="Number of branch-and-bound nodes.">nodes</a>() <span class="keyword">const</span> = 0;
+<a name="l00736"></a>00736   <span class="comment">// Best objective bound. Only available for discrete problems.</span>
+<a name="l00737"></a>00737   <span class="keyword">virtual</span> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#1e4b520fcd965a7a2b975035e1a906b5" title="Best objective bound. Only available for discrete problems.">best_objective_bound</a>() <span class="keyword">const</span> = 0;
+<a name="l00738"></a>00738   <span class="comment">// Objective value of the best solution found so far.</span>
+<a name="l00739"></a>00739   <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#59b59de084db0d08603d7f292eeee591" title="Objective value of the best solution found so far.">objective_value</a>() <span class="keyword">const</span>;
 <a name="l00740"></a>00740 
-<a name="l00741"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#9738695aad73cfe185b8fef40d67edaf">00741</a>   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#9738695aad73cfe185b8fef40d67edaf">last_variable_index</a>()<span class="keyword"> const </span>{
-<a name="l00742"></a>00742     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#45aa65ea825c85f885b0d8a0064af2f6" title="Index in MPSolver::constraints_ of last variable extracted.">last_variable_index_</a>;
-<a name="l00743"></a>00743   }
-<a name="l00744"></a>00744 
-<a name="l00745"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#ebf484e68da67e29b0799e8baf1ed421">00745</a>   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#ebf484e68da67e29b0799e8baf1ed421">quiet</a>()<span class="keyword"> const </span>{
-<a name="l00746"></a>00746     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#c962e5cc7308644424829668241a8fcf" title="Boolean indicator for the verbosity of the solver output.">quiet_</a>;
-<a name="l00747"></a>00747   }
-<a name="l00748"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#dc4579b45ae778e4c61b5c35cffc0eaf">00748</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#dc4579b45ae778e4c61b5c35cffc0eaf">set_quiet</a>(<span class="keywordtype">bool</span> quiet_value) {
-<a name="l00749"></a>00749     <a class="code" href="classoperations__research_1_1MPSolverInterface.html#c962e5cc7308644424829668241a8fcf" title="Boolean indicator for the verbosity of the solver output.">quiet_</a> = quiet_value;
-<a name="l00750"></a>00750   }
-<a name="l00751"></a>00751 
-<a name="l00752"></a>00752   <span class="comment">// Returns the result status of the last solve.</span>
-<a name="l00753"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#5580f9fd40daec05809a769125484232">00753</a>   <a class="code" href="classoperations__research_1_1MPSolver.html#16bca30fdb1b048d987631b757c63192">MPSolver::ResultStatus</a> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#5580f9fd40daec05809a769125484232" title="Returns the result status of the last solve.">result_status</a>()<span class="keyword"> const </span>{
-<a name="l00754"></a>00754     <a class="code" href="classoperations__research_1_1MPSolverInterface.html#6807643e6c70f358671990b086008cdf" title="Checks whether the solution is synchronized with the model, i.e.">CheckSolutionIsSynchronized</a>();
-<a name="l00755"></a>00755     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#dd7194b3e70938a6bb7fb8e7c6532e56" title="Indicates whether the solve has reached optimality, infeasibility, a limit, etc.">result_status_</a>;
-<a name="l00756"></a>00756   }
-<a name="l00757"></a>00757 
-<a name="l00758"></a>00758   <span class="comment">// Returns a string describing the solver.</span>
-<a name="l00759"></a>00759   <span class="keyword">virtual</span> <span class="keywordtype">string</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#0362279bed2a06560d686539bb9a6e13" title="Returns a string describing the solver.">SolverVersion</a>() <span class="keyword">const</span> = 0;
-<a name="l00760"></a>00760 
-<a name="l00761"></a>00761   <span class="comment">// Returns the underlying solver.</span>
-<a name="l00762"></a>00762   <span class="keyword">virtual</span> <span class="keywordtype">void</span>* <a class="code" href="classoperations__research_1_1MPSolverInterface.html#d98f058f6721dba0ddeb4f82f7bc98ef" title="Returns the underlying solver.">underlying_solver</a>() = 0;
-<a name="l00763"></a>00763 
-<a name="l00764"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#c2c01b4de8f7670e37daa7d42b804dd4">00764</a>   <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1MPSolver.html">MPSolver</a>;
-<a name="l00765"></a>00765  <span class="keyword">protected</span>:
-<a name="l00766"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#e27c5da090750971d680f2bf8f4f706b">00766</a>   <a class="code" href="classoperations__research_1_1MPSolver.html">MPSolver</a>* <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#e27c5da090750971d680f2bf8f4f706b">solver_</a>;
-<a name="l00767"></a>00767   <span class="comment">// Indicates whether the model and the solution are synchronized.</span>
-<a name="l00768"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#f7655248b40e336f843180b9ef37dc3c">00768</a>   <a class="code" href="classoperations__research_1_1MPSolverInterface.html#912394f09fe0aee694df2e9c962853a0">SynchronizationStatus</a> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#f7655248b40e336f843180b9ef37dc3c" title="Indicates whether the model and the solution are synchronized.">sync_status_</a>;
-<a name="l00769"></a>00769   <span class="comment">// Indicates whether the solve has reached optimality,</span>
-<a name="l00770"></a>00770   <span class="comment">// infeasibility, a limit, etc.</span>
-<a name="l00771"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#dd7194b3e70938a6bb7fb8e7c6532e56">00771</a>   <a class="code" href="classoperations__research_1_1MPSolver.html#16bca30fdb1b048d987631b757c63192">MPSolver::ResultStatus</a> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#dd7194b3e70938a6bb7fb8e7c6532e56" title="Indicates whether the solve has reached optimality, infeasibility, a limit, etc.">result_status_</a>;
-<a name="l00772"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#aabe8c85cd90dd61e4c9de70667b0c16">00772</a>   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#aabe8c85cd90dd61e4c9de70667b0c16">maximize_</a>;
-<a name="l00773"></a>00773 
-<a name="l00774"></a>00774   <span class="comment">// Index in MPSolver::variables_ of last constraint extracted.</span>
-<a name="l00775"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#577812bda95732730419025af875deb3">00775</a>   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#577812bda95732730419025af875deb3" title="Index in MPSolver::variables_ of last constraint extracted.">last_constraint_index_</a>;
-<a name="l00776"></a>00776   <span class="comment">// Index in MPSolver::constraints_ of last variable extracted.</span>
-<a name="l00777"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#45aa65ea825c85f885b0d8a0064af2f6">00777</a>   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#45aa65ea825c85f885b0d8a0064af2f6" title="Index in MPSolver::constraints_ of last variable extracted.">last_variable_index_</a>;
-<a name="l00778"></a>00778 
-<a name="l00779"></a>00779   <span class="comment">// The value of the objective function.</span>
-<a name="l00780"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#9fbca54e7d25c2bfacfac1e47183e14f">00780</a>   <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#9fbca54e7d25c2bfacfac1e47183e14f" title="The value of the objective function.">objective_value_</a>;
+<a name="l00741"></a>00741   <span class="comment">// Returns the basis status of a row.</span>
+<a name="l00742"></a>00742   <span class="keyword">virtual</span> <a class="code" href="classoperations__research_1_1MPSolver.html#7e2a34816b22749e70e23d26f49cf743" title="Advanced usage: possible basis status values for a variable and the slack variable...">MPSolver::BasisStatus</a> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#ad9285c25e1671edfac7a7748b166770" title="Returns the basis status of a row.">row_status</a>(<span class="keywordtype">int</span> constraint_index) <span class="keyword">const</span> = 0;
+<a name="l00743"></a>00743   <span class="comment">// Returns the basis status of a constraint.</span>
+<a name="l00744"></a>00744   <span class="keyword">virtual</span> <a class="code" href="classoperations__research_1_1MPSolver.html#7e2a34816b22749e70e23d26f49cf743" title="Advanced usage: possible basis status values for a variable and the slack variable...">MPSolver::BasisStatus</a> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#5a2299c6d83d21a0917d0661fb704dbe" title="Returns the basis status of a constraint.">column_status</a>(<span class="keywordtype">int</span> variable_index) <span class="keyword">const</span> = 0;
+<a name="l00745"></a>00745 
+<a name="l00746"></a>00746   <span class="comment">// Checks whether the solution is synchronized with the model,</span>
+<a name="l00747"></a>00747   <span class="comment">// i.e. whether the model has changed since the solution was</span>
+<a name="l00748"></a>00748   <span class="comment">// computed last.</span>
+<a name="l00749"></a>00749   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#6807643e6c70f358671990b086008cdf" title="Checks whether the solution is synchronized with the model, i.e.">CheckSolutionIsSynchronized</a>() <span class="keyword">const</span>;
+<a name="l00750"></a>00750   <span class="comment">// Checks whether a feasible solution exists.</span>
+<a name="l00751"></a>00751   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#9a9bad2740370574e7841e563b9ba53c" title="Checks whether a feasible solution exists.">CheckSolutionExists</a>() <span class="keyword">const</span>;
+<a name="l00752"></a>00752   <span class="comment">// Checks whether information on the best objective bound exists.</span>
+<a name="l00753"></a>00753   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#83a7646b81f0e63a09da2f3cd521651a" title="Checks whether information on the best objective bound exists.">CheckBestObjectiveBoundExists</a>() <span class="keyword">const</span>;
+<a name="l00754"></a>00754 
+<a name="l00755"></a>00755   <span class="comment">// ----- Misc -----</span>
+<a name="l00756"></a>00756   <span class="comment">// Write model to file.</span>
+<a name="l00757"></a>00757   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#26fcf164eef82b953592fa0fd6c330fe" title="Misc Write model to file.">WriteModel</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; filename) = 0;
+<a name="l00758"></a>00758 
+<a name="l00759"></a>00759   <span class="comment">// Query problem type. For simplicity, the distinction between</span>
+<a name="l00760"></a>00760   <span class="comment">// continuous and discrete is based on the declaration of the user</span>
+<a name="l00761"></a>00761   <span class="comment">// when the solver is created (example: GLPK_LINEAR_PROGRAMMING</span>
+<a name="l00762"></a>00762   <span class="comment">// vs. GLPK_MIXED_INTEGER_PROGRAMMING), not on the actual content of</span>
+<a name="l00763"></a>00763   <span class="comment">// the model.</span>
+<a name="l00764"></a>00764   <span class="comment">// Returns true if the problem is continuous.</span>
+<a name="l00765"></a>00765   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#77db27f245bbe7fec03763cb0f81210a" title="Query problem type.">IsContinuous</a>() <span class="keyword">const</span> = 0;
+<a name="l00766"></a>00766   <span class="comment">// Returns true if the problem is continuous and linear.</span>
+<a name="l00767"></a>00767   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#8410c2213e0f2faec9a202b5b670ad6c" title="Returns true if the problem is continuous and linear.">IsLP</a>() <span class="keyword">const</span> = 0;
+<a name="l00768"></a>00768   <span class="comment">// Returns true if the problem is discrete and linear.</span>
+<a name="l00769"></a>00769   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#3cb924945c7c8ebd6964ba982ffdf276" title="Returns true if the problem is discrete and linear.">IsMIP</a>() <span class="keyword">const</span> = 0;
+<a name="l00770"></a>00770 
+<a name="l00771"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#9738695aad73cfe185b8fef40d67edaf">00771</a>   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#9738695aad73cfe185b8fef40d67edaf">last_variable_index</a>()<span class="keyword"> const </span>{
+<a name="l00772"></a>00772     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#45aa65ea825c85f885b0d8a0064af2f6" title="Index in MPSolver::constraints_ of last variable extracted.">last_variable_index_</a>;
+<a name="l00773"></a>00773   }
+<a name="l00774"></a>00774 
+<a name="l00775"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#ebf484e68da67e29b0799e8baf1ed421">00775</a>   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#ebf484e68da67e29b0799e8baf1ed421">quiet</a>()<span class="keyword"> const </span>{
+<a name="l00776"></a>00776     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#c962e5cc7308644424829668241a8fcf" title="Boolean indicator for the verbosity of the solver output.">quiet_</a>;
+<a name="l00777"></a>00777   }
+<a name="l00778"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#dc4579b45ae778e4c61b5c35cffc0eaf">00778</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#dc4579b45ae778e4c61b5c35cffc0eaf">set_quiet</a>(<span class="keywordtype">bool</span> quiet_value) {
+<a name="l00779"></a>00779     <a class="code" href="classoperations__research_1_1MPSolverInterface.html#c962e5cc7308644424829668241a8fcf" title="Boolean indicator for the verbosity of the solver output.">quiet_</a> = quiet_value;
+<a name="l00780"></a>00780   }
 <a name="l00781"></a>00781 
-<a name="l00782"></a>00782   <span class="comment">// Boolean indicator for the verbosity of the solver output.</span>
-<a name="l00783"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#c962e5cc7308644424829668241a8fcf">00783</a>   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#c962e5cc7308644424829668241a8fcf" title="Boolean indicator for the verbosity of the solver output.">quiet_</a>;
-<a name="l00784"></a>00784 
-<a name="l00785"></a>00785   <span class="comment">// Index of dummy variable created for empty constraints or the</span>
-<a name="l00786"></a>00786   <span class="comment">// objective offset.</span>
-<a name="l00787"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#693c6f125a85b70fe94057be1cfd0819">00787</a>   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#693c6f125a85b70fe94057be1cfd0819" title="Index of dummy variable created for empty constraints or the objective offset.">kDummyVariableIndex</a>;
-<a name="l00788"></a>00788 
-<a name="l00789"></a>00789   <span class="comment">// Writes out the model to a file specified by the</span>
-<a name="l00790"></a>00790   <span class="comment">// --solver_write_model command line argument or</span>
-<a name="l00791"></a>00791   <span class="comment">// MPSolver::set_write_model_filename.</span>
-<a name="l00792"></a>00792   <span class="comment">// The file is written by each solver interface (CBC, CLP, GLPK) and</span>
-<a name="l00793"></a>00793   <span class="comment">// each behaves a little differently.</span>
-<a name="l00794"></a>00794   <span class="comment">// If filename ends in ".lp", then the file is written in the</span>
-<a name="l00795"></a>00795   <span class="comment">// LP format (except for the CLP solver that does not support the LP</span>
-<a name="l00796"></a>00796   <span class="comment">// format). In all other cases it is written in the MPS format.</span>
-<a name="l00797"></a>00797   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#f9101bf3c774d26c05c2cf370009d516" title="Writes out the model to a file specified by the --solver_write_model command line...">WriteModelToPredefinedFiles</a>();
-<a name="l00798"></a>00798 
-<a name="l00799"></a>00799   <span class="comment">// Extracts model stored in MPSolver</span>
-<a name="l00800"></a>00800   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#9ae99b901839c7f1e29193d8a619b728" title="Extracts model stored in MPSolver.">ExtractModel</a>();
-<a name="l00801"></a>00801   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#945992529aaaa827d7c9307e996ab2ef">ExtractNewVariables</a>() = 0;
-<a name="l00802"></a>00802   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#1363e1a1c4a1535b0cb92f46a9efd4b5">ExtractNewConstraints</a>() = 0;
-<a name="l00803"></a>00803   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#24085346a573695d2f3d224b726c5714">ExtractObjective</a>() = 0;
-<a name="l00804"></a>00804   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#3fd73560f782eaf5093a435c61783d09">ResetExtractionInformation</a>();
-<a name="l00805"></a>00805   <span class="comment">// Change synchronization status from SOLUTION_SYNCHRONIZED to</span>
-<a name="l00806"></a>00806   <span class="comment">// MODEL_SYNCHRONIZED. To be used for model changes.</span>
-<a name="l00807"></a>00807   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#27ef26272b0444403e683b31605d88f7" title="Change synchronization status from SOLUTION_SYNCHRONIZED to MODEL_SYNCHRONIZED.">InvalidateSolutionSynchronization</a>();
+<a name="l00782"></a>00782   <span class="comment">// Returns the result status of the last solve.</span>
+<a name="l00783"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#5580f9fd40daec05809a769125484232">00783</a>   <a class="code" href="classoperations__research_1_1MPSolver.html#16bca30fdb1b048d987631b757c63192">MPSolver::ResultStatus</a> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#5580f9fd40daec05809a769125484232" title="Returns the result status of the last solve.">result_status</a>()<span class="keyword"> const </span>{
+<a name="l00784"></a>00784     <a class="code" href="classoperations__research_1_1MPSolverInterface.html#6807643e6c70f358671990b086008cdf" title="Checks whether the solution is synchronized with the model, i.e.">CheckSolutionIsSynchronized</a>();
+<a name="l00785"></a>00785     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#dd7194b3e70938a6bb7fb8e7c6532e56" title="Indicates whether the solve has reached optimality, infeasibility, a limit, etc.">result_status_</a>;
+<a name="l00786"></a>00786   }
+<a name="l00787"></a>00787 
+<a name="l00788"></a>00788   <span class="comment">// Returns a string describing the solver.</span>
+<a name="l00789"></a>00789   <span class="keyword">virtual</span> <span class="keywordtype">string</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#0362279bed2a06560d686539bb9a6e13" title="Returns a string describing the solver.">SolverVersion</a>() <span class="keyword">const</span> = 0;
+<a name="l00790"></a>00790 
+<a name="l00791"></a>00791   <span class="comment">// Returns the underlying solver.</span>
+<a name="l00792"></a>00792   <span class="keyword">virtual</span> <span class="keywordtype">void</span>* <a class="code" href="classoperations__research_1_1MPSolverInterface.html#d98f058f6721dba0ddeb4f82f7bc98ef" title="Returns the underlying solver.">underlying_solver</a>() = 0;
+<a name="l00793"></a>00793 
+<a name="l00794"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#c2c01b4de8f7670e37daa7d42b804dd4">00794</a>   <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1MPSolver.html">MPSolver</a>;
+<a name="l00795"></a>00795  <span class="keyword">protected</span>:
+<a name="l00796"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#e27c5da090750971d680f2bf8f4f706b">00796</a>   <a class="code" href="classoperations__research_1_1MPSolver.html">MPSolver</a>* <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#e27c5da090750971d680f2bf8f4f706b">solver_</a>;
+<a name="l00797"></a>00797   <span class="comment">// Indicates whether the model and the solution are synchronized.</span>
+<a name="l00798"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#f7655248b40e336f843180b9ef37dc3c">00798</a>   <a class="code" href="classoperations__research_1_1MPSolverInterface.html#912394f09fe0aee694df2e9c962853a0">SynchronizationStatus</a> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#f7655248b40e336f843180b9ef37dc3c" title="Indicates whether the model and the solution are synchronized.">sync_status_</a>;
+<a name="l00799"></a>00799   <span class="comment">// Indicates whether the solve has reached optimality,</span>
+<a name="l00800"></a>00800   <span class="comment">// infeasibility, a limit, etc.</span>
+<a name="l00801"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#dd7194b3e70938a6bb7fb8e7c6532e56">00801</a>   <a class="code" href="classoperations__research_1_1MPSolver.html#16bca30fdb1b048d987631b757c63192">MPSolver::ResultStatus</a> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#dd7194b3e70938a6bb7fb8e7c6532e56" title="Indicates whether the solve has reached optimality, infeasibility, a limit, etc.">result_status_</a>;
+<a name="l00802"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#aabe8c85cd90dd61e4c9de70667b0c16">00802</a>   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#aabe8c85cd90dd61e4c9de70667b0c16">maximize_</a>;
+<a name="l00803"></a>00803 
+<a name="l00804"></a>00804   <span class="comment">// Index in MPSolver::variables_ of last constraint extracted.</span>
+<a name="l00805"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#577812bda95732730419025af875deb3">00805</a>   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#577812bda95732730419025af875deb3" title="Index in MPSolver::variables_ of last constraint extracted.">last_constraint_index_</a>;
+<a name="l00806"></a>00806   <span class="comment">// Index in MPSolver::constraints_ of last variable extracted.</span>
+<a name="l00807"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#45aa65ea825c85f885b0d8a0064af2f6">00807</a>   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#45aa65ea825c85f885b0d8a0064af2f6" title="Index in MPSolver::constraints_ of last variable extracted.">last_variable_index_</a>;
 <a name="l00808"></a>00808 
-<a name="l00809"></a>00809   <span class="comment">// Set parameters common to LP and MIP in the underlying solver.</span>
-<a name="l00810"></a>00810   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#d237855fa79fc36fbf9baedce589384c" title="Set parameters common to LP and MIP in the underlying solver.">SetCommonParameters</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html" title="This class stores parameter settings for LP and MIP solvers.">MPSolverParameters</a>&amp; param);
-<a name="l00811"></a>00811   <span class="comment">// Set MIP specific parameters in the underlying solver.</span>
-<a name="l00812"></a>00812   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#b7289f57fd0f768453f2817d59a20c80" title="Set MIP specific parameters in the underlying solver.">SetMIPParameters</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html" title="This class stores parameter settings for LP and MIP solvers.">MPSolverParameters</a>&amp; param);
-<a name="l00813"></a>00813   <span class="comment">// Set all parameters in the underlying solver.</span>
-<a name="l00814"></a>00814   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#6c1c1fc340f3f15e75745d7e6b0fe3df" title="Set all parameters in the underlying solver.">SetParameters</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html" title="This class stores parameter settings for LP and MIP solvers.">MPSolverParameters</a>&amp; param) = 0;
-<a name="l00815"></a>00815   <span class="comment">// Set an unsupported parameter.</span>
-<a name="l00816"></a>00816   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#45353137dcef0e7f421e09628d40d9c3" title="Set an unsupported parameter.">SetUnsupportedDoubleParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param) <span class="keyword">const</span>;
-<a name="l00817"></a>00817   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#a0711f86f43bb8d9b04902f5de5fa7f0">SetUnsupportedIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param) <span class="keyword">const</span>;
-<a name="l00818"></a>00818   <span class="comment">// Set a supported parameter to an unsupported value.</span>
-<a name="l00819"></a>00819   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#35cd5261010943a7782c48adcd9fba02" title="Set a supported parameter to an unsupported value.">SetDoubleParamToUnsupportedValue</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param,
-<a name="l00820"></a>00820                                         <span class="keywordtype">int</span> value) <span class="keyword">const</span>;
-<a name="l00821"></a>00821   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#5253b2f5977fa4f08305ddc966a65a6c">SetIntegerParamToUnsupportedValue</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param,
-<a name="l00822"></a>00822                                         <span class="keywordtype">double</span> value) <span class="keyword">const</span>;
-<a name="l00823"></a>00823   <span class="comment">// Set each parameter in the underlying solver.</span>
-<a name="l00824"></a>00824   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#2b6fcec92ec397f38a9657d7d38a9e49" title="Set each parameter in the underlying solver.">SetRelativeMipGap</a>(<span class="keywordtype">double</span> value) = 0;
-<a name="l00825"></a>00825   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#51ae167e111959ecbe3f67e0e12e2f09">SetPresolveMode</a>(<span class="keywordtype">int</span> value) = 0;
-<a name="l00826"></a>00826   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#7cde757e7152aa06930afc59709c3c64">SetLpAlgorithm</a>(<span class="keywordtype">int</span> value) = 0;
-<a name="l00827"></a>00827 };
+<a name="l00809"></a>00809   <span class="comment">// The value of the objective function.</span>
+<a name="l00810"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#9fbca54e7d25c2bfacfac1e47183e14f">00810</a>   <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#9fbca54e7d25c2bfacfac1e47183e14f" title="The value of the objective function.">objective_value_</a>;
+<a name="l00811"></a>00811 
+<a name="l00812"></a>00812   <span class="comment">// Boolean indicator for the verbosity of the solver output.</span>
+<a name="l00813"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#c962e5cc7308644424829668241a8fcf">00813</a>   <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#c962e5cc7308644424829668241a8fcf" title="Boolean indicator for the verbosity of the solver output.">quiet_</a>;
+<a name="l00814"></a>00814 
+<a name="l00815"></a>00815   <span class="comment">// Index of dummy variable created for empty constraints or the</span>
+<a name="l00816"></a>00816   <span class="comment">// objective offset.</span>
+<a name="l00817"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#693c6f125a85b70fe94057be1cfd0819">00817</a>   <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#693c6f125a85b70fe94057be1cfd0819" title="Index of dummy variable created for empty constraints or the objective offset.">kDummyVariableIndex</a>;
+<a name="l00818"></a>00818 
+<a name="l00819"></a>00819   <span class="comment">// Writes out the model to a file specified by the</span>
+<a name="l00820"></a>00820   <span class="comment">// --solver_write_model command line argument or</span>
+<a name="l00821"></a>00821   <span class="comment">// MPSolver::set_write_model_filename.</span>
+<a name="l00822"></a>00822   <span class="comment">// The file is written by each solver interface (CBC, CLP, GLPK) and</span>
+<a name="l00823"></a>00823   <span class="comment">// each behaves a little differently.</span>
+<a name="l00824"></a>00824   <span class="comment">// If filename ends in ".lp", then the file is written in the</span>
+<a name="l00825"></a>00825   <span class="comment">// LP format (except for the CLP solver that does not support the LP</span>
+<a name="l00826"></a>00826   <span class="comment">// format). In all other cases it is written in the MPS format.</span>
+<a name="l00827"></a>00827   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#f9101bf3c774d26c05c2cf370009d516" title="Writes out the model to a file specified by the --solver_write_model command line...">WriteModelToPredefinedFiles</a>();
 <a name="l00828"></a>00828 
-<a name="l00829"></a>00829 }  <span class="comment">// namespace operations_research</span>
-<a name="l00830"></a>00830 
-<a name="l00831"></a>00831 <span class="preprocessor">#endif  // OR_TOOLS_LINEAR_SOLVER_LINEAR_SOLVER_H_</span>
+<a name="l00829"></a>00829   <span class="comment">// Extracts model stored in MPSolver</span>
+<a name="l00830"></a>00830   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#9ae99b901839c7f1e29193d8a619b728" title="Extracts model stored in MPSolver.">ExtractModel</a>();
+<a name="l00831"></a>00831   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#945992529aaaa827d7c9307e996ab2ef">ExtractNewVariables</a>() = 0;
+<a name="l00832"></a>00832   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#1363e1a1c4a1535b0cb92f46a9efd4b5">ExtractNewConstraints</a>() = 0;
+<a name="l00833"></a>00833   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#24085346a573695d2f3d224b726c5714">ExtractObjective</a>() = 0;
+<a name="l00834"></a>00834   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#3fd73560f782eaf5093a435c61783d09">ResetExtractionInformation</a>();
+<a name="l00835"></a>00835   <span class="comment">// Change synchronization status from SOLUTION_SYNCHRONIZED to</span>
+<a name="l00836"></a>00836   <span class="comment">// MODEL_SYNCHRONIZED. To be used for model changes.</span>
+<a name="l00837"></a>00837   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#27ef26272b0444403e683b31605d88f7" title="Change synchronization status from SOLUTION_SYNCHRONIZED to MODEL_SYNCHRONIZED.">InvalidateSolutionSynchronization</a>();
+<a name="l00838"></a>00838 
+<a name="l00839"></a>00839   <span class="comment">// Set parameters common to LP and MIP in the underlying solver.</span>
+<a name="l00840"></a>00840   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#d237855fa79fc36fbf9baedce589384c" title="Set parameters common to LP and MIP in the underlying solver.">SetCommonParameters</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html" title="This class stores parameter settings for LP and MIP solvers.">MPSolverParameters</a>&amp; param);
+<a name="l00841"></a>00841   <span class="comment">// Set MIP specific parameters in the underlying solver.</span>
+<a name="l00842"></a>00842   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#b7289f57fd0f768453f2817d59a20c80" title="Set MIP specific parameters in the underlying solver.">SetMIPParameters</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html" title="This class stores parameter settings for LP and MIP solvers.">MPSolverParameters</a>&amp; param);
+<a name="l00843"></a>00843   <span class="comment">// Set all parameters in the underlying solver.</span>
+<a name="l00844"></a>00844   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#6c1c1fc340f3f15e75745d7e6b0fe3df" title="Set all parameters in the underlying solver.">SetParameters</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html" title="This class stores parameter settings for LP and MIP solvers.">MPSolverParameters</a>&amp; param) = 0;
+<a name="l00845"></a>00845   <span class="comment">// Set an unsupported parameter.</span>
+<a name="l00846"></a>00846   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#45353137dcef0e7f421e09628d40d9c3" title="Set an unsupported parameter.">SetUnsupportedDoubleParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param) <span class="keyword">const</span>;
+<a name="l00847"></a>00847   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#a0711f86f43bb8d9b04902f5de5fa7f0">SetUnsupportedIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param) <span class="keyword">const</span>;
+<a name="l00848"></a>00848   <span class="comment">// Set a supported parameter to an unsupported value.</span>
+<a name="l00849"></a>00849   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#35cd5261010943a7782c48adcd9fba02" title="Set a supported parameter to an unsupported value.">SetDoubleParamToUnsupportedValue</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param,
+<a name="l00850"></a>00850                                         <span class="keywordtype">int</span> value) <span class="keyword">const</span>;
+<a name="l00851"></a>00851   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#5253b2f5977fa4f08305ddc966a65a6c">SetIntegerParamToUnsupportedValue</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param,
+<a name="l00852"></a>00852                                         <span class="keywordtype">double</span> value) <span class="keyword">const</span>;
+<a name="l00853"></a>00853   <span class="comment">// Set each parameter in the underlying solver.</span>
+<a name="l00854"></a>00854   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#2b6fcec92ec397f38a9657d7d38a9e49" title="Set each parameter in the underlying solver.">SetRelativeMipGap</a>(<span class="keywordtype">double</span> value) = 0;
+<a name="l00855"></a>00855   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#119e0274303ed2eb0c80fcef960cfff0">SetPrimalTolerance</a>(<span class="keywordtype">double</span> value) = 0;
+<a name="l00856"></a>00856   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#bc5c8df36220fb85bf2c4f69b959ead9">SetDualTolerance</a>(<span class="keywordtype">double</span> value) = 0;
+<a name="l00857"></a>00857   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#51ae167e111959ecbe3f67e0e12e2f09">SetPresolveMode</a>(<span class="keywordtype">int</span> value) = 0;
+<a name="l00858"></a>00858   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#7cde757e7152aa06930afc59709c3c64">SetLpAlgorithm</a>(<span class="keywordtype">int</span> value) = 0;
+<a name="l00859"></a>00859 };
+<a name="l00860"></a>00860 
+<a name="l00861"></a>00861 }  <span class="comment">// namespace operations_research</span>
+<a name="l00862"></a>00862 
+<a name="l00863"></a>00863 <span class="preprocessor">#endif  // OR_TOOLS_LINEAR_SOLVER_LINEAR_SOLVER_H_</span>
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -919,7 +951,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#439154 height=3></td>
+      <td colspan=2 bgcolor=#371311 height=3></td>
     </tr>
   </table>
 

@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #439154
+      background-color: #371311
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#439154 height=3></td>
+      <td colspan=3 bgcolor=#371311 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
+          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#439154>
+            <td bgcolor=#371311>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -1691,7 +1691,7 @@
 <a name="l01608"></a>01608 <span class="keyword">class </span>NeighborhoodLimit : <span class="keyword">public</span> LocalSearchOperator {
 <a name="l01609"></a>01609  <span class="keyword">public</span>:
 <a name="l01610"></a>01610   NeighborhoodLimit(LocalSearchOperator* <span class="keyword">const</span> op, int64 limit)
-<a name="l01611"></a>01611       : <a class="code" href="local__search_8cc.html#5c8123de53a4acdd00e64d7d0fb057f2">operator_</a>(op), <a class="code" href="local__search_8cc.html#3c46258b924243eeeb3608b2df18db4f">limit_</a>(limit), <a class="code" href="local__search_8cc.html#e72683662d628802042dbe81f8b887f9">next_neighborhood_calls_</a>(0) {
+<a name="l01611"></a>01611       : <a class="code" href="local__search_8cc.html#5c8123de53a4acdd00e64d7d0fb057f2">operator_</a>(op), <a class="code" href="local__search_8cc.html#1c69e7dcf9d555da2ceac2a003b9e647">limit_</a>(limit), <a class="code" href="local__search_8cc.html#e72683662d628802042dbe81f8b887f9">next_neighborhood_calls_</a>(0) {
 <a name="l01612"></a>01612     CHECK_NOTNULL(op);
 <a name="l01613"></a>01613     CHECK_GT(limit, 0);
 <a name="l01614"></a>01614   }
@@ -1702,7 +1702,7 @@
 <a name="l01619"></a>01619   }
 <a name="l01620"></a>01620 
 <a name="l01621"></a>01621   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> MakeNextNeighbor(Assignment* delta, Assignment* deltadelta) {
-<a name="l01622"></a>01622     <span class="keywordflow">if</span> (<a class="code" href="local__search_8cc.html#e72683662d628802042dbe81f8b887f9">next_neighborhood_calls_</a> &gt;= <a class="code" href="local__search_8cc.html#3c46258b924243eeeb3608b2df18db4f">limit_</a>) {
+<a name="l01622"></a>01622     <span class="keywordflow">if</span> (<a class="code" href="local__search_8cc.html#e72683662d628802042dbe81f8b887f9">next_neighborhood_calls_</a> &gt;= <a class="code" href="local__search_8cc.html#1c69e7dcf9d555da2ceac2a003b9e647">limit_</a>) {
 <a name="l01623"></a>01623       <span class="keywordflow">return</span> <span class="keyword">false</span>;
 <a name="l01624"></a>01624     }
 <a name="l01625"></a>01625     ++<a class="code" href="local__search_8cc.html#e72683662d628802042dbe81f8b887f9">next_neighborhood_calls_</a>;
@@ -1710,7 +1710,7 @@
 <a name="l01627"></a>01627   }
 <a name="l01628"></a>01628  <span class="keyword">private</span>:
 <a name="l01629"></a><a class="code" href="local__search_8cc.html#5c8123de53a4acdd00e64d7d0fb057f2">01629</a>   LocalSearchOperator* <span class="keyword">const</span> <a class="code" href="local__search_8cc.html#5c8123de53a4acdd00e64d7d0fb057f2">operator_</a>;
-<a name="l01630"></a><a class="code" href="local__search_8cc.html#3c46258b924243eeeb3608b2df18db4f">01630</a>   <span class="keyword">const</span> int64 <a class="code" href="local__search_8cc.html#3c46258b924243eeeb3608b2df18db4f">limit_</a>;
+<a name="l01630"></a><a class="code" href="local__search_8cc.html#1c69e7dcf9d555da2ceac2a003b9e647">01630</a>   <span class="keyword">const</span> int64 <a class="code" href="local__search_8cc.html#1c69e7dcf9d555da2ceac2a003b9e647">limit_</a>;
 <a name="l01631"></a><a class="code" href="local__search_8cc.html#e72683662d628802042dbe81f8b887f9">01631</a>   int64 <a class="code" href="local__search_8cc.html#e72683662d628802042dbe81f8b887f9">next_neighborhood_calls_</a>;
 <a name="l01632"></a>01632 };
 <a name="l01633"></a>01633 }  <span class="comment">// namespace</span>
@@ -2595,570 +2595,619 @@
 <a name="l02512"></a>02512                                              <a class="code" href="namespaceoperations__research.html#c5da61242fecfd25108f265364999638" title="Local search filter factory.">OperationFromEnum</a>(op_enum)));
 <a name="l02513"></a>02513 }
 <a name="l02514"></a>02514 
-<a name="l02515"></a>02515 <span class="comment">// ----- NestedSolve decision wrapper -----</span>
-<a name="l02516"></a>02516 <span class="comment">// This decision calls a nested Solve on the given DecisionBuilder in its</span>
-<a name="l02517"></a>02517 <span class="comment">// left branch; does nothing in the left branch.</span>
-<a name="l02518"></a>02518 <span class="comment">// The state of the decision corresponds to the result of the nested Solve:</span>
-<a name="l02519"></a>02519 <span class="comment">// DECISION_PENDING - Nested Solve not called yet</span>
-<a name="l02520"></a>02520 <span class="comment">// DECISION_FAILED  - Nested Solve failed</span>
-<a name="l02521"></a>02521 <span class="comment">// DECISION_FOUND   - Nested Solve succeeded</span>
-<a name="l02522"></a>02522 
-<a name="l02523"></a><a class="code" href="classoperations__research_1_1NestedSolveDecision.html">02523</a> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1NestedSolveDecision.html" title="NestedSolve decision wrapper This decision calls a nested Solve on the given DecisionBuilder...">NestedSolveDecision</a> : <span class="keyword">public</span> <a class="code" href="classoperations__research_1_1Decision.html" title="A Decision represents a choice point in the search tree.">Decision</a> {
-<a name="l02524"></a>02524  <span class="keyword">public</span>:
-<a name="l02525"></a>02525   <span class="comment">// This enum is used internally to tag states in the local search tree.</span>
-<a name="l02526"></a><a class="code" href="classoperations__research_1_1NestedSolveDecision.html#c5bc23aa0c3d923d874fc63aeec60e68">02526</a>   <span class="keyword">enum</span> <a class="code" href="classoperations__research_1_1NestedSolveDecision.html#c5bc23aa0c3d923d874fc63aeec60e68" title="This enum is used internally to tag states in the local search tree.">StateType</a> {
-<a name="l02527"></a><a class="code" href="classoperations__research_1_1NestedSolveDecision.html#c5bc23aa0c3d923d874fc63aeec60e68edd2677272c5fa6a7e2e17cebe319624">02527</a>     DECISION_PENDING,
-<a name="l02528"></a><a class="code" href="classoperations__research_1_1NestedSolveDecision.html#c5bc23aa0c3d923d874fc63aeec60e684c70a20ca781b795098c22d96167fd58">02528</a>     DECISION_FAILED,
-<a name="l02529"></a><a class="code" href="classoperations__research_1_1NestedSolveDecision.html#c5bc23aa0c3d923d874fc63aeec60e68a0f43d8d75670d4bf077263410066aa9">02529</a>     DECISION_FOUND
-<a name="l02530"></a>02530   };
-<a name="l02531"></a>02531 
-<a name="l02532"></a>02532   <a class="code" href="classoperations__research_1_1NestedSolveDecision.html" title="NestedSolve decision wrapper This decision calls a nested Solve on the given DecisionBuilder...">NestedSolveDecision</a>(<a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> db,
-<a name="l02533"></a>02533                       <span class="keywordtype">bool</span> restore,
-<a name="l02534"></a>02534                       <span class="keyword">const</span> std::vector&lt;SearchMonitor*&gt;&amp; monitors);
-<a name="l02535"></a>02535   <a class="code" href="classoperations__research_1_1NestedSolveDecision.html" title="NestedSolve decision wrapper This decision calls a nested Solve on the given DecisionBuilder...">NestedSolveDecision</a>(<a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> db,
-<a name="l02536"></a>02536                       <span class="keywordtype">bool</span> restore);
-<a name="l02537"></a><a class="code" href="classoperations__research_1_1NestedSolveDecision.html#25c2e74aacd7e6c9ebf686475f75fb93">02537</a>   <span class="keyword">virtual</span> ~<a class="code" href="classoperations__research_1_1NestedSolveDecision.html" title="NestedSolve decision wrapper This decision calls a nested Solve on the given DecisionBuilder...">NestedSolveDecision</a>() {}
-<a name="l02538"></a>02538   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Apply(<a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> solver);
-<a name="l02539"></a>02539   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Refute(<a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> solver);
-<a name="l02540"></a><a class="code" href="classoperations__research_1_1NestedSolveDecision.html#5796ba93620b13b8c011a28f5ef1f616">02540</a>   <span class="keyword">virtual</span> <span class="keywordtype">string</span> <a class="code" href="classoperations__research_1_1Solver.html#a7a09bf2f27ccbdc1d1d386bd94e142a" title="misc debug string.">DebugString</a>()<span class="keyword"> const </span>{
-<a name="l02541"></a>02541     <span class="keywordflow">return</span> <span class="stringliteral">"NestedSolveDecision"</span>;
-<a name="l02542"></a>02542   }
-<a name="l02543"></a><a class="code" href="classoperations__research_1_1NestedSolveDecision.html#f436c314d061273f0529f8d58eb72bea">02543</a>   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1Solver.html#e964d4fa8d19980de529a6e771ee9a7e" title="state of the solver.">state</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="timetabling_8cc.html#3b1c09ed3908d987b7452bdcdf3dc06f">state_</a>; }
-<a name="l02544"></a>02544 
-<a name="l02545"></a>02545  <span class="keyword">private</span>:
-<a name="l02546"></a>02546   <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> <a class="code" href="default__search_8cc.html#f29e6f18a2e5762e7d38d946c540f43f">db_</a>;
-<a name="l02547"></a>02547   <span class="keywordtype">bool</span> restore_;
-<a name="l02548"></a>02548   std::vector&lt;SearchMonitor*&gt; <a class="code" href="search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>;
-<a name="l02549"></a>02549   <span class="keywordtype">int</span> <a class="code" href="timetabling_8cc.html#3b1c09ed3908d987b7452bdcdf3dc06f">state_</a>;
-<a name="l02550"></a>02550 };
-<a name="l02551"></a>02551 
-<a name="l02552"></a><a class="code" href="classoperations__research_1_1NestedSolveDecision.html#9c0752825882847f9bc513a2d5adb598">02552</a> <a class="code" href="classoperations__research_1_1NestedSolveDecision.html#9c0752825882847f9bc513a2d5adb598">NestedSolveDecision::NestedSolveDecision</a>(<a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> db,
-<a name="l02553"></a>02553                                          <span class="keywordtype">bool</span> restore,
-<a name="l02554"></a>02554                                          <span class="keyword">const</span> std::vector&lt;SearchMonitor*&gt;&amp; monitors)
-<a name="l02555"></a>02555     : <a class="code" href="default__search_8cc.html#f29e6f18a2e5762e7d38d946c540f43f">db_</a>(db),
-<a name="l02556"></a>02556       restore_(restore),
-<a name="l02557"></a>02557       <a class="code" href="search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>(monitors),
-<a name="l02558"></a>02558       state_(DECISION_PENDING) {
-<a name="l02559"></a>02559   CHECK(NULL != db);
-<a name="l02560"></a>02560 }
-<a name="l02561"></a>02561 
-<a name="l02562"></a><a class="code" href="classoperations__research_1_1NestedSolveDecision.html#c8da591735a06681c81600df93e2dece">02562</a> <a class="code" href="classoperations__research_1_1NestedSolveDecision.html#9c0752825882847f9bc513a2d5adb598">NestedSolveDecision::NestedSolveDecision</a>(<a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> db,
-<a name="l02563"></a>02563                                          <span class="keywordtype">bool</span> restore)
-<a name="l02564"></a>02564     : db_(db), restore_(restore), state_(<a class="code" href="classoperations__research_1_1NestedSolveDecision.html#c5bc23aa0c3d923d874fc63aeec60e68edd2677272c5fa6a7e2e17cebe319624">DECISION_PENDING</a>) {
-<a name="l02565"></a>02565   CHECK(NULL != db);
-<a name="l02566"></a>02566 }
+<a name="l02515"></a>02515 <span class="comment">// ----- Finds a neighbor of the assignment passed -----</span>
+<a name="l02516"></a>02516 
+<a name="l02517"></a><a class="code" href="classoperations__research_1_1FindOneNeighbor.html">02517</a> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1FindOneNeighbor.html" title="Finds a neighbor of the assignment passed.">FindOneNeighbor</a> : <span class="keyword">public</span> <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a> {
+<a name="l02518"></a>02518  <span class="keyword">public</span>:
+<a name="l02519"></a>02519   <a class="code" href="classoperations__research_1_1Solver.html#68ccd69d2cb81ad9b176a007275fde0b">FindOneNeighbor</a>(<a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* <span class="keyword">const</span> assignment,
+<a name="l02520"></a>02520                   <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> pool,
+<a name="l02521"></a>02521                   <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator,
+<a name="l02522"></a>02522                   <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder,
+<a name="l02523"></a>02523                   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> limit,
+<a name="l02524"></a>02524                   <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters);
+<a name="l02525"></a><a class="code" href="classoperations__research_1_1FindOneNeighbor.html#b85ced557851815ad35973136163f9a3">02525</a>   <span class="keyword">virtual</span> ~<a class="code" href="classoperations__research_1_1FindOneNeighbor.html" title="Finds a neighbor of the assignment passed.">FindOneNeighbor</a>() {}
+<a name="l02526"></a>02526   <span class="keyword">virtual</span> <a class="code" href="classoperations__research_1_1Decision.html" title="A Decision represents a choice point in the search tree.">Decision</a>* Next(<a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> solver);
+<a name="l02527"></a><a class="code" href="classoperations__research_1_1FindOneNeighbor.html#109c3947aefa0550826a1194a0cb47e8">02527</a>   <span class="keyword">virtual</span> <span class="keywordtype">string</span> <a class="code" href="classoperations__research_1_1Solver.html#a7a09bf2f27ccbdc1d1d386bd94e142a" title="misc debug string.">DebugString</a>()<span class="keyword"> const </span>{
+<a name="l02528"></a>02528     <span class="keywordflow">return</span> <span class="stringliteral">"FindOneNeighbor"</span>;
+<a name="l02529"></a>02529   }
+<a name="l02530"></a>02530 
+<a name="l02531"></a>02531  <span class="keyword">private</span>:
+<a name="l02532"></a>02532   <span class="keywordtype">bool</span> FilterAccept(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* delta, <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* deltadelta);
+<a name="l02533"></a>02533   <span class="keywordtype">void</span> SynchronizeAll();
+<a name="l02534"></a>02534   <span class="keywordtype">void</span> SynchronizeFilters(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* assignment);
+<a name="l02535"></a>02535 
+<a name="l02536"></a>02536   <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* <span class="keyword">const</span> <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>;
+<a name="l02537"></a>02537   scoped_ptr&lt;Assignment&gt; <a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>;
+<a name="l02538"></a>02538   <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> <a class="code" href="local__search_8cc.html#c464ccc9c1e58dd8af381e338a1486f8">pool_</a>;
+<a name="l02539"></a>02539   <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> <a class="code" href="local__search_8cc.html#1b511506766ee2e09a27e61830c13347">ls_operator_</a>;
+<a name="l02540"></a>02540   <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> <a class="code" href="local__search_8cc.html#a6206aa5f598643592ead3d5d4e06b8c">sub_decision_builder_</a>;
+<a name="l02541"></a>02541   <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <a class="code" href="local__search_8cc.html#1c69e7dcf9d555da2ceac2a003b9e647">limit_</a>;
+<a name="l02542"></a>02542   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> original_limit_;
+<a name="l02543"></a>02543   <span class="keywordtype">bool</span> neighbor_found_;
+<a name="l02544"></a>02544   std::vector&lt;LocalSearchFilter*&gt; <a class="code" href="local__search_8cc.html#bdfbf21b6294496f2e83f4b1d61f4f82">filters_</a>;
+<a name="l02545"></a>02545 };
+<a name="l02546"></a>02546 
+<a name="l02547"></a>02547 <span class="comment">// reference_assignment_ is used to keep track of the last assignment on which</span>
+<a name="l02548"></a>02548 <span class="comment">// operators were started, assignment_ corresponding to the last successful</span>
+<a name="l02549"></a>02549 <span class="comment">// neighbor.</span>
+<a name="l02550"></a><a class="code" href="classoperations__research_1_1FindOneNeighbor.html#af1bb246ec878f56f07b233b34ebd35b">02550</a> <a class="code" href="classoperations__research_1_1FindOneNeighbor.html#af1bb246ec878f56f07b233b34ebd35b" title="reference_assignment_ is used to keep track of the last assignment on which operators...">FindOneNeighbor::FindOneNeighbor</a>(<a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* <span class="keyword">const</span> assignment,
+<a name="l02551"></a>02551                                  <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> pool,
+<a name="l02552"></a>02552                                  <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator,
+<a name="l02553"></a>02553                                  <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder,
+<a name="l02554"></a>02554                                  <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> limit,
+<a name="l02555"></a>02555                                  <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters)
+<a name="l02556"></a>02556     : <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>(assignment),
+<a name="l02557"></a>02557       <a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>(new <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>(<a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>)),
+<a name="l02558"></a>02558       <a class="code" href="local__search_8cc.html#c464ccc9c1e58dd8af381e338a1486f8">pool_</a>(pool),
+<a name="l02559"></a>02559       <a class="code" href="local__search_8cc.html#1b511506766ee2e09a27e61830c13347">ls_operator_</a>(ls_operator),
+<a name="l02560"></a>02560       <a class="code" href="local__search_8cc.html#a6206aa5f598643592ead3d5d4e06b8c">sub_decision_builder_</a>(sub_decision_builder),
+<a name="l02561"></a>02561       <a class="code" href="local__search_8cc.html#1c69e7dcf9d555da2ceac2a003b9e647">limit_</a>(NULL),
+<a name="l02562"></a>02562       original_limit_(limit),
+<a name="l02563"></a>02563       neighbor_found_(false),
+<a name="l02564"></a>02564       <a class="code" href="local__search_8cc.html#bdfbf21b6294496f2e83f4b1d61f4f82">filters_</a>(filters) {
+<a name="l02565"></a>02565   CHECK(NULL != assignment);
+<a name="l02566"></a>02566   CHECK(NULL != ls_operator);
 <a name="l02567"></a>02567 
-<a name="l02568"></a><a class="code" href="classoperations__research_1_1NestedSolveDecision.html#7a84810f27f5166dbaecc2c07b855c98">02568</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1NestedSolveDecision.html#7a84810f27f5166dbaecc2c07b855c98" title="Apply will be called first when the decision is executed.">NestedSolveDecision::Apply</a>(<a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> solver) {
-<a name="l02569"></a>02569   CHECK(NULL != solver);
-<a name="l02570"></a>02570   <span class="keywordflow">if</span> (solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#b296b15e2d05e6f1f49618ed35d97d75" title="Nested solve using a decision builder and up to three search monitors, usually one...">NestedSolve</a>(db_, restore_,
-<a name="l02571"></a>02571                           monitors_.data(), monitors_.size())) {
-<a name="l02572"></a>02572     solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#fca376d8b0abd52b94534112442f1614" title="All-in-one SaveAndSetValue.">SaveAndSetValue</a>(&amp;state_, static_cast&lt;int&gt;(<a class="code" href="classoperations__research_1_1NestedSolveDecision.html#c5bc23aa0c3d923d874fc63aeec60e68a0f43d8d75670d4bf077263410066aa9">DECISION_FOUND</a>));
-<a name="l02573"></a>02573   } <span class="keywordflow">else</span> {
-<a name="l02574"></a>02574     solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#fca376d8b0abd52b94534112442f1614" title="All-in-one SaveAndSetValue.">SaveAndSetValue</a>(&amp;state_, static_cast&lt;int&gt;(<a class="code" href="classoperations__research_1_1NestedSolveDecision.html#c5bc23aa0c3d923d874fc63aeec60e684c70a20ca781b795098c22d96167fd58">DECISION_FAILED</a>));
-<a name="l02575"></a>02575   }
-<a name="l02576"></a>02576 }
-<a name="l02577"></a>02577 
-<a name="l02578"></a><a class="code" href="classoperations__research_1_1NestedSolveDecision.html#bdb38f79c88dfaed0576b7c6493c29c9">02578</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1NestedSolveDecision.html#bdb38f79c88dfaed0576b7c6493c29c9" title="Refute will be called after a backtrack.">NestedSolveDecision::Refute</a>(<a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> solver) {}
+<a name="l02568"></a>02568   <span class="comment">// If limit is NULL, default limit is 1 solution</span>
+<a name="l02569"></a>02569   <span class="keywordflow">if</span> (NULL == limit) {
+<a name="l02570"></a>02570     <a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> solver = assignment_-&gt;<a class="code" href="classoperations__research_1_1PropagationBaseObject.html#2851ada2b74b1f107fb50d84043471dc">solver</a>();
+<a name="l02571"></a>02571     limit_ = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#2ac811ae585c1ef2d0ea35a42a72f3da" title="Search Limit.">MakeLimit</a>(kint64max, kint64max, kint64max, 1);
+<a name="l02572"></a>02572   } <span class="keywordflow">else</span> {
+<a name="l02573"></a>02573     limit_ = limit-&gt;<a class="code" href="classoperations__research_1_1SearchLimit.html#011a3a7171696f1f440d753dcd5a1136" title="Allocates a clone of the limit.">MakeClone</a>();
+<a name="l02574"></a>02574   }
+<a name="l02575"></a>02575 }
+<a name="l02576"></a>02576 
+<a name="l02577"></a><a class="code" href="classoperations__research_1_1FindOneNeighbor.html#ce2242a7334e412623a749056b5ad04c">02577</a> <a class="code" href="classoperations__research_1_1Decision.html" title="A Decision represents a choice point in the search tree.">Decision</a>* <a class="code" href="classoperations__research_1_1FindOneNeighbor.html#ce2242a7334e412623a749056b5ad04c" title="This is the main method of the decision builder class.">FindOneNeighbor::Next</a>(<a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> solver) {
+<a name="l02578"></a>02578   CHECK(NULL != solver);
 <a name="l02579"></a>02579 
-<a name="l02580"></a>02580 <span class="comment">// ----- Finds a neighbor of the assignment passed -----</span>
-<a name="l02581"></a>02581 
-<a name="l02582"></a><a class="code" href="classoperations__research_1_1FindOneNeighbor.html">02582</a> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1FindOneNeighbor.html" title="Finds a neighbor of the assignment passed.">FindOneNeighbor</a> : <span class="keyword">public</span> <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a> {
-<a name="l02583"></a>02583  <span class="keyword">public</span>:
-<a name="l02584"></a>02584   <a class="code" href="classoperations__research_1_1FindOneNeighbor.html" title="Finds a neighbor of the assignment passed.">FindOneNeighbor</a>(<a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* <span class="keyword">const</span> assignment,
-<a name="l02585"></a>02585                   <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> pool,
-<a name="l02586"></a>02586                   <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator,
-<a name="l02587"></a>02587                   <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder,
-<a name="l02588"></a>02588                   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> limit,
-<a name="l02589"></a>02589                   <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters);
-<a name="l02590"></a><a class="code" href="classoperations__research_1_1FindOneNeighbor.html#b85ced557851815ad35973136163f9a3">02590</a>   <span class="keyword">virtual</span> ~<a class="code" href="classoperations__research_1_1FindOneNeighbor.html" title="Finds a neighbor of the assignment passed.">FindOneNeighbor</a>() {}
-<a name="l02591"></a>02591   <span class="keyword">virtual</span> <a class="code" href="classoperations__research_1_1Decision.html" title="A Decision represents a choice point in the search tree.">Decision</a>* Next(<a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> solver);
-<a name="l02592"></a><a class="code" href="classoperations__research_1_1FindOneNeighbor.html#109c3947aefa0550826a1194a0cb47e8">02592</a>   <span class="keyword">virtual</span> <span class="keywordtype">string</span> <a class="code" href="classoperations__research_1_1NestedSolveDecision.html#5796ba93620b13b8c011a28f5ef1f616">DebugString</a>()<span class="keyword"> const </span>{
-<a name="l02593"></a>02593     <span class="keywordflow">return</span> <span class="stringliteral">"FindOneNeighbor"</span>;
-<a name="l02594"></a>02594   }
-<a name="l02595"></a>02595 
-<a name="l02596"></a>02596  <span class="keyword">private</span>:
-<a name="l02597"></a>02597   <span class="keywordtype">bool</span> FilterAccept(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* delta, <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* deltadelta);
-<a name="l02598"></a>02598   <span class="keywordtype">void</span> SynchronizeAll();
-<a name="l02599"></a>02599   <span class="keywordtype">void</span> SynchronizeFilters(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* assignment);
+<a name="l02580"></a>02580   <span class="keywordflow">if</span> (original_limit_ != NULL) {
+<a name="l02581"></a>02581     limit_-&gt;<a class="code" href="classoperations__research_1_1SearchLimit.html#8f26a36c2c4d7738c37eba2ae7e26f3e" title="Copy a limit.">Copy</a>(original_limit_);
+<a name="l02582"></a>02582   }
+<a name="l02583"></a>02583 
+<a name="l02584"></a>02584   <span class="keywordflow">if</span> (!neighbor_found_) {
+<a name="l02585"></a>02585     <span class="comment">// Only called on the first call to Next(), reference_assignment_ has not</span>
+<a name="l02586"></a>02586     <span class="comment">// been synced with assignment_ yet</span>
+<a name="l02587"></a>02587 
+<a name="l02588"></a>02588     <span class="comment">// Keeping the code in case a performance problem forces us to</span>
+<a name="l02589"></a>02589     <span class="comment">// use the old code with a zero test on pool_.</span>
+<a name="l02590"></a>02590     <span class="comment">// reference_assignment_-&gt;Copy(assignment_);</span>
+<a name="l02591"></a>02591     pool_-&gt;<a class="code" href="classoperations__research_1_1SolutionPool.html#9fb836da69e3c48b8ea240c0aee64d61" title="This method is called to initialize the solution pool with the assignment from the...">Initialize</a>(assignment_);
+<a name="l02592"></a>02592     SynchronizeAll();
+<a name="l02593"></a>02593   }
+<a name="l02594"></a>02594 
+<a name="l02595"></a>02595   {
+<a name="l02596"></a>02596     <span class="comment">// Another assignment is needed to apply the delta</span>
+<a name="l02597"></a>02597     <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* assignment_copy = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(
+<a name="l02598"></a>02598             <span class="keyword">new</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>(reference_assignment_.get()));
+<a name="l02599"></a>02599     <span class="keywordtype">int</span> counter = 0;
 <a name="l02600"></a>02600 
-<a name="l02601"></a>02601   <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* <span class="keyword">const</span> <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>;
-<a name="l02602"></a>02602   scoped_ptr&lt;Assignment&gt; <a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>;
-<a name="l02603"></a>02603   <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> pool_;
-<a name="l02604"></a>02604   <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator_;
-<a name="l02605"></a>02605   <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder_;
-<a name="l02606"></a>02606   <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <a class="code" href="local__search_8cc.html#3c46258b924243eeeb3608b2df18db4f">limit_</a>;
-<a name="l02607"></a>02607   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> original_limit_;
-<a name="l02608"></a>02608   <span class="keywordtype">bool</span> neighbor_found_;
-<a name="l02609"></a>02609   std::vector&lt;LocalSearchFilter*&gt; filters_;
-<a name="l02610"></a>02610 };
-<a name="l02611"></a>02611 
-<a name="l02612"></a>02612 <span class="comment">// reference_assignment_ is used to keep track of the last assignment on which</span>
-<a name="l02613"></a>02613 <span class="comment">// operators were started, assignment_ corresponding to the last successful</span>
-<a name="l02614"></a>02614 <span class="comment">// neighbor.</span>
-<a name="l02615"></a><a class="code" href="classoperations__research_1_1FindOneNeighbor.html#af1bb246ec878f56f07b233b34ebd35b">02615</a> <a class="code" href="classoperations__research_1_1FindOneNeighbor.html#af1bb246ec878f56f07b233b34ebd35b" title="reference_assignment_ is used to keep track of the last assignment on which operators...">FindOneNeighbor::FindOneNeighbor</a>(<a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* <span class="keyword">const</span> assignment,
-<a name="l02616"></a>02616                                  <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> pool,
-<a name="l02617"></a>02617                                  <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator,
-<a name="l02618"></a>02618                                  <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder,
-<a name="l02619"></a>02619                                  <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> limit,
-<a name="l02620"></a>02620                                  <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters)
-<a name="l02621"></a>02621     : <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>(assignment),
-<a name="l02622"></a>02622       <a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>(new <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>(<a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>)),
-<a name="l02623"></a>02623       pool_(pool),
-<a name="l02624"></a>02624       ls_operator_(ls_operator),
-<a name="l02625"></a>02625       sub_decision_builder_(sub_decision_builder),
-<a name="l02626"></a>02626       <a class="code" href="local__search_8cc.html#3c46258b924243eeeb3608b2df18db4f">limit_</a>(NULL),
-<a name="l02627"></a>02627       original_limit_(limit),
-<a name="l02628"></a>02628       neighbor_found_(false),
-<a name="l02629"></a>02629       filters_(filters) {
-<a name="l02630"></a>02630   CHECK(NULL != assignment);
-<a name="l02631"></a>02631   CHECK(NULL != ls_operator);
-<a name="l02632"></a>02632 
-<a name="l02633"></a>02633   <span class="comment">// If limit is NULL, default limit is 1 solution</span>
-<a name="l02634"></a>02634   <span class="keywordflow">if</span> (NULL == limit) {
-<a name="l02635"></a>02635     <a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> solver = assignment_-&gt;<a class="code" href="classoperations__research_1_1PropagationBaseObject.html#2851ada2b74b1f107fb50d84043471dc">solver</a>();
-<a name="l02636"></a>02636     limit_ = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#2ac811ae585c1ef2d0ea35a42a72f3da" title="Search Limit.">MakeLimit</a>(kint64max, kint64max, kint64max, 1);
-<a name="l02637"></a>02637   } <span class="keywordflow">else</span> {
-<a name="l02638"></a>02638     limit_ = limit-&gt;<a class="code" href="classoperations__research_1_1SearchLimit.html#011a3a7171696f1f440d753dcd5a1136" title="Allocates a clone of the limit.">MakeClone</a>();
-<a name="l02639"></a>02639   }
-<a name="l02640"></a>02640 }
-<a name="l02641"></a>02641 
-<a name="l02642"></a><a class="code" href="classoperations__research_1_1FindOneNeighbor.html#ce2242a7334e412623a749056b5ad04c">02642</a> <a class="code" href="classoperations__research_1_1Decision.html" title="A Decision represents a choice point in the search tree.">Decision</a>* <a class="code" href="classoperations__research_1_1FindOneNeighbor.html#ce2242a7334e412623a749056b5ad04c" title="This is the main method of the decision builder class.">FindOneNeighbor::Next</a>(<a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> solver) {
-<a name="l02643"></a>02643   CHECK(NULL != solver);
-<a name="l02644"></a>02644 
-<a name="l02645"></a>02645   <span class="keywordflow">if</span> (original_limit_ != NULL) {
-<a name="l02646"></a>02646     limit_-&gt;<a class="code" href="classoperations__research_1_1SearchLimit.html#8f26a36c2c4d7738c37eba2ae7e26f3e" title="Copy a limit.">Copy</a>(original_limit_);
-<a name="l02647"></a>02647   }
-<a name="l02648"></a>02648 
-<a name="l02649"></a>02649   <span class="keywordflow">if</span> (!neighbor_found_) {
-<a name="l02650"></a>02650     <span class="comment">// Only called on the first call to Next(), reference_assignment_ has not</span>
-<a name="l02651"></a>02651     <span class="comment">// been synced with assignment_ yet</span>
-<a name="l02652"></a>02652 
-<a name="l02653"></a>02653     <span class="comment">// Keeping the code in case a performance problem forces us to</span>
-<a name="l02654"></a>02654     <span class="comment">// use the old code with a zero test on pool_.</span>
-<a name="l02655"></a>02655     <span class="comment">// reference_assignment_-&gt;Copy(assignment_);</span>
-<a name="l02656"></a>02656     pool_-&gt;<a class="code" href="classoperations__research_1_1SolutionPool.html#9fb836da69e3c48b8ea240c0aee64d61" title="This method is called to initialize the solution pool with the assignment from the...">Initialize</a>(assignment_);
-<a name="l02657"></a>02657     SynchronizeAll();
-<a name="l02658"></a>02658   }
-<a name="l02659"></a>02659 
-<a name="l02660"></a>02660   {
-<a name="l02661"></a>02661     <span class="comment">// Another assignment is needed to apply the delta</span>
-<a name="l02662"></a>02662     <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* assignment_copy = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(
-<a name="l02663"></a>02663             <span class="keyword">new</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>(reference_assignment_.get()));
-<a name="l02664"></a>02664     <span class="keywordtype">int</span> counter = 0;
-<a name="l02665"></a>02665 
-<a name="l02666"></a>02666     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* restore =
-<a name="l02667"></a>02667         solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#19dfeb751bdd2c5f2d1900c05a3c31a2" title="Returns a DecisionBuilder which restores an Assignment (calls void Assignment::Restore())...">MakeRestoreAssignment</a>(assignment_copy);
-<a name="l02668"></a>02668     <span class="keywordflow">if</span> (sub_decision_builder_) {
-<a name="l02669"></a>02669       restore = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#ebbd0d209e96c3e6406f9a78061631b4" title="Sequential composition of Decision Builders.">Compose</a>(restore, sub_decision_builder_);
-<a name="l02670"></a>02670     }
-<a name="l02671"></a>02671     <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* delta = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>(solver));
-<a name="l02672"></a>02672     <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* deltadelta = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>(solver));
-<a name="l02673"></a>02673     <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
-<a name="l02674"></a>02674       delta-&gt;<a class="code" href="classoperations__research_1_1Assignment.html#95769d12b65e9e41966f082e6be717e3">Clear</a>();
-<a name="l02675"></a>02675       deltadelta-&gt;<a class="code" href="classoperations__research_1_1Assignment.html#95769d12b65e9e41966f082e6be717e3">Clear</a>();
-<a name="l02676"></a>02676       solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#6ffc56653b5ef9643ce87d05c9ebd8d6" title="Performs PeriodicCheck on the top-level search; can be called from a nested solve...">TopPeriodicCheck</a>();
-<a name="l02677"></a>02677       <span class="keywordflow">if</span> (++counter &gt;= FLAGS_cp_local_search_sync_frequency &amp;&amp;
-<a name="l02678"></a>02678           pool_-&gt;<a class="code" href="classoperations__research_1_1SolutionPool.html#b71086e9d6cbca14023cd54a03bd1eff" title="This method checks if the local solution needs to be updated with an external one...">SyncNeeded</a>(reference_assignment_.get())) {
-<a name="l02679"></a>02679         <span class="comment">// TODO(user) : SyncNeed(assignment_) ?</span>
-<a name="l02680"></a>02680         counter = 0;
-<a name="l02681"></a>02681         SynchronizeAll();
-<a name="l02682"></a>02682       }
-<a name="l02683"></a>02683 
-<a name="l02684"></a>02684       <span class="keywordflow">if</span> (!limit_-&gt;<a class="code" href="classoperations__research_1_1SearchLimit.html#1cfadc6db5f71ebf750ab119a110d9f0" title="This method is called to check the status of the limit.">Check</a>()
-<a name="l02685"></a>02685           &amp;&amp; ls_operator_-&gt;<a class="code" href="classoperations__research_1_1LocalSearchOperator.html#2951ae57e5fd3fce7d4f9b831594b460">MakeNextNeighbor</a>(delta, deltadelta)) {
-<a name="l02686"></a>02686         solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#e0b597a5bd339d39be464ebd92b72fb6">neighbors_</a> += 1;
-<a name="l02687"></a>02687         <span class="comment">// All filters must be called for incrementality reasons.</span>
-<a name="l02688"></a>02688         <span class="comment">// Empty deltas must also be sent to incremental filters; can be needed</span>
-<a name="l02689"></a>02689         <span class="comment">// to resync filters on non-incremental (empty) moves.</span>
-<a name="l02690"></a>02690         <span class="comment">// TODO(user): Don't call both if no filter is incremental and one</span>
-<a name="l02691"></a>02691         <span class="comment">// of them returned false.</span>
-<a name="l02692"></a>02692         <span class="keyword">const</span> <span class="keywordtype">bool</span> mh_filter = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#72af137f31ed95a5b1810490cbb73b68" title="Checks with monitors if delta is acceptable.">AcceptDelta</a>(delta, deltadelta);
-<a name="l02693"></a>02693         <span class="keyword">const</span> <span class="keywordtype">bool</span> move_filter = FilterAccept(delta, deltadelta);
-<a name="l02694"></a>02694         <span class="keywordflow">if</span> (mh_filter &amp;&amp; move_filter) {
-<a name="l02695"></a>02695           solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#81ff7fa590eb52c4f72079c43fb42f21">filtered_neighbors_</a> += 1;
-<a name="l02696"></a>02696           assignment_copy-&gt;<a class="code" href="classoperations__research_1_1Assignment.html#8640e47c57ef2d95a6c94d383a9641a4" title="Copies the intersection of the 2 assignments to the current assignment.">Copy</a>(reference_assignment_.get());
-<a name="l02697"></a>02697           assignment_copy-&gt;<a class="code" href="classoperations__research_1_1Assignment.html#8640e47c57ef2d95a6c94d383a9641a4" title="Copies the intersection of the 2 assignments to the current assignment.">Copy</a>(delta);
-<a name="l02698"></a>02698           <span class="keywordflow">if</span> (solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#b296b15e2d05e6f1f49618ed35d97d75" title="Nested solve using a decision builder and up to three search monitors, usually one...">NestedSolve</a>(restore, <span class="keyword">false</span>)) {
-<a name="l02699"></a>02699             solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#67d46851f5843e958ef5a141dbb66329">accepted_neighbors_</a> += 1;
-<a name="l02700"></a>02700             assignment_-&gt;<a class="code" href="classoperations__research_1_1Assignment.html#7eb289b0a73f7cdb6296c26f485eb69e">Store</a>();
-<a name="l02701"></a>02701             neighbor_found_ = <span class="keyword">true</span>;
-<a name="l02702"></a>02702             <span class="keywordflow">return</span> NULL;
-<a name="l02703"></a>02703           }
-<a name="l02704"></a>02704         }
-<a name="l02705"></a>02705       } <span class="keywordflow">else</span> {
-<a name="l02706"></a>02706         <span class="keywordflow">if</span> (neighbor_found_) {
-<a name="l02707"></a>02707           solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#81af3cc927a7e10da0c631b8005f36ad" title="Ensures communication of accepted neighbors between monitors and search.">AcceptNeighbor</a>();
-<a name="l02708"></a>02708           <span class="comment">// Keeping the code in case a performance problem forces us to</span>
-<a name="l02709"></a>02709           <span class="comment">// use the old code with a zero test on pool_.</span>
-<a name="l02710"></a>02710           <span class="comment">//          reference_assignment_-&gt;Copy(assignment_);</span>
-<a name="l02711"></a>02711           pool_-&gt;<a class="code" href="classoperations__research_1_1SolutionPool.html#2e49e36a6c729756e59287fb8a3a3bcd" title="This method is called when a new solution has been accepted by the local search.">RegisterNewSolution</a>(assignment_);
-<a name="l02712"></a>02712           SynchronizeAll();
-<a name="l02713"></a>02713         } <span class="keywordflow">else</span> {
-<a name="l02714"></a>02714           <span class="keywordflow">break</span>;
-<a name="l02715"></a>02715         }
-<a name="l02716"></a>02716       }
-<a name="l02717"></a>02717     }
-<a name="l02718"></a>02718   }
-<a name="l02719"></a>02719   solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#45534161a4dda7e1997bc0effd606648" title="Abandon the current branch in the search tree. A backtrack will follow.">Fail</a>();
-<a name="l02720"></a>02720   <span class="keywordflow">return</span> NULL;
-<a name="l02721"></a>02721 }
-<a name="l02722"></a>02722 
-<a name="l02723"></a>02723 <span class="keywordtype">bool</span> FindOneNeighbor::FilterAccept(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* delta,
-<a name="l02724"></a>02724                                    <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* deltadelta) {
-<a name="l02725"></a>02725   <span class="keywordtype">bool</span> ok = <span class="keyword">true</span>;
-<a name="l02726"></a>02726   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; filters_.size(); ++i) {
-<a name="l02727"></a>02727     <span class="keywordflow">if</span> (filters_[i]-&gt;IsIncremental()) {
-<a name="l02728"></a>02728       ok = filters_[i]-&gt;Accept(delta, deltadelta) &amp;&amp; ok;
-<a name="l02729"></a>02729     } <span class="keywordflow">else</span> {
-<a name="l02730"></a>02730       ok = ok &amp;&amp; filters_[i]-&gt;Accept(delta, deltadelta);
-<a name="l02731"></a>02731     }
-<a name="l02732"></a>02732   }
-<a name="l02733"></a>02733   <span class="keywordflow">return</span> ok;
-<a name="l02734"></a>02734 }
-<a name="l02735"></a>02735 
-<a name="l02736"></a>02736 <span class="keywordtype">void</span> FindOneNeighbor::SynchronizeAll() {
-<a name="l02737"></a>02737   pool_-&gt;GetNextSolution(reference_assignment_.get());
-<a name="l02738"></a>02738   neighbor_found_ = <span class="keyword">false</span>;
-<a name="l02739"></a>02739   limit_-&gt;Init();
-<a name="l02740"></a>02740   ls_operator_-&gt;Start(reference_assignment_.get());
-<a name="l02741"></a>02741   SynchronizeFilters(reference_assignment_.get());
-<a name="l02742"></a>02742 }
-<a name="l02743"></a>02743 
-<a name="l02744"></a>02744 <span class="keywordtype">void</span> FindOneNeighbor::SynchronizeFilters(<span class="keyword">const</span> Assignment* assignment) {
-<a name="l02745"></a>02745   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; filters_.size(); ++i) {
-<a name="l02746"></a>02746     filters_[i]-&gt;Synchronize(assignment);
-<a name="l02747"></a>02747   }
-<a name="l02748"></a>02748 }
-<a name="l02749"></a>02749 
-<a name="l02750"></a>02750 <span class="comment">// ---------- Local Search Phase Parameters ----------</span>
-<a name="l02751"></a>02751 
-<a name="l02752"></a><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html">02752</a> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a> : <span class="keyword">public</span> <a class="code" href="classoperations__research_1_1BaseObject.html" title="Useful Search and Modeling Objects.">BaseObject</a> {
-<a name="l02753"></a>02753  <span class="keyword">public</span>:
-<a name="l02754"></a><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#2949fa91fcfb4f10020443c7dc281323">02754</a>   <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>(<a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> pool,
-<a name="l02755"></a>02755                              <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* ls_operator,
-<a name="l02756"></a>02756                              <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* sub_decision_builder,
-<a name="l02757"></a>02757                              <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> limit,
-<a name="l02758"></a>02758                              <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters)
-<a name="l02759"></a>02759       : solution_pool_(pool),
-<a name="l02760"></a>02760         ls_operator_(ls_operator),
-<a name="l02761"></a>02761         sub_decision_builder_(sub_decision_builder),
-<a name="l02762"></a>02762         <a class="code" href="local__search_8cc.html#3c46258b924243eeeb3608b2df18db4f">limit_</a>(limit),
-<a name="l02763"></a>02763         filters_(filters) {}
-<a name="l02764"></a><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#9e2aa5a66eb4b5416f94897c897aff62">02764</a>   ~<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>() {}
-<a name="l02765"></a><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#00dbfdf4be0a5522e81de75b19683b79">02765</a>   <span class="keyword">virtual</span> <span class="keywordtype">string</span> <a class="code" href="classoperations__research_1_1FindOneNeighbor.html#109c3947aefa0550826a1194a0cb47e8" title="Decision Builder.">DebugString</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="stringliteral">"LocalSearchPhaseParameters"</span>; }
-<a name="l02766"></a>02766 
-<a name="l02767"></a><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#6ffb119e946430226df7002254bc8d13">02767</a>   <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* solution_pool()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> solution_pool_; }
-<a name="l02768"></a><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#26bb0cb4dca27b5b3050abb13c0a75e0">02768</a>   <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* ls_operator()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> ls_operator_; }
-<a name="l02769"></a><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#095b809504a71c349e3f0dd3aca5e89d">02769</a>   <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* sub_decision_builder()<span class="keyword"> const </span>{
-<a name="l02770"></a>02770     <span class="keywordflow">return</span> sub_decision_builder_;
-<a name="l02771"></a>02771   }
-<a name="l02772"></a><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#2b0643bc1871ce13b447bb50b4868760">02772</a>   <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* limit()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="local__search_8cc.html#3c46258b924243eeeb3608b2df18db4f">limit_</a>; }
-<a name="l02773"></a><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#478156cabd760a885c3f8fb85d85cf90">02773</a>   <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> filters_; }
-<a name="l02774"></a>02774 
-<a name="l02775"></a>02775  <span class="keyword">private</span>:
-<a name="l02776"></a>02776   <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> solution_pool_;
-<a name="l02777"></a>02777   <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator_;
-<a name="l02778"></a>02778   <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder_;
-<a name="l02779"></a>02779   <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> <a class="code" href="local__search_8cc.html#3c46258b924243eeeb3608b2df18db4f">limit_</a>;
-<a name="l02780"></a>02780   std::vector&lt;LocalSearchFilter*&gt; filters_;
-<a name="l02781"></a>02781 };
-<a name="l02782"></a>02782 
-<a name="l02783"></a><a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4">02783</a> <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">Solver::MakeLocalSearchPhaseParameters</a>(
-<a name="l02784"></a>02784     <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator,
-<a name="l02785"></a>02785     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder) {
-<a name="l02786"></a>02786   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">MakeLocalSearchPhaseParameters</a>(<a class="code" href="classoperations__research_1_1Solver.html#71d2ee2d6714d7faa834b31a7c7753a6" title="Solution Pool.">MakeDefaultSolutionPool</a>(),
-<a name="l02787"></a>02787                                         ls_operator,
-<a name="l02788"></a>02788                                         sub_decision_builder,
-<a name="l02789"></a>02789                                         NULL,
-<a name="l02790"></a>02790                                         std::vector&lt;LocalSearchFilter*&gt;());
-<a name="l02791"></a>02791 }
-<a name="l02792"></a>02792 
-<a name="l02793"></a><a class="code" href="classoperations__research_1_1Solver.html#477777a792fd5dbab6a808d0b0955c19">02793</a> <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">Solver::MakeLocalSearchPhaseParameters</a>(
-<a name="l02794"></a>02794     <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator,
-<a name="l02795"></a>02795     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder,
-<a name="l02796"></a>02796     <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> limit) {
-<a name="l02797"></a>02797   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">MakeLocalSearchPhaseParameters</a>(<a class="code" href="classoperations__research_1_1Solver.html#71d2ee2d6714d7faa834b31a7c7753a6" title="Solution Pool.">MakeDefaultSolutionPool</a>(),
-<a name="l02798"></a>02798                                         ls_operator,
-<a name="l02799"></a>02799                                         sub_decision_builder,
-<a name="l02800"></a>02800                                         limit,
-<a name="l02801"></a>02801                                         std::vector&lt;LocalSearchFilter*&gt;());
-<a name="l02802"></a>02802 }
-<a name="l02803"></a>02803 
-<a name="l02804"></a><a class="code" href="classoperations__research_1_1Solver.html#f259add262bf4307c112d47829eb7777">02804</a> <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">Solver::MakeLocalSearchPhaseParameters</a>(
-<a name="l02805"></a>02805     <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator,
-<a name="l02806"></a>02806     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder,
-<a name="l02807"></a>02807     <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> limit,
-<a name="l02808"></a>02808     <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters) {
-<a name="l02809"></a>02809   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">MakeLocalSearchPhaseParameters</a>(<a class="code" href="classoperations__research_1_1Solver.html#71d2ee2d6714d7faa834b31a7c7753a6" title="Solution Pool.">MakeDefaultSolutionPool</a>(),
-<a name="l02810"></a>02810                                         ls_operator,
-<a name="l02811"></a>02811                                         sub_decision_builder,
-<a name="l02812"></a>02812                                         limit,
-<a name="l02813"></a>02813                                         filters);
-<a name="l02814"></a>02814 }
-<a name="l02815"></a>02815 
-<a name="l02816"></a><a class="code" href="classoperations__research_1_1Solver.html#548580eddd2fc3d7ed4d85fea26b50fe">02816</a> <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">Solver::MakeLocalSearchPhaseParameters</a>(
-<a name="l02817"></a>02817     <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> pool,
-<a name="l02818"></a>02818     <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator,
-<a name="l02819"></a>02819     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder) {
-<a name="l02820"></a>02820   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">MakeLocalSearchPhaseParameters</a>(pool,
-<a name="l02821"></a>02821                                         ls_operator,
-<a name="l02822"></a>02822                                         sub_decision_builder,
-<a name="l02823"></a>02823                                         NULL,
-<a name="l02824"></a>02824                                         std::vector&lt;LocalSearchFilter*&gt;());
-<a name="l02825"></a>02825 }
-<a name="l02826"></a>02826 
-<a name="l02827"></a><a class="code" href="classoperations__research_1_1Solver.html#7d23de9e71382630f9b0b998383b1b15">02827</a> <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">Solver::MakeLocalSearchPhaseParameters</a>(
-<a name="l02828"></a>02828     <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> pool,
-<a name="l02829"></a>02829     <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator,
-<a name="l02830"></a>02830     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder,
-<a name="l02831"></a>02831     <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> limit) {
-<a name="l02832"></a>02832   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">MakeLocalSearchPhaseParameters</a>(pool,
-<a name="l02833"></a>02833                                         ls_operator,
-<a name="l02834"></a>02834                                         sub_decision_builder,
-<a name="l02835"></a>02835                                         limit,
-<a name="l02836"></a>02836                                         std::vector&lt;LocalSearchFilter*&gt;());
-<a name="l02837"></a>02837 }
-<a name="l02838"></a>02838 
-<a name="l02839"></a><a class="code" href="classoperations__research_1_1Solver.html#b54521dcf1f4fcb4a2a6e83050bf85a3">02839</a> <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">Solver::MakeLocalSearchPhaseParameters</a>(
-<a name="l02840"></a>02840     <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> pool,
-<a name="l02841"></a>02841     <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator,
-<a name="l02842"></a>02842     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder,
-<a name="l02843"></a>02843     <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> limit,
-<a name="l02844"></a>02844     <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters) {
-<a name="l02845"></a>02845   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>(pool,
-<a name="l02846"></a>02846                                                  ls_operator,
-<a name="l02847"></a>02847                                                  sub_decision_builder,
-<a name="l02848"></a>02848                                                  limit,
-<a name="l02849"></a>02849                                                  filters));
+<a name="l02601"></a>02601     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* restore =
+<a name="l02602"></a>02602         solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#19dfeb751bdd2c5f2d1900c05a3c31a2" title="Returns a DecisionBuilder which restores an Assignment (calls void Assignment::Restore())...">MakeRestoreAssignment</a>(assignment_copy);
+<a name="l02603"></a>02603     <span class="keywordflow">if</span> (sub_decision_builder_) {
+<a name="l02604"></a>02604       restore = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#ebbd0d209e96c3e6406f9a78061631b4" title="Sequential composition of Decision Builders.">Compose</a>(restore, sub_decision_builder_);
+<a name="l02605"></a>02605     }
+<a name="l02606"></a>02606     <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* delta = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>(solver));
+<a name="l02607"></a>02607     <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* deltadelta = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>(solver));
+<a name="l02608"></a>02608     <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
+<a name="l02609"></a>02609       delta-&gt;<a class="code" href="classoperations__research_1_1Assignment.html#95769d12b65e9e41966f082e6be717e3">Clear</a>();
+<a name="l02610"></a>02610       deltadelta-&gt;<a class="code" href="classoperations__research_1_1Assignment.html#95769d12b65e9e41966f082e6be717e3">Clear</a>();
+<a name="l02611"></a>02611       solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#6ffc56653b5ef9643ce87d05c9ebd8d6" title="Performs PeriodicCheck on the top-level search; can be called from a nested solve...">TopPeriodicCheck</a>();
+<a name="l02612"></a>02612       <span class="keywordflow">if</span> (++counter &gt;= FLAGS_cp_local_search_sync_frequency &amp;&amp;
+<a name="l02613"></a>02613           pool_-&gt;<a class="code" href="classoperations__research_1_1SolutionPool.html#b71086e9d6cbca14023cd54a03bd1eff" title="This method checks if the local solution needs to be updated with an external one...">SyncNeeded</a>(reference_assignment_.get())) {
+<a name="l02614"></a>02614         <span class="comment">// TODO(user) : SyncNeed(assignment_) ?</span>
+<a name="l02615"></a>02615         counter = 0;
+<a name="l02616"></a>02616         SynchronizeAll();
+<a name="l02617"></a>02617       }
+<a name="l02618"></a>02618 
+<a name="l02619"></a>02619       <span class="keywordflow">if</span> (!limit_-&gt;<a class="code" href="classoperations__research_1_1SearchLimit.html#1cfadc6db5f71ebf750ab119a110d9f0" title="This method is called to check the status of the limit.">Check</a>()
+<a name="l02620"></a>02620           &amp;&amp; ls_operator_-&gt;<a class="code" href="classoperations__research_1_1LocalSearchOperator.html#2951ae57e5fd3fce7d4f9b831594b460">MakeNextNeighbor</a>(delta, deltadelta)) {
+<a name="l02621"></a>02621         solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#e0b597a5bd339d39be464ebd92b72fb6">neighbors_</a> += 1;
+<a name="l02622"></a>02622         <span class="comment">// All filters must be called for incrementality reasons.</span>
+<a name="l02623"></a>02623         <span class="comment">// Empty deltas must also be sent to incremental filters; can be needed</span>
+<a name="l02624"></a>02624         <span class="comment">// to resync filters on non-incremental (empty) moves.</span>
+<a name="l02625"></a>02625         <span class="comment">// TODO(user): Don't call both if no filter is incremental and one</span>
+<a name="l02626"></a>02626         <span class="comment">// of them returned false.</span>
+<a name="l02627"></a>02627         <span class="keyword">const</span> <span class="keywordtype">bool</span> mh_filter = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#72af137f31ed95a5b1810490cbb73b68" title="Checks with monitors if delta is acceptable.">AcceptDelta</a>(delta, deltadelta);
+<a name="l02628"></a>02628         <span class="keyword">const</span> <span class="keywordtype">bool</span> move_filter = FilterAccept(delta, deltadelta);
+<a name="l02629"></a>02629         <span class="keywordflow">if</span> (mh_filter &amp;&amp; move_filter) {
+<a name="l02630"></a>02630           solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#81ff7fa590eb52c4f72079c43fb42f21">filtered_neighbors_</a> += 1;
+<a name="l02631"></a>02631           assignment_copy-&gt;<a class="code" href="classoperations__research_1_1Assignment.html#8640e47c57ef2d95a6c94d383a9641a4" title="Copies the intersection of the 2 assignments to the current assignment.">Copy</a>(reference_assignment_.get());
+<a name="l02632"></a>02632           assignment_copy-&gt;<a class="code" href="classoperations__research_1_1Assignment.html#8640e47c57ef2d95a6c94d383a9641a4" title="Copies the intersection of the 2 assignments to the current assignment.">Copy</a>(delta);
+<a name="l02633"></a>02633           <span class="keywordflow">if</span> (solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#b296b15e2d05e6f1f49618ed35d97d75" title="Nested solve using a decision builder and up to three search monitors, usually one...">NestedSolve</a>(restore, <span class="keyword">false</span>)) {
+<a name="l02634"></a>02634             solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#67d46851f5843e958ef5a141dbb66329">accepted_neighbors_</a> += 1;
+<a name="l02635"></a>02635             assignment_-&gt;<a class="code" href="classoperations__research_1_1Assignment.html#7eb289b0a73f7cdb6296c26f485eb69e">Store</a>();
+<a name="l02636"></a>02636             neighbor_found_ = <span class="keyword">true</span>;
+<a name="l02637"></a>02637             <span class="keywordflow">return</span> NULL;
+<a name="l02638"></a>02638           }
+<a name="l02639"></a>02639         }
+<a name="l02640"></a>02640       } <span class="keywordflow">else</span> {
+<a name="l02641"></a>02641         <span class="keywordflow">if</span> (neighbor_found_) {
+<a name="l02642"></a>02642           solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#81af3cc927a7e10da0c631b8005f36ad" title="Ensures communication of accepted neighbors between monitors and search.">AcceptNeighbor</a>();
+<a name="l02643"></a>02643           <span class="comment">// Keeping the code in case a performance problem forces us to</span>
+<a name="l02644"></a>02644           <span class="comment">// use the old code with a zero test on pool_.</span>
+<a name="l02645"></a>02645           <span class="comment">//          reference_assignment_-&gt;Copy(assignment_);</span>
+<a name="l02646"></a>02646           pool_-&gt;<a class="code" href="classoperations__research_1_1SolutionPool.html#2e49e36a6c729756e59287fb8a3a3bcd" title="This method is called when a new solution has been accepted by the local search.">RegisterNewSolution</a>(assignment_);
+<a name="l02647"></a>02647           SynchronizeAll();
+<a name="l02648"></a>02648         } <span class="keywordflow">else</span> {
+<a name="l02649"></a>02649           <span class="keywordflow">break</span>;
+<a name="l02650"></a>02650         }
+<a name="l02651"></a>02651       }
+<a name="l02652"></a>02652     }
+<a name="l02653"></a>02653   }
+<a name="l02654"></a>02654   solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#45534161a4dda7e1997bc0effd606648" title="Abandon the current branch in the search tree. A backtrack will follow.">Fail</a>();
+<a name="l02655"></a>02655   <span class="keywordflow">return</span> NULL;
+<a name="l02656"></a>02656 }
+<a name="l02657"></a>02657 
+<a name="l02658"></a>02658 <span class="keywordtype">bool</span> FindOneNeighbor::FilterAccept(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* delta,
+<a name="l02659"></a>02659                                    <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* deltadelta) {
+<a name="l02660"></a>02660   <span class="keywordtype">bool</span> ok = <span class="keyword">true</span>;
+<a name="l02661"></a>02661   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; filters_.size(); ++i) {
+<a name="l02662"></a>02662     <span class="keywordflow">if</span> (filters_[i]-&gt;IsIncremental()) {
+<a name="l02663"></a>02663       ok = filters_[i]-&gt;Accept(delta, deltadelta) &amp;&amp; ok;
+<a name="l02664"></a>02664     } <span class="keywordflow">else</span> {
+<a name="l02665"></a>02665       ok = ok &amp;&amp; filters_[i]-&gt;Accept(delta, deltadelta);
+<a name="l02666"></a>02666     }
+<a name="l02667"></a>02667   }
+<a name="l02668"></a>02668   <span class="keywordflow">return</span> ok;
+<a name="l02669"></a>02669 }
+<a name="l02670"></a>02670 
+<a name="l02671"></a>02671 <span class="keywordtype">void</span> FindOneNeighbor::SynchronizeAll() {
+<a name="l02672"></a>02672   pool_-&gt;GetNextSolution(reference_assignment_.get());
+<a name="l02673"></a>02673   neighbor_found_ = <span class="keyword">false</span>;
+<a name="l02674"></a>02674   limit_-&gt;Init();
+<a name="l02675"></a>02675   ls_operator_-&gt;Start(reference_assignment_.get());
+<a name="l02676"></a>02676   SynchronizeFilters(reference_assignment_.get());
+<a name="l02677"></a>02677 }
+<a name="l02678"></a>02678 
+<a name="l02679"></a>02679 <span class="keywordtype">void</span> FindOneNeighbor::SynchronizeFilters(<span class="keyword">const</span> Assignment* assignment) {
+<a name="l02680"></a>02680   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; filters_.size(); ++i) {
+<a name="l02681"></a>02681     filters_[i]-&gt;Synchronize(assignment);
+<a name="l02682"></a>02682   }
+<a name="l02683"></a>02683 }
+<a name="l02684"></a>02684 
+<a name="l02685"></a>02685 <span class="comment">// ---------- Local Search Phase Parameters ----------</span>
+<a name="l02686"></a>02686 
+<a name="l02687"></a><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html">02687</a> <span class="keyword">class </span><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a> : <span class="keyword">public</span> <a class="code" href="classoperations__research_1_1BaseObject.html" title="Useful Search and Modeling Objects.">BaseObject</a> {
+<a name="l02688"></a>02688  <span class="keyword">public</span>:
+<a name="l02689"></a><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#2949fa91fcfb4f10020443c7dc281323">02689</a>   <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>(<a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> pool,
+<a name="l02690"></a>02690                              <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* ls_operator,
+<a name="l02691"></a>02691                              <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* sub_decision_builder,
+<a name="l02692"></a>02692                              <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> limit,
+<a name="l02693"></a>02693                              <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters)
+<a name="l02694"></a>02694       : solution_pool_(pool),
+<a name="l02695"></a>02695         <a class="code" href="local__search_8cc.html#1b511506766ee2e09a27e61830c13347">ls_operator_</a>(ls_operator),
+<a name="l02696"></a>02696         <a class="code" href="local__search_8cc.html#a6206aa5f598643592ead3d5d4e06b8c">sub_decision_builder_</a>(sub_decision_builder),
+<a name="l02697"></a>02697         <a class="code" href="local__search_8cc.html#1c69e7dcf9d555da2ceac2a003b9e647">limit_</a>(limit),
+<a name="l02698"></a>02698         <a class="code" href="local__search_8cc.html#bdfbf21b6294496f2e83f4b1d61f4f82">filters_</a>(filters) {}
+<a name="l02699"></a><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#9e2aa5a66eb4b5416f94897c897aff62">02699</a>   ~<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>() {}
+<a name="l02700"></a><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#00dbfdf4be0a5522e81de75b19683b79">02700</a>   <span class="keyword">virtual</span> <span class="keywordtype">string</span> <a class="code" href="classoperations__research_1_1FindOneNeighbor.html#109c3947aefa0550826a1194a0cb47e8" title="Decision Builder.">DebugString</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="stringliteral">"LocalSearchPhaseParameters"</span>; }
+<a name="l02701"></a>02701 
+<a name="l02702"></a><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#6ffb119e946430226df7002254bc8d13">02702</a>   <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* solution_pool()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> solution_pool_; }
+<a name="l02703"></a><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#26bb0cb4dca27b5b3050abb13c0a75e0">02703</a>   <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* ls_operator()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="local__search_8cc.html#1b511506766ee2e09a27e61830c13347">ls_operator_</a>; }
+<a name="l02704"></a><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#095b809504a71c349e3f0dd3aca5e89d">02704</a>   <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* sub_decision_builder()<span class="keyword"> const </span>{
+<a name="l02705"></a>02705     <span class="keywordflow">return</span> <a class="code" href="local__search_8cc.html#a6206aa5f598643592ead3d5d4e06b8c">sub_decision_builder_</a>;
+<a name="l02706"></a>02706   }
+<a name="l02707"></a><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#2b0643bc1871ce13b447bb50b4868760">02707</a>   <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* limit()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="local__search_8cc.html#1c69e7dcf9d555da2ceac2a003b9e647">limit_</a>; }
+<a name="l02708"></a><a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#478156cabd760a885c3f8fb85d85cf90">02708</a>   <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="local__search_8cc.html#bdfbf21b6294496f2e83f4b1d61f4f82">filters_</a>; }
+<a name="l02709"></a>02709 
+<a name="l02710"></a>02710  <span class="keyword">private</span>:
+<a name="l02711"></a>02711   <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> solution_pool_;
+<a name="l02712"></a>02712   <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> <a class="code" href="local__search_8cc.html#1b511506766ee2e09a27e61830c13347">ls_operator_</a>;
+<a name="l02713"></a>02713   <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> <a class="code" href="local__search_8cc.html#a6206aa5f598643592ead3d5d4e06b8c">sub_decision_builder_</a>;
+<a name="l02714"></a>02714   <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> <a class="code" href="local__search_8cc.html#1c69e7dcf9d555da2ceac2a003b9e647">limit_</a>;
+<a name="l02715"></a>02715   std::vector&lt;LocalSearchFilter*&gt; <a class="code" href="local__search_8cc.html#bdfbf21b6294496f2e83f4b1d61f4f82">filters_</a>;
+<a name="l02716"></a>02716 };
+<a name="l02717"></a>02717 
+<a name="l02718"></a><a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4">02718</a> <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">Solver::MakeLocalSearchPhaseParameters</a>(
+<a name="l02719"></a>02719     <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator,
+<a name="l02720"></a>02720     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder) {
+<a name="l02721"></a>02721   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">MakeLocalSearchPhaseParameters</a>(<a class="code" href="classoperations__research_1_1Solver.html#71d2ee2d6714d7faa834b31a7c7753a6" title="Solution Pool.">MakeDefaultSolutionPool</a>(),
+<a name="l02722"></a>02722                                         ls_operator,
+<a name="l02723"></a>02723                                         sub_decision_builder,
+<a name="l02724"></a>02724                                         NULL,
+<a name="l02725"></a>02725                                         std::vector&lt;LocalSearchFilter*&gt;());
+<a name="l02726"></a>02726 }
+<a name="l02727"></a>02727 
+<a name="l02728"></a><a class="code" href="classoperations__research_1_1Solver.html#477777a792fd5dbab6a808d0b0955c19">02728</a> <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">Solver::MakeLocalSearchPhaseParameters</a>(
+<a name="l02729"></a>02729     <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator,
+<a name="l02730"></a>02730     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder,
+<a name="l02731"></a>02731     <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> limit) {
+<a name="l02732"></a>02732   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">MakeLocalSearchPhaseParameters</a>(<a class="code" href="classoperations__research_1_1Solver.html#71d2ee2d6714d7faa834b31a7c7753a6" title="Solution Pool.">MakeDefaultSolutionPool</a>(),
+<a name="l02733"></a>02733                                         ls_operator,
+<a name="l02734"></a>02734                                         sub_decision_builder,
+<a name="l02735"></a>02735                                         limit,
+<a name="l02736"></a>02736                                         std::vector&lt;LocalSearchFilter*&gt;());
+<a name="l02737"></a>02737 }
+<a name="l02738"></a>02738 
+<a name="l02739"></a><a class="code" href="classoperations__research_1_1Solver.html#f259add262bf4307c112d47829eb7777">02739</a> <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">Solver::MakeLocalSearchPhaseParameters</a>(
+<a name="l02740"></a>02740     <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator,
+<a name="l02741"></a>02741     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder,
+<a name="l02742"></a>02742     <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> limit,
+<a name="l02743"></a>02743     <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters) {
+<a name="l02744"></a>02744   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">MakeLocalSearchPhaseParameters</a>(<a class="code" href="classoperations__research_1_1Solver.html#71d2ee2d6714d7faa834b31a7c7753a6" title="Solution Pool.">MakeDefaultSolutionPool</a>(),
+<a name="l02745"></a>02745                                         ls_operator,
+<a name="l02746"></a>02746                                         sub_decision_builder,
+<a name="l02747"></a>02747                                         limit,
+<a name="l02748"></a>02748                                         filters);
+<a name="l02749"></a>02749 }
+<a name="l02750"></a>02750 
+<a name="l02751"></a><a class="code" href="classoperations__research_1_1Solver.html#548580eddd2fc3d7ed4d85fea26b50fe">02751</a> <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">Solver::MakeLocalSearchPhaseParameters</a>(
+<a name="l02752"></a>02752     <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> pool,
+<a name="l02753"></a>02753     <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator,
+<a name="l02754"></a>02754     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder) {
+<a name="l02755"></a>02755   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">MakeLocalSearchPhaseParameters</a>(pool,
+<a name="l02756"></a>02756                                         ls_operator,
+<a name="l02757"></a>02757                                         sub_decision_builder,
+<a name="l02758"></a>02758                                         NULL,
+<a name="l02759"></a>02759                                         std::vector&lt;LocalSearchFilter*&gt;());
+<a name="l02760"></a>02760 }
+<a name="l02761"></a>02761 
+<a name="l02762"></a><a class="code" href="classoperations__research_1_1Solver.html#7d23de9e71382630f9b0b998383b1b15">02762</a> <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">Solver::MakeLocalSearchPhaseParameters</a>(
+<a name="l02763"></a>02763     <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> pool,
+<a name="l02764"></a>02764     <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator,
+<a name="l02765"></a>02765     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder,
+<a name="l02766"></a>02766     <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> limit) {
+<a name="l02767"></a>02767   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">MakeLocalSearchPhaseParameters</a>(pool,
+<a name="l02768"></a>02768                                         ls_operator,
+<a name="l02769"></a>02769                                         sub_decision_builder,
+<a name="l02770"></a>02770                                         limit,
+<a name="l02771"></a>02771                                         std::vector&lt;LocalSearchFilter*&gt;());
+<a name="l02772"></a>02772 }
+<a name="l02773"></a>02773 
+<a name="l02774"></a><a class="code" href="classoperations__research_1_1Solver.html#b54521dcf1f4fcb4a2a6e83050bf85a3">02774</a> <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#b9ac65ddffd2a52c71cfa064202c2eb4" title="Local Search Phase Parameters.">Solver::MakeLocalSearchPhaseParameters</a>(
+<a name="l02775"></a>02775     <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> pool,
+<a name="l02776"></a>02776     <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator,
+<a name="l02777"></a>02777     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder,
+<a name="l02778"></a>02778     <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> limit,
+<a name="l02779"></a>02779     <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters) {
+<a name="l02780"></a>02780   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>(pool,
+<a name="l02781"></a>02781                                                  ls_operator,
+<a name="l02782"></a>02782                                                  sub_decision_builder,
+<a name="l02783"></a>02783                                                  limit,
+<a name="l02784"></a>02784                                                  filters));
+<a name="l02785"></a>02785 }
+<a name="l02786"></a>02786 
+<a name="l02787"></a>02787 <span class="keyword">namespace </span>{
+<a name="l02788"></a>02788 <span class="comment">// ----- NestedSolve decision wrapper -----</span>
+<a name="l02789"></a>02789 
+<a name="l02790"></a>02790 <span class="comment">// This decision calls a nested Solve on the given DecisionBuilder in its</span>
+<a name="l02791"></a>02791 <span class="comment">// left branch; does nothing in the left branch.</span>
+<a name="l02792"></a>02792 <span class="comment">// The state of the decision corresponds to the result of the nested Solve:</span>
+<a name="l02793"></a>02793 <span class="comment">// DECISION_PENDING - Nested Solve not called yet</span>
+<a name="l02794"></a>02794 <span class="comment">// DECISION_FAILED  - Nested Solve failed</span>
+<a name="l02795"></a>02795 <span class="comment">// DECISION_FOUND   - Nested Solve succeeded</span>
+<a name="l02796"></a>02796 
+<a name="l02797"></a>02797 <span class="keyword">class </span>NestedSolveDecision : <span class="keyword">public</span> <a class="code" href="classoperations__research_1_1Decision.html" title="A Decision represents a choice point in the search tree.">Decision</a> {
+<a name="l02798"></a>02798  <span class="keyword">public</span>:
+<a name="l02799"></a>02799   <span class="comment">// This enum is used internally to tag states in the local search tree.</span>
+<a name="l02800"></a>02800   <span class="keyword">enum</span> StateType {
+<a name="l02801"></a>02801     DECISION_PENDING,
+<a name="l02802"></a>02802     DECISION_FAILED,
+<a name="l02803"></a>02803     DECISION_FOUND
+<a name="l02804"></a>02804   };
+<a name="l02805"></a>02805 
+<a name="l02806"></a>02806   NestedSolveDecision(DecisionBuilder* <span class="keyword">const</span> db,
+<a name="l02807"></a>02807                       <span class="keywordtype">bool</span> restore,
+<a name="l02808"></a>02808                       <span class="keyword">const</span> std::vector&lt;SearchMonitor*&gt;&amp; monitors);
+<a name="l02809"></a>02809   NestedSolveDecision(DecisionBuilder* <span class="keyword">const</span> db,
+<a name="l02810"></a>02810                       <span class="keywordtype">bool</span> restore);
+<a name="l02811"></a>02811   <span class="keyword">virtual</span> ~NestedSolveDecision() {}
+<a name="l02812"></a>02812   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Apply(<a class="code" href="classoperations__research_1_1Solver.html#5b0165d313b9e2bfba93da6aff65052f">Solver</a>* <span class="keyword">const</span> solver);
+<a name="l02813"></a>02813   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Refute(<a class="code" href="classoperations__research_1_1Solver.html#5b0165d313b9e2bfba93da6aff65052f">Solver</a>* <span class="keyword">const</span> solver);
+<a name="l02814"></a>02814   <span class="keyword">virtual</span> <span class="keywordtype">string</span> <a class="code" href="classoperations__research_1_1Solver.html#a7a09bf2f27ccbdc1d1d386bd94e142a" title="misc debug string.">DebugString</a>()<span class="keyword"> const </span>{
+<a name="l02815"></a>02815     <span class="keywordflow">return</span> <span class="stringliteral">"NestedSolveDecision"</span>;
+<a name="l02816"></a>02816   }
+<a name="l02817"></a>02817   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1Solver.html#e964d4fa8d19980de529a6e771ee9a7e" title="state of the solver.">state</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="local__search_8cc.html#80151e3e5119fd23f5c8bd4125dafc11">state_</a>; }
+<a name="l02818"></a>02818 
+<a name="l02819"></a>02819  <span class="keyword">private</span>:
+<a name="l02820"></a><a class="code" href="local__search_8cc.html#5d7ebe0debf7eb2b5d5e8bb2db5e526b">02820</a>   DecisionBuilder* <span class="keyword">const</span> <a class="code" href="default__search_8cc.html#f29e6f18a2e5762e7d38d946c540f43f">db_</a>;
+<a name="l02821"></a><a class="code" href="local__search_8cc.html#21024e73135643fcce20d5f2356673b7">02821</a>   <span class="keywordtype">bool</span> <a class="code" href="local__search_8cc.html#21024e73135643fcce20d5f2356673b7">restore_</a>;
+<a name="l02822"></a><a class="code" href="local__search_8cc.html#9d84fc009216df22096caf7925401b19">02822</a>   std::vector&lt;SearchMonitor*&gt; <a class="code" href="local__search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>;
+<a name="l02823"></a><a class="code" href="local__search_8cc.html#80151e3e5119fd23f5c8bd4125dafc11">02823</a>   <span class="keywordtype">int</span> <a class="code" href="local__search_8cc.html#80151e3e5119fd23f5c8bd4125dafc11">state_</a>;
+<a name="l02824"></a>02824 };
+<a name="l02825"></a>02825 
+<a name="l02826"></a>02826 NestedSolveDecision::NestedSolveDecision(DecisionBuilder* <span class="keyword">const</span> db,
+<a name="l02827"></a>02827                                          <span class="keywordtype">bool</span> restore,
+<a name="l02828"></a>02828                                          <span class="keyword">const</span> std::vector&lt;SearchMonitor*&gt;&amp; monitors)
+<a name="l02829"></a>02829     : <a class="code" href="default__search_8cc.html#f29e6f18a2e5762e7d38d946c540f43f">db_</a>(db),
+<a name="l02830"></a>02830       <a class="code" href="local__search_8cc.html#21024e73135643fcce20d5f2356673b7">restore_</a>(restore),
+<a name="l02831"></a>02831       <a class="code" href="local__search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>(monitors),
+<a name="l02832"></a>02832       state_(DECISION_PENDING) {
+<a name="l02833"></a>02833   CHECK(NULL != db);
+<a name="l02834"></a>02834 }
+<a name="l02835"></a>02835 
+<a name="l02836"></a>02836 NestedSolveDecision::NestedSolveDecision(DecisionBuilder* <span class="keyword">const</span> db,
+<a name="l02837"></a>02837                                          <span class="keywordtype">bool</span> restore)
+<a name="l02838"></a>02838     : <a class="code" href="default__search_8cc.html#f29e6f18a2e5762e7d38d946c540f43f">db_</a>(db), <a class="code" href="local__search_8cc.html#21024e73135643fcce20d5f2356673b7">restore_</a>(restore), <a class="code" href="local__search_8cc.html#80151e3e5119fd23f5c8bd4125dafc11">state_</a>(DECISION_PENDING) {
+<a name="l02839"></a>02839   CHECK(NULL != db);
+<a name="l02840"></a>02840 }
+<a name="l02841"></a>02841 
+<a name="l02842"></a>02842 <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1Decision.html#88aea04b24727f86d465479464437b2e" title="Apply will be called first when the decision is executed.">NestedSolveDecision::Apply</a>(Solver* <span class="keyword">const</span> solver) {
+<a name="l02843"></a>02843   CHECK(NULL != solver);
+<a name="l02844"></a>02844   <span class="keywordflow">if</span> (solver-&gt;NestedSolve(<a class="code" href="default__search_8cc.html#f29e6f18a2e5762e7d38d946c540f43f">db_</a>, <a class="code" href="local__search_8cc.html#21024e73135643fcce20d5f2356673b7">restore_</a>,
+<a name="l02845"></a>02845                           <a class="code" href="local__search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>.data(), <a class="code" href="local__search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>.size())) {
+<a name="l02846"></a>02846     solver-&gt;SaveAndSetValue(&amp;<a class="code" href="local__search_8cc.html#80151e3e5119fd23f5c8bd4125dafc11">state_</a>, static_cast&lt;int&gt;(DECISION_FOUND));
+<a name="l02847"></a>02847   } <span class="keywordflow">else</span> {
+<a name="l02848"></a>02848     solver-&gt;SaveAndSetValue(&amp;<a class="code" href="local__search_8cc.html#80151e3e5119fd23f5c8bd4125dafc11">state_</a>, static_cast&lt;int&gt;(DECISION_FAILED));
+<a name="l02849"></a>02849   }
 <a name="l02850"></a>02850 }
 <a name="l02851"></a>02851 
-<a name="l02852"></a>02852 <span class="comment">// ----- Local search decision builder -----</span>
+<a name="l02852"></a>02852 <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1Decision.html#04e7498b68e7bfc7caeacad7c4272c1f" title="Refute will be called after a backtrack.">NestedSolveDecision::Refute</a>(Solver* <span class="keyword">const</span> solver) {}
 <a name="l02853"></a>02853 
-<a name="l02854"></a><a class="code" href="classoperations__research_1_1LocalSearch.html#4e97eab970845e1d31edf7c77dfc5c61">02854</a> <a class="code" href="classoperations__research_1_1LocalSearch.html#4e97eab970845e1d31edf7c77dfc5c61" title="Local search decision builder.">LocalSearch::LocalSearch</a>(<a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* <span class="keyword">const</span> assignment,
-<a name="l02855"></a>02855                          <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> pool,
-<a name="l02856"></a>02856                          <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator,
-<a name="l02857"></a>02857                          <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder,
-<a name="l02858"></a>02858                          <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> limit,
-<a name="l02859"></a>02859                          <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters)
-<a name="l02860"></a>02860     : <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>(assignment),
-<a name="l02861"></a>02861       pool_(pool),
-<a name="l02862"></a>02862       ls_operator_(ls_operator),
-<a name="l02863"></a>02863       sub_decision_builder_(sub_decision_builder),
-<a name="l02864"></a>02864       nested_decision_index_(0),
-<a name="l02865"></a>02865       <a class="code" href="local__search_8cc.html#3c46258b924243eeeb3608b2df18db4f">limit_</a>(limit),
-<a name="l02866"></a>02866       filters_(filters),
-<a name="l02867"></a>02867       has_started_(false) {
-<a name="l02868"></a>02868   CHECK(NULL != assignment);
-<a name="l02869"></a>02869   CHECK(NULL != ls_operator);
-<a name="l02870"></a>02870   <a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> solver = assignment_-&gt;<a class="code" href="classoperations__research_1_1PropagationBaseObject.html#2851ada2b74b1f107fb50d84043471dc">solver</a>();
-<a name="l02871"></a>02871   <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* restore = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#19dfeb751bdd2c5f2d1900c05a3c31a2" title="Returns a DecisionBuilder which restores an Assignment (calls void Assignment::Restore())...">MakeRestoreAssignment</a>(assignment_);
-<a name="l02872"></a>02872   <a class="code" href="classoperations__research_1_1LocalSearch.html#3114a627d3fe411054b60d13eec14967">PushFirstSolutionDecision</a>(restore);
-<a name="l02873"></a>02873   <a class="code" href="classoperations__research_1_1LocalSearch.html#ccc804249b8986be5e855c76a7c322e0">PushLocalSearchDecision</a>();
-<a name="l02874"></a>02874 }
-<a name="l02875"></a>02875 
-<a name="l02876"></a><a class="code" href="classoperations__research_1_1LocalSearch.html#92abcab184bea67a69023eeb2e241bb5">02876</a> <a class="code" href="classoperations__research_1_1LocalSearch.html#4e97eab970845e1d31edf7c77dfc5c61" title="Local search decision builder.">LocalSearch::LocalSearch</a>(<a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span>* vars,
-<a name="l02877"></a>02877                          <span class="keywordtype">int</span> size,
-<a name="l02878"></a>02878                          <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <span class="keyword">const</span> pool,
-<a name="l02879"></a>02879                          <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> first_solution,
-<a name="l02880"></a>02880                          <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="Local search operators.">LocalSearchOperator</a>* <span class="keyword">const</span> ls_operator,
-<a name="l02881"></a>02881                          <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder,
-<a name="l02882"></a>02882                          <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> limit,
-<a name="l02883"></a>02883                          <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters)
-<a name="l02884"></a>02884     : assignment_(NULL),
-<a name="l02885"></a>02885       pool_(pool),
-<a name="l02886"></a>02886       ls_operator_(ls_operator),
-<a name="l02887"></a>02887       sub_decision_builder_(sub_decision_builder),
-<a name="l02888"></a>02888       nested_decision_index_(0),
-<a name="l02889"></a>02889       limit_(limit),
-<a name="l02890"></a>02890       filters_(filters),
-<a name="l02891"></a>02891       has_started_(false) {
-<a name="l02892"></a>02892   CHECK(NULL != first_solution);
-<a name="l02893"></a>02893   CHECK(NULL != ls_operator);
-<a name="l02894"></a>02894   CHECK_GE(size, 1);
-<a name="l02895"></a>02895   <a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> solver = vars[0]-&gt;<a class="code" href="classoperations__research_1_1PropagationBaseObject.html#2851ada2b74b1f107fb50d84043471dc">solver</a>();
-<a name="l02896"></a>02896   assignment_ = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#c0092ed0e354092e8b2c9c94def99c47" title="Assignments.">MakeAssignment</a>();
-<a name="l02897"></a>02897   assignment_-&gt;<a class="code" href="classoperations__research_1_1Assignment.html#626ead11d524ef2d4d81aa201baecc3b">Add</a>(vars, size);
-<a name="l02898"></a>02898   <a class="code" href="classoperations__research_1_1LocalSearch.html#3114a627d3fe411054b60d13eec14967">PushFirstSolutionDecision</a>(first_solution);
-<a name="l02899"></a>02899   <a class="code" href="classoperations__research_1_1LocalSearch.html#ccc804249b8986be5e855c76a7c322e0">PushLocalSearchDecision</a>();
-<a name="l02900"></a>02900 }
-<a name="l02901"></a>02901 
-<a name="l02902"></a><a class="code" href="classoperations__research_1_1LocalSearch.html#b52a1cd749b1212614956035c96b8af7">02902</a> <a class="code" href="classoperations__research_1_1LocalSearch.html#b52a1cd749b1212614956035c96b8af7">LocalSearch::~LocalSearch</a>() {}
+<a name="l02854"></a>02854 <span class="comment">// ----- Local search decision builder -----</span>
+<a name="l02855"></a>02855 
+<a name="l02856"></a>02856 <span class="comment">// Given a first solution (resulting from either an initial assignment or the</span>
+<a name="l02857"></a>02857 <span class="comment">// result of a decision builder), it searches for neighbors using a local</span>
+<a name="l02858"></a>02858 <span class="comment">// search operator. The first solution corresponds to the first leaf of the</span>
+<a name="l02859"></a>02859 <span class="comment">// search.</span>
+<a name="l02860"></a>02860 <span class="comment">// The local search applies to the variables contained either in the assignment</span>
+<a name="l02861"></a>02861 <span class="comment">// or the vector of variables passed.</span>
+<a name="l02862"></a>02862 
+<a name="l02863"></a>02863 <span class="keyword">class </span>LocalSearch : <span class="keyword">public</span> DecisionBuilder {
+<a name="l02864"></a>02864  <span class="keyword">public</span>:
+<a name="l02865"></a>02865   LocalSearch(Assignment* <span class="keyword">const</span> assignment,
+<a name="l02866"></a>02866               SolutionPool* <span class="keyword">const</span> pool,
+<a name="l02867"></a>02867               LocalSearchOperator* <span class="keyword">const</span> ls_operator,
+<a name="l02868"></a>02868               DecisionBuilder* <span class="keyword">const</span> sub_decision_builder,
+<a name="l02869"></a>02869               SearchLimit* <span class="keyword">const</span> limit,
+<a name="l02870"></a>02870               <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters);
+<a name="l02871"></a>02871   <span class="comment">// TODO(user): find a way to not have to pass vars here: redundant with</span>
+<a name="l02872"></a>02872   <span class="comment">// variables in operators</span>
+<a name="l02873"></a>02873   LocalSearch(IntVar* <span class="keyword">const</span>* vars,
+<a name="l02874"></a>02874               <span class="keywordtype">int</span> size,
+<a name="l02875"></a>02875               SolutionPool* <span class="keyword">const</span> pool,
+<a name="l02876"></a>02876               DecisionBuilder* <span class="keyword">const</span> first_solution,
+<a name="l02877"></a>02877               LocalSearchOperator* <span class="keyword">const</span> ls_operator,
+<a name="l02878"></a>02878               DecisionBuilder* <span class="keyword">const</span> sub_decision_builder,
+<a name="l02879"></a>02879               SearchLimit* <span class="keyword">const</span> limit,
+<a name="l02880"></a>02880               <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters);
+<a name="l02881"></a>02881   <span class="keyword">virtual</span> ~LocalSearch();
+<a name="l02882"></a>02882   <span class="keyword">virtual</span> Decision* Next(Solver* <span class="keyword">const</span> solver);
+<a name="l02883"></a>02883   <span class="keyword">virtual</span> <span class="keywordtype">string</span> DebugString()<span class="keyword"> const </span>{
+<a name="l02884"></a>02884     <span class="keywordflow">return</span> <span class="stringliteral">"LocalSearch"</span>;
+<a name="l02885"></a>02885   }
+<a name="l02886"></a>02886   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Accept(ModelVisitor* <span class="keyword">const</span> visitor) <span class="keyword">const</span>;
+<a name="l02887"></a>02887 
+<a name="l02888"></a>02888  <span class="keyword">protected</span>:
+<a name="l02889"></a>02889   <span class="keywordtype">void</span> PushFirstSolutionDecision(DecisionBuilder* first_solution);
+<a name="l02890"></a>02890   <span class="keywordtype">void</span> PushLocalSearchDecision();
+<a name="l02891"></a>02891 
+<a name="l02892"></a>02892  <span class="keyword">private</span>:
+<a name="l02893"></a><a class="code" href="local__search_8cc.html#91d3f705b22358b44ece45dea1b32a45">02893</a>   Assignment* <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>;
+<a name="l02894"></a><a class="code" href="local__search_8cc.html#c464ccc9c1e58dd8af381e338a1486f8">02894</a>   SolutionPool* <span class="keyword">const</span> <a class="code" href="local__search_8cc.html#c464ccc9c1e58dd8af381e338a1486f8">pool_</a>;
+<a name="l02895"></a><a class="code" href="local__search_8cc.html#1b511506766ee2e09a27e61830c13347">02895</a>   LocalSearchOperator* <span class="keyword">const</span> <a class="code" href="local__search_8cc.html#1b511506766ee2e09a27e61830c13347">ls_operator_</a>;
+<a name="l02896"></a><a class="code" href="local__search_8cc.html#a6206aa5f598643592ead3d5d4e06b8c">02896</a>   DecisionBuilder* <span class="keyword">const</span> <a class="code" href="local__search_8cc.html#a6206aa5f598643592ead3d5d4e06b8c">sub_decision_builder_</a>;
+<a name="l02897"></a><a class="code" href="local__search_8cc.html#0b573d2c2cd7e2d4992ed1615761b4da">02897</a>   std::vector&lt;NestedSolveDecision*&gt; <a class="code" href="local__search_8cc.html#0b573d2c2cd7e2d4992ed1615761b4da">nested_decisions_</a>;
+<a name="l02898"></a><a class="code" href="local__search_8cc.html#eca153b1c9523f2198fdbb2ebdcf73cd">02898</a>   <span class="keywordtype">int</span> <a class="code" href="local__search_8cc.html#eca153b1c9523f2198fdbb2ebdcf73cd">nested_decision_index_</a>;
+<a name="l02899"></a>02899   SearchLimit* <span class="keyword">const</span> <a class="code" href="local__search_8cc.html#1c69e7dcf9d555da2ceac2a003b9e647">limit_</a>;
+<a name="l02900"></a><a class="code" href="local__search_8cc.html#bdfbf21b6294496f2e83f4b1d61f4f82">02900</a>   <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt; <a class="code" href="local__search_8cc.html#bdfbf21b6294496f2e83f4b1d61f4f82">filters_</a>;
+<a name="l02901"></a><a class="code" href="local__search_8cc.html#3ef2d7e1f6b4bde88fdce00764a64b37">02901</a>   <span class="keywordtype">bool</span> <a class="code" href="local__search_8cc.html#3ef2d7e1f6b4bde88fdce00764a64b37">has_started_</a>;
+<a name="l02902"></a>02902 };
 <a name="l02903"></a>02903 
-<a name="l02904"></a>02904 <span class="comment">// Model Visitor support.</span>
-<a name="l02905"></a><a class="code" href="classoperations__research_1_1LocalSearch.html#881d64e535e7d9a49906f96e135074e6">02905</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1LocalSearch.html#881d64e535e7d9a49906f96e135074e6" title="Model Visitor support.">LocalSearch::Accept</a>(<a class="code" href="classoperations__research_1_1ModelVisitor.html" title="Model visitor.">ModelVisitor</a>* <span class="keyword">const</span> visitor)<span class="keyword"> const </span>{
-<a name="l02906"></a>02906   DCHECK(assignment_ != NULL);
-<a name="l02907"></a>02907   visitor-&gt;<a class="code" href="classoperations__research_1_1ModelVisitor.html#fcc7401ed9bf51e99225f02d0b03f214">BeginVisitExtension</a>(<a class="code" href="classoperations__research_1_1ModelVisitor.html#9b7bd80d7e781b8217abbaa9b983ba76">ModelVisitor::kVariableGroupExtension</a>);
-<a name="l02908"></a>02908   <span class="comment">// We collect decision variables from the assignment.</span>
-<a name="l02909"></a>02909   <span class="keyword">const</span> std::vector&lt;IntVarElement&gt;&amp; elements =
-<a name="l02910"></a>02910       assignment_-&gt;<a class="code" href="classoperations__research_1_1Assignment.html#e33b6ff4f1647554a2c2e8a02226345d">IntVarContainer</a>().elements();
-<a name="l02911"></a>02911   <span class="keywordflow">if</span> (!elements.empty()) {
-<a name="l02912"></a>02912     std::vector&lt;IntVar*&gt; vars;
-<a name="l02913"></a>02913     <span class="keywordflow">for</span> (ConstIter&lt;std::vector&lt;IntVarElement&gt; &gt; it(elements); !it.at_end(); ++it) {
-<a name="l02914"></a>02914       vars.push_back((*it).Var());
-<a name="l02915"></a>02915     }
-<a name="l02916"></a>02916     visitor-&gt;<a class="code" href="classoperations__research_1_1ModelVisitor.html#85a2a6a7d07b014f8f249ead5ff14e55">VisitIntegerVariableArrayArgument</a>(<a class="code" href="classoperations__research_1_1ModelVisitor.html#b2d79708656faa6ca3381c630a5eeff7">ModelVisitor::kVarsArgument</a>,
-<a name="l02917"></a>02917                                                vars.data(),
-<a name="l02918"></a>02918                                                vars.size());
-<a name="l02919"></a>02919   }
-<a name="l02920"></a>02920   <span class="keyword">const</span> std::vector&lt;IntervalVarElement&gt;&amp; interval_elements =
-<a name="l02921"></a>02921       assignment_-&gt;<a class="code" href="classoperations__research_1_1Assignment.html#7d7160fab149c6ef12e9b18ccfc0bad0">IntervalVarContainer</a>().elements();
-<a name="l02922"></a>02922   <span class="keywordflow">if</span> (!interval_elements.empty()) {
-<a name="l02923"></a>02923     std::vector&lt;IntervalVar*&gt; interval_vars;
-<a name="l02924"></a>02924     <span class="keywordflow">for</span> (ConstIter&lt;std::vector&lt;IntervalVarElement&gt; &gt; it(interval_elements);
-<a name="l02925"></a>02925          !it.at_end();
-<a name="l02926"></a>02926          ++it) {
-<a name="l02927"></a>02927       interval_vars.push_back((*it).Var());
-<a name="l02928"></a>02928     }
-<a name="l02929"></a>02929     visitor-&gt;<a class="code" href="classoperations__research_1_1ModelVisitor.html#ac69138e5f9a14f83c2058fb008d0efe">VisitIntervalArrayArgument</a>(<a class="code" href="classoperations__research_1_1ModelVisitor.html#ff5a82a9b1a253d046302f2616a9383c">ModelVisitor::kIntervalsArgument</a>,
-<a name="l02930"></a>02930                                         interval_vars.data(),
-<a name="l02931"></a>02931                                         interval_vars.size());
-<a name="l02932"></a>02932   }
-<a name="l02933"></a>02933   visitor-&gt;<a class="code" href="classoperations__research_1_1ModelVisitor.html#426dbfd4590f57a63ab12cde22c101fc">EndVisitExtension</a>(<a class="code" href="classoperations__research_1_1ModelVisitor.html#9b7bd80d7e781b8217abbaa9b983ba76">ModelVisitor::kVariableGroupExtension</a>);
-<a name="l02934"></a>02934 }
-<a name="l02935"></a>02935 
-<a name="l02936"></a>02936 
-<a name="l02937"></a>02937 <span class="comment">// This is equivalent to a multi-restart decision builder</span>
-<a name="l02938"></a>02938 <span class="comment">// TODO(user): abstract this from the local search part</span>
-<a name="l02939"></a>02939 <span class="comment">// TODO(user): handle the case where the tree depth is not enough to hold</span>
-<a name="l02940"></a>02940 <span class="comment">//                all solutions.</span>
-<a name="l02941"></a>02941 
-<a name="l02942"></a><a class="code" href="classoperations__research_1_1LocalSearch.html#ab1cf353f65d7b67f7c8aaa86aeac3b7">02942</a> <a class="code" href="classoperations__research_1_1Decision.html" title="A Decision represents a choice point in the search tree.">Decision</a>* <a class="code" href="classoperations__research_1_1LocalSearch.html#ab1cf353f65d7b67f7c8aaa86aeac3b7" title="This is equivalent to a multi-restart decision builder.">LocalSearch::Next</a>(<a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> solver) {
-<a name="l02943"></a>02943   CHECK(NULL != solver);
-<a name="l02944"></a>02944   CHECK_LT(0, nested_decisions_.size());
-<a name="l02945"></a>02945   <span class="keywordflow">if</span> (!has_started_) {
-<a name="l02946"></a>02946     nested_decision_index_ = 0;
-<a name="l02947"></a>02947     solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#fca376d8b0abd52b94534112442f1614" title="All-in-one SaveAndSetValue.">SaveAndSetValue</a>(&amp;has_started_, <span class="keyword">true</span>);
-<a name="l02948"></a>02948   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (nested_decision_index_ &lt; 0) {
-<a name="l02949"></a>02949     solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#45534161a4dda7e1997bc0effd606648" title="Abandon the current branch in the search tree. A backtrack will follow.">Fail</a>();
-<a name="l02950"></a>02950   }
-<a name="l02951"></a>02951   <a class="code" href="classoperations__research_1_1NestedSolveDecision.html" title="NestedSolve decision wrapper This decision calls a nested Solve on the given DecisionBuilder...">NestedSolveDecision</a>* decision = nested_decisions_[nested_decision_index_];
-<a name="l02952"></a>02952   <span class="keyword">const</span> <span class="keywordtype">int</span> state = decision-&gt;<a class="code" href="classoperations__research_1_1NestedSolveDecision.html#f436c314d061273f0529f8d58eb72bea">state</a>();
-<a name="l02953"></a>02953   <span class="keywordflow">switch</span> (state) {
-<a name="l02954"></a>02954     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1NestedSolveDecision.html#c5bc23aa0c3d923d874fc63aeec60e684c70a20ca781b795098c22d96167fd58">NestedSolveDecision::DECISION_FAILED</a>: {
-<a name="l02955"></a>02955       <span class="keywordflow">if</span> (!solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#1176bbd276eb06ffbfbb85f5556d05b9" title="Ensures communication of local optima between monitors and search.">LocalOptimum</a>()) {
-<a name="l02956"></a>02956         nested_decision_index_ = -1;  <span class="comment">// Stop the search</span>
-<a name="l02957"></a>02957       }
-<a name="l02958"></a>02958       solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#45534161a4dda7e1997bc0effd606648" title="Abandon the current branch in the search tree. A backtrack will follow.">Fail</a>();
-<a name="l02959"></a>02959       <span class="keywordflow">return</span> NULL;
-<a name="l02960"></a>02960     }
-<a name="l02961"></a>02961     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1NestedSolveDecision.html#c5bc23aa0c3d923d874fc63aeec60e68edd2677272c5fa6a7e2e17cebe319624">NestedSolveDecision::DECISION_PENDING</a>: {
-<a name="l02962"></a>02962       <span class="keyword">const</span> <span class="keywordtype">int</span> depth = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#14dc7b55e3664d49fc59a90044bf6fdc" title="Gets the search depth of the current active search.">SearchDepth</a>();
-<a name="l02963"></a>02963       <span class="keywordflow">if</span> (depth &lt; FLAGS_cp_local_search_balanced_tree_depth) {
-<a name="l02964"></a>02964         <span class="keywordflow">return</span> solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#d43d78abeaa05d0d773ce5b7944bad27">balancing_decision</a>();
-<a name="l02965"></a>02965       } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (depth &gt; FLAGS_cp_local_search_balanced_tree_depth) {
-<a name="l02966"></a>02966         solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#45534161a4dda7e1997bc0effd606648" title="Abandon the current branch in the search tree. A backtrack will follow.">Fail</a>();
-<a name="l02967"></a>02967       }
-<a name="l02968"></a>02968       <span class="keywordflow">return</span> decision;
-<a name="l02969"></a>02969     }
-<a name="l02970"></a>02970     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1NestedSolveDecision.html#c5bc23aa0c3d923d874fc63aeec60e68a0f43d8d75670d4bf077263410066aa9">NestedSolveDecision::DECISION_FOUND</a>: {
-<a name="l02971"></a>02971       <span class="comment">// Next time go to next decision</span>
-<a name="l02972"></a>02972       <span class="keywordflow">if</span> (nested_decision_index_ + 1 &lt; nested_decisions_.size()) {
-<a name="l02973"></a>02973         ++nested_decision_index_;
-<a name="l02974"></a>02974       }
-<a name="l02975"></a>02975       <span class="keywordflow">return</span> NULL;
-<a name="l02976"></a>02976     }
-<a name="l02977"></a>02977     <span class="keywordflow">default</span>: {
-<a name="l02978"></a>02978       LOG(ERROR) &lt;&lt; <span class="stringliteral">"Unknown local search state"</span>;
-<a name="l02979"></a>02979       <span class="keywordflow">return</span> NULL;
-<a name="l02980"></a>02980     }
-<a name="l02981"></a>02981   }
-<a name="l02982"></a>02982   <span class="keywordflow">return</span> NULL;
-<a name="l02983"></a>02983 }
-<a name="l02984"></a>02984 
-<a name="l02985"></a><a class="code" href="classoperations__research_1_1LocalSearch.html#3114a627d3fe411054b60d13eec14967">02985</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1LocalSearch.html#3114a627d3fe411054b60d13eec14967">LocalSearch::PushFirstSolutionDecision</a>(
-<a name="l02986"></a>02986     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* first_solution) {
-<a name="l02987"></a>02987   CHECK(first_solution);
-<a name="l02988"></a>02988   <a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> solver = assignment_-&gt;<a class="code" href="classoperations__research_1_1PropagationBaseObject.html#2851ada2b74b1f107fb50d84043471dc">solver</a>();
-<a name="l02989"></a>02989   <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* store = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#b0233710967e1af58947ed14c2e32c15" title="Returns a DecisionBuilder which stores an Assignment (calls void Assignment::Store())...">MakeStoreAssignment</a>(assignment_);
-<a name="l02990"></a>02990   <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* first_solution_and_store =
-<a name="l02991"></a>02991       solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#ebbd0d209e96c3e6406f9a78061631b4" title="Sequential composition of Decision Builders.">Compose</a>(first_solution, store);
-<a name="l02992"></a>02992   std::vector&lt;SearchMonitor*&gt; monitor;
-<a name="l02993"></a>02993   monitor.push_back(limit_);
-<a name="l02994"></a>02994   nested_decisions_.push_back(
-<a name="l02995"></a>02995       solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1NestedSolveDecision.html" title="NestedSolve decision wrapper This decision calls a nested Solve on the given DecisionBuilder...">NestedSolveDecision</a>(first_solution_and_store,
-<a name="l02996"></a>02996                                                <span class="keyword">false</span>,
-<a name="l02997"></a>02997                                                monitor)));
-<a name="l02998"></a>02998 }
-<a name="l02999"></a>02999 
-<a name="l03000"></a><a class="code" href="classoperations__research_1_1LocalSearch.html#ccc804249b8986be5e855c76a7c322e0">03000</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1LocalSearch.html#ccc804249b8986be5e855c76a7c322e0">LocalSearch::PushLocalSearchDecision</a>() {
-<a name="l03001"></a>03001   <a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> solver = assignment_-&gt;<a class="code" href="classoperations__research_1_1PropagationBaseObject.html#2851ada2b74b1f107fb50d84043471dc">solver</a>();
-<a name="l03002"></a>03002   <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* find_neighbors =
-<a name="l03003"></a>03003       solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1FindOneNeighbor.html" title="Finds a neighbor of the assignment passed.">FindOneNeighbor</a>(assignment_,
-<a name="l03004"></a>03004                                            pool_,
-<a name="l03005"></a>03005                                            ls_operator_,
-<a name="l03006"></a>03006                                            sub_decision_builder_,
-<a name="l03007"></a>03007                                            limit_,
-<a name="l03008"></a>03008                                            filters_));
-<a name="l03009"></a>03009   nested_decisions_.push_back(
-<a name="l03010"></a>03010       solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1NestedSolveDecision.html" title="NestedSolve decision wrapper This decision calls a nested Solve on the given DecisionBuilder...">NestedSolveDecision</a>(find_neighbors, <span class="keyword">false</span>)));
-<a name="l03011"></a>03011 }
-<a name="l03012"></a>03012 
-<a name="l03013"></a>03013 <span class="keyword">namespace </span>{
-<a name="l03014"></a>03014 <span class="keyword">class </span>DefaultSolutionPool : <span class="keyword">public</span> <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a> {
-<a name="l03015"></a>03015  <span class="keyword">public</span>:
-<a name="l03016"></a>03016   DefaultSolutionPool() : <a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>(NULL) {}
-<a name="l03017"></a>03017 
-<a name="l03018"></a>03018   <span class="keyword">virtual</span> ~DefaultSolutionPool() {}
-<a name="l03019"></a>03019 
-<a name="l03020"></a>03020   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Initialize(Assignment* <span class="keyword">const</span> assignment) {
-<a name="l03021"></a>03021     <a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>.reset(<span class="keyword">new</span> Assignment(assignment));
-<a name="l03022"></a>03022   }
-<a name="l03023"></a>03023 
-<a name="l03024"></a>03024   <span class="keyword">virtual</span> <span class="keywordtype">void</span> RegisterNewSolution(Assignment* <span class="keyword">const</span> assignment) {
-<a name="l03025"></a>03025     <a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>-&gt;Copy(assignment);
-<a name="l03026"></a>03026   }
-<a name="l03027"></a>03027 
-<a name="l03028"></a>03028   <span class="keyword">virtual</span> <span class="keywordtype">void</span> GetNextSolution(Assignment* <span class="keyword">const</span> assignment) {
-<a name="l03029"></a>03029     assignment-&gt;Copy(<a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>.get());
-<a name="l03030"></a>03030   }
-<a name="l03031"></a>03031 
-<a name="l03032"></a>03032   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> SyncNeeded(Assignment* <span class="keyword">const</span> local_assignment) {
-<a name="l03033"></a>03033     <span class="keywordflow">return</span> <span class="keyword">false</span>;
-<a name="l03034"></a>03034   }
-<a name="l03035"></a>03035  <span class="keyword">private</span>:
-<a name="l03036"></a><a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">03036</a>   scoped_ptr&lt;Assignment&gt; <a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>;
-<a name="l03037"></a>03037 };
-<a name="l03038"></a>03038 }  <span class="comment">// namespace</span>
-<a name="l03039"></a>03039 
-<a name="l03040"></a><a class="code" href="classoperations__research_1_1Solver.html#71d2ee2d6714d7faa834b31a7c7753a6">03040</a> <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* <a class="code" href="classoperations__research_1_1Solver.html#71d2ee2d6714d7faa834b31a7c7753a6" title="Solution Pool.">Solver::MakeDefaultSolutionPool</a>() {
-<a name="l03041"></a>03041   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> DefaultSolutionPool());
-<a name="l03042"></a>03042 }
-<a name="l03043"></a>03043 
-<a name="l03044"></a><a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d">03044</a> <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d" title="Local Search decision builders factories.">Solver::MakeLocalSearchPhase</a>(
-<a name="l03045"></a>03045     <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* assignment,
-<a name="l03046"></a>03046     <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b52d4efd0ccb1880d2f1bc794166872" title="Read-only Parameters.">parameters</a>) {
-<a name="l03047"></a>03047   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1LocalSearch.html" title="Local search decision builder.">LocalSearch</a>(assignment,
-<a name="l03048"></a>03048                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#6ffb119e946430226df7002254bc8d13">solution_pool</a>(),
-<a name="l03049"></a>03049                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#26bb0cb4dca27b5b3050abb13c0a75e0">ls_operator</a>(),
-<a name="l03050"></a>03050                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#095b809504a71c349e3f0dd3aca5e89d">sub_decision_builder</a>(),
-<a name="l03051"></a>03051                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#2b0643bc1871ce13b447bb50b4868760">limit</a>(),
-<a name="l03052"></a>03052                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#478156cabd760a885c3f8fb85d85cf90">filters</a>()));
-<a name="l03053"></a>03053 }
-<a name="l03054"></a>03054 
-<a name="l03055"></a><a class="code" href="classoperations__research_1_1Solver.html#ce179300a3bc8f8566f13142d21913e8">03055</a> <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d" title="Local Search decision builders factories.">Solver::MakeLocalSearchPhase</a>(
-<a name="l03056"></a>03056     <span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; vars,
-<a name="l03057"></a>03057     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* first_solution,
-<a name="l03058"></a>03058     <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b52d4efd0ccb1880d2f1bc794166872" title="Read-only Parameters.">parameters</a>) {
-<a name="l03059"></a>03059   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d" title="Local Search decision builders factories.">MakeLocalSearchPhase</a>(vars.data(),
-<a name="l03060"></a>03060                               vars.size(),
-<a name="l03061"></a>03061                               first_solution,
-<a name="l03062"></a>03062                               parameters);
-<a name="l03063"></a>03063 }
-<a name="l03064"></a>03064 
-<a name="l03065"></a><a class="code" href="classoperations__research_1_1Solver.html#1b28fea17e1107fd33c5fcf77efc1049">03065</a> <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d" title="Local Search decision builders factories.">Solver::MakeLocalSearchPhase</a>(
-<a name="l03066"></a>03066     <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span>* vars, <span class="keywordtype">int</span> size,
-<a name="l03067"></a>03067     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* first_solution,
-<a name="l03068"></a>03068     <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b52d4efd0ccb1880d2f1bc794166872" title="Read-only Parameters.">parameters</a>) {
-<a name="l03069"></a>03069   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1LocalSearch.html" title="Local search decision builder.">LocalSearch</a>(vars, size,
-<a name="l03070"></a>03070                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#6ffb119e946430226df7002254bc8d13">solution_pool</a>(),
-<a name="l03071"></a>03071                                   first_solution,
-<a name="l03072"></a>03072                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#26bb0cb4dca27b5b3050abb13c0a75e0">ls_operator</a>(),
-<a name="l03073"></a>03073                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#095b809504a71c349e3f0dd3aca5e89d">sub_decision_builder</a>(),
-<a name="l03074"></a>03074                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#2b0643bc1871ce13b447bb50b4868760">limit</a>(),
-<a name="l03075"></a>03075                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#478156cabd760a885c3f8fb85d85cf90">filters</a>()));
-<a name="l03076"></a>03076 }
-<a name="l03077"></a>03077 
-<a name="l03078"></a>03078 }  <span class="comment">// namespace operations_research</span>
+<a name="l02904"></a>02904 LocalSearch::LocalSearch(Assignment* <span class="keyword">const</span> assignment,
+<a name="l02905"></a>02905                          SolutionPool* <span class="keyword">const</span> pool,
+<a name="l02906"></a>02906                          LocalSearchOperator* <span class="keyword">const</span> ls_operator,
+<a name="l02907"></a>02907                          DecisionBuilder* <span class="keyword">const</span> sub_decision_builder,
+<a name="l02908"></a>02908                          SearchLimit* <span class="keyword">const</span> limit,
+<a name="l02909"></a>02909                          <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters)
+<a name="l02910"></a>02910     : <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>(assignment),
+<a name="l02911"></a>02911       <a class="code" href="local__search_8cc.html#c464ccc9c1e58dd8af381e338a1486f8">pool_</a>(pool),
+<a name="l02912"></a>02912       <a class="code" href="local__search_8cc.html#1b511506766ee2e09a27e61830c13347">ls_operator_</a>(ls_operator),
+<a name="l02913"></a>02913       <a class="code" href="local__search_8cc.html#a6206aa5f598643592ead3d5d4e06b8c">sub_decision_builder_</a>(sub_decision_builder),
+<a name="l02914"></a>02914       <a class="code" href="local__search_8cc.html#eca153b1c9523f2198fdbb2ebdcf73cd">nested_decision_index_</a>(0),
+<a name="l02915"></a>02915       <a class="code" href="local__search_8cc.html#1c69e7dcf9d555da2ceac2a003b9e647">limit_</a>(limit),
+<a name="l02916"></a>02916       <a class="code" href="local__search_8cc.html#bdfbf21b6294496f2e83f4b1d61f4f82">filters_</a>(filters),
+<a name="l02917"></a>02917       <a class="code" href="local__search_8cc.html#3ef2d7e1f6b4bde88fdce00764a64b37">has_started_</a>(false) {
+<a name="l02918"></a>02918   CHECK(NULL != assignment);
+<a name="l02919"></a>02919   CHECK(NULL != ls_operator);
+<a name="l02920"></a>02920   Solver* <span class="keyword">const</span> solver = <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>-&gt;solver();
+<a name="l02921"></a>02921   DecisionBuilder* restore = solver-&gt;MakeRestoreAssignment(<a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>);
+<a name="l02922"></a>02922   PushFirstSolutionDecision(restore);
+<a name="l02923"></a>02923   PushLocalSearchDecision();
+<a name="l02924"></a>02924 }
+<a name="l02925"></a>02925 
+<a name="l02926"></a>02926 LocalSearch::LocalSearch(IntVar* <span class="keyword">const</span>* vars,
+<a name="l02927"></a>02927                          <span class="keywordtype">int</span> size,
+<a name="l02928"></a>02928                          SolutionPool* <span class="keyword">const</span> pool,
+<a name="l02929"></a>02929                          DecisionBuilder* <span class="keyword">const</span> first_solution,
+<a name="l02930"></a>02930                          LocalSearchOperator* <span class="keyword">const</span> ls_operator,
+<a name="l02931"></a>02931                          DecisionBuilder* <span class="keyword">const</span> sub_decision_builder,
+<a name="l02932"></a>02932                          SearchLimit* <span class="keyword">const</span> limit,
+<a name="l02933"></a>02933                          <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters)
+<a name="l02934"></a>02934     : <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>(NULL),
+<a name="l02935"></a>02935       <a class="code" href="local__search_8cc.html#c464ccc9c1e58dd8af381e338a1486f8">pool_</a>(pool),
+<a name="l02936"></a>02936       <a class="code" href="local__search_8cc.html#1b511506766ee2e09a27e61830c13347">ls_operator_</a>(ls_operator),
+<a name="l02937"></a>02937       <a class="code" href="local__search_8cc.html#a6206aa5f598643592ead3d5d4e06b8c">sub_decision_builder_</a>(sub_decision_builder),
+<a name="l02938"></a>02938       <a class="code" href="local__search_8cc.html#eca153b1c9523f2198fdbb2ebdcf73cd">nested_decision_index_</a>(0),
+<a name="l02939"></a>02939       <a class="code" href="local__search_8cc.html#1c69e7dcf9d555da2ceac2a003b9e647">limit_</a>(limit),
+<a name="l02940"></a>02940       <a class="code" href="local__search_8cc.html#bdfbf21b6294496f2e83f4b1d61f4f82">filters_</a>(filters),
+<a name="l02941"></a>02941       <a class="code" href="local__search_8cc.html#3ef2d7e1f6b4bde88fdce00764a64b37">has_started_</a>(false) {
+<a name="l02942"></a>02942   CHECK(NULL != first_solution);
+<a name="l02943"></a>02943   CHECK(NULL != ls_operator);
+<a name="l02944"></a>02944   CHECK_GE(size, 1);
+<a name="l02945"></a>02945   Solver* <span class="keyword">const</span> solver = vars[0]-&gt;solver();
+<a name="l02946"></a>02946   <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a> = solver-&gt;MakeAssignment();
+<a name="l02947"></a>02947   <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>-&gt;Add(vars, size);
+<a name="l02948"></a>02948   PushFirstSolutionDecision(first_solution);
+<a name="l02949"></a>02949   PushLocalSearchDecision();
+<a name="l02950"></a>02950 }
+<a name="l02951"></a>02951 
+<a name="l02952"></a>02952 LocalSearch::~LocalSearch() {}
+<a name="l02953"></a>02953 
+<a name="l02954"></a>02954 <span class="comment">// Model Visitor support.</span>
+<a name="l02955"></a>02955 <span class="keywordtype">void</span> LocalSearch::Accept(ModelVisitor* <span class="keyword">const</span> visitor)<span class="keyword"> const </span>{
+<a name="l02956"></a>02956   DCHECK(<a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a> != NULL);
+<a name="l02957"></a>02957   visitor-&gt;BeginVisitExtension(ModelVisitor::kVariableGroupExtension);
+<a name="l02958"></a>02958   <span class="comment">// We collect decision variables from the assignment.</span>
+<a name="l02959"></a>02959   <span class="keyword">const</span> std::vector&lt;IntVarElement&gt;&amp; elements =
+<a name="l02960"></a>02960       <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>-&gt;IntVarContainer().elements();
+<a name="l02961"></a>02961   <span class="keywordflow">if</span> (!elements.empty()) {
+<a name="l02962"></a>02962     std::vector&lt;IntVar*&gt; vars;
+<a name="l02963"></a>02963     <span class="keywordflow">for</span> (ConstIter&lt;std::vector&lt;IntVarElement&gt; &gt; it(elements); !it.at_end(); ++it) {
+<a name="l02964"></a>02964       vars.push_back((*it).Var());
+<a name="l02965"></a>02965     }
+<a name="l02966"></a>02966     visitor-&gt;VisitIntegerVariableArrayArgument(ModelVisitor::kVarsArgument,
+<a name="l02967"></a>02967                                                vars.data(),
+<a name="l02968"></a>02968                                                vars.size());
+<a name="l02969"></a>02969   }
+<a name="l02970"></a>02970   <span class="keyword">const</span> std::vector&lt;IntervalVarElement&gt;&amp; interval_elements =
+<a name="l02971"></a>02971       <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>-&gt;IntervalVarContainer().elements();
+<a name="l02972"></a>02972   <span class="keywordflow">if</span> (!interval_elements.empty()) {
+<a name="l02973"></a>02973     std::vector&lt;IntervalVar*&gt; interval_vars;
+<a name="l02974"></a>02974     <span class="keywordflow">for</span> (ConstIter&lt;std::vector&lt;IntervalVarElement&gt; &gt; it(interval_elements);
+<a name="l02975"></a>02975          !it.at_end();
+<a name="l02976"></a>02976          ++it) {
+<a name="l02977"></a>02977       interval_vars.push_back((*it).Var());
+<a name="l02978"></a>02978     }
+<a name="l02979"></a>02979     visitor-&gt;VisitIntervalArrayArgument(ModelVisitor::kIntervalsArgument,
+<a name="l02980"></a>02980                                         interval_vars.data(),
+<a name="l02981"></a>02981                                         interval_vars.size());
+<a name="l02982"></a>02982   }
+<a name="l02983"></a>02983   visitor-&gt;EndVisitExtension(ModelVisitor::kVariableGroupExtension);
+<a name="l02984"></a>02984 }
+<a name="l02985"></a>02985 
+<a name="l02986"></a>02986 
+<a name="l02987"></a>02987 <span class="comment">// This is equivalent to a multi-restart decision builder</span>
+<a name="l02988"></a>02988 <span class="comment">// TODO(user): abstract this from the local search part</span>
+<a name="l02989"></a>02989 <span class="comment">// TODO(user): handle the case where the tree depth is not enough to hold</span>
+<a name="l02990"></a>02990 <span class="comment">//                all solutions.</span>
+<a name="l02991"></a>02991 
+<a name="l02992"></a>02992 Decision* LocalSearch::Next(Solver* <span class="keyword">const</span> solver) {
+<a name="l02993"></a>02993   CHECK(NULL != solver);
+<a name="l02994"></a>02994   CHECK_LT(0, <a class="code" href="local__search_8cc.html#0b573d2c2cd7e2d4992ed1615761b4da">nested_decisions_</a>.size());
+<a name="l02995"></a>02995   <span class="keywordflow">if</span> (!<a class="code" href="local__search_8cc.html#3ef2d7e1f6b4bde88fdce00764a64b37">has_started_</a>) {
+<a name="l02996"></a>02996     <a class="code" href="local__search_8cc.html#eca153b1c9523f2198fdbb2ebdcf73cd">nested_decision_index_</a> = 0;
+<a name="l02997"></a>02997     solver-&gt;SaveAndSetValue(&amp;<a class="code" href="local__search_8cc.html#3ef2d7e1f6b4bde88fdce00764a64b37">has_started_</a>, <span class="keyword">true</span>);
+<a name="l02998"></a>02998   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="local__search_8cc.html#eca153b1c9523f2198fdbb2ebdcf73cd">nested_decision_index_</a> &lt; 0) {
+<a name="l02999"></a>02999     solver-&gt;Fail();
+<a name="l03000"></a>03000   }
+<a name="l03001"></a>03001   NestedSolveDecision* decision = <a class="code" href="local__search_8cc.html#0b573d2c2cd7e2d4992ed1615761b4da">nested_decisions_</a>[<a class="code" href="local__search_8cc.html#eca153b1c9523f2198fdbb2ebdcf73cd">nested_decision_index_</a>];
+<a name="l03002"></a>03002   <span class="keyword">const</span> <span class="keywordtype">int</span> state = decision-&gt;state();
+<a name="l03003"></a>03003   <span class="keywordflow">switch</span> (state) {
+<a name="l03004"></a>03004     <span class="keywordflow">case</span> NestedSolveDecision::DECISION_FAILED: {
+<a name="l03005"></a>03005       <span class="keywordflow">if</span> (!solver-&gt;LocalOptimum()) {
+<a name="l03006"></a>03006         <a class="code" href="local__search_8cc.html#eca153b1c9523f2198fdbb2ebdcf73cd">nested_decision_index_</a> = -1;  <span class="comment">// Stop the search</span>
+<a name="l03007"></a>03007       }
+<a name="l03008"></a>03008       solver-&gt;Fail();
+<a name="l03009"></a>03009       <span class="keywordflow">return</span> NULL;
+<a name="l03010"></a>03010     }
+<a name="l03011"></a>03011     <span class="keywordflow">case</span> NestedSolveDecision::DECISION_PENDING: {
+<a name="l03012"></a>03012       <span class="keyword">const</span> <span class="keywordtype">int</span> depth = solver-&gt;SearchDepth();
+<a name="l03013"></a>03013       <span class="keywordflow">if</span> (depth &lt; FLAGS_cp_local_search_balanced_tree_depth) {
+<a name="l03014"></a>03014         <span class="keywordflow">return</span> solver-&gt;balancing_decision();
+<a name="l03015"></a>03015       } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (depth &gt; FLAGS_cp_local_search_balanced_tree_depth) {
+<a name="l03016"></a>03016         solver-&gt;Fail();
+<a name="l03017"></a>03017       }
+<a name="l03018"></a>03018       <span class="keywordflow">return</span> decision;
+<a name="l03019"></a>03019     }
+<a name="l03020"></a>03020     <span class="keywordflow">case</span> NestedSolveDecision::DECISION_FOUND: {
+<a name="l03021"></a>03021       <span class="comment">// Next time go to next decision</span>
+<a name="l03022"></a>03022       <span class="keywordflow">if</span> (<a class="code" href="local__search_8cc.html#eca153b1c9523f2198fdbb2ebdcf73cd">nested_decision_index_</a> + 1 &lt; <a class="code" href="local__search_8cc.html#0b573d2c2cd7e2d4992ed1615761b4da">nested_decisions_</a>.size()) {
+<a name="l03023"></a>03023         ++<a class="code" href="local__search_8cc.html#eca153b1c9523f2198fdbb2ebdcf73cd">nested_decision_index_</a>;
+<a name="l03024"></a>03024       }
+<a name="l03025"></a>03025       <span class="keywordflow">return</span> NULL;
+<a name="l03026"></a>03026     }
+<a name="l03027"></a>03027     <span class="keywordflow">default</span>: {
+<a name="l03028"></a>03028       LOG(ERROR) &lt;&lt; <span class="stringliteral">"Unknown local search state"</span>;
+<a name="l03029"></a>03029       <span class="keywordflow">return</span> NULL;
+<a name="l03030"></a>03030     }
+<a name="l03031"></a>03031   }
+<a name="l03032"></a>03032   <span class="keywordflow">return</span> NULL;
+<a name="l03033"></a>03033 }
+<a name="l03034"></a>03034 
+<a name="l03035"></a>03035 <span class="keywordtype">void</span> LocalSearch::PushFirstSolutionDecision(
+<a name="l03036"></a>03036     DecisionBuilder* first_solution) {
+<a name="l03037"></a>03037   CHECK(first_solution);
+<a name="l03038"></a>03038   Solver* <span class="keyword">const</span> solver = <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>-&gt;solver();
+<a name="l03039"></a>03039   DecisionBuilder* store = solver-&gt;MakeStoreAssignment(<a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>);
+<a name="l03040"></a>03040   DecisionBuilder* first_solution_and_store =
+<a name="l03041"></a>03041       solver-&gt;Compose(first_solution, store);
+<a name="l03042"></a>03042   std::vector&lt;SearchMonitor*&gt; monitor;
+<a name="l03043"></a>03043   monitor.push_back(<a class="code" href="local__search_8cc.html#1c69e7dcf9d555da2ceac2a003b9e647">limit_</a>);
+<a name="l03044"></a>03044   <a class="code" href="local__search_8cc.html#0b573d2c2cd7e2d4992ed1615761b4da">nested_decisions_</a>.push_back(
+<a name="l03045"></a>03045       solver-&gt;RevAlloc(<span class="keyword">new</span> NestedSolveDecision(first_solution_and_store,
+<a name="l03046"></a>03046                                                <span class="keyword">false</span>,
+<a name="l03047"></a>03047                                                monitor)));
+<a name="l03048"></a>03048 }
+<a name="l03049"></a>03049 
+<a name="l03050"></a>03050 <span class="keywordtype">void</span> LocalSearch::PushLocalSearchDecision() {
+<a name="l03051"></a>03051   Solver* <span class="keyword">const</span> solver = <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>-&gt;solver();
+<a name="l03052"></a>03052   DecisionBuilder* find_neighbors =
+<a name="l03053"></a>03053       solver-&gt;RevAlloc(<span class="keyword">new</span> FindOneNeighbor(<a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>,
+<a name="l03054"></a>03054                                            <a class="code" href="local__search_8cc.html#c464ccc9c1e58dd8af381e338a1486f8">pool_</a>,
+<a name="l03055"></a>03055                                            <a class="code" href="local__search_8cc.html#1b511506766ee2e09a27e61830c13347">ls_operator_</a>,
+<a name="l03056"></a>03056                                            <a class="code" href="local__search_8cc.html#a6206aa5f598643592ead3d5d4e06b8c">sub_decision_builder_</a>,
+<a name="l03057"></a>03057                                            <a class="code" href="local__search_8cc.html#1c69e7dcf9d555da2ceac2a003b9e647">limit_</a>,
+<a name="l03058"></a>03058                                            <a class="code" href="local__search_8cc.html#bdfbf21b6294496f2e83f4b1d61f4f82">filters_</a>));
+<a name="l03059"></a>03059   <a class="code" href="local__search_8cc.html#0b573d2c2cd7e2d4992ed1615761b4da">nested_decisions_</a>.push_back(
+<a name="l03060"></a>03060       solver-&gt;RevAlloc(<span class="keyword">new</span> NestedSolveDecision(find_neighbors, <span class="keyword">false</span>)));
+<a name="l03061"></a>03061 }
+<a name="l03062"></a>03062 
+<a name="l03063"></a>03063 <span class="keyword">class </span>DefaultSolutionPool : <span class="keyword">public</span> SolutionPool {
+<a name="l03064"></a>03064  <span class="keyword">public</span>:
+<a name="l03065"></a>03065   DefaultSolutionPool() : <a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>(NULL) {}
+<a name="l03066"></a>03066 
+<a name="l03067"></a>03067   <span class="keyword">virtual</span> ~DefaultSolutionPool() {}
+<a name="l03068"></a>03068 
+<a name="l03069"></a>03069   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Initialize(Assignment* <span class="keyword">const</span> assignment) {
+<a name="l03070"></a>03070     <a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>.reset(<span class="keyword">new</span> Assignment(assignment));
+<a name="l03071"></a>03071   }
+<a name="l03072"></a>03072 
+<a name="l03073"></a>03073   <span class="keyword">virtual</span> <span class="keywordtype">void</span> RegisterNewSolution(Assignment* <span class="keyword">const</span> assignment) {
+<a name="l03074"></a>03074     <a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>-&gt;Copy(assignment);
+<a name="l03075"></a>03075   }
+<a name="l03076"></a>03076 
+<a name="l03077"></a>03077   <span class="keyword">virtual</span> <span class="keywordtype">void</span> GetNextSolution(Assignment* <span class="keyword">const</span> assignment) {
+<a name="l03078"></a>03078     assignment-&gt;Copy(<a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>.get());
+<a name="l03079"></a>03079   }
+<a name="l03080"></a>03080 
+<a name="l03081"></a>03081   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> SyncNeeded(Assignment* <span class="keyword">const</span> local_assignment) {
+<a name="l03082"></a>03082     <span class="keywordflow">return</span> <span class="keyword">false</span>;
+<a name="l03083"></a>03083   }
+<a name="l03084"></a>03084  <span class="keyword">private</span>:
+<a name="l03085"></a><a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">03085</a>   scoped_ptr&lt;Assignment&gt; <a class="code" href="local__search_8cc.html#100e9f6d21085e90df9f8aa9ab5c760f">reference_assignment_</a>;
+<a name="l03086"></a>03086 };
+<a name="l03087"></a>03087 }  <span class="comment">// namespace</span>
+<a name="l03088"></a>03088 
+<a name="l03089"></a><a class="code" href="classoperations__research_1_1Solver.html#71d2ee2d6714d7faa834b31a7c7753a6">03089</a> <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* Solver::MakeDefaultSolutionPool() {
+<a name="l03090"></a>03090   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> DefaultSolutionPool());
+<a name="l03091"></a>03091 }
+<a name="l03092"></a>03092 
+<a name="l03093"></a><a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d">03093</a> <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d" title="Local Search decision builders factories.">Solver::MakeLocalSearchPhase</a>(
+<a name="l03094"></a>03094     <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* assignment,
+<a name="l03095"></a>03095     <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b52d4efd0ccb1880d2f1bc794166872" title="Read-only Parameters.">parameters</a>) {
+<a name="l03096"></a>03096   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> LocalSearch(assignment,
+<a name="l03097"></a>03097                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#6ffb119e946430226df7002254bc8d13">solution_pool</a>(),
+<a name="l03098"></a>03098                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#26bb0cb4dca27b5b3050abb13c0a75e0">ls_operator</a>(),
+<a name="l03099"></a>03099                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#095b809504a71c349e3f0dd3aca5e89d">sub_decision_builder</a>(),
+<a name="l03100"></a>03100                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#2b0643bc1871ce13b447bb50b4868760">limit</a>(),
+<a name="l03101"></a>03101                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#478156cabd760a885c3f8fb85d85cf90">filters</a>()));
+<a name="l03102"></a>03102 }
+<a name="l03103"></a>03103 
+<a name="l03104"></a><a class="code" href="classoperations__research_1_1Solver.html#ce179300a3bc8f8566f13142d21913e8">03104</a> <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d" title="Local Search decision builders factories.">Solver::MakeLocalSearchPhase</a>(
+<a name="l03105"></a>03105     <span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; vars,
+<a name="l03106"></a>03106     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* first_solution,
+<a name="l03107"></a>03107     <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b52d4efd0ccb1880d2f1bc794166872" title="Read-only Parameters.">parameters</a>) {
+<a name="l03108"></a>03108   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d" title="Local Search decision builders factories.">MakeLocalSearchPhase</a>(vars.data(),
+<a name="l03109"></a>03109                               vars.size(),
+<a name="l03110"></a>03110                               first_solution,
+<a name="l03111"></a>03111                               parameters);
+<a name="l03112"></a>03112 }
+<a name="l03113"></a>03113 
+<a name="l03114"></a><a class="code" href="classoperations__research_1_1Solver.html#1b28fea17e1107fd33c5fcf77efc1049">03114</a> <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d" title="Local Search decision builders factories.">Solver::MakeLocalSearchPhase</a>(
+<a name="l03115"></a>03115     <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span>* vars, <span class="keywordtype">int</span> size,
+<a name="l03116"></a>03116     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* first_solution,
+<a name="l03117"></a>03117     <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b52d4efd0ccb1880d2f1bc794166872" title="Read-only Parameters.">parameters</a>) {
+<a name="l03118"></a>03118   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> LocalSearch(vars, size,
+<a name="l03119"></a>03119                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#6ffb119e946430226df7002254bc8d13">solution_pool</a>(),
+<a name="l03120"></a>03120                                   first_solution,
+<a name="l03121"></a>03121                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#26bb0cb4dca27b5b3050abb13c0a75e0">ls_operator</a>(),
+<a name="l03122"></a>03122                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#095b809504a71c349e3f0dd3aca5e89d">sub_decision_builder</a>(),
+<a name="l03123"></a>03123                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#2b0643bc1871ce13b447bb50b4868760">limit</a>(),
+<a name="l03124"></a>03124                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#478156cabd760a885c3f8fb85d85cf90">filters</a>()));
+<a name="l03125"></a>03125 }
+<a name="l03126"></a>03126 
+<a name="l03127"></a>03127 }  <span class="comment">// namespace operations_research</span>
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -3167,7 +3216,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#439154 height=3></td>
+      <td colspan=2 bgcolor=#371311 height=3></td>
     </tr>
   </table>
 

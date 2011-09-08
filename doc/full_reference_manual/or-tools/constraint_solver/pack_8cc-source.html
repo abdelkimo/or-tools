@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #439154
+      background-color: #371311
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#439154 height=3></td>
+      <td colspan=3 bgcolor=#371311 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
+          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#439154>
+            <td bgcolor=#371311>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -539,7 +539,7 @@
 <a name="l00456"></a>00456   <span class="keywordtype">bool</span> operator&lt;(<span class="keyword">const</span> WeightContainer&amp; c)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> (<a class="code" href="pack_8cc.html#e42ca38a167164c07831993889216903">weight</a> &lt; c.weight); }
 <a name="l00457"></a>00457 };
 <a name="l00458"></a>00458 
-<a name="l00459"></a><a class="code" href="namespaceoperations__research.html#8b28395a9aa670149fd3c5c417616b3b">00459</a> <span class="keywordtype">int</span> <a class="code" href="namespaceoperations__research.html#8b28395a9aa670149fd3c5c417616b3b">SortIndexByWeight</a>(int64* <span class="keyword">const</span> indices,
+<a name="l00459"></a><a class="code" href="namespaceoperations__research.html#805d2e4f04c2779f8bbd34b30a05530c">00459</a> <span class="keywordtype">int</span> <a class="code" href="namespaceoperations__research.html#805d2e4f04c2779f8bbd34b30a05530c">SortIndexByWeight</a>(int64* <span class="keyword">const</span> indices,
 <a name="l00460"></a>00460                       <span class="keyword">const</span> int64* <span class="keyword">const</span> weights,
 <a name="l00461"></a>00461                       <span class="keywordtype">int</span> size) {
 <a name="l00462"></a>00462   std::vector&lt;WeightContainer&gt; to_sort;
@@ -584,7 +584,7 @@
 <a name="l00501"></a>00501     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="pack_8cc.html#a515faf14123ffc767641ddc7904630f">vars_count_</a>; ++i) {
 <a name="l00502"></a>00502       <a class="code" href="pack_8cc.html#a5162ab5ab6854d756464659d5dd5769">ranked_</a>[i] = i;
 <a name="l00503"></a>00503     }
-<a name="l00504"></a>00504     <a class="code" href="pack_8cc.html#bb9ebc28c331e29e96dec06d744d9240">ranked_size_</a> = <a class="code" href="namespaceoperations__research.html#8b28395a9aa670149fd3c5c417616b3b">SortIndexByWeight</a>(<a class="code" href="pack_8cc.html#a5162ab5ab6854d756464659d5dd5769">ranked_</a>, <a class="code" href="pack_8cc.html#d56a8d34c59f1fa25b7b64dd9dedd77a">weights_</a>, vars_count_);
+<a name="l00504"></a>00504     <a class="code" href="pack_8cc.html#bb9ebc28c331e29e96dec06d744d9240">ranked_size_</a> = <a class="code" href="namespaceoperations__research.html#805d2e4f04c2779f8bbd34b30a05530c">SortIndexByWeight</a>(<a class="code" href="pack_8cc.html#a5162ab5ab6854d756464659d5dd5769">ranked_</a>, <a class="code" href="pack_8cc.html#d56a8d34c59f1fa25b7b64dd9dedd77a">weights_</a>, vars_count_);
 <a name="l00505"></a>00505   }
 <a name="l00506"></a>00506 
 <a name="l00507"></a>00507   <span class="keyword">virtual</span> ~DimensionLessThanConstant() {
@@ -717,7 +717,7 @@
 <a name="l00634"></a>00634     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="pack_8cc.html#a515faf14123ffc767641ddc7904630f">vars_count_</a>; ++i) {
 <a name="l00635"></a>00635       <a class="code" href="pack_8cc.html#a5162ab5ab6854d756464659d5dd5769">ranked_</a>[i] = i;
 <a name="l00636"></a>00636     }
-<a name="l00637"></a>00637     <a class="code" href="pack_8cc.html#bb9ebc28c331e29e96dec06d744d9240">ranked_size_</a> = <a class="code" href="namespaceoperations__research.html#8b28395a9aa670149fd3c5c417616b3b">SortIndexByWeight</a>(<a class="code" href="pack_8cc.html#a5162ab5ab6854d756464659d5dd5769">ranked_</a>, <a class="code" href="pack_8cc.html#d56a8d34c59f1fa25b7b64dd9dedd77a">weights_</a>, vars_count_);
+<a name="l00637"></a>00637     <a class="code" href="pack_8cc.html#bb9ebc28c331e29e96dec06d744d9240">ranked_size_</a> = <a class="code" href="namespaceoperations__research.html#805d2e4f04c2779f8bbd34b30a05530c">SortIndexByWeight</a>(<a class="code" href="pack_8cc.html#a5162ab5ab6854d756464659d5dd5769">ranked_</a>, <a class="code" href="pack_8cc.html#d56a8d34c59f1fa25b7b64dd9dedd77a">weights_</a>, vars_count_);
 <a name="l00638"></a>00638   }
 <a name="l00639"></a>00639 
 <a name="l00640"></a>00640   <span class="keyword">virtual</span> ~DimensionWeightedSumEqVar() {
@@ -868,7 +868,7 @@
 <a name="l00785"></a>00785     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="pack_8cc.html#a515faf14123ffc767641ddc7904630f">vars_count_</a>; ++i) {
 <a name="l00786"></a>00786       <a class="code" href="pack_8cc.html#a5162ab5ab6854d756464659d5dd5769">ranked_</a>[i] = i;
 <a name="l00787"></a>00787     }
-<a name="l00788"></a>00788     <a class="code" href="pack_8cc.html#bb9ebc28c331e29e96dec06d744d9240">ranked_size_</a> = <a class="code" href="namespaceoperations__research.html#8b28395a9aa670149fd3c5c417616b3b">SortIndexByWeight</a>(<a class="code" href="pack_8cc.html#a5162ab5ab6854d756464659d5dd5769">ranked_</a>, <a class="code" href="pack_8cc.html#d56a8d34c59f1fa25b7b64dd9dedd77a">weights_</a>, vars_count_);
+<a name="l00788"></a>00788     <a class="code" href="pack_8cc.html#bb9ebc28c331e29e96dec06d744d9240">ranked_size_</a> = <a class="code" href="namespaceoperations__research.html#805d2e4f04c2779f8bbd34b30a05530c">SortIndexByWeight</a>(<a class="code" href="pack_8cc.html#a5162ab5ab6854d756464659d5dd5769">ranked_</a>, <a class="code" href="pack_8cc.html#d56a8d34c59f1fa25b7b64dd9dedd77a">weights_</a>, vars_count_);
 <a name="l00789"></a>00789     <a class="code" href="expr__array_8cc.html#cd841fa2cfe450e9e031ff4353766607">first_unbound_backward_</a>.SetValue(s, <a class="code" href="pack_8cc.html#bb9ebc28c331e29e96dec06d744d9240">ranked_size_</a> - 1);
 <a name="l00790"></a>00790   }
 <a name="l00791"></a>00791 
@@ -1357,7 +1357,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#439154 height=3></td>
+      <td colspan=2 bgcolor=#371311 height=3></td>
     </tr>
   </table>
 

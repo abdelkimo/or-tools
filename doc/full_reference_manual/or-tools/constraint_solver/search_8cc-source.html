@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #439154
+      background-color: #371311
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#439154 height=3></td>
+      <td colspan=3 bgcolor=#371311 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
+          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#439154>
+            <td bgcolor=#371311>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -3958,14 +3958,14 @@
 <a name="l03875"></a>03875   }
 <a name="l03876"></a>03876 
 <a name="l03877"></a>03877   SolveOnce(DecisionBuilder* <span class="keyword">const</span> db,  <span class="keyword">const</span> std::vector&lt;SearchMonitor*&gt;&amp; monitors)
-<a name="l03878"></a>03878       : <a class="code" href="default__search_8cc.html#f29e6f18a2e5762e7d38d946c540f43f">db_</a>(db), <a class="code" href="search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>(monitors) {
+<a name="l03878"></a>03878       : <a class="code" href="default__search_8cc.html#f29e6f18a2e5762e7d38d946c540f43f">db_</a>(db), <a class="code" href="local__search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>(monitors) {
 <a name="l03879"></a>03879     CHECK(db != NULL);
 <a name="l03880"></a>03880   }
 <a name="l03881"></a>03881 
 <a name="l03882"></a>03882   <span class="keyword">virtual</span> ~SolveOnce() {}
 <a name="l03883"></a>03883 
 <a name="l03884"></a>03884   <span class="keyword">virtual</span> Decision* Next(<a class="code" href="classoperations__research_1_1Solver.html#5b0165d313b9e2bfba93da6aff65052f">Solver</a>* s) {
-<a name="l03885"></a>03885     <span class="keywordtype">bool</span> res = s-&gt;NestedSolve(<a class="code" href="default__search_8cc.html#f29e6f18a2e5762e7d38d946c540f43f">db_</a>, <span class="keyword">false</span>, <a class="code" href="search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>);
+<a name="l03885"></a>03885     <span class="keywordtype">bool</span> res = s-&gt;NestedSolve(<a class="code" href="default__search_8cc.html#f29e6f18a2e5762e7d38d946c540f43f">db_</a>, <span class="keyword">false</span>, <a class="code" href="local__search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>);
 <a name="l03886"></a>03886     <span class="keywordflow">if</span> (!res) {
 <a name="l03887"></a>03887       s-&gt;Fail();
 <a name="l03888"></a>03888     }
@@ -3982,7 +3982,7 @@
 <a name="l03899"></a>03899 
 <a name="l03900"></a>03900  <span class="keyword">private</span>:
 <a name="l03901"></a>03901   DecisionBuilder* <span class="keyword">const</span> <a class="code" href="default__search_8cc.html#f29e6f18a2e5762e7d38d946c540f43f">db_</a>;
-<a name="l03902"></a><a class="code" href="search_8cc.html#9d84fc009216df22096caf7925401b19">03902</a>   std::vector&lt;SearchMonitor*&gt; <a class="code" href="search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>;
+<a name="l03902"></a><a class="code" href="search_8cc.html#9d84fc009216df22096caf7925401b19">03902</a>   std::vector&lt;SearchMonitor*&gt; <a class="code" href="local__search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>;
 <a name="l03903"></a>03903 };
 <a name="l03904"></a>03904 }  <span class="comment">// namespace</span>
 <a name="l03905"></a>03905 
@@ -4064,7 +4064,7 @@
 <a name="l03981"></a>03981         <a class="code" href="search_8cc.html#3dd1cbfb2e38d6f74a4c151f64b8e1a2">solution_</a>(solution),
 <a name="l03982"></a>03982         <a class="code" href="search_8cc.html#9648c36eafdd6183052aeec5bef2d8b2">maximize_</a>(maximize),
 <a name="l03983"></a>03983         <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a>(step),
-<a name="l03984"></a>03984         <a class="code" href="search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>(monitors),
+<a name="l03984"></a>03984         <a class="code" href="local__search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>(monitors),
 <a name="l03985"></a>03985         <a class="code" href="search_8cc.html#c8f37e42da8d1b8e22ac76ecf4aaf1ad">collector_</a>(NULL) {
 <a name="l03986"></a>03986     CHECK_NOTNULL(db);
 <a name="l03987"></a>03987     CHECK_NOTNULL(solution);
@@ -4075,14 +4075,14 @@
 <a name="l03992"></a>03992   <span class="keywordtype">void</span> AddMonitors() {
 <a name="l03993"></a>03993     <a class="code" href="classoperations__research_1_1Solver.html#5b0165d313b9e2bfba93da6aff65052f">Solver</a>* <span class="keyword">const</span> solver = <a class="code" href="search_8cc.html#3dd1cbfb2e38d6f74a4c151f64b8e1a2">solution_</a>-&gt;solver();
 <a name="l03994"></a>03994     <a class="code" href="search_8cc.html#c8f37e42da8d1b8e22ac76ecf4aaf1ad">collector_</a> = solver-&gt;MakeLastSolutionCollector(<a class="code" href="search_8cc.html#3dd1cbfb2e38d6f74a4c151f64b8e1a2">solution_</a>);
-<a name="l03995"></a>03995     <a class="code" href="search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>.push_back(<a class="code" href="search_8cc.html#c8f37e42da8d1b8e22ac76ecf4aaf1ad">collector_</a>);
+<a name="l03995"></a>03995     <a class="code" href="local__search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>.push_back(<a class="code" href="search_8cc.html#c8f37e42da8d1b8e22ac76ecf4aaf1ad">collector_</a>);
 <a name="l03996"></a>03996     OptimizeVar* <span class="keyword">const</span> optimize =
 <a name="l03997"></a>03997         solver-&gt;MakeOptimize(<a class="code" href="search_8cc.html#9648c36eafdd6183052aeec5bef2d8b2">maximize_</a>, <a class="code" href="search_8cc.html#3dd1cbfb2e38d6f74a4c151f64b8e1a2">solution_</a>-&gt;Objective(), <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a>);
-<a name="l03998"></a>03998     <a class="code" href="search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>.push_back(optimize);
+<a name="l03998"></a>03998     <a class="code" href="local__search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>.push_back(optimize);
 <a name="l03999"></a>03999   }
 <a name="l04000"></a>04000 
 <a name="l04001"></a>04001   <span class="keyword">virtual</span> Decision* Next(<a class="code" href="classoperations__research_1_1Solver.html#5b0165d313b9e2bfba93da6aff65052f">Solver</a>* solver) {
-<a name="l04002"></a>04002     solver-&gt;NestedSolve(<a class="code" href="default__search_8cc.html#f29e6f18a2e5762e7d38d946c540f43f">db_</a>, <span class="keyword">true</span>, <a class="code" href="search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>);
+<a name="l04002"></a>04002     solver-&gt;NestedSolve(<a class="code" href="default__search_8cc.html#f29e6f18a2e5762e7d38d946c540f43f">db_</a>, <span class="keyword">true</span>, <a class="code" href="local__search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>);
 <a name="l04003"></a>04003     <span class="keywordflow">if</span> (<a class="code" href="search_8cc.html#c8f37e42da8d1b8e22ac76ecf4aaf1ad">collector_</a>-&gt;solution_count() == 0) {
 <a name="l04004"></a>04004       solver-&gt;Fail();
 <a name="l04005"></a>04005     }
@@ -4106,7 +4106,7 @@
 <a name="l04023"></a><a class="code" href="search_8cc.html#3dd1cbfb2e38d6f74a4c151f64b8e1a2">04023</a>   Assignment* <span class="keyword">const</span> <a class="code" href="search_8cc.html#3dd1cbfb2e38d6f74a4c151f64b8e1a2">solution_</a>;
 <a name="l04024"></a>04024   <span class="keyword">const</span> <span class="keywordtype">bool</span> <a class="code" href="search_8cc.html#9648c36eafdd6183052aeec5bef2d8b2">maximize_</a>;
 <a name="l04025"></a>04025   <span class="keyword">const</span> int64 <a class="code" href="expressions_8cc.html#042310df884fdaff565a8cee946c4e14">step_</a>;
-<a name="l04026"></a>04026   std::vector&lt;SearchMonitor*&gt; <a class="code" href="search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>;
+<a name="l04026"></a>04026   std::vector&lt;SearchMonitor*&gt; <a class="code" href="local__search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>;
 <a name="l04027"></a><a class="code" href="search_8cc.html#c8f37e42da8d1b8e22ac76ecf4aaf1ad">04027</a>   SolutionCollector* <a class="code" href="search_8cc.html#c8f37e42da8d1b8e22ac76ecf4aaf1ad">collector_</a>;
 <a name="l04028"></a>04028 };
 <a name="l04029"></a>04029 }  <span class="comment">// namespace</span>
@@ -4184,7 +4184,7 @@
 <a name="l04101"></a>04101 
 <a name="l04102"></a>04102 <span class="keyword">namespace </span>{
 <a name="l04103"></a>04103   <span class="comment">// Luby Strategy</span>
-<a name="l04104"></a><a class="code" href="namespaceoperations__research.html#93aad8bc8bc6ee9d1a12930dd2558392">04104</a> int64 <a class="code" href="namespaceoperations__research.html#93aad8bc8bc6ee9d1a12930dd2558392" title="Luby Strategy.">NextLuby</a>(<span class="keywordtype">int</span> i) {
+<a name="l04104"></a><a class="code" href="namespaceoperations__research.html#09e8313ae8698a1fb12d7e1e50347d95">04104</a> int64 <a class="code" href="namespaceoperations__research.html#09e8313ae8698a1fb12d7e1e50347d95" title="Luby Strategy.">NextLuby</a>(<span class="keywordtype">int</span> i) {
 <a name="l04105"></a>04105   DCHECK_GT(i, 0);
 <a name="l04106"></a>04106   DCHECK_LT(i, kint32max);
 <a name="l04107"></a>04107   int64 power;
@@ -4198,7 +4198,7 @@
 <a name="l04115"></a>04115   <span class="keywordflow">if</span> (power == i + 1) {
 <a name="l04116"></a>04116     <span class="keywordflow">return</span> (power / 2);
 <a name="l04117"></a>04117   }
-<a name="l04118"></a>04118   <span class="keywordflow">return</span> <a class="code" href="namespaceoperations__research.html#93aad8bc8bc6ee9d1a12930dd2558392" title="Luby Strategy.">NextLuby</a>(i - (power / 2) + 1);
+<a name="l04118"></a>04118   <span class="keywordflow">return</span> <a class="code" href="namespaceoperations__research.html#09e8313ae8698a1fb12d7e1e50347d95" title="Luby Strategy.">NextLuby</a>(i - (power / 2) + 1);
 <a name="l04119"></a>04119 }
 <a name="l04120"></a>04120 
 <a name="l04121"></a>04121 <span class="keyword">class </span>LubyRestart : <span class="keyword">public</span> <a class="code" href="classoperations__research_1_1Solver.html#ac32a6eabe1d316d7ff5f92fedd1ec5b">SearchMonitor</a> {
@@ -4216,7 +4216,7 @@
 <a name="l04133"></a>04133   <span class="keyword">virtual</span> <span class="keywordtype">void</span> BeginFail() {
 <a name="l04134"></a>04134     <span class="keywordflow">if</span> (++<a class="code" href="search_8cc.html#c0539364c946d7464d32d3a4350b29e6">current_fails_</a> &gt;= <a class="code" href="search_8cc.html#db21cbef8c6fef496e97a270941343e7">next_step_</a>) {
 <a name="l04135"></a>04135       <a class="code" href="search_8cc.html#c0539364c946d7464d32d3a4350b29e6">current_fails_</a> = 0;
-<a name="l04136"></a>04136       <a class="code" href="search_8cc.html#db21cbef8c6fef496e97a270941343e7">next_step_</a> = <a class="code" href="namespaceoperations__research.html#93aad8bc8bc6ee9d1a12930dd2558392" title="Luby Strategy.">NextLuby</a>(++<a class="code" href="search_8cc.html#af25375f6ca4511913da66ed85a71fc8">iteration_</a>) * <a class="code" href="search_8cc.html#464560593dfc081dd4dbedc7594dbc4a">scale_factor_</a>;
+<a name="l04136"></a>04136       <a class="code" href="search_8cc.html#db21cbef8c6fef496e97a270941343e7">next_step_</a> = <a class="code" href="namespaceoperations__research.html#09e8313ae8698a1fb12d7e1e50347d95" title="Luby Strategy.">NextLuby</a>(++<a class="code" href="search_8cc.html#af25375f6ca4511913da66ed85a71fc8">iteration_</a>) * <a class="code" href="search_8cc.html#464560593dfc081dd4dbedc7594dbc4a">scale_factor_</a>;
 <a name="l04137"></a>04137       RestartCurrentSearch();
 <a name="l04138"></a>04138     }
 <a name="l04139"></a>04139   }
@@ -4461,7 +4461,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#439154 height=3></td>
+      <td colspan=2 bgcolor=#371311 height=3></td>
     </tr>
   </table>
 

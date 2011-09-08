@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #439154
+      background-color: #371311
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#439154 height=3></td>
+      <td colspan=3 bgcolor=#371311 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
+          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#439154>
+            <td bgcolor=#371311>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -1367,6 +1367,9 @@ CPIntervalVariableProto &amp; &gt;&nbsp;</td><td class="memItemRight" valign="bo
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classoperations__research_1_1Search.html">Search</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1Solver.html#765c2fb7dcc5830caac346839066d2a2">ActiveSearch</a> () const </td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the active search, NULL outside search.  <a href="#765c2fb7dcc5830caac346839066d2a2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classoperations__research_1_1ModelCache.html">ModelCache</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1Solver.html#9a7139b914ce744faf4fceca738f03ae">Cache</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the cache of the model.  <a href="#9a7139b914ce744faf4fceca738f03ae"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1Solver.html#65c2885116e42c309e8006c13d2d201c">UpgradeModel</a> (CPModelProto *const proto)</td></tr>
 
@@ -1397,8 +1400,6 @@ CPIntervalVariableProto &amp; &gt;&nbsp;</td><td class="memItemRight" valign="bo
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1Solver.html#ac32a6eabe1d316d7ff5f92fedd1ec5b">SearchMonitor</a></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">class&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1Solver.html#d0cd5a48c9628da7f168f08195472f39">VarCstCache</a></td></tr>
-
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1Solver.html#4cf883f14acb5fc9a50936490b721135">SimpleRevFIFO</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1Solver.html#1a981ab215cf0097502d1dd4f3a542ac">InternalSaveBooleanVarValue</a> (<a class="el" href="classoperations__research_1_1Solver.html">Solver</a> *const, <a class="el" href="classoperations__research_1_1IntVar.html">IntVar</a> *const)</td></tr>
@@ -1414,7 +1415,7 @@ A solver represent the main computation engine. It implements the whole range of
 <p>
 Usually, a <a class="el" href="classoperations__research_1_1Constraint.html" title="A constraint is the main modeling object.">Constraint</a> Programming model consists of The creation of the <a class="el" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a> The creation of the decision variables of the model The creation of the constraints of the model and their addition to the solver() through the <a class="el" href="classoperations__research_1_1Solver.html#9c522a6cff91adae19af5cce7d8e411f" title="propagation">AddConstraint()</a> method The creation of the main <a class="el" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a> class The launch of the solve method with the above-created decision builder<p>
 At the time being, <a class="el" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a> is not MT_SAFE, nor MT_HOT. 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00301">301</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00298">298</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 <hr><h2>Member Typedef Documentation</h2>
 <a class="anchor" name="fcf373cf1c769a34b1b89a5ba56fb473"></a><!-- doxytag: member="operations_research::Solver::IndexEvaluator1" ref="fcf373cf1c769a34b1b89a5ba56fb473" args="" -->
 <div class="memitem">
@@ -1431,7 +1432,7 @@ At the time being, <a class="el" href="classoperations__research_1_1Solver.html"
 Callback typedefs. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00304">304</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00301">301</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1448,7 +1449,7 @@ Callback typedefs.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00305">305</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00302">302</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1465,7 +1466,7 @@ Callback typedefs.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00306">306</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00303">303</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1482,7 +1483,7 @@ Callback typedefs.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00310">310</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00307">307</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1499,7 +1500,7 @@ Callback typedefs.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00313">313</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00310">310</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1516,7 +1517,7 @@ Callback typedefs.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00317">317</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00314">314</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1552,7 +1553,7 @@ After search, the model is infeasible. </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00323">323</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00320">320</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1591,7 +1592,7 @@ After search, the model is infeasible. </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00332">332</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00329">329</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1624,7 +1625,7 @@ After search, the model is infeasible. </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00344">344</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00341">341</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1649,7 +1650,7 @@ After search, the model is infeasible. </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00353">353</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00350">350</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1676,7 +1677,7 @@ After search, the model is infeasible. </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00358">358</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00355">355</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1703,7 +1704,7 @@ After search, the model is infeasible. </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00364">364</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00361">361</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1752,7 +1753,7 @@ After search, the model is infeasible. </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00370">370</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00367">367</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1779,7 +1780,7 @@ After search, the model is infeasible. </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00387">387</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00384">384</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1806,7 +1807,7 @@ After search, the model is infeasible. </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00393">393</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00390">390</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1835,7 +1836,7 @@ After search, the model is infeasible. </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00399">399</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00396">396</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1862,7 +1863,7 @@ After search, the model is infeasible. </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00406">406</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00403">403</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1901,7 +1902,7 @@ After search, the model is infeasible. </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00412">412</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00409">409</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1938,7 +1939,7 @@ After search, the model is infeasible. </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00424">424</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00421">421</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1969,7 +1970,7 @@ After search, the model is infeasible. </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00435">435</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00432">432</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1992,7 +1993,7 @@ After search, the model is infeasible. </td></tr>
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01326">1326</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01323">1323</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2044,7 +2045,7 @@ After search, the model is infeasible. </td></tr>
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01373">1373</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01369">1369</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2068,7 +2069,7 @@ After search, the model is infeasible. </td></tr>
 Init. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01360">1360</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01356">1356</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2091,7 +2092,7 @@ Init.
 Read-only Parameters. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00451">451</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00448">448</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2117,7 +2118,7 @@ template&lt;class T&gt; </div>
 reversibility 
 <p>
 <a class="el" href="classoperations__research_1_1Solver.html#7ccd4144085fe2217fd92798283e99df" title="reversibility">SaveValue()</a> will save the value of the corresponding object. It must be called before modifying the object. The value will be restored upon backtrack. 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00458">458</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00455">455</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2143,7 +2144,7 @@ template&lt;class T&gt; </div>
 The RevAlloc method stores the corresponding object in a stack. 
 <p>
 When the solver will backtrack, it will loop through all stored objects and call delete on them. Supported object types are arrays of integers (32 and 64 bits), BaseObjects and arrays of BaseObjects. After a call to RevAlloc, solver takes ownership of the object memory and will delete the object itself. The user must not delete the object after it has be passed to the RevAlloc method. 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00470">470</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00467">467</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2167,7 +2168,7 @@ When the solver will backtrack, it will loop through all stored objects and call
 propagation 
 <p>
 Adds the constraint "c" to the solver. 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01585">1585</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01581">1581</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2191,7 +2192,7 @@ Adds the constraint "c" to the solver.
 Adds the constraint 'c' to the solver and marks it as a delegate constraint, that is a constraint created calling Var() on an expression. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01605">1605</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01601">1601</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2224,7 +2225,7 @@ Adds the constraint 'c' to the solver and marks it as a delegate constraint, tha
 search 
 <p>
 Top level solve using a decision builder and up to four search monitors, usually one for the objective, one for the limits and one to collect solutions. Please note that the search is backtracked when the <a class="el" href="classoperations__research_1_1Solver.html#3ce9d85b90e2416f59ee89b13579c725" title="search">Solve()</a> exits. Thus, solutions and values should be exported either using a decision builder, or a solution collector. You can also decompose with a NewSearch(db), <a class="el" href="classoperations__research_1_1Solver.html#11ed2a5d7bb8fb1a8967fee572ab9c47" title="namespace">NextSolution()</a>, <a class="el" href="classoperations__research_1_1Solver.html#b95c7f997dbe36deb51e7c0213bdf445">EndSearch()</a> and access each feasible solution after each successful call to <a class="el" href="classoperations__research_1_1Solver.html#11ed2a5d7bb8fb1a8967fee572ab9c47" title="namespace">NextSolution()</a>. <a class="el" href="classoperations__research_1_1Solver.html#3ce9d85b90e2416f59ee89b13579c725" title="search">Solve()</a> returns true if the search has found solutions, false otherwise. 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01707">1707</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01703">1703</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2261,7 +2262,7 @@ Top level solve using a decision builder and up to four search monitors, usually
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01755">1755</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01751">1751</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2283,7 +2284,7 @@ Top level solve using a decision builder and up to four search monitors, usually
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01718">1718</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01714">1714</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2314,7 +2315,7 @@ Top level solve using a decision builder and up to four search monitors, usually
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01712">1712</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01708">1708</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2351,7 +2352,7 @@ Top level solve using a decision builder and up to four search monitors, usually
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01722">1722</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01718">1718</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2394,7 +2395,7 @@ Top level solve using a decision builder and up to four search monitors, usually
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01731">1731</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01727">1727</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2443,7 +2444,7 @@ Top level solve using a decision builder and up to four search monitors, usually
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01742">1742</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01738">1738</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2476,7 +2477,7 @@ Top level solve using a decision builder and up to four search monitors, usually
 Decomposed top level search. 
 <p>
 The code should look like solver-&gt;NewSearch(db); while (solver-&gt;<a class="el" href="classoperations__research_1_1Solver.html#11ed2a5d7bb8fb1a8967fee572ab9c47" title="namespace">NextSolution()</a>) { .. use the current solution } solver()-&gt;<a class="el" href="classoperations__research_1_1Solver.html#b95c7f997dbe36deb51e7c0213bdf445">EndSearch()</a>; 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01766">1766</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01762">1762</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2515,7 +2516,7 @@ The code should look like solver-&gt;NewSearch(db); while (solver-&gt;<a class="
 Opens a new top level search. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01815">1815</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01811">1811</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2537,7 +2538,7 @@ Opens a new top level search.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01777">1777</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01773">1773</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2568,7 +2569,7 @@ Opens a new top level search.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01771">1771</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01767">1767</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2605,7 +2606,7 @@ Opens a new top level search.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01781">1781</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01777">1777</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2648,7 +2649,7 @@ Opens a new top level search.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01790">1790</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01786">1786</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2697,7 +2698,7 @@ Opens a new top level search.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01801">1801</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01797">1797</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2720,7 +2721,7 @@ Opens a new top level search.
 namespace 
 <p>
 <a class="el" href="classoperations__research_1_1Search.html" title="Search class.">Search</a> for the next solution in the search tree. 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02028">2028</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02024">2024</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2741,7 +2742,7 @@ namespace
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01910">1910</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01906">1906</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2762,7 +2763,7 @@ namespace
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02193">2193</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02189">2189</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2801,7 +2802,7 @@ namespace
 Nested solve using a decision builder and up to three search monitors, usually one for the objective, one for the limits and one to collect solutions. 
 <p>
 The restore parameter indicates if the search should backtrack completely after completion, even in case of success. 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02249">2249</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02245">2245</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2844,7 +2845,7 @@ The restore parameter indicates if the search should backtrack completely after 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02289">2289</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02285">2285</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2875,7 +2876,7 @@ The restore parameter indicates if the search should backtrack completely after 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02263">2263</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02259">2259</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2912,7 +2913,7 @@ The restore parameter indicates if the search should backtrack completely after 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02255">2255</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02251">2251</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2955,7 +2956,7 @@ The restore parameter indicates if the search should backtrack completely after 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02267">2267</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02263">2263</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -3004,7 +3005,7 @@ The restore parameter indicates if the search should backtrack completely after 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02277">2277</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02273">2273</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -3028,7 +3029,7 @@ The restore parameter indicates if the search should backtrack completely after 
 This method returns the validity of the given assignment against the current model. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02202">2202</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02198">2198</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -3051,7 +3052,7 @@ This method returns the validity of the given assignment against the current mod
 state of the solver. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00572">572</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00569">569</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3074,7 +3075,7 @@ state of the solver.
 Abandon the current branch in the search tree. A backtrack will follow. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02321">2321</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02317">2317</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -3411,7 +3412,7 @@ Registers a interval variable builder. Ownership is passed to the solver.
 When <a class="el" href="classoperations__research_1_1Solver.html#7ccd4144085fe2217fd92798283e99df" title="reversibility">SaveValue()</a> is not the best way to go, one can create a reversible action that will be called upon backtrack. 
 <p>
 The "fast" parameter indicates whether we need restore all values saved through <a class="el" href="classoperations__research_1_1Solver.html#7ccd4144085fe2217fd92798283e99df" title="reversibility">SaveValue()</a> before calling this method. 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01497">1497</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01493">1493</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -3434,7 +3435,7 @@ The "fast" parameter indicates whether we need restore all values saved through 
 misc debug string. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01402">1402</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01398">1398</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -3457,7 +3458,7 @@ misc debug string.
 Current memory usage in bytes. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01437">1437</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01433">1433</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -3480,7 +3481,7 @@ Current memory usage in bytes.
 <a class="el" href="classoperations__research_1_1Solver.html#e1b93d59fbe7e74c48de9a4a8ec3e910" title="wall_time() in ms since the creation of the solver.">wall_time()</a> in ms since the creation of the solver. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01442">1442</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01438">1438</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -3503,7 +3504,7 @@ Current memory usage in bytes.
 number of branches explored since the creation of the solver. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00625">625</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00622">622</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3526,7 +3527,7 @@ number of branches explored since the creation of the solver.
 number of solutions found since the start of the search. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01446">1446</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01442">1442</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -3550,7 +3551,7 @@ number of solutions found since the start of the search.
 number of demons executed during search for a given priority. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00631">631</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00628">628</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3573,7 +3574,7 @@ number of demons executed during search for a given priority.
 number of failures encountered since the creation of the solver. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00634">634</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00631">631</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3596,7 +3597,7 @@ number of failures encountered since the creation of the solver.
 number of neighbors created 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00637">637</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00634">634</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3619,7 +3620,7 @@ number of neighbors created
 number of filtered neighbors (neighbors accepted by filters) 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00640">640</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00637">637</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3642,7 +3643,7 @@ number of filtered neighbors (neighbors accepted by filters)
 number of accepted neighbors 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00643">643</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00640">640</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3665,7 +3666,7 @@ number of accepted neighbors
 The stamp indicates how many moves in the search tree we have performed. 
 <p>
 It is useful to detect if we need to update same lazy structures. 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01565">1565</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01561">1561</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -3688,7 +3689,7 @@ It is useful to detect if we need to update same lazy structures.
 The <a class="el" href="classoperations__research_1_1Solver.html#0acf6942724a40e662a40df1f804eb51" title="The fail_stamp() is incremented after each backtrack.">fail_stamp()</a> is incremented after each backtrack. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01569">1569</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01565">1565</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -5578,7 +5579,7 @@ namespace
 b == (v == c) 
 <p>
 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00474">474</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00371">371</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -5610,8 +5611,8 @@ b == (v == c)
 <p>
 status var of (v == c) 
 <p>
-
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00458">458</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+namespace 
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00336">336</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -5821,7 +5822,7 @@ expr == value
 b == (v != c) 
 <p>
 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00586">586</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00484">484</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -5853,8 +5854,8 @@ b == (v != c)
 <p>
 status var of (v != c) 
 <p>
-
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00570">570</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+namespace 
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00449">449</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -6064,7 +6065,7 @@ expr != value
 b == (v &lt;= c) 
 <p>
 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00803">803</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00700">700</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -6096,8 +6097,8 @@ b == (v &lt;= c)
 <p>
 status var of (v &lt;= c) 
 <p>
-
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00789">789</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+namespace 
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00667">667</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -6307,7 +6308,7 @@ expr &lt;= value
 b == (v &gt;= c) 
 <p>
 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00694">694</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00591">591</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -6339,8 +6340,8 @@ b == (v &gt;= c)
 <p>
 status var of (v &gt;= c) 
 <p>
-
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00680">680</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+namespace 
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00558">558</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -6550,7 +6551,7 @@ expr &gt;= value
 b == (v &gt; c) 
 <p>
 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00702">702</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00604">604</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -6583,7 +6584,7 @@ b == (v &gt; c)
 status var of (v &gt; c) 
 <p>
 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00690">690</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00587">587</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -6793,7 +6794,7 @@ expr &gt; value
 b == (v &lt; c) 
 <p>
 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00811">811</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00713">713</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -6826,7 +6827,7 @@ b == (v &lt; c)
 status var of (v &lt; c) 
 <p>
 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00799">799</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00696">696</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -7842,7 +7843,7 @@ This method is a specialized case of the MakeConstraintDemon method to call the 
 (l &lt;= b &lt;= u) 
 <p>
 namespace 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00851">851</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00753">753</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -7887,7 +7888,7 @@ namespace
 b == (l &lt;= v &lt;= u) 
 <p>
 namespace 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00916">916</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00818">818</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -7932,7 +7933,7 @@ namespace
 b == (v in set) 
 <p>
 namespace 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l01083">1083</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00985">985</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -7969,7 +7970,7 @@ namespace
 
 <p>
 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l01095">1095</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00997">997</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -8012,7 +8013,7 @@ namespace
 
 <p>
 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l01101">1101</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l01003">1003</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -8049,7 +8050,7 @@ namespace
 
 <p>
 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l01113">1113</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l01015">1015</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -8086,7 +8087,7 @@ namespace
 
 <p>
 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l01119">1119</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l01021">1021</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -8117,7 +8118,7 @@ namespace
 
 <p>
 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l01127">1127</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l01029">1029</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -8154,7 +8155,7 @@ namespace
 
 <p>
 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l01132">1132</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l01034">1034</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -8185,7 +8186,7 @@ namespace
 
 <p>
 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l01140">1140</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l01042">1042</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -8225,7 +8226,7 @@ v in set.
 <p>
 namespace<p>
 Propagation is lazy, i.e. this constraint does not creates holes in the domain of the variable. 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00968">968</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00870">870</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -8256,7 +8257,7 @@ Propagation is lazy, i.e. this constraint does not creates holes in the domain o
 
 <p>
 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00976">976</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00878">878</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -8293,7 +8294,7 @@ Propagation is lazy, i.e. this constraint does not creates holes in the domain o
 
 <p>
 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00981">981</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00883">883</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -8324,7 +8325,7 @@ Propagation is lazy, i.e. this constraint does not creates holes in the domain o
 
 <p>
 
-<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00989">989</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="expr__cst_8cc-source.html#l00891">891</a> of file <a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -15112,7 +15113,7 @@ Local search is used to improve a given solution. This initial solution can be s
 <p>
 <dl compact><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd>TODO(<a href="http://who/user">user</a>): Make a variant which runs a local search after each solution found in a dfs </dd></dl>
 
-<p>Definition at line <a class="el" href="local__search_8cc-source.html#l03044">3044</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="local__search_8cc-source.html#l03093">3093</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -15149,7 +15150,7 @@ Local search is used to improve a given solution. This initial solution can be s
 
 <p>
 
-<p>Definition at line <a class="el" href="local__search_8cc-source.html#l03055">3055</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="local__search_8cc-source.html#l03104">3104</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -15192,7 +15193,7 @@ Local search is used to improve a given solution. This initial solution can be s
 
 <p>
 
-<p>Definition at line <a class="el" href="local__search_8cc-source.html#l03065">3065</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="local__search_8cc-source.html#l03114">3114</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -15215,7 +15216,7 @@ Local search is used to improve a given solution. This initial solution can be s
 Solution Pool. 
 <p>
 namespace 
-<p>Definition at line <a class="el" href="local__search_8cc-source.html#l03040">3040</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="local__search_8cc-source.html#l03089">3089</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -15248,7 +15249,7 @@ namespace
 Local <a class="el" href="classoperations__research_1_1Search.html" title="Search class.">Search</a> Phase Parameters. 
 <p>
 
-<p>Definition at line <a class="el" href="local__search_8cc-source.html#l02783">2783</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="local__search_8cc-source.html#l02718">2718</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -15285,7 +15286,7 @@ Local <a class="el" href="classoperations__research_1_1Search.html" title="Searc
 
 <p>
 
-<p>Definition at line <a class="el" href="local__search_8cc-source.html#l02793">2793</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="local__search_8cc-source.html#l02728">2728</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -15328,7 +15329,7 @@ Local <a class="el" href="classoperations__research_1_1Search.html" title="Searc
 
 <p>
 
-<p>Definition at line <a class="el" href="local__search_8cc-source.html#l02804">2804</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="local__search_8cc-source.html#l02739">2739</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -15365,7 +15366,7 @@ Local <a class="el" href="classoperations__research_1_1Search.html" title="Searc
 
 <p>
 
-<p>Definition at line <a class="el" href="local__search_8cc-source.html#l02816">2816</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="local__search_8cc-source.html#l02751">2751</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -15408,7 +15409,7 @@ Local <a class="el" href="classoperations__research_1_1Search.html" title="Searc
 
 <p>
 
-<p>Definition at line <a class="el" href="local__search_8cc-source.html#l02827">2827</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="local__search_8cc-source.html#l02762">2762</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -15457,7 +15458,7 @@ Local <a class="el" href="classoperations__research_1_1Search.html" title="Searc
 
 <p>
 
-<p>Definition at line <a class="el" href="local__search_8cc-source.html#l02839">2839</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="local__search_8cc-source.html#l02774">2774</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -15670,7 +15671,7 @@ namespace
 Ensures communication of local optima between monitors and search. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01450">1450</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01446">1446</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -15703,7 +15704,7 @@ Ensures communication of local optima between monitors and search.
 Checks with monitors if delta is acceptable. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01454">1454</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01450">1450</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -15726,7 +15727,7 @@ Checks with monitors if delta is acceptable.
 Ensures communication of accepted neighbors between monitors and search. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01458">1458</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01454">1454</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -15749,7 +15750,7 @@ Ensures communication of accepted neighbors between monitors and search.
 Performs PeriodicCheck on the top-level search; can be called from a nested solve to check top-level limits for instance. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01462">1462</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01458">1458</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -15772,7 +15773,7 @@ Performs PeriodicCheck on the top-level search; can be called from a nested solv
 The PushState and PopState methods manipulates the states of the reversible objects. 
 <p>
 They are visible only because they are useful to write unitary tests. 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01466">1466</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01462">1462</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -15793,7 +15794,7 @@ They are visible only because they are useful to write unitary tests.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01471">1471</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01467">1467</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -15945,7 +15946,7 @@ template&lt;class T&gt; </div>
 All-in-one SaveAndSetValue. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02212">2212</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02209">2209</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -15980,7 +15981,7 @@ template&lt;class T&gt; </div>
 All-in-one SaveAndAdd_value. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02220">2220</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02217">2217</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16004,7 +16005,7 @@ All-in-one SaveAndAdd_value.
 Returns a random value between 0 and 'size' - 1;. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02226">2226</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02223">2223</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16028,7 +16029,7 @@ Returns a random value between 0 and 'size' - 1;.
 Returns a random value between 0 and 'size' - 1;. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02231">2231</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02228">2228</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16052,7 +16053,7 @@ Returns a random value between 0 and 'size' - 1;.
 Reseed the solver random generator. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02236">2236</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02233">2233</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16076,7 +16077,7 @@ Reseed the solver random generator.
 Adds a fail hook, that is an action that will be called after each failure. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01533">1533</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01529">1529</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -16123,7 +16124,7 @@ The parameter profile_level used to create the solver must be different from NO_
 Returns true wether the current search has been created using a <a class="el" href="classoperations__research_1_1Solver.html#3ce9d85b90e2416f59ee89b13579c725" title="search">Solve()</a> call instead of a NewSearch 0ne. 
 <p>
 It returns false if the solver is not is search at all. 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01701">1701</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01697">1697</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -16146,7 +16147,7 @@ It returns false if the solver is not is search at all.
 Counts the number of constraints that have been added to the solver before the search,. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02255">2255</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02252">2252</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16170,7 +16171,7 @@ Counts the number of constraints that have been added to the solver before the s
 Accepts the given model visitor. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01612">1612</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01608">1608</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -16203,7 +16204,7 @@ Accepts the given model visitor.
 Accepts the given model visitor. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01617">1617</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01613">1613</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -16224,7 +16225,7 @@ Accepts the given model visitor.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02264">2264</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02261">2261</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16248,7 +16249,7 @@ Accepts the given model visitor.
 Internal set_fail_intercept does not take ownership of the closure. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02268">2268</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02265">2265</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16269,7 +16270,7 @@ Internal set_fail_intercept does not take ownership of the closure.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02269">2269</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02266">2266</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16292,7 +16293,7 @@ Internal set_fail_intercept does not take ownership of the closure.
 Access to demon monitor. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02271">2271</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02268">2268</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16316,7 +16317,7 @@ Access to demon monitor.
 Returns wether the object has been named or not. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02360">2360</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02356">2356</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -16367,6 +16368,29 @@ Returns the active search, NULL outside search.
 
 </div>
 </div><p>
+<a class="anchor" name="9a7139b914ce744faf4fceca738f03ae"></a><!-- doxytag: member="operations_research::Solver::Cache" ref="9a7139b914ce744faf4fceca738f03ae" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoperations__research_1_1ModelCache.html">ModelCache</a> * operations_research::Solver::Cache           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Returns the cache of the model. 
+<p>
+
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00762">762</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+
+</div>
+</div><p>
 <hr><h2>Friends And Related Function Documentation</h2>
 <a class="anchor" name="7de3703a8816dad121d3fd166c07a79c"></a><!-- doxytag: member="operations_research::Solver::BaseIntExpr" ref="7de3703a8816dad121d3fd166c07a79c" args="" -->
 <div class="memitem">
@@ -16381,7 +16405,7 @@ Returns the active search, NULL outside search.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02279">2279</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02278">2278</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16398,7 +16422,7 @@ Returns the active search, NULL outside search.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02280">2280</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02279">2279</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16415,7 +16439,7 @@ Returns the active search, NULL outside search.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02281">2281</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02280">2280</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16432,7 +16456,7 @@ Returns the active search, NULL outside search.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02282">2282</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02281">2281</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16449,7 +16473,7 @@ Returns the active search, NULL outside search.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02283">2283</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02282">2282</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16466,7 +16490,7 @@ Returns the active search, NULL outside search.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02284">2284</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02283">2283</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16483,7 +16507,7 @@ Returns the active search, NULL outside search.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02285">2285</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02284">2284</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16500,7 +16524,7 @@ Returns the active search, NULL outside search.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02286">2286</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02285">2285</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16517,24 +16541,7 @@ Returns the active search, NULL outside search.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02287">2287</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="d0cd5a48c9628da7f168f08195472f39"></a><!-- doxytag: member="operations_research::Solver::VarCstCache" ref="d0cd5a48c9628da7f168f08195472f39" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">friend class <a class="el" href="classoperations__research_1_1VarCstCache.html">VarCstCache</a><code> [friend]</code>          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02288">2288</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02286">2286</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16551,7 +16558,7 @@ Returns the active search, NULL outside search.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02293">2293</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02291">2291</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -16613,7 +16620,7 @@ Returns the active search, NULL outside search.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01577">1577</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01573">1573</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -16633,12 +16640,12 @@ Returns the active search, NULL outside search.
 Number of priorities for demons. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00320">320</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00317">317</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>or-tools/constraint_solver/<a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a><li>or-tools/constraint_solver/<a class="el" href="alldiff__cst_8cc-source.html">alldiff_cst.cc</a><li>or-tools/constraint_solver/<a class="el" href="assignment_8cc-source.html">assignment.cc</a><li>or-tools/constraint_solver/<a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a><li>or-tools/constraint_solver/<a class="el" href="constraints_8cc-source.html">constraints.cc</a><li>or-tools/constraint_solver/<a class="el" href="count__cst_8cc-source.html">count_cst.cc</a><li>or-tools/constraint_solver/<a class="el" href="default__search_8cc-source.html">default_search.cc</a><li>or-tools/constraint_solver/<a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a><li>or-tools/constraint_solver/<a class="el" href="deviation_8cc-source.html">deviation.cc</a><li>or-tools/constraint_solver/<a class="el" href="element_8cc-source.html">element.cc</a><li>or-tools/constraint_solver/<a class="el" href="expr__array_8cc-source.html">expr_array.cc</a><li>or-tools/constraint_solver/<a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a><li>or-tools/constraint_solver/<a class="el" href="expressions_8cc-source.html">expressions.cc</a><li>or-tools/constraint_solver/<a class="el" href="hybrid_8cc-source.html">hybrid.cc</a><li>or-tools/constraint_solver/<a class="el" href="interval_8cc-source.html">interval.cc</a><li>or-tools/constraint_solver/<a class="el" href="io_8cc-source.html">io.cc</a><li>or-tools/constraint_solver/<a class="el" href="local__search_8cc-source.html">local_search.cc</a><li>or-tools/constraint_solver/<a class="el" href="nogoods_8cc-source.html">nogoods.cc</a><li>or-tools/constraint_solver/<a class="el" href="pack_8cc-source.html">pack.cc</a><li>or-tools/constraint_solver/<a class="el" href="range__cst_8cc-source.html">range_cst.cc</a><li>or-tools/constraint_solver/<a class="el" href="resource_8cc-source.html">resource.cc</a><li>or-tools/constraint_solver/<a class="el" href="sched__search_8cc-source.html">sched_search.cc</a><li>or-tools/constraint_solver/<a class="el" href="search_8cc-source.html">search.cc</a><li>or-tools/constraint_solver/<a class="el" href="table_8cc-source.html">table.cc</a><li>or-tools/constraint_solver/<a class="el" href="timetabling_8cc-source.html">timetabling.cc</a><li>or-tools/constraint_solver/<a class="el" href="tree__monitor_8cc-source.html">tree_monitor.cc</a><li>or-tools/constraint_solver/<a class="el" href="utilities_8cc-source.html">utilities.cc</a></ul>
+<li>or-tools/constraint_solver/<a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a><li>or-tools/constraint_solver/<a class="el" href="alldiff__cst_8cc-source.html">alldiff_cst.cc</a><li>or-tools/constraint_solver/<a class="el" href="assignment_8cc-source.html">assignment.cc</a><li>or-tools/constraint_solver/<a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a><li>or-tools/constraint_solver/<a class="el" href="constraints_8cc-source.html">constraints.cc</a><li>or-tools/constraint_solver/<a class="el" href="count__cst_8cc-source.html">count_cst.cc</a><li>or-tools/constraint_solver/<a class="el" href="default__search_8cc-source.html">default_search.cc</a><li>or-tools/constraint_solver/<a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a><li>or-tools/constraint_solver/<a class="el" href="deviation_8cc-source.html">deviation.cc</a><li>or-tools/constraint_solver/<a class="el" href="element_8cc-source.html">element.cc</a><li>or-tools/constraint_solver/<a class="el" href="expr__array_8cc-source.html">expr_array.cc</a><li>or-tools/constraint_solver/<a class="el" href="expr__cst_8cc-source.html">expr_cst.cc</a><li>or-tools/constraint_solver/<a class="el" href="expressions_8cc-source.html">expressions.cc</a><li>or-tools/constraint_solver/<a class="el" href="hybrid_8cc-source.html">hybrid.cc</a><li>or-tools/constraint_solver/<a class="el" href="interval_8cc-source.html">interval.cc</a><li>or-tools/constraint_solver/<a class="el" href="io_8cc-source.html">io.cc</a><li>or-tools/constraint_solver/<a class="el" href="local__search_8cc-source.html">local_search.cc</a><li>or-tools/constraint_solver/<a class="el" href="model__cache_8cc-source.html">model_cache.cc</a><li>or-tools/constraint_solver/<a class="el" href="nogoods_8cc-source.html">nogoods.cc</a><li>or-tools/constraint_solver/<a class="el" href="pack_8cc-source.html">pack.cc</a><li>or-tools/constraint_solver/<a class="el" href="range__cst_8cc-source.html">range_cst.cc</a><li>or-tools/constraint_solver/<a class="el" href="resource_8cc-source.html">resource.cc</a><li>or-tools/constraint_solver/<a class="el" href="sched__search_8cc-source.html">sched_search.cc</a><li>or-tools/constraint_solver/<a class="el" href="search_8cc-source.html">search.cc</a><li>or-tools/constraint_solver/<a class="el" href="table_8cc-source.html">table.cc</a><li>or-tools/constraint_solver/<a class="el" href="timetabling_8cc-source.html">timetabling.cc</a><li>or-tools/constraint_solver/<a class="el" href="tree__monitor_8cc-source.html">tree_monitor.cc</a><li>or-tools/constraint_solver/<a class="el" href="utilities_8cc-source.html">utilities.cc</a></ul>
 </div>
 
   <!-- Start of footer. -->
@@ -16647,7 +16654,7 @@ Number of priorities for demons.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#439154 height=3></td>
+      <td colspan=2 bgcolor=#371311 height=3></td>
     </tr>
   </table>
 

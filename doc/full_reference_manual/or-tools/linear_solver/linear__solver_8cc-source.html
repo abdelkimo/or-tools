@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #439154
+      background-color: #371311
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#439154 height=3></td>
+      <td colspan=3 bgcolor=#371311 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
+          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#439154>
+            <td bgcolor=#371311>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/linear_solver/index.html">linear_solver</a>/
             </tt></b></font>
@@ -967,163 +967,215 @@
 <a name="l00885"></a>00885 }
 <a name="l00886"></a>00886 
 <a name="l00887"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#d237855fa79fc36fbf9baedce589384c">00887</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#d237855fa79fc36fbf9baedce589384c" title="Set parameters common to LP and MIP in the underlying solver.">MPSolverInterface::SetCommonParameters</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html" title="This class stores parameter settings for LP and MIP solvers.">MPSolverParameters</a>&amp; param) {
-<a name="l00888"></a>00888   <a class="code" href="classoperations__research_1_1MPSolverInterface.html#51ae167e111959ecbe3f67e0e12e2f09">SetPresolveMode</a>(param.<a class="code" href="classoperations__research_1_1MPSolverParameters.html#4855741ebf5e9f5038a96fec5ebecf03">GetIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a01f92ab900139fd7649eace59942f1e0f" title="Presolve mode.">MPSolverParameters::PRESOLVE</a>));
-<a name="l00889"></a>00889   <span class="comment">// TODO(user): In the future, we could distinguish between the</span>
-<a name="l00890"></a>00890   <span class="comment">// algorithm to solve the root LP and the algorithm to solve node</span>
-<a name="l00891"></a>00891   <span class="comment">// LPs. Not sure if underlying solvers support it.</span>
-<a name="l00892"></a>00892   <span class="keywordtype">int</span> value = param.<a class="code" href="classoperations__research_1_1MPSolverParameters.html#4855741ebf5e9f5038a96fec5ebecf03">GetIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a028abd1bbac3e861d5a74f841f8263e05" title="Algorithm to solve linear programs.">MPSolverParameters::LP_ALGORITHM</a>);
-<a name="l00893"></a>00893   <span class="keywordflow">if</span> (value != <a class="code" href="classoperations__research_1_1MPSolverParameters.html#9bac90a88459ac4dd9629beeada24a66">MPSolverParameters::kDefaultIntegerParamValue</a>) {
-<a name="l00894"></a>00894     <a class="code" href="classoperations__research_1_1MPSolverInterface.html#7cde757e7152aa06930afc59709c3c64">SetLpAlgorithm</a>(value);
-<a name="l00895"></a>00895   }
-<a name="l00896"></a>00896 }
-<a name="l00897"></a>00897 
-<a name="l00898"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#b7289f57fd0f768453f2817d59a20c80">00898</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#b7289f57fd0f768453f2817d59a20c80" title="Set MIP specific parameters in the underlying solver.">MPSolverInterface::SetMIPParameters</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html" title="This class stores parameter settings for LP and MIP solvers.">MPSolverParameters</a>&amp; param) {
-<a name="l00899"></a>00899   <a class="code" href="classoperations__research_1_1MPSolverInterface.html#2b6fcec92ec397f38a9657d7d38a9e49" title="Set each parameter in the underlying solver.">SetRelativeMipGap</a>(param.<a class="code" href="classoperations__research_1_1MPSolverParameters.html#d7027f1b5abc07a4e85b64bbaced86fc" title="Get parameter&amp;#39;s value.">GetDoubleParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265eca78b129ceb19e286889b3274bb8cab3" title="Limit for relative MIP gap.">MPSolverParameters::RELATIVE_MIP_GAP</a>));
-<a name="l00900"></a>00900 }
-<a name="l00901"></a>00901 
-<a name="l00902"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#45353137dcef0e7f421e09628d40d9c3">00902</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#45353137dcef0e7f421e09628d40d9c3" title="Set an unsupported parameter.">MPSolverInterface::SetUnsupportedDoubleParam</a>(
-<a name="l00903"></a>00903     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param)<span class="keyword"> const </span>{
-<a name="l00904"></a>00904   LOG(WARNING) &lt;&lt; <span class="stringliteral">"Trying to set an unsupported parameter: "</span> &lt;&lt; param &lt;&lt; <span class="stringliteral">"."</span>;
-<a name="l00905"></a>00905 }
-<a name="l00906"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#a0711f86f43bb8d9b04902f5de5fa7f0">00906</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#a0711f86f43bb8d9b04902f5de5fa7f0">MPSolverInterface::SetUnsupportedIntegerParam</a>(
-<a name="l00907"></a>00907     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param)<span class="keyword"> const </span>{
-<a name="l00908"></a>00908   LOG(WARNING) &lt;&lt; <span class="stringliteral">"Trying to set an unsupported parameter: "</span> &lt;&lt; param &lt;&lt; <span class="stringliteral">"."</span>;
-<a name="l00909"></a>00909 }
-<a name="l00910"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#35cd5261010943a7782c48adcd9fba02">00910</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#35cd5261010943a7782c48adcd9fba02" title="Set a supported parameter to an unsupported value.">MPSolverInterface::SetDoubleParamToUnsupportedValue</a>(
-<a name="l00911"></a>00911     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param, <span class="keywordtype">int</span> value)<span class="keyword"> const </span>{
-<a name="l00912"></a>00912   LOG(WARNING) &lt;&lt; <span class="stringliteral">"Trying to set a supported parameter: "</span> &lt;&lt; param
-<a name="l00913"></a>00913                &lt;&lt; <span class="stringliteral">" to an unsupported value: "</span> &lt;&lt; value;
-<a name="l00914"></a>00914 }
-<a name="l00915"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#5253b2f5977fa4f08305ddc966a65a6c">00915</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#5253b2f5977fa4f08305ddc966a65a6c">MPSolverInterface::SetIntegerParamToUnsupportedValue</a>(
-<a name="l00916"></a>00916     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param, <span class="keywordtype">double</span> value)<span class="keyword"> const </span>{
-<a name="l00917"></a>00917   LOG(WARNING) &lt;&lt; <span class="stringliteral">"Trying to set a supported parameter: "</span> &lt;&lt; param
-<a name="l00918"></a>00918                &lt;&lt; <span class="stringliteral">" to an unsupported value: "</span> &lt;&lt; value;
-<a name="l00919"></a>00919 }
-<a name="l00920"></a>00920 
-<a name="l00921"></a>00921 <span class="comment">// ---------- MPSolverParameters ----------</span>
-<a name="l00922"></a>00922 
-<a name="l00923"></a>00923 <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d6b31b12f9e1944b355809efd56fec98" title="Default values for parameters.">MPSolverParameters::kDefaultRelativeMipGap</a> = 1e-4;
-<a name="l00924"></a>00924 <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a4" title="For each categorical parameter, enumeration of possible values.">MPSolverParameters::PresolveValues</a> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#0b1b827cbc32fab02b3fbbe52dbb71f3">MPSolverParameters::kDefaultPresolve</a> =
-<a name="l00925"></a>00925   <a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a4c8e04ac3295af6c505a22757490bb018" title="Presolve is on.">MPSolverParameters::PRESOLVE_ON</a>;
-<a name="l00926"></a>00926 
-<a name="l00927"></a>00927 <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#f0e4fbb80499756bc3edf88fd495d7f7" title="Values to indicate that a parameter is set to the solver&amp;#39;s default value.">MPSolverParameters::kDefaultDoubleParamValue</a> = -1.0;
-<a name="l00928"></a>00928 <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#9bac90a88459ac4dd9629beeada24a66">MPSolverParameters::kDefaultIntegerParamValue</a> = -1;
-<a name="l00929"></a>00929 <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#561c73d056eef04db4b4703abd972868" title="Values to indicate that a parameter is unknown.">MPSolverParameters::kUnknownDoubleParamValue</a> = -2.0;
-<a name="l00930"></a>00930 <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#6c81985cecabbd5f054974d362db551a">MPSolverParameters::kUnknownIntegerParamValue</a> = -2;
-<a name="l00931"></a>00931 
-<a name="l00932"></a>00932 <span class="comment">// The constructor sets all parameters to their default value.</span>
-<a name="l00933"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#ccb1cea31a73bd0b09bb75882baa9e5f">00933</a> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#ccb1cea31a73bd0b09bb75882baa9e5f" title="The constructor sets all parameters to their default value.">MPSolverParameters::MPSolverParameters</a>()
-<a name="l00934"></a>00934     : relative_mip_gap_value_(kDefaultRelativeMipGap),
-<a name="l00935"></a>00935       presolve_value_(kDefaultPresolve),
-<a name="l00936"></a>00936       lp_algorithm_value_(kDefaultIntegerParamValue),
-<a name="l00937"></a>00937       lp_algorithm_is_default_(true) {}
-<a name="l00938"></a>00938 
-<a name="l00939"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297ed394e3996ebb0cc43d931deaa16">00939</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297ed394e3996ebb0cc43d931deaa16" title="Set parameter to a specific value.">MPSolverParameters::SetDoubleParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param,
-<a name="l00940"></a>00940                                         <span class="keywordtype">double</span> value) {
-<a name="l00941"></a>00941   <span class="keywordflow">switch</span> (param) {
-<a name="l00942"></a>00942     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265eca78b129ceb19e286889b3274bb8cab3" title="Limit for relative MIP gap.">RELATIVE_MIP_GAP</a>: {
-<a name="l00943"></a>00943       relative_mip_gap_value_ = value;
-<a name="l00944"></a>00944       <span class="keywordflow">break</span>;
-<a name="l00945"></a>00945     }
-<a name="l00946"></a>00946     <span class="keywordflow">default</span>: {
-<a name="l00947"></a>00947       LOG(ERROR) &lt;&lt; <span class="stringliteral">"Trying to set an unknown parameter: "</span> &lt;&lt; param &lt;&lt; <span class="stringliteral">"."</span>;
-<a name="l00948"></a>00948     }
-<a name="l00949"></a>00949   }
-<a name="l00950"></a>00950 }
-<a name="l00951"></a>00951 
-<a name="l00952"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#fcfb05b6d356807556f65f1b845897a8">00952</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#fcfb05b6d356807556f65f1b845897a8">MPSolverParameters::SetIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param,
-<a name="l00953"></a>00953                                          <span class="keywordtype">int</span> value) {
-<a name="l00954"></a>00954   <span class="keywordflow">switch</span> (param) {
-<a name="l00955"></a>00955     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a01f92ab900139fd7649eace59942f1e0f" title="Presolve mode.">PRESOLVE</a>: {
-<a name="l00956"></a>00956       <span class="keywordflow">if</span> (value != <a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a46e658228fc28195fb00675d3dfec2c85" title="Presolve is off.">PRESOLVE_OFF</a> &amp;&amp; value != <a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a4c8e04ac3295af6c505a22757490bb018" title="Presolve is on.">PRESOLVE_ON</a>) {
-<a name="l00957"></a>00957         LOG(ERROR) &lt;&lt; <span class="stringliteral">"Trying to set a supported parameter: "</span> &lt;&lt; param
-<a name="l00958"></a>00958                    &lt;&lt; <span class="stringliteral">" to an unknown value: "</span> &lt;&lt; value;
-<a name="l00959"></a>00959       }
-<a name="l00960"></a>00960       presolve_value_ = value;
-<a name="l00961"></a>00961       <span class="keywordflow">break</span>;
-<a name="l00962"></a>00962     }
-<a name="l00963"></a>00963     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a028abd1bbac3e861d5a74f841f8263e05" title="Algorithm to solve linear programs.">LP_ALGORITHM</a>: {
-<a name="l00964"></a>00964       <span class="keywordflow">if</span> (value != <a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a90580123613767622aca0e0bfd9807b5a938bb3bbc2bea07" title="Dual simplex.">DUAL</a> &amp;&amp; value != <a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a90580123613767629fa228e5a51b8e22346b46d0f866e68d" title="Primal simplex.">PRIMAL</a> &amp;&amp; value != <a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a9058012361376762f55a23df7a5ec299bb9ca742ef9004ed" title="Barrier algorithm.">BARRIER</a>) {
-<a name="l00965"></a>00965         LOG(ERROR) &lt;&lt; <span class="stringliteral">"Trying to set a supported parameter: "</span> &lt;&lt; param
-<a name="l00966"></a>00966                    &lt;&lt; <span class="stringliteral">" to an unknown value: "</span> &lt;&lt; value;
-<a name="l00967"></a>00967       }
-<a name="l00968"></a>00968       lp_algorithm_value_ = value;
-<a name="l00969"></a>00969       lp_algorithm_is_default_ = <span class="keyword">false</span>;
-<a name="l00970"></a>00970       <span class="keywordflow">break</span>;
-<a name="l00971"></a>00971     }
-<a name="l00972"></a>00972     <span class="keywordflow">default</span>: {
-<a name="l00973"></a>00973       LOG(ERROR) &lt;&lt; <span class="stringliteral">"Trying to set an unknown parameter: "</span> &lt;&lt; param &lt;&lt; <span class="stringliteral">"."</span>;
-<a name="l00974"></a>00974     }
-<a name="l00975"></a>00975   }
-<a name="l00976"></a>00976 }
-<a name="l00977"></a>00977 
-<a name="l00978"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#7bc16e5febd0604a3400572c0e35c490">00978</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#7bc16e5febd0604a3400572c0e35c490" title="Reset parameter to the default value.">MPSolverParameters::ResetDoubleParam</a>(
-<a name="l00979"></a>00979     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param) {
-<a name="l00980"></a>00980   <span class="keywordflow">switch</span> (param) {
-<a name="l00981"></a>00981     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265eca78b129ceb19e286889b3274bb8cab3" title="Limit for relative MIP gap.">RELATIVE_MIP_GAP</a>: {
-<a name="l00982"></a>00982       relative_mip_gap_value_ = <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d6b31b12f9e1944b355809efd56fec98" title="Default values for parameters.">kDefaultRelativeMipGap</a>;
-<a name="l00983"></a>00983       <span class="keywordflow">break</span>;
-<a name="l00984"></a>00984     }
-<a name="l00985"></a>00985     <span class="keywordflow">default</span>: {
-<a name="l00986"></a>00986       LOG(ERROR) &lt;&lt; <span class="stringliteral">"Trying to reset an unknown parameter: "</span> &lt;&lt; param &lt;&lt; <span class="stringliteral">"."</span>;
-<a name="l00987"></a>00987     }
-<a name="l00988"></a>00988   }
-<a name="l00989"></a>00989 }
-<a name="l00990"></a>00990 
-<a name="l00991"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#100330795edeb8c1b12c7b8ff74611df">00991</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#100330795edeb8c1b12c7b8ff74611df">MPSolverParameters::ResetIntegerParam</a>(
-<a name="l00992"></a>00992     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param) {
-<a name="l00993"></a>00993   <span class="keywordflow">switch</span> (param) {
-<a name="l00994"></a>00994     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a01f92ab900139fd7649eace59942f1e0f" title="Presolve mode.">PRESOLVE</a>: {
-<a name="l00995"></a>00995       presolve_value_ = <a class="code" href="classoperations__research_1_1MPSolverParameters.html#0b1b827cbc32fab02b3fbbe52dbb71f3">kDefaultPresolve</a>;
-<a name="l00996"></a>00996       <span class="keywordflow">break</span>;
-<a name="l00997"></a>00997     }
-<a name="l00998"></a>00998     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a028abd1bbac3e861d5a74f841f8263e05" title="Algorithm to solve linear programs.">LP_ALGORITHM</a>: {
-<a name="l00999"></a>00999       lp_algorithm_is_default_ = <span class="keyword">true</span>;
-<a name="l01000"></a>01000       <span class="keywordflow">break</span>;
-<a name="l01001"></a>01001     }
-<a name="l01002"></a>01002     <span class="keywordflow">default</span>: {
-<a name="l01003"></a>01003       LOG(ERROR) &lt;&lt; <span class="stringliteral">"Trying to reset an unknown parameter: "</span> &lt;&lt; param &lt;&lt; <span class="stringliteral">"."</span>;
-<a name="l01004"></a>01004     }
-<a name="l01005"></a>01005   }
-<a name="l01006"></a>01006 }
-<a name="l01007"></a>01007 
-<a name="l01008"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#da3cdf5254959f2807c3d27bb7e18e27">01008</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#da3cdf5254959f2807c3d27bb7e18e27" title="Set all parameters to their default value.">MPSolverParameters::Reset</a>() {
-<a name="l01009"></a>01009   <a class="code" href="classoperations__research_1_1MPSolverParameters.html#7bc16e5febd0604a3400572c0e35c490" title="Reset parameter to the default value.">ResetDoubleParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265eca78b129ceb19e286889b3274bb8cab3" title="Limit for relative MIP gap.">RELATIVE_MIP_GAP</a>);
-<a name="l01010"></a>01010   <a class="code" href="classoperations__research_1_1MPSolverParameters.html#100330795edeb8c1b12c7b8ff74611df">ResetIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a01f92ab900139fd7649eace59942f1e0f" title="Presolve mode.">PRESOLVE</a>);
-<a name="l01011"></a>01011   <a class="code" href="classoperations__research_1_1MPSolverParameters.html#100330795edeb8c1b12c7b8ff74611df">ResetIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a028abd1bbac3e861d5a74f841f8263e05" title="Algorithm to solve linear programs.">LP_ALGORITHM</a>);
-<a name="l01012"></a>01012 }
-<a name="l01013"></a>01013 
-<a name="l01014"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#d7027f1b5abc07a4e85b64bbaced86fc">01014</a> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d7027f1b5abc07a4e85b64bbaced86fc" title="Get parameter&amp;#39;s value.">MPSolverParameters::GetDoubleParam</a>(
-<a name="l01015"></a>01015     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param)<span class="keyword"> const </span>{
-<a name="l01016"></a>01016   <span class="keywordflow">switch</span> (param) {
-<a name="l01017"></a>01017     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265eca78b129ceb19e286889b3274bb8cab3" title="Limit for relative MIP gap.">RELATIVE_MIP_GAP</a>: {
-<a name="l01018"></a>01018       <span class="keywordflow">return</span> relative_mip_gap_value_;
-<a name="l01019"></a>01019     }
-<a name="l01020"></a>01020     <span class="keywordflow">default</span>: {
-<a name="l01021"></a>01021       LOG(ERROR) &lt;&lt; <span class="stringliteral">"Trying to get an unknown parameter: "</span> &lt;&lt; param &lt;&lt; <span class="stringliteral">"."</span>;
-<a name="l01022"></a>01022       <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#561c73d056eef04db4b4703abd972868" title="Values to indicate that a parameter is unknown.">kUnknownDoubleParamValue</a>;
+<a name="l00888"></a>00888   <a class="code" href="classoperations__research_1_1MPSolverInterface.html#119e0274303ed2eb0c80fcef960cfff0">SetPrimalTolerance</a>(param.<a class="code" href="classoperations__research_1_1MPSolverParameters.html#d7027f1b5abc07a4e85b64bbaced86fc" title="Get parameter&amp;#39;s value.">GetDoubleParam</a>(
+<a name="l00889"></a>00889       <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e57e959f9c5ede1f3e683169609fb0488" title="Tolerance for primal feasibility of basic solutions (advanced).">MPSolverParameters::PRIMAL_TOLERANCE</a>));
+<a name="l00890"></a>00890   <a class="code" href="classoperations__research_1_1MPSolverInterface.html#119e0274303ed2eb0c80fcef960cfff0">SetPrimalTolerance</a>(param.<a class="code" href="classoperations__research_1_1MPSolverParameters.html#d7027f1b5abc07a4e85b64bbaced86fc" title="Get parameter&amp;#39;s value.">GetDoubleParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e313eaed42edf309599e71ca7563cce22" title="Tolerance for dual feasibility of basic solutions (advanced).">MPSolverParameters::DUAL_TOLERANCE</a>));
+<a name="l00891"></a>00891   <a class="code" href="classoperations__research_1_1MPSolverInterface.html#51ae167e111959ecbe3f67e0e12e2f09">SetPresolveMode</a>(param.<a class="code" href="classoperations__research_1_1MPSolverParameters.html#4855741ebf5e9f5038a96fec5ebecf03">GetIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a01f92ab900139fd7649eace59942f1e0f" title="Presolve mode (advanced).">MPSolverParameters::PRESOLVE</a>));
+<a name="l00892"></a>00892   <span class="comment">// TODO(user): In the future, we could distinguish between the</span>
+<a name="l00893"></a>00893   <span class="comment">// algorithm to solve the root LP and the algorithm to solve node</span>
+<a name="l00894"></a>00894   <span class="comment">// LPs. Not sure if underlying solvers support it.</span>
+<a name="l00895"></a>00895   <span class="keywordtype">int</span> value = param.<a class="code" href="classoperations__research_1_1MPSolverParameters.html#4855741ebf5e9f5038a96fec5ebecf03">GetIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a028abd1bbac3e861d5a74f841f8263e05" title="Algorithm to solve linear programs.">MPSolverParameters::LP_ALGORITHM</a>);
+<a name="l00896"></a>00896   <span class="keywordflow">if</span> (value != <a class="code" href="classoperations__research_1_1MPSolverParameters.html#9bac90a88459ac4dd9629beeada24a66">MPSolverParameters::kDefaultIntegerParamValue</a>) {
+<a name="l00897"></a>00897     <a class="code" href="classoperations__research_1_1MPSolverInterface.html#7cde757e7152aa06930afc59709c3c64">SetLpAlgorithm</a>(value);
+<a name="l00898"></a>00898   }
+<a name="l00899"></a>00899 }
+<a name="l00900"></a>00900 
+<a name="l00901"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#b7289f57fd0f768453f2817d59a20c80">00901</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#b7289f57fd0f768453f2817d59a20c80" title="Set MIP specific parameters in the underlying solver.">MPSolverInterface::SetMIPParameters</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html" title="This class stores parameter settings for LP and MIP solvers.">MPSolverParameters</a>&amp; param) {
+<a name="l00902"></a>00902   <a class="code" href="classoperations__research_1_1MPSolverInterface.html#2b6fcec92ec397f38a9657d7d38a9e49" title="Set each parameter in the underlying solver.">SetRelativeMipGap</a>(param.<a class="code" href="classoperations__research_1_1MPSolverParameters.html#d7027f1b5abc07a4e85b64bbaced86fc" title="Get parameter&amp;#39;s value.">GetDoubleParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265eca78b129ceb19e286889b3274bb8cab3" title="Limit for relative MIP gap.">MPSolverParameters::RELATIVE_MIP_GAP</a>));
+<a name="l00903"></a>00903 }
+<a name="l00904"></a>00904 
+<a name="l00905"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#45353137dcef0e7f421e09628d40d9c3">00905</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#45353137dcef0e7f421e09628d40d9c3" title="Set an unsupported parameter.">MPSolverInterface::SetUnsupportedDoubleParam</a>(
+<a name="l00906"></a>00906     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param)<span class="keyword"> const </span>{
+<a name="l00907"></a>00907   LOG(WARNING) &lt;&lt; <span class="stringliteral">"Trying to set an unsupported parameter: "</span> &lt;&lt; param &lt;&lt; <span class="stringliteral">"."</span>;
+<a name="l00908"></a>00908 }
+<a name="l00909"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#a0711f86f43bb8d9b04902f5de5fa7f0">00909</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#a0711f86f43bb8d9b04902f5de5fa7f0">MPSolverInterface::SetUnsupportedIntegerParam</a>(
+<a name="l00910"></a>00910     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param)<span class="keyword"> const </span>{
+<a name="l00911"></a>00911   LOG(WARNING) &lt;&lt; <span class="stringliteral">"Trying to set an unsupported parameter: "</span> &lt;&lt; param &lt;&lt; <span class="stringliteral">"."</span>;
+<a name="l00912"></a>00912 }
+<a name="l00913"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#35cd5261010943a7782c48adcd9fba02">00913</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#35cd5261010943a7782c48adcd9fba02" title="Set a supported parameter to an unsupported value.">MPSolverInterface::SetDoubleParamToUnsupportedValue</a>(
+<a name="l00914"></a>00914     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param, <span class="keywordtype">int</span> value)<span class="keyword"> const </span>{
+<a name="l00915"></a>00915   LOG(WARNING) &lt;&lt; <span class="stringliteral">"Trying to set a supported parameter: "</span> &lt;&lt; param
+<a name="l00916"></a>00916                &lt;&lt; <span class="stringliteral">" to an unsupported value: "</span> &lt;&lt; value;
+<a name="l00917"></a>00917 }
+<a name="l00918"></a><a class="code" href="classoperations__research_1_1MPSolverInterface.html#5253b2f5977fa4f08305ddc966a65a6c">00918</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverInterface.html#5253b2f5977fa4f08305ddc966a65a6c">MPSolverInterface::SetIntegerParamToUnsupportedValue</a>(
+<a name="l00919"></a>00919     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param, <span class="keywordtype">double</span> value)<span class="keyword"> const </span>{
+<a name="l00920"></a>00920   LOG(WARNING) &lt;&lt; <span class="stringliteral">"Trying to set a supported parameter: "</span> &lt;&lt; param
+<a name="l00921"></a>00921                &lt;&lt; <span class="stringliteral">" to an unsupported value: "</span> &lt;&lt; value;
+<a name="l00922"></a>00922 }
+<a name="l00923"></a>00923 
+<a name="l00924"></a>00924 <span class="comment">// ---------- MPSolverParameters ----------</span>
+<a name="l00925"></a>00925 
+<a name="l00926"></a>00926 <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d6b31b12f9e1944b355809efd56fec98" title="Default values for parameters.">MPSolverParameters::kDefaultRelativeMipGap</a> = 1e-4;
+<a name="l00927"></a>00927 <span class="comment">// For the primal and dual tolerances, choose the same default as CLP and GLPK.</span>
+<a name="l00928"></a>00928 <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3369c0b857cf02ddf742acc5ef1feec5" title="For the primal and dual tolerances, choose the same default as CLP and GLPK.">MPSolverParameters::kDefaultPrimalTolerance</a> = 1e-7;
+<a name="l00929"></a>00929 <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#15fd57d45c522be9c8340ba9d1244e3f">MPSolverParameters::kDefaultDualTolerance</a> = 1e-7;
+<a name="l00930"></a>00930 <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a4" title="For each categorical parameter, enumeration of possible values.">MPSolverParameters::PresolveValues</a> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#0b1b827cbc32fab02b3fbbe52dbb71f3">MPSolverParameters::kDefaultPresolve</a> =
+<a name="l00931"></a>00931   <a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a4c8e04ac3295af6c505a22757490bb018" title="Presolve is on.">MPSolverParameters::PRESOLVE_ON</a>;
+<a name="l00932"></a>00932 <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d58cb8cf98c288843ab0d1fd644f6116">MPSolverParameters::IncrementalityValues</a>
+<a name="l00933"></a>00933 <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d25e3c5903cba913fdcaffadd006af53">MPSolverParameters::kDefaultIncrementality</a> =
+<a name="l00934"></a>00934 <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d58cb8cf98c288843ab0d1fd644f6116ef000bbd88ef3ff2715d53a0e1dfbd37" title="Reuse results from previous solve as much as the underlying solver allows.">MPSolverParameters::INCREMENTALITY_ON</a>;
+<a name="l00935"></a>00935 
+<a name="l00936"></a>00936 <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#f0e4fbb80499756bc3edf88fd495d7f7" title="Values to indicate that a parameter is set to the solver&amp;#39;s default value.">MPSolverParameters::kDefaultDoubleParamValue</a> = -1.0;
+<a name="l00937"></a>00937 <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#9bac90a88459ac4dd9629beeada24a66">MPSolverParameters::kDefaultIntegerParamValue</a> = -1;
+<a name="l00938"></a>00938 <span class="keyword">const</span> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#561c73d056eef04db4b4703abd972868" title="Values to indicate that a parameter is unknown.">MPSolverParameters::kUnknownDoubleParamValue</a> = -2.0;
+<a name="l00939"></a>00939 <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#6c81985cecabbd5f054974d362db551a">MPSolverParameters::kUnknownIntegerParamValue</a> = -2;
+<a name="l00940"></a>00940 
+<a name="l00941"></a>00941 <span class="comment">// The constructor sets all parameters to their default value.</span>
+<a name="l00942"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#ccb1cea31a73bd0b09bb75882baa9e5f">00942</a> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#ccb1cea31a73bd0b09bb75882baa9e5f" title="The constructor sets all parameters to their default value.">MPSolverParameters::MPSolverParameters</a>()
+<a name="l00943"></a>00943     : relative_mip_gap_value_(kDefaultRelativeMipGap),
+<a name="l00944"></a>00944       primal_tolerance_value_(kDefaultPrimalTolerance),
+<a name="l00945"></a>00945       dual_tolerance_value_(kDefaultDualTolerance),
+<a name="l00946"></a>00946       presolve_value_(kDefaultPresolve),
+<a name="l00947"></a>00947       lp_algorithm_value_(kDefaultIntegerParamValue),
+<a name="l00948"></a>00948       incrementality_value_(kDefaultIncrementality),
+<a name="l00949"></a>00949       lp_algorithm_is_default_(true) {}
+<a name="l00950"></a>00950 
+<a name="l00951"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297ed394e3996ebb0cc43d931deaa16">00951</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297ed394e3996ebb0cc43d931deaa16" title="Set parameter to a specific value.">MPSolverParameters::SetDoubleParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param,
+<a name="l00952"></a>00952                                         <span class="keywordtype">double</span> value) {
+<a name="l00953"></a>00953   <span class="keywordflow">switch</span> (param) {
+<a name="l00954"></a>00954     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265eca78b129ceb19e286889b3274bb8cab3" title="Limit for relative MIP gap.">RELATIVE_MIP_GAP</a>: {
+<a name="l00955"></a>00955       relative_mip_gap_value_ = value;
+<a name="l00956"></a>00956       <span class="keywordflow">break</span>;
+<a name="l00957"></a>00957     }
+<a name="l00958"></a>00958     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e57e959f9c5ede1f3e683169609fb0488" title="Tolerance for primal feasibility of basic solutions (advanced).">PRIMAL_TOLERANCE</a>: {
+<a name="l00959"></a>00959       primal_tolerance_value_ = value;
+<a name="l00960"></a>00960       <span class="keywordflow">break</span>;
+<a name="l00961"></a>00961     }
+<a name="l00962"></a>00962     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e313eaed42edf309599e71ca7563cce22" title="Tolerance for dual feasibility of basic solutions (advanced).">DUAL_TOLERANCE</a>: {
+<a name="l00963"></a>00963       dual_tolerance_value_ = value;
+<a name="l00964"></a>00964       <span class="keywordflow">break</span>;
+<a name="l00965"></a>00965     }
+<a name="l00966"></a>00966     <span class="keywordflow">default</span>: {
+<a name="l00967"></a>00967       LOG(ERROR) &lt;&lt; <span class="stringliteral">"Trying to set an unknown parameter: "</span> &lt;&lt; param &lt;&lt; <span class="stringliteral">"."</span>;
+<a name="l00968"></a>00968     }
+<a name="l00969"></a>00969   }
+<a name="l00970"></a>00970 }
+<a name="l00971"></a>00971 
+<a name="l00972"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#fcfb05b6d356807556f65f1b845897a8">00972</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#fcfb05b6d356807556f65f1b845897a8">MPSolverParameters::SetIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param,
+<a name="l00973"></a>00973                                          <span class="keywordtype">int</span> value) {
+<a name="l00974"></a>00974   <span class="keywordflow">switch</span> (param) {
+<a name="l00975"></a>00975     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a01f92ab900139fd7649eace59942f1e0f" title="Presolve mode (advanced).">PRESOLVE</a>: {
+<a name="l00976"></a>00976       <span class="keywordflow">if</span> (value != <a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a46e658228fc28195fb00675d3dfec2c85" title="Presolve is off.">PRESOLVE_OFF</a> &amp;&amp; value != <a class="code" href="classoperations__research_1_1MPSolverParameters.html#45d822ac67d10cc80b2f70fe6ec555a4c8e04ac3295af6c505a22757490bb018" title="Presolve is on.">PRESOLVE_ON</a>) {
+<a name="l00977"></a>00977         LOG(ERROR) &lt;&lt; <span class="stringliteral">"Trying to set a supported parameter: "</span> &lt;&lt; param
+<a name="l00978"></a>00978                    &lt;&lt; <span class="stringliteral">" to an unknown value: "</span> &lt;&lt; value;
+<a name="l00979"></a>00979       }
+<a name="l00980"></a>00980       presolve_value_ = value;
+<a name="l00981"></a>00981       <span class="keywordflow">break</span>;
+<a name="l00982"></a>00982     }
+<a name="l00983"></a>00983     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a028abd1bbac3e861d5a74f841f8263e05" title="Algorithm to solve linear programs.">LP_ALGORITHM</a>: {
+<a name="l00984"></a>00984       <span class="keywordflow">if</span> (value != <a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a90580123613767622aca0e0bfd9807b5a938bb3bbc2bea07" title="Dual simplex.">DUAL</a> &amp;&amp; value != <a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a90580123613767629fa228e5a51b8e22346b46d0f866e68d" title="Primal simplex.">PRIMAL</a> &amp;&amp; value != <a class="code" href="classoperations__research_1_1MPSolverParameters.html#b297405e6084c08a9058012361376762f55a23df7a5ec299bb9ca742ef9004ed" title="Barrier algorithm.">BARRIER</a>) {
+<a name="l00985"></a>00985         LOG(ERROR) &lt;&lt; <span class="stringliteral">"Trying to set a supported parameter: "</span> &lt;&lt; param
+<a name="l00986"></a>00986                    &lt;&lt; <span class="stringliteral">" to an unknown value: "</span> &lt;&lt; value;
+<a name="l00987"></a>00987       }
+<a name="l00988"></a>00988       lp_algorithm_value_ = value;
+<a name="l00989"></a>00989       lp_algorithm_is_default_ = <span class="keyword">false</span>;
+<a name="l00990"></a>00990       <span class="keywordflow">break</span>;
+<a name="l00991"></a>00991     }
+<a name="l00992"></a>00992     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a00ea983a7a805bc98c2cf9a1000c1ef95" title="Incrementality from one solve to the next (advanced).">INCREMENTALITY</a>: {
+<a name="l00993"></a>00993       <span class="keywordflow">if</span> (value != <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d58cb8cf98c288843ab0d1fd644f611627013e436bfe1d34ebb6da476c590eee" title="Start solve from scratch.">INCREMENTALITY_OFF</a> &amp;&amp; value != <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d58cb8cf98c288843ab0d1fd644f6116ef000bbd88ef3ff2715d53a0e1dfbd37" title="Reuse results from previous solve as much as the underlying solver allows.">INCREMENTALITY_ON</a>) {
+<a name="l00994"></a>00994         LOG(ERROR) &lt;&lt; <span class="stringliteral">"Trying to set a supported parameter: "</span> &lt;&lt; param
+<a name="l00995"></a>00995                    &lt;&lt; <span class="stringliteral">" to an unknown value: "</span> &lt;&lt; value;
+<a name="l00996"></a>00996       }
+<a name="l00997"></a>00997       incrementality_value_ = value;
+<a name="l00998"></a>00998       <span class="keywordflow">break</span>;
+<a name="l00999"></a>00999     }
+<a name="l01000"></a>01000     <span class="keywordflow">default</span>: {
+<a name="l01001"></a>01001       LOG(ERROR) &lt;&lt; <span class="stringliteral">"Trying to set an unknown parameter: "</span> &lt;&lt; param &lt;&lt; <span class="stringliteral">"."</span>;
+<a name="l01002"></a>01002     }
+<a name="l01003"></a>01003   }
+<a name="l01004"></a>01004 }
+<a name="l01005"></a>01005 
+<a name="l01006"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#7bc16e5febd0604a3400572c0e35c490">01006</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#7bc16e5febd0604a3400572c0e35c490" title="Reset parameter to the default value.">MPSolverParameters::ResetDoubleParam</a>(
+<a name="l01007"></a>01007     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param) {
+<a name="l01008"></a>01008   <span class="keywordflow">switch</span> (param) {
+<a name="l01009"></a>01009     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265eca78b129ceb19e286889b3274bb8cab3" title="Limit for relative MIP gap.">RELATIVE_MIP_GAP</a>: {
+<a name="l01010"></a>01010       relative_mip_gap_value_ = <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d6b31b12f9e1944b355809efd56fec98" title="Default values for parameters.">kDefaultRelativeMipGap</a>;
+<a name="l01011"></a>01011       <span class="keywordflow">break</span>;
+<a name="l01012"></a>01012     }
+<a name="l01013"></a>01013     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e57e959f9c5ede1f3e683169609fb0488" title="Tolerance for primal feasibility of basic solutions (advanced).">PRIMAL_TOLERANCE</a>: {
+<a name="l01014"></a>01014       primal_tolerance_value_ = <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3369c0b857cf02ddf742acc5ef1feec5" title="For the primal and dual tolerances, choose the same default as CLP and GLPK.">kDefaultPrimalTolerance</a>;
+<a name="l01015"></a>01015       <span class="keywordflow">break</span>;
+<a name="l01016"></a>01016     }
+<a name="l01017"></a>01017     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e313eaed42edf309599e71ca7563cce22" title="Tolerance for dual feasibility of basic solutions (advanced).">DUAL_TOLERANCE</a>: {
+<a name="l01018"></a>01018       dual_tolerance_value_ = <a class="code" href="classoperations__research_1_1MPSolverParameters.html#15fd57d45c522be9c8340ba9d1244e3f">kDefaultDualTolerance</a>;
+<a name="l01019"></a>01019       <span class="keywordflow">break</span>;
+<a name="l01020"></a>01020     }
+<a name="l01021"></a>01021     <span class="keywordflow">default</span>: {
+<a name="l01022"></a>01022       LOG(ERROR) &lt;&lt; <span class="stringliteral">"Trying to reset an unknown parameter: "</span> &lt;&lt; param &lt;&lt; <span class="stringliteral">"."</span>;
 <a name="l01023"></a>01023     }
 <a name="l01024"></a>01024   }
 <a name="l01025"></a>01025 }
 <a name="l01026"></a>01026 
-<a name="l01027"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#4855741ebf5e9f5038a96fec5ebecf03">01027</a> <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#4855741ebf5e9f5038a96fec5ebecf03">MPSolverParameters::GetIntegerParam</a>(
-<a name="l01028"></a>01028     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param)<span class="keyword"> const </span>{
+<a name="l01027"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#100330795edeb8c1b12c7b8ff74611df">01027</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#100330795edeb8c1b12c7b8ff74611df">MPSolverParameters::ResetIntegerParam</a>(
+<a name="l01028"></a>01028     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param) {
 <a name="l01029"></a>01029   <span class="keywordflow">switch</span> (param) {
-<a name="l01030"></a>01030     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a01f92ab900139fd7649eace59942f1e0f" title="Presolve mode.">PRESOLVE</a>: {
-<a name="l01031"></a>01031       <span class="keywordflow">return</span> presolve_value_;
-<a name="l01032"></a>01032     }
-<a name="l01033"></a>01033     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a028abd1bbac3e861d5a74f841f8263e05" title="Algorithm to solve linear programs.">LP_ALGORITHM</a>: {
-<a name="l01034"></a>01034       <span class="keywordflow">if</span> (lp_algorithm_is_default_) <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#9bac90a88459ac4dd9629beeada24a66">kDefaultIntegerParamValue</a>;
-<a name="l01035"></a>01035       <span class="keywordflow">return</span> lp_algorithm_value_;
-<a name="l01036"></a>01036     }
-<a name="l01037"></a>01037     <span class="keywordflow">default</span>: {
-<a name="l01038"></a>01038       LOG(ERROR) &lt;&lt; <span class="stringliteral">"Trying to get an unknown parameter: "</span> &lt;&lt; param &lt;&lt; <span class="stringliteral">"."</span>;
-<a name="l01039"></a>01039       <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#6c81985cecabbd5f054974d362db551a">kUnknownIntegerParamValue</a>;
-<a name="l01040"></a>01040     }
-<a name="l01041"></a>01041   }
-<a name="l01042"></a>01042 }
-<a name="l01043"></a>01043 
-<a name="l01044"></a>01044 }  <span class="comment">// namespace operations_research</span>
+<a name="l01030"></a>01030     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a01f92ab900139fd7649eace59942f1e0f" title="Presolve mode (advanced).">PRESOLVE</a>: {
+<a name="l01031"></a>01031       presolve_value_ = <a class="code" href="classoperations__research_1_1MPSolverParameters.html#0b1b827cbc32fab02b3fbbe52dbb71f3">kDefaultPresolve</a>;
+<a name="l01032"></a>01032       <span class="keywordflow">break</span>;
+<a name="l01033"></a>01033     }
+<a name="l01034"></a>01034     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a028abd1bbac3e861d5a74f841f8263e05" title="Algorithm to solve linear programs.">LP_ALGORITHM</a>: {
+<a name="l01035"></a>01035       lp_algorithm_is_default_ = <span class="keyword">true</span>;
+<a name="l01036"></a>01036       <span class="keywordflow">break</span>;
+<a name="l01037"></a>01037     }
+<a name="l01038"></a>01038     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a00ea983a7a805bc98c2cf9a1000c1ef95" title="Incrementality from one solve to the next (advanced).">INCREMENTALITY</a>: {
+<a name="l01039"></a>01039       incrementality_value_ = <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d25e3c5903cba913fdcaffadd006af53">kDefaultIncrementality</a>;
+<a name="l01040"></a>01040       <span class="keywordflow">break</span>;
+<a name="l01041"></a>01041     }
+<a name="l01042"></a>01042     <span class="keywordflow">default</span>: {
+<a name="l01043"></a>01043       LOG(ERROR) &lt;&lt; <span class="stringliteral">"Trying to reset an unknown parameter: "</span> &lt;&lt; param &lt;&lt; <span class="stringliteral">"."</span>;
+<a name="l01044"></a>01044     }
+<a name="l01045"></a>01045   }
+<a name="l01046"></a>01046 }
+<a name="l01047"></a>01047 
+<a name="l01048"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#da3cdf5254959f2807c3d27bb7e18e27">01048</a> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#da3cdf5254959f2807c3d27bb7e18e27" title="Set all parameters to their default value.">MPSolverParameters::Reset</a>() {
+<a name="l01049"></a>01049   <a class="code" href="classoperations__research_1_1MPSolverParameters.html#7bc16e5febd0604a3400572c0e35c490" title="Reset parameter to the default value.">ResetDoubleParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265eca78b129ceb19e286889b3274bb8cab3" title="Limit for relative MIP gap.">RELATIVE_MIP_GAP</a>);
+<a name="l01050"></a>01050   <a class="code" href="classoperations__research_1_1MPSolverParameters.html#7bc16e5febd0604a3400572c0e35c490" title="Reset parameter to the default value.">ResetDoubleParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e57e959f9c5ede1f3e683169609fb0488" title="Tolerance for primal feasibility of basic solutions (advanced).">PRIMAL_TOLERANCE</a>);
+<a name="l01051"></a>01051   <a class="code" href="classoperations__research_1_1MPSolverParameters.html#7bc16e5febd0604a3400572c0e35c490" title="Reset parameter to the default value.">ResetDoubleParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e313eaed42edf309599e71ca7563cce22" title="Tolerance for dual feasibility of basic solutions (advanced).">DUAL_TOLERANCE</a>);
+<a name="l01052"></a>01052   <a class="code" href="classoperations__research_1_1MPSolverParameters.html#100330795edeb8c1b12c7b8ff74611df">ResetIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a01f92ab900139fd7649eace59942f1e0f" title="Presolve mode (advanced).">PRESOLVE</a>);
+<a name="l01053"></a>01053   <a class="code" href="classoperations__research_1_1MPSolverParameters.html#100330795edeb8c1b12c7b8ff74611df">ResetIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a028abd1bbac3e861d5a74f841f8263e05" title="Algorithm to solve linear programs.">LP_ALGORITHM</a>);
+<a name="l01054"></a>01054   <a class="code" href="classoperations__research_1_1MPSolverParameters.html#100330795edeb8c1b12c7b8ff74611df">ResetIntegerParam</a>(<a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a00ea983a7a805bc98c2cf9a1000c1ef95" title="Incrementality from one solve to the next (advanced).">INCREMENTALITY</a>);
+<a name="l01055"></a>01055 }
+<a name="l01056"></a>01056 
+<a name="l01057"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#d7027f1b5abc07a4e85b64bbaced86fc">01057</a> <span class="keywordtype">double</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#d7027f1b5abc07a4e85b64bbaced86fc" title="Get parameter&amp;#39;s value.">MPSolverParameters::GetDoubleParam</a>(
+<a name="l01058"></a>01058     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e" title="Enumeration of parameters that take continuous values.">MPSolverParameters::DoubleParam</a> param)<span class="keyword"> const </span>{
+<a name="l01059"></a>01059   <span class="keywordflow">switch</span> (param) {
+<a name="l01060"></a>01060     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265eca78b129ceb19e286889b3274bb8cab3" title="Limit for relative MIP gap.">RELATIVE_MIP_GAP</a>: {
+<a name="l01061"></a>01061       <span class="keywordflow">return</span> relative_mip_gap_value_;
+<a name="l01062"></a>01062     }
+<a name="l01063"></a>01063     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e57e959f9c5ede1f3e683169609fb0488" title="Tolerance for primal feasibility of basic solutions (advanced).">PRIMAL_TOLERANCE</a>: {
+<a name="l01064"></a>01064       <span class="keywordflow">return</span> primal_tolerance_value_;
+<a name="l01065"></a>01065     }
+<a name="l01066"></a>01066     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#3834b74a8764c1c971e10ce9ba2f265e313eaed42edf309599e71ca7563cce22" title="Tolerance for dual feasibility of basic solutions (advanced).">DUAL_TOLERANCE</a>: {
+<a name="l01067"></a>01067       <span class="keywordflow">return</span> dual_tolerance_value_;
+<a name="l01068"></a>01068     }
+<a name="l01069"></a>01069     <span class="keywordflow">default</span>: {
+<a name="l01070"></a>01070       LOG(ERROR) &lt;&lt; <span class="stringliteral">"Trying to get an unknown parameter: "</span> &lt;&lt; param &lt;&lt; <span class="stringliteral">"."</span>;
+<a name="l01071"></a>01071       <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#561c73d056eef04db4b4703abd972868" title="Values to indicate that a parameter is unknown.">kUnknownDoubleParamValue</a>;
+<a name="l01072"></a>01072     }
+<a name="l01073"></a>01073   }
+<a name="l01074"></a>01074 }
+<a name="l01075"></a>01075 
+<a name="l01076"></a><a class="code" href="classoperations__research_1_1MPSolverParameters.html#4855741ebf5e9f5038a96fec5ebecf03">01076</a> <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#4855741ebf5e9f5038a96fec5ebecf03">MPSolverParameters::GetIntegerParam</a>(
+<a name="l01077"></a>01077     <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a0" title="Enumeration of parameters that take integer or categorical values.">MPSolverParameters::IntegerParam</a> param)<span class="keyword"> const </span>{
+<a name="l01078"></a>01078   <span class="keywordflow">switch</span> (param) {
+<a name="l01079"></a>01079     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a01f92ab900139fd7649eace59942f1e0f" title="Presolve mode (advanced).">PRESOLVE</a>: {
+<a name="l01080"></a>01080       <span class="keywordflow">return</span> presolve_value_;
+<a name="l01081"></a>01081     }
+<a name="l01082"></a>01082     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a028abd1bbac3e861d5a74f841f8263e05" title="Algorithm to solve linear programs.">LP_ALGORITHM</a>: {
+<a name="l01083"></a>01083       <span class="keywordflow">if</span> (lp_algorithm_is_default_) <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#9bac90a88459ac4dd9629beeada24a66">kDefaultIntegerParamValue</a>;
+<a name="l01084"></a>01084       <span class="keywordflow">return</span> lp_algorithm_value_;
+<a name="l01085"></a>01085     }
+<a name="l01086"></a>01086     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#c8f18a88f586c725cfffc613499926a00ea983a7a805bc98c2cf9a1000c1ef95" title="Incrementality from one solve to the next (advanced).">INCREMENTALITY</a>: {
+<a name="l01087"></a>01087       <span class="keywordflow">return</span> incrementality_value_;
+<a name="l01088"></a>01088     }
+<a name="l01089"></a>01089     <span class="keywordflow">default</span>: {
+<a name="l01090"></a>01090       LOG(ERROR) &lt;&lt; <span class="stringliteral">"Trying to get an unknown parameter: "</span> &lt;&lt; param &lt;&lt; <span class="stringliteral">"."</span>;
+<a name="l01091"></a>01091       <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1MPSolverParameters.html#6c81985cecabbd5f054974d362db551a">kUnknownIntegerParamValue</a>;
+<a name="l01092"></a>01092     }
+<a name="l01093"></a>01093   }
+<a name="l01094"></a>01094 }
+<a name="l01095"></a>01095 
+<a name="l01096"></a>01096 }  <span class="comment">// namespace operations_research</span>
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -1132,7 +1184,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#439154 height=3></td>
+      <td colspan=2 bgcolor=#371311 height=3></td>
     </tr>
   </table>
 

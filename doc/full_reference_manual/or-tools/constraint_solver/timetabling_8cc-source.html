@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #439154
+      background-color: #371311
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#439154 height=3></td>
+      <td colspan=3 bgcolor=#371311 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
+          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#439154>
+            <td bgcolor=#371311>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -354,7 +354,7 @@
 <a name="l00271"></a>00271                       IntervalVar* <span class="keyword">const</span> t1,
 <a name="l00272"></a>00272                       IntervalVar* <span class="keyword">const</span> t2,
 <a name="l00273"></a>00273                       <a class="code" href="classoperations__research_1_1Solver.html#34419e55556ff4e92b447fe895bdb9c3">IntVar</a>* <span class="keyword">const</span> alt)
-<a name="l00274"></a>00274       : <a class="code" href="classoperations__research_1_1Solver.html#697ed9eaa8955d595a023663ab1e8418">Constraint</a>(s), <a class="code" href="timetabling_8cc.html#eef932a7b3785634f7c177e1484066fe">t1_</a>(t1), <a class="code" href="timetabling_8cc.html#2540d05a4ead6216488a850866e2b9cb">t2_</a>(t2), <a class="code" href="timetabling_8cc.html#f976e78cd00f2415354adb7bf5c14187">alt_</a>(alt), <a class="code" href="timetabling_8cc.html#3b1c09ed3908d987b7452bdcdf3dc06f">state_</a>(UNDECIDED) {}
+<a name="l00274"></a>00274       : <a class="code" href="classoperations__research_1_1Solver.html#697ed9eaa8955d595a023663ab1e8418">Constraint</a>(s), <a class="code" href="timetabling_8cc.html#eef932a7b3785634f7c177e1484066fe">t1_</a>(t1), <a class="code" href="timetabling_8cc.html#2540d05a4ead6216488a850866e2b9cb">t2_</a>(t2), <a class="code" href="timetabling_8cc.html#f976e78cd00f2415354adb7bf5c14187">alt_</a>(alt), <a class="code" href="local__search_8cc.html#80151e3e5119fd23f5c8bd4125dafc11">state_</a>(UNDECIDED) {}
 <a name="l00275"></a>00275   <span class="keyword">virtual</span> ~TemporalDisjunction() {}
 <a name="l00276"></a>00276 
 <a name="l00277"></a>00277   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Post();
@@ -380,7 +380,7 @@
 <a name="l00297"></a>00297   IntervalVar* <span class="keyword">const</span> <a class="code" href="timetabling_8cc.html#eef932a7b3785634f7c177e1484066fe">t1_</a>;
 <a name="l00298"></a>00298   IntervalVar* <span class="keyword">const</span> <a class="code" href="timetabling_8cc.html#2540d05a4ead6216488a850866e2b9cb">t2_</a>;
 <a name="l00299"></a><a class="code" href="timetabling_8cc.html#f976e78cd00f2415354adb7bf5c14187">00299</a>   <a class="code" href="classoperations__research_1_1Solver.html#34419e55556ff4e92b447fe895bdb9c3">IntVar</a>* <span class="keyword">const</span> <a class="code" href="timetabling_8cc.html#f976e78cd00f2415354adb7bf5c14187">alt_</a>;
-<a name="l00300"></a><a class="code" href="timetabling_8cc.html#3b1c09ed3908d987b7452bdcdf3dc06f">00300</a>   State <a class="code" href="timetabling_8cc.html#3b1c09ed3908d987b7452bdcdf3dc06f">state_</a>;
+<a name="l00300"></a><a class="code" href="timetabling_8cc.html#3b1c09ed3908d987b7452bdcdf3dc06f">00300</a>   State <a class="code" href="local__search_8cc.html#80151e3e5119fd23f5c8bd4125dafc11">state_</a>;
 <a name="l00301"></a>00301 };
 <a name="l00302"></a>00302 
 <a name="l00303"></a>00303 <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1Constraint.html#aa882d58b5fc0f2e3df6eff957ad4a0d" title="This method is called when the constraint is processed by the solver.">TemporalDisjunction::Post</a>() {
@@ -428,7 +428,7 @@
 <a name="l00345"></a>00345 }
 <a name="l00346"></a>00346 
 <a name="l00347"></a>00347 <span class="keywordtype">void</span> TemporalDisjunction::TryToDecide() {
-<a name="l00348"></a>00348   DCHECK_EQ(UNDECIDED, <a class="code" href="timetabling_8cc.html#3b1c09ed3908d987b7452bdcdf3dc06f">state_</a>);
+<a name="l00348"></a>00348   DCHECK_EQ(UNDECIDED, <a class="code" href="local__search_8cc.html#80151e3e5119fd23f5c8bd4125dafc11">state_</a>);
 <a name="l00349"></a>00349   <span class="keywordflow">if</span> (<a class="code" href="timetabling_8cc.html#eef932a7b3785634f7c177e1484066fe">t1_</a>-&gt;MayBePerformed() &amp;&amp; <a class="code" href="timetabling_8cc.html#2540d05a4ead6216488a850866e2b9cb">t2_</a>-&gt;MayBePerformed() &amp;&amp;
 <a name="l00350"></a>00350       (<a class="code" href="timetabling_8cc.html#eef932a7b3785634f7c177e1484066fe">t1_</a>-&gt;MustBePerformed() || <a class="code" href="timetabling_8cc.html#2540d05a4ead6216488a850866e2b9cb">t2_</a>-&gt;MustBePerformed())) {
 <a name="l00351"></a>00351     <span class="keywordflow">if</span> (<a class="code" href="timetabling_8cc.html#eef932a7b3785634f7c177e1484066fe">t1_</a>-&gt;EndMin() &gt; <a class="code" href="timetabling_8cc.html#2540d05a4ead6216488a850866e2b9cb">t2_</a>-&gt;StartMax()) {
@@ -440,7 +440,7 @@
 <a name="l00357"></a>00357 }
 <a name="l00358"></a>00358 
 <a name="l00359"></a>00359 <span class="keywordtype">void</span> TemporalDisjunction::RangeDemon1() {
-<a name="l00360"></a>00360   <span class="keywordflow">switch</span> (<a class="code" href="timetabling_8cc.html#3b1c09ed3908d987b7452bdcdf3dc06f">state_</a>) {
+<a name="l00360"></a>00360   <span class="keywordflow">switch</span> (<a class="code" href="local__search_8cc.html#80151e3e5119fd23f5c8bd4125dafc11">state_</a>) {
 <a name="l00361"></a>00361     <span class="keywordflow">case</span> ONE_BEFORE_TWO: {
 <a name="l00362"></a>00362       <span class="keywordflow">if</span> (<a class="code" href="timetabling_8cc.html#eef932a7b3785634f7c177e1484066fe">t1_</a>-&gt;MustBePerformed() &amp;&amp; <a class="code" href="timetabling_8cc.html#2540d05a4ead6216488a850866e2b9cb">t2_</a>-&gt;MayBePerformed()) {
 <a name="l00363"></a>00363         <a class="code" href="timetabling_8cc.html#2540d05a4ead6216488a850866e2b9cb">t2_</a>-&gt;SetStartMin(<a class="code" href="timetabling_8cc.html#eef932a7b3785634f7c177e1484066fe">t1_</a>-&gt;EndMin());
@@ -461,7 +461,7 @@
 <a name="l00378"></a>00378 
 <a name="l00379"></a>00379 <span class="keywordtype">void</span> TemporalDisjunction::RangeDemon2() {
 <a name="l00380"></a>00380   <span class="keywordflow">if</span> (<a class="code" href="timetabling_8cc.html#eef932a7b3785634f7c177e1484066fe">t1_</a>-&gt;MayBePerformed() || <a class="code" href="timetabling_8cc.html#2540d05a4ead6216488a850866e2b9cb">t2_</a>-&gt;MayBePerformed()) {
-<a name="l00381"></a>00381     <span class="keywordflow">switch</span> (<a class="code" href="timetabling_8cc.html#3b1c09ed3908d987b7452bdcdf3dc06f">state_</a>) {
+<a name="l00381"></a>00381     <span class="keywordflow">switch</span> (<a class="code" href="local__search_8cc.html#80151e3e5119fd23f5c8bd4125dafc11">state_</a>) {
 <a name="l00382"></a>00382       <span class="keywordflow">case</span> ONE_BEFORE_TWO: {
 <a name="l00383"></a>00383         <span class="keywordflow">if</span> (<a class="code" href="timetabling_8cc.html#2540d05a4ead6216488a850866e2b9cb">t2_</a>-&gt;MustBePerformed() &amp;&amp; <a class="code" href="timetabling_8cc.html#eef932a7b3785634f7c177e1484066fe">t1_</a>-&gt;MayBePerformed()) {
 <a name="l00384"></a>00384           <a class="code" href="timetabling_8cc.html#eef932a7b3785634f7c177e1484066fe">t1_</a>-&gt;SetEndMax(<a class="code" href="timetabling_8cc.html#2540d05a4ead6216488a850866e2b9cb">t2_</a>-&gt;StartMax());
@@ -493,11 +493,11 @@
 <a name="l00410"></a>00410 <span class="keywordtype">void</span> TemporalDisjunction::Decide(State s) {
 <a name="l00411"></a>00411   <span class="comment">// Should Decide on a fixed state?</span>
 <a name="l00412"></a>00412   DCHECK_NE(s, UNDECIDED);
-<a name="l00413"></a>00413   <span class="keywordflow">if</span> (<a class="code" href="timetabling_8cc.html#3b1c09ed3908d987b7452bdcdf3dc06f">state_</a> != UNDECIDED &amp;&amp; <a class="code" href="timetabling_8cc.html#3b1c09ed3908d987b7452bdcdf3dc06f">state_</a> != s) {
+<a name="l00413"></a>00413   <span class="keywordflow">if</span> (<a class="code" href="local__search_8cc.html#80151e3e5119fd23f5c8bd4125dafc11">state_</a> != UNDECIDED &amp;&amp; <a class="code" href="local__search_8cc.html#80151e3e5119fd23f5c8bd4125dafc11">state_</a> != s) {
 <a name="l00414"></a>00414     solver()-&gt;Fail();
 <a name="l00415"></a>00415   }
-<a name="l00416"></a>00416   solver()-&gt;SaveValue(reinterpret_cast&lt;int*&gt;(&amp;<a class="code" href="timetabling_8cc.html#3b1c09ed3908d987b7452bdcdf3dc06f">state_</a>));
-<a name="l00417"></a>00417   <a class="code" href="timetabling_8cc.html#3b1c09ed3908d987b7452bdcdf3dc06f">state_</a> = s;
+<a name="l00416"></a>00416   solver()-&gt;SaveValue(reinterpret_cast&lt;int*&gt;(&amp;<a class="code" href="local__search_8cc.html#80151e3e5119fd23f5c8bd4125dafc11">state_</a>));
+<a name="l00417"></a>00417   <a class="code" href="local__search_8cc.html#80151e3e5119fd23f5c8bd4125dafc11">state_</a> = s;
 <a name="l00418"></a>00418   <span class="keywordflow">if</span> (<a class="code" href="timetabling_8cc.html#f976e78cd00f2415354adb7bf5c14187">alt_</a> != NULL) {
 <a name="l00419"></a>00419     <span class="keywordflow">if</span> (s == ONE_BEFORE_TWO) {
 <a name="l00420"></a>00420       <a class="code" href="timetabling_8cc.html#f976e78cd00f2415354adb7bf5c14187">alt_</a>-&gt;SetValue(0);
@@ -530,7 +530,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#439154 height=3></td>
+      <td colspan=2 bgcolor=#371311 height=3></td>
     </tr>
   </table>
 

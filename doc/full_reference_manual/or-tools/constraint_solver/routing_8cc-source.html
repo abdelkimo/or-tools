@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #439154
+      background-color: #371311
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#439154 height=3></td>
+      <td colspan=3 bgcolor=#371311 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
+          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#439154>
+            <td bgcolor=#371311>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -339,7 +339,7 @@
 <a name="l00256"></a>00256 
 <a name="l00257"></a>00257 <span class="comment">// Evaluators</span>
 <a name="l00258"></a>00258 
-<a name="l00259"></a><a class="code" href="namespaceoperations__research.html#3be51d9438b671f548f9182489f5c70f">00259</a> int64 <a class="code" href="namespaceoperations__research.html#3be51d9438b671f548f9182489f5c70f" title="Evaluators.">CostFunction</a>(int64** eval, int64 i, int64 j) {
+<a name="l00259"></a><a class="code" href="namespaceoperations__research.html#a7d433e23a9d1e9316b9ef3e50e99661">00259</a> int64 <a class="code" href="namespaceoperations__research.html#a7d433e23a9d1e9316b9ef3e50e99661" title="Evaluators.">CostFunction</a>(int64** eval, int64 i, int64 j) {
 <a name="l00260"></a>00260   <span class="keywordflow">return</span> eval[i][j];
 <a name="l00261"></a>00261 }
 <a name="l00262"></a>00262 
@@ -404,7 +404,7 @@
 <a name="l00321"></a>00321 
 <a name="l00322"></a>00322 <span class="comment">// Left-branch dive branch selector</span>
 <a name="l00323"></a>00323 
-<a name="l00324"></a><a class="code" href="namespaceoperations__research.html#ff3ac2f3f9759e7ed2aa231d19a843c2">00324</a> <a class="code" href="classoperations__research_1_1Solver.html#5f87c832967334179f0f9c8d05380847">Solver::DecisionModification</a> <a class="code" href="namespaceoperations__research.html#ff3ac2f3f9759e7ed2aa231d19a843c2" title="Left-branch dive branch selector.">LeftDive</a>(<a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> s) {
+<a name="l00324"></a><a class="code" href="namespaceoperations__research.html#b8345ed253872d697c1e3dc9d5cf7862">00324</a> <a class="code" href="classoperations__research_1_1Solver.html#5f87c832967334179f0f9c8d05380847">Solver::DecisionModification</a> <a class="code" href="namespaceoperations__research.html#b8345ed253872d697c1e3dc9d5cf7862" title="Left-branch dive branch selector.">LeftDive</a>(<a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> s) {
 <a name="l00325"></a>00325   <span class="keywordflow">return</span> Solver::KEEP_LEFT;
 <a name="l00326"></a>00326 }
 <a name="l00327"></a>00327 
@@ -444,7 +444,7 @@
 <a name="l00361"></a>00361       preassignment_(NULL),
 <a name="l00362"></a>00362       time_limit_ms_(FLAGS_routing_time_limit),
 <a name="l00363"></a>00363       lns_time_limit_ms_(FLAGS_routing_lns_time_limit),
-<a name="l00364"></a>00364       <a class="code" href="local__search_8cc.html#3c46258b924243eeeb3608b2df18db4f">limit_</a>(NULL),
+<a name="l00364"></a>00364       <a class="code" href="local__search_8cc.html#1c69e7dcf9d555da2ceac2a003b9e647">limit_</a>(NULL),
 <a name="l00365"></a>00365       ls_limit_(NULL),
 <a name="l00366"></a>00366       lns_limit_(NULL) {
 <a name="l00367"></a>00367   <a class="code" href="structoperations__research_1_1SolverParameters.html" title="This struct holds all parameters for the Solver object.">SolverParameters</a> parameters;
@@ -1176,7 +1176,7 @@
 <a name="l01093"></a>01093 
 <a name="l01094"></a>01094   collect_assignments_ =
 <a name="l01095"></a>01095       <a class="code" href="expressions_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeBestValueSolutionCollector(full_assignment, <span class="keyword">false</span>);
-<a name="l01096"></a>01096   <a class="code" href="search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>.push_back(collect_assignments_);
+<a name="l01096"></a>01096   <a class="code" href="local__search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>.push_back(collect_assignments_);
 <a name="l01097"></a>01097 
 <a name="l01098"></a>01098   SearchMonitor* optimize;
 <a name="l01099"></a>01099   <span class="keywordflow">switch</span> (GetSelectedMetaheuristic()) {
@@ -1218,14 +1218,14 @@
 <a name="l01135"></a>01135       LG &lt;&lt; <span class="stringliteral">"Using greedy descent"</span>;
 <a name="l01136"></a>01136       optimize = <a class="code" href="expressions_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeMinimize(<a class="code" href="local__search_8cc.html#f0e6b2d118f08f8c910a328aa2de3476">cost_</a>, FLAGS_routing_optimization_step);
 <a name="l01137"></a>01137   }
-<a name="l01138"></a>01138   <a class="code" href="search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>.push_back(optimize);
+<a name="l01138"></a>01138   <a class="code" href="local__search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>.push_back(optimize);
 <a name="l01139"></a>01139 
-<a name="l01140"></a>01140   <a class="code" href="local__search_8cc.html#3c46258b924243eeeb3608b2df18db4f">limit_</a> = <a class="code" href="expressions_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeLimit(time_limit_ms_,
+<a name="l01140"></a>01140   <a class="code" href="local__search_8cc.html#1c69e7dcf9d555da2ceac2a003b9e647">limit_</a> = <a class="code" href="expressions_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeLimit(time_limit_ms_,
 <a name="l01141"></a>01141                               kint64max,
 <a name="l01142"></a>01142                               kint64max,
 <a name="l01143"></a>01143                               FLAGS_routing_solution_limit,
 <a name="l01144"></a>01144                               <span class="keyword">true</span>);
-<a name="l01145"></a>01145   <a class="code" href="search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>.push_back(<a class="code" href="local__search_8cc.html#3c46258b924243eeeb3608b2df18db4f">limit_</a>);
+<a name="l01145"></a>01145   <a class="code" href="local__search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>.push_back(<a class="code" href="local__search_8cc.html#1c69e7dcf9d555da2ceac2a003b9e647">limit_</a>);
 <a name="l01146"></a>01146 
 <a name="l01147"></a>01147   ls_limit_ = <a class="code" href="expressions_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeLimit(time_limit_ms_,
 <a name="l01148"></a>01148                                  kint64max,
@@ -1343,7 +1343,7 @@
 <a name="l01260"></a>01260   }
 <a name="l01261"></a>01261   <span class="keywordflow">if</span> (FLAGS_routing_use_first_solution_dive) {
 <a name="l01262"></a>01262     DecisionBuilder* apply =
-<a name="l01263"></a>01263         <a class="code" href="expressions_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeApplyBranchSelector(NewPermanentCallback(&amp;<a class="code" href="namespaceoperations__research.html#ff3ac2f3f9759e7ed2aa231d19a843c2" title="Left-branch dive branch selector.">LeftDive</a>));
+<a name="l01263"></a>01263         <a class="code" href="expressions_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeApplyBranchSelector(NewPermanentCallback(&amp;<a class="code" href="namespaceoperations__research.html#b8345ed253872d697c1e3dc9d5cf7862" title="Left-branch dive branch selector.">LeftDive</a>));
 <a name="l01264"></a>01264     first_solution = <a class="code" href="expressions_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;Compose(apply, first_solution);
 <a name="l01265"></a>01265   }
 <a name="l01266"></a>01266 
@@ -1429,11 +1429,11 @@
 <a name="l01346"></a>01346   <span class="keywordflow">if</span> (FLAGS_routing_trace) {
 <a name="l01347"></a>01347     <span class="keyword">const</span> <span class="keywordtype">int</span> kLogPeriod = 10000;
 <a name="l01348"></a>01348     SearchMonitor* trace = <a class="code" href="expressions_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeSearchLog(kLogPeriod, <a class="code" href="local__search_8cc.html#f0e6b2d118f08f8c910a328aa2de3476">cost_</a>);
-<a name="l01349"></a>01349     <a class="code" href="search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>.push_back(trace);
+<a name="l01349"></a>01349     <a class="code" href="local__search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>.push_back(trace);
 <a name="l01350"></a>01350   }
 <a name="l01351"></a>01351   <span class="keywordflow">if</span> (FLAGS_routing_search_trace) {
 <a name="l01352"></a>01352     SearchMonitor* trace = <a class="code" href="expressions_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeSearchTrace(<span class="stringliteral">"Routing "</span>);
-<a name="l01353"></a>01353     <a class="code" href="search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>.push_back(trace);
+<a name="l01353"></a>01353     <a class="code" href="local__search_8cc.html#9d84fc009216df22096caf7925401b19">monitors_</a>.push_back(trace);
 <a name="l01354"></a>01354   }
 <a name="l01355"></a>01355 }
 <a name="l01356"></a>01356 
@@ -1548,7 +1548,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#439154 height=3></td>
+      <td colspan=2 bgcolor=#371311 height=3></td>
     </tr>
   </table>
 

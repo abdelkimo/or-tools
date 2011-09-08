@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #439154
+      background-color: #371311
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#439154 height=3></td>
+      <td colspan=3 bgcolor=#371311 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#439154><b>Mon Sep  5 08:02:19 PDT 2011</b></font>
+          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#439154>
+            <td bgcolor=#371311>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/examples/index.html">examples</a>/
             </tt></b></font>
@@ -111,11 +111,11 @@
 <a name="l00028"></a>00028 <span class="preprocessor">#include "<a class="code" href="parse__dimacs__assignment_8h.html">examples/parse_dimacs_assignment.h</a>"</span>
 <a name="l00029"></a>00029 <span class="preprocessor">#include "<a class="code" href="print__dimacs__assignment_8h.html">examples/print_dimacs_assignment.h</a>"</span>
 <a name="l00030"></a>00030 
-<a name="l00031"></a>00031 <a class="code" href="costas__array_8cc.html#5236ef9cc4490cd59f344852dc768c45">DEFINE_string</a>(assignment_problem_output_file, <span class="stringliteral">""</span>,
-<a name="l00032"></a>00032               <span class="stringliteral">"Print the problem to this file in DIMACS format (after layout "</span>
-<a name="l00033"></a>00033               <span class="stringliteral">"is optimized, if applicable)."</span>);
-<a name="l00034"></a>00034 <a class="code" href="costas__array_8cc.html#481252203d46207b482271a18f5b5399">DEFINE_bool</a>(assignment_compare_hungarian, <span class="keyword">false</span>,
-<a name="l00035"></a>00035             <span class="stringliteral">"Compare result and speed against Hungarian method."</span>);
+<a name="l00031"></a>00031 <a class="code" href="costas__array_8cc.html#481252203d46207b482271a18f5b5399">DEFINE_bool</a>(assignment_compare_hungarian, <span class="keyword">false</span>,
+<a name="l00032"></a>00032             <span class="stringliteral">"Compare result and speed against Hungarian method."</span>);
+<a name="l00033"></a>00033 <a class="code" href="costas__array_8cc.html#5236ef9cc4490cd59f344852dc768c45">DEFINE_string</a>(assignment_problem_output_file, <span class="stringliteral">""</span>,
+<a name="l00034"></a>00034               <span class="stringliteral">"Print the problem to this file in DIMACS format (after layout "</span>
+<a name="l00035"></a>00035               <span class="stringliteral">"is optimized, if applicable)."</span>);
 <a name="l00036"></a>00036 
 <a name="l00037"></a>00037 <span class="keyword">namespace </span>operations_research {
 <a name="l00038"></a>00038 
@@ -197,46 +197,50 @@
 <a name="l00114"></a>00114     LOG(FATAL) &lt;&lt; usage;
 <a name="l00115"></a>00115   }
 <a name="l00116"></a>00116   <span class="keywordtype">string</span> error_message;
-<a name="l00117"></a>00117   LinearSumAssignment* assignment =
-<a name="l00118"></a>00118       <a class="code" href="namespaceoperations__research.html#9874f88b30feff0e804ebc096cfa11b1" title="Reads an assignment problem description from the given file in DIMACS format and...">ParseDimacsAssignment</a>(argv[1], &amp;error_message);
-<a name="l00119"></a>00119   <span class="keywordflow">if</span> (assignment == NULL) {
-<a name="l00120"></a>00120     LOG(FATAL) &lt;&lt; error_message;
-<a name="l00121"></a>00121   }
-<a name="l00122"></a>00122   <span class="keywordflow">if</span> (!FLAGS_assignment_problem_output_file.empty()) {
-<a name="l00123"></a>00123     <a class="code" href="namespaceoperations__research.html#f8aa503c000db7cb61c7afb652c4270c">PrintDimacsAssignmentProblem</a>(*assignment,
-<a name="l00124"></a>00124                                  FLAGS_assignment_problem_output_file);
-<a name="l00125"></a>00125   }
-<a name="l00126"></a>00126   CostValue hungarian_cost = 0.0;
-<a name="l00127"></a>00127   <span class="keywordtype">bool</span> hungarian_solved = <span class="keyword">false</span>;
-<a name="l00128"></a>00128   <span class="keywordflow">if</span> (FLAGS_assignment_compare_hungarian) {
-<a name="l00129"></a>00129     hungarian_cost = <a class="code" href="namespaceoperations__research.html#49587903833f5e9936e7f770bc8145de">BuildAndSolveHungarianInstance</a>(*assignment);
-<a name="l00130"></a>00130     hungarian_solved = <span class="keyword">true</span>;
-<a name="l00131"></a>00131   }
-<a name="l00132"></a>00132   WallTimer timer;
-<a name="l00133"></a>00133   timer.Start();
-<a name="l00134"></a>00134   <span class="keywordtype">bool</span> success = assignment-&gt;ComputeAssignment();
-<a name="l00135"></a>00135   <span class="keywordtype">double</span> elapsed = timer.GetInMs() / 1000.0;
-<a name="l00136"></a>00136   <span class="keywordflow">if</span> (success) {
-<a name="l00137"></a>00137     CostValue cost = assignment-&gt;GetCost();
-<a name="l00138"></a>00138     <a class="code" href="namespaceoperations__research.html#e1eae5788c8b95fe86e11b265fd06397">DisplayAssignment</a>(*assignment);
-<a name="l00139"></a>00139     LOG(INFO) &lt;&lt; <span class="stringliteral">"Cost of optimum assignment: "</span> &lt;&lt; cost;
-<a name="l00140"></a>00140     LOG(INFO) &lt;&lt; <span class="stringliteral">"Computed in "</span> &lt;&lt; elapsed &lt;&lt; <span class="stringliteral">" seconds."</span>;
-<a name="l00141"></a>00141     LOG(INFO) &lt;&lt; assignment-&gt;StatsString();
-<a name="l00142"></a>00142     <span class="keywordflow">if</span> (hungarian_solved &amp;&amp; (cost != hungarian_cost)) {
-<a name="l00143"></a>00143       LOG(ERROR) &lt;&lt; <span class="stringliteral">"Optimum cost mismatch: "</span> &lt;&lt; cost &lt;&lt; <span class="stringliteral">" vs. "</span>
-<a name="l00144"></a>00144                  &lt;&lt; hungarian_cost &lt;&lt; <span class="stringliteral">"."</span>;
-<a name="l00145"></a>00145     }
-<a name="l00146"></a>00146   } <span class="keywordflow">else</span> {
-<a name="l00147"></a>00147     LOG(WARNING) &lt;&lt; <span class="stringliteral">"Given problem is infeasible."</span>;
-<a name="l00148"></a>00148   }
-<a name="l00149"></a>00149   <span class="keyword">delete</span> assignment;
-<a name="l00150"></a>00150   <span class="keywordflow">return</span> 0;
-<a name="l00151"></a>00151 }
-<a name="l00152"></a>00152 }  <span class="comment">// namespace operations_research</span>
-<a name="l00153"></a>00153 
-<a name="l00154"></a><a class="code" href="solve__dimacs__assignment_8cc.html#0ddf1224851353fc92bfbff6f499fa97">00154</a> <span class="keywordtype">int</span> <a class="code" href="costas__array_8cc.html#3c04138a5bfe5d72780bb7e82a18e627" title="namespace operations_research">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[]) {
-<a name="l00155"></a>00155   <a class="code" href="namespaceoperations__research.html#cb3256853e57e9afa6c265a01774b695">return ::operations_research::solve_dimacs_assignment</a>(argc, argv);
-<a name="l00156"></a>00156 }
+<a name="l00117"></a>00117   <span class="comment">// Handle on the graph we will need to delete because the</span>
+<a name="l00118"></a>00118   <span class="comment">// LinearSumAssignment object does not take ownership of it.</span>
+<a name="l00119"></a>00119   StarGraph* graph = NULL;
+<a name="l00120"></a>00120   LinearSumAssignment* assignment =
+<a name="l00121"></a>00121       <a class="code" href="namespaceoperations__research.html#c3837c6612433eb3c13a6e605afe271c" title="Reads an assignment problem description from the given file in DIMACS format and...">ParseDimacsAssignment</a>(argv[1], &amp;error_message, &amp;graph);
+<a name="l00122"></a>00122   <span class="keywordflow">if</span> (assignment == NULL) {
+<a name="l00123"></a>00123     LOG(FATAL) &lt;&lt; error_message;
+<a name="l00124"></a>00124   }
+<a name="l00125"></a>00125   <span class="keywordflow">if</span> (!FLAGS_assignment_problem_output_file.empty()) {
+<a name="l00126"></a>00126     <a class="code" href="namespaceoperations__research.html#f8aa503c000db7cb61c7afb652c4270c">PrintDimacsAssignmentProblem</a>(*assignment,
+<a name="l00127"></a>00127                                  FLAGS_assignment_problem_output_file);
+<a name="l00128"></a>00128   }
+<a name="l00129"></a>00129   CostValue hungarian_cost = 0.0;
+<a name="l00130"></a>00130   <span class="keywordtype">bool</span> hungarian_solved = <span class="keyword">false</span>;
+<a name="l00131"></a>00131   <span class="keywordflow">if</span> (FLAGS_assignment_compare_hungarian) {
+<a name="l00132"></a>00132     hungarian_cost = <a class="code" href="namespaceoperations__research.html#49587903833f5e9936e7f770bc8145de">BuildAndSolveHungarianInstance</a>(*assignment);
+<a name="l00133"></a>00133     hungarian_solved = <span class="keyword">true</span>;
+<a name="l00134"></a>00134   }
+<a name="l00135"></a>00135   WallTimer timer;
+<a name="l00136"></a>00136   timer.Start();
+<a name="l00137"></a>00137   <span class="keywordtype">bool</span> success = assignment-&gt;ComputeAssignment();
+<a name="l00138"></a>00138   <span class="keywordtype">double</span> elapsed = timer.GetInMs() / 1000.0;
+<a name="l00139"></a>00139   <span class="keywordflow">if</span> (success) {
+<a name="l00140"></a>00140     CostValue cost = assignment-&gt;GetCost();
+<a name="l00141"></a>00141     <a class="code" href="namespaceoperations__research.html#e1eae5788c8b95fe86e11b265fd06397">DisplayAssignment</a>(*assignment);
+<a name="l00142"></a>00142     LOG(INFO) &lt;&lt; <span class="stringliteral">"Cost of optimum assignment: "</span> &lt;&lt; cost;
+<a name="l00143"></a>00143     LOG(INFO) &lt;&lt; <span class="stringliteral">"Computed in "</span> &lt;&lt; elapsed &lt;&lt; <span class="stringliteral">" seconds."</span>;
+<a name="l00144"></a>00144     LOG(INFO) &lt;&lt; assignment-&gt;StatsString();
+<a name="l00145"></a>00145     <span class="keywordflow">if</span> (hungarian_solved &amp;&amp; (cost != hungarian_cost)) {
+<a name="l00146"></a>00146       LOG(ERROR) &lt;&lt; <span class="stringliteral">"Optimum cost mismatch: "</span> &lt;&lt; cost &lt;&lt; <span class="stringliteral">" vs. "</span>
+<a name="l00147"></a>00147                  &lt;&lt; hungarian_cost &lt;&lt; <span class="stringliteral">"."</span>;
+<a name="l00148"></a>00148     }
+<a name="l00149"></a>00149   } <span class="keywordflow">else</span> {
+<a name="l00150"></a>00150     LOG(WARNING) &lt;&lt; <span class="stringliteral">"Given problem is infeasible."</span>;
+<a name="l00151"></a>00151   }
+<a name="l00152"></a>00152   <span class="keyword">delete</span> assignment;
+<a name="l00153"></a>00153   <span class="keyword">delete</span> graph;
+<a name="l00154"></a>00154   <span class="keywordflow">return</span> 0;
+<a name="l00155"></a>00155 }
+<a name="l00156"></a>00156 }  <span class="comment">// namespace operations_research</span>
+<a name="l00157"></a>00157 
+<a name="l00158"></a><a class="code" href="solve__dimacs__assignment_8cc.html#0ddf1224851353fc92bfbff6f499fa97">00158</a> <span class="keywordtype">int</span> <a class="code" href="costas__array_8cc.html#3c04138a5bfe5d72780bb7e82a18e627" title="namespace operations_research">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[]) {
+<a name="l00159"></a>00159   <a class="code" href="namespaceoperations__research.html#cb3256853e57e9afa6c265a01774b695">return ::operations_research::solve_dimacs_assignment</a>(argc, argv);
+<a name="l00160"></a>00160 }
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -245,7 +249,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#439154 height=3></td>
+      <td colspan=2 bgcolor=#371311 height=3></td>
     </tr>
   </table>
 

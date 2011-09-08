@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #439154
+      background-color: #371311
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#439154 height=3></td>
+      <td colspan=3 bgcolor=#371311 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#439154><b>Mon Sep  5 08:02:18 PDT 2011</b></font>
+          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#439154>
+            <td bgcolor=#371311>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -86,21 +86,6 @@
 <h1><a class="anchor" name="todo">Todo List </a></h1><a class="anchor" name="_todo000010"></a> <dl>
 <dt>Member <a class="el" href="classoperations__research_1_1Assignment.html#e33b6ff4f1647554a2c2e8a02226345d">operations_research::Assignment::IntVarContainer</a> () const  </dt>
 <dd>TODO(<a href="http://who/user">user</a>): Add iterators on elements to avoid exposing container class. </dd>
-</dl>
-<p>
-<a class="anchor" name="_todo000015"></a> <dl>
-<dt>Member <a class="el" href="classoperations__research_1_1LocalSearch.html#92abcab184bea67a69023eeb2e241bb5">operations_research::LocalSearch::LocalSearch</a> (IntVar *const *vars, int size, SolutionPool *const pool, DecisionBuilder *const first_solution, LocalSearchOperator *const ls_operator, DecisionBuilder *const sub_decision_builder, SearchLimit *const limit, const std::vector&lt; LocalSearchFilter * &gt; &amp;filters) </dt>
-<dd>TODO(<a href="http://who/user">user</a>): find a way to not have to pass vars here: redundant with variables in operators </dd>
-</dl>
-<p>
-<a class="anchor" name="_todo000026"></a> <dl>
-<dt>Member <a class="el" href="classoperations__research_1_1LocalSearch.html#ab1cf353f65d7b67f7c8aaa86aeac3b7">operations_research::LocalSearch::Next</a> (Solver *const solver) </dt>
-<dd>TODO(<a href="http://who/user">user</a>): abstract this from the local search part </dd>
-</dl>
-<p>
-<a class="anchor" name="_todo000026"></a> <dl>
-<dt>Member <a class="el" href="classoperations__research_1_1LocalSearch.html#ab1cf353f65d7b67f7c8aaa86aeac3b7">operations_research::LocalSearch::Next</a> (Solver *const solver) </dt>
-<dd>TODO(<a href="http://who/user">user</a>): handle the case where the tree depth is not enough to hold all solutions. </dd>
 </dl>
 <p>
 <a class="anchor" name="_todo000011"></a> <dl>
@@ -165,17 +150,17 @@
 <dd>TODO(<a href="http://who/user">user</a>) : Improve speed, cache previous min and build them incrementally. </dd>
 </dl>
 <p>
-<a class="anchor" name="_todo000023"></a> <dl>
+<a class="anchor" name="_todo000022"></a> <dl>
 <dt>Member <a class="el" href="namespaceoperations__research.html#ec282a7a853c7e2586175881dfe0fe70">operations_research::BuildEndExpr</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto) </dt>
 <dd>TODO(<a href="http://who/user">user</a>): Add API on solver and uncomment this method. </dd>
 </dl>
 <p>
-<a class="anchor" name="_todo000024"></a> <dl>
+<a class="anchor" name="_todo000023"></a> <dl>
 <dt>Member <a class="el" href="namespaceoperations__research.html#0c3a31f30e7cf58c90477096c1fe7d41">operations_research::BuildMember</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto) </dt>
 <dd>TODO(<a href="http://who/user">user</a>): Add API on solver and uncomment this method. </dd>
 </dl>
 <p>
-<a class="anchor" name="_todo000025"></a> <dl>
+<a class="anchor" name="_todo000024"></a> <dl>
 <dt>Member <a class="el" href="namespaceoperations__research.html#9f5ae02198ac4f377d2737f61a13dab8">operations_research::BuildNoCycle</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto) </dt>
 <dd>TODO(<a href="http://who/user">user</a>): Add API on solver and implement this method. </dd>
 </dl>
@@ -195,23 +180,23 @@
 <dd>TODO(<a href="http://who/user">user</a>): Implement ConstIntMatrix to share/manage tuple sets. </dd>
 </dl>
 <p>
-<a class="anchor" name="_todo000016"></a> <dl>
+<a class="anchor" name="_todo000015"></a> <dl>
 <dt>Namespace <a class="el" href="namespaceoperations__research.html">operations_research</a>  </dt>
 <dd>TODO(<a href="http://who/user">user</a>) : optimize constraint to avoid ping pong. After a boolvar is set to 0, we remove the value from the var. There is no need to rescan the var to find the hole if the size at the end of UpdateActive() is the same as the size at the beginning of VarDomain(). </dd>
 </dl>
 <p>
-<a class="anchor" name="_todo000017"></a> <dl>
+<a class="anchor" name="_todo000016"></a> <dl>
 <dt>Namespace <a class="el" href="namespaceoperations__research.html">operations_research</a>  </dt>
 <dd>TODO(<a href="http://who/user">user</a>): improve code when assume_paths is false (currently does an expensive n^2 loop). </dd>
 </dl>
 <p>
 <a class="anchor" name="_todo000033"></a> <dl>
-<dt>Namespace <a class="el" href="namespaceoperations__research_1_1.html">@24operations_research::</a>  </dt>
+<dt>Namespace <a class="el" href="namespaceoperations__research_1_1.html">@25operations_research::</a>  </dt>
 <dd>TODO(<a href="http://who/user">user</a>) : treat optional intervals </dd>
 </dl>
 <p>
 <a class="anchor" name="_todo000033"></a> <dl>
-<dt>Namespace <a class="el" href="namespaceoperations__research_1_1.html">@24operations_research::</a>  </dt>
+<dt>Namespace <a class="el" href="namespaceoperations__research_1_1.html">@25operations_research::</a>  </dt>
 <dd>TODO(<a href="http://who/user">user</a>) : Call DecisionVisitor and pass name of variable </dd>
 </dl>
 </div>
@@ -222,7 +207,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#439154 height=3></td>
+      <td colspan=2 bgcolor=#371311 height=3></td>
     </tr>
   </table>
 

@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #439154
+      background-color: #371311
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#439154 height=3></td>
+      <td colspan=3 bgcolor=#371311 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#439154><b>Mon Sep  5 08:02:19 PDT 2011</b></font>
+          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#439154>
+            <td bgcolor=#371311>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#439154>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/examples/index.html">examples</a>/
             </tt></b></font>
@@ -286,33 +286,49 @@
 <a name="l00203"></a>00203 <span class="comment">// DIMACS format and returns a LinearSumAssignment object representing</span>
 <a name="l00204"></a>00204 <span class="comment">// the problem description. For a description of the format, see</span>
 <a name="l00205"></a>00205 <span class="comment">// http://lpsolve.sourceforge.net/5.5/DIMACS_asn.htm</span>
-<a name="l00206"></a><a class="code" href="namespaceoperations__research.html#9874f88b30feff0e804ebc096cfa11b1">00206</a> LinearSumAssignment* <a class="code" href="namespaceoperations__research.html#9874f88b30feff0e804ebc096cfa11b1" title="Reads an assignment problem description from the given file in DIMACS format and...">ParseDimacsAssignment</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; filename,
-<a name="l00207"></a>00207                                            <span class="keywordtype">string</span>* error_message) {
-<a name="l00208"></a>00208   StarGraph* graph = NULL;
-<a name="l00209"></a>00209   LinearSumAssignment* assignment = NULL;
-<a name="l00210"></a>00210   <a class="code" href="structoperations__research_1_1ParserState.html">ParserState</a> state;
-<a name="l00211"></a>00211   Callback1&lt;char*&gt;* cb =
-<a name="l00212"></a>00212       NewPermanentCallback(<a class="code" href="namespaceoperations__research.html#873d7e9bacf009a6303caeccf0904271" title="Parameters out of style-guide order because this function is used as a callback that...">ParseOneLine</a>, &amp;state, &amp;graph, &amp;assignment);
-<a name="l00213"></a>00213   <span class="comment">// ParseFileByLines takes ownership of cb and deletes it.</span>
-<a name="l00214"></a>00214   <a class="code" href="namespaceoperations__research.html#360c446ab6b99c99069c34dba92b0b3b">ParseFileByLines</a>(filename, cb);
-<a name="l00215"></a>00215 
-<a name="l00216"></a>00216   <span class="keywordflow">if</span> (state.<a class="code" href="structoperations__research_1_1ParserState.html#7039cf0210bf45479c54b0f3578e0c08">bad</a>) {
-<a name="l00217"></a>00217     *error_message = state.<a class="code" href="structoperations__research_1_1ParserState.html#9f08d3c5eb0dce04adafe422bcc13af3">reason</a>;
-<a name="l00218"></a>00218     *error_message = *error_message + <span class="stringliteral">": \""</span> + *state.<a class="code" href="structoperations__research_1_1ParserState.html#ebc5545eba6bababb72984e68b904099">bad_line</a> + <span class="stringliteral">"\""</span>;
-<a name="l00219"></a>00219     <span class="keywordflow">return</span> NULL;
-<a name="l00220"></a>00220   }
-<a name="l00221"></a>00221   <span class="keywordflow">if</span> (graph == NULL) {
-<a name="l00222"></a>00222     *error_message = <span class="stringliteral">"empty graph description"</span>;
-<a name="l00223"></a>00223     <span class="keywordflow">return</span> NULL;
-<a name="l00224"></a>00224   }
-<a name="l00225"></a>00225   <span class="keywordflow">if</span> (FLAGS_assignment_optimize_layout) {
-<a name="l00226"></a>00226     assignment-&gt;OptimizeGraphLayout(graph);
-<a name="l00227"></a>00227   }
-<a name="l00228"></a>00228   *error_message = <span class="stringliteral">""</span>;
-<a name="l00229"></a>00229   <span class="keywordflow">return</span> assignment;
-<a name="l00230"></a>00230 }
-<a name="l00231"></a>00231 
-<a name="l00232"></a>00232 }  <span class="comment">// namespace operations_research</span>
+<a name="l00206"></a>00206 <span class="comment">//</span>
+<a name="l00207"></a>00207 <span class="comment">// Also returns an error message (empty if no error) and a handle on</span>
+<a name="l00208"></a>00208 <span class="comment">// the underlying graph representation. The error_message pointer must</span>
+<a name="l00209"></a>00209 <span class="comment">// not be NULL because we insist on returning an explanatory message</span>
+<a name="l00210"></a>00210 <span class="comment">// in the case of error. The graph_handle pointer must not be NULL</span>
+<a name="l00211"></a>00211 <span class="comment">// because unless we pass a non-const pointer to the graph</span>
+<a name="l00212"></a>00212 <span class="comment">// representation back to the caller, the caller lacks a good way to</span>
+<a name="l00213"></a>00213 <span class="comment">// free the underlying graph (which isn't owned by the</span>
+<a name="l00214"></a>00214 <span class="comment">// LinearAssignment instance).</span>
+<a name="l00215"></a><a class="code" href="namespaceoperations__research.html#c3837c6612433eb3c13a6e605afe271c">00215</a> LinearSumAssignment* <a class="code" href="namespaceoperations__research.html#c3837c6612433eb3c13a6e605afe271c" title="Reads an assignment problem description from the given file in DIMACS format and...">ParseDimacsAssignment</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; filename,
+<a name="l00216"></a>00216                                            <span class="keywordtype">string</span>* error_message,
+<a name="l00217"></a>00217                                            StarGraph** graph_handle) {
+<a name="l00218"></a>00218   CHECK_NOTNULL(error_message);
+<a name="l00219"></a>00219   CHECK_NOTNULL(graph_handle);
+<a name="l00220"></a>00220   StarGraph* graph = NULL;
+<a name="l00221"></a>00221   LinearSumAssignment* assignment = NULL;
+<a name="l00222"></a>00222   <a class="code" href="structoperations__research_1_1ParserState.html">ParserState</a> state;
+<a name="l00223"></a>00223   Callback1&lt;char*&gt;* cb =
+<a name="l00224"></a>00224       NewPermanentCallback(<a class="code" href="namespaceoperations__research.html#873d7e9bacf009a6303caeccf0904271" title="Parameters out of style-guide order because this function is used as a callback that...">ParseOneLine</a>, &amp;state, &amp;graph, &amp;assignment);
+<a name="l00225"></a>00225   <span class="comment">// ParseFileByLines takes ownership of cb and deletes it.</span>
+<a name="l00226"></a>00226   <a class="code" href="namespaceoperations__research.html#360c446ab6b99c99069c34dba92b0b3b">ParseFileByLines</a>(filename, cb);
+<a name="l00227"></a>00227 
+<a name="l00228"></a>00228   <span class="keywordflow">if</span> (state.<a class="code" href="structoperations__research_1_1ParserState.html#7039cf0210bf45479c54b0f3578e0c08">bad</a>) {
+<a name="l00229"></a>00229     *error_message = state.<a class="code" href="structoperations__research_1_1ParserState.html#9f08d3c5eb0dce04adafe422bcc13af3">reason</a>;
+<a name="l00230"></a>00230     *error_message = *error_message + <span class="stringliteral">": \""</span> + *state.<a class="code" href="structoperations__research_1_1ParserState.html#ebc5545eba6bababb72984e68b904099">bad_line</a> + <span class="stringliteral">"\""</span>;
+<a name="l00231"></a>00231     <span class="keywordflow">return</span> NULL;
+<a name="l00232"></a>00232   }
+<a name="l00233"></a>00233   <span class="keywordflow">if</span> (graph == NULL) {
+<a name="l00234"></a>00234     *error_message = <span class="stringliteral">"empty graph description"</span>;
+<a name="l00235"></a>00235     <span class="keywordflow">return</span> NULL;
+<a name="l00236"></a>00236   }
+<a name="l00237"></a>00237   <span class="keywordflow">if</span> (FLAGS_assignment_optimize_layout) {
+<a name="l00238"></a>00238     assignment-&gt;OptimizeGraphLayout(graph);
+<a name="l00239"></a>00239   }
+<a name="l00240"></a>00240   *error_message = <span class="stringliteral">""</span>;
+<a name="l00241"></a>00241   <span class="comment">// Return a handle on the graph to the caller so the caller can free</span>
+<a name="l00242"></a>00242   <span class="comment">// the graph's memory, because the LinearSumAssignment object does</span>
+<a name="l00243"></a>00243   <span class="comment">// not take ownership of the graph and hence will not free it.</span>
+<a name="l00244"></a>00244   *graph_handle = graph;
+<a name="l00245"></a>00245   <span class="keywordflow">return</span> assignment;
+<a name="l00246"></a>00246 }
+<a name="l00247"></a>00247 
+<a name="l00248"></a>00248 }  <span class="comment">// namespace operations_research</span>
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -321,7 +337,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#439154 height=3></td>
+      <td colspan=2 bgcolor=#371311 height=3></td>
     </tr>
   </table>
 
