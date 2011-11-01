@@ -31,7 +31,7 @@ or-tools/
 
 =Installing with a binary archives for dependencies =
 
-Dependencies have been created for Ubuntu Linux 10.04 and 10.10 (32 and 64 bit), and visual studio 10 (32 bit).
+Dependencies have been created for Ubuntu Linux 10.04, 10.10, 11.04  and 11.10 (32 and 64 bit), and visual studio 10 (32 bit).
 
 First, create the or-tools svn copy where you want to work. All dependencies will be placed at the same level, along side this directory.
 
@@ -83,18 +83,18 @@ or-tools directory.
 Then you need to install protocol buffers. You can fetch them at http://code.google.com/p/protobuf/ . Please install them alongside or-tools.
 
 It is recommanded you also install linear solver:
-   * GLPK from http://ftp.gnu.org/gnu/glpk/ . Install it in ../glpk-4.45
-   * Coin Branch and Cut from http://www.coin-or.org/download/source/Cbc/ . Install it in ../cbc-2.6.4
+   * GLPK from http://ftp.gnu.org/gnu/glpk/ . Install it in ../glpk-4.47
+   * Coin Branch and Cut from http://www.coin-or.org/download/source/Cbc/ . Install it in ../cbc-2.7.4
 
 You can also install scip and soplex. 
 The recommended way is the following:  
   # Download ZIB Oprimization Suite from http://zibopt.zib.de/download.shtml
-  # Unpack everything with {{{tar cvzf ziboptsuite-2.0.1.tgz}}} alongside or-tools
-  # Change into the directory ziboptsuite-2.0.1
+  # Unpack everything with {{{tar cvzf ziboptsuite-2.1.0.tgz}}} alongside or-tools
+  # Change into the directory ziboptsuite-2.1.0
   # Compile using:
     * On linux: {{{make ZIMPL=false READLINE=false USRCXXFLAGS=-fPIC CFLAGS=-fPIC}}}
     * On mac OS X: {{{make ZIMPL=false READLINE=false}}}
-  # Add {{{UNIX_SCIP_DIR=<path to ziboptsuite>scip-2.0.1}}} in Makefile.local
+  # Add {{{UNIX_SCIP_DIR=<path to ziboptsuite>scip-2.1.0}}} in Makefile.local
 
 Finally, you need to install google-apputils from:
 http://code.google.com/p/google-apputils-python/
@@ -110,8 +110,8 @@ First you need to compile the C++ libraries:
   # Create a repertory that will hold all source code. I will refer to this as `_work_`.
   # Create the `_work_/install` repertory.
   # Download google-gflags from http://code.google.com/p/google-gflags/ and untar in `_work_/install`
-  # Step into `_work_/install/gflags-1.5` and run the following command:
-    * `./configure --prefix=_work_/gflags-1.5`
+  # Step into `_work_/install/gflags-1.6` and run the following command:
+    * `./configure --prefix=_work_/gflags-1.6`
     * `make`
     * `make install`
 Download protobuf  from http://code.google.com/p/protobuf/ and untar in `_work_/install`
@@ -121,8 +121,8 @@ Download protobuf  from http://code.google.com/p/protobuf/ and untar in `_work_/
     * `make install`
 
 It is recommanded you also install linear solver:
-   * GLPK from http://ftp.gnu.org/gnu/glpk/ . Install it in ../glpk-4.45
-   * Coin Branch and Cut from http://www.coin-or.org/download/source/Cbc/ . Install it in ../cbc-2.6.4
+   * GLPK from http://ftp.gnu.org/gnu/glpk/ . Install it in ../glpk-4.47
+   * Coin Branch and Cut from http://www.coin-or.org/download/source/Cbc/ . Install it in ../cbc-2.7.4
 
 Then you can compile the python library.
 
@@ -192,7 +192,7 @@ To use Python, you need to install python and swigwin and some dependencies:
 
 This has been tested with swigwin-2.0.x available from there:
 
-http://prdownloads.sourceforge.net/swig/swigwin-2.0.3.zip
+http://prdownloads.sourceforge.net/swig/swigwin-2.0.4.zip
 
 and python from 
 
