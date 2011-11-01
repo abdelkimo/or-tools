@@ -93,7 +93,7 @@ The recommended way is the following:
   # Change into the directory ziboptsuite-2.1.0
   # Compile using:
     * On linux: {{{make ZIMPL=false READLINE=false USRCXXFLAGS=-fPIC CFLAGS=-fPIC}}}
-    * On mac OS X: {{{make ZIMPL=false READLINE=false}}}
+    * On mac OS X: {{{make ZIMPL=false READLINE=false ARCH=x86_64}}}
   # Add {{{UNIX_SCIP_DIR=<path to ziboptsuite>scip-2.1.0}}} in Makefile.local
 
 Finally, you need to install google-apputils from:
