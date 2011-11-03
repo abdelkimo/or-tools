@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/examples/index.html">examples</a>/
             </tt></b></font>
@@ -118,11 +118,11 @@
 <a name="l00035"></a>00035 }
 <a name="l00036"></a>00036 
 <a name="l00037"></a>00037 
-<a name="l00038"></a><a class="code" href="namespaceoperations__research.html#f8aa503c000db7cb61c7afb652c4270c">00038</a> <span class="keywordtype">void</span> <a class="code" href="namespaceoperations__research.html#f8aa503c000db7cb61c7afb652c4270c">PrintDimacsAssignmentProblem</a>(<span class="keyword">const</span> LinearSumAssignment&amp; assignment,
+<a name="l00038"></a><a class="code" href="namespaceoperations__research.html#f8aa503c000db7cb61c7afb652c4270c">00038</a> <span class="keywordtype">void</span> <a class="code" href="namespaceoperations__research.html#f8aa503c000db7cb61c7afb652c4270c" title="Given a LinearSumAssigment object representing an assignment problem description...">PrintDimacsAssignmentProblem</a>(<span class="keyword">const</span> LinearSumAssignment&amp; assignment,
 <a name="l00039"></a>00039                                   <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; output_filename) {
 <a name="l00040"></a>00040   FILE* output = fopen(output_filename.c_str(), <span class="stringliteral">"w"</span>);
 <a name="l00041"></a>00041   <span class="keyword">const</span> StarGraph&amp; graph(assignment.Graph());
-<a name="l00042"></a>00042   <span class="keywordtype">string</span> output_line = StringPrintf(<span class="stringliteral">"p asn %lld %lld\n"</span>,
+<a name="l00042"></a>00042   <span class="keywordtype">string</span> output_line = StringPrintf(<span class="stringliteral">"p asn %d %d\n"</span>,
 <a name="l00043"></a>00043                                     graph.num_nodes(),
 <a name="l00044"></a>00044                                     graph.num_arcs());
 <a name="l00045"></a>00045   <a class="code" href="namespaceoperations__research.html#2994448ae44ee56797cd73d87714c3e8">WriteOrDie</a>(output_line.c_str(), 1, output_line.length(),
@@ -131,7 +131,7 @@
 <a name="l00048"></a>00048   <span class="keywordflow">for</span> (LinearSumAssignment::BipartiteLeftNodeIterator node_it(assignment);
 <a name="l00049"></a>00049        node_it.Ok();
 <a name="l00050"></a>00050        node_it.Next()) {
-<a name="l00051"></a>00051     output_line = StringPrintf(<span class="stringliteral">"n %lld\n"</span>, node_it.Index() + 1);
+<a name="l00051"></a>00051     output_line = StringPrintf(<span class="stringliteral">"n %d\n"</span>, node_it.Index() + 1);
 <a name="l00052"></a>00052     <a class="code" href="namespaceoperations__research.html#2994448ae44ee56797cd73d87714c3e8">WriteOrDie</a>(output_line.c_str(), 1, output_line.length(),
 <a name="l00053"></a>00053                output);
 <a name="l00054"></a>00054   }
@@ -140,7 +140,7 @@
 <a name="l00057"></a>00057        arc_it.Ok();
 <a name="l00058"></a>00058        arc_it.Next()) {
 <a name="l00059"></a>00059     ArcIndex arc = arc_it.Index();
-<a name="l00060"></a>00060     output_line = StringPrintf(<span class="stringliteral">"a %lld %lld %lld\n"</span>,
+<a name="l00060"></a>00060     output_line = StringPrintf(<span class="stringliteral">"a %d %d %lld\n"</span>,
 <a name="l00061"></a>00061                                graph.Tail(arc) + 1,
 <a name="l00062"></a>00062                                graph.Head(arc) + 1,
 <a name="l00063"></a>00063                                assignment.ArcCost(arc));
@@ -158,7 +158,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

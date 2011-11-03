@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/base/index.html">base</a>/
             </tt></b></font>
@@ -91,7 +91,6 @@
 <div class="contents">
 <h1>operations_research::File Member List</h1>This is the complete list of members for <a class="el" href="classoperations__research_1_1File.html">operations_research::File</a>, including all inherited members.<p><table>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1File.html#2034747911b6833e72ee629f58deee85">Close</a>()</td><td><a class="el" href="classoperations__research_1_1File.html">operations_research::File</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classoperations__research_1_1File.html#8d29cbc1b97ada501584031b6621bc18">Create</a>(const std::string &amp;name, const char *const mode)</td><td><a class="el" href="classoperations__research_1_1File.html">operations_research::File</a></td><td><code> [inline, static]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1File.html#b8a6c556623185a10f463bc778986352">CreateFileName</a>() const </td><td><a class="el" href="classoperations__research_1_1File.html">operations_research::File</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1File.html#6735e9e7dcef2edc5567f3c25b475573">Delete</a>(char *const name)</td><td><a class="el" href="classoperations__research_1_1File.html">operations_research::File</a></td><td><code> [static]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1File.html#7e04ba1f2e2d4d8c509afb77230d9c72">Exists</a>(char *const name)</td><td><a class="el" href="classoperations__research_1_1File.html">operations_research::File</a></td><td><code> [static]</code></td></tr>
@@ -102,8 +101,9 @@
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1File.html#50287888e610d01076af343a8acdd661">Open</a>() const </td><td><a class="el" href="classoperations__research_1_1File.html">operations_research::File</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1File.html#596032771b51b85be622db5b940dabd4">OpenOrDie</a>(const char *const name, const char *const flag)</td><td><a class="el" href="classoperations__research_1_1File.html">operations_research::File</a></td><td><code> [static]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1File.html#2ae8ebf84e6cadcd5a5ee5db2e1cb0f2">Read</a>(void *const buff, size_t size)</td><td><a class="el" href="classoperations__research_1_1File.html">operations_research::File</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classoperations__research_1_1File.html#b141979884e25806c2ee24e63a39729c">ReadLine</a>(std::string *const line)</td><td><a class="el" href="classoperations__research_1_1File.html">operations_research::File</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classoperations__research_1_1File.html#972626ff3b72c28096ba142e68177695">ReadLine</a>(char *const output, uint64 max_length)</td><td><a class="el" href="classoperations__research_1_1File.html">operations_research::File</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1File.html#80057de1eaa1892ac986b65d61bf53e2">ReadOrDie</a>(void *const buff, size_t size)</td><td><a class="el" href="classoperations__research_1_1File.html">operations_research::File</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classoperations__research_1_1File.html#588bcd04b129e1d61a16b540bde0d37c">ReadToString</a>(std::string *const line, uint64 max_length)</td><td><a class="el" href="classoperations__research_1_1File.html">operations_research::File</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1File.html#b3de85a3b33073351920916fdfa863be">Size</a>()</td><td><a class="el" href="classoperations__research_1_1File.html">operations_research::File</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1File.html#07d17c8751b8e94f0c48b65d01c1c160">Write</a>(const void *const buff, size_t size)</td><td><a class="el" href="classoperations__research_1_1File.html">operations_research::File</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classoperations__research_1_1File.html#db48899659b846de9d0bbf3e06c3df71">WriteLine</a>(const std::string &amp;line)</td><td><a class="el" href="classoperations__research_1_1File.html">operations_research::File</a></td><td></td></tr>
@@ -117,7 +117,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

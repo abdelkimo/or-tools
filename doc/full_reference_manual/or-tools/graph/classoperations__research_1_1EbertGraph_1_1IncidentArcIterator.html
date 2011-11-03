@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>or-tools/graph/: operations_research::EbertGraph&lt; NodeIndexSize, ArcIndexSize &gt;::IncidentArcIterator Class Reference - Doxy</title>
+    <title>or-tools/graph/: operations_research::EbertGraph&lt; NodeIndexType, ArcIndexType &gt;::IncidentArcIterator Class Reference - Doxy</title>
     <link rel="shortcut icon" href="../../favicon.ico">
     <!-- Both stylesheets are supplied by Doxygen, with maybe minor tweaks from Google. -->
     <link href="../../doxygen.css" rel="stylesheet" type="text/css">
@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:11 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/graph/index.html">graph</a>/
             </tt></b></font>
@@ -92,7 +92,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>operations_research::EbertGraph&lt; NodeIndexSize, ArcIndexSize &gt;::IncidentArcIterator Class Reference</h1><!-- doxytag: class="operations_research::EbertGraph::IncidentArcIterator" -->Iterator class for traversing the arcs incident to a given node in the graph.  
+<h1>operations_research::EbertGraph&lt; NodeIndexType, ArcIndexType &gt;::IncidentArcIterator Class Reference</h1><!-- doxytag: class="operations_research::EbertGraph::IncidentArcIterator" -->Iterator class for traversing the arcs incident to a given node in the graph.  
 <a href="#_details">More...</a>
 <p>
 <code>#include &lt;<a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>&gt;</code>
@@ -102,38 +102,41 @@
 <a href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html#cdda0cb7bd331fda9985f1ca17f4b12f">IncidentArcIterator</a> (const <a class="el" href="classoperations__research_1_1EbertGraph.html">EbertGraph</a> &amp;graph, <a class="el" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html#87bd2f6dd3dd1b7ca3b84be7ae3c1644">IncidentArcIterator</a> (const <a class="el" href="classoperations__research_1_1EbertGraph.html">EbertGraph</a> &amp;graph, NodeIndexType node)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html#7bd349bd67b8bb355ab735c15efb675a">IncidentArcIterator</a> (const <a class="el" href="classoperations__research_1_1EbertGraph.html">EbertGraph</a> &amp;graph, <a class="el" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a> node, <a class="el" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> arc)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html#9866c5ad26451adee1358d4655609138">IncidentArcIterator</a> (const <a class="el" href="classoperations__research_1_1EbertGraph.html">EbertGraph</a> &amp;graph, NodeIndexType node, ArcIndexType arc)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This constructor takes an arc as extra argument and makes the iterator start at arc.  <a href="#7bd349bd67b8bb355ab735c15efb675a"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html#357a9c32cb0bb9f1d850f4244059ba5e">Ok</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This constructor takes an arc as extra argument and makes the iterator start at arc.  <a href="#9866c5ad26451adee1358d4655609138"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html#399fa1255274c42c9a96a6eeee2a7937">operator=</a> (const <a class="el" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html">IncidentArcIterator</a> &amp;iterator)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns true unless all the adjancent arcs have been traversed.  <a href="#357a9c32cb0bb9f1d850f4244059ba5e"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html#1272fe6bb9d33d2305380c968f46c2f1">Next</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Can only assign from an iterator on the same graph.  <a href="#399fa1255274c42c9a96a6eeee2a7937"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html#b1ce317b996294899d4e6f3b69aa4279">Ok</a> () const </td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Advances the current adjacent arc index.  <a href="#1272fe6bb9d33d2305380c968f46c2f1"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html#d1282bd4fd6f77b0bceb9384bfce341c">Index</a> () const </td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns true unless all the adjancent arcs have been traversed.  <a href="#b1ce317b996294899d4e6f3b69aa4279"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html#bfa6996622709b4ef4fc6c8730fdc09e">Next</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the index of the arc currently pointed to by the iterator.  <a href="#d1282bd4fd6f77b0bceb9384bfce341c"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Advances the current adjacent arc index.  <a href="#bfa6996622709b4ef4fc6c8730fdc09e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">ArcIndexType&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html#0dde6b84aff77d5fa54eaa0202d7b9b9">Index</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the index of the arc currently pointed to by the iterator.  <a href="#0dde6b84aff77d5fa54eaa0202d7b9b9"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-<h3>template&lt;int NodeIndexSize, int ArcIndexSize&gt;<br>
- class operations_research::EbertGraph&lt; NodeIndexSize, ArcIndexSize &gt;::IncidentArcIterator</h3>
+<h3>template&lt;typename NodeIndexType, typename ArcIndexType&gt;<br>
+ class operations_research::EbertGraph&lt; NodeIndexType, ArcIndexType &gt;::IncidentArcIterator</h3>
 
 Iterator class for traversing the arcs incident to a given node in the graph. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00390">390</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00392">392</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="cdda0cb7bd331fda9985f1ca17f4b12f"></a><!-- doxytag: member="operations_research::EbertGraph::IncidentArcIterator::IncidentArcIterator" ref="cdda0cb7bd331fda9985f1ca17f4b12f" args="(const EbertGraph &amp;graph, NodeIndex node)" -->
+<a class="anchor" name="87bd2f6dd3dd1b7ca3b84be7ae3c1644"></a><!-- doxytag: member="operations_research::EbertGraph::IncidentArcIterator::IncidentArcIterator" ref="87bd2f6dd3dd1b7ca3b84be7ae3c1644" args="(const EbertGraph &amp;graph, NodeIndexType node)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
+template&lt;typename NodeIndexType, typename ArcIndexType&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classoperations__research_1_1EbertGraph.html">operations_research::EbertGraph</a>&lt; NodeIndexSize, ArcIndexSize &gt;::IncidentArcIterator::IncidentArcIterator           </td>
+          <td class="memname"><a class="el" href="classoperations__research_1_1EbertGraph.html">operations_research::EbertGraph</a>&lt; NodeIndexType, ArcIndexType &gt;::IncidentArcIterator::IncidentArcIterator           </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classoperations__research_1_1EbertGraph.html">EbertGraph</a> &amp;&nbsp;</td>
           <td class="paramname"> <em>graph</em>, </td>
@@ -141,7 +144,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a>&nbsp;</td>
+          <td class="paramtype">NodeIndexType&nbsp;</td>
           <td class="paramname"> <em>node</em></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -155,18 +158,18 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00392">392</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00394">394</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="7bd349bd67b8bb355ab735c15efb675a"></a><!-- doxytag: member="operations_research::EbertGraph::IncidentArcIterator::IncidentArcIterator" ref="7bd349bd67b8bb355ab735c15efb675a" args="(const EbertGraph &amp;graph, NodeIndex node, ArcIndex arc)" -->
+<a class="anchor" name="9866c5ad26451adee1358d4655609138"></a><!-- doxytag: member="operations_research::EbertGraph::IncidentArcIterator::IncidentArcIterator" ref="9866c5ad26451adee1358d4655609138" args="(const EbertGraph &amp;graph, NodeIndexType node, ArcIndexType arc)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
+template&lt;typename NodeIndexType, typename ArcIndexType&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classoperations__research_1_1EbertGraph.html">operations_research::EbertGraph</a>&lt; NodeIndexSize, ArcIndexSize &gt;::IncidentArcIterator::IncidentArcIterator           </td>
+          <td class="memname"><a class="el" href="classoperations__research_1_1EbertGraph.html">operations_research::EbertGraph</a>&lt; NodeIndexType, ArcIndexType &gt;::IncidentArcIterator::IncidentArcIterator           </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classoperations__research_1_1EbertGraph.html">EbertGraph</a> &amp;&nbsp;</td>
           <td class="paramname"> <em>graph</em>, </td>
@@ -174,13 +177,13 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceoperations__research.html#bd22b9920b8b8f150cc9263533cebe1b">NodeIndex</a>&nbsp;</td>
+          <td class="paramtype">NodeIndexType&nbsp;</td>
           <td class="paramname"> <em>node</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a>&nbsp;</td>
+          <td class="paramtype">ArcIndexType&nbsp;</td>
           <td class="paramname"> <em>arc</em></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -196,19 +199,45 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 This constructor takes an arc as extra argument and makes the iterator start at arc. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00401">401</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00403">403</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
 <hr><h2>Member Function Documentation</h2>
-<a class="anchor" name="357a9c32cb0bb9f1d850f4244059ba5e"></a><!-- doxytag: member="operations_research::EbertGraph::IncidentArcIterator::Ok" ref="357a9c32cb0bb9f1d850f4244059ba5e" args="() const " -->
+<a class="anchor" name="399fa1255274c42c9a96a6eeee2a7937"></a><!-- doxytag: member="operations_research::EbertGraph::IncidentArcIterator::operator=" ref="399fa1255274c42c9a96a6eeee2a7937" args="(const IncidentArcIterator &amp;iterator)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
+template&lt;typename NodeIndexType, typename ArcIndexType&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="classoperations__research_1_1EbertGraph.html">operations_research::EbertGraph</a>&lt; NodeIndexSize, ArcIndexSize &gt;::IncidentArcIterator::Ok           </td>
+          <td class="memname">void <a class="el" href="classoperations__research_1_1EbertGraph.html">operations_research::EbertGraph</a>&lt; NodeIndexType, ArcIndexType &gt;::IncidentArcIterator::operator=           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoperations__research_1_1EbertGraph_1_1IncidentArcIterator.html">IncidentArcIterator</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>iterator</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Can only assign from an iterator on the same graph. 
+<p>
+
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00413">413</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b1ce317b996294899d4e6f3b69aa4279"></a><!-- doxytag: member="operations_research::EbertGraph::IncidentArcIterator::Ok" ref="b1ce317b996294899d4e6f3b69aa4279" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename NodeIndexType, typename ArcIndexType&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="classoperations__research_1_1EbertGraph.html">operations_research::EbertGraph</a>&lt; NodeIndexType, ArcIndexType &gt;::IncidentArcIterator::Ok           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
@@ -222,18 +251,18 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns true unless all the adjancent arcs have been traversed. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00409">409</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00420">420</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="1272fe6bb9d33d2305380c968f46c2f1"></a><!-- doxytag: member="operations_research::EbertGraph::IncidentArcIterator::Next" ref="1272fe6bb9d33d2305380c968f46c2f1" args="()" -->
+<a class="anchor" name="bfa6996622709b4ef4fc6c8730fdc09e"></a><!-- doxytag: member="operations_research::EbertGraph::IncidentArcIterator::Next" ref="bfa6996622709b4ef4fc6c8730fdc09e" args="()" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
+template&lt;typename NodeIndexType, typename ArcIndexType&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="classoperations__research_1_1EbertGraph.html">operations_research::EbertGraph</a>&lt; NodeIndexSize, ArcIndexSize &gt;::IncidentArcIterator::Next           </td>
+          <td class="memname">void <a class="el" href="classoperations__research_1_1EbertGraph.html">operations_research::EbertGraph</a>&lt; NodeIndexType, ArcIndexType &gt;::IncidentArcIterator::Next           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
@@ -247,18 +276,18 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Advances the current adjacent arc index. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00412">412</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00423">423</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="d1282bd4fd6f77b0bceb9384bfce341c"></a><!-- doxytag: member="operations_research::EbertGraph::IncidentArcIterator::Index" ref="d1282bd4fd6f77b0bceb9384bfce341c" args="() const " -->
+<a class="anchor" name="0dde6b84aff77d5fa54eaa0202d7b9b9"></a><!-- doxytag: member="operations_research::EbertGraph::IncidentArcIterator::Index" ref="0dde6b84aff77d5fa54eaa0202d7b9b9" args="() const " -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
+template&lt;typename NodeIndexType, typename ArcIndexType&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespaceoperations__research.html#6f44eda801f15f3cd9de08a5860bb5d6">ArcIndex</a> <a class="el" href="classoperations__research_1_1EbertGraph.html">operations_research::EbertGraph</a>&lt; NodeIndexSize, ArcIndexSize &gt;::IncidentArcIterator::Index           </td>
+          <td class="memname">ArcIndexType <a class="el" href="classoperations__research_1_1EbertGraph.html">operations_research::EbertGraph</a>&lt; NodeIndexType, ArcIndexType &gt;::IncidentArcIterator::Index           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
@@ -272,7 +301,7 @@ template&lt;int NodeIndexSize, int ArcIndexSize&gt; </div>
 Returns the index of the arc currently pointed to by the iterator. 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00418">418</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00429">429</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -286,7 +315,7 @@ Returns the index of the arc currently pointed to by the iterator.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

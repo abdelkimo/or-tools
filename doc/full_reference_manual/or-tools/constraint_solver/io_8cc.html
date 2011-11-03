@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -83,14 +83,23 @@
   </div>
 </div>
 <div class="contents">
-<h1>or-tools/constraint_solver/io.cc File Reference</h1><code>#include &quot;base/integral_types.h&quot;</code><br>
+<h1>or-tools/constraint_solver/io.cc File Reference</h1><code>#include &lt;stddef.h&gt;</code><br>
+<code>#include &lt;algorithm&gt;</code><br>
+<code>#include &quot;base/hash.h&quot;</code><br>
+<code>#include &lt;string&gt;</code><br>
+<code>#include &lt;utility&gt;</code><br>
+<code>#include &lt;vector&gt;</code><br>
+<code>#include &quot;base/callback.h&quot;</code><br>
+<code>#include &quot;base/integral_types.h&quot;</code><br>
 <code>#include &quot;base/logging.h&quot;</code><br>
+<code>#include &quot;base/scoped_ptr.h&quot;</code><br>
 <code>#include &quot;base/concise_iterator.h&quot;</code><br>
 <code>#include &quot;base/map-util.h&quot;</code><br>
 <code>#include &quot;base/stl_util.h&quot;</code><br>
+<code>#include &quot;<a class="el" href="constraint__solver_8h-source.html">constraint_solver/constraint_solver.h</a>&quot;</code><br>
 <code>#include &quot;<a class="el" href="constraint__solveri_8h-source.html">constraint_solver/constraint_solveri.h</a>&quot;</code><br>
 <code>#include &quot;constraint_solver/model.pb.h&quot;</code><br>
-<code>#include &quot;util/bitset.h&quot;</code><br>
+<code>#include &quot;constraint_solver/search_limit.pb.h&quot;</code><br>
 <code>#include &quot;util/vector_map.h&quot;</code><br>
 
 <p>
@@ -99,6 +108,10 @@
 <tr><td colspan="2"><br><h2>Namespaces</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">namespace &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html">operations_research</a></td></tr>
 
+<tr><td colspan="2"><br><h2>Classes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1CPModelLoader.html">operations_research::CPModelLoader</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="classoperations__research_1_1CPModelLoader.html" title="CPModelLoader.">CPModelLoader</a>.  <a href="classoperations__research_1_1CPModelLoader.html#_details">More...</a><br></td></tr>
 <tr><td colspan="2"><br><h2>Defines</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="io_8cc.html#38818e3cd642f0c0737956ad568e3751">VERIFY</a>(expr)&nbsp;&nbsp;&nbsp;if (!(expr)) return NULL</td></tr>
 
@@ -111,188 +124,191 @@
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Manage builders.  <a href="#009fc6114c83fa22dd101b38729707a1"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
 <tr><td class="memTemplParams" nowrap colspan="2">template&lt;class T&gt; </td></tr>
-<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#dcf572230a98dbe40bded594489d4b31">operations_research::MakeCallbackFromProto</a> (CPModelBuilder *const builder, const CPExtensionProto &amp;proto, int tag_index, ResultCallback1&lt; T, int64 &gt; **callback)</td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#cc3332e1a364838b4c08c4f6a3f5ba3d">operations_research::MakeCallbackFromProto</a> (CPModelLoader *const builder, const CPExtensionProto &amp;proto, int tag_index, ResultCallback1&lt; T, int64 &gt; **callback)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#4ee8a50a3d7d53e9000bed52535c1d19">operations_research::BuildAbs</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#1e1cd65a7442ebe3326ef29177a2f8d1">operations_research::BuildAbs</a> (CPModelLoader *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kAbs  <a href="#4ee8a50a3d7d53e9000bed52535c1d19"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#8e2b90e78e9ba4f6c1b2d5cd4b9bc6c1">operations_research::BuildAllDifferent</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kAbs  <a href="#1e1cd65a7442ebe3326ef29177a2f8d1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#58bd690db3aed6e1333b81edc20f70fc">operations_research::BuildAllDifferent</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kAllDifferent  <a href="#8e2b90e78e9ba4f6c1b2d5cd4b9bc6c1"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#1e1749e4301ce56713186399c03b5f48">operations_research::BuildAllowedAssignments</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kAllDifferent  <a href="#58bd690db3aed6e1333b81edc20f70fc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#7ef86a340354d6c8b6ff4b1872bc0037">operations_research::BuildAllowedAssignments</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kAllowedAssignments  <a href="#1e1749e4301ce56713186399c03b5f48"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#cf8f285965b9389614b257a54777c221">operations_research::BuildBetween</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kAllowedAssignments  <a href="#7ef86a340354d6c8b6ff4b1872bc0037"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#b3d3e3600c90ba4617889c9e61e5bc2c">operations_research::BuildBetween</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kBetween  <a href="#cf8f285965b9389614b257a54777c221"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#b71cb321b203f847053d9c538d82a8ab">operations_research::BuildConvexPiecewise</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kBetween  <a href="#b3d3e3600c90ba4617889c9e61e5bc2c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#ad4ff351372afd40819134196424c934">operations_research::BuildConvexPiecewise</a> (CPModelLoader *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kConvexPiecewise  <a href="#b71cb321b203f847053d9c538d82a8ab"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#b580f8cc93cd2cd67b86c46e721c8c0a">operations_research::BuildCountEqual</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kConvexPiecewise  <a href="#ad4ff351372afd40819134196424c934"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#e6a3b6eee1dcd0958b813ddcf7171822">operations_research::BuildCountEqual</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kCountEqual  <a href="#b580f8cc93cd2cd67b86c46e721c8c0a"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#c7ede1d1011073fec9f226a684ff1e50">operations_research::BuildCumulative</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kCountEqual  <a href="#e6a3b6eee1dcd0958b813ddcf7171822"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#d1f2e2f7b6a95b2ae5603433956271ff">operations_research::BuildCumulative</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kCumulative  <a href="#c7ede1d1011073fec9f226a684ff1e50"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#25e042e3bf3cea9f8e93d0bad6bd4798">operations_research::BuildDeviation</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kCumulative  <a href="#d1f2e2f7b6a95b2ae5603433956271ff"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#39ecc500b68fdd4ab1dcfcebc20908b8">operations_research::BuildDeviation</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kDeviation  <a href="#25e042e3bf3cea9f8e93d0bad6bd4798"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#715ad2e5e1aea4341d9bbaeebdbf7ab4">operations_research::BuildDifference</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kDeviation  <a href="#39ecc500b68fdd4ab1dcfcebc20908b8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#95b648793b206b9165b188d349b00f0a">operations_research::BuildDifference</a> (CPModelLoader *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kDifference  <a href="#715ad2e5e1aea4341d9bbaeebdbf7ab4"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#e21b3ba4c27fcbceb6dbed3248afa543">operations_research::BuildDistribute</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kDifference  <a href="#95b648793b206b9165b188d349b00f0a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#d2076ff0c2ec4aded3b644ca8395eab1">operations_research::BuildDisjunctive</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kDistribute  <a href="#e21b3ba4c27fcbceb6dbed3248afa543"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#2f616a51450bd23c768e854a00d75948">operations_research::BuildDivide</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kDisjunctive  <a href="#d2076ff0c2ec4aded3b644ca8395eab1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#1368211c00c62fe68a5ec0609c65edbf">operations_research::BuildDistribute</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kDivide  <a href="#2f616a51450bd23c768e854a00d75948"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#a3e1934e7ec0338f65b63975486df8f9">operations_research::BuildDurationExpr</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kDistribute  <a href="#1368211c00c62fe68a5ec0609c65edbf"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#88f24aaa5c0ee2125af33caa4c4f6c16">operations_research::BuildDivide</a> (CPModelLoader *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kDurationExpr  <a href="#a3e1934e7ec0338f65b63975486df8f9"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#ff7c9591585ca9e78e4de868413a0d86">operations_research::BuildElement</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kDivide  <a href="#88f24aaa5c0ee2125af33caa4c4f6c16"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#7881b9dc349da6c5e704e2978bcc715e">operations_research::BuildDurationExpr</a> (CPModelLoader *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kElement  <a href="#ff7c9591585ca9e78e4de868413a0d86"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#ec282a7a853c7e2586175881dfe0fe70">operations_research::BuildEndExpr</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kDurationExpr  <a href="#7881b9dc349da6c5e704e2978bcc715e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#708cefb94e19be454c3b568aef081000">operations_research::BuildElement</a> (CPModelLoader *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kElementEqual  <a href="#ec282a7a853c7e2586175881dfe0fe70"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#038e0fef2aed16d8ba21d68f31f39a2f">operations_research::BuildEquality</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kElement  <a href="#708cefb94e19be454c3b568aef081000"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#14a54de7d399cace5cae61c42c2aea1e">operations_research::BuildEndExpr</a> (CPModelLoader *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kEquality  <a href="#038e0fef2aed16d8ba21d68f31f39a2f"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#3aa9ee6004e5f22d9e0310faa218ef21">operations_research::BuildFalseConstraint</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kElementEqual  <a href="#14a54de7d399cace5cae61c42c2aea1e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#3612cc4f70cef26391695f971a8fe6f9">operations_research::BuildEquality</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kFalseConstraint  <a href="#3aa9ee6004e5f22d9e0310faa218ef21"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#c960f6051e18fbe2253c02bed36f2d7d">operations_research::BuildGreater</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kEquality  <a href="#3612cc4f70cef26391695f971a8fe6f9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#51bdb0ed3642e07ed458c33e39926d09">operations_research::BuildFalseConstraint</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kGreater  <a href="#c960f6051e18fbe2253c02bed36f2d7d"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#6339ee42490eb3bffbe7d2cd3da3df31">operations_research::BuildGreaterOrEqual</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kFalseConstraint  <a href="#51bdb0ed3642e07ed458c33e39926d09"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#5d97dc07c833398dc2ba5581538f77bf">operations_research::BuildGreater</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kGreaterOrEqual  <a href="#6339ee42490eb3bffbe7d2cd3da3df31"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#1429707697896fed41ee7124b0d446f9">operations_research::BuildIntegerVariable</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kGreater  <a href="#5d97dc07c833398dc2ba5581538f77bf"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#795a4782469d268b35d42f623fe392e0">operations_research::BuildGreaterOrEqual</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIntegerVariable  <a href="#1429707697896fed41ee7124b0d446f9"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#146668c315ab32ceafa4367226924048">operations_research::BuildIntervalBinaryRelation</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kGreaterOrEqual  <a href="#795a4782469d268b35d42f623fe392e0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#6b6d3fb732992bbce1d542528fa7e123">operations_research::BuildIntegerVariable</a> (CPModelLoader *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIntervalBinaryRelation  <a href="#146668c315ab32ceafa4367226924048"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#2694db698abe39b231ac2cbaa7e22e6f">operations_research::BuildIntervalDisjunction</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIntegerVariable  <a href="#6b6d3fb732992bbce1d542528fa7e123"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#c210221047262333698942cc00ec5d30">operations_research::BuildIntervalBinaryRelation</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIntervalDisjunction  <a href="#2694db698abe39b231ac2cbaa7e22e6f"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#625b2f14b4b17c785f9fa8fd6a9317b7">operations_research::BuildIntervalUnaryRelation</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIntervalBinaryRelation  <a href="#c210221047262333698942cc00ec5d30"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#c07cd6f39bbd0ae29807a2a58e852b33">operations_research::BuildIntervalDisjunction</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIntervalUnaryRelation  <a href="#625b2f14b4b17c785f9fa8fd6a9317b7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntervalVar *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#73bfe23cfd231d6757786658fd1b4632">operations_research::BuildIntervalVariable</a> (CPModelBuilder *const builder, const CPIntervalVariableProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIntervalDisjunction  <a href="#c07cd6f39bbd0ae29807a2a58e852b33"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#82376d4ad0c40176a3d45e6b35bf4216">operations_research::BuildIntervalUnaryRelation</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIntervalVariable  <a href="#73bfe23cfd231d6757786658fd1b4632"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#b1eb1cbd3c7043aa1f25ccddd72e12d3">operations_research::BuildIsBetween</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIntervalUnaryRelation  <a href="#82376d4ad0c40176a3d45e6b35bf4216"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntervalVar *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#15a47ef971f3f8d780f16535b3c981d0">operations_research::BuildIntervalVariable</a> (CPModelLoader *const builder, const CPIntervalVariableProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIsBetween  <a href="#b1eb1cbd3c7043aa1f25ccddd72e12d3"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#5a5737ee0dfd953bb09e31bbfd72b053">operations_research::BuildIsDifferent</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIntervalVariable  <a href="#15a47ef971f3f8d780f16535b3c981d0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#0dc9783b0433e013fe5b06f902b36b5a">operations_research::BuildIsBetween</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIsDifferent  <a href="#5a5737ee0dfd953bb09e31bbfd72b053"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#2a1b502a5819bf5ad13bc9e4a2f0db9a">operations_research::BuildIsEqual</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIsBetween  <a href="#0dc9783b0433e013fe5b06f902b36b5a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#dfe590972076163c47e7f8b2329d688e">operations_research::BuildIsDifferent</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIsEqual  <a href="#2a1b502a5819bf5ad13bc9e4a2f0db9a"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#e773623c796f9e6ceb7ad4724d7403b9">operations_research::BuildIsGreaterOrEqual</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIsDifferent  <a href="#dfe590972076163c47e7f8b2329d688e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#311175b675ccf3675d77e9fd569d5a54">operations_research::BuildIsEqual</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIsGreaterOrEqual  <a href="#e773623c796f9e6ceb7ad4724d7403b9"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#2bc055430558c536f985cc25a42d1001">operations_research::BuildIsLessOrEqual</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIsEqual  <a href="#311175b675ccf3675d77e9fd569d5a54"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#012aa0310d4a12cd7421e6deb779c04b">operations_research::BuildIsGreaterOrEqual</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIsLessOrEqual  <a href="#2bc055430558c536f985cc25a42d1001"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#4a8497ba6654ff3bdb461247a4637000">operations_research::BuildIsMember</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIsGreaterOrEqual  <a href="#012aa0310d4a12cd7421e6deb779c04b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#b7d5e3071806b3b61f97c86b817d3a41">operations_research::BuildIsLessOrEqual</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIsMember  <a href="#4a8497ba6654ff3bdb461247a4637000"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#3ed51bfcba7298a7656b02ec0c1a237d">operations_research::BuildLess</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIsLessOrEqual  <a href="#b7d5e3071806b3b61f97c86b817d3a41"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#8952ee4e70930156d38dce5e4d18b43e">operations_research::BuildIsMember</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kLess  <a href="#3ed51bfcba7298a7656b02ec0c1a237d"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#d8fb287ce45ecf863b1e6b36d9a576d8">operations_research::BuildLessOrEqual</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kIsMember  <a href="#8952ee4e70930156d38dce5e4d18b43e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#6d194614bec64eb2a4427f886cb4e0da">operations_research::BuildLess</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kLessOrEqual  <a href="#d8fb287ce45ecf863b1e6b36d9a576d8"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#8326f7c9366610ce9696ed1f42b47c81">operations_research::BuildMapDomain</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kLess  <a href="#6d194614bec64eb2a4427f886cb4e0da"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#c8de411d140d44c4127529c6e57a2b0e">operations_research::BuildLessOrEqual</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kMapDomain  <a href="#8326f7c9366610ce9696ed1f42b47c81"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#1b057a94b9f790b3ec5b81efea0e72f4">operations_research::BuildMax</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kLessOrEqual  <a href="#c8de411d140d44c4127529c6e57a2b0e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#6e9b39f75b52c33f8a7f6bf6c2e9985b">operations_research::BuildMapDomain</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kMax  <a href="#1b057a94b9f790b3ec5b81efea0e72f4"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#0c3a31f30e7cf58c90477096c1fe7d41">operations_research::BuildMember</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kMapDomain  <a href="#6e9b39f75b52c33f8a7f6bf6c2e9985b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#12cd64647170f87ccc5228bb4b929767">operations_research::BuildMax</a> (CPModelLoader *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kMaxEqual  <a href="#0c3a31f30e7cf58c90477096c1fe7d41"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#b368619afb8c8d33aadaac3bffd5fb48">operations_research::BuildMin</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kMax  <a href="#12cd64647170f87ccc5228bb4b929767"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#9431bbf7152556f1c3cc924557448898">operations_research::BuildMember</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kMin  <a href="#b368619afb8c8d33aadaac3bffd5fb48"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#9f5ae02198ac4f377d2737f61a13dab8">operations_research::BuildNoCycle</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kMaxEqual  <a href="#9431bbf7152556f1c3cc924557448898"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#f1d33041ea4ef76458e7e1aeee94d196">operations_research::BuildMin</a> (CPModelLoader *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kMinEqual  <a href="#9f5ae02198ac4f377d2737f61a13dab8"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#3717ddee75572b7256d20e1509d75f37">operations_research::BuildNonEqual</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kMin  <a href="#f1d33041ea4ef76458e7e1aeee94d196"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#87f38701a76aa41bfdc535eac75b3425">operations_research::BuildNoCycle</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kNonEqual  <a href="#3717ddee75572b7256d20e1509d75f37"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#ba13fdce1244c46dfdd4761d8d5f03f5">operations_research::BuildOpposite</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kMinEqual  <a href="#87f38701a76aa41bfdc535eac75b3425"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#6ccbe7a0f9cff6b584bff5668593963e">operations_research::BuildNonEqual</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kOpposite  <a href="#ba13fdce1244c46dfdd4761d8d5f03f5"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#c4d7e792a530953c9ff8de695e92364b">operations_research::AddUsageLessConstantDimension</a> (Pack *const pack, CPModelBuilder *const builder, const CPExtensionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kNonEqual  <a href="#6ccbe7a0f9cff6b584bff5668593963e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#84eceecc43b15b8fc66107bcbacdbf9f">operations_research::BuildOpposite</a> (CPModelLoader *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kPack  <a href="#c4d7e792a530953c9ff8de695e92364b"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#a5dfc2901a9d9890f1a6e01effc32859">operations_research::AddCountAssignedItemsDimension</a> (Pack *const pack, CPModelBuilder *const builder, const CPExtensionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kOpposite  <a href="#84eceecc43b15b8fc66107bcbacdbf9f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#32fb6356103246d2a5e8a4759a5201fc">operations_research::AddUsageLessConstantDimension</a> (Pack *const pack, CPModelLoader *const builder, const CPExtensionProto &amp;proto)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#610c6b58b08ccdf20c186449e5640361">operations_research::AddCountUsedBinDimension</a> (Pack *const pack, CPModelBuilder *const builder, const CPExtensionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kPack  <a href="#32fb6356103246d2a5e8a4759a5201fc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#68d995955a4d9c890eedd04e4a6faf7d">operations_research::AddCountAssignedItemsDimension</a> (Pack *const pack, CPModelLoader *const builder, const CPExtensionProto &amp;proto)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#baa2cd9f44f5d07fec64952e4b56720e">operations_research::AddUsageEqualVariableDimension</a> (Pack *const pack, CPModelBuilder *const builder, const CPExtensionProto &amp;proto)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#10e130cc54e238b318e87ccd7645d13d">operations_research::AddCountUsedBinDimension</a> (Pack *const pack, CPModelLoader *const builder, const CPExtensionProto &amp;proto)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#a8d24b8b6e1f18494360cd7c8a826cd3">operations_research::AddVariableUsageLessConstantDimension</a> (Pack *const pack, CPModelBuilder *const builder, const CPExtensionProto &amp;proto)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#786320b9fe09d1f91612f291dca8fc59">operations_research::AddUsageEqualVariableDimension</a> (Pack *const pack, CPModelLoader *const builder, const CPExtensionProto &amp;proto)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#a268d2951761f84e47e83724d28a20c3">operations_research::AddWeightedSumOfAssignedDimension</a> (Pack *const pack, CPModelBuilder *const builder, const CPExtensionProto &amp;proto)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#996c1fa0e9366729be9af3c5614ec547">operations_research::AddVariableUsageLessConstantDimension</a> (Pack *const pack, CPModelLoader *const builder, const CPExtensionProto &amp;proto)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#b90ca25129f9d1a675590b10b68b61a6">operations_research::BuildPack</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#d659f208b0e1691f46a935f1149c612e">operations_research::AddWeightedSumOfAssignedDimension</a> (Pack *const pack, CPModelLoader *const builder, const CPExtensionProto &amp;proto)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#dc31d2dd5de683c5559d42b3e76892e7">operations_research::BuildPathCumul</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#6166540dc96960b0324b41d3951a9612">operations_research::BuildPack</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kPathCumul  <a href="#dc31d2dd5de683c5559d42b3e76892e7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#165bf31eda4fdd5e84756ccca148cbbe">operations_research::BuildPerformedExpr</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#eb5b9396f9699de7ef304af87bc16d29">operations_research::BuildPathCumul</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kPerformedExpr  <a href="#165bf31eda4fdd5e84756ccca148cbbe"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#354489e93e0b5387cbf47fd1bb1628ed">operations_research::BuildProduct</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kPathCumul  <a href="#eb5b9396f9699de7ef304af87bc16d29"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#3c59d6d95f24e133b91034bd43416b83">operations_research::BuildPerformedExpr</a> (CPModelLoader *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kProduct  <a href="#354489e93e0b5387cbf47fd1bb1628ed"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#a75986c7e8500768d7a161d52cfb3314">operations_research::BuildScalProd</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kPerformedExpr  <a href="#3c59d6d95f24e133b91034bd43416b83"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#92cef60ca647ee204a2aab337a758379">operations_research::BuildProduct</a> (CPModelLoader *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kScalProd  <a href="#a75986c7e8500768d7a161d52cfb3314"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#7f6f4cddfa8f0e56527e3da9c67c7dc7">operations_research::BuildScalProdEqual</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kProduct  <a href="#92cef60ca647ee204a2aab337a758379"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#f930ab0492c16f68ade1a6786c04c1c8">operations_research::BuildScalProd</a> (CPModelLoader *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kScalProdEqual  <a href="#7f6f4cddfa8f0e56527e3da9c67c7dc7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#5a91e4834820bf2eb47f5bc6b0891208">operations_research::BuildScalProdGreaterOrEqual</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kScalProd  <a href="#f930ab0492c16f68ade1a6786c04c1c8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#d8fa765bf66990d0767debbc603b8cef">operations_research::BuildScalProdEqual</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kScalProdGreaterOrEqual  <a href="#5a91e4834820bf2eb47f5bc6b0891208"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#6b91a64a551db71cc03ff67c635b3451">operations_research::BuildScalProdLessOrEqual</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kScalProdEqual  <a href="#d8fa765bf66990d0767debbc603b8cef"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#44466d9f339d46043b7626d667d56ba6">operations_research::BuildScalProdGreaterOrEqual</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kScalProdLessOrEqual  <a href="#6b91a64a551db71cc03ff67c635b3451"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#45601bc6aa2b9cfdb370c95cfc4f0b74">operations_research::BuildSemiContinuous</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kScalProdGreaterOrEqual  <a href="#44466d9f339d46043b7626d667d56ba6"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#52895a9c208a0deeefd5f9eb86bb27af">operations_research::BuildScalProdLessOrEqual</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kSemiContinuous  <a href="#45601bc6aa2b9cfdb370c95cfc4f0b74"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#ee533769e3badf29d6fe74fc364e62a7">operations_research::BuildSequence</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kScalProdLessOrEqual  <a href="#52895a9c208a0deeefd5f9eb86bb27af"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#38fc602fc4e28ea1363bd79f7a1ab9ab">operations_research::BuildSemiContinuous</a> (CPModelLoader *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kSequence  <a href="#ee533769e3badf29d6fe74fc364e62a7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#23233b68761ffc61f908de2e9c803dfa">operations_research::BuildSquare</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kSemiContinuous  <a href="#38fc602fc4e28ea1363bd79f7a1ab9ab"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">SequenceVar *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#4525d6f934d8a69873282f4320344efc">operations_research::BuildSequenceVariable</a> (CPModelLoader *const builder, const CPSequenceVariableProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kSquare  <a href="#23233b68761ffc61f908de2e9c803dfa"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#35be821ad4acaff8d478acc94fb8eb42">operations_research::BuildStartExpr</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kSequenceVariable  <a href="#4525d6f934d8a69873282f4320344efc"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#d5f70937a0c9649d5aa09c75ef0fec5b">operations_research::BuildSquare</a> (CPModelLoader *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kStartExpr  <a href="#35be821ad4acaff8d478acc94fb8eb42"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#2c9aaf591351d137a5d8f17def22a40a">operations_research::BuildSum</a> (CPModelBuilder *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kSquare  <a href="#d5f70937a0c9649d5aa09c75ef0fec5b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#a7a6152a0aa06bd62d3e8f901a06553d">operations_research::BuildStartExpr</a> (CPModelLoader *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kSum  <a href="#2c9aaf591351d137a5d8f17def22a40a"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#6cf1c60a2c8532ecd23e7a91cb25e9f3">operations_research::BuildSumEqual</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kStartExpr  <a href="#a7a6152a0aa06bd62d3e8f901a06553d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">IntExpr *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#030c40457adbdc49e6b77b60b7f8d411">operations_research::BuildSum</a> (CPModelLoader *const builder, const CPIntegerExpressionProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kSumEqual  <a href="#6cf1c60a2c8532ecd23e7a91cb25e9f3"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#cdd657e178da681b01aebdb49420b873">operations_research::BuildSumGreaterOrEqual</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kSum  <a href="#030c40457adbdc49e6b77b60b7f8d411"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#8651e03e94c48c2e75fd1f3eaf13e75e">operations_research::BuildSumEqual</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kSumGreaterOrEqual  <a href="#cdd657e178da681b01aebdb49420b873"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#d6b42adf9d6a9edd98a03e7ccc044564">operations_research::BuildSumLessOrEqual</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kSumEqual  <a href="#8651e03e94c48c2e75fd1f3eaf13e75e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#75ea8dd45606fa261c5e8a66fa79b8bd">operations_research::BuildSumGreaterOrEqual</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kSumLessOrEqual  <a href="#d6b42adf9d6a9edd98a03e7ccc044564"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#7e000e3bd96caf0bffd3f6aa57570089">operations_research::BuildTransition</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kSumGreaterOrEqual  <a href="#75ea8dd45606fa261c5e8a66fa79b8bd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#5cd884263a7e25cb452278f9685c9f55">operations_research::BuildSumLessOrEqual</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kTransition  <a href="#7e000e3bd96caf0bffd3f6aa57570089"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#72c6ec6391d2561be20d4b3f995c210d">operations_research::BuildTrueConstraint</a> (CPModelBuilder *const builder, const CPConstraintProto &amp;proto)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kSumLessOrEqual  <a href="#5cd884263a7e25cb452278f9685c9f55"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#0bdee283bfb826113ad85de079a2fd38">operations_research::BuildTransition</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kTrueConstraint  <a href="#72c6ec6391d2561be20d4b3f995c210d"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kTransition  <a href="#0bdee283bfb826113ad85de079a2fd38"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Constraint *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#b6ea885a378d266255bc9d18c7794f03">operations_research::BuildTrueConstraint</a> (CPModelLoader *const builder, const CPConstraintProto &amp;proto)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">kTrueConstraint  <a href="#b6ea885a378d266255bc9d18c7794f03"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#a1f98d0a0c002a85430000ed5e6cda21">operations_research::kModelVersion</a> = 1</td></tr>
 
@@ -323,7 +339,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l01611">1611</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l01848">1848</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -350,7 +366,7 @@
 Manage builders. 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l02190">2190</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l02492">2492</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -372,7 +388,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00774">774</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l01000">1000</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -397,7 +413,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00775">775</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l01001">1001</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -415,7 +431,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00175">175</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00320">320</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -432,7 +448,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00173">173</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00318">318</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -449,7 +465,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00174">174</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00319">319</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -466,7 +482,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00171">171</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00315">315</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -483,7 +499,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00716">716</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00942">942</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -500,7 +516,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00170">170</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00314">314</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -517,7 +533,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00715">715</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00941">941</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -534,7 +550,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00749">749</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00975">975</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -551,7 +567,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00748">748</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00974">974</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -568,7 +584,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00325">325</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00500">500</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -585,7 +601,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00327">327</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00503">503</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -602,16 +618,16 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00324">324</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00499">499</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="100b683c6c1bcab71bd61ea20a55b78d"></a><!-- doxytag: member="io.cc::integer_matrix_argument_" ref="100b683c6c1bcab71bd61ea20a55b78d" args="" -->
+<a class="anchor" name="b4f29a1e91d5ac6816b2ac01b900aefc"></a><!-- doxytag: member="io.cc::integer_matrix_argument_" ref="b4f29a1e91d5ac6816b2ac01b900aefc" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">hash_map&lt;string, pair&lt;int, std::vector&lt;int64&gt; &gt; &gt; <a class="el" href="io_8cc.html#100b683c6c1bcab71bd61ea20a55b78d">integer_matrix_argument_</a>          </td>
+          <td class="memname">hash_map&lt;string, std::pair&lt;int, std::vector&lt;int64&gt; &gt; &gt; <a class="el" href="io_8cc.html#b4f29a1e91d5ac6816b2ac01b900aefc">integer_matrix_argument_</a>          </td>
         </tr>
       </table>
 </div>
@@ -619,7 +635,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00328">328</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00504">504</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -636,7 +652,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00329">329</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00505">505</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -653,7 +669,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00326">326</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00501">501</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -670,7 +686,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00330">330</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00506">506</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -687,7 +703,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00176">176</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00321">321</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -704,7 +720,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00172">172</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00316">316</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -721,7 +737,75 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00713">713</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00939">939</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3062b89ea575f537934c2cb32bd355af"></a><!-- doxytag: member="io.cc::sequence_argument_" ref="3062b89ea575f537934c2cb32bd355af" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">hash_map&lt;string, int&gt; <a class="el" href="io_8cc.html#3062b89ea575f537934c2cb32bd355af">sequence_argument_</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00502">502</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="ca615cf48363992d6dbbfc1e0bdb6cca"></a><!-- doxytag: member="io.cc::sequence_array_argument_" ref="ca615cf48363992d6dbbfc1e0bdb6cca" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">hash_map&lt;string, std::vector&lt;int&gt; &gt; <a class="el" href="io_8cc.html#ca615cf48363992d6dbbfc1e0bdb6cca">sequence_array_argument_</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00507">507</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="66f626956b490a3ba7566b355d285580"></a><!-- doxytag: member="io.cc::sequence_list_" ref="66f626956b490a3ba7566b355d285580" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;const SequenceVar*&gt; <a class="el" href="io_8cc.html#66f626956b490a3ba7566b355d285580">sequence_list_</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00322">322</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="3374e6c72d4ed1e965e0a586f17c3c2e"></a><!-- doxytag: member="io.cc::sequence_map_" ref="3374e6c72d4ed1e965e0a586f17c3c2e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">hash_map&lt;const SequenceVar*, int&gt; <a class="el" href="io_8cc.html#3374e6c72d4ed1e965e0a586f17c3c2e">sequence_map_</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00317">317</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -738,7 +822,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00717">717</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00943">943</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -755,7 +839,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00323">323</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00498">498</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -772,7 +856,7 @@ Manage builders.
 
 <p>
 
-<p>Definition at line <a class="el" href="io_8cc-source.html#l00750">750</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
+<p>Definition at line <a class="el" href="io_8cc-source.html#l00976">976</a> of file <a class="el" href="io_8cc-source.html">io.cc</a>.</p>
 
 </div>
 </div><p>
@@ -784,7 +868,7 @@ Manage builders.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -108,18 +108,22 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SimpleRevFIFO.html#8a687b3e2756711e361d82db748ed33b">PushIfNotTop</a> (<a class="el" href="classoperations__research_1_1Solver.html">Solver</a> *const s, T val)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Pushes the var on top if is not a duplicate of the current top object.  <a href="#8a687b3e2756711e361d82db748ed33b"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">const T *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SimpleRevFIFO.html#1da6487f719f88938d702348446190e6">Last</a> () const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the last item of the FIFO.  <a href="#1da6487f719f88938d702348446190e6"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">const T &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SimpleRevFIFO.html#7624aa6d7a7cf5b6d1e85a0c3e316d6e">LastValue</a> () const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the last value in the FIFO.  <a href="#7624aa6d7a7cf5b6d1e85a0c3e316d6e"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SimpleRevFIFO.html#1cd3644228ae5a0f0ec3862d91276470">SetLastValue</a> (const T &amp;v)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the last value in the FIFO.  <a href="#1cd3644228ae5a0f0ec3862d91276470"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Classes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><b>Chunk</b></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SimpleRevFIFO_1_1Iterator.html">Iterator</a></td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This iterator is non stable w.r.t. deletion.  <a href="classoperations__research_1_1SimpleRevFIFO_1_1Iterator.html#_details">More...</a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This iterator is not stable with respect to deletion.  <a href="classoperations__research_1_1SimpleRevFIFO_1_1Iterator.html#_details">More...</a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 <h3>template&lt;class T&gt;<br>
@@ -127,8 +131,8 @@
 
 utility classes 
 <p>
-This class represent a reversible FIFO structure. The main diffence w.r.t a standart FIFO structure is that a <a class="el" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a> is given as parameter to the modifiers such that the solver can store the backtrack information Iterator's traversing order should not be changed, as some algorithm depend on it to be . 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00065">65</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+This class represent a reversible FIFO structure. The main diffence w.r.t a standart FIFO structure is that a <a class="el" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a> is given as parameter to the modifiers such that the solver can store the backtrack information Iterator's traversing order should not be changed, as some algorithm depend on it to be consistent. It's main use is to store a list of demons in the various classes of variables. 
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00129">129</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="fe165ef59bdd847273347b78397eed2d"></a><!-- doxytag: member="operations_research::SimpleRevFIFO::SimpleRevFIFO" ref="fe165ef59bdd847273347b78397eed2d" args="()" -->
 <div class="memitem">
@@ -149,7 +153,7 @@ template&lt;class T&gt; </div>
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00095">95</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00159">159</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -183,7 +187,7 @@ template&lt;class T&gt; </div>
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00097">97</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00161">161</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -215,8 +219,10 @@ template&lt;class T&gt; </div>
 <div class="memdoc">
 
 <p>
+Pushes the var on top if is not a duplicate of the current top object. 
+<p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00109">109</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00174">174</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -238,8 +244,10 @@ template&lt;class T&gt; </div>
 <div class="memdoc">
 
 <p>
+Returns the last item of the FIFO. 
+<p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00114">114</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00181">181</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -261,8 +269,10 @@ template&lt;class T&gt; </div>
 <div class="memdoc">
 
 <p>
+Returns the last value in the FIFO. 
+<p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00115">115</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00184">184</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -285,8 +295,10 @@ template&lt;class T&gt; </div>
 <div class="memdoc">
 
 <p>
+Sets the last value in the FIFO. 
+<p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00119">119</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00190">190</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -300,7 +312,7 @@ template&lt;class T&gt; </div>
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

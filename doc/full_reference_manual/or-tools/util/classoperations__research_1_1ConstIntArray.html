@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/util/index.html">util</a>/
             </tt></b></font>
@@ -92,7 +92,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>operations_research::ConstIntArray Class Reference</h1><!-- doxytag: class="operations_research::ConstIntArray" -->This class is used to store constant copies of int64 arrays inside constraints or expression.  
+<h1>operations_research::ConstIntArray Class Reference</h1><!-- doxytag: class="operations_research::ConstIntArray" -->This class is used to store constant copies of int64 arrays.  
 <a href="#_details">More...</a>
 <p>
 <code>#include &lt;<a class="el" href="const__int__array_8h-source.html">const_int_array.h</a>&gt;</code>
@@ -173,16 +173,16 @@
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Check the status of a given info bit.  <a href="#bb56249990fe544c15abd06154762639"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-This class is used to store constant copies of int64 arrays inside constraints or expression. 
+This class is used to store constant copies of int64 arrays. 
 <p>
-When constructed with a C array or a vector, The const int array will make a internal copy and own that copy. It will not take ownership of the vector/array which can be deleted afterwards. This follows the semantics of constraints and expressions which store a read-only copy of the data.<p>
+These copies are used inside constraints or expressions. When constructed with a C array or a vector, The const int array will make a internal copy and own that copy. It will not take ownership of the vector/array which can be deleted afterwards. This follows the semantics of constraints and expressions which store a read-only copy of the data.<p>
 Its goals are:<ul>
 <li>to unify the construction code across the optimization libraries.</li><li>to provide one code to scan these arrays and compute given properties like monotonicity.</li></ul>
 <p>
 As const int arrays provide scanning capabilities, the code inside a constraint and its factory looks like:<p>
-IntExpr* MakeMyExpr(const std::vector&lt;int64&gt;&amp; values) { <a class="el" href="classoperations__research_1_1ConstIntArray.html" title="This class is used to store constant copies of int64 arrays inside constraints or...">ConstIntArray</a> copy(values); if (copy.Status(ConstIntArray::IS_INCREASING)) { return new MyOptimizedExpr(copy.Release()); } else { return new MyGenericExpr(copy.Release()); } }<p>
-With: class MyOptimizedExpr : IntExpr { public: MyOptimizedExpr(std::vector&lt;int64&gt;* data) : values_(data) {} private: <a class="el" href="classoperations__research_1_1ConstIntArray.html" title="This class is used to store constant copies of int64 arrays inside constraints or...">ConstIntArray</a> values_; }; 
-<p>Definition at line <a class="el" href="const__int__array_8h-source.html#l00057">57</a> of file <a class="el" href="const__int__array_8h-source.html">const_int_array.h</a>.</p>
+IntExpr* MakeMyExpr(const std::vector&lt;int64&gt;&amp; values) { <a class="el" href="classoperations__research_1_1ConstIntArray.html" title="This class is used to store constant copies of int64 arrays.">ConstIntArray</a> copy(values); if (copy.Status(ConstIntArray::IS_INCREASING)) { return new MyOptimizedExpr(copy.Release()); } else { return new MyGenericExpr(copy.Release()); } }<p>
+With: class MyOptimizedExpr : IntExpr { public: MyOptimizedExpr(std::vector&lt;int64&gt;* data) : values_(data) {} private: <a class="el" href="classoperations__research_1_1ConstIntArray.html" title="This class is used to store constant copies of int64 arrays.">ConstIntArray</a> values_; }; 
+<p>Definition at line <a class="el" href="const__int__array_8h-source.html#l00062">62</a> of file <a class="el" href="const__int__array_8h-source.html">const_int_array.h</a>.</p>
 <hr><h2>Member Enumeration Documentation</h2>
 <a class="anchor" name="2bfc3cd491676a853addded549304ac3"></a><!-- doxytag: member="operations_research::ConstIntArray::Property" ref="2bfc3cd491676a853addded549304ac3" args="" -->
 <div class="memitem">
@@ -225,7 +225,7 @@ Sentinel. </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="const__int__array_8h-source.html#l00060">60</a> of file <a class="el" href="const__int__array_8h-source.html">const_int_array.h</a>.</p>
+<p>Definition at line <a class="el" href="const__int__array_8h-source.html#l00065">65</a> of file <a class="el" href="const__int__array_8h-source.html">const_int_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -574,7 +574,7 @@ Size of the array. This is not valid after <a class="el" href="classoperations__
 Operator to access the data at the given index. 
 <p>
 This is not valid after a release. 
-<p>Definition at line <a class="el" href="const__int__array_8h-source.html#l00114">114</a> of file <a class="el" href="const__int__array_8h-source.html">const_int_array.h</a>.</p>
+<p>Definition at line <a class="el" href="const__int__array_8h-source.html#l00119">119</a> of file <a class="el" href="const__int__array_8h-source.html">const_int_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -598,7 +598,7 @@ This is not valid after a release.
 Accessor to value in the array. 
 <p>
 
-<p>Definition at line <a class="el" href="const__int__array_8h-source.html#l00120">120</a> of file <a class="el" href="const__int__array_8h-source.html">const_int_array.h</a>.</p>
+<p>Definition at line <a class="el" href="const__int__array_8h-source.html#l00125">125</a> of file <a class="el" href="const__int__array_8h-source.html">const_int_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -622,7 +622,7 @@ Access to const raw data.
 <p>
 <dl compact><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>TODO(<a href="http://who/user">user</a>) : deprecate API. </dd></dl>
 
-<p>Definition at line <a class="el" href="const__int__array_8h-source.html#l00127">127</a> of file <a class="el" href="const__int__array_8h-source.html">const_int_array.h</a>.</p>
+<p>Definition at line <a class="el" href="const__int__array_8h-source.html#l00132">132</a> of file <a class="el" href="const__int__array_8h-source.html">const_int_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -660,7 +660,7 @@ It will scan the array on demand. This is not valid after <a class="el" href="cl
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

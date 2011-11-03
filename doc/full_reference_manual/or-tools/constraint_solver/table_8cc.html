@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -83,12 +83,19 @@
   </div>
 </div>
 <div class="contents">
-<h1>or-tools/constraint_solver/table.cc File Reference</h1><code>#include &quot;base/commandlineflags.h&quot;</code><br>
+<h1>or-tools/constraint_solver/table.cc File Reference</h1><code>#include &lt;string.h&gt;</code><br>
+<code>#include &lt;algorithm&gt;</code><br>
+<code>#include &quot;base/hash.h&quot;</code><br>
+<code>#include &lt;string&gt;</code><br>
+<code>#include &lt;vector&gt;</code><br>
+<code>#include &quot;base/commandlineflags.h&quot;</code><br>
 <code>#include &quot;base/integral_types.h&quot;</code><br>
 <code>#include &quot;base/logging.h&quot;</code><br>
 <code>#include &quot;base/scoped_ptr.h&quot;</code><br>
+<code>#include &quot;base/stringprintf.h&quot;</code><br>
 <code>#include &quot;base/concise_iterator.h&quot;</code><br>
 <code>#include &quot;base/map-util.h&quot;</code><br>
+<code>#include &quot;<a class="el" href="constraint__solver_8h-source.html">constraint_solver/constraint_solver.h</a>&quot;</code><br>
 <code>#include &quot;<a class="el" href="constraint__solveri_8h-source.html">constraint_solver/constraint_solveri.h</a>&quot;</code><br>
 <code>#include &quot;util/bitset.h&quot;</code><br>
 
@@ -104,7 +111,7 @@
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  <a href="#87391aac3de76871ffe01a577f6edc21"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="table_8cc.html#5e78af7ed6b7f125f047c51a82632b0e">DEFINE_bool</a> (cp_use_small_table, true,&quot;Use small compact table constraint when possible.&quot;)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#82e4be918d34bfe3cacb7e1072451faa">operations_research::HasCompactDomains</a> (const IntVar *const *vars, int arity)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#fe849bc1e6954e111756debb0e8840f5">operations_research::HasCompactDomains</a> (const IntVar *const *vars, int arity)</td></tr>
 
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#dff46a46c9fad5795ad537c929fe6527">operations_research::kBitsInUint64</a> = 64</td></tr>
@@ -203,7 +210,7 @@ Bitset of active tuples.
 <p>
 <dl compact><dt><b><a class="el" href="todo.html#_todo000038">Todo:</a></b></dt><dd>TODO(<a href="http://who/user">user</a>): create bitset64 class and use it. </dd></dl>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l00434">434</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l00436">436</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -220,7 +227,7 @@ Bitset of active tuples.
 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l00185">185</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l00193">193</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -237,7 +244,7 @@ Bitset of active tuples.
 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l00795">795</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l00797">797</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -256,7 +263,7 @@ Bitset of active tuples.
 The ends of the active bitsets.x. 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l00790">790</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l00792">792</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -275,7 +282,7 @@ The ends of the active bitsets.x.
 Vector of final state after the last transision. 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l01274">1274</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l01276">1276</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -292,7 +299,7 @@ Vector of final state after the last transision.
 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l00189">189</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l00197">197</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -311,7 +318,7 @@ Vector of final state after the last transision.
 The initial state before the first transition. 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l01272">1272</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l01274">1274</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -328,7 +335,7 @@ The initial state before the first transition.
 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l00190">190</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l00198">198</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -345,7 +352,7 @@ The initial state before the first transition.
 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l01159">1159</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l01161">1161</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -362,7 +369,7 @@ The initial state before the first transition.
 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l01158">1158</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l01160">1160</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -379,7 +386,7 @@ The initial state before the first transition.
 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l01160">1160</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l01162">1162</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -398,7 +405,7 @@ The initial state before the first transition.
 Length of bitsets in double words. 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l00432">432</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l00434">434</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -417,7 +424,7 @@ Length of bitsets in double words.
 The masks per value per variable. 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l00436">436</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l00438">438</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -436,7 +443,7 @@ The masks per value per variable.
 The min on the vars at creation time. 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l00786">786</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l00788">788</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -455,7 +462,7 @@ The min on the vars at creation time.
 Stamp of the active_tuple bitset. 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l01046">1046</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l01048">1048</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -474,7 +481,7 @@ Stamp of the active_tuple bitset.
 Array of stamps, one per 64 tuples. 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l00435">435</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l00437">437</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -493,7 +500,7 @@ Array of stamps, one per 64 tuples.
 The starts of active bitsets. 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l00788">788</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l00790">790</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -512,7 +519,7 @@ The starts of active bitsets.
 The portion of the active tuples supporting each value per variable. 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l00794">794</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l00796">796</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -531,7 +538,7 @@ The portion of the active tuples supporting each value per variable.
 A temporary mask use for computation. 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l00792">792</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l00794">794</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -548,7 +555,7 @@ A temporary mask use for computation.
 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l00191">191</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l00199">199</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -565,7 +572,7 @@ A temporary mask use for computation.
 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l01268">1268</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l01270">1270</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -584,7 +591,7 @@ A temporary mask use for computation.
 The transition as tuples (state, value, next_state). 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l01270">1270</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l01272">1272</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -601,7 +608,7 @@ The transition as tuples (state, value, next_state).
 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l00184">184</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l00192">192</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -620,7 +627,7 @@ The transition as tuples (state, value, next_state).
 All allowed tuples. 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l00188">188</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l00196">196</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -639,7 +646,7 @@ All allowed tuples.
 Variable representing transitions between states. See header file. 
 <p>
 
-<p>Definition at line <a class="el" href="table_8cc-source.html#l00186">186</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
+<p>Definition at line <a class="el" href="table_8cc-source.html#l00194">194</a> of file <a class="el" href="table_8cc-source.html">table.cc</a>.</p>
 
 </div>
 </div><p>
@@ -651,7 +658,7 @@ Variable representing transitions between states. See header file.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/base/index.html">base</a>/
             </tt></b></font>
@@ -254,6 +254,13 @@ Collection::value_type::second_type &amp;&nbsp;</td><td class="memTemplItemRight
 <tr><td class="memTemplParams" nowrap colspan="2">template&lt;class C, class FP&gt; </td></tr>
 <tr><td class="memTemplItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#c4d7e523e2347b05cc575be678a57159">operator!=</a> (C *p, const <a class="el" href="classoperations__research_1_1scoped__ptr__malloc.html">scoped_ptr_malloc</a>&lt; C, FP &gt; &amp;b)</td></tr>
 
+<tr><td class="memTemplParams" nowrap colspan="2">template&lt;typename ITR&gt; </td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#dab59b671d7a95ebc62baa599d4333d9">SplitStringToIteratorUsing</a> (const std::string &amp;full, const char *delim, ITR &amp;result)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="namespaceoperations__research.html#9ebe475d14950a152d76183cbc9d6b84" title="SplitStringUsing() Split a string using a character delimiter.">SplitStringUsing()</a> Split a string using a character delimiter.  <a href="#dab59b671d7a95ebc62baa599d4333d9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#9ebe475d14950a152d76183cbc9d6b84">SplitStringUsing</a> (const std::string &amp;full, const char *delim, std::vector&lt; std::string &gt; *res)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="namespaceoperations__research.html#9ebe475d14950a152d76183cbc9d6b84" title="SplitStringUsing() Split a string using a character delimiter.">SplitStringUsing()</a> Split a string using a character delimiter.  <a href="#9ebe475d14950a152d76183cbc9d6b84"></a><br></td></tr>
 <tr><td class="memTemplParams" nowrap colspan="2">template&lt;class ForwardIterator&gt; </td></tr>
 <tr><td class="memTemplItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#cacb98b70ed600596ef9db06c72773d4">STLDeleteContainerPointers</a> (ForwardIterator begin, ForwardIterator end)</td></tr>
 
@@ -283,13 +290,33 @@ Collection::value_type::second_type &amp;&nbsp;</td><td class="memTemplItemRight
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#476dd09521b9566e36de70e849dac4ec">StringAppendF</a> (std::string *const dst, const char *const format,...)</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="integral__types_8h.html#56f1a81c92849566ae864511088eb7e8">int32</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#c31ca97c330da20f6082581dc81f418e">strto32</a> (const char *nptr, char **endptr, int base)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Conversions to a 32-bit integer can pass the call to strto[u]l on 32-bit platforms, but need a little extra work on 64-bit platforms.  <a href="#c31ca97c330da20f6082581dc81f418e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="integral__types_8h.html#1134b580f8da4de94ca6b1de4d37975e">uint32</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#f0e0204225583d7b1bffcc304b268351">strtou32</a> (const char *nptr, char **endptr, int base)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="integral__types_8h.html#ecfc3c54bd29ad5964e1c1c3ccbf89df">int64</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#39284ed8b31adbf1e6a6fa1cebb43947">strto64</a> (const char *nptr, char **endptr, int base)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">For now, long long is 64-bit on all the platforms we care about, so these functions can simply pass the call to strto[u]ll.  <a href="#39284ed8b31adbf1e6a6fa1cebb43947"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="integral__types_8h.html#29940ae63ec06c9998bba873e25407ad">uint64</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#e7f177b4770b82039484d843a83b41e0">strtou64</a> (const char *nptr, char **endptr, int base)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="integral__types_8h.html#56f1a81c92849566ae864511088eb7e8">int32</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#b2a0eaffc9885d8862b0fb3dbc8b60d0">atoi32</a> (const char *nptr)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Although it returns an int, atoi() is implemented in terms of strtol, and so has differing overflow and underflow behavior.  <a href="#b2a0eaffc9885d8862b0fb3dbc8b60d0"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="integral__types_8h.html#ecfc3c54bd29ad5964e1c1c3ccbf89df">int64</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#37f583a495facdccabd33338c3c1212b">atoi64</a> (const char *nptr)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="integral__types_8h.html#56f1a81c92849566ae864511088eb7e8">int32</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#5fc9893cea6296a2a523be569cfb86cb">atoi32</a> (const std::string &amp;s)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Convenience versions of the above that take a string argument.  <a href="#5fc9893cea6296a2a523be569cfb86cb"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="integral__types_8h.html#ecfc3c54bd29ad5964e1c1c3ccbf89df">int64</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#35a2fdb75416ff9ae980afa3711a4e92">atoi64</a> (const std::string &amp;s)</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#a6647370e5e668a4a79c09d0e3269639">HasSuffixString</a> (const <a class="el" href="classoperations__research_1_1StringPiece.html">StringPiece</a> &amp;str, const <a class="el" href="classoperations__research_1_1StringPiece.html">StringPiece</a> &amp;suffix)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="namespaceoperations__research.html#a6647370e5e668a4a79c09d0e3269639" title="HasSuffixString() Return true if str ends in suffix.">HasSuffixString()</a> Return true if str ends in suffix.  <a href="#a6647370e5e668a4a79c09d0e3269639"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="integral__types_8h.html#ecfc3c54bd29ad5964e1c1c3ccbf89df">int64</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#f7311bc7b29234833be481c3b9a06448">GetProcessMemoryUsage</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">GetProcessMemoryUsage.  <a href="#f7311bc7b29234833be481c3b9a06448"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="integral__types_8h.html#ecfc3c54bd29ad5964e1c1c3ccbf89df">int64</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#8e9dcf8126cb522d7f250f9821f77f0d">TimevalToUsec</a> (const timeval &amp;tv)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="integral__types_8h.html#ecfc3c54bd29ad5964e1c1c3ccbf89df">int64</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#49227172446582b8e919a8cbc79ca996">TimevalToUsec</a> (const timeval &amp;tv)</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
@@ -309,12 +336,110 @@ You may obtain a copy of the License at<p>
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. This is an implementation designed to match the anticipated future TR2 implementation of the <a class="el" href="classoperations__research_1_1scoped__ptr.html" title="A scoped_ptr&lt;T&gt; is like a T*, except that the destructor of scoped_ptr&lt;T&gt;...">scoped_ptr</a> class, and its closely-related brethren, <a class="el" href="classoperations__research_1_1scoped__array.html" title="scoped_array&lt;C&gt; is like scoped_ptr&lt;C&gt;, except that the caller must allocate...">scoped_array</a>, <a class="el" href="classoperations__research_1_1scoped__ptr__malloc.html" title="scoped_ptr_malloc&lt;&gt; is similar to scoped_ptr&lt;&gt;, but it accepts a second...">scoped_ptr_malloc</a>, and make_scoped_ptr.<p>
 You may obtain a copy of the License at<p>
 <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a><p>
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. &lt; _MSC_VER<p>
+You may obtain a copy of the License at<p>
+<a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a><p>
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. A string-like object that points to a sized piece of memory.<p>
 Functions or methods may use const <a class="el" href="classoperations__research_1_1StringPiece.html">StringPiece</a>&amp; parameters to accept either a "const char*" or a "string" value that will be implicitly converted to a <a class="el" href="classoperations__research_1_1StringPiece.html">StringPiece</a>. The implicit conversion means that it is often appropriate to include this .h file in other files rather than forward-declaring <a class="el" href="classoperations__research_1_1StringPiece.html">StringPiece</a> as would be appropriate for most other Google classes.<p>
 Systematic usage of <a class="el" href="classoperations__research_1_1StringPiece.html">StringPiece</a> is encouraged as it will reduce unnecessary conversions from "const char*" to "string" and back again.<p>
 You may obtain a copy of the License at<p>
 <a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a><p>
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. For strtol* functions.<p>
+You may obtain a copy of the License at<p>
+<a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a><p>
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. Mac OS X WINDOWS <hr><h2>Function Documentation</h2>
+<a class="anchor" name="5fc9893cea6296a2a523be569cfb86cb"></a><!-- doxytag: member="operations_research::atoi32" ref="5fc9893cea6296a2a523be569cfb86cb" args="(const std::string &amp;s)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="integral__types_8h.html#56f1a81c92849566ae864511088eb7e8">int32</a> operations_research::atoi32           </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>s</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Convenience versions of the above that take a string argument. 
+<p>
+
+<p>Definition at line <a class="el" href="strtoint_8h-source.html#l00061">61</a> of file <a class="el" href="strtoint_8h-source.html">strtoint.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="b2a0eaffc9885d8862b0fb3dbc8b60d0"></a><!-- doxytag: member="operations_research::atoi32" ref="b2a0eaffc9885d8862b0fb3dbc8b60d0" args="(const char *nptr)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="integral__types_8h.html#56f1a81c92849566ae864511088eb7e8">int32</a> operations_research::atoi32           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>nptr</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Although it returns an int, atoi() is implemented in terms of strtol, and so has differing overflow and underflow behavior. 
+<p>
+atol is the same. 
+<p>Definition at line <a class="el" href="strtoint_8h-source.html#l00052">52</a> of file <a class="el" href="strtoint_8h-source.html">strtoint.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="35a2fdb75416ff9ae980afa3711a4e92"></a><!-- doxytag: member="operations_research::atoi64" ref="35a2fdb75416ff9ae980afa3711a4e92" args="(const std::string &amp;s)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="integral__types_8h.html#ecfc3c54bd29ad5964e1c1c3ccbf89df">int64</a> operations_research::atoi64           </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>s</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="strtoint_8h-source.html#l00065">65</a> of file <a class="el" href="strtoint_8h-source.html">strtoint.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="37f583a495facdccabd33338c3c1212b"></a><!-- doxytag: member="operations_research::atoi64" ref="37f583a495facdccabd33338c3c1212b" args="(const char *nptr)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="integral__types_8h.html#ecfc3c54bd29ad5964e1c1c3ccbf89df">int64</a> operations_research::atoi64           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>nptr</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="strtoint_8h-source.html#l00056">56</a> of file <a class="el" href="strtoint_8h-source.html">strtoint.h</a>.</p>
+
+</div>
+</div><p>
 <a class="anchor" name="8931adc07d6ce40dbf76f4276b62866e"></a><!-- doxytag: member="operations_research::ContainsKey" ref="8931adc07d6ce40dbf76f4276b62866e" args="(const Collection &amp;collection, const Key &amp;key)" -->
 <div class="memitem">
 <div class="memproto">
@@ -1086,6 +1211,87 @@ template&lt;class C&gt; </div>
 
 </div>
 </div><p>
+<a class="anchor" name="dab59b671d7a95ebc62baa599d4333d9"></a><!-- doxytag: member="operations_research::SplitStringToIteratorUsing" ref="dab59b671d7a95ebc62baa599d4333d9" args="(const std::string &amp;full, const char *delim, ITR &amp;result)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename ITR&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">static void operations_research::SplitStringToIteratorUsing           </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>full</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>delim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ITR &amp;&nbsp;</td>
+          <td class="paramname"> <em>result</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline, static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<a class="el" href="namespaceoperations__research.html#9ebe475d14950a152d76183cbc9d6b84" title="SplitStringUsing() Split a string using a character delimiter.">SplitStringUsing()</a> Split a string using a character delimiter. 
+<p>
+Append the components to 'result'.<p>
+Note: For multi-character delimiters, this routine will split on *ANY* of the characters in the string, not the entire string as a single delimiter. 
+<p>Definition at line <a class="el" href="split_8cc-source.html#l00030">30</a> of file <a class="el" href="split_8cc-source.html">split.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9ebe475d14950a152d76183cbc9d6b84"></a><!-- doxytag: member="operations_research::SplitStringUsing" ref="9ebe475d14950a152d76183cbc9d6b84" args="(const std::string &amp;full, const char *delim, std::vector&lt; std::string &gt; *res)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::SplitStringUsing           </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&nbsp;</td>
+          <td class="paramname"> <em>full</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>delim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt; *&nbsp;</td>
+          <td class="paramname"> <em>res</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<a class="el" href="namespaceoperations__research.html#9ebe475d14950a152d76183cbc9d6b84" title="SplitStringUsing() Split a string using a character delimiter.">SplitStringUsing()</a> Split a string using a character delimiter. 
+<p>
+Append the components to 'result'. If there are consecutive delimiters, this function skips over all of them. 
+<p>Definition at line <a class="el" href="split_8cc-source.html#l00063">63</a> of file <a class="el" href="split_8cc-source.html">split.cc</a>.</p>
+
+</div>
+</div><p>
 <a class="anchor" name="253b1c2056075b651fa4b2dd751c8c5e"></a><!-- doxytag: member="operations_research::SStringPrintf" ref="253b1c2056075b651fa4b2dd751c8c5e" args="(std::string *const dst, const char *const format,...)" -->
 <div class="memitem">
 <div class="memproto">
@@ -1633,6 +1839,158 @@ As of 2006-04, there is no standard-blessed way of getting a mutable reference t
 
 </div>
 </div><p>
+<a class="anchor" name="c31ca97c330da20f6082581dc81f418e"></a><!-- doxytag: member="operations_research::strto32" ref="c31ca97c330da20f6082581dc81f418e" args="(const char *nptr, char **endptr, int base)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="integral__types_8h.html#56f1a81c92849566ae864511088eb7e8">int32</a> operations_research::strto32           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>nptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&nbsp;</td>
+          <td class="paramname"> <em>endptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>base</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Conversions to a 32-bit integer can pass the call to strto[u]l on 32-bit platforms, but need a little extra work on 64-bit platforms. 
+<p>
+
+<p>Definition at line <a class="el" href="strtoint_8h-source.html#l00024">24</a> of file <a class="el" href="strtoint_8h-source.html">strtoint.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="39284ed8b31adbf1e6a6fa1cebb43947"></a><!-- doxytag: member="operations_research::strto64" ref="39284ed8b31adbf1e6a6fa1cebb43947" args="(const char *nptr, char **endptr, int base)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="integral__types_8h.html#ecfc3c54bd29ad5964e1c1c3ccbf89df">int64</a> operations_research::strto64           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>nptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&nbsp;</td>
+          <td class="paramname"> <em>endptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>base</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+For now, long long is 64-bit on all the platforms we care about, so these functions can simply pass the call to strto[u]ll. 
+<p>
+
+<p>Definition at line <a class="el" href="strtoint_8h-source.html#l00034">34</a> of file <a class="el" href="strtoint_8h-source.html">strtoint.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f0e0204225583d7b1bffcc304b268351"></a><!-- doxytag: member="operations_research::strtou32" ref="f0e0204225583d7b1bffcc304b268351" args="(const char *nptr, char **endptr, int base)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="integral__types_8h.html#1134b580f8da4de94ca6b1de4d37975e">uint32</a> operations_research::strtou32           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>nptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&nbsp;</td>
+          <td class="paramname"> <em>endptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>base</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="strtoint_8h-source.html#l00028">28</a> of file <a class="el" href="strtoint_8h-source.html">strtoint.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e7f177b4770b82039484d843a83b41e0"></a><!-- doxytag: member="operations_research::strtou64" ref="e7f177b4770b82039484d843a83b41e0" args="(const char *nptr, char **endptr, int base)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="integral__types_8h.html#29940ae63ec06c9998bba873e25407ad">uint64</a> operations_research::strtou64           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>nptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&nbsp;</td>
+          <td class="paramname"> <em>endptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>base</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="strtoint_8h-source.html#l00042">42</a> of file <a class="el" href="strtoint_8h-source.html">strtoint.h</a>.</p>
+
+</div>
+</div><p>
 <a class="anchor" name="3b8879b62e8f69a37d7b4b785b9481f9"></a><!-- doxytag: member="operations_research::swap" ref="3b8879b62e8f69a37d7b4b785b9481f9" args="(scoped_ptr_malloc&lt; C, FP &gt; &amp;a, scoped_ptr_malloc&lt; C, FP &gt; &amp;b)" -->
 <div class="memitem">
 <div class="memproto">
@@ -1736,12 +2094,12 @@ Free functions.
 
 </div>
 </div><p>
-<a class="anchor" name="8e9dcf8126cb522d7f250f9821f77f0d"></a><!-- doxytag: member="operations_research::TimevalToUsec" ref="8e9dcf8126cb522d7f250f9821f77f0d" args="(const timeval &amp;tv)" -->
+<a class="anchor" name="49227172446582b8e919a8cbc79ca996"></a><!-- doxytag: member="operations_research::TimevalToUsec" ref="49227172446582b8e919a8cbc79ca996" args="(const timeval &amp;tv)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="integral__types_8h.html#ecfc3c54bd29ad5964e1c1c3ccbf89df">int64</a> operations_research::@39::TimevalToUsec           </td>
+          <td class="memname">static <a class="el" href="integral__types_8h.html#ecfc3c54bd29ad5964e1c1c3ccbf89df">int64</a> operations_research::@41::TimevalToUsec           </td>
           <td>(</td>
           <td class="paramtype">const timeval &amp;&nbsp;</td>
           <td class="paramname"> <em>tv</em>          </td>
@@ -1754,7 +2112,7 @@ Free functions.
 
 <p>
 
-<p>Definition at line <a class="el" href="timer_8cc-source.html#l00032">32</a> of file <a class="el" href="timer_8cc-source.html">timer.cc</a>.</p>
+<p>Definition at line <a class="el" href="timer_8cc-source.html#l00033">33</a> of file <a class="el" href="timer_8cc-source.html">timer.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1788,7 +2146,7 @@ Free functions.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

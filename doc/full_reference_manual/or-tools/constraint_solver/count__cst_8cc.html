@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -83,11 +83,16 @@
   </div>
 </div>
 <div class="contents">
-<h1>or-tools/constraint_solver/count_cst.cc File Reference</h1><code>#include &quot;base/integral_types.h&quot;</code><br>
+<h1>or-tools/constraint_solver/count_cst.cc File Reference</h1><code>#include &lt;string.h&gt;</code><br>
+<code>#include &lt;algorithm&gt;</code><br>
+<code>#include &lt;string&gt;</code><br>
+<code>#include &lt;vector&gt;</code><br>
+<code>#include &quot;base/integral_types.h&quot;</code><br>
 <code>#include &quot;base/logging.h&quot;</code><br>
 <code>#include &quot;base/scoped_ptr.h&quot;</code><br>
 <code>#include &quot;base/stringprintf.h&quot;</code><br>
 <code>#include &quot;base/concise_iterator.h&quot;</code><br>
+<code>#include &quot;<a class="el" href="constraint__solver_8h-source.html">constraint_solver/constraint_solver.h</a>&quot;</code><br>
 <code>#include &quot;<a class="el" href="constraint__solveri_8h-source.html">constraint_solver/constraint_solveri.h</a>&quot;</code><br>
 <code>#include &quot;util/string_array.h&quot;</code><br>
 
@@ -112,7 +117,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00901">901</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00907">907</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -129,7 +134,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00900">900</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00906">906</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -146,7 +151,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00436">436</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00442">442</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -163,7 +168,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00435">435</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00441">441</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -180,7 +185,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00063">63</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00069">69</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -197,7 +202,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00684">684</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00690">690</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -214,7 +219,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00065">65</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00071">71</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -231,7 +236,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00064">64</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00070">70</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -248,7 +253,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00060">60</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00066">66</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -265,7 +270,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00062">62</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00068">68</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -282,7 +287,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00061">61</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00067">67</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -299,7 +304,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00434">434</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00440">440</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -316,7 +321,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00433">433</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00439">439</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -333,7 +338,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00059">59</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
+<p>Definition at line <a class="el" href="count__cst_8cc-source.html#l00065">65</a> of file <a class="el" href="count__cst_8cc-source.html">count_cst.cc</a>.</p>
 
 </div>
 </div><p>
@@ -345,7 +350,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

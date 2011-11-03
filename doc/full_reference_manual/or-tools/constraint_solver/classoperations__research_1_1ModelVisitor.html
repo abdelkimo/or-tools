@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -137,6 +137,8 @@ Inheritance diagram for operations_research::ModelVisitor:</div>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#15d5020f7c3dcd4924603989d638c294">VisitIntervalVariable</a> (const <a class="el" href="classoperations__research_1_1IntervalVar.html">IntervalVar</a> *const variable, const string operation, const <a class="el" href="classoperations__research_1_1IntervalVar.html">IntervalVar</a> *const *delegate, int size)</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#9ffd84a47b9d4705e7db2d62dc2e0676">VisitSequenceVariable</a> (const <a class="el" href="classoperations__research_1_1SequenceVar.html">SequenceVar</a> *const sequence)</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#0da215ee18e654bbc21952227ac2fe86">VisitIntegerArgument</a> (const string &amp;arg_name, int64 <a class="el" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Visit integer arguments.  <a href="#0da215ee18e654bbc21952227ac2fe86"></a><br></td></tr>
@@ -153,6 +155,11 @@ Inheritance diagram for operations_research::ModelVisitor:</div>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Visit interval argument.  <a href="#32db054f59851fddaa05cdba6a8d51ce"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#ac69138e5f9a14f83c2058fb008d0efe">VisitIntervalArrayArgument</a> (const string &amp;arg_name, const <a class="el" href="classoperations__research_1_1IntervalVar.html">IntervalVar</a> *const *argument, int size)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#c8aaad5d68760ee6b4fc33d14a325c11">VisitSequenceArgument</a> (const string &amp;arg_name, const <a class="el" href="classoperations__research_1_1SequenceVar.html">SequenceVar</a> *const argument)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Visit sequence argument.  <a href="#c8aaad5d68760ee6b4fc33d14a325c11"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">virtual void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#e887cbd16425ea5d3fa94ae00a8419ed">VisitSequenceArrayArgument</a> (const string &amp;arg_name, const <a class="el" href="classoperations__research_1_1SequenceVar.html">SequenceVar</a> *const *argument, int size)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#719a2da5db2552a65efa489b095069bf">VisitConstIntArrayArgument</a> (const string &amp;arg_name, const ConstIntArray &amp;argument)</td></tr>
 
@@ -183,6 +190,8 @@ Inheritance diagram for operations_research::ModelVisitor:</div>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#2075ef405e2f03aabc0420352e714c10">kDeviation</a> [] = &quot;Deviation&quot;</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#4f8fa646f05f32445266b6b495c05de4">kDifference</a> [] = &quot;Difference&quot;</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#c69c0d4cf1ead77c36da8acf18194676">kDisjunctive</a> [] = &quot;Disjunctive&quot;</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#49245843ccae49bc4676975060163f88">kDistribute</a> [] = &quot;Distribute&quot;</td></tr>
 
@@ -268,7 +277,7 @@ Inheritance diagram for operations_research::ModelVisitor:</div>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#be5a471c67142fbb3a2337c23b2fce1a">kSemiContinuous</a> [] = &quot;SemiContinuous&quot;</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#a24f702ca62f93df4b14afb0e2f26fab">kSequence</a> [] = &quot;Sequence&quot;</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#3fdbfba4f5a46688763629983082bff7">kSequenceVariable</a> [] = &quot;SequenceVariable&quot;</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#b030b9586356bd410d3e944f2be7b3f7">kSquare</a> [] = &quot;Square&quot;</td></tr>
 
@@ -382,6 +391,10 @@ Inheritance diagram for operations_research::ModelVisitor:</div>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#852120192da92a3ca6fbbcb09bcb8b7e">kRightArgument</a> [] = &quot;right&quot;</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#2400305da392fec27dd268dd01ae5e76">kSequenceArgument</a> [] = &quot;sequence&quot;</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#96f367518be03a50369fbe0681d68bdf">kSequencesArgument</a> [] = &quot;sequences&quot;</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#6e4650bdd2c49b50c446668331a95f7c">kSizeArgument</a> [] = &quot;size&quot;</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ModelVisitor.html#f2556fbcf3669f7167b56e7a8c96ee5b">kSmartTimeCheckArgument</a> [] = &quot;smart_time_check&quot;</td></tr>
@@ -418,7 +431,7 @@ Inheritance diagram for operations_research::ModelVisitor:</div>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Model visitor. 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02611">2611</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02629">2629</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="2ce0e07fea8345b36a2b8bb0b18a0366"></a><!-- doxytag: member="operations_research::ModelVisitor::~ModelVisitor" ref="2ce0e07fea8345b36a2b8bb0b18a0366" args="()" -->
 <div class="memitem">
@@ -439,7 +452,7 @@ Model visitor.
 Methods. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02549">2549</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02626">2626</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -464,7 +477,7 @@ Methods.
 Virtual methods for visitors. 
 <p>
 Begin/End visit element. 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02551">2551</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02628">2628</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -486,7 +499,7 @@ Begin/End visit element.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02552">2552</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02629">2629</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -517,7 +530,7 @@ Begin/End visit element.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02554">2554</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02631">2631</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -548,7 +561,7 @@ Begin/End visit element.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02556">2556</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02633">2633</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -570,7 +583,7 @@ Begin/End visit element.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02559">2559</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02636">2636</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -592,7 +605,7 @@ Begin/End visit element.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02561">2561</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02638">2638</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -623,7 +636,7 @@ Begin/End visit element.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02563">2563</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02640">2640</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -654,7 +667,7 @@ Begin/End visit element.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02565">2565</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02642">2642</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -685,7 +698,7 @@ Begin/End visit element.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02568">2568</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02645">2645</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -722,7 +735,7 @@ Begin/End visit element.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02575">2575</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02652">2652</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -765,7 +778,29 @@ Begin/End visit element.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02583">2583</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02660">2660</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9ffd84a47b9d4705e7db2d62dc2e0676"></a><!-- doxytag: member="operations_research::ModelVisitor::VisitSequenceVariable" ref="9ffd84a47b9d4705e7db2d62dc2e0676" args="(const SequenceVar *const sequence)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::ModelVisitor::VisitSequenceVariable           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoperations__research_1_1SequenceVar.html">SequenceVar</a> *const &nbsp;</td>
+          <td class="paramname"> <em>sequence</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02669">2669</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -798,7 +833,7 @@ Begin/End visit element.
 Visit integer arguments. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02594">2594</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02675">2675</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -835,7 +870,7 @@ Visit integer arguments.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02596">2596</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02677">2677</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -878,7 +913,7 @@ Visit integer arguments.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02600">2600</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02681">2681</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -911,7 +946,7 @@ Visit integer arguments.
 Visit integer expression argument. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02605">2605</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02686">2686</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -948,7 +983,7 @@ Visit integer expression argument.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02611">2611</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02692">2692</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -981,7 +1016,7 @@ Visit integer expression argument.
 Visit interval argument. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02620">2620</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02701">2701</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1018,7 +1053,77 @@ Visit interval argument.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02626">2626</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02707">2707</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c8aaad5d68760ee6b4fc33d14a325c11"></a><!-- doxytag: member="operations_research::ModelVisitor::VisitSequenceArgument" ref="c8aaad5d68760ee6b4fc33d14a325c11" args="(const string &amp;arg_name, const SequenceVar *const argument)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::ModelVisitor::VisitSequenceArgument           </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&nbsp;</td>
+          <td class="paramname"> <em>arg_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classoperations__research_1_1SequenceVar.html">SequenceVar</a> *const &nbsp;</td>
+          <td class="paramname"> <em>argument</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Visit sequence argument. 
+<p>
+
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02716">2716</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="e887cbd16425ea5d3fa94ae00a8419ed"></a><!-- doxytag: member="operations_research::ModelVisitor::VisitSequenceArrayArgument" ref="e887cbd16425ea5d3fa94ae00a8419ed" args="(const string &amp;arg_name, const SequenceVar *const *argument, int size)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::ModelVisitor::VisitSequenceArrayArgument           </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&nbsp;</td>
+          <td class="paramname"> <em>arg_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classoperations__research_1_1SequenceVar.html">SequenceVar</a> *const *&nbsp;</td>
+          <td class="paramname"> <em>argument</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>size</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [virtual]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02722">2722</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1051,7 +1156,7 @@ Visit interval argument.
 Helpers. 
 <p>
 Using SWIG on calbacks is troublesome, let's hide these methods during the wrapping. 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02637">2637</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02733">2733</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1088,7 +1193,7 @@ Using SWIG on calbacks is troublesome, let's hide these methods during the wrapp
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02642">2642</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02738">2738</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1125,7 +1230,7 @@ Using SWIG on calbacks is troublesome, let's hide these methods during the wrapp
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02663">2663</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02759">2759</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1164,7 +1269,7 @@ Using SWIG on calbacks is troublesome, let's hide these methods during the wrapp
 Expands function as array when index min is 0. 
 <p>
 if !defined(SWIG) 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02683">2683</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02779">2779</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1185,7 +1290,7 @@ if !defined(SWIG)
 <p>
 <a class="el" href="classoperations__research_1_1ModelVisitor.html" title="Model visitor.">ModelVisitor</a>.<p>
 Tags for constraints, arguments, extensions. 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02614">2614</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02632">2632</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1202,7 +1307,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02615">2615</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02633">2633</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1219,7 +1324,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02616">2616</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02634">2634</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1236,7 +1341,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02617">2617</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02635">2635</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1253,7 +1358,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02618">2618</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02636">2636</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1270,7 +1375,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02619">2619</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02637">2637</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1287,7 +1392,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02620">2620</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02638">2638</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1304,7 +1409,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02621">2621</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02639">2639</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1321,7 +1426,24 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02622">2622</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02640">2640</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c69c0d4cf1ead77c36da8acf18194676"></a><!-- doxytag: member="operations_research::ModelVisitor::kDisjunctive" ref="c69c0d4cf1ead77c36da8acf18194676" args="[]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char <a class="el" href="classoperations__research_1_1ModelVisitor.html#c69c0d4cf1ead77c36da8acf18194676">operations_research::ModelVisitor::kDisjunctive</a> = &quot;Disjunctive&quot;<code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02641">2641</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1338,7 +1460,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02623">2623</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02642">2642</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1355,7 +1477,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02624">2624</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02643">2643</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1372,7 +1494,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02625">2625</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02644">2644</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1389,7 +1511,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02626">2626</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02645">2645</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1406,7 +1528,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02627">2627</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02646">2646</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1423,7 +1545,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02628">2628</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02647">2647</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1440,7 +1562,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02629">2629</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02648">2648</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1457,7 +1579,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02630">2630</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02649">2649</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1474,7 +1596,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02631">2631</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02650">2650</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1491,7 +1613,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02632">2632</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02651">2651</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1508,7 +1630,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02633">2633</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02652">2652</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1525,7 +1647,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02634">2634</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02653">2653</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1542,7 +1664,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02635">2635</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02654">2654</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1559,7 +1681,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02636">2636</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02655">2655</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1576,7 +1698,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02637">2637</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02656">2656</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1593,7 +1715,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02638">2638</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02657">2657</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1610,7 +1732,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02639">2639</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02658">2658</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1627,7 +1749,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02640">2640</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02659">2659</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1644,7 +1766,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02641">2641</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02660">2660</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1661,7 +1783,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02642">2642</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02661">2661</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1678,7 +1800,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02643">2643</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02662">2662</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1695,7 +1817,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02644">2644</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02663">2663</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1712,7 +1834,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02645">2645</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02664">2664</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1729,7 +1851,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02646">2646</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02665">2665</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1746,7 +1868,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02647">2647</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02666">2666</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1763,7 +1885,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02648">2648</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02667">2667</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1780,7 +1902,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02649">2649</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02668">2668</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1797,7 +1919,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02650">2650</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02669">2669</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1814,7 +1936,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02651">2651</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02670">2670</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1831,7 +1953,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02652">2652</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02671">2671</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1848,7 +1970,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02653">2653</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02672">2672</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1865,7 +1987,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02654">2654</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02673">2673</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1882,7 +2004,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02655">2655</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02674">2674</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1899,7 +2021,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02656">2656</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02675">2675</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1916,7 +2038,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02657">2657</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02676">2676</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1933,7 +2055,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02658">2658</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02677">2677</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1950,7 +2072,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02659">2659</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02678">2678</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1967,7 +2089,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02660">2660</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02679">2679</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -1984,7 +2106,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02661">2661</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02680">2680</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2003,7 +2125,7 @@ Tags for constraints, arguments, extensions.
 <b>Initial value:</b><div class="fragment"><pre class="fragment">
     <span class="stringliteral">"ScalarProductGreaterOrEqual"</span>
 </pre></div>
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02662">2662</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02681">2681</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2020,7 +2142,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02663">2663</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02682">2682</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2037,16 +2159,16 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02664">2664</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02683">2683</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="a24f702ca62f93df4b14afb0e2f26fab"></a><!-- doxytag: member="operations_research::ModelVisitor::kSequence" ref="a24f702ca62f93df4b14afb0e2f26fab" args="[]" -->
+<a class="anchor" name="3fdbfba4f5a46688763629983082bff7"></a><!-- doxytag: member="operations_research::ModelVisitor::kSequenceVariable" ref="3fdbfba4f5a46688763629983082bff7" args="[]" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char <a class="el" href="classoperations__research_1_1ModelVisitor.html#a24f702ca62f93df4b14afb0e2f26fab">operations_research::ModelVisitor::kSequence</a> = &quot;Sequence&quot;<code> [static]</code>          </td>
+          <td class="memname">const char <a class="el" href="classoperations__research_1_1ModelVisitor.html#3fdbfba4f5a46688763629983082bff7">operations_research::ModelVisitor::kSequenceVariable</a> = &quot;SequenceVariable&quot;<code> [static]</code>          </td>
         </tr>
       </table>
 </div>
@@ -2054,7 +2176,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02665">2665</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02684">2684</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2071,7 +2193,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02666">2666</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02685">2685</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2088,7 +2210,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02667">2667</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02686">2686</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2105,7 +2227,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02668">2668</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02687">2687</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2122,7 +2244,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02669">2669</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02688">2688</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2139,7 +2261,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02670">2670</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02689">2689</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2156,7 +2278,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02671">2671</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02690">2690</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2173,7 +2295,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02672">2672</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02691">2691</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2190,7 +2312,7 @@ Tags for constraints, arguments, extensions.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02673">2673</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02692">2692</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2209,7 +2331,7 @@ Tags for constraints, arguments, extensions.
 Extension names:. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02676">2676</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02695">2695</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2226,7 +2348,7 @@ Extension names:.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02677">2677</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02696">2696</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2243,7 +2365,7 @@ Extension names:.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02678">2678</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02697">2697</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2260,7 +2382,7 @@ Extension names:.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02679">2679</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02698">2698</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2277,7 +2399,7 @@ Extension names:.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02680">2680</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02699">2699</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2294,7 +2416,7 @@ Extension names:.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02681">2681</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02700">2700</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2311,7 +2433,7 @@ Extension names:.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02682">2682</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02701">2701</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2328,7 +2450,7 @@ Extension names:.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02683">2683</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02702">2702</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2345,7 +2467,7 @@ Extension names:.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02684">2684</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02703">2703</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2364,7 +2486,7 @@ Extension names:.
 <b>Initial value:</b><div class="fragment"><pre class="fragment">
     <span class="stringliteral">"VariableUsageLessConstant"</span>
 </pre></div>
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02685">2685</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02704">2704</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2383,7 +2505,7 @@ Extension names:.
 <b>Initial value:</b><div class="fragment"><pre class="fragment">
     <span class="stringliteral">"WeightedSumOfAssignedEqualVariable"</span>
 </pre></div>
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02686">2686</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02705">2705</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2402,7 +2524,7 @@ Extension names:.
 argument names: 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02689">2689</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02708">2708</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2419,7 +2541,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02690">2690</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02709">2709</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2436,7 +2558,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02691">2691</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02710">2710</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2453,7 +2575,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02692">2692</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02711">2711</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2470,7 +2592,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02693">2693</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02712">2712</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2487,7 +2609,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02694">2694</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02713">2713</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2504,7 +2626,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02695">2695</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02714">2714</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2521,7 +2643,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02696">2696</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02715">2715</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2538,7 +2660,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02697">2697</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02716">2716</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2555,7 +2677,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02698">2698</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02717">2717</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2572,7 +2694,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02699">2699</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02718">2718</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2589,7 +2711,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02700">2700</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02719">2719</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2606,7 +2728,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02701">2701</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02720">2720</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2623,7 +2745,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02702">2702</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02721">2721</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2640,7 +2762,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02703">2703</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02722">2722</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2657,7 +2779,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02704">2704</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02723">2723</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2674,7 +2796,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02705">2705</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02724">2724</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2691,7 +2813,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02706">2706</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02725">2725</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2708,7 +2830,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02707">2707</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02726">2726</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2725,7 +2847,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02708">2708</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02727">2727</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2742,7 +2864,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02709">2709</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02728">2728</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2759,7 +2881,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02710">2710</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02729">2729</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2776,7 +2898,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02711">2711</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02730">2730</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2793,7 +2915,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02712">2712</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02731">2731</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2810,7 +2932,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02713">2713</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02732">2732</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2827,7 +2949,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02714">2714</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02733">2733</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2844,7 +2966,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02715">2715</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02734">2734</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2861,7 +2983,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02716">2716</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02735">2735</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2878,7 +3000,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02717">2717</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02736">2736</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2895,7 +3017,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02718">2718</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02737">2737</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2912,7 +3034,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02719">2719</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02738">2738</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2929,7 +3051,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02720">2720</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02739">2739</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2946,7 +3068,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02721">2721</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02740">2740</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2963,7 +3085,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02722">2722</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02741">2741</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2980,7 +3102,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02723">2723</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02742">2742</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -2997,7 +3119,41 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02724">2724</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02743">2743</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2400305da392fec27dd268dd01ae5e76"></a><!-- doxytag: member="operations_research::ModelVisitor::kSequenceArgument" ref="2400305da392fec27dd268dd01ae5e76" args="[]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char <a class="el" href="classoperations__research_1_1ModelVisitor.html#2400305da392fec27dd268dd01ae5e76">operations_research::ModelVisitor::kSequenceArgument</a> = &quot;sequence&quot;<code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02744">2744</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="96f367518be03a50369fbe0681d68bdf"></a><!-- doxytag: member="operations_research::ModelVisitor::kSequencesArgument" ref="96f367518be03a50369fbe0681d68bdf" args="[]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char <a class="el" href="classoperations__research_1_1ModelVisitor.html#96f367518be03a50369fbe0681d68bdf">operations_research::ModelVisitor::kSequencesArgument</a> = &quot;sequences&quot;<code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02745">2745</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3014,7 +3170,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02725">2725</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02746">2746</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3031,7 +3187,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02726">2726</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02747">2747</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3048,7 +3204,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02727">2727</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02748">2748</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3065,7 +3221,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02728">2728</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02749">2749</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3082,7 +3238,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02729">2729</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02750">2750</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3099,7 +3255,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02730">2730</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02751">2751</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3116,7 +3272,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02731">2731</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02752">2752</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3133,7 +3289,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02732">2732</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02753">2753</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3150,7 +3306,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02733">2733</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02754">2754</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3167,7 +3323,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02734">2734</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02755">2755</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3184,7 +3340,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02735">2735</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02756">2756</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3201,7 +3357,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02736">2736</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02757">2757</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3218,7 +3374,7 @@ argument names:
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02737">2737</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02758">2758</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3237,7 +3393,7 @@ argument names:
 Operations. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02740">2740</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02761">2761</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3254,7 +3410,7 @@ Operations.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02741">2741</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02762">2762</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3271,7 +3427,7 @@ Operations.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02742">2742</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l02763">2763</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -3285,7 +3441,7 @@ Operations.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/linear_solver/index.html">linear_solver</a>/
             </tt></b></font>
@@ -75,6 +75,7 @@
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -90,7 +91,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>operations_research::MPConstraint Class Reference</h1><!-- doxytag: class="operations_research::MPConstraint" -->A class to express constraints for a linear programming problem.  
+<h1>operations_research::MPConstraint Class Reference</h1><!-- doxytag: class="operations_research::MPConstraint" -->The class for constraints of a Mathematical Programming (MP) model.  
 <a href="#_details">More...</a>
 <p>
 <code>#include &lt;<a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>&gt;</code>
@@ -102,43 +103,50 @@
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">const string &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#888922554e16a2dee71d681a4c35bb3b">name</a> () const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the name of the constraint.  <a href="#888922554e16a2dee71d681a4c35bb3b"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#2ac836dbebc688c3ac5559fc33c20eb7">Clear</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clears all variables and coefficients.  <a href="#2ac836dbebc688c3ac5559fc33c20eb7"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clears all variables and coefficients. Does not clear the bounds.  <a href="#2ac836dbebc688c3ac5559fc33c20eb7"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#9229d83ffb6f0995d88b7427be2ec816">AddTerm</a> (<a class="el" href="classoperations__research_1_1MPVariable.html">MPVariable</a> *const var, double coeff)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Add (var * coeff) to the current constraint.  <a href="#9229d83ffb6f0995d88b7427be2ec816"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds var * coeff to the constraint.  <a href="#9229d83ffb6f0995d88b7427be2ec816"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#4079630081bcf58f6291471f4b260ed9">AddTerm</a> (<a class="el" href="classoperations__research_1_1MPVariable.html">MPVariable</a> *const var)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Add var to the current constraint.  <a href="#4079630081bcf58f6291471f4b260ed9"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds var (with coefficient 1) to the constraint.  <a href="#4079630081bcf58f6291471f4b260ed9"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#786cd48313d039f60c90f634d69b5ba9">SetCoefficient</a> (<a class="el" href="classoperations__research_1_1MPVariable.html">MPVariable</a> *const var, double coeff)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the coefficient of the variable on the constraint.  <a href="#786cd48313d039f60c90f634d69b5ba9"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the coefficient of the variable on the constraint.  <a href="#786cd48313d039f60c90f634d69b5ba9"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#9dd906b7815829d21312b6f545d132f7">lb</a> () const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the lower bound.  <a href="#9dd906b7815829d21312b6f545d132f7"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#b5c0a898865af6831457f32ffe64e8c8">ub</a> () const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the upper bound.  <a href="#b5c0a898865af6831457f32ffe64e8c8"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#85c6d75f990f000e5863b83bd56e0e98">SetLB</a> (double lb)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the lower bound.  <a href="#85c6d75f990f000e5863b83bd56e0e98"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#84c9d35dde8a2e1c7caccf88e9e86d60">SetUB</a> (double ub)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the upper bound.  <a href="#84c9d35dde8a2e1c7caccf88e9e86d60"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#bf8bbda7b4d608d011f88d2df83db881">SetBounds</a> (double lb, double ub)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets both the lower and upper bounds.  <a href="#bf8bbda7b4d608d011f88d2df83db881"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#048e7790c634980609c89686a57b72b4">activity</a> () const </td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the constraint's activity in the current solution: sum over all terms of (coefficient * variable value).  <a href="#048e7790c634980609c89686a57b72b4"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#f7b3cdc047234de213ad3f2740ae7b08">dual_value</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The following methods are available only for continuous problems.  <a href="#f7b3cdc047234de213ad3f2740ae7b08"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classoperations__research_1_1MPSolver.html#7e2a34816b22749e70e23d26f49cf743">MPSolver::BasisStatus</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#00cef76e48714ea106b1af7c940ae71f">basis_status</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Advanced usage: returns the basis status of the slack variable associated with the constraint.  <a href="#00cef76e48714ea106b1af7c940ae71f"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#563d400d053f7eaa87c2252c62e7775f">index</a> () const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the index of the constraint in the MPSolver::constraints_.  <a href="#563d400d053f7eaa87c2252c62e7775f"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#f7b3cdc047234de213ad3f2740ae7b08">dual_value</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Advanced usage: returns the dual value of the constraint in the current solution (only available for continuous problems).  <a href="#f7b3cdc047234de213ad3f2740ae7b08"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classoperations__research_1_1MPSolver.html#7e2a34816b22749e70e23d26f49cf743">MPSolver::BasisStatus</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#00cef76e48714ea106b1af7c940ae71f">basis_status</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Advanced usage: returns the basis status of the slack variable associated with the constraint (only available for continuous problems).  <a href="#00cef76e48714ea106b1af7c940ae71f"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#f8a971a9586492fe2499115be93ededb">MPConstraint</a> (double lb, double ub, const string &amp;name, <a class="el" href="classoperations__research_1_1MPSolverInterface.html">MPSolverInterface</a> *const interface)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creates a constraint and updates the pointer to its <a class="el" href="classoperations__research_1_1MPSolverInterface.html" title="This class serves as a proxy to mathematical programming linear solvers.">MPSolverInterface</a>.  <a href="#f8a971a9586492fe2499115be93ededb"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#f8a971a9586492fe2499115be93ededb"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#2049b391733c5f3c7cc937d59aa3b90f">set_index</a> (int index)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPConstraint.html#c530d20407ac9217fe78b420281cf793">set_activity</a> (double activity)</td></tr>
@@ -160,10 +168,10 @@
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-A class to express constraints for a linear programming problem. 
+The class for constraints of a Mathematical Programming (MP) model. 
 <p>
-A constraint is represented as a linear equation/inequality. 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00425">425</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+A constraint is represented as a linear equation or inequality. 
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00554">554</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="f8a971a9586492fe2499115be93ededb"></a><!-- doxytag: member="operations_research::MPConstraint::MPConstraint" ref="f8a971a9586492fe2499115be93ededb" args="(double lb, double ub, const string &amp;name, MPSolverInterface *const interface)" -->
 <div class="memitem">
@@ -203,10 +211,10 @@ A constraint is represented as a linear equation/inequality.
 <div class="memdoc">
 
 <p>
-Creates a constraint and updates the pointer to its <a class="el" href="classoperations__research_1_1MPSolverInterface.html" title="This class serves as a proxy to mathematical programming linear solvers.">MPSolverInterface</a>. 
+Constructor. 
 <p>
-
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00465">465</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+A constraint points to a single <a class="el" href="classoperations__research_1_1MPSolverInterface.html" title="This class wraps the actual mathematical programming solvers.">MPSolverInterface</a> that is specified in the constructor. A constraint cannot belong to several models. 
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00608">608</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -227,8 +235,10 @@ Creates a constraint and updates the pointer to its <a class="el" href="classope
 <div class="memdoc">
 
 <p>
+Returns the name of the constraint. 
+<p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00427">427</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00557">557</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -248,7 +258,7 @@ Creates a constraint and updates the pointer to its <a class="el" href="classope
 <div class="memdoc">
 
 <p>
-Clears all variables and coefficients. 
+Clears all variables and coefficients. Does not clear the bounds. 
 <p>
 
 <p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00119">119</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
@@ -281,10 +291,10 @@ Clears all variables and coefficients.
 <div class="memdoc">
 
 <p>
-Add (var * coeff) to the current constraint. 
+Adds var * coeff to the constraint. 
 <p>
 namespace<p>
-<a class="el" href="classoperations__research_1_1MPConstraint.html" title="A class to express constraints for a linear programming problem.">MPConstraint</a> 
+<a class="el" href="classoperations__research_1_1MPConstraint.html" title="The class for constraints of a Mathematical Programming (MP) model.">MPConstraint</a> 
 <p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00085">85</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
 
 </div>
@@ -306,7 +316,7 @@ namespace<p>
 <div class="memdoc">
 
 <p>
-Add var to the current constraint. 
+Adds var (with coefficient 1) to the constraint. 
 <p>
 
 <p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00101">101</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
@@ -339,7 +349,7 @@ Add var to the current constraint.
 <div class="memdoc">
 
 <p>
-Set the coefficient of the variable on the constraint. 
+Sets the coefficient of the variable on the constraint. 
 <p>
 
 <p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00105">105</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
@@ -362,8 +372,10 @@ Set the coefficient of the variable on the constraint.
 <div class="memdoc">
 
 <p>
+Returns the lower bound. 
+<p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00439">439</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00570">570</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -383,8 +395,10 @@ Set the coefficient of the variable on the constraint.
 <div class="memdoc">
 
 <p>
+Returns the upper bound. 
+<p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00440">440</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00572">572</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -405,8 +419,10 @@ Set the coefficient of the variable on the constraint.
 <div class="memdoc">
 
 <p>
+Sets the lower bound. 
+<p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00441">441</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00574">574</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -427,8 +443,10 @@ Set the coefficient of the variable on the constraint.
 <div class="memdoc">
 
 <p>
+Sets the upper bound. 
+<p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00442">442</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00576">576</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -458,6 +476,8 @@ Set the coefficient of the variable on the constraint.
 <div class="memdoc">
 
 <p>
+Sets both the lower and upper bounds. 
+<p>
 
 <p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00124">124</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
 
@@ -486,6 +506,30 @@ Returns the constraint's activity in the current solution: sum over all terms of
 
 </div>
 </div><p>
+<a class="anchor" name="563d400d053f7eaa87c2252c62e7775f"></a><!-- doxytag: member="operations_research::MPConstraint::index" ref="563d400d053f7eaa87c2252c62e7775f" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int operations_research::MPConstraint::index           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Returns the index of the constraint in the MPSolver::constraints_. 
+<p>
+<dl compact><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>TODO(<a href="http://who/user">user</a>): move to protected. </dd></dl>
+
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00586">586</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+
+</div>
+</div><p>
 <a class="anchor" name="f7b3cdc047234de213ad3f2740ae7b08"></a><!-- doxytag: member="operations_research::MPConstraint::dual_value" ref="f7b3cdc047234de213ad3f2740ae7b08" args="() const " -->
 <div class="memitem">
 <div class="memproto">
@@ -502,7 +546,7 @@ Returns the constraint's activity in the current solution: sum over all terms of
 <div class="memdoc">
 
 <p>
-The following methods are available only for continuous problems. 
+Advanced usage: returns the dual value of the constraint in the current solution (only available for continuous problems). 
 <p>
 
 <p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00133">133</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
@@ -525,31 +569,11 @@ The following methods are available only for continuous problems.
 <div class="memdoc">
 
 <p>
-Advanced usage: returns the basis status of the slack variable associated with the constraint. 
+Advanced usage: returns the basis status of the slack variable associated with the constraint (only available for continuous problems). 
 <p>
+<dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="classoperations__research_1_1MPSolver.html#7e2a34816b22749e70e23d26f49cf743" title="Advanced usage: possible basis status values for a variable and the slack variable...">MPSolver::BasisStatus</a>. </dd></dl>
 
 <p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00141">141</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="563d400d053f7eaa87c2252c62e7775f"></a><!-- doxytag: member="operations_research::MPConstraint::index" ref="563d400d053f7eaa87c2252c62e7775f" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int operations_research::MPConstraint::index           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00455">455</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -571,7 +595,7 @@ Advanced usage: returns the basis status of the slack variable associated with t
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00472">472</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00615">615</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -593,7 +617,7 @@ Advanced usage: returns the basis status of the slack variable associated with t
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00473">473</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00616">616</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -615,7 +639,7 @@ Advanced usage: returns the basis status of the slack variable associated with t
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00474">474</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00617">617</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -633,7 +657,7 @@ Advanced usage: returns the basis status of the slack variable associated with t
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00457">457</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00598">598</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -650,7 +674,7 @@ Advanced usage: returns the basis status of the slack variable associated with t
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00458">458</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00599">599</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -667,7 +691,7 @@ Advanced usage: returns the basis status of the slack variable associated with t
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00459">459</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00600">600</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -684,7 +708,7 @@ Advanced usage: returns the basis status of the slack variable associated with t
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00460">460</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00601">601</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -701,7 +725,7 @@ Advanced usage: returns the basis status of the slack variable associated with t
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00461">461</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00602">602</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -718,7 +742,7 @@ Advanced usage: returns the basis status of the slack variable associated with t
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00462">462</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00603">603</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -732,7 +756,7 @@ Advanced usage: returns the basis status of the slack variable associated with t
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

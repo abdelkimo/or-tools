@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -83,11 +83,15 @@
   </div>
 </div>
 <div class="contents">
-<h1>or-tools/constraint_solver/utilities.cc File Reference</h1><code>#include &quot;base/integral_types.h&quot;</code><br>
+<h1>or-tools/constraint_solver/utilities.cc File Reference</h1><code>#include &lt;string.h&gt;</code><br>
+<code>#include &quot;base/hash.h&quot;</code><br>
+<code>#include &lt;string&gt;</code><br>
+<code>#include &quot;base/integral_types.h&quot;</code><br>
 <code>#include &quot;base/logging.h&quot;</code><br>
+<code>#include &quot;base/stringprintf.h&quot;</code><br>
 <code>#include &quot;base/concise_iterator.h&quot;</code><br>
 <code>#include &quot;base/map-util.h&quot;</code><br>
-<code>#include &quot;<a class="el" href="constraint__solveri_8h-source.html">constraint_solver/constraint_solveri.h</a>&quot;</code><br>
+<code>#include &quot;<a class="el" href="constraint__solver_8h-source.html">constraint_solver/constraint_solver.h</a>&quot;</code><br>
 <code>#include &quot;util/bitset.h&quot;</code><br>
 
 <p>
@@ -111,7 +115,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00599">599</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00656">656</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -128,7 +132,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00590">590</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00646">646</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -145,7 +149,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00591">591</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00647">647</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -162,7 +166,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00592">592</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00648">648</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -179,7 +183,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00420">420</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00451">451</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -196,7 +200,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00596">596</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00652">652</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -213,7 +217,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00593">593</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00649">649</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -230,7 +234,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00595">595</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00651">651</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -247,7 +251,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00598">598</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00655">655</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -264,7 +268,24 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00597">597</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00653">653</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c15b1fc134bfb489e9d57cc185b97bbf"></a><!-- doxytag: member="utilities.cc::num_sequences_" ref="c15b1fc134bfb489e9d57cc185b97bbf" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="utilities_8cc.html#c15b1fc134bfb489e9d57cc185b97bbf">num_sequences_</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00654">654</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -281,7 +302,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00594">594</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00650">650</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -298,7 +319,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00421">421</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00452">452</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -310,7 +331,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

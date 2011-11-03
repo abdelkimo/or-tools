@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/base/index.html">base</a>/
             </tt></b></font>
@@ -104,9 +104,12 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1File.html#80057de1eaa1892ac986b65d61bf53e2">ReadOrDie</a> (void *const buff, size_t size)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reads "size" bytes to buff from file, buff should be pre-allocated.  <a href="#80057de1eaa1892ac986b65d61bf53e2"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1File.html#b141979884e25806c2ee24e63a39729c">ReadLine</a> (std::string *const line)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1File.html#972626ff3b72c28096ba142e68177695">ReadLine</a> (char *const output, <a class="el" href="integral__types_8h.html#29940ae63ec06c9998bba873e25407ad">uint64</a> max_length)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reads a line from file.  <a href="#b141979884e25806c2ee24e63a39729c"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reads a line from file to a string.  <a href="#972626ff3b72c28096ba142e68177695"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="integral__types_8h.html#ecfc3c54bd29ad5964e1c1c3ccbf89df">int64</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1File.html#588bcd04b129e1d61a16b540bde0d37c">ReadToString</a> (std::string *const line, <a class="el" href="integral__types_8h.html#29940ae63ec06c9998bba873e25407ad">uint64</a> max_length)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reads the whole file to a string, with a maximum length of 'max_length'.  <a href="#588bcd04b129e1d61a16b540bde0d37c"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">size_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1File.html#07d17c8751b8e94f0c48b65d01c1c160">Write</a> (const void *const buff, size_t size)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Writes "size" bytes of buff to file, buff should be pre-allocated.  <a href="#07d17c8751b8e94f0c48b65d01c1c160"></a><br></td></tr>
@@ -139,8 +142,6 @@
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Opens file "name" with flags specified by "flag".  <a href="#becf4dd4faa850dbc7c42765bcf52794"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="classoperations__research_1_1File.html">File</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1File.html#d60d2bb940385810d5af7bf7a21f9a98">Open</a> (const std::string &amp;name, const char *const mode)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="classoperations__research_1_1File.html">File</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1File.html#8d29cbc1b97ada501584031b6621bc18">Create</a> (const std::string &amp;name, const char *const mode)</td></tr>
-
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static <a class="el" href="classoperations__research_1_1File.html">File</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1File.html#596032771b51b85be622db5b940dabd4">OpenOrDie</a> (const char *const name, const char *const flag)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Opens file "name" with flags specified by "flag" If open failed, program will exit.  <a href="#596032771b51b85be622db5b940dabd4"></a><br></td></tr>
@@ -156,7 +157,7 @@
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 
-<p>Definition at line <a class="el" href="file_8h-source.html#l00024">24</a> of file <a class="el" href="file_8h-source.html">file.h</a>.</p>
+<p>Definition at line <a class="el" href="file_8h-source.html#l00026">26</a> of file <a class="el" href="file_8h-source.html">file.h</a>.</p>
 <hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="becf4dd4faa850dbc7c42765bcf52794"></a><!-- doxytag: member="operations_research::File::Open" ref="becf4dd4faa850dbc7c42765bcf52794" args="(const char *const name, const char *const flag)" -->
 <div class="memitem">
@@ -187,7 +188,7 @@
 Opens file "name" with flags specified by "flag". 
 <p>
 Flags are defined by fopen(), that is "r", "r+", "w", "w+". "a", and "a+". no overloading 
-<p>Definition at line <a class="el" href="file_8cc-source.html#l00087">87</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
+<p>Definition at line <a class="el" href="file_8cc-source.html#l00088">88</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
 
 </div>
 </div><p>
@@ -218,38 +219,7 @@ Flags are defined by fopen(), that is "r", "r+", "w", "w+". "a", and "a+". no ov
 
 <p>
 
-<p>Definition at line <a class="el" href="file_8h-source.html#l00031">31</a> of file <a class="el" href="file_8h-source.html">file.h</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="8d29cbc1b97ada501584031b6621bc18"></a><!-- doxytag: member="operations_research::File::Create" ref="8d29cbc1b97ada501584031b6621bc18" args="(const std::string &amp;name, const char *const mode)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">static <a class="el" href="classoperations__research_1_1File.html">File</a>* operations_research::File::Create           </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&nbsp;</td>
-          <td class="paramname"> <em>name</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *const &nbsp;</td>
-          <td class="paramname"> <em>mode</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td><code> [inline, static]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="file_8h-source.html#l00035">35</a> of file <a class="el" href="file_8h-source.html">file.h</a>.</p>
+<p>Definition at line <a class="el" href="file_8h-source.html#l00033">33</a> of file <a class="el" href="file_8h-source.html">file.h</a>.</p>
 
 </div>
 </div><p>
@@ -282,7 +252,7 @@ Flags are defined by fopen(), that is "r", "r+", "w", "w+". "a", and "a+". no ov
 Opens file "name" with flags specified by "flag" If open failed, program will exit. 
 <p>
 
-<p>Definition at line <a class="el" href="file_8cc-source.html#l00077">77</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
+<p>Definition at line <a class="el" href="file_8cc-source.html#l00078">78</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
 
 </div>
 </div><p>
@@ -315,7 +285,7 @@ Opens file "name" with flags specified by "flag" If open failed, program will ex
 Reads "size" bytes to buff from file, buff should be pre-allocated. 
 <p>
 
-<p>Definition at line <a class="el" href="file_8cc-source.html#l00066">66</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
+<p>Definition at line <a class="el" href="file_8cc-source.html#l00067">67</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
 
 </div>
 </div><p>
@@ -348,31 +318,73 @@ Reads "size" bytes to buff from file, buff should be pre-allocated.
 Reads "size" bytes to buff from file, buff should be pre-allocated. 
 <p>
 If read failed, program will exit. 
-<p>Definition at line <a class="el" href="file_8cc-source.html#l00062">62</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
+<p>Definition at line <a class="el" href="file_8cc-source.html#l00063">63</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="b141979884e25806c2ee24e63a39729c"></a><!-- doxytag: member="operations_research::File::ReadLine" ref="b141979884e25806c2ee24e63a39729c" args="(std::string *const line)" -->
+<a class="anchor" name="972626ff3b72c28096ba142e68177695"></a><!-- doxytag: member="operations_research::File::ReadLine" ref="972626ff3b72c28096ba142e68177695" args="(char *const output, uint64 max_length)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool operations_research::File::ReadLine           </td>
+          <td class="memname">char * operations_research::File::ReadLine           </td>
           <td>(</td>
-          <td class="paramtype">std::string *const &nbsp;</td>
-          <td class="paramname"> <em>line</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
+          <td class="paramtype">char *const &nbsp;</td>
+          <td class="paramname"> <em>output</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="integral__types_8h.html#29940ae63ec06c9998bba873e25407ad">uint64</a>&nbsp;</td>
+          <td class="paramname"> <em>max_length</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>
-Reads a line from file. 
+Reads a line from file to a string. 
 <p>
-Each line must be no more than 1000000 bytes 
-<p>Definition at line <a class="el" href="file_8cc-source.html#l00094">94</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
+Each line must be no more than max_length bytes 
+<p>Definition at line <a class="el" href="file_8cc-source.html#l00095">95</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="588bcd04b129e1d61a16b540bde0d37c"></a><!-- doxytag: member="operations_research::File::ReadToString" ref="588bcd04b129e1d61a16b540bde0d37c" args="(std::string *const line, uint64 max_length)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="integral__types_8h.html#ecfc3c54bd29ad5964e1c1c3ccbf89df">int64</a> operations_research::File::ReadToString           </td>
+          <td>(</td>
+          <td class="paramtype">std::string *const &nbsp;</td>
+          <td class="paramname"> <em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="integral__types_8h.html#29940ae63ec06c9998bba873e25407ad">uint64</a>&nbsp;</td>
+          <td class="paramname"> <em>max_length</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Reads the whole file to a string, with a maximum length of 'max_length'. 
+<p>
+Returns the number of bytes read. 
+<p>Definition at line <a class="el" href="file_8cc-source.html#l00099">99</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
 
 </div>
 </div><p>
@@ -405,7 +417,7 @@ Each line must be no more than 1000000 bytes
 Writes "size" bytes of buff to file, buff should be pre-allocated. 
 <p>
 
-<p>Definition at line <a class="el" href="file_8cc-source.html#l00073">73</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
+<p>Definition at line <a class="el" href="file_8cc-source.html#l00074">74</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
 
 </div>
 </div><p>
@@ -438,7 +450,7 @@ Writes "size" bytes of buff to file, buff should be pre-allocated.
 Writes "size" bytes of buff to file, buff should be pre-allocated. 
 <p>
 If write failed, program will exit. 
-<p>Definition at line <a class="el" href="file_8cc-source.html#l00070">70</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
+<p>Definition at line <a class="el" href="file_8cc-source.html#l00071">71</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
 
 </div>
 </div><p>
@@ -462,7 +474,7 @@ If write failed, program will exit.
 Writse a string to file. 
 <p>
 
-<p>Definition at line <a class="el" href="file_8cc-source.html#l00105">105</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
+<p>Definition at line <a class="el" href="file_8cc-source.html#l00124">124</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
 
 </div>
 </div><p>
@@ -486,7 +498,7 @@ Writse a string to file.
 Writes a string to file and append a "\n". 
 <p>
 
-<p>Definition at line <a class="el" href="file_8cc-source.html#l00109">109</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
+<p>Definition at line <a class="el" href="file_8cc-source.html#l00128">128</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
 
 </div>
 </div><p>
@@ -509,7 +521,7 @@ Writes a string to file and append a "\n".
 Closes the file. 
 <p>
 
-<p>Definition at line <a class="el" href="file_8cc-source.html#l00053">53</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
+<p>Definition at line <a class="el" href="file_8cc-source.html#l00054">54</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
 
 </div>
 </div><p>
@@ -532,7 +544,7 @@ Closes the file.
 Flushes buffer. 
 <p>
 
-<p>Definition at line <a class="el" href="file_8cc-source.html#l00049">49</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
+<p>Definition at line <a class="el" href="file_8cc-source.html#l00050">50</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
 
 </div>
 </div><p>
@@ -555,7 +567,7 @@ Flushes buffer.
 Returns file size. 
 <p>
 
-<p>Definition at line <a class="el" href="file_8cc-source.html#l00043">43</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
+<p>Definition at line <a class="el" href="file_8cc-source.html#l00044">44</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
 
 </div>
 </div><p>
@@ -578,7 +590,7 @@ Returns file size.
 Inits internal data structures. 
 <p>
 
-<p>Definition at line <a class="el" href="file_8cc-source.html#l00122">122</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
+<p>Definition at line <a class="el" href="file_8cc-source.html#l00141">141</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
 
 </div>
 </div><p>
@@ -601,7 +613,7 @@ Inits internal data structures.
 Returns the file name. 
 <p>
 
-<p>Definition at line <a class="el" href="file_8cc-source.html#l00114">114</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
+<p>Definition at line <a class="el" href="file_8cc-source.html#l00133">133</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
 
 </div>
 </div><p>
@@ -625,7 +637,7 @@ Returns the file name.
 Deletes a file. 
 <p>
 
-<p>Definition at line <a class="el" href="file_8cc-source.html#l00035">35</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
+<p>Definition at line <a class="el" href="file_8cc-source.html#l00036">36</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
 
 </div>
 </div><p>
@@ -649,7 +661,7 @@ Deletes a file.
 Tests if a file exists. 
 <p>
 
-<p>Definition at line <a class="el" href="file_8cc-source.html#l00039">39</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
+<p>Definition at line <a class="el" href="file_8cc-source.html#l00040">40</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
 
 </div>
 </div><p>
@@ -670,7 +682,7 @@ Tests if a file exists.
 
 <p>
 
-<p>Definition at line <a class="el" href="file_8cc-source.html#l00118">118</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
+<p>Definition at line <a class="el" href="file_8cc-source.html#l00137">137</a> of file <a class="el" href="file_8cc-source.html">file.cc</a>.</p>
 
 </div>
 </div><p>
@@ -684,7 +696,7 @@ Tests if a file exists.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

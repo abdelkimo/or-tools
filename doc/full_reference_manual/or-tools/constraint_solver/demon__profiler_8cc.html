@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -84,13 +84,18 @@
 </div>
 <div class="contents">
 <h1>or-tools/constraint_solver/demon_profiler.cc File Reference</h1><code>#include &lt;math.h&gt;</code><br>
-<code>#include &lt;limits&gt;</code><br>
+<code>#include &lt;stddef.h&gt;</code><br>
+<code>#include &lt;algorithm&gt;</code><br>
+<code>#include &quot;base/hash.h&quot;</code><br>
+<code>#include &lt;string&gt;</code><br>
+<code>#include &lt;utility&gt;</code><br>
+<code>#include &lt;vector&gt;</code><br>
 <code>#include &quot;base/integral_types.h&quot;</code><br>
 <code>#include &quot;base/logging.h&quot;</code><br>
 <code>#include &quot;base/stringprintf.h&quot;</code><br>
 <code>#include &quot;base/file.h&quot;</code><br>
-<code>#include &quot;base/stl_util-inl.h&quot;</code><br>
-<code>#include &quot;<a class="el" href="constraint__solveri_8h-source.html">constraint_solver/constraint_solveri.h</a>&quot;</code><br>
+<code>#include &quot;base/stl_util.h&quot;</code><br>
+<code>#include &quot;<a class="el" href="constraint__solver_8h-source.html">constraint_solver/constraint_solver.h</a>&quot;</code><br>
 <code>#include &quot;constraint_solver/demon_profiler.pb.h&quot;</code><br>
 
 <p>
@@ -107,9 +112,9 @@
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="classoperations__research_1_1DemonProfiler.html" title="DemonProfiler is a wrapper for demons and adds profiling capabilities to track the...">DemonProfiler</a> is a wrapper for demons and adds profiling capabilities to track the usage and perfomance of the demons.  <a href="classoperations__research_1_1DemonProfiler.html#_details">More...</a><br></td></tr>
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">DemonMonitor *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#4f23ca3c2d6b448b3e6f1fa078d6ff88">operations_research::BuildDemonMonitor</a> (SolverParameters::ProfileLevel level)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">DemonMonitor *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#c0839cdc9649d88a73060cfde2038b3e">operations_research::BuildDemonMonitor</a> (Solver *const solver)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Forward Declarations.  <a href="#4f23ca3c2d6b448b3e6f1fa078d6ff88"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Forward Declarations and Profiling Support.  <a href="#c0839cdc9649d88a73060cfde2038b3e"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#c7e3e4722c51d781636e24d843c0e542">operations_research::DeleteDemonMonitor</a> (DemonMonitor *const monitor)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#2c4dc7ca709c9d970910a565532727e6">operations_research::BuildDemonProfiler</a> (Solver *const solver, Demon *const <a class="el" href="constraint__solver_8cc.html#f800ac63ce2b6285ec62408b0f17acc3">demon</a>, DemonMonitor *const monitor)</td></tr>
@@ -117,6 +122,10 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#b5240e8c0ba682f97baea46641082c70">operations_research::DemonMonitorStartInitialPropagation</a> (DemonMonitor *const monitor, const Constraint *const constraint)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#aa11d663f99a1dda5d5228aaf3014602">operations_research::DemonMonitorEndInitialPropagation</a> (DemonMonitor *const monitor, const Constraint *const constraint)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#70ceefb1ec146ec849dc8babf6fc7286">operations_research::DemonMonitorStartInitialNestedPropagation</a> (DemonMonitor *const monitor, const Constraint *const parent, const Constraint *const nested)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#ae54e5a5cdc80f0f8d63675197f99665">operations_research::DemonMonitorEndInitialNestedPropagation</a> (DemonMonitor *const monitor, const Constraint *const parent, const Constraint *const nested)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#2d60edc96e40e663962f32ffa4685ec6">operations_research::DemonMonitorRestartSearch</a> (DemonMonitor *const monitor)</td></tr>
 
@@ -136,7 +145,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

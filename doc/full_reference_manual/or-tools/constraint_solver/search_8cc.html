@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -83,26 +83,32 @@
   </div>
 </div>
 <div class="contents">
-<h1>or-tools/constraint_solver/search.cc File Reference</h1><code>#include &lt;algorithm&gt;</code><br>
+<h1>or-tools/constraint_solver/search.cc File Reference</h1><code>#include &lt;string.h&gt;</code><br>
+<code>#include &lt;algorithm&gt;</code><br>
+<code>#include &quot;base/hash.h&quot;</code><br>
 <code>#include &lt;list&gt;</code><br>
-<code>#include &lt;map&gt;</code><br>
+<code>#include &lt;string&gt;</code><br>
+<code>#include &lt;utility&gt;</code><br>
+<code>#include &lt;vector&gt;</code><br>
 <code>#include &quot;base/callback.h&quot;</code><br>
+<code>#include &quot;base/casts.h&quot;</code><br>
 <code>#include &quot;base/commandlineflags.h&quot;</code><br>
 <code>#include &quot;base/integral_types.h&quot;</code><br>
 <code>#include &quot;base/logging.h&quot;</code><br>
 <code>#include &quot;base/macros.h&quot;</code><br>
 <code>#include &quot;base/scoped_ptr.h&quot;</code><br>
 <code>#include &quot;base/stringprintf.h&quot;</code><br>
-<code>#include &quot;base/sysinfo.h&quot;</code><br>
 <code>#include &quot;base/timer.h&quot;</code><br>
+<code>#include &quot;base/join.h&quot;</code><br>
+<code>#include &quot;base/bitmap.h&quot;</code><br>
 <code>#include &quot;base/concise_iterator.h&quot;</code><br>
 <code>#include &quot;base/map-util.h&quot;</code><br>
-<code>#include &quot;base/stl_util-inl.h&quot;</code><br>
-<code>#include &quot;base/hash.h&quot;</code><br>
-<code>#include &quot;base/random.h&quot;</code><br>
+<code>#include &quot;base/stl_util.h&quot;</code><br>
+<code>#include &quot;<a class="el" href="constraint__solver_8h-source.html">constraint_solver/constraint_solver.h</a>&quot;</code><br>
 <code>#include &quot;<a class="el" href="constraint__solveri_8h-source.html">constraint_solver/constraint_solveri.h</a>&quot;</code><br>
 <code>#include &quot;constraint_solver/search_limit.pb.h&quot;</code><br>
 <code>#include &quot;util/string_array.h&quot;</code><br>
+<code>#include &quot;base/random.h&quot;</code><br>
 
 <p>
 <a href="search_8cc-source.html">Go to the source code of this file.</a><table border="0" cellpadding="0" cellspacing="0">
@@ -122,9 +128,9 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="search_8cc.html#ad02a592325e34be776709e9ac5682ad">DEFINE_bool</a> (cp_use_sparse_gls_penalties, false,&quot;Use sparse implementation to store Guided Local Search penalties&quot;)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  <a href="#ad02a592325e34be776709e9ac5682ad"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#09e8313ae8698a1fb12d7e1e50347d95">operations_research::NextLuby</a> (int i)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#867664c96a43ea95b1e730170f378e87">operations_research::NextLuby</a> (int i)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Luby Strategy.  <a href="#09e8313ae8698a1fb12d7e1e50347d95"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Luby Strategy.  <a href="#867664c96a43ea95b1e730170f378e87"></a><br></td></tr>
 </table>
 <hr><h2>Function Documentation</h2>
 <a class="anchor" name="ad02a592325e34be776709e9ac5682ad"></a><!-- doxytag: member="search.cc::DEFINE_bool" ref="ad02a592325e34be776709e9ac5682ad" args="(cp_use_sparse_gls_penalties, false,&quot;Use sparse implementation to store Guided Local Search penalties&quot;)" -->
@@ -180,7 +186,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l01833">1833</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l01856">1856</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -197,7 +203,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02976">2976</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03015">3015</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -214,7 +220,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02124">2124</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02147">2147</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -231,7 +237,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03561">3561</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03610">3610</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -248,7 +254,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03562">3562</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03611">3611</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -265,7 +271,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l00386">386</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l00392">392</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -282,7 +288,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l00936">936</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l00956">956</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -299,7 +305,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03558">3558</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03607">3607</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -316,7 +322,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l04027">4027</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l04092">4092</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -333,7 +339,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l01142">1142</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l01164">1164</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -354,7 +360,7 @@ If cumulative if false, then the limit applies to each search independently.
 If it's true, the limit applies globally to all search for which this monitor is used. When cumulative is true, the offset fields have two different meanings depending on context:<ul>
 <li>within a search, it's an offset to be subtracted from the current value</li><li>outside of search, it's the amount consumed in previous searches </li></ul>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03574">3574</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03623">3623</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -371,7 +377,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02470">2470</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02493">2493</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -388,7 +394,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l04148">4148</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l04213">4213</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -405,7 +411,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02983">2983</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03022">3022</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -422,7 +428,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l01834">1834</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l01857">1857</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -439,7 +445,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03830">3830</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03895">3895</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -456,7 +462,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02984">2984</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03023">3023</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -473,7 +479,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02019">2019</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02042">2042</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -490,7 +496,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l01144">1144</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l01166">1166</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -507,7 +513,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l01143">1143</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l01165">1165</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -524,7 +530,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l00934">934</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l00954">954</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -541,7 +547,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l01021">1021</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l01041">1041</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -558,7 +564,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03563">3563</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03612">3612</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -575,7 +581,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03564">3564</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03613">3613</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -592,7 +598,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l00510">510</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l00516">516</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -609,7 +615,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02558">2558</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02581">2581</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -626,7 +632,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02559">2559</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02582">2582</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -643,7 +649,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02562">2562</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02585">2585</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -660,7 +666,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l04181">4181</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l04246">4246</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -677,7 +683,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02872">2872</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02897">2897</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -694,7 +700,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02985">2985</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03024">3024</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -711,7 +717,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02980">2980</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03019">3019</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -728,7 +734,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l01837">1837</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l01860">1860</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -745,7 +751,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02775">2775</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02798">2798</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -762,7 +768,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02556">2556</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02579">2579</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -779,7 +785,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02557">2557</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02580">2580</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -796,7 +802,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02555">2555</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02578">2578</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -813,7 +819,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03793">3793</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03858">3858</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -830,7 +836,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03794">3794</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03859">3859</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -847,7 +853,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03829">3829</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03894">3894</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -864,7 +870,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02123">2123</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02146">2146</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -881,7 +887,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03902">3902</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03967">3967</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -898,7 +904,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03559">3559</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03608">3608</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -915,7 +921,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l04149">4149</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l04214">4214</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -932,7 +938,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02468">2468</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02491">2491</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -949,7 +955,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03211">3211</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03260">3260</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -966,7 +972,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02977">2977</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03016">3016</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -983,7 +989,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02910">2910</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02943">2943</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1000,7 +1006,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02974">2974</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03013">3013</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1017,7 +1023,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02871">2871</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02896">2896</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1034,7 +1040,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02981">2981</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03020">3020</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1051,7 +1057,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l00347">347</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l00353">353</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1068,7 +1074,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02776">2776</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02799">2799</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1085,7 +1091,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l04146">4146</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l04211">4211</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1102,7 +1108,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03309">3309</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03358">3358</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1119,7 +1125,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l01516">1516</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l01539">1539</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1136,7 +1142,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l00489">489</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l00495">495</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1153,7 +1159,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03560">3560</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03609">3609</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1170,7 +1176,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l04023">4023</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l04088">4088</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1187,7 +1193,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03565">3565</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03614">3614</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1204,7 +1210,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03566">3566</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03615">3615</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1221,7 +1227,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02545">2545</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02568">2568</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1238,7 +1244,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l00387">387</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l00393">393</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1255,7 +1261,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l01301">1301</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l01324">1324</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1272,7 +1278,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02469">2469</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02492">2492</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1289,7 +1295,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02376">2376</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02399">2399</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1306,7 +1312,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02560">2560</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02583">2583</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1323,7 +1329,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02774">2774</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02797">2797</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1340,7 +1346,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l00935">935</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l00955">955</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1357,7 +1363,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l01014">1014</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l01034">1034</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1374,7 +1380,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l01217">1217</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l01240">1240</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1391,7 +1397,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l00984">984</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l01004">1004</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1408,7 +1414,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l01380">1380</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l01403">1403</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1425,7 +1431,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l01013">1013</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l01033">1033</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1442,7 +1448,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l01216">1216</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l01239">1239</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1459,7 +1465,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l00713">713</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l00719">719</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1476,7 +1482,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l00983">983</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l01003">1003</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1493,7 +1499,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l00488">488</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l00494">494</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1510,7 +1516,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03556">3556</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03605">3605</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1527,7 +1533,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l03557">3557</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l03606">3606</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1544,7 +1550,7 @@ If it's true, the limit applies globally to all search for which this monitor is
 
 <p>
 
-<p>Definition at line <a class="el" href="search_8cc-source.html#l02377">2377</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
+<p>Definition at line <a class="el" href="search_8cc-source.html#l02400">2400</a> of file <a class="el" href="search_8cc-source.html">search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1556,7 +1562,7 @@ If it's true, the limit applies globally to all search for which this monitor is
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

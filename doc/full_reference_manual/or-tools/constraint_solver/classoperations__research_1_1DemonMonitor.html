@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -110,6 +110,10 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1DemonMonitor.html#789d62a87d646b19cae02d698f4c9f72">EndInitialPropagation</a> (const <a class="el" href="classoperations__research_1_1Constraint.html">Constraint</a> *const constraint)</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1DemonMonitor.html#27126e713139346de4b94f168e998b5b">StartInitialNestedPropagation</a> (const <a class="el" href="classoperations__research_1_1Constraint.html">Constraint</a> *const constraint, const <a class="el" href="classoperations__research_1_1Constraint.html">Constraint</a> *const delayed)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1DemonMonitor.html#23c4c107cb02bff5f5c91e44f3a2ce9f">EndInitialNestedPropagation</a> (const <a class="el" href="classoperations__research_1_1Constraint.html">Constraint</a> *const constraint, const <a class="el" href="classoperations__research_1_1Constraint.html">Constraint</a> *const delayed)</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1DemonMonitor.html#1c853977a85a5326dd8c3175b3a475f2">RegisterDemon</a> (const <a class="el" href="classoperations__research_1_1Demon.html">Demon</a> *const <a class="el" href="constraint__solver_8cc.html#f800ac63ce2b6285ec62408b0f17acc3">demon</a>)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1DemonMonitor.html#69be054c811cf741b26c73d513435900">StartDemonRun</a> (const <a class="el" href="classoperations__research_1_1Demon.html">Demon</a> *const <a class="el" href="constraint__solver_8cc.html#f800ac63ce2b6285ec62408b0f17acc3">demon</a>)</td></tr>
@@ -121,9 +125,9 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1DemonMonitor.html#d7bd4b1b62217e7eed49c35451ace689">AddFakeRun</a> (const <a class="el" href="classoperations__research_1_1Demon.html">Demon</a> *const <a class="el" href="constraint__solver_8cc.html#f800ac63ce2b6285ec62408b0f17acc3">demon</a>, int64 start_time, int64 end_time, bool is_fail)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Useful for unit tests.  <a href="#d7bd4b1b62217e7eed49c35451ace689"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1DemonMonitor.html#37716c8c7191aae866f526e9eb9ea5ce">PrintOverview</a> (const string &amp;filename)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1DemonMonitor.html#29993ed5f0eac338944914072e37a075">PrintOverview</a> (<a class="el" href="classoperations__research_1_1Solver.html">Solver</a> *const solver, const string &amp;filename)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Exports collected data as human-readable text.  <a href="#37716c8c7191aae866f526e9eb9ea5ce"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Exports collected data as human-readable text.  <a href="#29993ed5f0eac338944914072e37a075"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1DemonMonitor.html#2691ad8b8d3f9bee208fcda421e1fc5b">RestartSearch</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Restarts a search and clears all previously collected information.  <a href="#2691ad8b8d3f9bee208fcda421e1fc5b"></a><br></td></tr>
@@ -137,7 +141,7 @@
 <a class="el" href="classoperations__research_1_1DemonMonitor.html" title="DemonMonitor manages the profiling of demons and allows access to gathered data.">DemonMonitor</a> manages the profiling of demons and allows access to gathered data. 
 <p>
 Add this class as a parameter to <a class="el" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a> and access its information after the end of a search. 
-<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00033">33</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
+<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00037">37</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="27d679dad0573027ac6f5d23cca0e352"></a><!-- doxytag: member="operations_research::DemonMonitor::DemonMonitor" ref="27d679dad0573027ac6f5d23cca0e352" args="()" -->
 <div class="memitem">
@@ -156,7 +160,7 @@ Add this class as a parameter to <a class="el" href="classoperations__research_1
 
 <p>
 
-<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00035">35</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
+<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00039">39</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
 
 </div>
 </div><p>
@@ -177,7 +181,7 @@ Add this class as a parameter to <a class="el" href="classoperations__research_1
 
 <p>
 
-<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00039">39</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
+<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00043">43</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
 
 </div>
 </div><p>
@@ -199,7 +203,7 @@ Add this class as a parameter to <a class="el" href="classoperations__research_1
 
 <p>
 
-<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00044">44</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
+<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00048">48</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
 
 </div>
 </div><p>
@@ -221,7 +225,7 @@ Add this class as a parameter to <a class="el" href="classoperations__research_1
 
 <p>
 
-<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00048">48</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
+<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00052">52</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
 
 </div>
 </div><p>
@@ -243,7 +247,69 @@ Add this class as a parameter to <a class="el" href="classoperations__research_1
 
 <p>
 
-<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00059">59</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
+<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00063">63</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="27126e713139346de4b94f168e998b5b"></a><!-- doxytag: member="operations_research::DemonMonitor::StartInitialNestedPropagation" ref="27126e713139346de4b94f168e998b5b" args="(const Constraint *const constraint, const Constraint *const delayed)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::DemonMonitor::StartInitialNestedPropagation           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoperations__research_1_1Constraint.html">Constraint</a> *const &nbsp;</td>
+          <td class="paramname"> <em>constraint</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classoperations__research_1_1Constraint.html">Constraint</a> *const &nbsp;</td>
+          <td class="paramname"> <em>delayed</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00075">75</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="23c4c107cb02bff5f5c91e44f3a2ce9f"></a><!-- doxytag: member="operations_research::DemonMonitor::EndInitialNestedPropagation" ref="23c4c107cb02bff5f5c91e44f3a2ce9f" args="(const Constraint *const constraint, const Constraint *const delayed)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::DemonMonitor::EndInitialNestedPropagation           </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classoperations__research_1_1Constraint.html">Constraint</a> *const &nbsp;</td>
+          <td class="paramname"> <em>constraint</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classoperations__research_1_1Constraint.html">Constraint</a> *const &nbsp;</td>
+          <td class="paramname"> <em>delayed</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00086">86</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
 
 </div>
 </div><p>
@@ -265,7 +331,7 @@ Add this class as a parameter to <a class="el" href="classoperations__research_1
 
 <p>
 
-<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00071">71</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
+<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00100">100</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
 
 </div>
 </div><p>
@@ -287,7 +353,7 @@ Add this class as a parameter to <a class="el" href="classoperations__research_1
 
 <p>
 
-<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00085">85</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
+<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00114">114</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
 
 </div>
 </div><p>
@@ -309,7 +375,7 @@ Add this class as a parameter to <a class="el" href="classoperations__research_1
 
 <p>
 
-<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00093">93</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
+<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00122">122</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
 
 </div>
 </div><p>
@@ -330,7 +396,7 @@ Add this class as a parameter to <a class="el" href="classoperations__research_1
 
 <p>
 
-<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00102">102</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
+<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00131">131</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
 
 </div>
 </div><p>
@@ -375,21 +441,30 @@ Add this class as a parameter to <a class="el" href="classoperations__research_1
 Useful for unit tests. 
 <p>
 
-<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00120">120</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
+<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00149">149</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="37716c8c7191aae866f526e9eb9ea5ce"></a><!-- doxytag: member="operations_research::DemonMonitor::PrintOverview" ref="37716c8c7191aae866f526e9eb9ea5ce" args="(const string &amp;filename)" -->
+<a class="anchor" name="29993ed5f0eac338944914072e37a075"></a><!-- doxytag: member="operations_research::DemonMonitor::PrintOverview" ref="29993ed5f0eac338944914072e37a075" args="(Solver *const solver, const string &amp;filename)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void operations_research::DemonMonitor::PrintOverview           </td>
           <td>(</td>
+          <td class="paramtype"><a class="el" href="classoperations__research_1_1Solver.html">Solver</a> *const &nbsp;</td>
+          <td class="paramname"> <em>solver</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">const string &amp;&nbsp;</td>
-          <td class="paramname"> <em>filename</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [inline]</code></td>
+          <td class="paramname"> <em>filename</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
         </tr>
       </table>
 </div>
@@ -399,7 +474,7 @@ Useful for unit tests.
 Exports collected data as human-readable text. 
 <p>
 
-<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00135">135</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
+<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00164">164</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
 
 </div>
 </div><p>
@@ -422,7 +497,7 @@ Exports collected data as human-readable text.
 Restarts a search and clears all previously collected information. 
 <p>
 
-<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00204">204</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
+<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00237">237</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
 
 </div>
 </div><p>
@@ -479,7 +554,7 @@ Restarts a search and clears all previously collected information.
 Export Information. 
 <p>
 
-<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00213">213</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
+<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00246">246</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
 
 </div>
 </div><p>
@@ -540,7 +615,7 @@ Export Information.
 
 <p>
 
-<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00245">245</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
+<p>Definition at line <a class="el" href="demon__profiler_8cc-source.html#l00282">282</a> of file <a class="el" href="demon__profiler_8cc-source.html">demon_profiler.cc</a>.</p>
 
 </div>
 </div><p>
@@ -554,7 +629,7 @@ Export Information.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

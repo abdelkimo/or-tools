@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:11 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/graph/index.html">graph</a>/
             </tt></b></font>
@@ -134,7 +134,7 @@
  class operations_research::HamiltonianPathSolver&lt; T &gt;</h3>
 
 
-<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00090">90</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
+<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00093">93</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
 <hr><h2>Member Typedef Documentation</h2>
 <a class="anchor" name="0c4e5c1568d2aa79d4e64e3a954cb720"></a><!-- doxytag: member="operations_research::HamiltonianPathSolver::NodeSet" ref="0c4e5c1568d2aa79d4e64e3a954cb720" args="" -->
 <div class="memitem">
@@ -153,7 +153,7 @@ template&lt;typename T&gt; </div>
 <a class="el" href="classoperations__research_1_1HamiltonianPathSolver.html">HamiltonianPathSolver</a> computes a minimum Hamiltonian path over a graph defined by a cost matrix. 
 <p>
 The cost matrix need not be symmetric. The Hamiltonian path can be closed, in this case it's a Hamiltonian cycle, i.e. the algorithm solves the Travelling Salesman Problem. Example: std::vector&lt;std::vector&lt;int&gt; &gt; cost_mat; ... fill in cost matrix HamiltonianPathSolver&lt;int&gt; mhp(cost_mat); ///&lt; no computation done printf("%d\n", mhp.TravelingSalesmanCost()); ///&lt; computation done and stored Currently in 2010, 26 is the maximum you can solve with 24 Gigs of RAM, and it takes several minutes. Considering the complexity of the algorithm (n*2^n), and that there are very good ways to solve TSP with more than 32 cities, we limit ourselves to 32 cites. This is why we define the type NodeSet to be 32-bit wide. 
-<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00109">109</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
+<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00112">112</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
 
 </div>
 </div><p>
@@ -178,7 +178,7 @@ template&lt;typename T&gt; </div>
 
 <p>
 
-<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00177">177</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
+<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00179">179</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
 
 </div>
 </div><p>
@@ -201,7 +201,7 @@ template&lt;typename T&gt; </div>
 
 <p>
 
-<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00190">190</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
+<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00192">192</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
 
 </div>
 </div><p>
@@ -228,7 +228,7 @@ template&lt;typename T&gt; </div>
 Replaces the cost matrix while avoiding re-allocating memory. 
 <p>
 
-<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00209">209</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
+<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00211">211</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
 
 </div>
 </div><p>
@@ -253,7 +253,7 @@ template&lt;typename T&gt; </div>
 Returns the Hamiltonian path cost. 
 <p>
 
-<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00362">362</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
+<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00364">364</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
 
 </div>
 </div><p>
@@ -279,7 +279,7 @@ template&lt;typename T&gt; </div>
 Returns the Hamiltonian path in the vector pointed to by the argument. 
 <p>
 
-<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00371">371</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
+<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00373">373</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
 
 </div>
 </div><p>
@@ -304,7 +304,7 @@ template&lt;typename T&gt; </div>
 Returns the cost of the TSP tour. 
 <p>
 
-<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00444">444</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
+<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00446">446</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
 
 </div>
 </div><p>
@@ -330,7 +330,7 @@ template&lt;typename T&gt; </div>
 Returns the TSP tour in the vector pointed to by the argument. 
 <p>
 
-<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00453">453</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
+<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00455">455</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
 
 </div>
 </div><p>
@@ -355,7 +355,7 @@ template&lt;typename T&gt; </div>
 Returns true if there won't be precision issues. 
 <p>
 This is always true for integers, but not for floating-point types. 
-<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00232">232</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
+<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00234">234</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
 
 </div>
 </div><p>
@@ -380,7 +380,7 @@ template&lt;typename T&gt; </div>
 Returns true if the cost matrix verifies the triangle inequality. 
 <p>
 
-<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00240">240</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
+<p>Definition at line <a class="el" href="hamiltonian__path_8h-source.html#l00242">242</a> of file <a class="el" href="hamiltonian__path_8h-source.html">hamiltonian_path.h</a>.</p>
 
 </div>
 </div><p>
@@ -394,7 +394,7 @@ Returns true if the cost matrix verifies the triangle inequality.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

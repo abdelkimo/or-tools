@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/util/index.html">util</a>/
             </tt></b></font>
@@ -104,7 +104,7 @@
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ConstPtrArray.html#28b0bba6f06ecb85f8f8ac178ce5e952">ConstPtrArray</a> (const std::vector&lt; T * &gt; &amp;ptrs)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Build from 1 vector. Copy the data internally.  <a href="#28b0bba6f06ecb85f8f8ac178ce5e952"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Build from one vector. Copy the data internally.  <a href="#28b0bba6f06ecb85f8f8ac178ce5e952"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ConstPtrArray.html#2bd47c862eb4bb75a5b9122fad658e11">ConstPtrArray</a> (std::vector&lt; T * &gt; *const data)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Build from one data vector. Takes ownership of the vector.  <a href="#2bd47c862eb4bb75a5b9122fad658e11"></a><br></td></tr>
@@ -137,9 +137,9 @@
 This class is used to store an const array of T*. 
 <p>
 This is useful inside constraints and expressions. The constructors, except the one with the pointer to a vector of cells will copy the data internally and will not take ownership of the data passed in argument. Its goals are:<ul>
-<li>to unify the construction code across the optimization libraries.</li><li>to provide one code to modify these mappings and apply transformations like sorting. It requires T to implement a method string T::DebugString() const; </li></ul>
+<li>to unify the construction code across the optimization libraries.</li><li>to provide one code to modify these mappings and apply transformations like sorting. It requires T to implement a method string T::DebugString() const; This is linked to <a class="el" href="classoperations__research_1_1ConstIntArray.html">ConstIntArray</a>. </li></ul>
 
-<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00037">37</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
+<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00044">44</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="28b0bba6f06ecb85f8f8ac178ce5e952"></a><!-- doxytag: member="operations_research::ConstPtrArray::ConstPtrArray" ref="28b0bba6f06ecb85f8f8ac178ce5e952" args="(const std::vector&lt; T * &gt; &amp;ptrs)" -->
 <div class="memitem">
@@ -160,10 +160,10 @@ template&lt;class T&gt; </div>
 <div class="memdoc">
 
 <p>
-Build from 1 vector. Copy the data internally. 
+Build from one vector. Copy the data internally. 
 <p>
 
-<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00040">40</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
+<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00047">47</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -189,7 +189,7 @@ template&lt;class T&gt; </div>
 Build from one data vector. Takes ownership of the vector. 
 <p>
 
-<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00044">44</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
+<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00051">51</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -215,7 +215,7 @@ template&lt;class T&gt; </div>
 This code releases the ownership of the data into the returned vector. 
 <p>
 After this method is called, data_ points to a null vector. 
-<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00048">48</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
+<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00055">55</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -240,7 +240,7 @@ template&lt;class T&gt; </div>
 Size of the array. This is not valid after <a class="el" href="classoperations__research_1_1ConstPtrArray.html#3552ab81662e6800ccbbbe6aeb15f494" title="This code releases the ownership of the data into the returned vector.">Release()</a> has been called. 
 <p>
 
-<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00053">53</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
+<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00060">60</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -266,7 +266,7 @@ template&lt;class T&gt; </div>
 Checks for deep equality with other array. 
 <p>
 
-<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00061">61</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
+<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00068">68</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -291,8 +291,9 @@ template&lt;class T&gt; </div>
 <p>
 Returns the instance of T* at position index. 
 <p>
-This is not valid after <a class="el" href="classoperations__research_1_1ConstPtrArray.html#3552ab81662e6800ccbbbe6aeb15f494" title="This code releases the ownership of the data into the returned vector.">Release()</a> has been called. 
-<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00076">76</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
+This is not valid after <a class="el" href="classoperations__research_1_1ConstPtrArray.html#3552ab81662e6800ccbbbe6aeb15f494" title="This code releases the ownership of the data into the returned vector.">Release()</a> has been called. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="classoperations__research_1_1ConstPtrArray.html#90f3c949c32df319b07da89298d2d284" title="Returns the instance of T* at position index.">operator[]()</a>. </dd></dl>
+
+<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00083">83</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -317,8 +318,9 @@ template&lt;class T&gt; </div>
 <p>
 Returns the instance of T* at position index. 
 <p>
-This is not valid after <a class="el" href="classoperations__research_1_1ConstPtrArray.html#3552ab81662e6800ccbbbe6aeb15f494" title="This code releases the ownership of the data into the returned vector.">Release()</a> has been called. 
-<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00083">83</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
+This is not valid after <a class="el" href="classoperations__research_1_1ConstPtrArray.html#3552ab81662e6800ccbbbe6aeb15f494" title="This code releases the ownership of the data into the returned vector.">Release()</a> has been called. <dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="classoperations__research_1_1ConstPtrArray.html#90f3c949c32df319b07da89298d2d284" title="Returns the instance of T* at position index.">operator[]()</a>. </dd></dl>
+
+<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00090">90</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -343,7 +345,7 @@ template&lt;class T&gt; </div>
 Returns a copy of the data. Usually used to create a new <a class="el" href="classoperations__research_1_1ConstPtrArray.html" title="This class is used to store an const array of T*.">ConstPtrArray</a>. 
 <p>
 
-<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00089">89</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
+<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00096">96</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -368,7 +370,7 @@ template&lt;class T&gt; </div>
 Pretty print. 
 <p>
 
-<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00095">95</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
+<p>Definition at line <a class="el" href="const__ptr__array_8h-source.html#l00102">102</a> of file <a class="el" href="const__ptr__array_8h-source.html">const_ptr_array.h</a>.</p>
 
 </div>
 </div><p>
@@ -382,7 +384,7 @@ Pretty print.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/examples/index.html">examples</a>/
             </tt></b></font>
@@ -140,7 +140,7 @@
 <a name="l00057"></a>00057   NodeIndex num_nodes;
 <a name="l00058"></a>00058   ArcIndex num_arcs;
 <a name="l00059"></a>00059 
-<a name="l00060"></a>00060   <span class="keywordflow">if</span> ((sscanf(line, <span class="stringliteral">"%*c%3s%lld%lld"</span>,
+<a name="l00060"></a>00060   <span class="keywordflow">if</span> ((sscanf(line, <span class="stringliteral">"%*c%3s%d%d"</span>,  <span class="comment">// NOLINT</span>
 <a name="l00061"></a>00061               problem_type,
 <a name="l00062"></a>00062               &amp;num_nodes,
 <a name="l00063"></a>00063               &amp;num_arcs) != 3) ||
@@ -159,7 +159,7 @@
 <a name="l00076"></a><a class="code" href="namespaceoperations__research.html#c471d0feac28678ebddf1ebd314a9a34">00076</a> <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="namespaceoperations__research.html#c471d0feac28678ebddf1ebd314a9a34">ParseNodeLine</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* line,
 <a name="l00077"></a>00077                           <a class="code" href="structoperations__research_1_1ParserState.html">ParserState</a>* state) {
 <a name="l00078"></a>00078   NodeIndex node_id;
-<a name="l00079"></a>00079   <span class="keywordflow">if</span> (sscanf(line, <span class="stringliteral">"%*c%lld"</span>, &amp;node_id) != 1) {
+<a name="l00079"></a>00079   <span class="keywordflow">if</span> (sscanf(line, <span class="stringliteral">"%*c%d"</span>, &amp;node_id) != 1) {  <span class="comment">// NOLINT</span>
 <a name="l00080"></a>00080     state-&gt;<a class="code" href="structoperations__research_1_1ParserState.html#7039cf0210bf45479c54b0f3578e0c08">bad</a> = <span class="keyword">true</span>;
 <a name="l00081"></a>00081     state-&gt;<a class="code" href="structoperations__research_1_1ParserState.html#9f08d3c5eb0dce04adafe422bcc13af3">reason</a> = <span class="stringliteral">"Syntax error in node desciption."</span>;
 <a name="l00082"></a>00082     state-&gt;<a class="code" href="structoperations__research_1_1ParserState.html#ebc5545eba6bababb72984e68b904099">bad_line</a>.reset(<span class="keyword">new</span> <span class="keywordtype">string</span>(line));
@@ -193,7 +193,7 @@
 <a name="l00110"></a>00110   NodeIndex tail;
 <a name="l00111"></a>00111   NodeIndex head;
 <a name="l00112"></a>00112   CostValue cost;
-<a name="l00113"></a>00113   <span class="keywordflow">if</span> (sscanf(line, <span class="stringliteral">"%*c%lld%lld%lld"</span>, &amp;tail, &amp;head, &amp;cost) != 3) {
+<a name="l00113"></a>00113   <span class="keywordflow">if</span> (sscanf(line, <span class="stringliteral">"%*c%d%d%lld"</span>, &amp;tail, &amp;head, &amp;cost) != 3) {  <span class="comment">// NOLINT</span>
 <a name="l00114"></a>00114     state-&gt;<a class="code" href="structoperations__research_1_1ParserState.html#7039cf0210bf45479c54b0f3578e0c08">bad</a> = <span class="keyword">true</span>;
 <a name="l00115"></a>00115     state-&gt;<a class="code" href="structoperations__research_1_1ParserState.html#9f08d3c5eb0dce04adafe422bcc13af3">reason</a> = <span class="stringliteral">"Syntax error in arc descriptor."</span>;
 <a name="l00116"></a>00116     state-&gt;<a class="code" href="structoperations__research_1_1ParserState.html#ebc5545eba6bababb72984e68b904099">bad_line</a>.reset(<span class="keyword">new</span> <span class="keywordtype">string</span>(line));
@@ -337,7 +337,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

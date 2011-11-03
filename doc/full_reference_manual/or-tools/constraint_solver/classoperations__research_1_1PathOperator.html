@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -149,7 +149,7 @@ Inheritance diagram for operations_research::PathOperator:</div>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1PathOperator.html#d819515eabc14b84e8e31b574a59d2fb">ReverseChain</a> (int64 before_chain, int64 after_chain, int64 *chain_last)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Reverses the chain starting after before_chain and ending before after_chain.  <a href="#d819515eabc14b84e8e31b574a59d2fb"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1PathOperator.html#cb067b917027c878de5284d3ee191528">MakeActive</a> (int64 node, int64 destination)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1PathOperator.html#cb067b917027c878de5284d3ee191528">MakeActive</a> (int64 <a class="el" href="dependency__graph_8cc.html#4eefd1c2b90c940bb972d6d038744cc3">node</a>, int64 destination)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1PathOperator.html#12698134e7a71ccbe52c4ce36213f0f1">MakeChainInactive</a> (int64 before_chain, int64 chain_end)</td></tr>
 
@@ -180,7 +180,7 @@ Path-based Operators.
 Base class of the local search operators dedicated to path modifications (a path is a set of nodes linked together by arcs). This family of neighborhoods supposes they are handling next variables representing the arcs (var[i] represents the node immediately after i on a path). Several services are provided:<ul>
 <li>arc manipulators (<a class="el" href="classoperations__research_1_1PathOperator.html#2f05e5dce708fd86775e612d08ffc08e" title="Sets the to to be the node after from.">SetNext()</a>, <a class="el" href="classoperations__research_1_1PathOperator.html#d819515eabc14b84e8e31b574a59d2fb" title="Reverses the chain starting after before_chain and ending before after_chain.">ReverseChain()</a>, <a class="el" href="classoperations__research_1_1PathOperator.html#a6d431b31dc1fce0520698179e165817" title="Moves the chain starting after the node before_chain and ending at the node chain_end...">MoveChain()</a>)</li><li>path inspectors (<a class="el" href="classoperations__research_1_1PathOperator.html#9cb02dcb6c4ee83e896b83af163f189c" title="Returns the index of the node after the node of index node_index in the current assignment...">Next()</a>, <a class="el" href="classoperations__research_1_1PathOperator.html#e99342a248fb87bb26f11811017fadfb" title="Returns true if i is the last node on the path; defined by the fact that i outside...">IsPathEnd()</a>)</li><li>path iterators: operators need a given number of nodes to define a neighbor; this class provides the iteration on a given number of (base) nodes which can be used to define a neighbor (through the BaseNode method) Subclasses only need to override MakeNeighbor to create neighbors using the services above (no direct manipulation of assignments). </li></ul>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00549">549</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00621">621</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="a1f760408851ccfbc70b4a12479aeb3d"></a><!-- doxytag: member="operations_research::PathOperator::PathOperator" ref="a1f760408851ccfbc70b4a12479aeb3d" args="(const IntVar *const *next_vars, const IntVar *const *path_vars, int size, int number_of_base_nodes)" -->
 <div class="memitem">
@@ -223,7 +223,7 @@ Base class of the local search operators dedicated to path modifications (a path
 namespace 
 <p>
 Path-based Operators 
-<p>Definition at line <a class="el" href="local__search_8cc-source.html#l00450">450</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="local__search_8cc-source.html#l00459">459</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -244,7 +244,7 @@ Path-based Operators
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00555">555</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00627">627</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -297,7 +297,7 @@ Path-based Operators
 
 <p>Implements <a class="el" href="classoperations__research_1_1LocalSearchOperator.html#2951ae57e5fd3fce7d4f9b831594b460">operations_research::LocalSearchOperator</a>.</p>
 
-<p>Definition at line <a class="el" href="local__search_8cc-source.html#l00472">472</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="local__search_8cc-source.html#l00481">481</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -322,7 +322,7 @@ Path-based Operators
 
 <p>Reimplemented from <a class="el" href="classoperations__research_1_1IntVarLocalSearchOperator.html#8e2dfc7ab50a078f22dac560d91973d3">operations_research::IntVarLocalSearchOperator</a>.</p>
 
-<p>Definition at line <a class="el" href="local__search_8cc-source.html#l00485">485</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="local__search_8cc-source.html#l00494">494</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -346,7 +346,7 @@ Path-based Operators
 Returns the index of the node after the node of index node_index in the current assignment. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00564">564</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00636">636</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -370,7 +370,7 @@ Returns the index of the node after the node of index node_index in the current 
 Returns the index of the path to which the node of index node_index belongs in the current assignment. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00571">571</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00643">643</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -393,7 +393,7 @@ Returns the index of the path to which the node of index node_index belongs in t
 Number of next variables. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00576">576</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00648">648</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -417,7 +417,7 @@ Number of next variables.
 Returns the index of the variable corresponding to the ith base node. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00580">580</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00652">652</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -439,7 +439,7 @@ Returns the index of the variable corresponding to the ith base node.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00581">581</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00653">653</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -461,7 +461,7 @@ Returns the index of the variable corresponding to the ith base node.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00583">583</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00655">655</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -483,7 +483,7 @@ Returns the index of the variable corresponding to the ith base node.
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00588">588</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00660">660</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -522,7 +522,7 @@ Returns the index of the variable corresponding to the ith base node.
 Moves the chain starting after the node before_chain and ending at the node chain_end after the node destination. 
 <p>
 
-<p>Definition at line <a class="el" href="local__search_8cc-source.html#l00498">498</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="local__search_8cc-source.html#l00507">507</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -561,7 +561,7 @@ Moves the chain starting after the node before_chain and ending at the node chai
 Reverses the chain starting after before_chain and ending before after_chain. 
 <p>
 
-<p>Definition at line <a class="el" href="local__search_8cc-source.html#l00524">524</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="local__search_8cc-source.html#l00533">533</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -592,7 +592,7 @@ Reverses the chain starting after before_chain and ending before after_chain.
 
 <p>
 
-<p>Definition at line <a class="el" href="local__search_8cc-source.html#l00548">548</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="local__search_8cc-source.html#l00557">557</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -623,7 +623,7 @@ Reverses the chain starting after before_chain and ending before after_chain.
 
 <p>
 
-<p>Definition at line <a class="el" href="local__search_8cc-source.html#l00559">559</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="local__search_8cc-source.html#l00568">568</a> of file <a class="el" href="local__search_8cc-source.html">local_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -662,7 +662,7 @@ Reverses the chain starting after before_chain and ending before after_chain.
 Sets the to to be the node after from. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00604">604</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00676">676</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -686,7 +686,7 @@ Sets the to to be the node after from.
 Returns true if i is the last node on the path; defined by the fact that i outside the range of the variable array. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00615">615</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00687">687</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -710,7 +710,7 @@ Returns true if i is the last node on the path; defined by the fact that i outsi
 Returns true if node is inactive. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00618">618</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00690">690</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -733,7 +733,7 @@ Returns true if node is inactive.
 Returns true if operator needs to restart its initial position at each call to <a class="el" href="classoperations__research_1_1IntVarLocalSearchOperator.html#86ada2075515afdcd7f8979f4a2ee55d" title="This method should not be overridden.">Start()</a>. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00622">622</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00694">694</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -756,7 +756,7 @@ Returns true if operator needs to restart its initial position at each call to <
 Reset the position of the operator to its position when <a class="el" href="classoperations__research_1_1IntVarLocalSearchOperator.html#86ada2075515afdcd7f8979f4a2ee55d" title="This method should not be overridden.">Start()</a> was last called; this can be used to let an operator iterate more than once over the paths. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00626">626</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00698">698</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -774,7 +774,7 @@ Reset the position of the operator to its position when <a class="el" href="clas
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00630">630</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00702">702</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -791,7 +791,7 @@ Reset the position of the operator to its position when <a class="el" href="clas
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00631">631</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00703">703</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -805,7 +805,7 @@ Reset the position of the operator to its position when <a class="el" href="clas
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

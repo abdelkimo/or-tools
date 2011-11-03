@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -83,12 +83,14 @@
   </div>
 </div>
 <div class="contents">
-<h1>or-tools/constraint_solver/model_cache.cc File Reference</h1><code>#include &lt;vector&gt;</code><br>
+<h1>or-tools/constraint_solver/model_cache.cc File Reference</h1><code>#include &lt;string.h&gt;</code><br>
+<code>#include &lt;vector&gt;</code><br>
 <code>#include &quot;base/commandlineflags.h&quot;</code><br>
 <code>#include &quot;base/integral_types.h&quot;</code><br>
 <code>#include &quot;base/logging.h&quot;</code><br>
 <code>#include &quot;base/scoped_ptr.h&quot;</code><br>
 <code>#include &quot;base/stl_util.h&quot;</code><br>
+<code>#include &quot;<a class="el" href="constraint__solver_8h-source.html">constraint_solver/constraint_solver.h</a>&quot;</code><br>
 <code>#include &quot;<a class="el" href="constraint__solveri_8h-source.html">constraint_solver/constraint_solveri.h</a>&quot;</code><br>
 <code>#include &quot;util/const_int_array.h&quot;</code><br>
 <code>#include &quot;util/const_ptr_array.h&quot;</code><br>
@@ -104,38 +106,38 @@
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  <a href="#50b0bb5aeca15fabc105ee2202e39c8f"></a><br></td></tr>
 <tr><td class="memTemplParams" nowrap colspan="2">template&lt;class T&gt; </td></tr>
-<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#b2806e6f93552aa05625dbbf2345e057">operations_research::IsEqual</a> (const T &amp;a1, const T &amp;a2)</td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#a65aab717999fc039c013f9177b80ee2">operations_research::IsEqual</a> (const T &amp;a1, const T &amp;a2)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Helpers.  <a href="#b2806e6f93552aa05625dbbf2345e057"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#a9a6a857701b59497cd7452e56bc4302">operations_research::IsEqual</a> (const ConstIntArray *&amp;a1, const ConstIntArray *&amp;a2)</td></tr>
-
-<tr><td class="memTemplParams" nowrap colspan="2">template&lt;class T&gt; </td></tr>
-<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#7f46e0e9cc7d8e33eef9f3e7c857a1d6">operations_research::IsEqual</a> (ConstPtrArray&lt; T &gt; *const a1, ConstPtrArray&lt; T &gt; *const a2)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">uint64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#0c7a6e1230aef57580427cd2e0a0dc3a">operations_research::Hash1</a> (uint64 <a class="el" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">uint64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#e69c85e33ff277928e6968e1341b7503">operations_research::Hash1</a> (uint32 <a class="el" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">uint64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#1bd566e971039be3af1990d8496dc138">operations_research::Hash1</a> (int64 <a class="el" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">uint64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#4bf88cc9bf2f16ec6338759b30423f69">operations_research::Hash1</a> (void *const ptr)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">uint64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#ee1e411a3965e0f45de74327e85b3943">operations_research::Hash1</a> (ConstIntArray *const values)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Helpers.  <a href="#a65aab717999fc039c013f9177b80ee2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#eb26fe157d4fa417303afa89fdb5a4a8">operations_research::IsEqual</a> (const ConstIntArray *&amp;a1, const ConstIntArray *&amp;a2)</td></tr>
 
 <tr><td class="memTemplParams" nowrap colspan="2">template&lt;class T&gt; </td></tr>
-<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">uint64&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#1338febd1f8e486b3cf1a0e4ad7e06df">operations_research::Hash1</a> (ConstPtrArray&lt; T &gt; *const ptrs)</td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#fe0d2300766fa5eaef0b3fd6a8b6499a">operations_research::IsEqual</a> (ConstPtrArray&lt; T &gt; *const a1, ConstPtrArray&lt; T &gt; *const a2)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">uint64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#42399bb922d1db990fb2e5b9a90f96d5">operations_research::Hash1</a> (uint64 <a class="el" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">uint64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#f85cb7292ea769e1c39a02a970a06b70">operations_research::Hash1</a> (uint32 <a class="el" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">uint64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#6ee0f62179c62cec99add4952a020a2b">operations_research::Hash1</a> (int64 <a class="el" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">uint64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#4d6cf0d0055a8786d1daeb9f62d79845">operations_research::Hash1</a> (void *const ptr)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">uint64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#366dd73cec6d9d4f13e4e2b402780923">operations_research::Hash1</a> (ConstIntArray *const values)</td></tr>
+
+<tr><td class="memTemplParams" nowrap colspan="2">template&lt;class T&gt; </td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">uint64&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#96f64bbf761cd01978ed7a1b977ca34c">operations_research::Hash1</a> (ConstPtrArray&lt; T &gt; *const ptrs)</td></tr>
 
 <tr><td class="memTemplParams" nowrap colspan="2">template&lt;class A1, class A2&gt; </td></tr>
-<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">uint64&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#5951b229b17689675dd82e56f0a3f6a8">operations_research::Hash2</a> (const A1 &amp;a1, const A2 &amp;a2)</td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">uint64&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#32b64f2700eec03142dc25932a25253b">operations_research::Hash2</a> (const A1 &amp;a1, const A2 &amp;a2)</td></tr>
 
 <tr><td class="memTemplParams" nowrap colspan="2">template&lt;class A1, class A2, class A3&gt; </td></tr>
-<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">uint64&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#0c2a288fe4fc29ca65d9d122d6ec709d">operations_research::Hash3</a> (const A1 &amp;a1, const A2 &amp;a2, const A3 &amp;a3)</td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">uint64&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#a3019a2acaf53ede23b8daed11ff5395">operations_research::Hash3</a> (const A1 &amp;a1, const A2 &amp;a2, const A3 &amp;a3)</td></tr>
 
 <tr><td class="memTemplParams" nowrap colspan="2">template&lt;class A1, class A2, class A3, class A4&gt; </td></tr>
-<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">uint64&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#1ee76801c1b68a003e29a55b981aa963">operations_research::Hash4</a> (const A1 &amp;a1, const A2 &amp;a2, const A3 &amp;a3, const A4 &amp;a4)</td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">uint64&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#716f0795778f1a15ef81bdcddd7f9c56">operations_research::Hash4</a> (const A1 &amp;a1, const A2 &amp;a2, const A3 &amp;a3, const A4 &amp;a4)</td></tr>
 
 <tr><td class="memTemplParams" nowrap colspan="2">template&lt;class C&gt; </td></tr>
-<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#4dcc9010ae470023f09b1482caa5ad7a">operations_research::Double</a> (C ***array_ptr, int *size_ptr)</td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#7f89d34c49ca4888967de6846d62afe4">operations_research::Double</a> (C ***array_ptr, int *size_ptr)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">ModelCache *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#257ee12a1feb2e15b6efa4b3fe283173">operations_research::BuildModelCache</a> (Solver *const solver)</td></tr>
 
@@ -180,7 +182,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00235">235</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00237">237</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
 
 </div>
 </div><p>
@@ -197,7 +199,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00313">313</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00315">315</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
 
 </div>
 </div><p>
@@ -214,7 +216,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00396">396</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00398">398</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
 
 </div>
 </div><p>
@@ -231,7 +233,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00240">240</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00242">242</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
 
 </div>
 </div><p>
@@ -248,7 +250,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00236">236</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00238">238</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
 
 </div>
 </div><p>
@@ -265,7 +267,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00237">237</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00239">239</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
 
 </div>
 </div><p>
@@ -282,7 +284,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00242">242</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00244">244</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
 
 </div>
 </div><p>
@@ -299,7 +301,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00241">241</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00243">243</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
 
 </div>
 </div><p>
@@ -316,7 +318,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00754">754</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00756">756</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
 
 </div>
 </div><p>
@@ -333,7 +335,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00753">753</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00755">755</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
 
 </div>
 </div><p>
@@ -350,7 +352,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00748">748</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00750">750</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
 
 </div>
 </div><p>
@@ -367,7 +369,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00752">752</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00754">754</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
 
 </div>
 </div><p>
@@ -384,7 +386,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00745">745</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00747">747</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
 
 </div>
 </div><p>
@@ -401,7 +403,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00750">750</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00752">752</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
 
 </div>
 </div><p>
@@ -418,7 +420,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00749">749</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00751">751</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
 
 </div>
 </div><p>
@@ -435,7 +437,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00746">746</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00748">748</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
 
 </div>
 </div><p>
@@ -452,7 +454,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00751">751</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00753">753</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
 
 </div>
 </div><p>
@@ -469,7 +471,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00744">744</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__cache_8cc-source.html#l00746">746</a> of file <a class="el" href="model__cache_8cc-source.html">model_cache.cc</a>.</p>
 
 </div>
 </div><p>
@@ -481,7 +483,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

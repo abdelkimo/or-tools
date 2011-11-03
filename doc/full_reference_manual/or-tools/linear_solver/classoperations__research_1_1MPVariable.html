@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/linear_solver/index.html">linear_solver</a>/
             </tt></b></font>
@@ -75,6 +75,7 @@
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -90,7 +91,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>operations_research::MPVariable Class Reference</h1><!-- doxytag: class="operations_research::MPVariable" -->A class to express a variable that will appear in a constraint.  
+<h1>operations_research::MPVariable Class Reference</h1><!-- doxytag: class="operations_research::MPVariable" -->The class for variables of a Mathematical Programming (MP) model.  
 <a href="#_details">More...</a>
 <p>
 <code>#include &lt;<a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>&gt;</code>
@@ -102,34 +103,44 @@
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">const string &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPVariable.html#ffb7721bc797ed1ba29418376a8511b8">name</a> () const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the name of the variable.  <a href="#ffb7721bc797ed1ba29418376a8511b8"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPVariable.html#02131c51847247fc3f620e4ccb439470">SetInteger</a> (bool integer)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the integrality requirement of the variable.  <a href="#02131c51847247fc3f620e4ccb439470"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPVariable.html#8a6904328fc7f457c0d492996339b1e3">integer</a> () const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the integrality requirement of the variable.  <a href="#8a6904328fc7f457c0d492996339b1e3"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPVariable.html#ae5629b6218a8b04cd7094dee7d8f605">solution_value</a> () const </td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="classoperations__research_1_1MPVariable.html" title="A class to express a variable that will appear in a constraint.">MPVariable</a>.  <a href="#ae5629b6218a8b04cd7094dee7d8f605"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPVariable.html#02b3093dda18856f88fc7dceb18b3bbf">reduced_cost</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The following methods are available only for continuous problems.  <a href="#02b3093dda18856f88fc7dceb18b3bbf"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classoperations__research_1_1MPSolver.html#7e2a34816b22749e70e23d26f49cf743">MPSolver::BasisStatus</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPVariable.html#167d18c15e8e8e7c9755c5e1817a244a">basis_status</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Advanced usage: returns the basis status of the variable.  <a href="#167d18c15e8e8e7c9755c5e1817a244a"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the value of the variable in the current solution.  <a href="#ae5629b6218a8b04cd7094dee7d8f605"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPVariable.html#77add375820f0865adf443b03682862c">index</a> () const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the index of the variable in the MPSolver::variables_.  <a href="#77add375820f0865adf443b03682862c"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPVariable.html#82ddb3c4fea72a17b2c9a4f7f0c22179">lb</a> () const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the lower bound.  <a href="#82ddb3c4fea72a17b2c9a4f7f0c22179"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPVariable.html#5624d3c53ce5e5da4810e25c57004cf6">ub</a> () const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the upper bound.  <a href="#5624d3c53ce5e5da4810e25c57004cf6"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPVariable.html#0d23a28f31a3b667f21034551666430e">SetLB</a> (double lb)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the lower bound.  <a href="#0d23a28f31a3b667f21034551666430e"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPVariable.html#42590823a1b3343d0459cc7c564b9d69">SetUB</a> (double ub)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the upper bound.  <a href="#42590823a1b3343d0459cc7c564b9d69"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPVariable.html#5608a23aad7a48ea52ba3869b557d036">SetBounds</a> (double lb, double ub)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets both the lower and upper bounds.  <a href="#5608a23aad7a48ea52ba3869b557d036"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPVariable.html#02b3093dda18856f88fc7dceb18b3bbf">reduced_cost</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Advanced usage: returns the reduced cost of the variable in the current solution (only available for continuous problems).  <a href="#02b3093dda18856f88fc7dceb18b3bbf"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classoperations__research_1_1MPSolver.html#7e2a34816b22749e70e23d26f49cf743">MPSolver::BasisStatus</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPVariable.html#167d18c15e8e8e7c9755c5e1817a244a">basis_status</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Advanced usage: returns the basis status of the variable in the current solution (only available for continuous problems).  <a href="#167d18c15e8e8e7c9755c5e1817a244a"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Protected Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPVariable.html#9e7d686663100490d86bede4c78f0e06">MPVariable</a> (double lb, double ub, bool integer, const string &amp;name, <a class="el" href="classoperations__research_1_1MPSolverInterface.html">MPSolverInterface</a> *const interface)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#9e7d686663100490d86bede4c78f0e06"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPVariable.html#4a5ec492ea76159fd70539d4189c1a4b">set_index</a> (int index)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPVariable.html#8f6294a83ae2d4bb0e6000981f8651a5">set_solution_value</a> (double value)</td></tr>
@@ -151,8 +162,8 @@
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-A class to express a variable that will appear in a constraint. 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00373">373</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+The class for variables of a Mathematical Programming (MP) model. 
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00485">485</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="9e7d686663100490d86bede4c78f0e06"></a><!-- doxytag: member="operations_research::MPVariable::MPVariable" ref="9e7d686663100490d86bede4c78f0e06" args="(double lb, double ub, bool integer, const string &amp;name, MPSolverInterface *const interface)" -->
 <div class="memitem">
@@ -198,8 +209,10 @@ A class to express a variable that will appear in a constraint.
 <div class="memdoc">
 
 <p>
-
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00402">402</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+Constructor. 
+<p>
+A variable points to a single <a class="el" href="classoperations__research_1_1MPSolverInterface.html" title="This class wraps the actual mathematical programming solvers.">MPSolverInterface</a> that is specified in the constructor. A variable cannot belong to several models. 
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00531">531</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -220,8 +233,10 @@ A class to express a variable that will appear in a constraint.
 <div class="memdoc">
 
 <p>
+Returns the name of the variable. 
+<p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00375">375</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00488">488</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -241,6 +256,8 @@ A class to express a variable that will appear in a constraint.
 </div>
 <div class="memdoc">
 
+<p>
+Sets the integrality requirement of the variable. 
 <p>
 
 <p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00245">245</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
@@ -263,8 +280,10 @@ A class to express a variable that will appear in a constraint.
 <div class="memdoc">
 
 <p>
+Returns the integrality requirement of the variable. 
+<p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00378">378</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00493">493</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -284,56 +303,10 @@ A class to express a variable that will appear in a constraint.
 <div class="memdoc">
 
 <p>
-<a class="el" href="classoperations__research_1_1MPVariable.html" title="A class to express a variable that will appear in a constraint.">MPVariable</a>. 
+Returns the value of the variable in the current solution. 
 <p>
-
+<a class="el" href="classoperations__research_1_1MPVariable.html" title="The class for variables of a Mathematical Programming (MP) model.">MPVariable</a>. 
 <p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00213">213</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="02b3093dda18856f88fc7dceb18b3bbf"></a><!-- doxytag: member="operations_research::MPVariable::reduced_cost" ref="02b3093dda18856f88fc7dceb18b3bbf" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double operations_research::MPVariable::reduced_cost           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-The following methods are available only for continuous problems. 
-<p>
-
-<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00219">219</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="167d18c15e8e8e7c9755c5e1817a244a"></a><!-- doxytag: member="operations_research::MPVariable::basis_status" ref="167d18c15e8e8e7c9755c5e1817a244a" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classoperations__research_1_1MPSolver.html#7e2a34816b22749e70e23d26f49cf743">MPSolver::BasisStatus</a> operations_research::MPVariable::basis_status           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Advanced usage: returns the basis status of the variable. 
-<p>
-
-<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00227">227</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -353,8 +326,10 @@ Advanced usage: returns the basis status of the variable.
 <div class="memdoc">
 
 <p>
+Returns the index of the variable in the MPSolver::variables_. 
+<p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00387">387</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00499">499</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -374,8 +349,10 @@ Advanced usage: returns the basis status of the variable.
 <div class="memdoc">
 
 <p>
+Returns the lower bound. 
+<p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00389">389</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00502">502</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -395,8 +372,10 @@ Advanced usage: returns the basis status of the variable.
 <div class="memdoc">
 
 <p>
+Returns the upper bound. 
+<p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00390">390</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00504">504</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -417,8 +396,10 @@ Advanced usage: returns the basis status of the variable.
 <div class="memdoc">
 
 <p>
+Sets the lower bound. 
+<p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00391">391</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00506">506</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -439,8 +420,10 @@ Advanced usage: returns the basis status of the variable.
 <div class="memdoc">
 
 <p>
+Sets the upper bound. 
+<p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00392">392</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00508">508</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -470,8 +453,57 @@ Advanced usage: returns the basis status of the variable.
 <div class="memdoc">
 
 <p>
+Sets both the lower and upper bounds. 
+<p>
 
 <p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00236">236</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="02b3093dda18856f88fc7dceb18b3bbf"></a><!-- doxytag: member="operations_research::MPVariable::reduced_cost" ref="02b3093dda18856f88fc7dceb18b3bbf" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double operations_research::MPVariable::reduced_cost           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Advanced usage: returns the reduced cost of the variable in the current solution (only available for continuous problems). 
+<p>
+
+<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00219">219</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="167d18c15e8e8e7c9755c5e1817a244a"></a><!-- doxytag: member="operations_research::MPVariable::basis_status" ref="167d18c15e8e8e7c9755c5e1817a244a" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classoperations__research_1_1MPSolver.html#7e2a34816b22749e70e23d26f49cf743">MPSolver::BasisStatus</a> operations_research::MPVariable::basis_status           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Advanced usage: returns the basis status of the variable in the current solution (only available for continuous problems). 
+<p>
+<dl class="see" compact><dt><b>See also:</b></dt><dd><a class="el" href="classoperations__research_1_1MPSolver.html#7e2a34816b22749e70e23d26f49cf743" title="Advanced usage: possible basis status values for a variable and the slack variable...">MPSolver::BasisStatus</a>. </dd></dl>
+
+<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00227">227</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -493,7 +525,7 @@ Advanced usage: returns the basis status of the variable.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00407">407</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00536">536</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -515,7 +547,7 @@ Advanced usage: returns the basis status of the variable.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00408">408</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00537">537</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -537,7 +569,7 @@ Advanced usage: returns the basis status of the variable.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00409">409</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00538">538</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -555,7 +587,7 @@ Advanced usage: returns the basis status of the variable.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00395">395</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00521">521</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -572,7 +604,7 @@ Advanced usage: returns the basis status of the variable.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00396">396</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00522">522</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -589,7 +621,7 @@ Advanced usage: returns the basis status of the variable.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00397">397</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00523">523</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -606,7 +638,7 @@ Advanced usage: returns the basis status of the variable.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00398">398</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00524">524</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -623,7 +655,7 @@ Advanced usage: returns the basis status of the variable.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00399">399</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00525">525</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -640,7 +672,7 @@ Advanced usage: returns the basis status of the variable.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00400">400</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00526">526</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -654,7 +686,7 @@ Advanced usage: returns the basis status of the variable.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

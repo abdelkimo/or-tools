@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -83,12 +83,15 @@
   </div>
 </div>
 <div class="contents">
-<h1>or-tools/constraint_solver/sched_search.cc File Reference</h1><code>#include &lt;sstream&gt;</code><br>
+<h1>or-tools/constraint_solver/sched_search.cc File Reference</h1><code>#include &lt;string.h&gt;</code><br>
+<code>#include &lt;string&gt;</code><br>
+<code>#include &lt;vector&gt;</code><br>
 <code>#include &quot;base/integral_types.h&quot;</code><br>
 <code>#include &quot;base/logging.h&quot;</code><br>
 <code>#include &quot;base/scoped_ptr.h&quot;</code><br>
 <code>#include &quot;base/stringprintf.h&quot;</code><br>
 <code>#include &quot;<a class="el" href="constraint__solver_8h-source.html">constraint_solver/constraint_solver.h</a>&quot;</code><br>
+<code>#include &quot;util/string_array.h&quot;</code><br>
 
 <p>
 <a href="sched__search_8cc-source.html">Go to the source code of this file.</a><table border="0" cellpadding="0" cellspacing="0">
@@ -111,7 +114,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="sched__search_8cc-source.html#l00055">55</a> of file <a class="el" href="sched__search_8cc-source.html">sched_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="sched__search_8cc-source.html#l00059">59</a> of file <a class="el" href="sched__search_8cc-source.html">sched_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -128,7 +131,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="sched__search_8cc-source.html#l00169">169</a> of file <a class="el" href="sched__search_8cc-source.html">sched_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="sched__search_8cc-source.html#l00173">173</a> of file <a class="el" href="sched__search_8cc-source.html">sched_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -145,7 +148,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="sched__search_8cc-source.html#l00056">56</a> of file <a class="el" href="sched__search_8cc-source.html">sched_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="sched__search_8cc-source.html#l00060">60</a> of file <a class="el" href="sched__search_8cc-source.html">sched_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -162,16 +165,16 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="sched__search_8cc-source.html#l00131">131</a> of file <a class="el" href="sched__search_8cc-source.html">sched_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="sched__search_8cc-source.html#l00135">135</a> of file <a class="el" href="sched__search_8cc-source.html">sched_search.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="2d22bc3bee7fa8d82a92b94771ed292d"></a><!-- doxytag: member="sched_search.cc::sequence_" ref="2d22bc3bee7fa8d82a92b94771ed292d" args="" -->
+<a class="anchor" name="7ff4f2494100f37e69a6efb985dabef2"></a><!-- doxytag: member="sched_search.cc::sequence_" ref="7ff4f2494100f37e69a6efb985dabef2" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Sequence* const <a class="el" href="sched__search_8cc.html#2d22bc3bee7fa8d82a92b94771ed292d">sequence_</a>          </td>
+          <td class="memname">SequenceVar* const <a class="el" href="sched__search_8cc.html#7ff4f2494100f37e69a6efb985dabef2">sequence_</a>          </td>
         </tr>
       </table>
 </div>
@@ -179,16 +182,16 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="sched__search_8cc-source.html#l00168">168</a> of file <a class="el" href="sched__search_8cc-source.html">sched_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="sched__search_8cc-source.html#l00172">172</a> of file <a class="el" href="sched__search_8cc-source.html">sched_search.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="446950d039fccd13a98fe7cc31ef68c9"></a><!-- doxytag: member="sched_search.cc::sequences_" ref="446950d039fccd13a98fe7cc31ef68c9" args="" -->
+<a class="anchor" name="5c8487b6173c73b5a434c2d8cfa26bf2"></a><!-- doxytag: member="sched_search.cc::sequences_" ref="5c8487b6173c73b5a434c2d8cfa26bf2" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">scoped_array&lt;Sequence*&gt; <a class="el" href="sched__search_8cc.html#446950d039fccd13a98fe7cc31ef68c9">sequences_</a>          </td>
+          <td class="memname">scoped_array&lt;SequenceVar*&gt; <a class="el" href="sched__search_8cc.html#5c8487b6173c73b5a434c2d8cfa26bf2">sequences_</a>          </td>
         </tr>
       </table>
 </div>
@@ -196,7 +199,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="sched__search_8cc-source.html#l00251">251</a> of file <a class="el" href="sched__search_8cc-source.html">sched_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="sched__search_8cc-source.html#l00259">259</a> of file <a class="el" href="sched__search_8cc-source.html">sched_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -213,7 +216,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="sched__search_8cc-source.html#l00130">130</a> of file <a class="el" href="sched__search_8cc-source.html">sched_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="sched__search_8cc-source.html#l00134">134</a> of file <a class="el" href="sched__search_8cc-source.html">sched_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -230,7 +233,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="sched__search_8cc-source.html#l00054">54</a> of file <a class="el" href="sched__search_8cc-source.html">sched_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="sched__search_8cc-source.html#l00058">58</a> of file <a class="el" href="sched__search_8cc-source.html">sched_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -247,7 +250,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="sched__search_8cc-source.html#l00129">129</a> of file <a class="el" href="sched__search_8cc-source.html">sched_search.cc</a>.</p>
+<p>Definition at line <a class="el" href="sched__search_8cc-source.html#l00133">133</a> of file <a class="el" href="sched__search_8cc-source.html">sched_search.cc</a>.</p>
 
 </div>
 </div><p>
@@ -259,7 +262,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

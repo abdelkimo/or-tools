@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -83,14 +83,20 @@
   </div>
 </div>
 <div class="contents">
-<h1>or-tools/constraint_solver/expressions.cc File Reference</h1><code>#include &lt;algorithm&gt;</code><br>
+<h1>or-tools/constraint_solver/expressions.cc File Reference</h1><code>#include &lt;math.h&gt;</code><br>
+<code>#include &lt;string.h&gt;</code><br>
+<code>#include &lt;algorithm&gt;</code><br>
+<code>#include &quot;base/hash.h&quot;</code><br>
 <code>#include &lt;string&gt;</code><br>
-<code>#include &quot;base/callback.h&quot;</code><br>
+<code>#include &lt;utility&gt;</code><br>
+<code>#include &lt;vector&gt;</code><br>
 <code>#include &quot;base/commandlineflags.h&quot;</code><br>
 <code>#include &quot;base/integral_types.h&quot;</code><br>
 <code>#include &quot;base/logging.h&quot;</code><br>
 <code>#include &quot;base/scoped_ptr.h&quot;</code><br>
 <code>#include &quot;base/stringprintf.h&quot;</code><br>
+<code>#include &quot;base/map-util.h&quot;</code><br>
+<code>#include &quot;<a class="el" href="constraint__solver_8h-source.html">constraint_solver/constraint_solver.h</a>&quot;</code><br>
 <code>#include &quot;<a class="el" href="constraint__solveri_8h-source.html">constraint_solver/constraint_solveri.h</a>&quot;</code><br>
 <code>#include &quot;util/bitset.h&quot;</code><br>
 <code>#include &quot;util/const_int_array.h&quot;</code><br>
@@ -113,38 +119,38 @@
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  <a href="#c65c8c4929b542aa6655f34b32a55946"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="expressions_8cc.html#c79b8b78d90d094c2308685c38b5d189">DEFINE_bool</a> (cp_share_int_consts, true,&quot;Share IntConst's with the same value.&quot;)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int64 *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#0c872f09ed9a5cc1ea55de2bd6f5eebc">operations_research::NewUniqueSortedArray</a> (const int64 *const values, int *size)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int64 *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#3be8c91d8f1af4647cebf79a12269894">operations_research::NewUniqueSortedArray</a> (const int64 *const values, int *size)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#db5196eb0fcaac1a6f265c46a5c6af24">operations_research::IsArrayActuallySorted</a> (const int64 *const values, int size)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#fc3f8f11d2e67b014179ea0faa92e0ab">operations_research::IsArrayActuallySorted</a> (const int64 *const values, int size)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#4877129a6aa6f0b66d81b63e6dae6104">operations_research::PosIntDivUp</a> (int64 e, int64 v)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#063ed7b2bb5564ec3d6ffc5ace561a3c">operations_research::PosIntDivUp</a> (int64 e, int64 v)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Utility functions.  <a href="#4877129a6aa6f0b66d81b63e6dae6104"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#72a5bd5bbe9090716c9de9a168c71d8b">operations_research::PosIntDivDown</a> (int64 e, int64 v)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Utility functions.  <a href="#063ed7b2bb5564ec3d6ffc5ace561a3c"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#79dda6d6b713e8c2382038e7cbdf3987">operations_research::PosIntDivDown</a> (int64 e, int64 v)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#5daf95d4f9fed329e20ae84ee0c02f2a">operations_research::SetPosPosMinExpr</a> (IntExpr *const left, IntExpr *const right, int64 m)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#8c4f1f6e20284107c95066fcfb7a0377">operations_research::SetPosPosMinExpr</a> (IntExpr *const left, IntExpr *const right, int64 m)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Utilities for product expression.  <a href="#5daf95d4f9fed329e20ae84ee0c02f2a"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#f281e1d01de90f7c62c2595173ebc6a6">operations_research::SetPosPosMaxExpr</a> (IntExpr *const left, IntExpr *const right, int64 m)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Utilities for product expression.  <a href="#8c4f1f6e20284107c95066fcfb7a0377"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#bfadaece825a326ddbdb91b649426967">operations_research::SetPosPosMaxExpr</a> (IntExpr *const left, IntExpr *const right, int64 m)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Propagates set_max on left * right, left and right &gt;= 0.  <a href="#f281e1d01de90f7c62c2595173ebc6a6"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#e955bb9d7c422f24adb6d696ccaf7de7">operations_research::SetPosGenMinExpr</a> (IntExpr *const left, IntExpr *const right, int64 m)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Propagates set_max on left * right, left and right &gt;= 0.  <a href="#bfadaece825a326ddbdb91b649426967"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#122c09725475a55459d20c5116062b9e">operations_research::SetPosGenMinExpr</a> (IntExpr *const left, IntExpr *const right, int64 m)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Propagates set_min on left * right, left &gt;= 0, right across 0.  <a href="#e955bb9d7c422f24adb6d696ccaf7de7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#6a1e462e3a7e06bdbcc869b1865efa7f">operations_research::SetGenGenMinExpr</a> (IntExpr *const left, IntExpr *const right, int64 m)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Propagates set_min on left * right, left &gt;= 0, right across 0.  <a href="#122c09725475a55459d20c5116062b9e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#a1e11f33a5eb4f2b518c47f51ba394a8">operations_research::SetGenGenMinExpr</a> (IntExpr *const left, IntExpr *const right, int64 m)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Propagates set_min on left * right, left and right across 0.  <a href="#6a1e462e3a7e06bdbcc869b1865efa7f"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#1f15591ef3748ada1aecc3f704f67c67">operations_research::TimesSetMin</a> (IntExpr *const left, IntExpr *const right, IntExpr *const minus_left, IntExpr *const minus_right, int m)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Propagates set_min on left * right, left and right across 0.  <a href="#a1e11f33a5eb4f2b518c47f51ba394a8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#cc31f4bceed5f645b8fd68e5d0a126c7">operations_research::TimesSetMin</a> (IntExpr *const left, IntExpr *const right, IntExpr *const minus_left, IntExpr *const minus_right, int m)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#e3a98f9c2023f21d02dcbaa9b90cb0df">operations_research::LinkVarExpr</a> (Solver *const s, IntExpr *const expr, IntVar *const <a class="el" href="search_8cc.html#96c77f9f3a7baec84b9b8add26a31787">var</a>)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">IntExprElement.  <a href="#e3a98f9c2023f21d02dcbaa9b90cb0df"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">Action *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#95ad34ed7b89a3604a3475012a6a068a">operations_research::NewDomainIntVarCleaner</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">namespace  <a href="#95ad34ed7b89a3604a3475012a6a068a"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#bf86ac5b7c7ec6d91d566831705aae7a">operations_research::RestoreBoolValue</a> (IntVar *const <a class="el" href="search_8cc.html#96c77f9f3a7baec84b9b8add26a31787">var</a>)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">namespace  <a href="#bf86ac5b7c7ec6d91d566831705aae7a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#e3a98f9c2023f21d02dcbaa9b90cb0df">operations_research::LinkVarExpr</a> (Solver *const s, IntExpr *const expr, IntVar *const <a class="el" href="search_8cc.html#96c77f9f3a7baec84b9b8add26a31787">var</a>)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">IntExprElement.  <a href="#e3a98f9c2023f21d02dcbaa9b90cb0df"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#2157ddca377f303c53c9c3ceb825abb2">operations_research::kUnboundBooleanVarValue</a> = 2</td></tr>
 
@@ -172,7 +178,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l01289">1289</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l01241">1241</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -265,7 +271,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00318">318</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00254">254</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -282,7 +288,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00354">354</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00290">290</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -299,7 +305,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00972">972</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00924">924</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -316,7 +322,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l03175">3175</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l03127">3127</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -333,7 +339,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00313">313</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00249">249</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -350,7 +356,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00571">571</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00515">515</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -367,7 +373,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l04294">4294</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l04246">4246</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -384,7 +390,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l04293">4293</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l04245">4245</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -401,7 +407,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l01617">1617</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l01569">1569</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -418,7 +424,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00357">357</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00293">293</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -435,7 +441,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00315">315</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00251">251</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -452,7 +458,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l03983">3983</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l03935">3935</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -469,7 +475,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l03984">3984</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l03936">3936</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -486,7 +492,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l02554">2554</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l02506">2506</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -503,7 +509,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l04295">4295</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l04247">4247</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -520,7 +526,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l04058">4058</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l04010">4010</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -529,7 +535,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Handler <a class="el" href="interval_8cc.html#d3eeb027b40499cca8605c4717de86a7">handler_</a>          </td>
+          <td class="memname">Handler <a class="el" href="interval_8cc.html#ddaf89e29c8752c2df3ca372153236fc">handler_</a>          </td>
         </tr>
       </table>
 </div>
@@ -537,7 +543,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00316">316</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00252">252</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -554,7 +560,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00573">573</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00517">517</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -571,7 +577,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00574">574</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00518">518</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -588,7 +594,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00317">317</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00253">253</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -605,7 +611,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00908">908</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00860">860</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -622,7 +628,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l01006">1006</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00958">958</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -639,7 +645,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l03986">3986</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l03938">3938</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -656,7 +662,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l03985">3985</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l03937">3937</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -673,7 +679,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l02494">2494</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l02446">2446</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -690,7 +696,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00304">304</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00240">240</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -709,7 +715,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 stamp for the max_ of the var. 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00312">312</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00248">248</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -726,7 +732,7 @@ stamp for the max_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00303">303</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00239">239</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -745,7 +751,7 @@ stamp for the max_ of the var.
 stamp for the min_ of the var. 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00310">310</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00246">246</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -762,7 +768,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l03054">3054</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l03006">3006</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -779,7 +785,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l03055">3055</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l03007">3007</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -796,7 +802,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00308">308</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00244">244</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -813,7 +819,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00307">307</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00243">243</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -830,7 +836,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00306">306</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00242">242</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -847,7 +853,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00305">305</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00241">241</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -864,7 +870,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00568">568</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00512">512</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -881,7 +887,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00355">355</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00291">291</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -898,7 +904,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00314">314</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00250">250</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -915,7 +921,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00572">572</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00516">516</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -932,7 +938,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00976">976</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00928">928</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -949,7 +955,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l02495">2495</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l02447">2447</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -966,7 +972,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00569">569</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00513">513</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -983,7 +989,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00570">570</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00514">514</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1000,7 +1006,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00826">826</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00778">778</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1017,7 +1023,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00566">566</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00510">510</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1034,7 +1040,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l04059">4059</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l04011">4011</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1051,7 +1057,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l01413">1413</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l01365">1365</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1068,7 +1074,7 @@ stamp for the min_ of the var.
 
 <p>
 
-<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00220">220</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
+<p>Definition at line <a class="el" href="expressions_8cc-source.html#l00156">156</a> of file <a class="el" href="expressions_8cc-source.html">expressions.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1080,7 +1086,7 @@ stamp for the min_ of the var.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

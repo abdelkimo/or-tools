@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -84,6 +84,8 @@
 </div>
 <div class="contents">
 <h1>or-tools/constraint_solver/routing.cc File Reference</h1><code>#include &quot;<a class="el" href="routing_8h-source.html">constraint_solver/routing.h</a>&quot;</code><br>
+<code>#include &lt;stddef.h&gt;</code><br>
+<code>#include &lt;string.h&gt;</code><br>
 <code>#include &lt;algorithm&gt;</code><br>
 <code>#include &quot;base/hash.h&quot;</code><br>
 <code>#include &quot;base/callback.h&quot;</code><br>
@@ -91,11 +93,12 @@
 <code>#include &quot;base/integral_types.h&quot;</code><br>
 <code>#include &quot;base/logging.h&quot;</code><br>
 <code>#include &quot;base/scoped_ptr.h&quot;</code><br>
-<code>#include &quot;base/timer.h&quot;</code><br>
+<code>#include &quot;base/bitmap.h&quot;</code><br>
 <code>#include &quot;base/concise_iterator.h&quot;</code><br>
 <code>#include &quot;base/map-util.h&quot;</code><br>
-<code>#include &quot;base/stl_util-inl.h&quot;</code><br>
+<code>#include &quot;base/stl_util.h&quot;</code><br>
 <code>#include &quot;<a class="el" href="constraint__solveri_8h-source.html">constraint_solver/constraint_solveri.h</a>&quot;</code><br>
+<code>#include &quot;graph/linear_assignment.h&quot;</code><br>
 
 <p>
 <a href="routing_8cc-source.html">Go to the source code of this file.</a><table border="0" cellpadding="0" cellspacing="0">
@@ -115,7 +118,7 @@
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="routing_8cc.html#18e41a7073cc89d31b3f4cc8225bf4c0">DEFINE_bool</a> (routing_no_lns, false,&quot;Routing: forbids use of Large Neighborhood Search.&quot;)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  <a href="#18e41a7073cc89d31b3f4cc8225bf4c0"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">namespace <a class="el" href="namespaceoperations__research.html" title="Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may...">operations_research</a>  <a href="#18e41a7073cc89d31b3f4cc8225bf4c0"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="routing_8cc.html#e5f46cdb57fdab51932fcdc71dc6a148">DEFINE_bool</a> (routing_no_relocate, false,&quot;Routing: forbids use of Relocate neighborhood.&quot;)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="routing_8cc.html#fb5f7fbf29902b76ad3b52f8e7e073af">DEFINE_bool</a> (routing_no_exchange, false,&quot;Routing: forbids use of Exchange neighborhood.&quot;)</td></tr>
@@ -177,12 +180,15 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="routing_8cc.html#977f5ec2a28cb329a70366875c3cb1cb">DEFINE_bool</a> (routing_use_homogeneous_costs, true,&quot;Routing: use homogeneous cost model when possible.&quot;)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#a7d433e23a9d1e9316b9ef3e50e99661">operations_research::CostFunction</a> (int64 **eval, int64 i, int64 j)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="routing_8cc.html#74daede595acf3d57a3b55f6e16df8e9">DEFINE_bool</a> (routing_check_compact_assignment, true,&quot;Routing::CompactAssignment calls Solver::CheckAssignment on the &quot;&quot;compact assignment.&quot;)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evaluators.  <a href="#a7d433e23a9d1e9316b9ef3e50e99661"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">Solver::DecisionModification&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#b8345ed253872d697c1e3dc9d5cf7862">operations_research::LeftDive</a> (Solver *const s)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">_MSC_VER  <a href="#74daede595acf3d57a3b55f6e16df8e9"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#b4af054cbc5d70ec014adefd25fddb5d">operations_research::CostFunction</a> (int64 **eval, int64 i, int64 j)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Left-branch dive branch selector.  <a href="#b8345ed253872d697c1e3dc9d5cf7862"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Evaluators.  <a href="#b4af054cbc5d70ec014adefd25fddb5d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">Solver::DecisionModification&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#cd1071d2eafd9a61b0fa2d9b259c9115">operations_research::LeftDive</a> (Solver *const s)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Left-branch dive branch selector.  <a href="#cd1071d2eafd9a61b0fa2d9b259c9115"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#af7bc335dbf1cd813265847ceaacc807">operations_research::kUnassigned</a> = -1</td></tr>
 
@@ -209,19 +215,19 @@
 
 <p>
 <b>Value:</b><div class="fragment"><pre class="fragment"><span class="keywordflow">if</span> (homogeneous_costs_) {                                             \
-    operators.push_back(<a class="code" href="expressions_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeOperator(<a class="code" href="constraints_8cc.html#7ca6f3af3548a6655eb48a04216ff796">nexts_</a>.get(),             \
+    operators.push_back(<a class="code" href="dependency__graph_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeOperator(<a class="code" href="constraints_8cc.html#7ca6f3af3548a6655eb48a04216ff796">nexts_</a>.get(),             \
                                               size,                     \
                                               BuildCostCallback(),      \
                                               operator_type));          \
   } <span class="keywordflow">else</span> {                                                              \
-    operators.push_back(<a class="code" href="expressions_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeOperator(<a class="code" href="constraints_8cc.html#7ca6f3af3548a6655eb48a04216ff796">nexts_</a>.get(),             \
+    operators.push_back(<a class="code" href="dependency__graph_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeOperator(<a class="code" href="constraints_8cc.html#7ca6f3af3548a6655eb48a04216ff796">nexts_</a>.get(),             \
                                               vehicle_vars_.get(),      \
                                               size,                     \
                                               BuildCostCallback(),      \
                                               operator_type));          \
   }
 </pre></div>
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01058">1058</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01530">1530</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -243,21 +249,58 @@
 
 <p>
 <b>Value:</b><div class="fragment"><pre class="fragment"><span class="keywordflow">if</span> (homogeneous_costs_) {                                             \
-    operators.push_back(<a class="code" href="expressions_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeOperator(<a class="code" href="constraints_8cc.html#7ca6f3af3548a6655eb48a04216ff796">nexts_</a>.get(),             \
+    operators.push_back(<a class="code" href="dependency__graph_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeOperator(<a class="code" href="constraints_8cc.html#7ca6f3af3548a6655eb48a04216ff796">nexts_</a>.get(),             \
                                               size,                     \
                                               operator_type));          \
   } <span class="keywordflow">else</span> {                                                              \
-    operators.push_back(<a class="code" href="expressions_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeOperator(<a class="code" href="constraints_8cc.html#7ca6f3af3548a6655eb48a04216ff796">nexts_</a>.get(),             \
+    operators.push_back(<a class="code" href="dependency__graph_8cc.html#bd6bfbf6753a5deb0ce273fad6408e1e">solver_</a>-&gt;MakeOperator(<a class="code" href="constraints_8cc.html#7ca6f3af3548a6655eb48a04216ff796">nexts_</a>.get(),             \
                                               vehicle_vars_.get(),      \
                                               size,                     \
                                               operator_type));          \
   }
 </pre></div>
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01046">1046</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01518">1518</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
 <hr><h2>Function Documentation</h2>
+<a class="anchor" name="74daede595acf3d57a3b55f6e16df8e9"></a><!-- doxytag: member="routing.cc::DEFINE_bool" ref="74daede595acf3d57a3b55f6e16df8e9" args="(routing_check_compact_assignment, true,&quot;Routing::CompactAssignment calls Solver::CheckAssignment on the &quot;&quot;compact assignment.&quot;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_bool           </td>
+          <td>(</td>
+          <td class="paramtype">routing_check_compact_assignment&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">true&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Routing::CompactAssignment calls Solver::CheckAssignment on the &quot;&quot;compact assignment.&quot;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+_MSC_VER 
+<p>
+
+</div>
+</div><p>
 <a class="anchor" name="977f5ec2a28cb329a70366875c3cb1cb"></a><!-- doxytag: member="routing.cc::DEFINE_bool" ref="977f5ec2a28cb329a70366875c3cb1cb" args="(routing_use_homogeneous_costs, true,&quot;Routing: use homogeneous cost model when possible.&quot;)" -->
 <div class="memitem">
 <div class="memproto">
@@ -1033,11 +1076,9 @@ Meta-heuritics.
 <div class="memdoc">
 
 <p>
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. 
+namespace <a class="el" href="namespaceoperations__research.html" title="Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may...">operations_research</a> 
 <p>
-You may obtain a copy of the License at<p>
-<a href="http://www.apache.org/licenses/LICENSE-2.0">http://www.apache.org/licenses/LICENSE-2.0</a><p>
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License. Neighborhood deactivation 
+Neighborhood deactivation 
 </div>
 </div><p>
 <a class="anchor" name="e8f9edae9aaddf08e513b2e82578880b"></a><!-- doxytag: member="routing.cc::DEFINE_double" ref="e8f9edae9aaddf08e513b2e82578880b" args="(routing_guided_local_search_lamda_coefficient, 0.1,&quot;Lamda coefficient in GLS.&quot;)" -->
@@ -1319,7 +1360,7 @@ Search limits.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00145">145</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00165">165</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1336,7 +1377,7 @@ Search limits.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00146">146</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00166">166</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1353,7 +1394,7 @@ Search limits.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00149">149</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00169">169</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1370,7 +1411,7 @@ Search limits.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00151">151</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00171">171</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1387,7 +1428,7 @@ Search limits.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00288">288</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00308">308</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1404,7 +1445,7 @@ Search limits.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00150">150</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00170">170</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1421,7 +1462,7 @@ Search limits.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00148">148</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00168">168</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1438,7 +1479,7 @@ Search limits.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00287">287</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00307">307</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1455,7 +1496,7 @@ Search limits.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00147">147</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00167">167</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1472,7 +1513,7 @@ Search limits.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00319">319</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00339">339</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1489,7 +1530,7 @@ Search limits.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00286">286</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00306">306</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1501,7 +1542,7 @@ Search limits.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

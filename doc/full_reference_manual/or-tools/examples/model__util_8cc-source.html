@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/examples/index.html">examples</a>/
             </tt></b></font>
@@ -117,8 +117,8 @@
 <a name="l00034"></a>00034 <a class="code" href="costas__array_8cc.html#481252203d46207b482271a18f5b5399">DEFINE_bool</a>(strip_limit, <span class="keyword">false</span>, <span class="stringliteral">"Strips limits from the model."</span>);
 <a name="l00035"></a>00035 <a class="code" href="costas__array_8cc.html#481252203d46207b482271a18f5b5399">DEFINE_bool</a>(strip_groups, <span class="keyword">false</span>, <span class="stringliteral">"Strips variable groups from the model."</span>);
 <a name="l00036"></a>00036 <a class="code" href="costas__array_8cc.html#481252203d46207b482271a18f5b5399">DEFINE_bool</a>(upgrade_proto, <span class="keyword">false</span>, <span class="stringliteral">"Upgrade the model to the latest version."</span>);
-<a name="l00037"></a>00037 <a class="code" href="costas__array_8cc.html#5236ef9cc4490cd59f344852dc768c45">DEFINE_string</a>(insert_licence, <span class="stringliteral">""</span>,
-<a name="l00038"></a>00038               <span class="stringliteral">"Insert content of the given file into the licence file."</span>);
+<a name="l00037"></a>00037 <a class="code" href="costas__array_8cc.html#5236ef9cc4490cd59f344852dc768c45">DEFINE_string</a>(insert_license, <span class="stringliteral">""</span>,
+<a name="l00038"></a>00038               <span class="stringliteral">"Insert content of the given file into the license file."</span>);
 <a name="l00039"></a>00039 
 <a name="l00040"></a>00040 <span class="keyword">namespace </span>operations_research {
 <a name="l00041"></a><a class="code" href="namespaceoperations__research.html#71edf6fb703a48b776368d88039dad82">00041</a> <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="namespaceoperations__research.html#71edf6fb703a48b776368d88039dad82">kProblem</a> = -1;
@@ -296,8 +296,8 @@
 <a name="l00213"></a>00213   <span class="comment">// ----- Display loaded protobuf -----</span>
 <a name="l00214"></a>00214 
 <a name="l00215"></a>00215   LOG(INFO) &lt;&lt; <span class="stringliteral">"Read model "</span> &lt;&lt; model_proto.model();
-<a name="l00216"></a>00216   <span class="keywordflow">if</span> (model_proto.has_licence_text()) {
-<a name="l00217"></a>00217     LOG(INFO) &lt;&lt; <span class="stringliteral">"Licence = "</span> &lt;&lt; model_proto.licence_text();
+<a name="l00216"></a>00216   <span class="keywordflow">if</span> (model_proto.has_license_text()) {
+<a name="l00217"></a>00217     LOG(INFO) &lt;&lt; <span class="stringliteral">"License = "</span> &lt;&lt; model_proto.license_text();
 <a name="l00218"></a>00218   }
 <a name="l00219"></a>00219 
 <a name="l00220"></a>00220   <span class="comment">// ----- Modifications -----</span>
@@ -321,80 +321,81 @@
 <a name="l00238"></a>00238     }
 <a name="l00239"></a>00239   }
 <a name="l00240"></a>00240 
-<a name="l00241"></a>00241   <span class="keywordflow">if</span> (!FLAGS_insert_licence.empty()) {
-<a name="l00242"></a>00242     File* <span class="keyword">const</span> licence = File::Open(FLAGS_insert_licence, <span class="stringliteral">"r"</span>);
-<a name="l00243"></a>00243     <span class="keywordflow">if</span> (licence == NULL) {
-<a name="l00244"></a>00244       LOG(WARNING) &lt;&lt; <span class="stringliteral">"Cannot open "</span> &lt;&lt; FLAGS_insert_licence;
+<a name="l00241"></a>00241   <span class="keywordflow">if</span> (!FLAGS_insert_license.empty()) {
+<a name="l00242"></a>00242     File* <span class="keyword">const</span> license = File::Open(FLAGS_insert_license, <span class="stringliteral">"r"</span>);
+<a name="l00243"></a>00243     <span class="keywordflow">if</span> (license == NULL) {
+<a name="l00244"></a>00244       LOG(WARNING) &lt;&lt; <span class="stringliteral">"Cannot open "</span> &lt;&lt; FLAGS_insert_license;
 <a name="l00245"></a>00245       <span class="keywordflow">return</span> <a class="code" href="namespaceoperations__research.html#71edf6fb703a48b776368d88039dad82">kProblem</a>;
 <a name="l00246"></a>00246     }
-<a name="l00247"></a>00247     <span class="keyword">const</span> <span class="keywordtype">int</span> size = licence-&gt;Size();
+<a name="l00247"></a>00247     <span class="keyword">const</span> <span class="keywordtype">int</span> size = license-&gt;Size();
 <a name="l00248"></a>00248     <span class="keywordtype">char</span>* <span class="keyword">const</span> text = <span class="keyword">new</span> <span class="keywordtype">char</span>[size + 1];
-<a name="l00249"></a>00249     licence-&gt;Read(text, size);
-<a name="l00250"></a>00250     model_proto.set_licence_text(text);
-<a name="l00251"></a>00251     licence-&gt;Close();
-<a name="l00252"></a>00252   }
-<a name="l00253"></a>00253 
-<a name="l00254"></a>00254   <span class="comment">// ----- Reporting -----</span>
-<a name="l00255"></a>00255 
-<a name="l00256"></a>00256   <span class="keywordflow">if</span> (FLAGS_print_proto) {
-<a name="l00257"></a>00257     LOG(INFO) &lt;&lt; model_proto.DebugString();
-<a name="l00258"></a>00258   }
-<a name="l00259"></a>00259   <span class="keywordflow">if</span> (FLAGS_test_proto || FLAGS_model_stats || FLAGS_print_model) {
-<a name="l00260"></a>00260     Solver solver(model_proto.model());
-<a name="l00261"></a>00261     std::vector&lt;SearchMonitor*&gt; monitors;
-<a name="l00262"></a>00262     <span class="keywordflow">if</span> (!solver.LoadModel(model_proto, &amp;monitors)) {
-<a name="l00263"></a>00263       LOG(INFO) &lt;&lt; <span class="stringliteral">"Could not load model into the solver"</span>;
-<a name="l00264"></a>00264       <span class="keywordflow">return</span> <a class="code" href="namespaceoperations__research.html#71edf6fb703a48b776368d88039dad82">kProblem</a>;
-<a name="l00265"></a>00265     }
-<a name="l00266"></a>00266     <span class="keywordflow">if</span> (FLAGS_test_proto) {
-<a name="l00267"></a>00267       LOG(INFO) &lt;&lt; <span class="stringliteral">"Model "</span> &lt;&lt; model_proto.model() &lt;&lt; <span class="stringliteral">" loaded OK"</span>;
-<a name="l00268"></a>00268     }
-<a name="l00269"></a>00269     <span class="keywordflow">if</span> (FLAGS_model_stats) {
-<a name="l00270"></a>00270       ModelVisitor* <span class="keyword">const</span> visitor = solver.MakeStatisticsModelVisitor();
-<a name="l00271"></a>00271       solver.Accept(visitor, monitors);
-<a name="l00272"></a>00272     }
-<a name="l00273"></a>00273     <span class="keywordflow">if</span> (FLAGS_print_model) {
-<a name="l00274"></a>00274       ModelVisitor* <span class="keyword">const</span> visitor = solver.MakePrintModelVisitor();
-<a name="l00275"></a>00275       solver.Accept(visitor, monitors);
-<a name="l00276"></a>00276     }
-<a name="l00277"></a>00277   }
-<a name="l00278"></a>00278 
-<a name="l00279"></a>00279   <span class="comment">// ----- Output -----</span>
-<a name="l00280"></a>00280 
-<a name="l00281"></a>00281   <span class="keywordflow">if</span> (!FLAGS_output.empty()) {
-<a name="l00282"></a>00282     File* <span class="keyword">const</span> output = File::Open(FLAGS_output, <span class="stringliteral">"w"</span>);
-<a name="l00283"></a>00283     <span class="keywordflow">if</span> (output == NULL) {
-<a name="l00284"></a>00284       LOG(INFO) &lt;&lt; <span class="stringliteral">"Cannot open "</span> &lt;&lt; FLAGS_output;
-<a name="l00285"></a>00285       <span class="keywordflow">return</span> <a class="code" href="namespaceoperations__research.html#71edf6fb703a48b776368d88039dad82">kProblem</a>;
-<a name="l00286"></a>00286     }
-<a name="l00287"></a>00287     RecordWriter writer(output);
-<a name="l00288"></a>00288     <span class="keywordflow">if</span> (!(writer.WriteProtocolMessage(model_proto) &amp;&amp; writer.Close())) {
-<a name="l00289"></a>00289       <span class="keywordflow">return</span> <a class="code" href="namespaceoperations__research.html#71edf6fb703a48b776368d88039dad82">kProblem</a>;
-<a name="l00290"></a>00290     } <span class="keywordflow">else</span> {
-<a name="l00291"></a>00291       LOG(INFO) &lt;&lt; <span class="stringliteral">"Model successfully written to "</span> &lt;&lt; FLAGS_output;
-<a name="l00292"></a>00292     }
-<a name="l00293"></a>00293   }
-<a name="l00294"></a>00294 
-<a name="l00295"></a>00295   <span class="keywordflow">if</span> (!FLAGS_dot_file.empty()) {
-<a name="l00296"></a>00296     File* <span class="keyword">const</span> dot_file = File::Open(FLAGS_dot_file, <span class="stringliteral">"w"</span>);
-<a name="l00297"></a>00297     <span class="keywordflow">if</span> (dot_file == NULL) {
-<a name="l00298"></a>00298       LOG(INFO) &lt;&lt; <span class="stringliteral">"Cannot open "</span> &lt;&lt; FLAGS_dot_file;
-<a name="l00299"></a>00299       <span class="keywordflow">return</span> <a class="code" href="namespaceoperations__research.html#71edf6fb703a48b776368d88039dad82">kProblem</a>;
-<a name="l00300"></a>00300     }
-<a name="l00301"></a>00301     <a class="code" href="namespaceoperations__research.html#8f2abdb34af6e6e382361ca21fa6b322" title="Parses the proto and exports it to a .dot file.">ExportToDot</a>(model_proto, dot_file);
-<a name="l00302"></a>00302     dot_file-&gt;Close();
-<a name="l00303"></a>00303   }
-<a name="l00304"></a>00304   <span class="keywordflow">return</span> <a class="code" href="namespaceoperations__research.html#e3fad1c21562dd1fcf23844425ff13ae">kOk</a>;
-<a name="l00305"></a>00305 }
-<a name="l00306"></a>00306 }  <span class="comment">// namespace operations_research</span>
-<a name="l00307"></a>00307 
-<a name="l00308"></a><a class="code" href="model__util_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00308</a> <span class="keywordtype">int</span> <a class="code" href="costas__array_8cc.html#3c04138a5bfe5d72780bb7e82a18e627" title="namespace operations_research">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {
-<a name="l00309"></a>00309   google::ParseCommandLineFlags(&amp;argc, &amp;argv, <span class="keyword">true</span>);
-<a name="l00310"></a>00310   <span class="keywordflow">if</span> (FLAGS_input.empty()) {
-<a name="l00311"></a>00311     LOG(FATAL) &lt;&lt; <span class="stringliteral">"Filename not specified"</span>;
-<a name="l00312"></a>00312   }
-<a name="l00313"></a>00313   <span class="keywordflow">return</span> <a class="code" href="namespaceoperations__research.html#a0f820c1e673b6461855daadded396b7" title="Main Method.">operations_research::Run</a>();
-<a name="l00314"></a>00314 }
+<a name="l00249"></a>00249     license-&gt;Read(text, size);
+<a name="l00250"></a>00250     text[size] = <span class="charliteral">'\0'</span>;
+<a name="l00251"></a>00251     model_proto.set_license_text(text);
+<a name="l00252"></a>00252     license-&gt;Close();
+<a name="l00253"></a>00253   }
+<a name="l00254"></a>00254 
+<a name="l00255"></a>00255   <span class="comment">// ----- Reporting -----</span>
+<a name="l00256"></a>00256 
+<a name="l00257"></a>00257   <span class="keywordflow">if</span> (FLAGS_print_proto) {
+<a name="l00258"></a>00258     LOG(INFO) &lt;&lt; model_proto.DebugString();
+<a name="l00259"></a>00259   }
+<a name="l00260"></a>00260   <span class="keywordflow">if</span> (FLAGS_test_proto || FLAGS_model_stats || FLAGS_print_model) {
+<a name="l00261"></a>00261     Solver solver(model_proto.model());
+<a name="l00262"></a>00262     std::vector&lt;SearchMonitor*&gt; monitors;
+<a name="l00263"></a>00263     <span class="keywordflow">if</span> (!solver.LoadModel(model_proto, &amp;monitors)) {
+<a name="l00264"></a>00264       LOG(INFO) &lt;&lt; <span class="stringliteral">"Could not load model into the solver"</span>;
+<a name="l00265"></a>00265       <span class="keywordflow">return</span> <a class="code" href="namespaceoperations__research.html#71edf6fb703a48b776368d88039dad82">kProblem</a>;
+<a name="l00266"></a>00266     }
+<a name="l00267"></a>00267     <span class="keywordflow">if</span> (FLAGS_test_proto) {
+<a name="l00268"></a>00268       LOG(INFO) &lt;&lt; <span class="stringliteral">"Model "</span> &lt;&lt; model_proto.model() &lt;&lt; <span class="stringliteral">" loaded OK"</span>;
+<a name="l00269"></a>00269     }
+<a name="l00270"></a>00270     <span class="keywordflow">if</span> (FLAGS_model_stats) {
+<a name="l00271"></a>00271       ModelVisitor* <span class="keyword">const</span> visitor = solver.MakeStatisticsModelVisitor();
+<a name="l00272"></a>00272       solver.Accept(visitor, monitors);
+<a name="l00273"></a>00273     }
+<a name="l00274"></a>00274     <span class="keywordflow">if</span> (FLAGS_print_model) {
+<a name="l00275"></a>00275       ModelVisitor* <span class="keyword">const</span> visitor = solver.MakePrintModelVisitor();
+<a name="l00276"></a>00276       solver.Accept(visitor, monitors);
+<a name="l00277"></a>00277     }
+<a name="l00278"></a>00278   }
+<a name="l00279"></a>00279 
+<a name="l00280"></a>00280   <span class="comment">// ----- Output -----</span>
+<a name="l00281"></a>00281 
+<a name="l00282"></a>00282   <span class="keywordflow">if</span> (!FLAGS_output.empty()) {
+<a name="l00283"></a>00283     File* <span class="keyword">const</span> output = File::Open(FLAGS_output, <span class="stringliteral">"w"</span>);
+<a name="l00284"></a>00284     <span class="keywordflow">if</span> (output == NULL) {
+<a name="l00285"></a>00285       LOG(INFO) &lt;&lt; <span class="stringliteral">"Cannot open "</span> &lt;&lt; FLAGS_output;
+<a name="l00286"></a>00286       <span class="keywordflow">return</span> <a class="code" href="namespaceoperations__research.html#71edf6fb703a48b776368d88039dad82">kProblem</a>;
+<a name="l00287"></a>00287     }
+<a name="l00288"></a>00288     RecordWriter writer(output);
+<a name="l00289"></a>00289     <span class="keywordflow">if</span> (!(writer.WriteProtocolMessage(model_proto) &amp;&amp; writer.Close())) {
+<a name="l00290"></a>00290       <span class="keywordflow">return</span> <a class="code" href="namespaceoperations__research.html#71edf6fb703a48b776368d88039dad82">kProblem</a>;
+<a name="l00291"></a>00291     } <span class="keywordflow">else</span> {
+<a name="l00292"></a>00292       LOG(INFO) &lt;&lt; <span class="stringliteral">"Model successfully written to "</span> &lt;&lt; FLAGS_output;
+<a name="l00293"></a>00293     }
+<a name="l00294"></a>00294   }
+<a name="l00295"></a>00295 
+<a name="l00296"></a>00296   <span class="keywordflow">if</span> (!FLAGS_dot_file.empty()) {
+<a name="l00297"></a>00297     File* <span class="keyword">const</span> dot_file = File::Open(FLAGS_dot_file, <span class="stringliteral">"w"</span>);
+<a name="l00298"></a>00298     <span class="keywordflow">if</span> (dot_file == NULL) {
+<a name="l00299"></a>00299       LOG(INFO) &lt;&lt; <span class="stringliteral">"Cannot open "</span> &lt;&lt; FLAGS_dot_file;
+<a name="l00300"></a>00300       <span class="keywordflow">return</span> <a class="code" href="namespaceoperations__research.html#71edf6fb703a48b776368d88039dad82">kProblem</a>;
+<a name="l00301"></a>00301     }
+<a name="l00302"></a>00302     <a class="code" href="namespaceoperations__research.html#8f2abdb34af6e6e382361ca21fa6b322" title="Parses the proto and exports it to a .dot file.">ExportToDot</a>(model_proto, dot_file);
+<a name="l00303"></a>00303     dot_file-&gt;Close();
+<a name="l00304"></a>00304   }
+<a name="l00305"></a>00305   <span class="keywordflow">return</span> <a class="code" href="namespaceoperations__research.html#e3fad1c21562dd1fcf23844425ff13ae">kOk</a>;
+<a name="l00306"></a>00306 }
+<a name="l00307"></a>00307 }  <span class="comment">// namespace operations_research</span>
+<a name="l00308"></a>00308 
+<a name="l00309"></a><a class="code" href="model__util_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00309</a> <span class="keywordtype">int</span> <a class="code" href="costas__array_8cc.html#3c04138a5bfe5d72780bb7e82a18e627" title="namespace operations_research">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {
+<a name="l00310"></a>00310   google::ParseCommandLineFlags(&amp;argc, &amp;argv, <span class="keyword">true</span>);
+<a name="l00311"></a>00311   <span class="keywordflow">if</span> (FLAGS_input.empty()) {
+<a name="l00312"></a>00312     LOG(FATAL) &lt;&lt; <span class="stringliteral">"Filename not specified"</span>;
+<a name="l00313"></a>00313   }
+<a name="l00314"></a>00314   <span class="keywordflow">return</span> <a class="code" href="namespaceoperations__research.html#a0f820c1e673b6461855daadded396b7" title="Main Method.">operations_research::Run</a>();
+<a name="l00315"></a>00315 }
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -403,7 +404,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

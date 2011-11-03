@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/linear_solver/index.html">linear_solver</a>/
             </tt></b></font>
@@ -75,6 +75,7 @@
   <div class="tabs">
     <ul>
       <li><a href="index.html"><span>Main&nbsp;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&nbsp;Pages</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
@@ -90,7 +91,7 @@
   </div>
 </div>
 <div class="contents">
-<h1>operations_research::MPObjective Class Reference</h1><!-- doxytag: class="operations_research::MPObjective" -->A class to express a linear objective function.  
+<h1>operations_research::MPObjective Class Reference</h1><!-- doxytag: class="operations_research::MPObjective" -->A class to express a linear objective.  
 <a href="#_details">More...</a>
 <p>
 <code>#include &lt;<a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>&gt;</code>
@@ -105,19 +106,19 @@
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clears all variables and coefficients.  <a href="#2131c9028ff6d7047c8272c3ea3e62e3"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#069a0362f414d074b1978f30c525500f">AddTerm</a> (<a class="el" href="classoperations__research_1_1MPVariable.html">MPVariable</a> *const var, double coeff)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Add (var * coeff) to the objective.  <a href="#069a0362f414d074b1978f30c525500f"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds var * coeff to the objective.  <a href="#069a0362f414d074b1978f30c525500f"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#6df0cc50bc5cb268cfc96cfeed4508bd">AddTerm</a> (<a class="el" href="classoperations__research_1_1MPVariable.html">MPVariable</a> *const var)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Add var to the objective.  <a href="#6df0cc50bc5cb268cfc96cfeed4508bd"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds variable (with coefficient 1) to the objective.  <a href="#6df0cc50bc5cb268cfc96cfeed4508bd"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#c918ef73736131279c42ff53a10847f0">SetCoefficient</a> (<a class="el" href="classoperations__research_1_1MPVariable.html">MPVariable</a> *const var, double coeff)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the coefficient of the variable in the objective.  <a href="#c918ef73736131279c42ff53a10847f0"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the coefficient of the variable in the objective.  <a href="#c918ef73736131279c42ff53a10847f0"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#5e14e603361b16e582308253dfa04fe7">AddOffset</a> (double value)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Add constant term to the objective.  <a href="#5e14e603361b16e582308253dfa04fe7"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds a constant term to the objective.  <a href="#5e14e603361b16e582308253dfa04fe7"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#24611f7b12b571fe1e73b629a8a6c17b">SetOffset</a> (double value)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set constant term in the objective.  <a href="#24611f7b12b571fe1e73b629a8a6c17b"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the constant term in the objective.  <a href="#24611f7b12b571fe1e73b629a8a6c17b"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Friends</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#c2c01b4de8f7670e37daa7d42b804dd4">MPSolver</a></td></tr>
 
@@ -133,8 +134,8 @@
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
-A class to express a linear objective function. 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00499">499</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+A class to express a linear objective. 
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00642">642</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 <hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="2131c9028ff6d7047c8272c3ea3e62e3"></a><!-- doxytag: member="operations_research::MPObjective::Clear" ref="2131c9028ff6d7047c8272c3ea3e62e3" args="()" -->
 <div class="memitem">
@@ -185,9 +186,9 @@ Clears all variables and coefficients.
 <div class="memdoc">
 
 <p>
-Add (var * coeff) to the objective. 
+Adds var * coeff to the objective. 
 <p>
-<a class="el" href="classoperations__research_1_1MPObjective.html" title="A class to express a linear objective function.">MPObjective</a>. 
+<a class="el" href="classoperations__research_1_1MPObjective.html" title="A class to express a linear objective.">MPObjective</a>. 
 <p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00171">171</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
 
 </div>
@@ -209,7 +210,7 @@ Add (var * coeff) to the objective.
 <div class="memdoc">
 
 <p>
-Add var to the objective. 
+Adds variable (with coefficient 1) to the objective. 
 <p>
 
 <p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00185">185</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
@@ -242,7 +243,7 @@ Add var to the objective.
 <div class="memdoc">
 
 <p>
-Set the coefficient of the variable in the objective. 
+Sets the coefficient of the variable in the objective. 
 <p>
 
 <p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00189">189</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
@@ -266,7 +267,7 @@ Set the coefficient of the variable in the objective.
 <div class="memdoc">
 
 <p>
-Add constant term to the objective. 
+Adds a constant term to the objective. 
 <p>
 
 <p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00195">195</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
@@ -290,7 +291,7 @@ Add constant term to the objective.
 <div class="memdoc">
 
 <p>
-Set constant term in the objective. 
+Sets the constant term in the objective. 
 <p>
 
 <p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00200">200</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
@@ -311,7 +312,7 @@ Set constant term in the objective.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00517">517</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00660">660</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -328,7 +329,7 @@ Set constant term in the objective.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00518">518</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00661">661</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -345,7 +346,7 @@ Set constant term in the objective.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00519">519</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00662">662</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -362,7 +363,7 @@ Set constant term in the objective.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00520">520</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00663">663</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -379,7 +380,7 @@ Set constant term in the objective.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00521">521</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00664">664</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -396,7 +397,7 @@ Set constant term in the objective.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00522">522</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00665">665</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -410,7 +411,7 @@ Set constant term in the objective.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 

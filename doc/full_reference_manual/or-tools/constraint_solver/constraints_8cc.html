@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #371311
+      background-color: #785251
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#371311 height=3></td>
+      <td colspan=3 bgcolor=#785251 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#371311><b>Thu Sep  8 01:57:52 PDT 2011</b></font>
+          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#371311>
+            <td bgcolor=#785251>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#371311>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -83,10 +83,15 @@
   </div>
 </div>
 <div class="contents">
-<h1>or-tools/constraint_solver/constraints.cc File Reference</h1><code>#include &quot;base/callback.h&quot;</code><br>
+<h1>or-tools/constraint_solver/constraints.cc File Reference</h1><code>#include &lt;string.h&gt;</code><br>
+<code>#include &lt;algorithm&gt;</code><br>
+<code>#include &lt;string&gt;</code><br>
+<code>#include &lt;vector&gt;</code><br>
+<code>#include &quot;base/callback.h&quot;</code><br>
 <code>#include &quot;base/integral_types.h&quot;</code><br>
 <code>#include &quot;base/logging.h&quot;</code><br>
 <code>#include &quot;base/scoped_ptr.h&quot;</code><br>
+<code>#include &quot;<a class="el" href="constraint__solver_8h-source.html">constraint_solver/constraint_solver.h</a>&quot;</code><br>
 <code>#include &quot;<a class="el" href="constraint__solveri_8h-source.html">constraint_solver/constraint_solveri.h</a>&quot;</code><br>
 
 <p>
@@ -113,7 +118,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00275">275</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00324">324</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
 
 </div>
 </div><p>
@@ -122,7 +127,7 @@
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">scoped_array&lt;IntVar*&gt; <a class="el" href="constraints_8cc.html#6bf440196874c8c841dc90dbd64d4577">actives_</a>          </td>
+          <td class="memname">scoped_array&lt;IntVar*&gt; <a class="el" href="dependency__graph_8cc.html#487bbf68fa6bf1c4d58153e72964b7ff">actives_</a>          </td>
         </tr>
       </table>
 </div>
@@ -130,7 +135,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00208">208</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00257">257</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
 
 </div>
 </div><p>
@@ -147,7 +152,24 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00282">282</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00331">331</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="6764edbf8a3553473f273905e74dedd0"></a><!-- doxytag: member="constraints.cc::callback_" ref="6764edbf8a3553473f273905e74dedd0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">scoped_ptr&lt;Closure&gt; <a class="el" href="constraints_8cc.html#6764edbf8a3553473f273905e74dedd0">callback_</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00058">58</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
 
 </div>
 </div><p>
@@ -164,7 +186,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00575">575</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00624">624</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
 
 </div>
 </div><p>
@@ -181,7 +203,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00574">574</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00623">623</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
 
 </div>
 </div><p>
@@ -198,7 +220,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00277">277</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00326">326</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
 
 </div>
 </div><p>
@@ -215,7 +237,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00210">210</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00259">259</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
 
 </div>
 </div><p>
@@ -232,7 +254,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00273">273</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00322">322</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
 
 </div>
 </div><p>
@@ -249,7 +271,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00278">278</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00327">327</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
 
 </div>
 </div><p>
@@ -266,7 +288,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00281">281</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00330">330</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
 
 </div>
 </div><p>
@@ -283,7 +305,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00577">577</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00626">626</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
 
 </div>
 </div><p>
@@ -300,7 +322,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00279">279</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00328">328</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
 
 </div>
 </div><p>
@@ -317,7 +339,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00280">280</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00329">329</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
 
 </div>
 </div><p>
@@ -334,7 +356,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00209">209</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00258">258</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
 
 </div>
 </div><p>
@@ -351,7 +373,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00276">276</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00325">325</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
 
 </div>
 </div><p>
@@ -368,7 +390,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00578">578</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00627">627</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
 
 </div>
 </div><p>
@@ -385,7 +407,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00576">576</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00625">625</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
 
 </div>
 </div><p>
@@ -402,7 +424,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00207">207</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraints_8cc-source.html#l00256">256</a> of file <a class="el" href="constraints_8cc-source.html">constraints.cc</a>.</p>
 
 </div>
 </div><p>
@@ -414,7 +436,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#371311 height=3></td>
+      <td colspan=2 bgcolor=#785251 height=3></td>
     </tr>
   </table>
 
