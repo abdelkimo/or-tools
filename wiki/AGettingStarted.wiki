@@ -34,9 +34,9 @@ or-tools/
 
 This is the recommended way on unix platforms.
 
-For linux users, please intall swig, python-setuptools python-dev
+For linux users, please intall autoconf, python-setuptools, and python-dev. The command on ubuntu is the following:
 {{{
-sudo apt-get install swig python-setuptools python-dev
+sudo apt-get install python-setuptools python-dev autoconf
 }}}
 
 Please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.47.tar.gz and put the archive in or-tools/dependencies/archives.
