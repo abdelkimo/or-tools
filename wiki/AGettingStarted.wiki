@@ -34,9 +34,9 @@ or-tools/
 
 This is the recommended way on unix platforms.
 
-For linux users, please intall autoconf, python-setuptools, and python-dev. The command on ubuntu is the following:
+For linux users, please intall autoconf, libtool, python-setuptools, and python-dev. The command on ubuntu is the following:
 {{{
-sudo apt-get install python-setuptools python-dev autoconf
+sudo apt-get install python-setuptools python-dev autoconf libtool
 }}}
 
 Please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.47.tar.gz and put the archive in or-tools/dependencies/archives.
@@ -67,7 +67,7 @@ UNIX_GLPK_DIR=dependencies/install
 # LINUX_JDK_ROOT=/usr/local/buildtools/java/jdk-64
 # LINUX_JDK_ROOT=/usr/lib/jvm/java-1.7.0-openjdk-i386
 # LINUX_JDK_ROOT=/usr/lib/jvm/java-1.7.0-openjdk.x86_64
-# Include files path for java on mac os X
+# Include files path for java on mac os X
 # MAC_JDK_HEADERS=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/include
 }}}
 
