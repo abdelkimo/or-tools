@@ -20,6 +20,7 @@ or-tools/
 || base/ || Directory containing basic utilities ||
 || constraint_solver/ || The main directory for the constraint solver library ||
 || com/ || The main directory for the java code ||
+|| dependencies || Where third_party code will be downloaded and installed ||
 || gen/ || The root directory for all generated code (java classes, protocol buffers) ||
 || examples/ || C++ examples ||
 || graph/ || Standard OR graph algorithms ||
@@ -64,6 +65,7 @@ UNIX_GLPK_DIR=dependencies/install
 # You may have to redefine 
 # LINUX_JDK_ROOT=/usr/local/buildtools/java/jdk-32
 # LINUX_JDK_ROOT=/usr/local/buildtools/java/jdk-64
+# LINUX_JDK_ROOT=/usr/lib/jvm/java-1.7.0-openjdk-i386
 # Include files path for java on mac os X
 # MAC_JDK_HEADERS=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/include
 }}}
