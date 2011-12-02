@@ -29,9 +29,50 @@ or-tools/
 || tools/ || Binaries and scripts needed by various platforms ||
 || util/ || More utilities needed by the constraint solver || 
 
+=Automatic installation on unix platforms =
+
+This is the recommended way on unix platforms.
+
+For linux users, please intall swig, python-setuptools python-dev
+{{{
+sudo apt-get install swig python-setuptools python-dev
+}}}
+
+Please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.47.tar.gz and put the archive in or-tools/dependencies/archives.
+If you have the license, please download ziboptsuite-2.1.0.tgz from http://zibopt.zib.de/download.shtml and  put the archive in or-tools/dependencies/archives.
+run:
+{{{
+   make third_party
+   cd dependencies/sources/google-apputils
+   sudo python2.7 setup.py install    // or python6 if this is the only one installed on your machine.
+}}}  
+
+then create Makefile.local with the following values:
+{{{
+UNIX_PYTHON_VER=2.7
+#UNIX_PYTHON_VER=2.6
+
+UNIX_GFLAGS_DIR=dependencies/install
+UNIX_SWIG_BINARY=dependencies/install/bin/swig
+UNIX_PROTOBUF_DIR=dependencies/install
+UNIX_CLP_DIR=dependencies/install
+UNIX_CBC_DIR=dependencies/install
+UNIX_GLPK_DIR=dependencies/install
+# Please define if scip is installed.
+#UNIX_SCIP_DIR=dependencies/install/ziboptsuite-2.1.0/scip-2.1.0
+
+# You may have to redefine 
+# LINUX_JDK_ROOT=/usr/local/buildtools/java/jdk-32
+# LINUX_JDK_ROOT=/usr/local/buildtools/java/jdk-64
+# Include files path for java on mac os X
+# MAC_JDK_HEADERS=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/include
+}}}
+
 =Installing with a binary archives for dependencies =
 
 Dependencies have been created for Ubuntu Linux 10.04, 10.10, 11.04  and 11.10 (32 and 64 bit), and visual studio 10 (32 bit).
+
+This method is deprecated for unix platforms.
 
 First, create the or-tools svn copy where you want to work. All dependencies will be placed at the same level, along side this directory.
 
@@ -88,7 +129,7 @@ It is recommanded you also install linear solver:
 
 You can also install scip and soplex. 
 The recommended way is the following:  
-  # Download ZIB Oprimization Suite from http://zibopt.zib.de/download.shtml
+  # Download ZIB Optimization Suite from http://zibopt.zib.de/download.shtml
   # Unpack everything with {{{tar cvzf ziboptsuite-2.1.0.tgz}}} alongside or-tools
   # Change into the directory ziboptsuite-2.1.0
   # Compile using:
