@@ -9,12 +9,7 @@ Upon untarring the given operation_research tar file, you will get the following
 or-tools/
 || LICENSE-2.0.txt || Apache License ||
 || Makefile || Main Makefile ||
-|| Makefile.def || Makefile predefined variables (paths, version numbers) ||
-|| Makefile.unix || Makefile specialization for unix platforms ||
-|| Makefile.win || Makefile specialization for Microsoft Visual Studio ||
-|| Makefile.build.cpp || Build rules for C++examples and libraries ||
-|| Makefile.build.python || Build rules for python wrapping and examples ||
-|| Makefile.build.java || Build rules for java wrapping and examples ||
+|| Makfiles/ || Directory that contains sub-makefiles ||
 || README || This file ||
 || algorithms/ || A collection of OR algorithms (non graph related) ||
 || base/ || Directory containing basic utilities ||
