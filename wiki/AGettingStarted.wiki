@@ -53,14 +53,14 @@ then create Makefile.local with the following values:
 UNIX_PYTHON_VER=2.7
 #UNIX_PYTHON_VER=2.6
 
-UNIX_GFLAGS_DIR=dependencies/install
-UNIX_SWIG_BINARY=dependencies/install/bin/swig
-UNIX_PROTOBUF_DIR=dependencies/install
-UNIX_CLP_DIR=dependencies/install
-UNIX_CBC_DIR=dependencies/install
-UNIX_GLPK_DIR=dependencies/install
+UNIX_GFLAGS_DIR=$(TOP)/dependencies/install
+UNIX_SWIG_BINARY=$(TOP)/dependencies/install/bin/swig
+UNIX_PROTOBUF_DIR=$(TOP)/dependencies/install
+UNIX_CLP_DIR=$(TOP)/dependencies/install
+UNIX_CBC_DIR=$(TOP)/dependencies/install
+UNIX_GLPK_DIR=$(TOP)/dependencies/install
 # Please define if scip is installed.
-#UNIX_SCIP_DIR=dependencies/install/ziboptsuite-2.1.0/scip-2.1.0
+#UNIX_SCIP_DIR=$(TOP)/dependencies/install/ziboptsuite-2.1.0/scip-2.1.0
 
 # You may have to redefine 
 # LINUX_JDK_ROOT=/usr/local/buildtools/java/jdk-32
