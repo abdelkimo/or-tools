@@ -64,6 +64,7 @@ UNIX_GLPK_DIR=$(TOP)/dependencies/install
 # LINUX_JDK_ROOT=/usr/lib/jvm/java-1.7.0-openjdk.x86_64
 # Include files path for java on mac os X
 # MAC_JDK_HEADERS=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/include
+# MAC_JDK_HEADERS=/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/JavaVM.framework/Versions/A/Headers
 }}}
 
 =Installing with a binary archives for dependencies =
