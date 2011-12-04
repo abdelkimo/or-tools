@@ -34,9 +34,9 @@ or-tools/
 
 This is the recommended way on unix platforms.
 
-For linux users, please intall autoconf, libtool, python-setuptools, and python-dev. The command on ubuntu is the following:
+For linux users, please intall bison, flex, autoconf, libtool, python-setuptools, and python-dev. The command on ubuntu is the following:
 {{{
-sudo apt-get install python-setuptools python-dev autoconf libtool
+sudo apt-get install bison flex python-setuptools python-dev autoconf libtool
 }}}
 
 Please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.47.tar.gz and put the archive in or-tools/dependencies/archives.
