@@ -43,29 +43,7 @@ run (you may need root privileges for the python command):
    python2.7 setup.py install    // or python2.6 if this is the only one installed on your machine.
 }}}  
 
-then create Makefile.local with the following values:
-{{{
-UNIX_PYTHON_VER=2.7
-#UNIX_PYTHON_VER=2.6
-
-UNIX_GFLAGS_DIR=$(TOP)/dependencies/install
-UNIX_SWIG_BINARY=$(TOP)/dependencies/install/bin/swig
-UNIX_PROTOBUF_DIR=$(TOP)/dependencies/install
-UNIX_CLP_DIR=$(TOP)/dependencies/install
-UNIX_CBC_DIR=$(TOP)/dependencies/install
-UNIX_GLPK_DIR=$(TOP)/dependencies/install
-# Please define if scip is installed.
-#UNIX_SCIP_DIR=$(TOP)/dependencies/install/ziboptsuite-2.1.0/scip-2.1.0
-
-# You may have to redefine 
-# LINUX_JDK_ROOT=/usr/local/buildtools/java/jdk-32
-# LINUX_JDK_ROOT=/usr/local/buildtools/java/jdk-64
-# LINUX_JDK_ROOT=/usr/lib/jvm/java-1.7.0-openjdk-i386
-# LINUX_JDK_ROOT=/usr/lib/jvm/java-1.7.0-openjdk.x86_64
-# Include files path for java on mac os X
-# MAC_JDK_HEADERS=/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/include
-# MAC_JDK_HEADERS=/Developer/SDKs/MacOSX10.7.sdk/System/Library/Frameworks/JavaVM.framework/Versions/A/Headers
-}}}
+It should create the Makefile.local automatically.
 
 =Installing with a binary archives for dependencies =
 
