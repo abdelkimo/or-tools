@@ -9,7 +9,6 @@ Upon untarring the given operation_research tar file, you will get the following
 or-tools/
 || LICENSE-2.0.txt || Apache License ||
 || Makefile || Main Makefile ||
-|| Makefiles/ || Directory that contains sub-makefiles ||
 || README || This file ||
 || algorithms/ || A collection of OR algorithms (non graph related) ||
 || base/ || Directory containing basic utilities ||
@@ -20,6 +19,7 @@ or-tools/
 || examples/ || C++ examples ||
 || graph/ || Standard OR graph algorithms ||
 || linear_solver/ || The main directory for the linear solver wrapper library ||
+|| makefiles/ || Directory that contains sub-makefiles ||
 || objs/ || Where C++ objs files will be stored ||
 || python/ || Python examples ||
 || tools/ || Binaries and scripts needed by various platforms ||
