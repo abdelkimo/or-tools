@@ -91,7 +91,7 @@ Please copy Makefile.def to Makefile.local and edit Makefile.local to accommodat
 
 =Installing under Ubuntu Linux and Mac OS X=
 
-This library has been tested under Ubuntu Linux 10.04, 10.10, and Mac OS X Snow Leopard (10.6) with xcode 3.2.x, and 4.x.x. It is known not to compile with xcode 3.1.x running under Mac OS X Leopard (10.5).
+This library has been tested under Ubuntu Linux 10.04, 10.10, and Mac OS X Snow Leopard (10.6) and Lion (10.7) with xcode 3.2.x, and 4.x.x. It is known not to compile with xcode 3.1.x running under Mac OS X Leopard (10.5).
 
 First, create the or-tools svn copy where you want to work. All dependencies will be placed at the same level, along side this directory.
 
