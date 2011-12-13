@@ -36,12 +36,17 @@ sudo apt-get install bison flex python-setuptools python-dev autoconf libtool
 
 Please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.47.tar.gz and put the archive in or-tools/dependencies/archives.
 If you have the license, please download ziboptsuite-2.1.0.tgz from http://zibopt.zib.de/download.shtml and  put the archive in or-tools/dependencies/archives.
-run (you may need root privileges for the python command):
+run:
 {{{
    make third_party
    cd dependencies/sources/google-apputils
-   python2.7 setup.py install    // or python2.6 if this is the only one installed on your machine.
+   python2.7 setup.py install --user   // or python2.6 if this is the only one installed on your machine.
 }}}  
+
+If you have root privilieges, you can install google-apputils for all users with the following command:
+{{{
+  sudo python2.7 setup.py install
+}}}
 
 It should create the Makefile.local automatically.
 
