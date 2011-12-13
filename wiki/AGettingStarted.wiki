@@ -39,12 +39,12 @@ If you have the license, please download ziboptsuite-2.1.0.tgz from http://zibop
 run:
 {{{
    make third_party
-   cd dependencies/sources/google-apputils
-   python2.7 setup.py install --user   // or python2.6 if this is the only one installed on your machine.
-}}}  
+   make install_python_modules
+}}  
 
-If you have root privilieges, you can install google-apputils for all users with the following command:
+If you have root privilieges, you can replace the last line and install the python modules for all users with the following command:
 {{{
+  cd dependencies/sources/google-apputils
   sudo python2.7 setup.py install
 }}}
 
