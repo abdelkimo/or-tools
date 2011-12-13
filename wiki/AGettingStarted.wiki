@@ -40,7 +40,7 @@ run:
 {{{
    make third_party
    make install_python_modules
-}}  
+}}}  
 
 If you have root privilieges, you can replace the last line and install the python modules for all users with the following command:
 {{{
