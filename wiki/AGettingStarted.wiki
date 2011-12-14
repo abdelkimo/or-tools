@@ -50,6 +50,14 @@ If you have root privilieges, you can replace the last line and install the pyth
 
 It should create the Makefile.local automatically.
 
+Please note that the command:
+{{{  
+  make clean_third_party
+}}}
+
+will clean all downloaded sources, all compiled dependencies, and Makefile.local.
+It is useful to get a clean state, or if you have added an archive in dependencies.archives.
+
 =Installing with a binary archives for dependencies =
 
 Dependencies have been created for visual studio 10 (32 bit).
