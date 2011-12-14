@@ -198,6 +198,15 @@ You may need to install python-setuptools for windows. Please fetch it from http
 
 Then copy Makefile.def to Makefile.local in or-tools, and modify it to follow your local installation.
 
+=Running tests=
+
+If you are under linux or Mac OS X, you can check that everything is running correctly by running:
+{{{
+  make test
+}}}
+
+If everything is OK, it will run a selection of examples from all technologies in C++, python, and java.
+
 =Compiling libraries and running examples=
 
 All build rules use make (gnu make), even on windows. A make.exe binary is provided in the tools sub-directory.
