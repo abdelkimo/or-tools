@@ -58,7 +58,7 @@ Please note that the command:
 will clean all downloaded sources, all compiled dependencies, and Makefile.local.
 It is useful to get a clean state, or if you have added an archive in dependencies.archives.
 
-=Installing with a binary archives for dependencies =
+=Installing with a binary archives for dependencies under windows=
 
 Dependencies have been created for visual studio 10 (32 bit).
 
