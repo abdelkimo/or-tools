@@ -106,6 +106,8 @@ or-tools directory.
 
 Then you need to install protocol buffers. You can fetch them at http://code.google.com/p/protobuf/ . Please install them alongside or-tools.
 
+Then you need to install sparsehash. You can fetch them at http://code.google.com/p/google-sparsehash/ . Please install them alongside or-tools.
+
 It is recommanded you also install linear solver:
    * GLPK from http://ftp.gnu.org/gnu/glpk/ . Install it in ../glpk-4.47
    * Coin Branch and Cut from http://www.coin-or.org/download/source/Cbc/ . Install it in ../cbc-2.7.4
