@@ -3,6 +3,10 @@
 
 <wiki:toc max_depth="1" />
 
+=Getting the source=
+
+Please visit http://code.google.com/p/or-tools/source/checkout to checkout the sources of or-tools.
+
 =Content of the Archive=
 
 Upon untarring the given operation_research tar file, you will get the following structure:
