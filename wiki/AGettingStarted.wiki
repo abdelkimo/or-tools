@@ -84,7 +84,7 @@ python setup.py install
 
 Please copy Makefile.def to Makefile.local and edit Makefile.local to accommodate your installation.
 
-=Installing under Ubuntu Linux and Mac OS X=
+=Manual installation under Ubuntu Linux and Mac OS X=
 
 This library has been tested under Ubuntu Linux 10.04, 10.10, and Mac OS X Snow Leopard (10.6) and Lion (10.7) with xcode 3.2.x, and 4.x.x. It is known not to compile with xcode 3.1.x running under Mac OS X Leopard (10.5).
 
@@ -105,7 +105,7 @@ and install it. It can be obtained at the following address:
 http://code.google.com/p/google-gflags/
 
 By default, the makefile assumes the installation path is
-../gflags-1.4 from the Makefile, thus at the same level as the
+../gflags-1.6 from the Makefile, thus at the same level as the
 or-tools directory.
 
 Then you need to install protocol buffers. You can fetch them at http://code.google.com/p/protobuf/ . Please install them alongside or-tools.
@@ -114,7 +114,7 @@ Then you need to install sparsehash. You can fetch them at http://code.google.co
 
 It is recommanded you also install linear solver:
    * GLPK from http://ftp.gnu.org/gnu/glpk/ . Install it in ../glpk-4.47
-   * Coin Branch and Cut from http://www.coin-or.org/download/source/Cbc/ . Install it in ../cbc-2.7.4
+   * Coin Branch and Cut from http://www.coin-or.org/download/source/Cbc/ . Install it in ../cbc-2.7.5
 
 You can also install scip and soplex. 
 The recommended way is the following:  
@@ -129,7 +129,10 @@ The recommended way is the following:
 Finally, you need to install google-apputils from:
 http://code.google.com/p/google-apputils-python/
 
-Download, untar and then run python setup.py install.
+Download, untar and then run 
+{{{
+  python setup.py install --user
+}}}
 
 Please copy Makefile.def to Makefile.local and edit Makefile.local to accommodate your installation.
 
