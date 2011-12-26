@@ -269,7 +269,8 @@ As in
 
 {{{PYTHONPATH= python2.6 python/golomb8.py}}}
 
-You can run java examples with the run[_<name>] makefile target as in:
+You can run java examples with the 
+{{{ run_<name> makefile}}} target as in:
 
 {{{make run_RabbitsPheasants}}}
 
