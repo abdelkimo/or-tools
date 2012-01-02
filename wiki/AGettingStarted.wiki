@@ -38,7 +38,7 @@ For linux users, please intall bison, flex, autoconf, libtool, python-setuptools
 sudo apt-get install bison flex python-setuptools python-dev autoconf libtool
 }}}
 
-Please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.47.tar.gz and put the archive in or-tools/dependencies/archives.
+If you wish to use glpk, please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.47.tar.gz and put the archive in or-tools/dependencies/archives.
 If you have the license, please download ziboptsuite-2.1.0.tgz from http://zibopt.zib.de/download.shtml and  put the archive in or-tools/dependencies/archives.
 run:
 {{{
@@ -62,150 +62,44 @@ Please note that the command:
 will clean all downloaded sources, all compiled dependencies, and Makefile.local.
 It is useful to get a clean state, or if you have added an archive in dependencies.archives.
 
-=Installing with a binary archives for dependencies under windows=
-
-Dependencies have been created for visual studio 10 (32 bit).
+=Automatic installation under windows=
 
 First, create the or-tools svn copy where you want to work. All dependencies will be placed at the same level, along side this directory.
 
-Then uncompress the archives (generic dependencies, glpk, and cbc) from  in the same directory you will create the or-tools svn repository.
-
-{{{
-tar xvzf google-or-tools-dependencies-<OS specific>.tar.gz
-}}}
-
-Go into google-apputils-0.1
-
-run 
-
-{{{
-python setup.py install
-}}}
-
-Please copy Makefile.def to Makefile.local and edit Makefile.local to accommodate your installation.
-
-=Manual installation under Ubuntu Linux and Mac OS X=
-
-This library has been tested under Ubuntu Linux 10.04, 10.10, and Mac OS X Snow Leopard (10.6) and Lion (10.7) with xcode 3.2.x, and 4.x.x. It is known not to compile with xcode 3.1.x running under Mac OS X Leopard (10.5).
-
-First, create the or-tools svn copy where you want to work. All dependencies will be placed at the same level, along side this directory.
-
-For linux users, please intall swig, python-setuptools python-dev
-{{{
-sudo apt-get install swig python-setuptools python-dev
-}}}
-
-For Mac OS X users, please install xcode from the apple developer site:
-
-http://developer.apple.com/technologies/tools/xcode.html
-
-First, you will need to install the google-gflags library, compile it
-and install it. It can be obtained at the following address:
-
-http://code.google.com/p/google-gflags/
-
-By default, the makefile assumes the installation path is
-../gflags-1.6 from the Makefile, thus at the same level as the
-or-tools directory.
-
-Then you need to install protocol buffers. You can fetch them at http://code.google.com/p/protobuf/ . Please install them alongside or-tools.
-
-Then you need to install sparsehash. You can fetch them at http://code.google.com/p/google-sparsehash/ . Please install them alongside or-tools.
-
-It is recommanded you also install linear solver:
-   * GLPK from http://ftp.gnu.org/gnu/glpk/ . Install it in ../glpk-4.47
-   * Coin Branch and Cut from http://www.coin-or.org/download/source/Cbc/ . Install it in ../cbc-2.7.5
-
-You can also install scip and soplex. 
-The recommended way is the following:  
-  # Download ZIB Optimization Suite from http://zibopt.zib.de/download.shtml
-  # Unpack everything with {{{tar cvzf ziboptsuite-2.1.0.tgz}}} alongside or-tools
-  # Change into the directory ziboptsuite-2.1.0
-  # Compile using:
-    * On linux: {{{make ZIMPL=false READLINE=false USRCXXFLAGS=-fPIC CFLAGS=-fPIC}}}
-    * On mac OS X: {{{make ZIMPL=false READLINE=false ARCH=x86_64}}}
-  # Add {{{UNIX_SCIP_DIR=<path to ziboptsuite>scip-2.1.0}}} in Makefile.local
-
-Finally, you need to install google-apputils from:
-http://code.google.com/p/google-apputils-python/
-
-Download, untar and then run 
-{{{
-  python setup.py install --user
-}}}
-
-Please copy Makefile.def to Makefile.local and edit Makefile.local to accommodate your installation.
-
-=Installing under Microsoft Windows from sources=
-
-First, download the or-tools source code using the svn command found at:
-http://code.google.com/p/or-tools/source/checkout
-
-Then install dependencies. They will all be installed alongside the or-tools directory:
-
-First, you will need to download the google-gflags library. It can be obtained at the following address:
-
-http://code.google.com/p/google-gflags/downloads/detail?name=gflags-1.5.zip
-
-Decompress alongside the or-tools directory.
-
-To install google gflags libraries on windows:
-  * go in `<gflags_dir>`/vsprojects/libgflags
-  * load the libgflags.vcproj project
-  * You may have to upgrade it on the fly if you are using Visual Studio 2010.
-  * If you want to build in 64 bit mode (recommended), follow the instructions here:
-      http://code.google.com/p/google-gflags/source/browse/trunk/README_windows.txt
-  * Select Release mode, select win32 or x64
-  * Build the solution.
-
-Please modify the Makefile.msv in or-tools to point to the source of the gflags source directory.
-
-Then you need to install zlib.
-First get the archive at: http://zlib.net/zlib125.zip
-
-install the zlib source archive, step into it.  
-
-First put the correct makefile.msc in win32. You can get it at:
- http://or-tools.googlecode.com/svn/resources/Makefile.msc
-
-Then open a command prompt from the visual studio tools menu, with the correct environment (win32 or x64). Then go to the zlib directory, and run:
-
-{{{nmake -f win32/Makefile.msc}}}
-
-directly at this point. 
-
-Then you need to install protocol buffers. You can fetch them at  http://code.google.com/p/protobuf/downloads/detail?name=protobuf-2.3.0.zip
-
-The makefile default path is ../protobuf-2.4.1 from the location of the or-tools Makefile.msv.
-To install do the following:
-   * Unzip the archive
-   * rename the directory protobuf-src-2.4.1
-   * go into the protobuf-src-2.4.1/vsprojects subdirectory.
-   * load the sln and compile the project in release mode (win32 and x64). Please ignore the errors. You will need the protoc executable and the libprotobuf libraries.
-   * go into the protobuf-src-2.4.1/vsprojects directory, run the extract_includes.bat script
-   * Create the protobuf-2.4.1 directory at the same level as or-tools
-   * move the protobuf-src-2.4.1/vsprojects/include directory into the protobuf-2.4.1 directory
-   * create protobuf-2.4.1/lib directory and move protobuf-src-2.4.1/vsprojects/Release/`*`.lib into this directory
-   * create protobuf-2.4.1/bin directory and move protobuf-src-2.4.1/vsprojects/Release/protoc.exe into this directory.
-
-To use Python, you need to install python and swigwin and some dependencies:
-
-This has been tested with swigwin-2.0.x available from there:
-
-http://prdownloads.sourceforge.net/swig/swigwin-2.0.4.zip
-
-and python from 
+Then install python from
 
 http://www.python.org/download/releases/2.7/
 
-You need to install google-apputils from:
-http://code.google.com/p/google-apputils-python/
+You need to install python-setuptools for windows. Please fetch it from http://pypi.python.org/pypi/setuptools#files .
 
-Download the latest version (0.2.1),  untar the archive alongside or-tools, and then run python setup.py install inside.
+If you wish to use glpk, please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.47.tar.gz and put the archive in or-tools/dependencies/archives.
 
-You may need to install python-setuptools for windows. Please fetch it from http://pypi.python.org/pypi/setuptools#files .
+{{{
+   make third_party
+}}}  
 
-Then copy Makefile.def to Makefile.local in or-tools, and modify it to follow your local installation.
+then edit Makefile.local to point to the correct python and java installation. Then installgoogle apputils.
+
+{{{
+  cd dependencies/sources/google-apputils
+  c:\python27\python.exe setup.py install
+}}}
+
+Please note that the command:
+{{{  
+  make clean_third_party
+}}}
+
+will clean all downloaded sources, all compiled dependencies, and Makefile.local.
+It is useful to get a clean state, or if you have added an archive in dependencies.archives.
+
+You can then run 
+{{{
+  make test
+}}}
+
+to test c++, python, java and .net.
+Individual targets are test_cc, test_python, test_java, and test_csharp.
 
 =Running tests=
 
