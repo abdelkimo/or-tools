@@ -64,11 +64,9 @@ It is useful to get a clean state, or if you have added an archive in dependenci
 
 =Automatic installation under windows=
 
-First, create the or-tools svn copy where you want to work. All dependencies will be placed at the same level, along side this directory.
+First, create the or-tools svn copy where you want to work. 
 
-Then install python from
-
-http://www.python.org/download/releases/2.7/
+Then install python from http://www.python.org/download/releases/2.7/
 
 You need to install python-setuptools for windows. Please fetch it from http://pypi.python.org/pypi/setuptools#files .
 
