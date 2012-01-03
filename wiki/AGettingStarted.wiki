@@ -72,11 +72,13 @@ You need to install python-setuptools for windows. Please fetch it from http://p
 
 If you wish to use glpk, please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.47.tar.gz and put the archive in or-tools/dependencies/archives.
 
+Then you can download all dependencies and build them using:
+
 {{{
    make third_party
 }}}  
 
-then edit Makefile.local to point to the correct python and java installation. Then installgoogle apputils.
+then edit Makefile.local to point to the correct python and java installation. Afterwards, to use python, you need to install google-apputils.
 
 {{{
   cd dependencies/sources/google-apputils
@@ -89,24 +91,18 @@ Please note that the command:
 }}}
 
 will clean all downloaded sources, all compiled dependencies, and Makefile.local.
+
 It is useful to get a clean state, or if you have added an archive in dependencies.archives.
-
-You can then run 
-{{{
-  make test
-}}}
-
-to test c++, python, java and .net.
-Individual targets are test_cc, test_python, test_java, and test_csharp.
 
 =Running tests=
 
-If you are under linux or Mac OS X, you can check that everything is running correctly by running:
+You can check that everything is running correctly by running:
 {{{
   make test
 }}}
 
 If everything is OK, it will run a selection of examples from all technologies in C++, python, and java.
+On windows, it will also run C# examples.
 
 =Compiling libraries and running examples=
 
