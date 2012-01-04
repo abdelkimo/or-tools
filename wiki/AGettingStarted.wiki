@@ -16,6 +16,7 @@ or-tools/
 || README || This file ||
 || algorithms/ || A collection of OR algorithms (non graph related) ||
 || base/ || Directory containing basic utilities ||
+|| csharp/ || Directory containing C# examples and a visual studio 2010 solution to build them ||
 || constraint_solver/ || The main directory for the constraint solver library ||
 || com/ || The main directory for the java code ||
 || dependencies/ || Where third_party code will be downloaded and installed ||
