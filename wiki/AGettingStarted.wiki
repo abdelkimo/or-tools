@@ -90,9 +90,7 @@ Please note that the command:
   make clean_third_party
 }}}
 
-will clean all downloaded sources, all compiled dependencies, and Makefile.local.
-
-It is useful to get a clean state, or if you have added an archive in dependencies.archives.
+will clean all downloaded sources, all compiled dependencies, and Makefile.local. It is useful to get a clean state, or if you have added an archive in dependencies.archives.
 
 =Running tests=
 
