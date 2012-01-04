@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -96,6 +96,7 @@
 <code>#include &quot;base/concise_iterator.h&quot;</code><br>
 <code>#include &quot;<a class="el" href="constraint__solver_8h-source.html">constraint_solver/constraint_solver.h</a>&quot;</code><br>
 <code>#include &quot;<a class="el" href="constraint__solveri_8h-source.html">constraint_solver/constraint_solveri.h</a>&quot;</code><br>
+<code>#include &quot;util/string_array.h&quot;</code><br>
 
 <p>
 <a href="pack_8cc-source.html">Go to the source code of this file.</a><table border="0" cellpadding="0" cellspacing="0">
@@ -108,7 +109,7 @@
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="classoperations__research_1_1Dimension.html" title="Dimension.">Dimension</a>.  <a href="classoperations__research_1_1Dimension.html#_details">More...</a><br></td></tr>
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#62a82ac6df7b1dd9c1e69b16d3090e4f">operations_research::SortIndexByWeight</a> (int64 *const indices, const int64 *const weights, int size)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#9e2985f5c6d9a7bebb6bdbb9f9f5cb92">operations_research::SortIndexByWeight</a> (int64 *const indices, const int64 *const weights, int size)</td></tr>
 
 </table>
 <hr><h2>Variable Documentation</h2>
@@ -125,7 +126,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00203">203</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00205">205</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -142,7 +143,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00982">982</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l01067">1067</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -159,16 +160,16 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00589">589</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00674">674</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="b1b671803824c553a30d1678d65049ad"></a><!-- doxytag: member="pack.cc::candidates_" ref="b1b671803824c553a30d1678d65049ad" args="" -->
+<a class="anchor" name="daaa29f9402d8f6f5f1ec28b604fa6c9"></a><!-- doxytag: member="pack.cc::candidates_" ref="daaa29f9402d8f6f5f1ec28b604fa6c9" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int* const <a class="el" href="pack_8cc.html#b1b671803824c553a30d1678d65049ad">candidates_</a>          </td>
+          <td class="memname">RevArray&lt;int&gt; <a class="el" href="pack_8cc.html#daaa29f9402d8f6f5f1ec28b604fa6c9">candidates_</a>          </td>
         </tr>
       </table>
 </div>
@@ -176,7 +177,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l01117">1117</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l01195">1195</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -193,7 +194,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l01185">1185</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l01263">1263</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -210,7 +211,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l01119">1119</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l01197">1197</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -227,7 +228,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l01118">1118</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l01196">1196</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -244,7 +245,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00884">884</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00969">969</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -261,7 +262,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l01115">1115</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l01193">1193</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -278,7 +279,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00610">610</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00695">695</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -295,16 +296,16 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00885">885</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00970">970</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="b9c4fba0f306e3606c9b35df63364285"></a><!-- doxytag: member="pack.cc::first_unbound_backward_vector_" ref="b9c4fba0f306e3606c9b35df63364285" args="" -->
+<a class="anchor" name="1c5ccdfe1788678577653db16b044986"></a><!-- doxytag: member="pack.cc::first_unbound_backward_vector_" ref="1c5ccdfe1788678577653db16b044986" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;Rev&lt;int&gt; &gt; <a class="el" href="pack_8cc.html#b9c4fba0f306e3606c9b35df63364285">first_unbound_backward_vector_</a>          </td>
+          <td class="memname">RevArray&lt;int&gt; <a class="el" href="pack_8cc.html#1c5ccdfe1788678577653db16b044986">first_unbound_backward_vector_</a>          </td>
         </tr>
       </table>
 </div>
@@ -312,7 +313,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00591">591</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00676">676</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -329,7 +330,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00457">457</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00542">542</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -346,7 +347,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00611">611</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00696">696</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -363,7 +364,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l01121">1121</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l01199">1199</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -380,7 +381,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l01120">1120</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l01198">1198</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -397,7 +398,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00742">742</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00827">827</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -414,7 +415,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00593">593</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00678">678</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -431,7 +432,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00594">594</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00679">679</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -448,16 +449,16 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00890">890</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00975">975</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="6b58a00e3631129a2560afa7279aca66"></a><!-- doxytag: member="pack.cc::sum_of_all_variables_vector_" ref="6b58a00e3631129a2560afa7279aca66" args="" -->
+<a class="anchor" name="655934ff517aae88297f6bc01c45a8c3"></a><!-- doxytag: member="pack.cc::sum_of_all_variables_vector_" ref="655934ff517aae88297f6bc01c45a8c3" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;Rev&lt;int64&gt; &gt; <a class="el" href="pack_8cc.html#6b58a00e3631129a2560afa7279aca66">sum_of_all_variables_vector_</a>          </td>
+          <td class="memname">RevArray&lt;int64&gt; <a class="el" href="pack_8cc.html#655934ff517aae88297f6bc01c45a8c3">sum_of_all_variables_vector_</a>          </td>
         </tr>
       </table>
 </div>
@@ -465,7 +466,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00745">745</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00830">830</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -482,16 +483,16 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00886">886</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00971">971</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="f6c06e60925f412c1023b19a00dbb12e"></a><!-- doxytag: member="pack.cc::sum_of_bound_variables_vector_" ref="f6c06e60925f412c1023b19a00dbb12e" args="" -->
+<a class="anchor" name="476b7a51eca5d489eddb25fbf94abd73"></a><!-- doxytag: member="pack.cc::sum_of_bound_variables_vector_" ref="476b7a51eca5d489eddb25fbf94abd73" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;Rev&lt;int64&gt; &gt; <a class="el" href="pack_8cc.html#f6c06e60925f412c1023b19a00dbb12e">sum_of_bound_variables_vector_</a>          </td>
+          <td class="memname">RevArray&lt;int64&gt; <a class="el" href="pack_8cc.html#476b7a51eca5d489eddb25fbf94abd73">sum_of_bound_variables_vector_</a>          </td>
         </tr>
       </table>
 </div>
@@ -499,7 +500,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00592">592</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00677">677</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -516,7 +517,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00887">887</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00972">972</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -533,7 +534,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00202">202</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00204">204</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -550,7 +551,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00983">983</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l01068">1068</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -567,7 +568,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00201">201</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00203">203</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -584,16 +585,16 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00590">590</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00675">675</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="8466df4051b052b1b860b83069961487"></a><!-- doxytag: member="pack.cc::used_" ref="8466df4051b052b1b860b83069961487" args="" -->
+<a class="anchor" name="1a6362c89d05492979cbccd0df7929bc"></a><!-- doxytag: member="pack.cc::used_" ref="1a6362c89d05492979cbccd0df7929bc" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool* const <a class="el" href="pack_8cc.html#8466df4051b052b1b860b83069961487">used_</a>          </td>
+          <td class="memname">RevBitSet <a class="el" href="pack_8cc.html#1a6362c89d05492979cbccd0df7929bc">used_</a>          </td>
         </tr>
       </table>
 </div>
@@ -601,7 +602,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l01116">1116</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l01194">1194</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -618,7 +619,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00587">587</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00672">672</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -635,7 +636,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00458">458</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00543">543</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -652,7 +653,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="pack_8cc-source.html#l00588">588</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
+<p>Definition at line <a class="el" href="pack_8cc-source.html#l00673">673</a> of file <a class="el" href="pack_8cc-source.html">pack.cc</a>.</p>
 
 </div>
 </div><p>
@@ -664,7 +665,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

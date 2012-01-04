@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -95,8 +95,17 @@
 <h1>operations_research::RevBitSet Class Reference</h1><!-- doxytag: class="operations_research::RevBitSet" -->This class represents a reversible bitset.  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;<a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>&gt;</code>
+<code>#include &lt;<a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>&gt;</code>
 <p>
+<div class="dynheader">
+Inheritance diagram for operations_research::RevBitSet:</div>
+<div class="dynsection">
+
+<p><center><img src="classoperations__research_1_1RevBitSet.png" usemap="#operations_research::RevBitSet_map" border="0" alt=""></center>
+<map name="operations_research::RevBitSet_map">
+<area href="classoperations__research_1_1RevBitMatrix.html" alt="operations_research::RevBitMatrix" shape="rect" coords="0,56,206,80">
+</map>
+</div>
 
 <p>
 <a href="classoperations__research_1_1RevBitSet-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
@@ -105,49 +114,41 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#7369d4e2ea1843501af11edd89199b8c">RevBitSet</a> (int64 size)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="classoperations__research_1_1RevBitSet.html" title="This class represents a reversible bitset.">RevBitSet</a>.  <a href="#7369d4e2ea1843501af11edd89199b8c"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#baa22b566c9d0efb71295014054b8719">RevBitSet</a> (int64 rows, int64 columns)</td></tr>
-
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#72aaa0163218aec6e1ca39a8118fa584">~RevBitSet</a> ()</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#2ac97e7b0f29e9405ce4465b8d7f407a">SetToOne</a> (<a class="el" href="classoperations__research_1_1Solver.html">Solver</a> *const solver, int64 pos)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Array API.  <a href="#2ac97e7b0f29e9405ce4465b8d7f407a"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the 'pos' bit.  <a href="#2ac97e7b0f29e9405ce4465b8d7f407a"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#487c03117be2f0f5c983acc4d5fd27eb">SetToZero</a> (<a class="el" href="classoperations__research_1_1Solver.html">Solver</a> *const solver, int64 pos)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Erases the 'pos' bit.  <a href="#487c03117be2f0f5c983acc4d5fd27eb"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#c32e8eb114c816d8e9ad1d3564e73a91">IsSet</a> (int64 pos) const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns whether the 'pos' bit is set.  <a href="#c32e8eb114c816d8e9ad1d3564e73a91"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#57b08039570d8a3101c21dc003be6ed9">Cardinality</a> () const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the number of bits set to one.  <a href="#57b08039570d8a3101c21dc003be6ed9"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#8ec6e7f2b6f808e3c53ac1d120d7ab82">IsCardinalityZero</a> () const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Is bitset null?  <a href="#8ec6e7f2b6f808e3c53ac1d120d7ab82"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#9b7a644f43cceff713cd3b641755698d">IsCardinalityOne</a> () const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Does it contains only one bit set?  <a href="#9b7a644f43cceff713cd3b641755698d"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#84c8bc32d2e8c150d7828e380c51c0c8">GetFirstBit</a> (int start) const </td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#3ee91773fe2b1c619f04e71f56175be5">SetToOne</a> (<a class="el" href="classoperations__research_1_1Solver.html">Solver</a> *const solver, int64 row, int64 column)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the index of the first bit set starting from start.  <a href="#84c8bc32d2e8c150d7828e380c51c0c8"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#20fc5ddbc3ee9a1da7d04386f1182738">ClearAll</a> (<a class="el" href="classoperations__research_1_1Solver.html">Solver</a> *const solver)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Matrix API.  <a href="#3ee91773fe2b1c619f04e71f56175be5"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#74e8c43665c1e3db5185bb4672d9e052">SetToZero</a> (<a class="el" href="classoperations__research_1_1Solver.html">Solver</a> *const solver, int64 row, int64 column)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Cleans all bits.  <a href="#20fc5ddbc3ee9a1da7d04386f1182738"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Friends</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#c9da3e5301f8c4c0ed8a261d0a0b2cbd">RevBitMatrix</a></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#c128f139bca8d5ef84c9d7a64b109448">IsSet</a> (int64 row, int64 column) const </td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#d05017771d3554370621a0812f248c8e">Cardinality</a> (int row) const </td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#6b014e8c794a12c773cd65398a0f9f0b">IsCardinalityZero</a> (int row) const </td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#30dd4ef7ef833ad979d704ddc092e893">IsCardinalityOne</a> (int row) const </td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#83967660184305ee5026c11c0c861b9e">GetFirstBit</a> (int row, int start) const </td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RevBitSet.html#3f697d113d75ed2ef844488fe21a8b76">RevClearAll</a> (<a class="el" href="classoperations__research_1_1Solver.html">Solver</a> *const solver)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Works in matrix and array mode.  <a href="#3f697d113d75ed2ef844488fe21a8b76"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 This class represents a reversible bitset. 
 <p>
-It supports the following operations: SetToOne(pos) (reversible) SetToZero(solver, pos) (reversible, with stamp) <a class="el" href="classoperations__research_1_1RevBitSet.html#57b08039570d8a3101c21dc003be6ed9">Cardinality()</a> IsCardZero() // fast test IsCardOne() // fast test GetFirstBit(int start) IsSet(pos) This class is useful to maintain supports. It also provides a matrix like API that is directly flattened into an array one. 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l04116">4116</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+This class is useful to maintain supports. 
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00445">445</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="7369d4e2ea1843501af11edd89199b8c"></a><!-- doxytag: member="operations_research::RevBitSet::RevBitSet" ref="7369d4e2ea1843501af11edd89199b8c" args="(int64 size)" -->
 <div class="memitem">
@@ -169,38 +170,7 @@ It supports the following operations: SetToOne(pos) (reversible) SetToZero(solve
 <a class="el" href="classoperations__research_1_1RevBitSet.html" title="This class represents a reversible bitset.">RevBitSet</a>. 
 <p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00067">67</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="baa22b566c9d0efb71295014054b8719"></a><!-- doxytag: member="operations_research::RevBitSet::RevBitSet" ref="baa22b566c9d0efb71295014054b8719" args="(int64 rows, int64 columns)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">operations_research::RevBitSet::RevBitSet           </td>
-          <td>(</td>
-          <td class="paramtype">int64&nbsp;</td>
-          <td class="paramname"> <em>rows</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int64&nbsp;</td>
-          <td class="paramname"> <em>columns</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00075">75</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00061">61</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -221,7 +191,7 @@ It supports the following operations: SetToOne(pos) (reversible) SetToZero(solve
 
 <p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00084">84</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00071">71</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -252,10 +222,10 @@ It supports the following operations: SetToOne(pos) (reversible) SetToZero(solve
 <div class="memdoc">
 
 <p>
-Array API. 
+Sets the 'pos' bit. 
 <p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00089">89</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00084">84</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -285,8 +255,10 @@ Array API.
 <div class="memdoc">
 
 <p>
+Erases the 'pos' bit. 
+<p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00112">112</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00095">95</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -307,8 +279,10 @@ Array API.
 <div class="memdoc">
 
 <p>
+Returns whether the 'pos' bit is set. 
+<p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00135">135</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00106">106</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -328,8 +302,10 @@ Array API.
 <div class="memdoc">
 
 <p>
+Returns the number of bits set to one. 
+<p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00141">141</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00112">112</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -349,8 +325,10 @@ Array API.
 <div class="memdoc">
 
 <p>
+Is bitset null? 
+<p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00149">149</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00120">120</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -370,8 +348,10 @@ Array API.
 <div class="memdoc">
 
 <p>
+Does it contains only one bit set? 
+<p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00158">158</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00129">129</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -392,221 +372,19 @@ Array API.
 <div class="memdoc">
 
 <p>
-
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00176">176</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+Gets the index of the first bit set starting from start. 
+<p>
+It returns -1 if the bitset is empty after start. 
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00147">147</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="3ee91773fe2b1c619f04e71f56175be5"></a><!-- doxytag: member="operations_research::RevBitSet::SetToOne" ref="3ee91773fe2b1c619f04e71f56175be5" args="(Solver *const solver, int64 row, int64 column)" -->
+<a class="anchor" name="20fc5ddbc3ee9a1da7d04386f1182738"></a><!-- doxytag: member="operations_research::RevBitSet::ClearAll" ref="20fc5ddbc3ee9a1da7d04386f1182738" args="(Solver *const solver)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void operations_research::RevBitSet::SetToOne           </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classoperations__research_1_1Solver.html">Solver</a> *const &nbsp;</td>
-          <td class="paramname"> <em>solver</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int64&nbsp;</td>
-          <td class="paramname"> <em>row</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int64&nbsp;</td>
-          <td class="paramname"> <em>column</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Matrix API. 
-<p>
-
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00104">104</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="74e8c43665c1e3db5185bb4672d9e052"></a><!-- doxytag: member="operations_research::RevBitSet::SetToZero" ref="74e8c43665c1e3db5185bb4672d9e052" args="(Solver *const solver, int64 row, int64 column)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void operations_research::RevBitSet::SetToZero           </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classoperations__research_1_1Solver.html">Solver</a> *const &nbsp;</td>
-          <td class="paramname"> <em>solver</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int64&nbsp;</td>
-          <td class="paramname"> <em>row</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int64&nbsp;</td>
-          <td class="paramname"> <em>column</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00127">127</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="c128f139bca8d5ef84c9d7a64b109448"></a><!-- doxytag: member="operations_research::RevBitSet::IsSet" ref="c128f139bca8d5ef84c9d7a64b109448" args="(int64 row, int64 column) const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool operations_research::RevBitSet::IsSet           </td>
-          <td>(</td>
-          <td class="paramtype">int64&nbsp;</td>
-          <td class="paramname"> <em>row</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int64&nbsp;</td>
-          <td class="paramname"> <em>column</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td> const<code> [inline]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l04134">4134</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="d05017771d3554370621a0812f248c8e"></a><!-- doxytag: member="operations_research::RevBitSet::Cardinality" ref="d05017771d3554370621a0812f248c8e" args="(int row) const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int64 operations_research::RevBitSet::Cardinality           </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>row</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00181">181</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="6b014e8c794a12c773cd65398a0f9f0b"></a><!-- doxytag: member="operations_research::RevBitSet::IsCardinalityZero" ref="6b014e8c794a12c773cd65398a0f9f0b" args="(int row) const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool operations_research::RevBitSet::IsCardinalityZero           </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>row</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00193">193</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="30dd4ef7ef833ad979d704ddc092e893"></a><!-- doxytag: member="operations_research::RevBitSet::IsCardinalityOne" ref="30dd4ef7ef833ad979d704ddc092e893" args="(int row) const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool operations_research::RevBitSet::IsCardinalityOne           </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>row</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00188">188</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="83967660184305ee5026c11c0c861b9e"></a><!-- doxytag: member="operations_research::RevBitSet::GetFirstBit" ref="83967660184305ee5026c11c0c861b9e" args="(int row, int start) const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int64 operations_research::RevBitSet::GetFirstBit           </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>row</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>start</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td> const</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00198">198</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="3f697d113d75ed2ef844488fe21a8b76"></a><!-- doxytag: member="operations_research::RevBitSet::RevClearAll" ref="3f697d113d75ed2ef844488fe21a8b76" args="(Solver *const solver)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void operations_research::RevBitSet::RevClearAll           </td>
+          <td class="memname">void operations_research::RevBitSet::ClearAll           </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classoperations__research_1_1Solver.html">Solver</a> *const &nbsp;</td>
           <td class="paramname"> <em>solver</em>          </td>
@@ -618,15 +396,35 @@ Matrix API.
 <div class="memdoc">
 
 <p>
-Works in matrix and array mode. 
+Cleans all bits. 
 <p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00213">213</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Reimplemented in <a class="el" href="classoperations__research_1_1RevBitMatrix.html#3389f1e156b74cfc031d8ae2edd0cf60">operations_research::RevBitMatrix</a>.</p>
+
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00151">151</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+
+</div>
+</div><p>
+<hr><h2>Friends And Related Function Documentation</h2>
+<a class="anchor" name="c9da3e5301f8c4c0ed8a261d0a0b2cbd"></a><!-- doxytag: member="operations_research::RevBitSet::RevBitMatrix" ref="c9da3e5301f8c4c0ed8a261d0a0b2cbd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class <a class="el" href="classoperations__research_1_1RevBitMatrix.html">RevBitMatrix</a><code> [friend]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00468">468</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>or-tools/constraint_solver/<a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a><li>or-tools/constraint_solver/<a class="el" href="utilities_8cc-source.html">utilities.cc</a></ul>
+<li>or-tools/constraint_solver/<a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a><li>or-tools/constraint_solver/<a class="el" href="utilities_8cc-source.html">utilities.cc</a></ul>
 </div>
 
   <!-- Start of footer. -->
@@ -635,7 +433,7 @@ Works in matrix and array mode.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

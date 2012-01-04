@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/linear_solver/index.html">linear_solver</a>/
             </tt></b></font>
@@ -103,22 +103,43 @@
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#2131c9028ff6d7047c8272c3ea3e62e3">Clear</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clears all variables and coefficients.  <a href="#2131c9028ff6d7047c8272c3ea3e62e3"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#069a0362f414d074b1978f30c525500f">AddTerm</a> (<a class="el" href="classoperations__research_1_1MPVariable.html">MPVariable</a> *const var, double coeff)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Clears the offset, all variables and coefficients, and the optimization direction.  <a href="#2131c9028ff6d7047c8272c3ea3e62e3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#ad1b0ca33b3a2c45d91e2875feb98c66">SetCoefficient</a> (const <a class="el" href="classoperations__research_1_1MPVariable.html">MPVariable</a> *const var, double coeff)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds var * coeff to the objective.  <a href="#069a0362f414d074b1978f30c525500f"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#6df0cc50bc5cb268cfc96cfeed4508bd">AddTerm</a> (<a class="el" href="classoperations__research_1_1MPVariable.html">MPVariable</a> *const var)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the coefficient of the variable in the objective.  <a href="#ad1b0ca33b3a2c45d91e2875feb98c66"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#c643b98159f2aad01e385c5c1efddc26">GetCoefficient</a> (const <a class="el" href="classoperations__research_1_1MPVariable.html">MPVariable</a> *const var) const </td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds variable (with coefficient 1) to the objective.  <a href="#6df0cc50bc5cb268cfc96cfeed4508bd"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#c918ef73736131279c42ff53a10847f0">SetCoefficient</a> (<a class="el" href="classoperations__research_1_1MPVariable.html">MPVariable</a> *const var, double coeff)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the coefficient of the variable in the objective.  <a href="#c918ef73736131279c42ff53a10847f0"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#5e14e603361b16e582308253dfa04fe7">AddOffset</a> (double value)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds a constant term to the objective.  <a href="#5e14e603361b16e582308253dfa04fe7"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the coefficient of a given variable in the objective (which is 0 if the variable does not appear in the objective).  <a href="#c643b98159f2aad01e385c5c1efddc26"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#24611f7b12b571fe1e73b629a8a6c17b">SetOffset</a> (double value)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the constant term in the objective.  <a href="#24611f7b12b571fe1e73b629a8a6c17b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#5e6ccd350fd4880d57eacbde2b84ea67">offset</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the constant term in the objective.  <a href="#5e6ccd350fd4880d57eacbde2b84ea67"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#5e14e603361b16e582308253dfa04fe7">AddOffset</a> (double value)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds a constant term to the objective.  <a href="#5e14e603361b16e582308253dfa04fe7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#dd0f9517dc64b1f768952fc490f7be00">SetOptimizationDirection</a> (bool maximize)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the optimization direction (maximize: true or minimize: false).  <a href="#dd0f9517dc64b1f768952fc490f7be00"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#f9eea25e667a52dcad270495025e1202">SetMinimization</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the optimization direction to minimize.  <a href="#f9eea25e667a52dcad270495025e1202"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#7f1396f72628328fd85ac852191fcc70">SetMaximization</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the optimization direction to maximize.  <a href="#7f1396f72628328fd85ac852191fcc70"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#dfcde2fce5053e060562b10988cd1dc3">maximization</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Is the optimization direction set to maximize?  <a href="#dfcde2fce5053e060562b10988cd1dc3"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#54675771c249a7f42001bf7a70c16693">minimization</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Is the optimization direction set to minimize?  <a href="#54675771c249a7f42001bf7a70c16693"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#2038cb53fd4d9268cfa842d9f4b238d5">Value</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the objective value of the best solution found so far.  <a href="#2038cb53fd4d9268cfa842d9f4b238d5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#10c07424e6def7bff0104870b9d8a187">BestBound</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the best objective bound.  <a href="#10c07424e6def7bff0104870b9d8a187"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Friends</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MPObjective.html#c2c01b4de8f7670e37daa7d42b804dd4">MPSolver</a></td></tr>
 
@@ -135,7 +156,7 @@
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 A class to express a linear objective. 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00642">642</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00482">482</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 <hr><h2>Member Function Documentation</h2>
 <a class="anchor" name="2131c9028ff6d7047c8272c3ea3e62e3"></a><!-- doxytag: member="operations_research::MPObjective::Clear" ref="2131c9028ff6d7047c8272c3ea3e62e3" args="()" -->
 <div class="memitem">
@@ -153,78 +174,21 @@ A class to express a linear objective.
 <div class="memdoc">
 
 <p>
-Clears all variables and coefficients. 
+Clears the offset, all variables and coefficients, and the optimization direction. 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00205">205</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00144">144</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="069a0362f414d074b1978f30c525500f"></a><!-- doxytag: member="operations_research::MPObjective::AddTerm" ref="069a0362f414d074b1978f30c525500f" args="(MPVariable *const var, double coeff)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void operations_research::MPObjective::AddTerm           </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classoperations__research_1_1MPVariable.html">MPVariable</a> *const &nbsp;</td>
-          <td class="paramname"> <em>var</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&nbsp;</td>
-          <td class="paramname"> <em>coeff</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Adds var * coeff to the objective. 
-<p>
-<a class="el" href="classoperations__research_1_1MPObjective.html" title="A class to express a linear objective.">MPObjective</a>. 
-<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00171">171</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="6df0cc50bc5cb268cfc96cfeed4508bd"></a><!-- doxytag: member="operations_research::MPObjective::AddTerm" ref="6df0cc50bc5cb268cfc96cfeed4508bd" args="(MPVariable *const var)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void operations_research::MPObjective::AddTerm           </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classoperations__research_1_1MPVariable.html">MPVariable</a> *const &nbsp;</td>
-          <td class="paramname"> <em>var</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Adds variable (with coefficient 1) to the objective. 
-<p>
-
-<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00185">185</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="c918ef73736131279c42ff53a10847f0"></a><!-- doxytag: member="operations_research::MPObjective::SetCoefficient" ref="c918ef73736131279c42ff53a10847f0" args="(MPVariable *const var, double coeff)" -->
+<a class="anchor" name="ad1b0ca33b3a2c45d91e2875feb98c66"></a><!-- doxytag: member="operations_research::MPObjective::SetCoefficient" ref="ad1b0ca33b3a2c45d91e2875feb98c66" args="(const MPVariable *const var, double coeff)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void operations_research::MPObjective::SetCoefficient           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classoperations__research_1_1MPVariable.html">MPVariable</a> *const &nbsp;</td>
+          <td class="paramtype">const <a class="el" href="classoperations__research_1_1MPVariable.html">MPVariable</a> *const &nbsp;</td>
           <td class="paramname"> <em>var</em>, </td>
         </tr>
         <tr>
@@ -246,31 +210,31 @@ Adds variable (with coefficient 1) to the objective.
 Sets the coefficient of the variable in the objective. 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00189">189</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00125">125</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="5e14e603361b16e582308253dfa04fe7"></a><!-- doxytag: member="operations_research::MPObjective::AddOffset" ref="5e14e603361b16e582308253dfa04fe7" args="(double value)" -->
+<a class="anchor" name="c643b98159f2aad01e385c5c1efddc26"></a><!-- doxytag: member="operations_research::MPObjective::GetCoefficient" ref="c643b98159f2aad01e385c5c1efddc26" args="(const MPVariable *const var) const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void operations_research::MPObjective::AddOffset           </td>
+          <td class="memname">double operations_research::MPObjective::GetCoefficient           </td>
           <td>(</td>
-          <td class="paramtype">double&nbsp;</td>
-          <td class="paramname"> <em>value</em>          </td>
+          <td class="paramtype">const <a class="el" href="classoperations__research_1_1MPVariable.html">MPVariable</a> *const &nbsp;</td>
+          <td class="paramname"> <em>var</em>          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>
-Adds a constant term to the objective. 
+Gets the coefficient of a given variable in the objective (which is 0 if the variable does not appear in the objective). 
 <p>
-
-<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00195">195</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
+<a class="el" href="classoperations__research_1_1MPObjective.html" title="A class to express a linear objective.">MPObjective</a>.
+<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00121">121</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -294,7 +258,217 @@ Adds a constant term to the objective.
 Sets the constant term in the objective. 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00200">200</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00139">139</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5e6ccd350fd4880d57eacbde2b84ea67"></a><!-- doxytag: member="operations_research::MPObjective::offset" ref="5e6ccd350fd4880d57eacbde2b84ea67" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double operations_research::MPObjective::offset           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const<code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Gets the constant term in the objective. 
+<p>
+
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00497">497</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="5e14e603361b16e582308253dfa04fe7"></a><!-- doxytag: member="operations_research::MPObjective::AddOffset" ref="5e14e603361b16e582308253dfa04fe7" args="(double value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::MPObjective::AddOffset           </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>value</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Adds a constant term to the objective. 
+<p>
+Note: please use the less ambiguous SetOffest() if possible! <dl compact><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>TODO(<a href="http://who/user">user</a>): remove this. </dd></dl>
+
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00502">502</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dd0f9517dc64b1f768952fc490f7be00"></a><!-- doxytag: member="operations_research::MPObjective::SetOptimizationDirection" ref="dd0f9517dc64b1f768952fc490f7be00" args="(bool maximize)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::MPObjective::SetOptimizationDirection           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>maximize</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Sets the optimization direction (maximize: true or minimize: false). 
+<p>
+
+<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00151">151</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="f9eea25e667a52dcad270495025e1202"></a><!-- doxytag: member="operations_research::MPObjective::SetMinimization" ref="f9eea25e667a52dcad270495025e1202" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::MPObjective::SetMinimization           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Sets the optimization direction to minimize. 
+<p>
+
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00507">507</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7f1396f72628328fd85ac852191fcc70"></a><!-- doxytag: member="operations_research::MPObjective::SetMaximization" ref="7f1396f72628328fd85ac852191fcc70" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::MPObjective::SetMaximization           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Sets the optimization direction to maximize. 
+<p>
+
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00509">509</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dfcde2fce5053e060562b10988cd1dc3"></a><!-- doxytag: member="operations_research::MPObjective::maximization" ref="dfcde2fce5053e060562b10988cd1dc3" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool operations_research::MPObjective::maximization           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Is the optimization direction set to maximize? 
+<p>
+
+<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00162">162</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="54675771c249a7f42001bf7a70c16693"></a><!-- doxytag: member="operations_research::MPObjective::minimization" ref="54675771c249a7f42001bf7a70c16693" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool operations_research::MPObjective::minimization           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Is the optimization direction set to minimize? 
+<p>
+
+<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00166">166</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="2038cb53fd4d9268cfa842d9f4b238d5"></a><!-- doxytag: member="operations_research::MPObjective::Value" ref="2038cb53fd4d9268cfa842d9f4b238d5" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double operations_research::MPObjective::Value           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Returns the objective value of the best solution found so far. 
+<p>
+It is the optimal objective value if the problem has been solved to optimality. 
+<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00170">170</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="10c07424e6def7bff0104870b9d8a187"></a><!-- doxytag: member="operations_research::MPObjective::BestBound" ref="10c07424e6def7bff0104870b9d8a187" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double operations_research::MPObjective::BestBound           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Returns the best objective bound. 
+<p>
+In case of minimization, it is a lower bound on the objective value of the optimal integer solution. Only available for discrete problems. 
+<p>Definition at line <a class="el" href="linear__solver_8cc-source.html#l00177">177</a> of file <a class="el" href="linear__solver_8cc-source.html">linear_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -312,7 +486,7 @@ Sets the constant term in the objective.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00660">660</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00526">526</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -329,7 +503,7 @@ Sets the constant term in the objective.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00661">661</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00527">527</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -346,7 +520,7 @@ Sets the constant term in the objective.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00662">662</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00528">528</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -363,7 +537,7 @@ Sets the constant term in the objective.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00663">663</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00529">529</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -380,7 +554,7 @@ Sets the constant term in the objective.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00664">664</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00530">530</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -397,7 +571,7 @@ Sets the constant term in the objective.
 
 <p>
 
-<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00665">665</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="linear__solver_8h-source.html#l00531">531</a> of file <a class="el" href="linear__solver_8h-source.html">linear_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -411,7 +585,7 @@ Sets the constant term in the objective.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

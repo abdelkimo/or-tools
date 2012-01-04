@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -105,7 +105,8 @@
 <a class="el" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6d4c2534a4236ed8b1c937467da71a55a7">ROUTING_LOCAL_CHEAPEST_ARC</a>, 
 <a class="el" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6db84d29872d22f4d9cf1a1fd21c05dcf4">ROUTING_PATH_CHEAPEST_ARC</a>, 
 <br>
-&nbsp;&nbsp;<a class="el" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6da62cb62928ab4fdd761e7568e8737083">ROUTING_EVALUATOR_STRATEGY</a>
+&nbsp;&nbsp;<a class="el" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6da62cb62928ab4fdd761e7568e8737083">ROUTING_EVALUATOR_STRATEGY</a>, 
+<a class="el" href="classoperations__research_1_1RoutingModel.html#6f38b3ff9a2e455677856d97e339da6de11807c0a7813e4ace23425911f4c582">ROUTING_ALL_UNPERFORMED</a>
 <br>
  }</td></tr>
 
@@ -116,7 +117,7 @@
 <a class="el" href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e10dd042e16dd28cfdd370382de2f51a35">ROUTING_TABU_SEARCH</a>
  }</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Metaheuristics, to escape local minima.  <a href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1">More...</a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Metaheuristics used to guide the search.  <a href="classoperations__research_1_1RoutingModel.html#0f0bd97e25af059ab2e8e7f263afc8e1">More...</a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044">Status</a> { <a class="el" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc204473b2e79d6934957ec86f60a69036e055">ROUTING_NOT_SOLVED</a>, 
 <a class="el" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044fb2bbe1690a8f9be1575ade98e4e61dd">ROUTING_SUCCESS</a>, 
 <a class="el" href="classoperations__research_1_1RoutingModel.html#328a19213729eec49288128061bc2044caf3d0fb83c0c1be4881362c0e2e0592">ROUTING_FAIL</a>, 
@@ -128,6 +129,9 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ResultCallback2&lt; int64, <br>
 <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a>, <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">NodeEvaluator2</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef std::vector&lt; std::pair<br>
+&lt; int, int &gt; &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#4251c2ca5b1558dc69e696991c853ae3">NodePairs</a></td></tr>
 
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#67e90b8e5fba64a285e2eed07a39b2ca">RoutingModel</a> (int nodes, int vehicles)</td></tr>
@@ -147,10 +151,10 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#366617606fccc8017b91a5efeae6c4cf">AddConstantDimension</a> (int64 <a class="el" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>, int64 capacity, const string &amp;<a class="el" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef">name</a>)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creates a dimension where the transit variable is constrained to be equal to 'value'; 'capacity' is the upper bound of the cumul variables.  <a href="#366617606fccc8017b91a5efeae6c4cf"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#665b56459ca82c4d791477466b8e621c">AddVectorDimension</a> (const int64 *values, int64 capacity, const string &amp;<a class="el" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef">name</a>)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#665b56459ca82c4d791477466b8e621c">AddVectorDimension</a> (const int64 *<a class="el" href="hybrid_8cc.html#ec49e8404606ac252aef3e0f7b13f2cd">values</a>, int64 capacity, const string &amp;<a class="el" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef">name</a>)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creates a dimension where the transit variable is constrained to be equal to 'values[i]' for node i; 'capacity' is the upper bound of the cumul variables.  <a href="#665b56459ca82c4d791477466b8e621c"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#7d00a87827f4216f9d209a82034e220a">AddMatrixDimension</a> (const int64 *const *values, int64 capacity, const string &amp;<a class="el" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef">name</a>)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#7d00a87827f4216f9d209a82034e220a">AddMatrixDimension</a> (const int64 *const *<a class="el" href="hybrid_8cc.html#ec49e8404606ac252aef3e0f7b13f2cd">values</a>, int64 capacity, const string &amp;<a class="el" href="default__search_8cc.html#1848ae81740c68c2502b2f176cfadcef">name</a>)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creates a dimension where the transit variable is constrained to be equal to 'values[i][next[i]' for node i; 'capacity' is the upper bound of the cumul variables.  <a href="#7d00a87827f4216f9d209a82034e220a"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#fa5489925a39e8484fea85ad916ab72b">AddAllActive</a> ()</td></tr>
@@ -162,8 +166,11 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#0136e0ccbb01867d754ecf9e6152a2e5">AddDisjunction</a> (const std::vector&lt; <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> &gt; &amp;nodes, int64 penalty)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds a penalized disjunction constraint on the nodes: at most one of the nodes is active; if none are active a penalty cost is applied (this cost is added to the global cost function).  <a href="#0136e0ccbb01867d754ecf9e6152a2e5"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#646c16f383b852c39804223d77520e07">AddPickupAndDelivery</a> (<a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> node1, <a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> node2)</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#fc62358888d00d45c4769cdc6e3d3cbb">SetDepot</a> (<a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a> depot)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Makes 'depot' the starting node of all routes.  <a href="#fc62358888d00d45c4769cdc6e3d3cbb"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RoutingModel.html#ad67d6674b1bbfd192b094a78b98ae00">SetCost</a> (<a class="el" href="classoperations__research_1_1RoutingModel.html#5ad22b1565f2e5b1735601a824629289">NodeEvaluator2</a> *evaluator)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the cost function of the model such that the cost of a segment of a route between node 'from' and 'to' is evaluator(from, to), whatever the route or vehicle performing the route.  <a href="#ad67d6674b1bbfd192b094a78b98ae00"></a><br></td></tr>
@@ -369,7 +376,7 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00205">205</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00234">234</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -386,7 +393,24 @@
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00206">206</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00235">235</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4251c2ca5b1558dc69e696991c853ae3"></a><!-- doxytag: member="operations_research::RoutingModel::NodePairs" ref="4251c2ca5b1558dc69e696991c853ae3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt;std::pair&lt;int, int&gt; &gt; <a class="el" href="classoperations__research_1_1RoutingModel.html#4251c2ca5b1558dc69e696991c853ae3">operations_research::RoutingModel::NodePairs</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00236">236</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -408,15 +432,27 @@ First solution strategies, used as starting point of local search.
 <dl compact><dt><b>Enumerator: </b></dt><dd>
 <table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" name="6f38b3ff9a2e455677856d97e339da6d6f1cf5f6e92490db44f50b647f90f56c"></a><!-- doxytag: member="ROUTING_DEFAULT_STRATEGY" ref="6f38b3ff9a2e455677856d97e339da6d6f1cf5f6e92490db44f50b647f90f56c" args="" -->ROUTING_DEFAULT_STRATEGY</em>&nbsp;</td><td>
-choose first unbound, assign min value </td></tr>
+Select the first node with an unbound successor and connect it to the first available node. 
+<p>
+This is equivalent to the CHOOSE_FIRST_UNBOUND strategy combined with ASSIGN_MIN_VALUE (cf. constraint_soler.h). </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="6f38b3ff9a2e455677856d97e339da6dbb864ec796188b14106446600fd330f8"></a><!-- doxytag: member="ROUTING_GLOBAL_CHEAPEST_ARC" ref="6f38b3ff9a2e455677856d97e339da6dbb864ec796188b14106446600fd330f8" args="" -->ROUTING_GLOBAL_CHEAPEST_ARC</em>&nbsp;</td><td>
-</td></tr>
+Iteratively connect two nodes which produce the cheapest route segment. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="6f38b3ff9a2e455677856d97e339da6d4c2534a4236ed8b1c937467da71a55a7"></a><!-- doxytag: member="ROUTING_LOCAL_CHEAPEST_ARC" ref="6f38b3ff9a2e455677856d97e339da6d4c2534a4236ed8b1c937467da71a55a7" args="" -->ROUTING_LOCAL_CHEAPEST_ARC</em>&nbsp;</td><td>
+Select the first node with an unbound successor and connect it to the node which produces the cheapest route segment. 
+<p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="6f38b3ff9a2e455677856d97e339da6db84d29872d22f4d9cf1a1fd21c05dcf4"></a><!-- doxytag: member="ROUTING_PATH_CHEAPEST_ARC" ref="6f38b3ff9a2e455677856d97e339da6db84d29872d22f4d9cf1a1fd21c05dcf4" args="" -->ROUTING_PATH_CHEAPEST_ARC</em>&nbsp;</td><td>
+Starting from a route "start" node, connect it to the node which produces the cheapest route segment, then extend the route by iterating on the last node added to the route. 
+<p>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="6f38b3ff9a2e455677856d97e339da6da62cb62928ab4fdd761e7568e8737083"></a><!-- doxytag: member="ROUTING_EVALUATOR_STRATEGY" ref="6f38b3ff9a2e455677856d97e339da6da62cb62928ab4fdd761e7568e8737083" args="" -->ROUTING_EVALUATOR_STRATEGY</em>&nbsp;</td><td>
+Same as ROUTING_PATH_CHEAPEST_ARC, except that arc costs are evaluated using the function passed to <a class="el" href="classoperations__research_1_1RoutingModel.html#5853301edd4fdc7f45cf38a7bb2ec049" title="Takes ownership of evaluator.">RoutingModel::SetFirstSolutionEvaluator()</a>. 
+<p>
 </td></tr>
+<tr><td valign="top"><em><a class="anchor" name="6f38b3ff9a2e455677856d97e339da6de11807c0a7813e4ace23425911f4c582"></a><!-- doxytag: member="ROUTING_ALL_UNPERFORMED" ref="6f38b3ff9a2e455677856d97e339da6de11807c0a7813e4ace23425911f4c582" args="" -->ROUTING_ALL_UNPERFORMED</em>&nbsp;</td><td>
+Make all node inactive. 
+<p>
+Only finds a solution if nodes are optional (are element of a disjunction constraint with a finite penalty cost). </td></tr>
 </table>
 </dl>
 
@@ -436,22 +472,30 @@ choose first unbound, assign min value </td></tr>
 <div class="memdoc">
 
 <p>
-Metaheuristics, to escape local minima. 
+Metaheuristics used to guide the search. 
 <p>
-<dl compact><dt><b>Enumerator: </b></dt><dd>
+Apart greedy descent, they will try to escape local minima. <dl compact><dt><b>Enumerator: </b></dt><dd>
 <table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" name="0f0bd97e25af059ab2e8e7f263afc8e1582d58f88269611b1065f8c4c5e58fed"></a><!-- doxytag: member="ROUTING_GREEDY_DESCENT" ref="0f0bd97e25af059ab2e8e7f263afc8e1582d58f88269611b1065f8c4c5e58fed" args="" -->ROUTING_GREEDY_DESCENT</em>&nbsp;</td><td>
-default </td></tr>
+Accepts improving (cost-reducing) local search neighbors until a local minimum is reached. 
+<p>
+This is the default heuristic. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="0f0bd97e25af059ab2e8e7f263afc8e189a5042196881240e6b78a52c87b1588"></a><!-- doxytag: member="ROUTING_GUIDED_LOCAL_SEARCH" ref="0f0bd97e25af059ab2e8e7f263afc8e189a5042196881240e6b78a52c87b1588" args="" -->ROUTING_GUIDED_LOCAL_SEARCH</em>&nbsp;</td><td>
-</td></tr>
+Uses guided local search to escape local minima (cf. 
+<p>
+<a href="http://en.wikipedia.org/wiki/Guided_Local_Search">http://en.wikipedia.org/wiki/Guided_Local_Search</a>); this is generally the most efficient metaheuristic for vehicle routing. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="0f0bd97e25af059ab2e8e7f263afc8e1a166bff87b6170318a34b1af38fc98fe"></a><!-- doxytag: member="ROUTING_SIMULATED_ANNEALING" ref="0f0bd97e25af059ab2e8e7f263afc8e1a166bff87b6170318a34b1af38fc98fe" args="" -->ROUTING_SIMULATED_ANNEALING</em>&nbsp;</td><td>
-</td></tr>
+Uses simulated annealing to escape local minima (cf. 
+<p>
+<a href="http://en.wikipedia.org/wiki/Simulated_annealing">http://en.wikipedia.org/wiki/Simulated_annealing</a>). </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="0f0bd97e25af059ab2e8e7f263afc8e10dd042e16dd28cfdd370382de2f51a35"></a><!-- doxytag: member="ROUTING_TABU_SEARCH" ref="0f0bd97e25af059ab2e8e7f263afc8e10dd042e16dd28cfdd370382de2f51a35" args="" -->ROUTING_TABU_SEARCH</em>&nbsp;</td><td>
-</td></tr>
+Uses tabu search to escape local minima (cf. 
+<p>
+<a href="http://en.wikipedia.org/wiki/Tabu_search">http://en.wikipedia.org/wiki/Tabu_search</a>). </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00190">190</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00206">206</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -472,17 +516,17 @@ Status of the search.
 <dl compact><dt><b>Enumerator: </b></dt><dd>
 <table border="0" cellspacing="2" cellpadding="0">
 <tr><td valign="top"><em><a class="anchor" name="328a19213729eec49288128061bc204473b2e79d6934957ec86f60a69036e055"></a><!-- doxytag: member="ROUTING_NOT_SOLVED" ref="328a19213729eec49288128061bc204473b2e79d6934957ec86f60a69036e055" args="" -->ROUTING_NOT_SOLVED</em>&nbsp;</td><td>
-</td></tr>
+Problem not solved yet (before calling <a class="el" href="classoperations__research_1_1RoutingModel.html#79e79d503b81e378485b402293a5828c" title="Solves the current routing model; closes the current model.">RoutingModel::Solve()</a>). </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="328a19213729eec49288128061bc2044fb2bbe1690a8f9be1575ade98e4e61dd"></a><!-- doxytag: member="ROUTING_SUCCESS" ref="328a19213729eec49288128061bc2044fb2bbe1690a8f9be1575ade98e4e61dd" args="" -->ROUTING_SUCCESS</em>&nbsp;</td><td>
-</td></tr>
+Problem solved successfully after calling <a class="el" href="classoperations__research_1_1RoutingModel.html#79e79d503b81e378485b402293a5828c" title="Solves the current routing model; closes the current model.">RoutingModel::Solve()</a>. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="328a19213729eec49288128061bc2044caf3d0fb83c0c1be4881362c0e2e0592"></a><!-- doxytag: member="ROUTING_FAIL" ref="328a19213729eec49288128061bc2044caf3d0fb83c0c1be4881362c0e2e0592" args="" -->ROUTING_FAIL</em>&nbsp;</td><td>
-</td></tr>
+No solution found to the problem after calling <a class="el" href="classoperations__research_1_1RoutingModel.html#79e79d503b81e378485b402293a5828c" title="Solves the current routing model; closes the current model.">RoutingModel::Solve()</a>. </td></tr>
 <tr><td valign="top"><em><a class="anchor" name="328a19213729eec49288128061bc2044a8b79310730408de7bae61835301a93e"></a><!-- doxytag: member="ROUTING_FAIL_TIMEOUT" ref="328a19213729eec49288128061bc2044a8b79310730408de7bae61835301a93e" args="" -->ROUTING_FAIL_TIMEOUT</em>&nbsp;</td><td>
-</td></tr>
+Time limit reached before finding a solution with <a class="el" href="classoperations__research_1_1RoutingModel.html#79e79d503b81e378485b402293a5828c" title="Solves the current routing model; closes the current model.">RoutingModel::Solve()</a>. </td></tr>
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00198">198</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00223">223</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -516,7 +560,7 @@ Status of the search.
 Supposes a single depot. 
 <p>
 A depot is the start and end node of the route of a vehicle. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00358">358</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00529">529</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -555,7 +599,7 @@ A depot is the start and end node of the route of a vehicle.
 Constructor taking a vector of (start node, end node) pairs for each vehicle route. 
 <p>
 Used to model multiple depots. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00392">392</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00563">563</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -599,9 +643,9 @@ Used to model multiple depots.
 <p>
 Constructor taking vectors of start nodes and end nodes for each vehicle route. 
 <p>
-Used to model multiple depots. <dl compact><dt><b><a class="el" href="todo.html#_todo000031">Todo:</a></b></dt><dd>TODO(<a href="http://who/user">user</a>): added to simplify SWIG wrapping. Remove when swigging std::vector&lt;std::pair&lt;int, int&gt; &gt; is ok. </dd></dl>
+Used to model multiple depots. <dl compact><dt><b><a class="el" href="todo.html#_todo000038">Todo:</a></b></dt><dd>TODO(<a href="http://who/user">user</a>): added to simplify SWIG wrapping. Remove when swigging std::vector&lt;std::pair&lt;int, int&gt; &gt; is ok. </dd></dl>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00435">435</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00606">606</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -622,7 +666,7 @@ Used to model multiple depots. <dl compact><dt><b><a class="el" href="todo.html#
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00509">509</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00680">680</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -668,7 +712,7 @@ Used to model multiple depots. <dl compact><dt><b><a class="el" href="todo.html#
 Model creation. 
 <p>
 Methods to add dimensions to routes; dimensions represent quantities accumulated at nodes along the routes. They represent quantities such as weights or volumes carried along the route, or distance or times. Quantities at a node are represented by "cumul" variables and the increase or decrease of quantities between nodes are represented by "transit" variables. These variables are linked as follows: if j == next(i), cumul(j) = cumul(i) + transit(i) + slack(i) where slack is a positive slack variable (can represent waiting times for a time dimension). Creates a dimension where the transit variable is constrained to be equal to evaluator(i, next(i)); 'slack_max' is the upper bound of the slack variable and 'capacity' is the upper bound of the cumul variables. 'name' is the name used to reference the dimension; this name is used to get cumul and transit variables from the routing model. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00525">525</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00696">696</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -707,7 +751,7 @@ Methods to add dimensions to routes; dimensions represent quantities accumulated
 Creates a dimension where the transit variable is constrained to be equal to 'value'; 'capacity' is the upper bound of the cumul variables. 
 <p>
 'name' is the name used to reference the dimension; this name is used to get cumul and transit variables from the routing model. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00546">546</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00717">717</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -746,7 +790,7 @@ Creates a dimension where the transit variable is constrained to be equal to 'va
 Creates a dimension where the transit variable is constrained to be equal to 'values[i]' for node i; 'capacity' is the upper bound of the cumul variables. 
 <p>
 'name' is the name used to reference the dimension; this name is used to get cumul and transit variables from the routing model. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00555">555</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00726">726</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -785,7 +829,7 @@ Creates a dimension where the transit variable is constrained to be equal to 'va
 Creates a dimension where the transit variable is constrained to be equal to 'values[i][next[i]' for node i; 'capacity' is the upper bound of the cumul variables. 
 <p>
 'name' is the name used to reference the dimension; this name is used to get cumul and transit variables from the routing model. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00564">564</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00735">735</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -808,7 +852,7 @@ Creates a dimension where the transit variable is constrained to be equal to 'va
 Constrains all nodes to be active (to belong to a route). 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00573">573</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00744">744</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -832,7 +876,7 @@ Constrains all nodes to be active (to belong to a route).
 Adds a disjunction constraint on the nodes: exactly one of the nodes is active. 
 <p>
 Start and end nodes of any vehicle cannot be part of a disjunction. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00622">622</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00793">793</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -864,8 +908,41 @@ Start and end nodes of any vehicle cannot be part of a disjunction.
 <p>
 Adds a penalized disjunction constraint on the nodes: at most one of the nodes is active; if none are active a penalty cost is applied (this cost is added to the global cost function). 
 <p>
-This is equivalent to adding the constraint: p + Sum(i)active[i] == 1, where p is a boolean variable and the following cost to the cost function: p * penalty. "penalty" must be positive. Note: passing a vector with a single node will model an optional node with a penalty cost if it is not visited. SWIGPYTHON Makes 'depot' the starting node of all routes. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00626">626</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+This is equivalent to adding the constraint: p + Sum(i)active[i] == 1, where p is a boolean variable and the following cost to the cost function: p * penalty. "penalty" must be positive. Note: passing a vector with a single node will model an optional node with a penalty cost if it is not visited. SWIGPYTHON Notifies that node1 and node2 form a pair of nodes which should belong to the same route. This methods helps the search find better solutions, especially in the local search phase. It should be called each time you have an equality constraint linking the vehicle variables of two node (including for instance pickup and delivery problems): Solver* const solver = routing.solver(); solver-&gt;AddConstraint(solver-&gt;MakeEquality( routing.VehicleVar(routing.NodeToIndex(node1)), routing.VehicleVar(routing.NodeToIndex(node2)))); solver-&gt;AddPickupAndDelivery(node1, node2);<p>
+<dl compact><dt><b><a class="el" href="todo.html#_todo000039">Todo:</a></b></dt><dd>TODO(<a href="http://who/user">user</a>): Remove this when model introspection detects linked nodes. </dd></dl>
+
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00797">797</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="646c16f383b852c39804223d77520e07"></a><!-- doxytag: member="operations_research::RoutingModel::AddPickupAndDelivery" ref="646c16f383b852c39804223d77520e07" args="(NodeIndex node1, NodeIndex node2)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::RoutingModel::AddPickupAndDelivery           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a>&nbsp;</td>
+          <td class="paramname"> <em>node1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classoperations__research_1_1RoutingModel.html#2e9f7da1126111a69ee0b7bcf7edeffe">NodeIndex</a>&nbsp;</td>
+          <td class="paramname"> <em>node2</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00338">338</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -886,8 +963,10 @@ This is equivalent to adding the constraint: p + Sum(i)active[i] == 1, where p i
 <div class="memdoc">
 
 <p>
+Makes 'depot' the starting node of all routes. 
+<p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00674">674</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00845">845</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -911,7 +990,7 @@ This is equivalent to adding the constraint: p + Sum(i)active[i] == 1, where p i
 Sets the cost function of the model such that the cost of a segment of a route between node 'from' and 'to' is evaluator(from, to), whatever the route or vehicle performing the route. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00581">581</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00752">752</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -944,7 +1023,7 @@ Sets the cost function of the model such that the cost of a segment of a route b
 Sets the cost function for a given vehicle route. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00594">594</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00765">765</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -967,7 +1046,7 @@ Sets the cost function for a given vehicle route.
 The fixed cost of a route is taken into account if the route is not empty, aka there's at least one node on the route other than the first and last nodes. 
 <p>
 Gets the fixed cost of all vehicle routes if they are all the same; otherwise returns the fixed cost of the first vehicle route. Deprecated by <a class="el" href="classoperations__research_1_1RoutingModel.html#619c7630314932daf1b6338eb2285027" title="Returns the route fixed cost taken into account if the route of the vehicle is not...">GetVehicleFixedCost()</a>. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00590">590</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00761">761</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -991,7 +1070,7 @@ Gets the fixed cost of all vehicle routes if they are all the same; otherwise re
 Sets the fixed cost of all vehicle routes. 
 <p>
 It is equivalent to calling SetVehicleFixedCost on all vehicle routes. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00606">606</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00777">777</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1015,7 +1094,7 @@ It is equivalent to calling SetVehicleFixedCost on all vehicle routes.
 Returns the route fixed cost taken into account if the route of the vehicle is not empty, aka there's at least one node on the route other than the first and last nodes. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00612">612</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00783">783</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1048,7 +1127,7 @@ Returns the route fixed cost taken into account if the route of the vehicle is n
 Sets the fixed cost of one vehicle route. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00617">617</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00788">788</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1071,7 +1150,7 @@ Sets the fixed cost of one vehicle route.
 <a class="el" href="classoperations__research_1_1Search.html" title="Search class.">Search</a> Returns the strategy used to build a first solution. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00323">323</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00370">370</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1095,7 +1174,7 @@ Sets the fixed cost of one vehicle route.
 Sets the strategy used to build a first solution. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00327">327</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00374">374</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1118,7 +1197,7 @@ Sets the strategy used to build a first solution.
 Gets/sets the evaluator used when the first solution heuristic is set to ROUTING_EVALUATOR_STRATEGY (variant of ROUTING_PATH_CHEAPEST_ARC using 'evaluator' to sort node segments). 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00334">334</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00381">381</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1142,7 +1221,7 @@ Gets/sets the evaluator used when the first solution heuristic is set to ROUTING
 Takes ownership of evaluator. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00339">339</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00386">386</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1165,7 +1244,7 @@ Takes ownership of evaluator.
 If a first solution flag has been set (to a value different than Default), returns the corresponding strategy, otherwise returns the strategy which was set. 
 <p>
 Flags override strategy selection.
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00847">847</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01039">1039</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1189,7 +1268,7 @@ Flags override strategy selection.
 Adds a local search operator to the set of operators used to solve the vehicle routing problem. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00670">670</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00841">841</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1212,7 +1291,7 @@ Adds a local search operator to the set of operators used to solve the vehicle r
 Returns the metaheuristic used. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00350">350</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00397">397</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1236,7 +1315,7 @@ Returns the metaheuristic used.
 Sets the metaheuristic to be used. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00352">352</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00399">399</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1259,7 +1338,7 @@ Sets the metaheuristic to be used.
 If a metaheuristic flag has been set, returns the corresponding metaheuristic, otherwise returns the metaheuristic which was set. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00859">859</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01053">1053</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1283,7 +1362,7 @@ If a metaheuristic flag has been set, returns the corresponding metaheuristic, o
 Adds a search monitor to the search used to solve the routing model. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00870">870</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01064">1064</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1306,7 +1385,7 @@ Adds a search monitor to the search used to solve the routing model.
 Closes the current routing model; after this method is called, no modification to the model can be done, but RoutesToAssignment becomes available. 
 <p>
 Note that <a class="el" href="classoperations__research_1_1RoutingModel.html#e84602b98050ad382d725e35326aab3d" title="Closes the current routing model; after this method is called, no modification to...">CloseModel()</a> is automatically called by <a class="el" href="classoperations__research_1_1RoutingModel.html#79e79d503b81e378485b402293a5828c" title="Solves the current routing model; closes the current model.">Solve()</a> and other methods that produce solution. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00760">760</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l00931">931</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1330,7 +1409,7 @@ Note that <a class="el" href="classoperations__research_1_1RoutingModel.html#e84
 Solves the current routing model; closes the current model. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00874">874</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01068">1068</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1353,9 +1432,9 @@ Solves the current routing model; closes the current model.
 Computes a lower bound to the routing problem solving a linear assignment problem. 
 <p>
 Computing a lower bound to the cost of a vehicle routing problem solving a a linear assignment problem (minimum-cost perfect bipartite matching).<p>
-The routing model must be closed before calling this method. Note that problems with node disjunction constraints (including optional nodes) and non-homogenous costs are not supported (the method returns 0 in these cases). <dl compact><dt><b><a class="el" href="todo.html#_todo000032">Todo:</a></b></dt><dd>TODO(<a href="http://who/user">user</a>): Add support for non-homogeneous costs and disjunctions. </dd></dl>
+The routing model must be closed before calling this method. Note that problems with node disjunction constraints (including optional nodes) and non-homogenous costs are not supported (the method returns 0 in these cases). <dl compact><dt><b><a class="el" href="todo.html#_todo000040">Todo:</a></b></dt><dd>TODO(<a href="http://who/user">user</a>): Add support for non-homogeneous costs and disjunctions. </dd></dl>
 A bipartite graph is created with left nodes representing the nodes of the routing problem and right nodes representing possible node successors; an arc between a left node l and a right node r is created if r can be the node folowing l in a route (Next(l) = r); the cost of the arc is the transit cost between l and r in the routing problem. This is a lower bound given the solution to assignment problem does not necessarily produce a (set of) closed route(s) from a starting node to an ending node. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l00907">907</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01101">1101</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1378,7 +1457,7 @@ A bipartite graph is created with left nodes representing the nodes of the routi
 Returns the current status of the routing model. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00375">375</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00422">422</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1402,7 +1481,7 @@ Returns the current status of the routing model.
 Applies a lock chain to the next search. 
 <p>
 'locks' represents an ordered vector of nodes representing a partial route which will be fixed during the next search; it will constrain next variables such that: next[locks[i]] == locks[i+1]. Returns the next variable at the end of the locked chain; this variable is not locked. An assignment containing the locks can be obtained by calling <a class="el" href="classoperations__research_1_1RoutingModel.html#db8c703e9d29b2046db433b8c74e338c" title="Returns an assignment used to fix some of the variables of the problem.">PreAssignment()</a>. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01133">1133</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01327">1327</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1435,7 +1514,7 @@ Applies a lock chain to the next search.
 Applies lock chains to all vehicles to the next search, such that locks[p] is the lock chain for route p. 
 <p>
 Returns false if the locks do not contain valid routes; expects that the routes do not contain the depots, i.e. there are empty vectors in place of empty routes. If close_routes is set to true, adds the end nodes to the route of each vehicle and deactivates other nodes. An assignment containing the locks can be obtained by calling <a class="el" href="classoperations__research_1_1RoutingModel.html#db8c703e9d29b2046db433b8c74e338c" title="Returns an assignment used to fix some of the variables of the problem.">PreAssignment()</a>. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01155">1155</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01349">1349</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1458,7 +1537,7 @@ Returns false if the locks do not contain valid routes; expects that the routes 
 Returns an assignment used to fix some of the variables of the problem. 
 <p>
 In practice, this assignment locks partial routes of the problem. This can be used in the context of locking the parts of the routes which have already been driven in online routing problems. 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00398">398</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00445">445</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1482,7 +1561,7 @@ In practice, this assignment locks partial routes of the problem. This can be us
 Writes the current solution to a file containing an AssignmentProto. 
 <p>
 Returns false if the file cannot be opened or if there is no current solution. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01195">1195</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01389">1389</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1506,7 +1585,7 @@ Returns false if the file cannot be opened or if there is no current solution.
 Reads an assignment from a file and returns the current solution. 
 <p>
 Returns NULL if the file cannot be opened or if the assignment is not valid. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01204">1204</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01398">1398</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1530,7 +1609,7 @@ Returns NULL if the file cannot be opened or if the assignment is not valid.
 Restores an assignment as a solution in the routing model and returns the new solution. 
 <p>
 Returns NULL if the assignment is not valid. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01213">1213</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01407">1407</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1563,7 +1642,7 @@ Returns NULL if the assignment is not valid.
 Restores the routes as the current solution. 
 <p>
 Returns NULL if the solution cannot be restored (routes do not contain a valid solution). Note that calling this method will run the solver to assign values to the dimension variables; this may take considerable amount of time, especially when using dimensions with slack. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01354">1354</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01548">1548</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1608,7 +1687,7 @@ Returns NULL if the solution cannot be restored (routes do not contain a valid s
 Fills an assignment from a specification of the routes of the vehicles. 
 <p>
 The routes are specified as lists of nodes that appear on the routes of the vehicles. The indices of the outer vector in 'routes' correspond to vehicles IDs, the inner vector contain the nodes on the routes for the given vehicle. The inner vectors must not contain the start and end nodes, as these are determined by the routing model. Sets the value of NextVars in the assignment, adding the variables to the assignment if necessary. The method does not touch other variables in the assignment. The method can only be called after the model is closed. With ignore_inactive_nodes set to false, this method will fail (return NULL) in case some of the route contain nodes that are deactivated in the model; when set to true, these nodes will be skipped. Returns true if the route was successfully loaded. However, such assignment still might not be a valid solution to the routing problem due to more complex constraints; it is advisible to call <a class="el" href="classoperations__research_1_1RoutingModel.html#35a094db917c3c996826285424bb2f54" title="Returns the underlying constraint solver.">solver()</a>-&gt;CheckSolution() afterwards. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01232">1232</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01426">1426</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1641,7 +1720,7 @@ The routes are specified as lists of nodes that appear on the routes of the vehi
 Converts the solution in the given assignment to routes for all vehicles. 
 <p>
 Expects that assignment contains a valid solution (i.e. routes for all vehicles end with an end node for that vehicle). 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01367">1367</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01561">1561</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1665,7 +1744,7 @@ Expects that assignment contains a valid solution (i.e. routes for all vehicles 
 Returns a compacted version of the given assignment, in which all vehicles with id lower or equal to some N have non-empty routes, and all vehicles with id greater than N have empty routes. 
 <p>
 Does not take ownership of the returned object. If found, the cost of the compact assignment is the same as in the original assignment and it preserves the values of 'active' variables. Returns NULL if a compact assignment was not found. This method only works in homogenous mode, and it only swaps equivalent vehicles (vehicles with the same start and end nodes). When creating the compact assignment, the empty plan is replaced by the route assigned to the compatible vehicle with the highest id. Note that with more complex constraints on vehicle variables, this method might fail even if a compact solution exists. This method changes the vehicle and dimension variables as necessary. While compacting the solution, only basic checks on vehicle variables are performed; the complete solution is checked at the end and if it is not valid, no attempts to repair it are made (instead, the method returns NULL). 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01056">1056</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01250">1250</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1689,7 +1768,7 @@ Does not take ownership of the returned object. If found, the cost of the compac
 Adds an extra variable to the vehicle routing assignment. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01850">1850</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l02063">2063</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1713,7 +1792,7 @@ Adds an extra variable to the vehicle routing assignment.
 Model inspection. 
 <p>
 Returns the variable index of the starting node of a vehicle route. 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00467">467</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00514">514</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1737,7 +1816,7 @@ Returns the variable index of the starting node of a vehicle route.
 Returns the variable index of the ending node of a vehicle route. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00469">469</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00516">516</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1761,7 +1840,7 @@ Returns the variable index of the ending node of a vehicle route.
 Returns true if 'index' represents the first node of a route. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01462">1462</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01656">1656</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1785,7 +1864,7 @@ Returns true if 'index' represents the first node of a route.
 Returns true if 'index' represents the last node of a route. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00473">473</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00520">520</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1818,7 +1897,7 @@ Returns true if 'index' represents the last node of a route.
 Return high cost if connecting to end node; used in cost-based first solution. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01502">1502</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01696">1696</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1839,7 +1918,7 @@ Return high cost if connecting to end node; used in cost-based first solution.
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00475">475</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00522">522</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1872,7 +1951,7 @@ Return high cost if connecting to end node; used in cost-based first solution.
 <a class="el" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a> inspection Returns the variable index of the node directly after the node corresponding to 'index' in 'assignment'. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01476">1476</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01670">1670</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1905,7 +1984,7 @@ Return high cost if connecting to end node; used in cost-based first solution.
 Returns true if the route of 'vehicle' is non empty in 'assignment'. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01466">1466</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01660">1660</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -1928,7 +2007,7 @@ Returns true if the route of 'vehicle' is non empty in 'assignment'.
 Variables Returns all next variables of the model, such that Nexts(i) is the next variable of the node corresponding to i. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00485">485</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00532">532</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1951,7 +2030,7 @@ Variables Returns all next variables of the model, such that Nexts(i) is the nex
 Returns all vehicle variables of the model, such that VehicleVars(i) is the vehicle variable of the node corresponding to i. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00488">488</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00535">535</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1975,7 +2054,7 @@ Returns all vehicle variables of the model, such that VehicleVars(i) is the vehi
 Returns the next variable of the node corresponding to index. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00490">490</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00537">537</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -1999,7 +2078,7 @@ Returns the next variable of the node corresponding to index.
 Returns the active variable of the node corresponding to index. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00492">492</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00539">539</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -2023,7 +2102,7 @@ Returns the active variable of the node corresponding to index.
 Returns the vehicle variable of the node corresponding to index. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00494">494</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00541">541</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -2056,7 +2135,7 @@ Returns the vehicle variable of the node corresponding to index.
 Returns the cumul variable for the dimension named 'name'. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01832">1832</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l02045">2045</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2089,7 +2168,7 @@ Returns the cumul variable for the dimension named 'name'.
 Returns the transit variable for the dimension named 'name'. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01841">1841</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l02054">2054</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2112,7 +2191,7 @@ Returns the transit variable for the dimension named 'name'.
 Returns the global cost variable which is being minimized. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00500">500</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00547">547</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -2151,7 +2230,7 @@ Returns the global cost variable which is being minimized.
 Returns the cost of the segment between two nodes for a given vehicle route. 
 <p>
 Input are variable indices of node. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01485">1485</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01679">1679</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2184,7 +2263,7 @@ Input are variable indices of node.
 Returns the cost of the segment between two nodes supposing all vehicle costs are the same (returns the cost for the first vehicle otherwise). 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00506">506</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00553">553</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -2207,7 +2286,7 @@ Returns the cost of the segment between two nodes supposing all vehicle costs ar
 Returns the underlying constraint solver. 
 <p>
 Can be used to add extra constraints and/or modify search algoithms. 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00512">512</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00559">559</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -2230,7 +2309,7 @@ Can be used to add extra constraints and/or modify search algoithms.
 Sizes and indices Returns the number of nodes in the model. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00516">516</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00563">563</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -2253,7 +2332,7 @@ Sizes and indices Returns the number of nodes in the model.
 Returns the number of vehicle routes in the model. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00518">518</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00565">565</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -2276,7 +2355,7 @@ Returns the number of vehicle routes in the model.
 Returns the number of next variables in the model. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00520">520</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00567">567</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -2300,7 +2379,7 @@ Returns the number of next variables in the model.
 Returns the node index from an index value resulting fron a next variable. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01400">1400</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01594">1594</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2324,7 +2403,7 @@ Returns the node index from an index value resulting fron a next variable.
 Returns the variable index from a node value. 
 <p>
 Should not be used for nodes at the start / end of a route, because of node multiplicity. These cases return -1, which is considered a failure case. Clients who need start and end variable indices should use <a class="el" href="classoperations__research_1_1RoutingModel.html#fcb255b430c9c51561a344966f32940d" title="Model inspection.">RoutingModel::Start</a> and <a class="el" href="classoperations__research_1_1RoutingModel.html#9d2055447d769bd064f61c150d099b53" title="Returns the variable index of the ending node of a vehicle route.">RoutingModel::End</a>. 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01405">1405</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01599">1599</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2347,7 +2426,7 @@ Should not be used for nodes at the start / end of a route, because of node mult
 Time limits Returns the current time limit used in the search. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00532">532</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00579">579</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -2371,7 +2450,7 @@ Time limits Returns the current time limit used in the search.
 Updates the time limit used in the search. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01161">1161</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01355">1355</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2395,7 +2474,7 @@ Updates the time limit used in the search.
 Updates the time limit used in the Large Neighborhood search tree. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01179">1179</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01373">1373</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2428,7 +2507,7 @@ Updates the time limit used in the Large Neighborhood search tree.
 Utilities for swig to set flags in python or java. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8cc-source.html#l01190">1190</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
+<p>Definition at line <a class="el" href="routing_8cc-source.html#l01384">1384</a> of file <a class="el" href="routing_8cc-source.html">routing.cc</a>.</p>
 
 </div>
 </div><p>
@@ -2448,7 +2527,7 @@ Utilities for swig to set flags in python or java.
 Constants with an index of the first node (to be used in for loops for iteration), and a special index to signalize an invalid/unused value. 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00210">210</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00240">240</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -2465,7 +2544,7 @@ Constants with an index of the first node (to be used in for loops for iteration
 
 <p>
 
-<p>Definition at line <a class="el" href="routing_8h-source.html#l00211">211</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
+<p>Definition at line <a class="el" href="routing_8h-source.html#l00241">241</a> of file <a class="el" href="routing_8h-source.html">routing.h</a>.</p>
 
 </div>
 </div><p>
@@ -2479,7 +2558,7 @@ Constants with an index of the first node (to be used in for loops for iteration
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

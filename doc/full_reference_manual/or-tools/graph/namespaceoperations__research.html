@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:11 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/graph/index.html">graph</a>/
             </tt></b></font>
@@ -103,18 +103,43 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1DijkstraSP.html">DijkstraSP</a></td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">namespace  <a href="classoperations__research_1_1DijkstraSP.html#_details">More...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraphCore.html">EbertGraphCore</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A template for the base class that holds the functionality that exists in common between the EbertGraph&lt;&gt; template and the ForwardEbertGraph&lt;&gt; template.  <a href="classoperations__research_1_1EbertGraphCore.html#_details">More...</a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1EbertGraph.html">EbertGraph</a></td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Most users should only use StarGraph, which is EbertGraph&lt;int32, int32&gt;, and other type shortcuts; see the bottom of this file.  <a href="classoperations__research_1_1EbertGraph.html#_details">More...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ForwardEbertGraph.html">ForwardEbertGraph</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A forward-star-only graph representation for greater efficiency in those algorithms that don't need reverse arcs.  <a href="classoperations__research_1_1ForwardEbertGraph.html#_details">More...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoperations__research_1_1graph__traits.html">graph_traits</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Traits for <a class="el" href="classoperations__research_1_1EbertGraphCore.html" title="A template for the base class that holds the functionality that exists in common...">EbertGraphCore</a> types, for use in testing and clients that work with both forward-only and forward/reverse graphs.  <a href="structoperations__research_1_1graph__traits.html#_details">More...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoperations__research_1_1graph__traits_3_01ForwardEbertGraph_3_01NodeIndexType_00_01ArcIndexType_01_4_01_4.html">graph_traits&lt; ForwardEbertGraph&lt; NodeIndexType, ArcIndexType &gt; &gt;</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoperations__research_1_1TailArrayBuilder.html">TailArrayBuilder</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The <a class="el" href="structoperations__research_1_1TailArrayBuilder.html" title="The TailArrayBuilder for graphs with reverse arcs does nothing.">TailArrayBuilder</a> for graphs with reverse arcs does nothing.  <a href="structoperations__research_1_1TailArrayBuilder.html#_details">More...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoperations__research_1_1TailArrayBuilder_3_01GraphType_00_01false_01_4.html">TailArrayBuilder&lt; GraphType, false &gt;</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The <a class="el" href="structoperations__research_1_1TailArrayBuilder.html" title="The TailArrayBuilder for graphs with reverse arcs does nothing.">TailArrayBuilder</a> for graphs without reverse arcs calls the appropriate method on the graph from the <a class="el" href="structoperations__research_1_1TailArrayBuilder.html" title="The TailArrayBuilder for graphs with reverse arcs does nothing.">TailArrayBuilder</a> constructor.  <a href="structoperations__research_1_1TailArrayBuilder_3_01GraphType_00_01false_01_4.html#_details">More...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoperations__research_1_1TailArrayReleaser.html">TailArrayReleaser</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The <a class="el" href="structoperations__research_1_1TailArrayReleaser.html" title="The TailArrayReleaser for graphs with reverse arcs does nothing.">TailArrayReleaser</a> for graphs with reverse arcs does nothing.  <a href="structoperations__research_1_1TailArrayReleaser.html#_details">More...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">struct &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoperations__research_1_1TailArrayReleaser_3_01GraphType_00_01false_01_4.html">TailArrayReleaser&lt; GraphType, false &gt;</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">The <a class="el" href="structoperations__research_1_1TailArrayReleaser.html" title="The TailArrayReleaser for graphs with reverse arcs does nothing.">TailArrayReleaser</a> for graphs without reverse arcs calls the appropriate method on the graph from the <a class="el" href="structoperations__research_1_1TailArrayReleaser.html" title="The TailArrayReleaser for graphs with reverse arcs does nothing.">TailArrayReleaser</a> constructor.  <a href="structoperations__research_1_1TailArrayReleaser_3_01GraphType_00_01false_01_4.html#_details">More...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1TailArrayManager.html">TailArrayManager</a></td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1HamiltonianPathSolver.html">HamiltonianPathSolver</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1LinearSumAssignment.html">LinearSumAssignment</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1CostValueCycleHandler.html">CostValueCycleHandler</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1ArcIndexOrderingByTailNode.html">ArcIndexOrderingByTailNode</a></td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Logically this class should be defined inside OptimizeGraphLayout, but compilation fails if we do that because C++98 doesn't allow instantiation of member templates with function-scoped types as template parameters, which in turn is because those function-scoped types lack linkage.  <a href="classoperations__research_1_1ArcIndexOrderingByTailNode.html#_details">More...</a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1LinearSumAssignment.html">LinearSumAssignment</a></td></tr>
-
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MaxFlow.html">MaxFlow</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1MinCostFlow.html">MinCostFlow</a></td></tr>
@@ -122,7 +147,7 @@
 <tr><td colspan="2"><br><h2>Typedefs</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">typedef int32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb">NodeIndex</a></td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Standard instantiation of <a class="el" href="classoperations__research_1_1EbertGraph.html" title="Most users should only use StarGraph, which is EbertGraph&lt;int32, int32&gt;, and...">EbertGraph</a>, named 'StarGraph', and relevant type shortcuts.  <a href="#0e629e35bfa311b31dd7f5065eb834bb"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Standard instantiation of <a class="el" href="classoperations__research_1_1ForwardEbertGraph.html" title="A forward-star-only graph representation for greater efficiency in those algorithms...">ForwardEbertGraph</a> (named 'ForwardStarGraph') of <a class="el" href="classoperations__research_1_1EbertGraph.html" title="Most users should only use StarGraph, which is EbertGraph&lt;int32, int32&gt;, and...">EbertGraph</a> (named 'StarGraph'); and relevant type shortcuts.  <a href="#0e629e35bfa311b31dd7f5065eb834bb"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">typedef int32&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#31d858394c5eed1fa21edc3da47047c1">ArcIndex</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">typedef int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#5841ff601ab08548afb15c45b2245de7">FlowQuantity</a></td></tr>
@@ -131,6 +156,9 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="classoperations__research_1_1EbertGraph.html">EbertGraph</a>&lt; <a class="el" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb">NodeIndex</a>, <br>
 <a class="el" href="namespaceoperations__research.html#31d858394c5eed1fa21edc3da47047c1">ArcIndex</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#e39f15b318a3cba17b1e60e6da51c0d4">StarGraph</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">typedef <a class="el" href="classoperations__research_1_1ForwardEbertGraph.html">ForwardEbertGraph</a><br>
+&lt; <a class="el" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb">NodeIndex</a>, <a class="el" href="namespaceoperations__research.html#31d858394c5eed1fa21edc3da47047c1">ArcIndex</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#652af62fa5f211aa0c54d7994ca1c504">ForwardStarGraph</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">typedef ZVector&lt; <a class="el" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb">NodeIndex</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#389e5320fb5bcd0fb99d894488f9820b">NodeIndexArray</a></td></tr>
 
@@ -143,24 +171,24 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">typedef int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#09767b3634289e432c3ce1d7c649666a">PathNodeIndex</a></td></tr>
 
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#7a93157e4f27d6aae41b676f23c156de">BellmanFordShortestPath</a> (int node_count, int start_node, int end_node, ResultCallback2&lt; int64, int, int &gt; *const graph, int64 disconnected_distance, std::vector&lt; int &gt; *nodes)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classbool.html">bool</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#7a93157e4f27d6aae41b676f23c156de">BellmanFordShortestPath</a> (int node_count, int start_node, int end_node, ResultCallback2&lt; int64, int, int &gt; *const graph, int64 disconnected_distance, std::vector&lt; int &gt; *nodes)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Bellman-Ford Shortest path with callback-based description of the graph.  <a href="#7a93157e4f27d6aae41b676f23c156de"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#fb2ec755685ef85d1343cb5ad51f24ac">Search</a> (ResultCallback2&lt; bool, int, int &gt; *const graph, ResultCallback1&lt; bool, const std::vector&lt; int &gt; &amp; &gt; *const callback, int *input_candidates, int input_size, int input_candidate_size, std::vector&lt; int &gt; *actual, bool *stop)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#fb2ec755685ef85d1343cb5ad51f24ac">Search</a> (ResultCallback2&lt; <a class="el" href="classbool.html">bool</a>, int, int &gt; *const graph, ResultCallback1&lt; <a class="el" href="classbool.html">bool</a>, const std::vector&lt; int &gt; &amp; &gt; *const callback, int *input_candidates, int input_size, int input_candidate_size, std::vector&lt; int &gt; *actual, <a class="el" href="classbool.html">bool</a> *stop)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#28314317c0ba03ea2934a31f52e17387">FindCliques</a> (ResultCallback2&lt; bool, int, int &gt; *const graph, int node_count, ResultCallback1&lt; bool, const std::vector&lt; int &gt; &amp; &gt; *const callback)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#28314317c0ba03ea2934a31f52e17387">FindCliques</a> (ResultCallback2&lt; <a class="el" href="classbool.html">bool</a>, int, int &gt; *const graph, int node_count, ResultCallback1&lt; <a class="el" href="classbool.html">bool</a>, const std::vector&lt; int &gt; &amp; &gt; *const callback)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">namespace  <a href="#28314317c0ba03ea2934a31f52e17387"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#8e88a911814fd6be9edfbdc67ada6cdc">CoverArcsByCliques</a> (ResultCallback2&lt; bool, int, int &gt; *const graph, int node_count, ResultCallback1&lt; bool, const std::vector&lt; int &gt; &amp; &gt; *const callback)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#8e88a911814fd6be9edfbdc67ada6cdc">CoverArcsByCliques</a> (ResultCallback2&lt; <a class="el" href="classbool.html">bool</a>, int, int &gt; *const graph, int node_count, ResultCallback1&lt; <a class="el" href="classbool.html">bool</a>, const std::vector&lt; int &gt; &amp; &gt; *const callback)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Covers the maximum number of arcs of the graph with cliques.  <a href="#8e88a911814fd6be9edfbdc67ada6cdc"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#0abe875b89a8c0b1e85173e29482ce81">DijkstraShortestPath</a> (int node_count, int start_node, int end_node, ResultCallback2&lt; int64, int, int &gt; *const graph, int64 disconnected_distance, std::vector&lt; int &gt; *nodes)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classbool.html">bool</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#0abe875b89a8c0b1e85173e29482ce81">DijkstraShortestPath</a> (int node_count, int start_node, int end_node, ResultCallback2&lt; int64, int, int &gt; *const graph, int64 disconnected_distance, std::vector&lt; int &gt; *nodes)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Dijsktra Shortest path with callback based description of the graph.  <a href="#0abe875b89a8c0b1e85173e29482ce81"></a><br></td></tr>
-<tr><td class="memTemplParams" nowrap colspan="2">template&lt;typename NodeIndexType, typename ArcIndexType&gt; </td></tr>
-<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#c25e53ee5236918fe3c8c4b563f68432">BuildLineGraph</a> (const <a class="el" href="classoperations__research_1_1EbertGraph.html">EbertGraph</a>&lt; NodeIndexType, ArcIndexType &gt; &amp;graph, <a class="el" href="classoperations__research_1_1EbertGraph.html">EbertGraph</a>&lt; NodeIndexType, ArcIndexType &gt; *const line_graph)</td></tr>
+<tr><td class="memTemplParams" nowrap colspan="2">template&lt;typename GraphType&gt; </td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top"><a class="el" href="classbool.html">bool</a>&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#5dc7d22d6e6810993bad9c201de5d3e2">BuildLineGraph</a> (const GraphType &amp;graph, GraphType *const line_graph)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Builds a directed line graph for 'graph' (see "directed line graph" in <a href="http://en.wikipedia.org/wiki/Line_graph">http://en.wikipedia.org/wiki/Line_graph</a>).  <a href="#c25e53ee5236918fe3c8c4b563f68432"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Builds a directed line graph for 'graph' (see "directed line graph" in <a href="http://en.wikipedia.org/wiki/Line_graph">http://en.wikipedia.org/wiki/Line_graph</a>).  <a href="#5dc7d22d6e6810993bad9c201de5d3e2"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#28fc2443c096ea8754eaa40697e4fc94">kHamiltonianPathSolverPadValue</a> = 1557</td></tr>
 
@@ -206,7 +234,7 @@ Keywords: directed graph, cheapest path, shortest path, Dijkstra, spp. <hr><h2>T
 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00927">927</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00139">139</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -223,7 +251,7 @@ Keywords: directed graph, cheapest path, shortest path, Dijkstra, spp. <hr><h2>T
 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00932">932</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00145">145</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -240,7 +268,7 @@ Keywords: directed graph, cheapest path, shortest path, Dijkstra, spp. <hr><h2>T
 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00934">934</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00147">147</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -257,7 +285,7 @@ Keywords: directed graph, cheapest path, shortest path, Dijkstra, spp. <hr><h2>T
 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00929">929</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00141">141</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -274,7 +302,24 @@ Keywords: directed graph, cheapest path, shortest path, Dijkstra, spp. <hr><h2>T
 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00928">928</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00140">140</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="652af62fa5f211aa0c54d7994ca1c504"></a><!-- doxytag: member="operations_research::ForwardStarGraph" ref="652af62fa5f211aa0c54d7994ca1c504" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef <a class="el" href="classoperations__research_1_1ForwardEbertGraph.html">ForwardEbertGraph</a>&lt;<a class="el" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb">NodeIndex</a>, <a class="el" href="namespaceoperations__research.html#31d858394c5eed1fa21edc3da47047c1">ArcIndex</a>&gt; <a class="el" href="classoperations__research_1_1ForwardEbertGraph.html">operations_research::ForwardStarGraph</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00143">143</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -290,10 +335,10 @@ Keywords: directed graph, cheapest path, shortest path, Dijkstra, spp. <hr><h2>T
 <div class="memdoc">
 
 <p>
-Standard instantiation of <a class="el" href="classoperations__research_1_1EbertGraph.html" title="Most users should only use StarGraph, which is EbertGraph&lt;int32, int32&gt;, and...">EbertGraph</a>, named 'StarGraph', and relevant type shortcuts. 
+Standard instantiation of <a class="el" href="classoperations__research_1_1ForwardEbertGraph.html" title="A forward-star-only graph representation for greater efficiency in those algorithms...">ForwardEbertGraph</a> (named 'ForwardStarGraph') of <a class="el" href="classoperations__research_1_1EbertGraph.html" title="Most users should only use StarGraph, which is EbertGraph&lt;int32, int32&gt;, and...">EbertGraph</a> (named 'StarGraph'); and relevant type shortcuts. 
 <p>
-Users are encouraged to use StarGraph, and the other type shortcuts below unless their use cases prevents them from doing so. 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00926">926</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+Unless their use cases prevent them from doing so, users are encouraged to use StarGraph or ForwardStarGraph according to whether or not they require reverse arcs to be represented explicitly. Along with either graph representation, the other type shortcuts here will often come in handy. 
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00130">130</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -310,7 +355,7 @@ Users are encouraged to use StarGraph, and the other type shortcuts below unless
 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00931">931</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00144">144</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -344,7 +389,7 @@ Users are encouraged to use StarGraph, and the other type shortcuts below unless
 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00933">933</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00146">146</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -361,7 +406,7 @@ Users are encouraged to use StarGraph, and the other type shortcuts below unless
 
 <p>
 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00930">930</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00142">142</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -371,7 +416,7 @@ Users are encouraged to use StarGraph, and the other type shortcuts below unless
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool operations_research::BellmanFordShortestPath           </td>
+          <td class="memname"><a class="el" href="classbool.html">bool</a> operations_research::BellmanFordShortestPath           </td>
           <td>(</td>
           <td class="paramtype">int&nbsp;</td>
           <td class="paramname"> <em>node_count</em>, </td>
@@ -423,22 +468,22 @@ The callback returns the distance between two nodes, a distance of 'disconnected
 
 </div>
 </div><p>
-<a class="anchor" name="c25e53ee5236918fe3c8c4b563f68432"></a><!-- doxytag: member="operations_research::BuildLineGraph" ref="c25e53ee5236918fe3c8c4b563f68432" args="(const EbertGraph&lt; NodeIndexType, ArcIndexType &gt; &amp;graph, EbertGraph&lt; NodeIndexType, ArcIndexType &gt; *const line_graph)" -->
+<a class="anchor" name="5dc7d22d6e6810993bad9c201de5d3e2"></a><!-- doxytag: member="operations_research::BuildLineGraph" ref="5dc7d22d6e6810993bad9c201de5d3e2" args="(const GraphType &amp;graph, GraphType *const line_graph)" -->
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename NodeIndexType, typename ArcIndexType&gt; </div>
+template&lt;typename GraphType&gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">bool operations_research::BuildLineGraph           </td>
+          <td class="memname"><a class="el" href="classbool.html">bool</a> operations_research::BuildLineGraph           </td>
           <td>(</td>
-          <td class="paramtype">const EbertGraph&lt; NodeIndexType, ArcIndexType &gt; &amp;&nbsp;</td>
+          <td class="paramtype">const GraphType &amp;&nbsp;</td>
           <td class="paramname"> <em>graph</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">EbertGraph&lt; NodeIndexType, ArcIndexType &gt; *const &nbsp;</td>
+          <td class="paramtype">GraphType *const &nbsp;</td>
           <td class="paramname"> <em>line_graph</em></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -454,7 +499,7 @@ template&lt;typename NodeIndexType, typename ArcIndexType&gt; </div>
 Builds a directed line graph for 'graph' (see "directed line graph" in <a href="http://en.wikipedia.org/wiki/Line_graph">http://en.wikipedia.org/wiki/Line_graph</a>). 
 <p>
 Arcs of the original graph become nodes and the new graph contains only nodes created from arcs in the original graph (we use the notation (a-&gt;b) for these new nodes); the index of the node (a-&gt;b) in the new graph is exactly the same as the index of the arc a-&gt;b in the original graph. An arc from node (a-&gt;b) to node (c-&gt;d) in the new graph is added if and only if b == c in the original graph. This method expects that 'line_graph' is an empty graph (it has no nodes and no arcs). Returns false on an error. 
-<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l00948">948</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
+<p>Definition at line <a class="el" href="ebert__graph_8h-source.html#l01475">1475</a> of file <a class="el" href="ebert__graph_8h-source.html">ebert_graph.h</a>.</p>
 
 </div>
 </div><p>
@@ -465,7 +510,7 @@ Arcs of the original graph become nodes and the new graph contains only nodes cr
         <tr>
           <td class="memname">void operations_research::CoverArcsByCliques           </td>
           <td>(</td>
-          <td class="paramtype">ResultCallback2&lt; bool, int, int &gt; *const &nbsp;</td>
+          <td class="paramtype">ResultCallback2&lt; <a class="el" href="classbool.html">bool</a>, int, int &gt; *const &nbsp;</td>
           <td class="paramname"> <em>graph</em>, </td>
         </tr>
         <tr>
@@ -477,7 +522,7 @@ Arcs of the original graph become nodes and the new graph contains only nodes cr
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">ResultCallback1&lt; bool, const std::vector&lt; int &gt; &amp; &gt; *const &nbsp;</td>
+          <td class="paramtype">ResultCallback1&lt; <a class="el" href="classbool.html">bool</a>, const std::vector&lt; int &gt; &amp; &gt; *const &nbsp;</td>
           <td class="paramname"> <em>callback</em></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -502,7 +547,7 @@ The graph is described by the graph callback. graph-&gt;Run(i, j) indicates if t
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool operations_research::DijkstraShortestPath           </td>
+          <td class="memname"><a class="el" href="classbool.html">bool</a> operations_research::DijkstraShortestPath           </td>
           <td>(</td>
           <td class="paramtype">int&nbsp;</td>
           <td class="paramname"> <em>node_count</em>, </td>
@@ -561,7 +606,7 @@ The callback returns the distance between two nodes, a distance of 'disconnected
         <tr>
           <td class="memname">void operations_research::FindCliques           </td>
           <td>(</td>
-          <td class="paramtype">ResultCallback2&lt; bool, int, int &gt; *const &nbsp;</td>
+          <td class="paramtype">ResultCallback2&lt; <a class="el" href="classbool.html">bool</a>, int, int &gt; *const &nbsp;</td>
           <td class="paramname"> <em>graph</em>, </td>
         </tr>
         <tr>
@@ -573,7 +618,7 @@ The callback returns the distance between two nodes, a distance of 'disconnected
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">ResultCallback1&lt; bool, const std::vector&lt; int &gt; &amp; &gt; *const &nbsp;</td>
+          <td class="paramtype">ResultCallback1&lt; <a class="el" href="classbool.html">bool</a>, const std::vector&lt; int &gt; &amp; &gt; *const &nbsp;</td>
           <td class="paramname"> <em>callback</em></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -602,13 +647,13 @@ graph-&gt;Run(i, j) indicates if there is an arc between i and j. This function 
         <tr>
           <td class="memname">void operations_research::@1::Search           </td>
           <td>(</td>
-          <td class="paramtype">ResultCallback2&lt; bool, int, int &gt; *const &nbsp;</td>
+          <td class="paramtype">ResultCallback2&lt; <a class="el" href="classbool.html">bool</a>, int, int &gt; *const &nbsp;</td>
           <td class="paramname"> <em>graph</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">ResultCallback1&lt; bool, const std::vector&lt; int &gt; &amp; &gt; *const &nbsp;</td>
+          <td class="paramtype">ResultCallback1&lt; <a class="el" href="classbool.html">bool</a>, const std::vector&lt; int &gt; &amp; &gt; *const &nbsp;</td>
           <td class="paramname"> <em>callback</em>, </td>
         </tr>
         <tr>
@@ -638,7 +683,7 @@ graph-&gt;Run(i, j) indicates if there is an arc between i and j. This function 
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">bool *&nbsp;</td>
+          <td class="paramtype"><a class="el" href="classbool.html">bool</a> *&nbsp;</td>
           <td class="paramname"> <em>stop</em></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -683,7 +728,7 @@ graph-&gt;Run(i, j) indicates if there is an arc between i and j. This function 
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

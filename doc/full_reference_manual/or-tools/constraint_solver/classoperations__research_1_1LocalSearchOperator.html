@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -108,6 +108,8 @@ Inheritance diagram for operations_research::LocalSearchOperator:</div>
 <area href="classoperations__research_1_1BaseLNS.html" alt="operations_research::BaseLNS" shape="rect" coords="0,168,292,192">
 <area href="classoperations__research_1_1ChangeValue.html" alt="operations_research::ChangeValue" shape="rect" coords="302,168,594,192">
 <area href="classoperations__research_1_1PathOperator.html" alt="operations_research::PathOperator" shape="rect" coords="604,168,896,192">
+<area href="classoperations__research_1_1MakePairActiveOperator.html" alt="operations_research::MakePairActiveOperator" shape="rect" coords="453,224,745,248">
+<area href="classoperations__research_1_1MakePairRelocateOperator.html" alt="operations_research::MakePairRelocateOperator" shape="rect" coords="755,224,1047,248">
 </map>
 </div>
 
@@ -127,10 +129,10 @@ Inheritance diagram for operations_research::LocalSearchOperator:</div>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 &lt; !defined(SWIG) 
 <p>
-Local search operators The base class for all local search operators. A local search operator is an object which defines the neighborhood of a solution; in other words, a neighborhood is the set of solutions which can be reached from a given solution using an operator. The behavior of the <a class="el" href="classoperations__research_1_1LocalSearchOperator.html" title="&lt; !defined(SWIG)">LocalSearchOperator</a> class is similar to the one of an iterator. The operator is synchronized with an assignment (gives the current values of the variables); this is done in the <a class="el" href="classoperations__research_1_1LocalSearchOperator.html#832fd07f7355d16895841a4735e544c1">Start()</a> method. Then one can iterate over the neighbors using the MakeNextNeighbor method. This method returns an assignment which represents the incremental changes to the curent solution. It also returns a second assignment representing the changes to the last solution defined by the neighborhood operator; this assignment is empty is the neighborhood operator cannot track this information. <dl compact><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>TODO(<a href="http://who/user">user</a>): rename Start to Synchronize ? </dd></dl>
-<dl compact><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>TODO(<a href="http://who/user">user</a>): decouple the iterating from the defining of a neighbor. </dd></dl>
+Local search operators The base class for all local search operators. A local search operator is an object which defines the neighborhood of a solution; in other words, a neighborhood is the set of solutions which can be reached from a given solution using an operator. The behavior of the <a class="el" href="classoperations__research_1_1LocalSearchOperator.html" title="&lt; !defined(SWIG)">LocalSearchOperator</a> class is similar to the one of an iterator. The operator is synchronized with an assignment (gives the current values of the variables); this is done in the <a class="el" href="classoperations__research_1_1LocalSearchOperator.html#832fd07f7355d16895841a4735e544c1">Start()</a> method. Then one can iterate over the neighbors using the MakeNextNeighbor method. This method returns an assignment which represents the incremental changes to the curent solution. It also returns a second assignment representing the changes to the last solution defined by the neighborhood operator; this assignment is empty is the neighborhood operator cannot track this information. <dl compact><dt><b><a class="el" href="todo.html#_todo000013">Todo:</a></b></dt><dd>TODO(<a href="http://who/user">user</a>): rename Start to Synchronize ? </dd></dl>
+<dl compact><dt><b><a class="el" href="todo.html#_todo000013">Todo:</a></b></dt><dd>TODO(<a href="http://who/user">user</a>): decouple the iterating from the defining of a neighbor. </dd></dl>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00480">480</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00795">795</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="f23505cc80b48f7de0c2e6a8d8424c5e"></a><!-- doxytag: member="operations_research::LocalSearchOperator::LocalSearchOperator" ref="f23505cc80b48f7de0c2e6a8d8424c5e" args="()" -->
 <div class="memitem">
@@ -149,7 +151,7 @@ Local search operators The base class for all local search operators. A local se
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00482">482</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00797">797</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -170,7 +172,7 @@ Local search operators The base class for all local search operators. A local se
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00483">483</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00798">798</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -202,7 +204,7 @@ Local search operators The base class for all local search operators. A local se
 
 <p>
 
-<p>Implemented in <a class="el" href="classoperations__research_1_1BaseLNS.html#72072ba65bc6d55552adee7a88b6064a">operations_research::BaseLNS</a>, <a class="el" href="classoperations__research_1_1ChangeValue.html#2b87d6185b6d48b61f4ac3f2648ce0a1">operations_research::ChangeValue</a>, and <a class="el" href="classoperations__research_1_1PathOperator.html#323625d14b477365d788b7a1e96bb51d">operations_research::PathOperator</a>.</p>
+<p>Implemented in <a class="el" href="classoperations__research_1_1BaseLNS.html#72072ba65bc6d55552adee7a88b6064a">operations_research::BaseLNS</a>, <a class="el" href="classoperations__research_1_1ChangeValue.html#2b87d6185b6d48b61f4ac3f2648ce0a1">operations_research::ChangeValue</a>, <a class="el" href="classoperations__research_1_1PathOperator.html#323625d14b477365d788b7a1e96bb51d">operations_research::PathOperator</a>, and <a class="el" href="classoperations__research_1_1MakePairActiveOperator.html#e3cafe5eda5a2a50e8615704e14fef4f">operations_research::MakePairActiveOperator</a>.</p>
 
 </div>
 </div><p>
@@ -238,7 +240,7 @@ Local search operators The base class for all local search operators. A local se
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

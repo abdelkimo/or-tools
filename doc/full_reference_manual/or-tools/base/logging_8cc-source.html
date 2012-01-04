@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/base/index.html">base</a>/
             </tt></b></font>
@@ -98,26 +98,28 @@
 <a name="l00016"></a>00016 
 <a name="l00017"></a>00017 <span class="preprocessor">#include "<a class="code" href="logging_8h.html">base/logging.h</a>"</span>
 <a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="keyword">namespace </span>operations_research {
-<a name="l00020"></a><a class="code" href="classoperations__research_1_1DateLogger.html#9eea421bebbaa7ebe594a725376b02d1">00020</a> <a class="code" href="classoperations__research_1_1DateLogger.html#9eea421bebbaa7ebe594a725376b02d1">DateLogger::DateLogger</a>() {
-<a name="l00021"></a>00021 <span class="preprocessor">#if defined(_MSC_VER)</span>
-<a name="l00022"></a>00022 <span class="preprocessor"></span>  _tzset();
-<a name="l00023"></a>00023 <span class="preprocessor">#endif</span>
-<a name="l00024"></a>00024 <span class="preprocessor"></span>}
-<a name="l00025"></a>00025 
-<a name="l00026"></a><a class="code" href="classoperations__research_1_1DateLogger.html#e1ecb5cbfc68db3fbc62db6a26c2c3aa">00026</a> <span class="keywordtype">char</span>* <span class="keyword">const</span> DateLogger::HumanDate() {
-<a name="l00027"></a>00027 <span class="preprocessor">#if defined(_MSC_VER)</span>
-<a name="l00028"></a>00028 <span class="preprocessor"></span>  _strtime_s(buffer_, <span class="keyword">sizeof</span>(buffer_));
-<a name="l00029"></a>00029 <span class="preprocessor">#else</span>
-<a name="l00030"></a>00030 <span class="preprocessor"></span>  time_t time_value = time(NULL);
-<a name="l00031"></a>00031   <span class="keyword">struct </span>tm now;
-<a name="l00032"></a>00032   localtime_r(&amp;time_value, &amp;now);
-<a name="l00033"></a>00033   snprintf(buffer_, <span class="keyword">sizeof</span>(buffer_), <span class="stringliteral">"%02d:%02d:%02d\0"</span>,
-<a name="l00034"></a>00034            now.tm_hour, now.tm_min, now.tm_sec);
-<a name="l00035"></a>00035 <span class="preprocessor">#endif</span>
-<a name="l00036"></a>00036 <span class="preprocessor"></span>  <span class="keywordflow">return</span> buffer_;
-<a name="l00037"></a>00037 }
-<a name="l00038"></a>00038 }  <span class="comment">// namespace operations_research</span>
+<a name="l00019"></a>00019 <a class="code" href="logging_8cc.html#0584a65fd7ecd6c2140f38b65dc80172" title="Licensed under the Apache License, Version 2.0 (the &amp;quot;License&amp;quot;); you may...">DEFINE_int32</a>(log_level, 0, <span class="stringliteral">"Log level (0 is the default)."</span>);
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="keyword">namespace </span>operations_research {
+<a name="l00022"></a><a class="code" href="classoperations__research_1_1DateLogger.html#9eea421bebbaa7ebe594a725376b02d1">00022</a> <a class="code" href="classoperations__research_1_1DateLogger.html#9eea421bebbaa7ebe594a725376b02d1">DateLogger::DateLogger</a>() {
+<a name="l00023"></a>00023 <span class="preprocessor">#if defined(_MSC_VER)</span>
+<a name="l00024"></a>00024 <span class="preprocessor"></span>  _tzset();
+<a name="l00025"></a>00025 <span class="preprocessor">#endif</span>
+<a name="l00026"></a>00026 <span class="preprocessor"></span>}
+<a name="l00027"></a>00027 
+<a name="l00028"></a><a class="code" href="classoperations__research_1_1DateLogger.html#e1ecb5cbfc68db3fbc62db6a26c2c3aa">00028</a> <span class="keywordtype">char</span>* <span class="keyword">const</span> DateLogger::HumanDate() {
+<a name="l00029"></a>00029 <span class="preprocessor">#if defined(_MSC_VER)</span>
+<a name="l00030"></a>00030 <span class="preprocessor"></span>  _strtime_s(buffer_, <span class="keyword">sizeof</span>(buffer_));
+<a name="l00031"></a>00031 <span class="preprocessor">#else</span>
+<a name="l00032"></a>00032 <span class="preprocessor"></span>  time_t time_value = time(NULL);
+<a name="l00033"></a>00033   <span class="keyword">struct </span>tm now;
+<a name="l00034"></a>00034   localtime_r(&amp;time_value, &amp;now);
+<a name="l00035"></a>00035   snprintf(buffer_, <span class="keyword">sizeof</span>(buffer_), <span class="stringliteral">"%02d:%02d:%02d\0"</span>,
+<a name="l00036"></a>00036            now.tm_hour, now.tm_min, now.tm_sec);
+<a name="l00037"></a>00037 <span class="preprocessor">#endif</span>
+<a name="l00038"></a>00038 <span class="preprocessor"></span>  <span class="keywordflow">return</span> buffer_;
+<a name="l00039"></a>00039 }
+<a name="l00040"></a>00040 }  <span class="comment">// namespace operations_research</span>
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -126,7 +128,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

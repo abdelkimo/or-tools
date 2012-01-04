@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:11 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/graph/index.html">graph</a>/
             </tt></b></font>
@@ -90,6 +90,7 @@
 <code>#include &quot;base/commandlineflags.h&quot;</code><br>
 <code>#include &quot;base/stringprintf.h&quot;</code><br>
 <code>#include &quot;base/mathutil.h&quot;</code><br>
+<code>#include &quot;<a class="el" href="max__flow_8h-source.html">graph/max_flow.h</a>&quot;</code><br>
 
 <p>
 <a href="min__cost__flow_8cc-source.html">Go to the source code of this file.</a><table border="0" cellpadding="0" cellspacing="0">
@@ -101,17 +102,19 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="min__cost__flow_8cc.html#cde8c35032581b083b7f418f4e51ffae">DEFINE_int64</a> (min_cost_flow_alpha, 5,&quot;Divide factor for epsilon at each refine step.&quot;)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  <a href="#cde8c35032581b083b7f418f4e51ffae"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="min__cost__flow_8cc.html#8a3b33c05d5f4c03d185247ca02506f2">DEFINE_bool</a> (min_cost_flow_check_balance, false,&quot;Check that the supplies and demands are balanced.&quot;)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="min__cost__flow_8cc.html#30da38b76ef61c4d38422115045359c5">DEFINE_bool</a> (min_cost_flow_check_feasibility, true,&quot;Check that the graph has enough capacity to send all supplies &quot;&quot;and serve all demands. Also check that the sum of supplies &quot;&quot;is equal to the sum of demands.&quot;)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="min__cost__flow_8cc.html#7bd11ca8331b54349dbc750ead763410">DEFINE_bool</a> (min_cost_flow_check_costs, false,&quot;Check that the magnitude of the costs will not exceed the &quot;&quot;precision of the machine when scaled (multiplied) by the number &quot;&quot;of nodes&quot;)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="min__cost__flow_8cc.html#e678f235165c1146dd54e1006d260897">DEFINE_bool</a> (min_cost_flow_check_balance, true,&quot;Check that the sum of supplies is equal to the sum of demands.&quot;)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="min__cost__flow_8cc.html#a50ff904c3233a336f3ea6e5bc9da14d">DEFINE_bool</a> (min_cost_flow_check_costs, true,&quot;Check that the magnitude of the costs will not exceed the &quot;&quot;precision of the machine when scaled (multiplied) by the number &quot;&quot;of nodes&quot;)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="min__cost__flow_8cc.html#752f12758ba7daebfba20747c270ae8b">DEFINE_bool</a> (min_cost_flow_fast_potential_update, true,&quot;Fast node potential update. Faster when set to true, but does not&quot;&quot;detect as many infeasibilities as when set to false.&quot;)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="min__cost__flow_8cc.html#f45c0ec363e8603242457a82536c3ffe">DEFINE_bool</a> (min_cost_flow_check_result, false,&quot;Check that the result is valid.&quot;)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="min__cost__flow_8cc.html#2581b7542518aa9475f9679e0ae3dc05">DEFINE_bool</a> (min_cost_flow_check_result, true,&quot;Check that the result is valid.&quot;)</td></tr>
 
 </table>
 <hr><h2>Function Documentation</h2>
-<a class="anchor" name="f45c0ec363e8603242457a82536c3ffe"></a><!-- doxytag: member="min_cost_flow.cc::DEFINE_bool" ref="f45c0ec363e8603242457a82536c3ffe" args="(min_cost_flow_check_result, false,&quot;Check that the result is valid.&quot;)" -->
+<a class="anchor" name="2581b7542518aa9475f9679e0ae3dc05"></a><!-- doxytag: member="min_cost_flow.cc::DEFINE_bool" ref="2581b7542518aa9475f9679e0ae3dc05" args="(min_cost_flow_check_result, true,&quot;Check that the result is valid.&quot;)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -124,7 +127,7 @@
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">false&nbsp;</td>
+          <td class="paramtype">true&nbsp;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
@@ -187,7 +190,7 @@
 
 </div>
 </div><p>
-<a class="anchor" name="7bd11ca8331b54349dbc750ead763410"></a><!-- doxytag: member="min_cost_flow.cc::DEFINE_bool" ref="7bd11ca8331b54349dbc750ead763410" args="(min_cost_flow_check_costs, false,&quot;Check that the magnitude of the costs will not exceed the &quot;&quot;precision of the machine when scaled (multiplied) by the number &quot;&quot;of nodes&quot;)" -->
+<a class="anchor" name="a50ff904c3233a336f3ea6e5bc9da14d"></a><!-- doxytag: member="min_cost_flow.cc::DEFINE_bool" ref="a50ff904c3233a336f3ea6e5bc9da14d" args="(min_cost_flow_check_costs, true,&quot;Check that the magnitude of the costs will not exceed the &quot;&quot;precision of the machine when scaled (multiplied) by the number &quot;&quot;of nodes&quot;)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -200,7 +203,7 @@
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">false&nbsp;</td>
+          <td class="paramtype">true&nbsp;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
@@ -222,7 +225,7 @@
 
 </div>
 </div><p>
-<a class="anchor" name="8a3b33c05d5f4c03d185247ca02506f2"></a><!-- doxytag: member="min_cost_flow.cc::DEFINE_bool" ref="8a3b33c05d5f4c03d185247ca02506f2" args="(min_cost_flow_check_balance, false,&quot;Check that the supplies and demands are balanced.&quot;)" -->
+<a class="anchor" name="e678f235165c1146dd54e1006d260897"></a><!-- doxytag: member="min_cost_flow.cc::DEFINE_bool" ref="e678f235165c1146dd54e1006d260897" args="(min_cost_flow_check_balance, true,&quot;Check that the sum of supplies is equal to the sum of demands.&quot;)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -235,13 +238,48 @@
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">false&nbsp;</td>
+          <td class="paramtype">true&nbsp;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&quot;Check that the supplies and demands are balanced.&quot;&nbsp;</td>
+          <td class="paramtype">&quot;Check that the sum of supplies is equal to the sum of demands.&quot;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="30da38b76ef61c4d38422115045359c5"></a><!-- doxytag: member="min_cost_flow.cc::DEFINE_bool" ref="30da38b76ef61c4d38422115045359c5" args="(min_cost_flow_check_feasibility, true,&quot;Check that the graph has enough capacity to send all supplies &quot;&quot;and serve all demands. Also check that the sum of supplies &quot;&quot;is equal to the sum of demands.&quot;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_bool           </td>
+          <td>(</td>
+          <td class="paramtype">min_cost_flow_check_feasibility&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">true&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Check that the graph has enough capacity to send all supplies &quot;&quot;and serve all demands. Also check that the sum of supplies &quot;&quot;is equal to the sum of demands.&quot;&nbsp;</td>
           <td class="paramname"></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -304,7 +342,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

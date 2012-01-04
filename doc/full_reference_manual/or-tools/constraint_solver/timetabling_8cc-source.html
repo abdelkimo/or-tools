@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -136,7 +136,7 @@
 <a name="l00053"></a>00053   IntervalUnaryRelation(Solver* <span class="keyword">const</span> s,
 <a name="l00054"></a>00054                         IntervalVar* <span class="keyword">const</span> t,
 <a name="l00055"></a>00055                         int64 d,
-<a name="l00056"></a>00056                         <a class="code" href="classoperations__research_1_1Solver.html#83e14be9c6bba9abdd1949c25c32a60d">Solver::UnaryIntervalRelation</a> rel)
+<a name="l00056"></a>00056                         <a class="code" href="classoperations__research_1_1Solver.html#83e14be9c6bba9abdd1949c25c32a60d" title="This enum is used in Solver::MakeIntervalVarRelation to specify the temporal relation...">Solver::UnaryIntervalRelation</a> rel)
 <a name="l00057"></a>00057       : Constraint(s), <a class="code" href="interval_8cc.html#0b074c5de95ece618d231c11871e58d9">t_</a>(t), <a class="code" href="timetabling_8cc.html#0f40dd2503db7a0f66f002d5c44cd00d">d_</a>(d), <a class="code" href="timetabling_8cc.html#2d508ee9f3dcb49d298897a652893333">rel_</a>(rel) {}
 <a name="l00058"></a>00058   <span class="keyword">virtual</span> ~IntervalUnaryRelation() {}
 <a name="l00059"></a>00059 
@@ -160,7 +160,7 @@
 <a name="l00077"></a>00077  <span class="keyword">private</span>:
 <a name="l00078"></a><a class="code" href="timetabling_8cc.html#0b074c5de95ece618d231c11871e58d9">00078</a>   IntervalVar* <span class="keyword">const</span> <a class="code" href="interval_8cc.html#0b074c5de95ece618d231c11871e58d9">t_</a>;
 <a name="l00079"></a><a class="code" href="timetabling_8cc.html#0f40dd2503db7a0f66f002d5c44cd00d">00079</a>   <span class="keyword">const</span> int64 <a class="code" href="timetabling_8cc.html#0f40dd2503db7a0f66f002d5c44cd00d">d_</a>;
-<a name="l00080"></a><a class="code" href="timetabling_8cc.html#2d508ee9f3dcb49d298897a652893333">00080</a>   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Solver.html#83e14be9c6bba9abdd1949c25c32a60d">Solver::UnaryIntervalRelation</a> <a class="code" href="timetabling_8cc.html#2d508ee9f3dcb49d298897a652893333">rel_</a>;
+<a name="l00080"></a><a class="code" href="timetabling_8cc.html#2d508ee9f3dcb49d298897a652893333">00080</a>   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Solver.html#83e14be9c6bba9abdd1949c25c32a60d" title="This enum is used in Solver::MakeIntervalVarRelation to specify the temporal relation...">Solver::UnaryIntervalRelation</a> <a class="code" href="timetabling_8cc.html#2d508ee9f3dcb49d298897a652893333">rel_</a>;
 <a name="l00081"></a>00081 };
 <a name="l00082"></a>00082 
 <a name="l00083"></a>00083 <span class="keywordtype">void</span> IntervalUnaryRelation::Post() {
@@ -209,9 +209,9 @@
 <a name="l00126"></a>00126 }  <span class="comment">// namespace</span>
 <a name="l00127"></a>00127 
 <a name="l00128"></a><a class="code" href="classoperations__research_1_1Solver.html#021d45aad0aa4fa6f0f07404efd4159a">00128</a> <a class="code" href="classoperations__research_1_1Constraint.html" title="A constraint is the main modeling object.">Constraint</a>* Solver::MakeIntervalVarRelation(<a class="code" href="classoperations__research_1_1IntervalVar.html" title="Interval Var.">IntervalVar</a>* <span class="keyword">const</span> t,
-<a name="l00129"></a>00129                                             <a class="code" href="classoperations__research_1_1Solver.html#83e14be9c6bba9abdd1949c25c32a60d">Solver::UnaryIntervalRelation</a> r,
+<a name="l00129"></a>00129                                             <a class="code" href="classoperations__research_1_1Solver.html#83e14be9c6bba9abdd1949c25c32a60d" title="This enum is used in Solver::MakeIntervalVarRelation to specify the temporal relation...">Solver::UnaryIntervalRelation</a> r,
 <a name="l00130"></a>00130                                             int64 d) {
-<a name="l00131"></a>00131   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> IntervalUnaryRelation(<span class="keyword">this</span>, t, d, r));
+<a name="l00131"></a>00131   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> IntervalUnaryRelation(<span class="keyword">this</span>, t, d, r));
 <a name="l00132"></a>00132 }
 <a name="l00133"></a>00133 
 <a name="l00134"></a>00134 <span class="comment">// ----- interval &lt;binary relation&gt; interval -----</span>
@@ -222,7 +222,7 @@
 <a name="l00139"></a>00139   IntervalBinaryRelation(<a class="code" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a>* <span class="keyword">const</span> s,
 <a name="l00140"></a>00140                          <a class="code" href="classoperations__research_1_1IntervalVar.html" title="Interval Var.">IntervalVar</a>* <span class="keyword">const</span> t1,
 <a name="l00141"></a>00141                          <a class="code" href="classoperations__research_1_1IntervalVar.html" title="Interval Var.">IntervalVar</a>* <span class="keyword">const</span> t2,
-<a name="l00142"></a>00142                          <a class="code" href="classoperations__research_1_1Solver.html#b6302978f1de57bdeafa0ffee05c92c9">Solver::BinaryIntervalRelation</a> rel)
+<a name="l00142"></a>00142                          <a class="code" href="classoperations__research_1_1Solver.html#b6302978f1de57bdeafa0ffee05c92c9" title="This enum is used in Solver::MakeIntervalVarRelation to specify the temporal relation...">Solver::BinaryIntervalRelation</a> rel)
 <a name="l00143"></a>00143       : <a class="code" href="classoperations__research_1_1Constraint.html" title="A constraint is the main modeling object.">Constraint</a>(s), <a class="code" href="timetabling_8cc.html#eef932a7b3785634f7c177e1484066fe">t1_</a>(t1), <a class="code" href="timetabling_8cc.html#2540d05a4ead6216488a850866e2b9cb">t2_</a>(t2), <a class="code" href="timetabling_8cc.html#2d508ee9f3dcb49d298897a652893333">rel_</a>(rel) {}
 <a name="l00144"></a>00144   <span class="keyword">virtual</span> ~IntervalBinaryRelation() {}
 <a name="l00145"></a>00145 
@@ -248,7 +248,7 @@
 <a name="l00165"></a>00165  <span class="keyword">private</span>:
 <a name="l00166"></a><a class="code" href="timetabling_8cc.html#eef932a7b3785634f7c177e1484066fe">00166</a>   IntervalVar* <span class="keyword">const</span> <a class="code" href="timetabling_8cc.html#eef932a7b3785634f7c177e1484066fe">t1_</a>;
 <a name="l00167"></a><a class="code" href="timetabling_8cc.html#2540d05a4ead6216488a850866e2b9cb">00167</a>   IntervalVar* <span class="keyword">const</span> <a class="code" href="timetabling_8cc.html#2540d05a4ead6216488a850866e2b9cb">t2_</a>;
-<a name="l00168"></a>00168   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Solver.html#b6302978f1de57bdeafa0ffee05c92c9">Solver::BinaryIntervalRelation</a> <a class="code" href="timetabling_8cc.html#2d508ee9f3dcb49d298897a652893333">rel_</a>;
+<a name="l00168"></a>00168   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Solver.html#b6302978f1de57bdeafa0ffee05c92c9" title="This enum is used in Solver::MakeIntervalVarRelation to specify the temporal relation...">Solver::BinaryIntervalRelation</a> <a class="code" href="timetabling_8cc.html#2d508ee9f3dcb49d298897a652893333">rel_</a>;
 <a name="l00169"></a>00169 };
 <a name="l00170"></a>00170 
 <a name="l00171"></a>00171 <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1Constraint.html#aa882d58b5fc0f2e3df6eff957ad4a0d" title="This method is called when the constraint is processed by the solver.">IntervalBinaryRelation::Post</a>() {
@@ -341,9 +341,9 @@
 <a name="l00258"></a>00258 }  <span class="comment">// namespace</span>
 <a name="l00259"></a>00259 
 <a name="l00260"></a><a class="code" href="classoperations__research_1_1Solver.html#867272e3daf29d4ad94c8e0043ace85a">00260</a> <a class="code" href="classoperations__research_1_1Constraint.html" title="A constraint is the main modeling object.">Constraint</a>* Solver::MakeIntervalVarRelation(<a class="code" href="classoperations__research_1_1IntervalVar.html" title="Interval Var.">IntervalVar</a>* <span class="keyword">const</span> t1,
-<a name="l00261"></a>00261                                             <a class="code" href="classoperations__research_1_1Solver.html#b6302978f1de57bdeafa0ffee05c92c9">Solver::BinaryIntervalRelation</a> r,
+<a name="l00261"></a>00261                                             <a class="code" href="classoperations__research_1_1Solver.html#b6302978f1de57bdeafa0ffee05c92c9" title="This enum is used in Solver::MakeIntervalVarRelation to specify the temporal relation...">Solver::BinaryIntervalRelation</a> r,
 <a name="l00262"></a>00262                                             <a class="code" href="classoperations__research_1_1IntervalVar.html" title="Interval Var.">IntervalVar</a>* <span class="keyword">const</span> t2) {
-<a name="l00263"></a>00263   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> IntervalBinaryRelation(<span class="keyword">this</span>, t1, t2, r));
+<a name="l00263"></a>00263   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> IntervalBinaryRelation(<span class="keyword">this</span>, t1, t2, r));
 <a name="l00264"></a>00264 }
 <a name="l00265"></a>00265 
 <a name="l00266"></a>00266 <span class="comment">// ----- activity a before activity b or activity b before activity a -----</span>
@@ -516,12 +516,12 @@
 <a name="l00433"></a><a class="code" href="classoperations__research_1_1Solver.html#270b1a8603ea856d3c65d931706152db">00433</a> <a class="code" href="classoperations__research_1_1Constraint.html" title="A constraint is the main modeling object.">Constraint</a>* Solver::MakeTemporalDisjunction(<a class="code" href="classoperations__research_1_1IntervalVar.html" title="Interval Var.">IntervalVar</a>* <span class="keyword">const</span> t1,
 <a name="l00434"></a>00434                                             <a class="code" href="classoperations__research_1_1IntervalVar.html" title="Interval Var.">IntervalVar</a>* <span class="keyword">const</span> t2,
 <a name="l00435"></a>00435                                             <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span> alt) {
-<a name="l00436"></a>00436   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> TemporalDisjunction(<span class="keyword">this</span>, t1, t2, alt));
+<a name="l00436"></a>00436   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> TemporalDisjunction(<span class="keyword">this</span>, t1, t2, alt));
 <a name="l00437"></a>00437 }
 <a name="l00438"></a>00438 
 <a name="l00439"></a><a class="code" href="classoperations__research_1_1Solver.html#06451ade77105d35c6cebdafc86e63b5">00439</a> <a class="code" href="classoperations__research_1_1Constraint.html" title="A constraint is the main modeling object.">Constraint</a>* <a class="code" href="classoperations__research_1_1Solver.html#270b1a8603ea856d3c65d931706152db" title="This constraint implements a temporal disjunction between two interval vars t1 and...">Solver::MakeTemporalDisjunction</a>(<a class="code" href="classoperations__research_1_1IntervalVar.html" title="Interval Var.">IntervalVar</a>* <span class="keyword">const</span> t1,
 <a name="l00440"></a>00440                                             <a class="code" href="classoperations__research_1_1IntervalVar.html" title="Interval Var.">IntervalVar</a>* <span class="keyword">const</span> t2) {
-<a name="l00441"></a>00441   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> TemporalDisjunction(<span class="keyword">this</span>, t1, t2, NULL));
+<a name="l00441"></a>00441   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> TemporalDisjunction(<span class="keyword">this</span>, t1, t2, NULL));
 <a name="l00442"></a>00442 }
 <a name="l00443"></a>00443 
 <a name="l00444"></a>00444 }  <span class="comment">// namespace operations_research</span>
@@ -533,7 +533,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

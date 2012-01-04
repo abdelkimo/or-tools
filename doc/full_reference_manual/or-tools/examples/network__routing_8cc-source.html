@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/examples/index.html">examples</a>/
             </tt></b></font>
@@ -602,7 +602,7 @@
 <a name="l00519"></a>00519       <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; num_nodes_; ++j) {
 <a name="l00520"></a>00520         <span class="keyword">const</span> <span class="keywordtype">int</span> traffic = data.<a class="code" href="classoperations__research_1_1NetworkRoutingData.html#ea57cb718024afbba2c52f92e97d3b93" title="Returns the demand between the source and the destination, and 0 if there are no...">Demand</a>(i, j);
 <a name="l00521"></a>00521         <span class="keywordflow">if</span> (traffic &gt; 0) {
-<a name="l00522"></a>00522           demands_array_.push_back(<a class="code" href="structoperations__research_1_1Demand.html" title="Solving the Problem.">Demand</a>(i, j, traffic));
+<a name="l00522"></a>00522           demands_array_.push_back(<a class="code" href="namespaceoperations__research.html#13d47e87dd02eb50070ccc017d8ea68c" title="Returns the demand (quantity picked up or delivered) of a node, demands holds the...">Demand</a>(i, j, traffic));
 <a name="l00523"></a>00523           total_demand += traffic;
 <a name="l00524"></a>00524         }
 <a name="l00525"></a>00525       }
@@ -929,212 +929,213 @@
 <a name="l00846"></a>00846                            arc_index,
 <a name="l00847"></a>00847                            path_vars,
 <a name="l00848"></a>00848                            &amp;vtraffic[arc_index]);
-<a name="l00849"></a>00849     }
-<a name="l00850"></a>00850 
-<a name="l00851"></a>00851     <span class="comment">// Objective Function.</span>
-<a name="l00852"></a>00852     std::vector&lt;IntVar*&gt; costs;
-<a name="l00853"></a>00853     std::vector&lt;IntVar*&gt; usage_costs;
-<a name="l00854"></a>00854     std::vector&lt;IntVar*&gt; comfort_costs;
-<a name="l00855"></a>00855     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> arc_index = 0; arc_index &lt; num_arcs; ++arc_index) {
-<a name="l00856"></a>00856       <span class="keyword">const</span> <span class="keywordtype">int</span> capacity =
-<a name="l00857"></a>00857           capacity_[arcs_data_[2 * arc_index][0]][arcs_data_[2 * arc_index][1]];
-<a name="l00858"></a>00858       IntVar* <span class="keyword">const</span> usage_cost =
-<a name="l00859"></a>00859           solver.MakeDiv(solver.MakeProd(vtraffic[arc_index], <a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html#3fd53398a2aaa977f5c28cb80bbea73e" title="Evaluator for the Decision Builder.">kOneThousand</a>),
-<a name="l00860"></a>00860                          capacity)-&gt;Var();
-<a name="l00861"></a>00861       usage_costs.push_back(usage_cost);
-<a name="l00862"></a>00862       IntVar* <span class="keyword">const</span> comfort_cost =
-<a name="l00863"></a>00863           solver.MakeIsGreaterCstVar(
-<a name="l00864"></a>00864               vtraffic[arc_index],
-<a name="l00865"></a>00865               capacity * FLAGS_comfort_zone / <a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html#3fd53398a2aaa977f5c28cb80bbea73e" title="Evaluator for the Decision Builder.">kOneThousand</a>);
-<a name="l00866"></a>00866       comfort_costs.push_back(comfort_cost);
-<a name="l00867"></a>00867     }
-<a name="l00868"></a>00868     IntVar* <span class="keyword">const</span> max_usage_cost = solver.MakeMax(usage_costs)-&gt;Var();
-<a name="l00869"></a>00869     IntVar* <span class="keyword">const</span> sum_comfort_cost = solver.MakeSum(comfort_costs)-&gt;Var();
-<a name="l00870"></a>00870     IntVar* <span class="keyword">const</span> objective_var =
-<a name="l00871"></a>00871         solver.MakeSum(max_usage_cost, sum_comfort_cost)-&gt;Var();
-<a name="l00872"></a>00872     std::vector&lt;SearchMonitor*&gt; monitors;
-<a name="l00873"></a>00873     OptimizeVar* <span class="keyword">const</span> objective = solver.MakeMinimize(objective_var, 1);
-<a name="l00874"></a>00874     monitors.push_back(objective);
-<a name="l00875"></a>00875 
-<a name="l00876"></a>00876     <span class="comment">// Search Log.</span>
-<a name="l00877"></a>00877     <span class="keywordflow">if</span> (FLAGS_report == 0) {
-<a name="l00878"></a>00878       SearchMonitor* <span class="keyword">const</span> search_log =
-<a name="l00879"></a>00879           solver.MakeSearchLog(FLAGS_log_period, objective);
-<a name="l00880"></a>00880       monitors.push_back(search_log);
-<a name="l00881"></a>00881     }
-<a name="l00882"></a>00882 
-<a name="l00883"></a>00883     <span class="comment">// DecisionBuilder.</span>
-<a name="l00884"></a>00884     <a class="code" href="classDecisionBuilder.html">DecisionBuilder</a>* <span class="keyword">const</span> db =
-<a name="l00885"></a>00885         solver.MakePhase(decision_vars,
-<a name="l00886"></a>00886                          Solver::CHOOSE_RANDOM,
-<a name="l00887"></a>00887                          NewPermanentCallback(
-<a name="l00888"></a>00888                              <span class="keyword">this</span>,
-<a name="l00889"></a>00889                              &amp;<a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html#58e87b8c16f6122c24e606b31608a1ca">NetworkRoutingSolver::EvaluateMarginalCost</a>,
-<a name="l00890"></a>00890                              &amp;usage_costs));
-<a name="l00891"></a>00891 
-<a name="l00892"></a>00892     <span class="comment">// Limits.</span>
-<a name="l00893"></a>00893     <span class="keywordflow">if</span> (time_limit != 0 || fail_limit != 0) {
-<a name="l00894"></a>00894       <span class="keywordflow">if</span> (time_limit != 0) {
-<a name="l00895"></a>00895         LOG(INFO) &lt;&lt; <span class="stringliteral">"adding time limit of "</span> &lt;&lt; time_limit
-<a name="l00896"></a>00896                   &lt;&lt; <span class="stringliteral">" ms"</span>;
-<a name="l00897"></a>00897       }
-<a name="l00898"></a>00898       <span class="keywordflow">if</span> (fail_limit != 0) {
-<a name="l00899"></a>00899         LOG(INFO) &lt;&lt; <span class="stringliteral">"adding fail limit of "</span> &lt;&lt; fail_limit;
-<a name="l00900"></a>00900       }
-<a name="l00901"></a>00901       monitors.push_back(
-<a name="l00902"></a>00902           solver.MakeLimit(time_limit != 0 ?
-<a name="l00903"></a>00903                            time_limit : kint64max,
-<a name="l00904"></a>00904                            kint64max,
-<a name="l00905"></a>00905                            fail_limit != 0 ?
-<a name="l00906"></a>00906                            fail_limit : kint64max,
-<a name="l00907"></a>00907                            kint64max));
-<a name="l00908"></a>00908     }
-<a name="l00909"></a>00909 
-<a name="l00910"></a>00910     <span class="comment">// Lns Decision Builder.</span>
-<a name="l00911"></a>00911     LOG(INFO) &lt;&lt; <span class="stringliteral">"Using Lns with a fragment size of "</span> &lt;&lt; FLAGS_lns_size
-<a name="l00912"></a>00912               &lt;&lt; <span class="stringliteral">", and fail limit of "</span> &lt;&lt; FLAGS_lns_limit;
-<a name="l00913"></a>00913     std::vector&lt;int64&gt; actual_usage_costs(num_arcs);
-<a name="l00914"></a>00914     <a class="code" href="classDecisionBuilder.html">DecisionBuilder</a>* <span class="keyword">const</span> store_info =
-<a name="l00915"></a>00915         solver.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1NetworkRoutingSolver_1_1StoreUsageCosts.html" title="Auxilliary Decision Builder to Store the Cost of a Solution.">StoreUsageCosts</a>(usage_costs, &amp;actual_usage_costs));
-<a name="l00916"></a>00916 
-<a name="l00917"></a>00917     LocalSearchOperator* <span class="keyword">const</span> local_search_operator =
-<a name="l00918"></a>00918         solver.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1NetworkRoutingSolver_1_1PathBasedLns.html" title="Implement &amp;#39;clever&amp;#39; Large Neighborhood Search.">PathBasedLns</a>(decision_vars.data(),
-<a name="l00919"></a>00919                                          decision_vars.size(),
-<a name="l00920"></a>00920                                          FLAGS_lns_size,
-<a name="l00921"></a>00921                                          all_paths_,
-<a name="l00922"></a>00922                                          num_arcs,
-<a name="l00923"></a>00923                                          actual_usage_costs));
-<a name="l00924"></a>00924     SearchLimit* <span class="keyword">const</span> lns_limit =
-<a name="l00925"></a>00925         solver.MakeLimit(kint64max, kint64max, FLAGS_lns_limit, kint64max);
-<a name="l00926"></a>00926     <a class="code" href="classDecisionBuilder.html">DecisionBuilder</a>* <span class="keyword">const</span> inner_db =
-<a name="l00927"></a>00927         solver.MakePhase(decision_vars,
-<a name="l00928"></a>00928                          Solver::CHOOSE_RANDOM,
-<a name="l00929"></a>00929                          NewPermanentCallback(
-<a name="l00930"></a>00930                              <span class="keyword">this</span>,
-<a name="l00931"></a>00931                              &amp;<a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html#58e87b8c16f6122c24e606b31608a1ca">NetworkRoutingSolver::EvaluateMarginalCost</a>,
-<a name="l00932"></a>00932                              &amp;usage_costs));
-<a name="l00933"></a>00933 
+<a name="l00849"></a>00849       vtraffic[arc_index]-&gt;set_name(StringPrintf(<span class="stringliteral">"traffic_%i"</span>, arc_index));
+<a name="l00850"></a>00850     }
+<a name="l00851"></a>00851 
+<a name="l00852"></a>00852     <span class="comment">// Objective Function.</span>
+<a name="l00853"></a>00853     std::vector&lt;IntVar*&gt; costs;
+<a name="l00854"></a>00854     std::vector&lt;IntVar*&gt; usage_costs;
+<a name="l00855"></a>00855     std::vector&lt;IntVar*&gt; comfort_costs;
+<a name="l00856"></a>00856     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> arc_index = 0; arc_index &lt; num_arcs; ++arc_index) {
+<a name="l00857"></a>00857       <span class="keyword">const</span> <span class="keywordtype">int</span> capacity =
+<a name="l00858"></a>00858           capacity_[arcs_data_[2 * arc_index][0]][arcs_data_[2 * arc_index][1]];
+<a name="l00859"></a>00859       IntVar* <span class="keyword">const</span> usage_cost =
+<a name="l00860"></a>00860           solver.MakeDiv(solver.MakeProd(vtraffic[arc_index], <a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html#3fd53398a2aaa977f5c28cb80bbea73e" title="Evaluator for the Decision Builder.">kOneThousand</a>),
+<a name="l00861"></a>00861                          capacity)-&gt;Var();
+<a name="l00862"></a>00862       usage_costs.push_back(usage_cost);
+<a name="l00863"></a>00863       IntVar* <span class="keyword">const</span> comfort_cost =
+<a name="l00864"></a>00864           solver.MakeIsGreaterCstVar(
+<a name="l00865"></a>00865               vtraffic[arc_index],
+<a name="l00866"></a>00866               capacity * FLAGS_comfort_zone / <a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html#3fd53398a2aaa977f5c28cb80bbea73e" title="Evaluator for the Decision Builder.">kOneThousand</a>);
+<a name="l00867"></a>00867       comfort_costs.push_back(comfort_cost);
+<a name="l00868"></a>00868     }
+<a name="l00869"></a>00869     IntVar* <span class="keyword">const</span> max_usage_cost = solver.MakeMax(usage_costs)-&gt;Var();
+<a name="l00870"></a>00870     IntVar* <span class="keyword">const</span> sum_comfort_cost = solver.MakeSum(comfort_costs)-&gt;Var();
+<a name="l00871"></a>00871     IntVar* <span class="keyword">const</span> objective_var =
+<a name="l00872"></a>00872         solver.MakeSum(max_usage_cost, sum_comfort_cost)-&gt;Var();
+<a name="l00873"></a>00873     std::vector&lt;SearchMonitor*&gt; monitors;
+<a name="l00874"></a>00874     OptimizeVar* <span class="keyword">const</span> objective = solver.MakeMinimize(objective_var, 1);
+<a name="l00875"></a>00875     monitors.push_back(objective);
+<a name="l00876"></a>00876 
+<a name="l00877"></a>00877     <span class="comment">// Search Log.</span>
+<a name="l00878"></a>00878     <span class="keywordflow">if</span> (FLAGS_report == 0) {
+<a name="l00879"></a>00879       SearchMonitor* <span class="keyword">const</span> search_log =
+<a name="l00880"></a>00880           solver.MakeSearchLog(FLAGS_log_period, objective);
+<a name="l00881"></a>00881       monitors.push_back(search_log);
+<a name="l00882"></a>00882     }
+<a name="l00883"></a>00883 
+<a name="l00884"></a>00884     <span class="comment">// DecisionBuilder.</span>
+<a name="l00885"></a>00885     <a class="code" href="classDecisionBuilder.html">DecisionBuilder</a>* <span class="keyword">const</span> db =
+<a name="l00886"></a>00886         solver.MakePhase(decision_vars,
+<a name="l00887"></a>00887                          Solver::CHOOSE_RANDOM,
+<a name="l00888"></a>00888                          NewPermanentCallback(
+<a name="l00889"></a>00889                              <span class="keyword">this</span>,
+<a name="l00890"></a>00890                              &amp;<a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html#58e87b8c16f6122c24e606b31608a1ca">NetworkRoutingSolver::EvaluateMarginalCost</a>,
+<a name="l00891"></a>00891                              &amp;usage_costs));
+<a name="l00892"></a>00892 
+<a name="l00893"></a>00893     <span class="comment">// Limits.</span>
+<a name="l00894"></a>00894     <span class="keywordflow">if</span> (time_limit != 0 || fail_limit != 0) {
+<a name="l00895"></a>00895       <span class="keywordflow">if</span> (time_limit != 0) {
+<a name="l00896"></a>00896         LOG(INFO) &lt;&lt; <span class="stringliteral">"adding time limit of "</span> &lt;&lt; time_limit
+<a name="l00897"></a>00897                   &lt;&lt; <span class="stringliteral">" ms"</span>;
+<a name="l00898"></a>00898       }
+<a name="l00899"></a>00899       <span class="keywordflow">if</span> (fail_limit != 0) {
+<a name="l00900"></a>00900         LOG(INFO) &lt;&lt; <span class="stringliteral">"adding fail limit of "</span> &lt;&lt; fail_limit;
+<a name="l00901"></a>00901       }
+<a name="l00902"></a>00902       monitors.push_back(
+<a name="l00903"></a>00903           solver.MakeLimit(time_limit != 0 ?
+<a name="l00904"></a>00904                            time_limit : kint64max,
+<a name="l00905"></a>00905                            kint64max,
+<a name="l00906"></a>00906                            fail_limit != 0 ?
+<a name="l00907"></a>00907                            fail_limit : kint64max,
+<a name="l00908"></a>00908                            kint64max));
+<a name="l00909"></a>00909     }
+<a name="l00910"></a>00910 
+<a name="l00911"></a>00911     <span class="comment">// Lns Decision Builder.</span>
+<a name="l00912"></a>00912     LOG(INFO) &lt;&lt; <span class="stringliteral">"Using Lns with a fragment size of "</span> &lt;&lt; FLAGS_lns_size
+<a name="l00913"></a>00913               &lt;&lt; <span class="stringliteral">", and fail limit of "</span> &lt;&lt; FLAGS_lns_limit;
+<a name="l00914"></a>00914     std::vector&lt;int64&gt; actual_usage_costs(num_arcs);
+<a name="l00915"></a>00915     <a class="code" href="classDecisionBuilder.html">DecisionBuilder</a>* <span class="keyword">const</span> store_info =
+<a name="l00916"></a>00916         solver.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1NetworkRoutingSolver_1_1StoreUsageCosts.html" title="Auxilliary Decision Builder to Store the Cost of a Solution.">StoreUsageCosts</a>(usage_costs, &amp;actual_usage_costs));
+<a name="l00917"></a>00917 
+<a name="l00918"></a>00918     LocalSearchOperator* <span class="keyword">const</span> local_search_operator =
+<a name="l00919"></a>00919         solver.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1NetworkRoutingSolver_1_1PathBasedLns.html" title="Implement &amp;#39;clever&amp;#39; Large Neighborhood Search.">PathBasedLns</a>(decision_vars.data(),
+<a name="l00920"></a>00920                                          decision_vars.size(),
+<a name="l00921"></a>00921                                          FLAGS_lns_size,
+<a name="l00922"></a>00922                                          all_paths_,
+<a name="l00923"></a>00923                                          num_arcs,
+<a name="l00924"></a>00924                                          actual_usage_costs));
+<a name="l00925"></a>00925     SearchLimit* <span class="keyword">const</span> lns_limit =
+<a name="l00926"></a>00926         solver.MakeLimit(kint64max, kint64max, FLAGS_lns_limit, kint64max);
+<a name="l00927"></a>00927     <a class="code" href="classDecisionBuilder.html">DecisionBuilder</a>* <span class="keyword">const</span> inner_db =
+<a name="l00928"></a>00928         solver.MakePhase(decision_vars,
+<a name="l00929"></a>00929                          Solver::CHOOSE_RANDOM,
+<a name="l00930"></a>00930                          NewPermanentCallback(
+<a name="l00931"></a>00931                              <span class="keyword">this</span>,
+<a name="l00932"></a>00932                              &amp;<a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html#58e87b8c16f6122c24e606b31608a1ca">NetworkRoutingSolver::EvaluateMarginalCost</a>,
+<a name="l00933"></a>00933                              &amp;usage_costs));
 <a name="l00934"></a>00934 
-<a name="l00935"></a>00935     <a class="code" href="classDecisionBuilder.html">DecisionBuilder</a>* <span class="keyword">const</span> apply = solver.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1NetworkRoutingSolver_1_1ApplyMaxDiscrepancy.html">ApplyMaxDiscrepancy</a>);
-<a name="l00936"></a>00936     <a class="code" href="classDecisionBuilder.html">DecisionBuilder</a>* <span class="keyword">const</span> max_discrepency_db = solver.Compose(apply, inner_db);
-<a name="l00937"></a>00937     <a class="code" href="classDecisionBuilder.html">DecisionBuilder</a>* <span class="keyword">const</span> ls_db = solver.MakeSolveOnce(max_discrepency_db,
-<a name="l00938"></a>00938                                                         lns_limit);
-<a name="l00939"></a>00939     LocalSearchPhaseParameters* <span class="keyword">const</span> parameters =
-<a name="l00940"></a>00940         solver.MakeLocalSearchPhaseParameters(local_search_operator,
-<a name="l00941"></a>00941                                               solver.Compose(ls_db,
-<a name="l00942"></a>00942                                                              store_info));
-<a name="l00943"></a>00943     <a class="code" href="classDecisionBuilder.html">DecisionBuilder</a>* <span class="keyword">const</span> final_db =
-<a name="l00944"></a>00944         solver.Compose(solver.MakeLocalSearchPhase(decision_vars,
-<a name="l00945"></a>00945                                                    db,
-<a name="l00946"></a>00946                                                    parameters),
-<a name="l00947"></a>00947                        store_info);
-<a name="l00948"></a>00948 
-<a name="l00949"></a>00949     <span class="comment">// And Now Solve.</span>
-<a name="l00950"></a>00950     int64 best_cost = kint64max;
-<a name="l00951"></a>00951     solver.NewSearch(final_db, monitors);
-<a name="l00952"></a>00952     <span class="keywordflow">while</span> (solver.NextSolution()) {
-<a name="l00953"></a>00953       <span class="comment">// Solution Found: Report it.</span>
-<a name="l00954"></a>00954       <span class="keyword">const</span> <span class="keywordtype">double</span> percent = max_usage_cost-&gt;Value() / 10.0;
-<a name="l00955"></a>00955       <span class="keyword">const</span> int64 non_comfort = sum_comfort_cost-&gt;Value();
-<a name="l00956"></a>00956       <span class="keywordflow">if</span> (non_comfort &gt; 0) {
-<a name="l00957"></a>00957         LOG(INFO) &lt;&lt; <span class="stringliteral">"*** Found a solution with a max usage of "</span> &lt;&lt; percent
-<a name="l00958"></a>00958                   &lt;&lt; <span class="stringliteral">"%, and "</span> &lt;&lt; non_comfort
-<a name="l00959"></a>00959                   &lt;&lt; <span class="stringliteral">" links above the comfort zone"</span>;
-<a name="l00960"></a>00960       } <span class="keywordflow">else</span> {
-<a name="l00961"></a>00961         LOG(INFO) &lt;&lt; <span class="stringliteral">"*** Found a solution with a max usage of "</span> &lt;&lt; percent
-<a name="l00962"></a>00962                   &lt;&lt; <span class="stringliteral">"%"</span>;
-<a name="l00963"></a>00963       }
-<a name="l00964"></a>00964       best_cost = objective_var-&gt;Value();
-<a name="l00965"></a>00965       <span class="keywordflow">if</span> (FLAGS_report &gt; 1) {
-<a name="l00966"></a>00966         <a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html#186fbd304e38ff7230e13ac94589b98e">DisplaySolution</a>(num_arcs,
-<a name="l00967"></a>00967                         max_usage_cost-&gt;Value(),
-<a name="l00968"></a>00968                         usage_costs,
-<a name="l00969"></a>00969                         path_vars,
-<a name="l00970"></a>00970                         FLAGS_report &gt; 2,
-<a name="l00971"></a>00971                         FLAGS_comfort_zone);
-<a name="l00972"></a>00972       }
-<a name="l00973"></a>00973     }
-<a name="l00974"></a>00974     solver.EndSearch();
-<a name="l00975"></a>00975 
-<a name="l00976"></a>00976     <span class="keywordflow">return</span> best_cost;
-<a name="l00977"></a>00977   }
-<a name="l00978"></a><a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html#186fbd304e38ff7230e13ac94589b98e">00978</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html#186fbd304e38ff7230e13ac94589b98e">DisplaySolution</a>(<span class="keywordtype">int</span> num_arcs,
-<a name="l00979"></a>00979                        int64 max_usage_cost,
-<a name="l00980"></a>00980                        <span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; usage_costs,
-<a name="l00981"></a>00981                        <span class="keyword">const</span> std::vector&lt;std::vector&lt;IntVar*&gt; &gt;&amp; path_vars,
-<a name="l00982"></a>00982                        <span class="keywordtype">bool</span> precise,
-<a name="l00983"></a>00983                        int64 comfort_zone) {
-<a name="l00984"></a>00984     <span class="comment">// We will show paths above the comfort zone, or above the max</span>
-<a name="l00985"></a>00985     <span class="comment">// utilization minus 5%.</span>
-<a name="l00986"></a>00986     <span class="keyword">const</span> int64 kFivePercentInThousandth = 50;
-<a name="l00987"></a>00987     <span class="keyword">const</span> int64 cutoff =
-<a name="l00988"></a>00988         std::min(max_usage_cost - kFivePercentInThousandth, comfort_zone);
-<a name="l00989"></a>00989     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_arcs; ++i) {
-<a name="l00990"></a>00990       <span class="keyword">const</span> int64 arc_usage = usage_costs[i]-&gt;Value();
-<a name="l00991"></a>00991       <span class="keywordflow">if</span> (arc_usage &gt;= cutoff) {
-<a name="l00992"></a>00992         <span class="keyword">const</span> <span class="keywordtype">int</span> source_index = arcs_data_[2 * i][0];
-<a name="l00993"></a>00993         <span class="keyword">const</span> <span class="keywordtype">int</span> destination_index = arcs_data_[2 * i][1];
-<a name="l00994"></a>00994         LOG(INFO) &lt;&lt; <span class="stringliteral">" + Arc "</span> &lt;&lt; source_index
-<a name="l00995"></a>00995                   &lt;&lt; <span class="stringliteral">" &lt;-&gt; "</span> &lt;&lt; destination_index
-<a name="l00996"></a>00996                   &lt;&lt; <span class="stringliteral">" has a usage = "</span> &lt;&lt; arc_usage / 10.0
-<a name="l00997"></a>00997                   &lt;&lt; <span class="stringliteral">"%, capacity = "</span>
-<a name="l00998"></a>00998                   &lt;&lt; capacity_[source_index][destination_index];
-<a name="l00999"></a>00999         <span class="keywordflow">if</span> (precise) {
-<a name="l01000"></a>01000           <span class="keyword">const</span> <span class="keywordtype">int</span> num_demands = demands_array_.size();
-<a name="l01001"></a>01001           <span class="keywordflow">for</span> (<span class="keywordtype">int</span> demand_index = 0;
-<a name="l01002"></a>01002                demand_index &lt; num_demands;
-<a name="l01003"></a>01003                ++demand_index) {
-<a name="l01004"></a>01004             <span class="keywordflow">if</span> (path_vars[demand_index][i]-&gt;Value() == 1) {
-<a name="l01005"></a>01005               <span class="keyword">const</span> <a class="code" href="structoperations__research_1_1Demand.html" title="Solving the Problem.">Demand</a>&amp; demand = demands_array_[demand_index];
-<a name="l01006"></a>01006               LOG(INFO) &lt;&lt; <span class="stringliteral">"   - "</span>
-<a name="l01007"></a>01007                         &lt;&lt; StringPrintf(<span class="stringliteral">"%i -&gt; %i (%i)"</span>,
-<a name="l01008"></a>01008                                         demand.<a class="code" href="structoperations__research_1_1Demand.html#1b84a67d4baab7bd14cbf25ffebdc46f">source</a>,
-<a name="l01009"></a>01009                                         demand.<a class="code" href="structoperations__research_1_1Demand.html#aba16f19db248e6ee92fb72e86920303">destination</a>,
-<a name="l01010"></a>01010                                         demand.<a class="code" href="structoperations__research_1_1Demand.html#31b9ff7eee7c149aecc27cceb01af819">traffic</a>);
-<a name="l01011"></a>01011             }
-<a name="l01012"></a>01012           }
-<a name="l01013"></a>01013         }
-<a name="l01014"></a>01014       }
-<a name="l01015"></a>01015     }
-<a name="l01016"></a>01016   }
-<a name="l01017"></a>01017 
-<a name="l01018"></a>01018  <span class="keyword">private</span>:
-<a name="l01019"></a>01019   <span class="keywordtype">int</span> count_arcs()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> arcs_data_.size() / 2; }
-<a name="l01020"></a>01020 
-<a name="l01021"></a>01021   std::vector&lt;std::vector&lt;int64&gt; &gt; arcs_data_;
-<a name="l01022"></a>01022   std::vector&lt;int&gt; arc_capacity_;
-<a name="l01023"></a>01023   std::vector&lt;Demand&gt; demands_array_;
-<a name="l01024"></a>01024   <span class="keywordtype">int</span> num_nodes_;
-<a name="l01025"></a>01025   std::vector&lt;int64&gt; all_min_path_lengths_;
-<a name="l01026"></a>01026   std::vector&lt;std::vector&lt;int&gt; &gt; capacity_;
-<a name="l01027"></a>01027   std::vector&lt;std::vector&lt;OnePath&gt; &gt; all_paths_;
-<a name="l01028"></a>01028 };
-<a name="l01029"></a>01029 
-<a name="l01030"></a>01030 }  <span class="comment">// namespace operations_research</span>
-<a name="l01031"></a>01031 
-<a name="l01032"></a><a class="code" href="network__routing_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">01032</a> <span class="keywordtype">int</span> <a class="code" href="costas__array_8cc.html#3c04138a5bfe5d72780bb7e82a18e627" title="namespace operations_research">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {
-<a name="l01033"></a>01033   google::ParseCommandLineFlags(&amp;argc, &amp;argv, <span class="keyword">true</span>);
-<a name="l01034"></a>01034   <a class="code" href="classoperations__research_1_1NetworkRoutingData.html" title="Data Contains problem data.">operations_research::NetworkRoutingData</a> data;
-<a name="l01035"></a>01035   <a class="code" href="classoperations__research_1_1NetworkRoutingDataBuilder.html" title="Data Generation.">operations_research::NetworkRoutingDataBuilder</a> builder;
-<a name="l01036"></a>01036   builder.<a class="code" href="classoperations__research_1_1NetworkRoutingDataBuilder.html#f01dbf2eba792ba03be9441f4d4e38d0">BuildModelFromParameters</a>(FLAGS_clients,
-<a name="l01037"></a>01037                                    FLAGS_backbones,
-<a name="l01038"></a>01038                                    FLAGS_demands,
-<a name="l01039"></a>01039                                    FLAGS_traffic_min,
-<a name="l01040"></a>01040                                    FLAGS_traffic_max,
-<a name="l01041"></a>01041                                    FLAGS_min_client_degree,
-<a name="l01042"></a>01042                                    FLAGS_max_client_degree,
-<a name="l01043"></a>01043                                    FLAGS_min_backbone_degree,
-<a name="l01044"></a>01044                                    FLAGS_max_backbone_degree,
-<a name="l01045"></a>01045                                    FLAGS_max_capacity,
-<a name="l01046"></a>01046                                    FLAGS_fixed_charge_cost,
-<a name="l01047"></a>01047                                    FLAGS_seed,
-<a name="l01048"></a>01048                                    &amp;data);
-<a name="l01049"></a>01049   <a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html">operations_research::NetworkRoutingSolver</a> solver;
-<a name="l01050"></a>01050   solver.<a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html#a1789ee9b6f3e6630ad454868f3e0926">Init</a>(data, FLAGS_extra_hops, FLAGS_max_paths);
-<a name="l01051"></a>01051   LOG(INFO) &lt;&lt; <span class="stringliteral">"Final cost = "</span>
-<a name="l01052"></a>01052             &lt;&lt; solver.<a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html#f53c0d7901314b50a7999c07fe1aae92" title="Main Solve routine.">LnsSolve</a>(FLAGS_time_limit, FLAGS_fail_limit);
-<a name="l01053"></a>01053   <span class="keywordflow">return</span> 0;
-<a name="l01054"></a>01054 }
+<a name="l00935"></a>00935 
+<a name="l00936"></a>00936     <a class="code" href="classDecisionBuilder.html">DecisionBuilder</a>* <span class="keyword">const</span> apply = solver.RevAlloc(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1NetworkRoutingSolver_1_1ApplyMaxDiscrepancy.html">ApplyMaxDiscrepancy</a>);
+<a name="l00937"></a>00937     <a class="code" href="classDecisionBuilder.html">DecisionBuilder</a>* <span class="keyword">const</span> max_discrepency_db = solver.Compose(apply, inner_db);
+<a name="l00938"></a>00938     <a class="code" href="classDecisionBuilder.html">DecisionBuilder</a>* <span class="keyword">const</span> ls_db = solver.MakeSolveOnce(max_discrepency_db,
+<a name="l00939"></a>00939                                                         lns_limit);
+<a name="l00940"></a>00940     LocalSearchPhaseParameters* <span class="keyword">const</span> parameters =
+<a name="l00941"></a>00941         solver.MakeLocalSearchPhaseParameters(local_search_operator,
+<a name="l00942"></a>00942                                               solver.Compose(ls_db,
+<a name="l00943"></a>00943                                                              store_info));
+<a name="l00944"></a>00944     <a class="code" href="classDecisionBuilder.html">DecisionBuilder</a>* <span class="keyword">const</span> final_db =
+<a name="l00945"></a>00945         solver.Compose(solver.MakeLocalSearchPhase(decision_vars,
+<a name="l00946"></a>00946                                                    db,
+<a name="l00947"></a>00947                                                    parameters),
+<a name="l00948"></a>00948                        store_info);
+<a name="l00949"></a>00949 
+<a name="l00950"></a>00950     <span class="comment">// And Now Solve.</span>
+<a name="l00951"></a>00951     int64 best_cost = kint64max;
+<a name="l00952"></a>00952     solver.NewSearch(final_db, monitors);
+<a name="l00953"></a>00953     <span class="keywordflow">while</span> (solver.NextSolution()) {
+<a name="l00954"></a>00954       <span class="comment">// Solution Found: Report it.</span>
+<a name="l00955"></a>00955       <span class="keyword">const</span> <span class="keywordtype">double</span> percent = max_usage_cost-&gt;Value() / 10.0;
+<a name="l00956"></a>00956       <span class="keyword">const</span> int64 non_comfort = sum_comfort_cost-&gt;Value();
+<a name="l00957"></a>00957       <span class="keywordflow">if</span> (non_comfort &gt; 0) {
+<a name="l00958"></a>00958         LOG(INFO) &lt;&lt; <span class="stringliteral">"*** Found a solution with a max usage of "</span> &lt;&lt; percent
+<a name="l00959"></a>00959                   &lt;&lt; <span class="stringliteral">"%, and "</span> &lt;&lt; non_comfort
+<a name="l00960"></a>00960                   &lt;&lt; <span class="stringliteral">" links above the comfort zone"</span>;
+<a name="l00961"></a>00961       } <span class="keywordflow">else</span> {
+<a name="l00962"></a>00962         LOG(INFO) &lt;&lt; <span class="stringliteral">"*** Found a solution with a max usage of "</span> &lt;&lt; percent
+<a name="l00963"></a>00963                   &lt;&lt; <span class="stringliteral">"%"</span>;
+<a name="l00964"></a>00964       }
+<a name="l00965"></a>00965       best_cost = objective_var-&gt;Value();
+<a name="l00966"></a>00966       <span class="keywordflow">if</span> (FLAGS_report &gt; 1) {
+<a name="l00967"></a>00967         <a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html#186fbd304e38ff7230e13ac94589b98e">DisplaySolution</a>(num_arcs,
+<a name="l00968"></a>00968                         max_usage_cost-&gt;Value(),
+<a name="l00969"></a>00969                         usage_costs,
+<a name="l00970"></a>00970                         path_vars,
+<a name="l00971"></a>00971                         FLAGS_report &gt; 2,
+<a name="l00972"></a>00972                         FLAGS_comfort_zone);
+<a name="l00973"></a>00973       }
+<a name="l00974"></a>00974     }
+<a name="l00975"></a>00975     solver.EndSearch();
+<a name="l00976"></a>00976 
+<a name="l00977"></a>00977     <span class="keywordflow">return</span> best_cost;
+<a name="l00978"></a>00978   }
+<a name="l00979"></a><a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html#186fbd304e38ff7230e13ac94589b98e">00979</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html#186fbd304e38ff7230e13ac94589b98e">DisplaySolution</a>(<span class="keywordtype">int</span> num_arcs,
+<a name="l00980"></a>00980                        int64 max_usage_cost,
+<a name="l00981"></a>00981                        <span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; usage_costs,
+<a name="l00982"></a>00982                        <span class="keyword">const</span> std::vector&lt;std::vector&lt;IntVar*&gt; &gt;&amp; path_vars,
+<a name="l00983"></a>00983                        <span class="keywordtype">bool</span> precise,
+<a name="l00984"></a>00984                        int64 comfort_zone) {
+<a name="l00985"></a>00985     <span class="comment">// We will show paths above the comfort zone, or above the max</span>
+<a name="l00986"></a>00986     <span class="comment">// utilization minus 5%.</span>
+<a name="l00987"></a>00987     <span class="keyword">const</span> int64 kFivePercentInThousandth = 50;
+<a name="l00988"></a>00988     <span class="keyword">const</span> int64 cutoff =
+<a name="l00989"></a>00989         std::min(max_usage_cost - kFivePercentInThousandth, comfort_zone);
+<a name="l00990"></a>00990     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; num_arcs; ++i) {
+<a name="l00991"></a>00991       <span class="keyword">const</span> int64 arc_usage = usage_costs[i]-&gt;Value();
+<a name="l00992"></a>00992       <span class="keywordflow">if</span> (arc_usage &gt;= cutoff) {
+<a name="l00993"></a>00993         <span class="keyword">const</span> <span class="keywordtype">int</span> source_index = arcs_data_[2 * i][0];
+<a name="l00994"></a>00994         <span class="keyword">const</span> <span class="keywordtype">int</span> destination_index = arcs_data_[2 * i][1];
+<a name="l00995"></a>00995         LOG(INFO) &lt;&lt; <span class="stringliteral">" + Arc "</span> &lt;&lt; source_index
+<a name="l00996"></a>00996                   &lt;&lt; <span class="stringliteral">" &lt;-&gt; "</span> &lt;&lt; destination_index
+<a name="l00997"></a>00997                   &lt;&lt; <span class="stringliteral">" has a usage = "</span> &lt;&lt; arc_usage / 10.0
+<a name="l00998"></a>00998                   &lt;&lt; <span class="stringliteral">"%, capacity = "</span>
+<a name="l00999"></a>00999                   &lt;&lt; capacity_[source_index][destination_index];
+<a name="l01000"></a>01000         <span class="keywordflow">if</span> (precise) {
+<a name="l01001"></a>01001           <span class="keyword">const</span> <span class="keywordtype">int</span> num_demands = demands_array_.size();
+<a name="l01002"></a>01002           <span class="keywordflow">for</span> (<span class="keywordtype">int</span> demand_index = 0;
+<a name="l01003"></a>01003                demand_index &lt; num_demands;
+<a name="l01004"></a>01004                ++demand_index) {
+<a name="l01005"></a>01005             <span class="keywordflow">if</span> (path_vars[demand_index][i]-&gt;Value() == 1) {
+<a name="l01006"></a>01006               <span class="keyword">const</span> <a class="code" href="structoperations__research_1_1Demand.html" title="Solving the Problem.">Demand</a>&amp; demand = demands_array_[demand_index];
+<a name="l01007"></a>01007               LOG(INFO) &lt;&lt; <span class="stringliteral">"   - "</span>
+<a name="l01008"></a>01008                         &lt;&lt; StringPrintf(<span class="stringliteral">"%i -&gt; %i (%i)"</span>,
+<a name="l01009"></a>01009                                         demand.<a class="code" href="structoperations__research_1_1Demand.html#1b84a67d4baab7bd14cbf25ffebdc46f">source</a>,
+<a name="l01010"></a>01010                                         demand.<a class="code" href="structoperations__research_1_1Demand.html#aba16f19db248e6ee92fb72e86920303">destination</a>,
+<a name="l01011"></a>01011                                         demand.<a class="code" href="structoperations__research_1_1Demand.html#31b9ff7eee7c149aecc27cceb01af819">traffic</a>);
+<a name="l01012"></a>01012             }
+<a name="l01013"></a>01013           }
+<a name="l01014"></a>01014         }
+<a name="l01015"></a>01015       }
+<a name="l01016"></a>01016     }
+<a name="l01017"></a>01017   }
+<a name="l01018"></a>01018 
+<a name="l01019"></a>01019  <span class="keyword">private</span>:
+<a name="l01020"></a>01020   <span class="keywordtype">int</span> count_arcs()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> arcs_data_.size() / 2; }
+<a name="l01021"></a>01021 
+<a name="l01022"></a>01022   std::vector&lt;std::vector&lt;int64&gt; &gt; arcs_data_;
+<a name="l01023"></a>01023   std::vector&lt;int&gt; arc_capacity_;
+<a name="l01024"></a>01024   std::vector&lt;Demand&gt; demands_array_;
+<a name="l01025"></a>01025   <span class="keywordtype">int</span> num_nodes_;
+<a name="l01026"></a>01026   std::vector&lt;int64&gt; all_min_path_lengths_;
+<a name="l01027"></a>01027   std::vector&lt;std::vector&lt;int&gt; &gt; capacity_;
+<a name="l01028"></a>01028   std::vector&lt;std::vector&lt;OnePath&gt; &gt; all_paths_;
+<a name="l01029"></a>01029 };
+<a name="l01030"></a>01030 
+<a name="l01031"></a>01031 }  <span class="comment">// namespace operations_research</span>
+<a name="l01032"></a>01032 
+<a name="l01033"></a><a class="code" href="network__routing_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">01033</a> <span class="keywordtype">int</span> <a class="code" href="costas__array_8cc.html#3c04138a5bfe5d72780bb7e82a18e627" title="namespace operations_research">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {
+<a name="l01034"></a>01034   google::ParseCommandLineFlags(&amp;argc, &amp;argv, <span class="keyword">true</span>);
+<a name="l01035"></a>01035   <a class="code" href="classoperations__research_1_1NetworkRoutingData.html" title="Data Contains problem data.">operations_research::NetworkRoutingData</a> data;
+<a name="l01036"></a>01036   <a class="code" href="classoperations__research_1_1NetworkRoutingDataBuilder.html" title="Data Generation.">operations_research::NetworkRoutingDataBuilder</a> builder;
+<a name="l01037"></a>01037   builder.<a class="code" href="classoperations__research_1_1NetworkRoutingDataBuilder.html#f01dbf2eba792ba03be9441f4d4e38d0">BuildModelFromParameters</a>(FLAGS_clients,
+<a name="l01038"></a>01038                                    FLAGS_backbones,
+<a name="l01039"></a>01039                                    FLAGS_demands,
+<a name="l01040"></a>01040                                    FLAGS_traffic_min,
+<a name="l01041"></a>01041                                    FLAGS_traffic_max,
+<a name="l01042"></a>01042                                    FLAGS_min_client_degree,
+<a name="l01043"></a>01043                                    FLAGS_max_client_degree,
+<a name="l01044"></a>01044                                    FLAGS_min_backbone_degree,
+<a name="l01045"></a>01045                                    FLAGS_max_backbone_degree,
+<a name="l01046"></a>01046                                    FLAGS_max_capacity,
+<a name="l01047"></a>01047                                    FLAGS_fixed_charge_cost,
+<a name="l01048"></a>01048                                    FLAGS_seed,
+<a name="l01049"></a>01049                                    &amp;data);
+<a name="l01050"></a>01050   <a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html">operations_research::NetworkRoutingSolver</a> solver;
+<a name="l01051"></a>01051   solver.<a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html#a1789ee9b6f3e6630ad454868f3e0926">Init</a>(data, FLAGS_extra_hops, FLAGS_max_paths);
+<a name="l01052"></a>01052   LOG(INFO) &lt;&lt; <span class="stringliteral">"Final cost = "</span>
+<a name="l01053"></a>01053             &lt;&lt; solver.<a class="code" href="classoperations__research_1_1NetworkRoutingSolver.html#f53c0d7901314b50a7999c07fe1aae92" title="Main Solve routine.">LnsSolve</a>(FLAGS_time_limit, FLAGS_fail_limit);
+<a name="l01054"></a>01054   <span class="keywordflow">return</span> 0;
+<a name="l01055"></a>01055 }
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -1143,7 +1144,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

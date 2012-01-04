@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -100,6 +100,7 @@
 <code>#include &quot;zlib.h&quot;</code><br>
 <code>#include &quot;base/concise_iterator.h&quot;</code><br>
 <code>#include &quot;base/map-util.h&quot;</code><br>
+<code>#include &quot;base/stl_util.h&quot;</code><br>
 <code>#include &quot;<a class="el" href="constraint__solveri_8h-source.html">constraint_solver/constraint_solveri.h</a>&quot;</code><br>
 <code>#include &quot;constraint_solver/model.pb.h&quot;</code><br>
 <code>#include &quot;util/const_int_array.h&quot;</code><br>
@@ -124,6 +125,9 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1Search.html">operations_research::Search</a></td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="classoperations__research_1_1Search.html" title="Search class.">Search</a> class.  <a href="classoperations__research_1_1Search.html#_details">More...</a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1Trace.html">operations_research::Trace</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="classoperations__research_1_1Trace.html" title="Trace.">Trace</a>.  <a href="classoperations__research_1_1Trace.html#_details">More...</a><br></td></tr>
 <tr><td colspan="2"><br><h2>Defines</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="constraint__solver_8cc.html#6fefff344468722cbdd7e1776ea5c806">CP_FAST_BACKTRACK</a></td></tr>
 
@@ -140,9 +144,9 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><b>SentinelMarker</b> </td></tr>
 
 <tr><td colspan="2"><br><h2>Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="constraint__solver_8cc.html#0bc4cb4a7755f6e45514113e6d9f393f">DEFINE_bool</a> (cp_trace_demons, false,&quot;trace all <a class="el" href="constraint__solver_8cc.html#f800ac63ce2b6285ec62408b0f17acc3">demon</a> executions.&quot;)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="constraint__solver_8cc.html#e648fc6b2a626b2bc2761dadf18d3725">DEFINE_bool</a> (cp_trace_propagation, false,&quot;Trace propagation events (constraint and <a class="el" href="constraint__solver_8cc.html#f800ac63ce2b6285ec62408b0f17acc3">demon</a> executions,&quot;&quot; variable modifications).&quot;)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  <a href="#0bc4cb4a7755f6e45514113e6d9f393f"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  <a href="#e648fc6b2a626b2bc2761dadf18d3725"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="constraint__solver_8cc.html#023a2cdcdb7456ac4eccbef6b7ad7a67">DEFINE_bool</a> (cp_show_constraints, false,&quot;show all constraints added to the solver.&quot;)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="constraint__solver_8cc.html#3bfb2eb8d2705bbab5e577e91f472def">DEFINE_bool</a> (cp_print_model, false,&quot;use PrintModelVisitor on model before solving.&quot;)</td></tr>
@@ -155,25 +159,20 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="constraint__solver_8cc.html#423b3000af2cc92327a83659a2508b45">DEFINE_string</a> (cp_profile_file,&quot;&quot;,&quot;Export profiling overview to file.&quot;)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="constraint__solver_8cc.html#c94421ebfa310324d17fbc51bce92101">DEFINE_bool</a> (cp_verbose_fail, false,&quot;Verbose output when failing&quot;)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="constraint__solver_8cc.html#96fae98299548bd62ce6b0bd9c623f73">DEFINE_bool</a> (cp_verbose_fail, false,&quot;Verbose output when failing.&quot;)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="constraint__solver_8cc.html#2e5e00da6d8b3f59989dcebf684b902b">DEFINE_bool</a> (cp_name_variables, false,&quot;Force all variables to have names.&quot;)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="constraint__solver_8cc.html#c13a1be8287ff935b4a93be3cc716e79">ConstraintSolverFailsHere</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">DemonMonitor *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#c0839cdc9649d88a73060cfde2038b3e">operations_research::BuildDemonMonitor</a> (Solver *const solver)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">DemonProfiler *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#c29a3acd03ed409504d33c2ee4966a1a">operations_research::BuildDemonProfiler</a> (Solver *const solver)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Forward Declarations and Profiling Support.  <a href="#c0839cdc9649d88a73060cfde2038b3e"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#c7e3e4722c51d781636e24d843c0e542">operations_research::DeleteDemonMonitor</a> (DemonMonitor *const monitor)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Forward Declarations and Profiling Support.  <a href="#c29a3acd03ed409504d33c2ee4966a1a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#5a382b6532b01659ec7d7dac6fb93bad">operations_research::DeleteDemonProfiler</a> (DemonProfiler *const monitor)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#b5240e8c0ba682f97baea46641082c70">operations_research::DemonMonitorStartInitialPropagation</a> (DemonMonitor *const monitor, const Constraint *const constraint)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#a8bbbade1fbab7f5db2a3a260896fe14">operations_research::InstallDemonProfiler</a> (DemonProfiler *const monitor)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#aa11d663f99a1dda5d5228aaf3014602">operations_research::DemonMonitorEndInitialPropagation</a> (DemonMonitor *const monitor, const Constraint *const constraint)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#2d60edc96e40e663962f32ffa4685ec6">operations_research::DemonMonitorRestartSearch</a> (DemonMonitor *const monitor)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#70ceefb1ec146ec849dc8babf6fc7286">operations_research::DemonMonitorStartInitialNestedPropagation</a> (DemonMonitor *const monitor, const Constraint *const parent, const Constraint *const nested)</td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#ae54e5a5cdc80f0f8d63675197f99665">operations_research::DemonMonitorEndInitialNestedPropagation</a> (DemonMonitor *const monitor, const Constraint *const parent, const Constraint *const nested)</td></tr>
-
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Exported Functions.  <a href="#a8bbbade1fbab7f5db2a3a260896fe14"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#bf86ac5b7c7ec6d91d566831705aae7a">operations_research::RestoreBoolValue</a> (IntVar *const <a class="el" href="search_8cc.html#96c77f9f3a7baec84b9b8add26a31787">var</a>)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">namespace  <a href="#bf86ac5b7c7ec6d91d566831705aae7a"></a><br></td></tr>
@@ -182,12 +181,16 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">Action *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#95ad34ed7b89a3604a3475012a6a068a">operations_research::NewDomainIntVarCleaner</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">namespace  <a href="#95ad34ed7b89a3604a3475012a6a068a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">PropagationMonitor *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#fc4c96aa6fa6a48c7ec423b9c299c5f9">operations_research::BuildTrace</a> (Solver *const s)</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">ModelCache *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#257ee12a1feb2e15b6efa4b3fe283173">operations_research::BuildModelCache</a> (Solver *const solver)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">namespace  <a href="#257ee12a1feb2e15b6efa4b3fe283173"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">DependencyGraph *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#c3a31fd55a27058c2ba9acd41b75ec5d">operations_research::BuildDependencyGraph</a> (Solver *const solver)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#3b7cd70aea9c32dce5901bda5745531f">operations_research::SetQueueCleanerOnFail</a> (Solver *const solver, IntVar *const <a class="el" href="search_8cc.html#96c77f9f3a7baec84b9b8add26a31787">var</a>)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">PropagationMonitor *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#b106dcbbb133296156caf4ca1e9f8dcc">operations_research::BuildPrintTrace</a> (Solver *const s)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">std::ostream &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#87fdc0126f6fc98ffb86ba1aa618f322">operations_research::operator&lt;&lt;</a> (std::ostream &amp;out, const Solver *const s)</td></tr>
 
@@ -217,7 +220,7 @@
 CP_FAST_BACKTRACK. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00944">944</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00974">974</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -236,7 +239,7 @@ CP_FAST_BACKTRACK.
 Backtrack is implemented using 3 primitives: CP_TRY to start searching CP_DO_FAIL to signal a failure. 
 <p>
 The program will continue on the CP_ON_FAIL primitive. CP_FAST_BACKTRACK protects an implementation of backtrack using setjmp/longjmp. The clean portable way is to use exceptions, unfortunately, it can be much slower. Thus we use ideas from Prolog, CP/CLP implementations, continuations in C and implement failing and backtracking using setjmp/longjmp. 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00935">935</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00965">965</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -253,7 +256,7 @@ The program will continue on the CP_ON_FAIL primitive. CP_FAST_BACKTRACK protect
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00943">943</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00973">973</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -280,7 +283,7 @@ The program will continue on the CP_ON_FAIL primitive. CP_FAST_BACKTRACK protect
 </pre></div>We cannot use a method/function for this as we would lose the context in the setjmp implementation. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00939">939</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00969">969</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -302,11 +305,46 @@ The program will continue on the CP_ON_FAIL primitive. CP_FAST_BACKTRACK protect
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00052">52</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00057">57</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="c94421ebfa310324d17fbc51bce92101"></a><!-- doxytag: member="constraint_solver.cc::DEFINE_bool" ref="c94421ebfa310324d17fbc51bce92101" args="(cp_verbose_fail, false,&quot;Verbose output when failing&quot;)" -->
+<a class="anchor" name="2e5e00da6d8b3f59989dcebf684b902b"></a><!-- doxytag: member="constraint_solver.cc::DEFINE_bool" ref="2e5e00da6d8b3f59989dcebf684b902b" args="(cp_name_variables, false,&quot;Force all variables to have names.&quot;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_bool           </td>
+          <td>(</td>
+          <td class="paramtype">cp_name_variables&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">false&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Force all variables to have names.&quot;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="96fae98299548bd62ce6b0bd9c623f73"></a><!-- doxytag: member="constraint_solver.cc::DEFINE_bool" ref="96fae98299548bd62ce6b0bd9c623f73" args="(cp_verbose_fail, false,&quot;Verbose output when failing.&quot;)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -325,7 +363,7 @@ The program will continue on the CP_ON_FAIL primitive. CP_FAST_BACKTRACK protect
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&quot;Verbose output when failing&quot;&nbsp;</td>
+          <td class="paramtype">&quot;Verbose output when failing.&quot;&nbsp;</td>
           <td class="paramname"></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -481,14 +519,14 @@ The program will continue on the CP_ON_FAIL primitive. CP_FAST_BACKTRACK protect
 
 </div>
 </div><p>
-<a class="anchor" name="0bc4cb4a7755f6e45514113e6d9f393f"></a><!-- doxytag: member="constraint_solver.cc::DEFINE_bool" ref="0bc4cb4a7755f6e45514113e6d9f393f" args="(cp_trace_demons, false,&quot;trace all demon executions.&quot;)" -->
+<a class="anchor" name="e648fc6b2a626b2bc2761dadf18d3725"></a><!-- doxytag: member="constraint_solver.cc::DEFINE_bool" ref="e648fc6b2a626b2bc2761dadf18d3725" args="(cp_trace_propagation, false,&quot;Trace propagation events (constraint and demon executions,&quot;&quot; variable modifications).&quot;)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">DEFINE_bool           </td>
           <td>(</td>
-          <td class="paramtype">cp_trace_demons&nbsp;</td>
+          <td class="paramtype">cp_trace_propagation&nbsp;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
@@ -500,7 +538,7 @@ The program will continue on the CP_ON_FAIL primitive. CP_FAST_BACKTRACK protect
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">&quot;trace all <a class="el" href="constraint__solver_8cc.html#f800ac63ce2b6285ec62408b0f17acc3">demon</a> executions.&quot;&nbsp;</td>
+          <td class="paramtype">&quot;Trace propagation events (constraint and <a class="el" href="constraint__solver_8cc.html#f800ac63ce2b6285ec62408b0f17acc3">demon</a> executions,&quot;&quot; variable modifications).&quot;&nbsp;</td>
           <td class="paramname"></td><td>&nbsp;</td>
         </tr>
         <tr>
@@ -605,7 +643,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00427">427</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00443">443</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -622,7 +660,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00444">444</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00460">460</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -639,7 +677,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00620">620</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00636">636</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -656,7 +694,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00623">623</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00639">639</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -673,7 +711,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00624">624</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00640">640</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -690,7 +728,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00588">588</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00604">604</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -707,7 +745,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02306">2306</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02351">2351</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -724,7 +762,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00625">625</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00641">641</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -741,7 +779,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00622">622</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00638">638</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -758,7 +796,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02056">2056</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l02101">2101</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -775,7 +813,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00138">138</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00150">150</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -792,7 +830,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00992">992</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01022">1022</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -809,7 +847,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00207">207</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00219">219</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -826,7 +864,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00621">621</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00637">637</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -843,7 +881,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00209">209</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00221">221</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -860,7 +898,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00208">208</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00220">220</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -877,7 +915,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00139">139</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00151">151</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -894,7 +932,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00428">428</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00444">444</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -911,7 +949,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00618">618</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00634">634</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -928,7 +966,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01011">1011</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l01041">1041</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -945,7 +983,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00626">626</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00642">642</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -962,7 +1000,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00505">505</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00521">521</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -979,7 +1017,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00504">504</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00520">520</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -991,7 +1029,7 @@ This file implements the core objects of the constraint solver: Solver, Search, 
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

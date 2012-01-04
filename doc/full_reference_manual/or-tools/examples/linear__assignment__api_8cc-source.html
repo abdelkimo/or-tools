@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/examples/index.html">examples</a>/
             </tt></b></font>
@@ -116,26 +116,27 @@
 <a name="l00033"></a>00033   };
 <a name="l00034"></a>00034   <span class="keyword">const</span> CostValue kExpectedCost =
 <a name="l00035"></a>00035       kCost[0][3] + kCost[1][2] + kCost[2][1] + kCost[3][0];
-<a name="l00036"></a>00036   StarGraph graph(kNumSources + kNumTargets, kNumSources * kNumTargets);
-<a name="l00037"></a>00037   LinearSumAssignment assignment(graph, kNumSources);
-<a name="l00038"></a>00038   <span class="keywordflow">for</span> (NodeIndex source = 0; source &lt; kNumSources; ++source) {
-<a name="l00039"></a>00039     <span class="keywordflow">for</span> (NodeIndex target = 0; target &lt; kNumTargets; ++target) {
-<a name="l00040"></a>00040       ArcIndex arc = graph.AddArc(source, kNumSources + target);
-<a name="l00041"></a>00041       assignment.SetArcCost(arc, kCost[source][target]);
-<a name="l00042"></a>00042     }
-<a name="l00043"></a>00043   }
-<a name="l00044"></a>00044   CHECK(assignment.ComputeAssignment());
-<a name="l00045"></a>00045   CostValue total_cost = assignment.GetCost();
-<a name="l00046"></a>00046   CHECK_EQ(kExpectedCost, total_cost);
-<a name="l00047"></a>00047 }
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049 }  <span class="comment">// namespace operations_research</span>
-<a name="l00050"></a>00050 
-<a name="l00051"></a><a class="code" href="linear__assignment__api_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00051</a> <span class="keywordtype">int</span> <a class="code" href="costas__array_8cc.html#3c04138a5bfe5d72780bb7e82a18e627" title="namespace operations_research">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {
-<a name="l00052"></a>00052   google::ParseCommandLineFlags(&amp;argc, &amp;argv, <span class="keyword">true</span>);
-<a name="l00053"></a>00053   <a class="code" href="namespaceoperations__research.html#0caa3be84310b0ff50204600ccbe8807" title="Test assignment on a 4x4 matrix.">operations_research::AssignmentOn4x4Matrix</a>();
-<a name="l00054"></a>00054   <span class="keywordflow">return</span> 0;
-<a name="l00055"></a>00055 }
+<a name="l00036"></a>00036   ForwardStarGraph graph(
+<a name="l00037"></a>00037       kNumSources + kNumTargets, kNumSources * kNumTargets);
+<a name="l00038"></a>00038   LinearSumAssignment&lt;ForwardStarGraph&gt; assignment(graph, kNumSources);
+<a name="l00039"></a>00039   <span class="keywordflow">for</span> (NodeIndex source = 0; source &lt; kNumSources; ++source) {
+<a name="l00040"></a>00040     <span class="keywordflow">for</span> (NodeIndex target = 0; target &lt; kNumTargets; ++target) {
+<a name="l00041"></a>00041       ArcIndex arc = graph.AddArc(source, kNumSources + target);
+<a name="l00042"></a>00042       assignment.SetArcCost(arc, kCost[source][target]);
+<a name="l00043"></a>00043     }
+<a name="l00044"></a>00044   }
+<a name="l00045"></a>00045   CHECK(assignment.ComputeAssignment());
+<a name="l00046"></a>00046   CostValue total_cost = assignment.GetCost();
+<a name="l00047"></a>00047   CHECK_EQ(kExpectedCost, total_cost);
+<a name="l00048"></a>00048 }
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050 }  <span class="comment">// namespace operations_research</span>
+<a name="l00051"></a>00051 
+<a name="l00052"></a><a class="code" href="linear__assignment__api_8cc.html#3c04138a5bfe5d72780bb7e82a18e627">00052</a> <span class="keywordtype">int</span> <a class="code" href="costas__array_8cc.html#3c04138a5bfe5d72780bb7e82a18e627" title="namespace operations_research">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv) {
+<a name="l00053"></a>00053   google::ParseCommandLineFlags(&amp;argc, &amp;argv, <span class="keyword">true</span>);
+<a name="l00054"></a>00054   <a class="code" href="namespaceoperations__research.html#0caa3be84310b0ff50204600ccbe8807" title="Test assignment on a 4x4 matrix.">operations_research::AssignmentOn4x4Matrix</a>();
+<a name="l00055"></a>00055   <span class="keywordflow">return</span> 0;
+<a name="l00056"></a>00056 }
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -144,7 +145,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

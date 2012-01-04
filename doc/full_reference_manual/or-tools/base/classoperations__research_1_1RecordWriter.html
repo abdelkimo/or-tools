@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/base/index.html">base</a>/
             </tt></b></font>
@@ -109,6 +109,8 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RecordWriter.html#a092d7ec0bce41605df04d763d8bbb8a">Close</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Closes the underlying file.  <a href="#a092d7ec0bce41605df04d763d8bbb8a"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RecordWriter.html#355a2621231188a8bcf4f9a39c4718e1">set_use_compression</a> (bool use_compression)</td></tr>
+
 <tr><td colspan="2"><br><h2>Static Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1RecordWriter.html#04192d1a92e2e102b3bbb6e15532b8d1">kMagicNumber</a> = 0x3ed7230a</td></tr>
 
@@ -116,7 +118,11 @@
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 This class appends a protocol buffer to a file in a binary format. 
-<p>Definition at line <a class="el" href="recordio_8h-source.html#l00025">25</a> of file <a class="el" href="recordio_8h-source.html">recordio.h</a>.</p>
+<p>
+The data written in the file follows the following format (sequentially):<ul>
+<li>MagicNumber (32 bits) to recognize this format.</li><li>Uncompressed data payload size (64 bits)</li><li>Compressed data payload size (64 bits), or 0 if the data is not compressed.</li><li>Payload, possibly compressed. See RecordWriter::Compress() and RecordReader::Uncompress </li></ul>
+
+<p>Definition at line <a class="el" href="recordio_8h-source.html#l00032">32</a> of file <a class="el" href="recordio_8h-source.html">recordio.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="0ef05a510dff3902b995ab887dacb850"></a><!-- doxytag: member="operations_research::RecordWriter::RecordWriter" ref="0ef05a510dff3902b995ab887dacb850" args="(File *const file)" -->
 <div class="memitem">
@@ -136,7 +142,7 @@ This class appends a protocol buffer to a file in a binary format.
 
 <p>
 
-<p>Definition at line <a class="el" href="recordio_8cc-source.html#l00019">19</a> of file <a class="el" href="recordio_8cc-source.html">recordio.cc</a>.</p>
+<p>Definition at line <a class="el" href="recordio_8cc-source.html#l00023">23</a> of file <a class="el" href="recordio_8cc-source.html">recordio.cc</a>.</p>
 
 </div>
 </div><p>
@@ -161,7 +167,7 @@ template&lt;class P&gt; </div>
 
 <p>
 
-<p>Definition at line <a class="el" href="recordio_8h-source.html#l00031">31</a> of file <a class="el" href="recordio_8h-source.html">recordio.h</a>.</p>
+<p>Definition at line <a class="el" href="recordio_8h-source.html#l00039">39</a> of file <a class="el" href="recordio_8h-source.html">recordio.h</a>.</p>
 
 </div>
 </div><p>
@@ -184,7 +190,29 @@ template&lt;class P&gt; </div>
 Closes the underlying file. 
 <p>
 
-<p>Definition at line <a class="el" href="recordio_8cc-source.html#l00021">21</a> of file <a class="el" href="recordio_8cc-source.html">recordio.cc</a>.</p>
+<p>Definition at line <a class="el" href="recordio_8cc-source.html#l00026">26</a> of file <a class="el" href="recordio_8cc-source.html">recordio.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="355a2621231188a8bcf4f9a39c4718e1"></a><!-- doxytag: member="operations_research::RecordWriter::set_use_compression" ref="355a2621231188a8bcf4f9a39c4718e1" args="(bool use_compression)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::RecordWriter::set_use_compression           </td>
+          <td>(</td>
+          <td class="paramtype">bool&nbsp;</td>
+          <td class="paramname"> <em>use_compression</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="recordio_8cc-source.html#l00030">30</a> of file <a class="el" href="recordio_8cc-source.html">recordio.cc</a>.</p>
 
 </div>
 </div><p>
@@ -204,7 +232,7 @@ Closes the underlying file.
 Magic number when writing and reading protocol buffers. 
 <p>
 
-<p>Definition at line <a class="el" href="recordio_8h-source.html#l00028">28</a> of file <a class="el" href="recordio_8h-source.html">recordio.h</a>.</p>
+<p>Definition at line <a class="el" href="recordio_8h-source.html#l00035">35</a> of file <a class="el" href="recordio_8h-source.html">recordio.h</a>.</p>
 
 </div>
 </div><p>
@@ -218,7 +246,7 @@ Magic number when writing and reading protocol buffers.
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

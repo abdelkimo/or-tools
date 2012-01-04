@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/examples/index.html">examples</a>/
             </tt></b></font>
@@ -526,11 +526,11 @@
 <a name="l00443"></a><a class="code" href="classoperations__research_1_1CoveringProblem.html#32bc866b1e2c1e06e61436580a69ef42">00443</a>   MPVariable* <a class="code" href="classoperations__research_1_1CoveringProblem.html#32bc866b1e2c1e06e61436580a69ef42" title="Add continuous [0,1] box variable with box.Cost() as objective coefficient.">AddBox</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Box.html" title="Box.">Box</a>&amp; box) {
 <a name="l00444"></a>00444     CHECK(<a class="code" href="classoperations__research_1_1CoveringProblem.html#c97b591448b5cef731beba27c560913f">boxes_</a>.find(box) == <a class="code" href="classoperations__research_1_1CoveringProblem.html#c97b591448b5cef731beba27c560913f">boxes_</a>.end());
 <a name="l00445"></a>00445     MPVariable* <span class="keyword">const</span> var = <a class="code" href="classoperations__research_1_1CoveringProblem.html#51bf3ca4120f31cf0d6b13aabb028970" title="not owned">solver_</a>-&gt;MakeNumVar(0., 1., box.<a class="code" href="classoperations__research_1_1Box.html#ecac8aeff42d4cf17177dad3e4f0cc2e">DebugString</a>());
-<a name="l00446"></a>00446     <a class="code" href="classoperations__research_1_1CoveringProblem.html#51bf3ca4120f31cf0d6b13aabb028970" title="not owned">solver_</a>-&gt;AddObjectiveTerm(var, box.<a class="code" href="classoperations__research_1_1Box.html#ac2fdca11551672c7fdfb7deeca29844">Cost</a>());
-<a name="l00447"></a>00447     <a class="code" href="classoperations__research_1_1CoveringProblem.html#175603c73668077519fe439071bb52b0">max_boxes_constraint_</a>-&gt;AddTerm(var);
+<a name="l00446"></a>00446     <a class="code" href="classoperations__research_1_1CoveringProblem.html#51bf3ca4120f31cf0d6b13aabb028970" title="not owned">solver_</a>-&gt;SetObjectiveCoefficient(var, box.<a class="code" href="classoperations__research_1_1Box.html#ac2fdca11551672c7fdfb7deeca29844">Cost</a>());
+<a name="l00447"></a>00447     <a class="code" href="classoperations__research_1_1CoveringProblem.html#175603c73668077519fe439071bb52b0">max_boxes_constraint_</a>-&gt;SetCoefficient(var, 1.0);
 <a name="l00448"></a>00448     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> y = box.<a class="code" href="classoperations__research_1_1Box.html#3e1ea31b41d75034158ce83693019e29">y_min</a>(); y &lt;= box.<a class="code" href="classoperations__research_1_1Box.html#55ee6444999b2c0aea7f09c91ce8bf54">y_max</a>(); ++y) {
 <a name="l00449"></a>00449       <span class="keywordflow">for</span> (<span class="keywordtype">int</span> x = box.<a class="code" href="classoperations__research_1_1Box.html#ba2ee87f9eace8beda4c7d5cb6f3825e">x_min</a>(); x &lt;= box.<a class="code" href="classoperations__research_1_1Box.html#ac8bce4d23f482115ea6d02e02b4cc01">x_max</a>(); ++x) {
-<a name="l00450"></a>00450         <a class="code" href="classoperations__research_1_1CoveringProblem.html#eecc999452b4319722e5a9528d09eaeb">cell</a>(x, y)-&gt;AddTerm(var);
+<a name="l00450"></a>00450         <a class="code" href="classoperations__research_1_1CoveringProblem.html#eecc999452b4319722e5a9528d09eaeb">cell</a>(x, y)-&gt;SetCoefficient(var, 1.0);
 <a name="l00451"></a>00451       }
 <a name="l00452"></a>00452     }
 <a name="l00453"></a>00453     <a class="code" href="classoperations__research_1_1CoveringProblem.html#c97b591448b5cef731beba27c560913f">boxes_</a>[box] = var;
@@ -706,30 +706,39 @@
 <a name="l00623"></a>00623 
 <a name="l00624"></a>00624 
 <a name="l00625"></a>00625   operations_research::MPSolver::OptimizationProblemType solver_type;
-<a name="l00626"></a>00626   <span class="keywordflow">if</span> (FLAGS_colgen_solver == <span class="stringliteral">"clp"</span>) {
-<a name="l00627"></a>00627     solver_type = operations_research::MPSolver::CLP_LINEAR_PROGRAMMING;
-<a name="l00628"></a>00628   } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (FLAGS_colgen_solver == <span class="stringliteral">"glpk"</span>) {
-<a name="l00629"></a>00629     solver_type = operations_research::MPSolver::GLPK_LINEAR_PROGRAMMING;
-<a name="l00630"></a>00630   } <span class="keywordflow">else</span> {
-<a name="l00631"></a>00631     LOG(ERROR) &lt;&lt; <span class="stringliteral">"Unknown solver "</span> &lt;&lt; FLAGS_colgen_solver;
-<a name="l00632"></a>00632     <span class="keywordflow">return</span> 1;
-<a name="l00633"></a>00633   }
-<a name="l00634"></a>00634 
-<a name="l00635"></a>00635   <span class="keywordflow">if</span> (FLAGS_colgen_instance == -1) {
-<a name="l00636"></a>00636     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="namespaceoperations__research.html#c2265dc10f54f77344b66f4412924c69">operations_research::kInstanceCount</a>; ++i) {
-<a name="l00637"></a>00637       <span class="keyword">const</span> <a class="code" href="structoperations__research_1_1Instance.html" title="Data Instances.">operations_research::Instance</a>&amp; instance =
-<a name="l00638"></a>00638           <a class="code" href="namespaceoperations__research.html#4de6bc76aa820bcce15808396f351b28">operations_research::kInstances</a>[i];
-<a name="l00639"></a>00639       <a class="code" href="namespaceoperations__research.html#282674364a88e72e731c34da5c5589e1" title="Main Solve Method.">operations_research::SolveInstance</a>(instance, solver_type);
-<a name="l00640"></a>00640     }
-<a name="l00641"></a>00641   } <span class="keywordflow">else</span> {
-<a name="l00642"></a>00642     CHECK_GE(FLAGS_colgen_instance, 0);
-<a name="l00643"></a>00643     CHECK_LT(FLAGS_colgen_instance, <a class="code" href="namespaceoperations__research.html#c2265dc10f54f77344b66f4412924c69">operations_research::kInstanceCount</a>);
-<a name="l00644"></a>00644     <span class="keyword">const</span> <a class="code" href="structoperations__research_1_1Instance.html" title="Data Instances.">operations_research::Instance</a>&amp; instance =
-<a name="l00645"></a>00645         <a class="code" href="namespaceoperations__research.html#4de6bc76aa820bcce15808396f351b28">operations_research::kInstances</a>[FLAGS_colgen_instance];
-<a name="l00646"></a>00646     <a class="code" href="namespaceoperations__research.html#282674364a88e72e731c34da5c5589e1" title="Main Solve Method.">operations_research::SolveInstance</a>(instance, solver_type);
-<a name="l00647"></a>00647   }
-<a name="l00648"></a>00648   <span class="keywordflow">return</span> 0;
-<a name="l00649"></a>00649 }
+<a name="l00626"></a>00626   <span class="keywordtype">bool</span> found = <span class="keyword">false</span>;
+<a name="l00627"></a>00627 <span class="preprocessor">#if defined(USE_CLP)</span>
+<a name="l00628"></a>00628 <span class="preprocessor"></span>  <span class="keywordflow">if</span> (FLAGS_colgen_solver == <span class="stringliteral">"clp"</span>) {
+<a name="l00629"></a>00629     solver_type = operations_research::MPSolver::CLP_LINEAR_PROGRAMMING;
+<a name="l00630"></a>00630     found = <span class="keyword">true</span>;
+<a name="l00631"></a>00631   }
+<a name="l00632"></a>00632 <span class="preprocessor">#endif  // USE_CLP</span>
+<a name="l00633"></a>00633 <span class="preprocessor"></span><span class="preprocessor">#if defined(USE_GLPK)</span>
+<a name="l00634"></a>00634 <span class="preprocessor"></span>  <span class="keywordflow">if</span> (FLAGS_colgen_solver == <span class="stringliteral">"glpk"</span>) {
+<a name="l00635"></a>00635     solver_type = operations_research::MPSolver::GLPK_LINEAR_PROGRAMMING;
+<a name="l00636"></a>00636     found = <span class="keyword">true</span>;
+<a name="l00637"></a>00637   }
+<a name="l00638"></a>00638 <span class="preprocessor">#endif  // USE_GLPK</span>
+<a name="l00639"></a>00639 <span class="preprocessor"></span>  <span class="keywordflow">if</span> (!found) {
+<a name="l00640"></a>00640     LOG(ERROR) &lt;&lt; <span class="stringliteral">"Unknown solver "</span> &lt;&lt; FLAGS_colgen_solver;
+<a name="l00641"></a>00641     <span class="keywordflow">return</span> 1;
+<a name="l00642"></a>00642   }
+<a name="l00643"></a>00643 
+<a name="l00644"></a>00644   <span class="keywordflow">if</span> (FLAGS_colgen_instance == -1) {
+<a name="l00645"></a>00645     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="namespaceoperations__research.html#c2265dc10f54f77344b66f4412924c69">operations_research::kInstanceCount</a>; ++i) {
+<a name="l00646"></a>00646       <span class="keyword">const</span> <a class="code" href="structoperations__research_1_1Instance.html" title="Data Instances.">operations_research::Instance</a>&amp; instance =
+<a name="l00647"></a>00647           <a class="code" href="namespaceoperations__research.html#4de6bc76aa820bcce15808396f351b28">operations_research::kInstances</a>[i];
+<a name="l00648"></a>00648       <a class="code" href="namespaceoperations__research.html#282674364a88e72e731c34da5c5589e1" title="Main Solve Method.">operations_research::SolveInstance</a>(instance, solver_type);
+<a name="l00649"></a>00649     }
+<a name="l00650"></a>00650   } <span class="keywordflow">else</span> {
+<a name="l00651"></a>00651     CHECK_GE(FLAGS_colgen_instance, 0);
+<a name="l00652"></a>00652     CHECK_LT(FLAGS_colgen_instance, <a class="code" href="namespaceoperations__research.html#c2265dc10f54f77344b66f4412924c69">operations_research::kInstanceCount</a>);
+<a name="l00653"></a>00653     <span class="keyword">const</span> <a class="code" href="structoperations__research_1_1Instance.html" title="Data Instances.">operations_research::Instance</a>&amp; instance =
+<a name="l00654"></a>00654         <a class="code" href="namespaceoperations__research.html#4de6bc76aa820bcce15808396f351b28">operations_research::kInstances</a>[FLAGS_colgen_instance];
+<a name="l00655"></a>00655     <a class="code" href="namespaceoperations__research.html#282674364a88e72e731c34da5c5589e1" title="Main Solve Method.">operations_research::SolveInstance</a>(instance, solver_type);
+<a name="l00656"></a>00656   }
+<a name="l00657"></a>00657   <span class="keywordflow">return</span> 0;
+<a name="l00658"></a>00658 }
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -738,7 +747,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -766,8 +766,8 @@
 <a name="l00683"></a>00683     HeuristicWrapper(Solver* <span class="keyword">const</span> solver,
 <a name="l00684"></a>00684                      IntVar* <span class="keyword">const</span>* vars,
 <a name="l00685"></a>00685                      <span class="keywordtype">int</span> size,
-<a name="l00686"></a>00686                      <a class="code" href="classoperations__research_1_1Solver.html#8bda7ed6e7e533cca4c44eba6efffc8b">Solver::IntVarStrategy</a> var_strategy,
-<a name="l00687"></a>00687                      <a class="code" href="classoperations__research_1_1Solver.html#e63acd77b8c2ee40387795051298f659">Solver::IntValueStrategy</a> value_strategy,
+<a name="l00686"></a>00686                      <a class="code" href="classoperations__research_1_1Solver.html#8bda7ed6e7e533cca4c44eba6efffc8b" title="This enum describes the strategy used to select the next branching variable at each...">Solver::IntVarStrategy</a> var_strategy,
+<a name="l00687"></a>00687                      <a class="code" href="classoperations__research_1_1Solver.html#e63acd77b8c2ee40387795051298f659" title="This enum describes the strategy used to select the next variable value to set.">Solver::IntValueStrategy</a> value_strategy,
 <a name="l00688"></a>00688                      <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; heuristic_name,
 <a name="l00689"></a>00689                      <span class="keywordtype">int</span> heuristic_runs)
 <a name="l00690"></a>00690         : <a class="code" href="default__search_8cc.html#d1547dc5c5aeb23eaccef64028eaef25" title="The decision builder we are going to use in this dive.">phase</a>(solver-&gt;MakePhase(vars, size, var_strategy, value_strategy)),
@@ -815,8 +815,8 @@
 <a name="l00732"></a>00732         <span class="keyword">new</span> HeuristicWrapper(solver,
 <a name="l00733"></a>00733                              <a class="code" href="alldiff__cst_8cc.html#9547583a9de0b0177b68c0f73e1eb563">vars_</a>.get(),
 <a name="l00734"></a>00734                              size_,
-<a name="l00735"></a>00735                              <a class="code" href="classoperations__research_1_1Solver.html#8bda7ed6e7e533cca4c44eba6efffc8b1b2865e3429fc5b1956da5f601ae0ed9">Solver::CHOOSE_MIN_SIZE_LOWEST_MIN</a>,
-<a name="l00736"></a>00736                              <a class="code" href="classoperations__research_1_1Solver.html#e63acd77b8c2ee40387795051298f659b68b8c2566158157a2ba1660aae07553">Solver::ASSIGN_MIN_VALUE</a>,
+<a name="l00735"></a>00735                              <a class="code" href="classoperations__research_1_1Solver.html#8bda7ed6e7e533cca4c44eba6efffc8b1b2865e3429fc5b1956da5f601ae0ed9" title="Among unbound variables, select the variable with the smallest size, i.e.">Solver::CHOOSE_MIN_SIZE_LOWEST_MIN</a>,
+<a name="l00736"></a>00736                              <a class="code" href="classoperations__research_1_1Solver.html#e63acd77b8c2ee40387795051298f659b68b8c2566158157a2ba1660aae07553" title="Selects the min value of the selected variable.">Solver::ASSIGN_MIN_VALUE</a>,
 <a name="l00737"></a>00737                              <span class="stringliteral">"AssignMinValueToMinDomainSize"</span>,
 <a name="l00738"></a>00738                              kRunOnce));
 <a name="l00739"></a>00739 
@@ -824,8 +824,8 @@
 <a name="l00741"></a>00741         <span class="keyword">new</span> HeuristicWrapper(solver,
 <a name="l00742"></a>00742                              <a class="code" href="alldiff__cst_8cc.html#9547583a9de0b0177b68c0f73e1eb563">vars_</a>.get(),
 <a name="l00743"></a>00743                              size_,
-<a name="l00744"></a>00744                              <a class="code" href="classoperations__research_1_1Solver.html#8bda7ed6e7e533cca4c44eba6efffc8bf1eadfb5ea6dc853f075589cded04314">Solver::CHOOSE_MIN_SIZE_HIGHEST_MAX</a>,
-<a name="l00745"></a>00745                              <a class="code" href="classoperations__research_1_1Solver.html#e63acd77b8c2ee40387795051298f65913d07bd4fac1cf9de979eaa59bb9089b">Solver::ASSIGN_MAX_VALUE</a>,
+<a name="l00744"></a>00744                              <a class="code" href="classoperations__research_1_1Solver.html#8bda7ed6e7e533cca4c44eba6efffc8bf1eadfb5ea6dc853f075589cded04314" title="Among unbound variables, select the variable with the smallest size, i.e.">Solver::CHOOSE_MIN_SIZE_HIGHEST_MAX</a>,
+<a name="l00745"></a>00745                              <a class="code" href="classoperations__research_1_1Solver.html#e63acd77b8c2ee40387795051298f65913d07bd4fac1cf9de979eaa59bb9089b" title="Selects the max value of the selected variable.">Solver::ASSIGN_MAX_VALUE</a>,
 <a name="l00746"></a>00746                              <span class="stringliteral">"AssignMaxValueToMinDomainSize"</span>,
 <a name="l00747"></a>00747                              kRunOnce));
 <a name="l00748"></a>00748 
@@ -834,7 +834,7 @@
 <a name="l00751"></a>00751                              <a class="code" href="alldiff__cst_8cc.html#9547583a9de0b0177b68c0f73e1eb563">vars_</a>.get(),
 <a name="l00752"></a>00752                              size_,
 <a name="l00753"></a>00753                              Solver::CHOOSE_MIN_SIZE_LOWEST_MIN,
-<a name="l00754"></a>00754                              <a class="code" href="classoperations__research_1_1Solver.html#e63acd77b8c2ee40387795051298f6590484f76eaad7b381c13bfd4ccd47ef68">Solver::ASSIGN_CENTER_VALUE</a>,
+<a name="l00754"></a>00754                              <a class="code" href="classoperations__research_1_1Solver.html#e63acd77b8c2ee40387795051298f6590484f76eaad7b381c13bfd4ccd47ef68" title="Selects the first possible value which is the closest to the center of the domain...">Solver::ASSIGN_CENTER_VALUE</a>,
 <a name="l00755"></a>00755                              <span class="stringliteral">"AssignCenterValueToMinDomainSize"</span>,
 <a name="l00756"></a>00756                              kRunOnce));
 <a name="l00757"></a>00757 
@@ -842,8 +842,8 @@
 <a name="l00759"></a>00759         <span class="keyword">new</span> HeuristicWrapper(solver,
 <a name="l00760"></a>00760                              <a class="code" href="alldiff__cst_8cc.html#9547583a9de0b0177b68c0f73e1eb563">vars_</a>.get(),
 <a name="l00761"></a>00761                              size_,
-<a name="l00762"></a>00762                              <a class="code" href="classoperations__research_1_1Solver.html#8bda7ed6e7e533cca4c44eba6efffc8b8f69d3fc74e6a3faaa9be2583ce8fce3">Solver::CHOOSE_FIRST_UNBOUND</a>,
-<a name="l00763"></a>00763                              <a class="code" href="classoperations__research_1_1Solver.html#e63acd77b8c2ee40387795051298f659b75b213a2a3871a9946a74610e388b8e">Solver::ASSIGN_RANDOM_VALUE</a>,
+<a name="l00762"></a>00762                              <a class="code" href="classoperations__research_1_1Solver.html#8bda7ed6e7e533cca4c44eba6efffc8b8f69d3fc74e6a3faaa9be2583ce8fce3" title="Select the first unbound variable.">Solver::CHOOSE_FIRST_UNBOUND</a>,
+<a name="l00763"></a>00763                              <a class="code" href="classoperations__research_1_1Solver.html#e63acd77b8c2ee40387795051298f659b75b213a2a3871a9946a74610e388b8e" title="Selects randomly one of the possible values of the selected variable.">Solver::ASSIGN_RANDOM_VALUE</a>,
 <a name="l00764"></a>00764                              <span class="stringliteral">"AssignRandomValueToFirstUnbound"</span>,
 <a name="l00765"></a>00765                              kRunALot));
 <a name="l00766"></a>00766 
@@ -851,7 +851,7 @@
 <a name="l00768"></a>00768         <span class="keyword">new</span> HeuristicWrapper(solver,
 <a name="l00769"></a>00769                              <a class="code" href="alldiff__cst_8cc.html#9547583a9de0b0177b68c0f73e1eb563">vars_</a>.get(),
 <a name="l00770"></a>00770                              size_,
-<a name="l00771"></a>00771                              <a class="code" href="classoperations__research_1_1Solver.html#8bda7ed6e7e533cca4c44eba6efffc8b2547ec2e47ea5c8da65a39817a04f220">Solver::CHOOSE_RANDOM</a>,
+<a name="l00771"></a>00771                              <a class="code" href="classoperations__research_1_1Solver.html#8bda7ed6e7e533cca4c44eba6efffc8b2547ec2e47ea5c8da65a39817a04f220" title="Randomly select one of the remaining unbound variables.">Solver::CHOOSE_RANDOM</a>,
 <a name="l00772"></a>00772                              Solver::ASSIGN_MIN_VALUE,
 <a name="l00773"></a>00773                              <span class="stringliteral">"AssignMinValueToRandomVariable"</span>,
 <a name="l00774"></a>00774                              kRunMore));
@@ -998,7 +998,7 @@
 <a name="l00915"></a>00915     <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span>* vars,
 <a name="l00916"></a>00916     <span class="keywordtype">int</span> size,
 <a name="l00917"></a>00917     <span class="keyword">const</span> <a class="code" href="structoperations__research_1_1DefaultPhaseParameters.html" title="This struct holds all parameters for the default search.">DefaultPhaseParameters</a>&amp; <a class="code" href="classoperations__research_1_1Solver.html#8b52d4efd0ccb1880d2f1bc794166872" title="Read-only Parameters.">parameters</a>) {
-<a name="l00918"></a>00918   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> ImpactDecisionBuilder(<span class="keyword">this</span>,
+<a name="l00918"></a>00918   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> ImpactDecisionBuilder(<span class="keyword">this</span>,
 <a name="l00919"></a>00919                                             vars,
 <a name="l00920"></a>00920                                             size,
 <a name="l00921"></a>00921                                             parameters));
@@ -1017,7 +1017,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

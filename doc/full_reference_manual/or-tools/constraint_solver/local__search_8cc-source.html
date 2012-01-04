@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -138,7 +138,7 @@
 <a name="l00055"></a><a class="code" href="classoperations__research_1_1IntVarLocalSearchOperator.html#1981dffba9e0458f5bd4669a5f1c15e1">00055</a> <a class="code" href="classoperations__research_1_1IntVarLocalSearchOperator.html#1981dffba9e0458f5bd4669a5f1c15e1" title="Base operator class for operators manipulating IntVars.">IntVarLocalSearchOperator::IntVarLocalSearchOperator</a>()
 <a name="l00056"></a>00056 : <a class="code" href="alldiff__cst_8cc.html#9547583a9de0b0177b68c0f73e1eb563">vars_</a>(NULL),
 <a name="l00057"></a>00057   <a class="code" href="alldiff__cst_8cc.html#6947fa5d6ba628dd62d59ffbad8b8d80">size_</a>(0),
-<a name="l00058"></a>00058   <a class="code" href="count__cst_8cc.html#cef12b021ebe66b2440a7dcfbf277e91">values_</a>(NULL),
+<a name="l00058"></a>00058   <a class="code" href="count__cst_8cc.html#e2ff949ac514bc38d215d9c5aa5c4e28">values_</a>(NULL),
 <a name="l00059"></a>00059   old_values_(NULL),
 <a name="l00060"></a>00060   activated_(0, false),
 <a name="l00061"></a>00061   was_activated_(0, false),
@@ -150,7 +150,7 @@
 <a name="l00067"></a>00067                                                      <span class="keywordtype">int</span> size)
 <a name="l00068"></a>00068     : <a class="code" href="alldiff__cst_8cc.html#9547583a9de0b0177b68c0f73e1eb563">vars_</a>(NULL),
 <a name="l00069"></a>00069       <a class="code" href="alldiff__cst_8cc.html#6947fa5d6ba628dd62d59ffbad8b8d80">size_</a>(0),
-<a name="l00070"></a>00070       <a class="code" href="count__cst_8cc.html#cef12b021ebe66b2440a7dcfbf277e91">values_</a>(NULL),
+<a name="l00070"></a>00070       <a class="code" href="count__cst_8cc.html#e2ff949ac514bc38d215d9c5aa5c4e28">values_</a>(NULL),
 <a name="l00071"></a>00071       old_values_(NULL),
 <a name="l00072"></a>00072       activated_(size, false),
 <a name="l00073"></a>00073       was_activated_(size, false),
@@ -395,7 +395,7 @@
 <a name="l00312"></a>00312                                                    <span class="keywordtype">int</span> size,
 <a name="l00313"></a>00313                                                    <span class="keywordtype">int</span> number_of_variables,
 <a name="l00314"></a>00314                                                    int32 seed) {
-<a name="l00315"></a>00315   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> RandomLNS(vars, size, number_of_variables, seed));
+<a name="l00315"></a>00315   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> RandomLNS(vars, size, number_of_variables, seed));
 <a name="l00316"></a>00316 }
 <a name="l00317"></a>00317 
 <a name="l00318"></a>00318 <span class="comment">// ----- Move Toward Target Local Search operator -----</span>
@@ -473,7 +473,7 @@
 <a name="l00390"></a>00390   <span class="keyword">const</span> Elements&amp; elements = target.<a class="code" href="classoperations__research_1_1Assignment.html#e33b6ff4f1647554a2c2e8a02226345d">IntVarContainer</a>().elements();
 <a name="l00391"></a>00391   <span class="comment">// Copy target values and construct the vector of variables</span>
 <a name="l00392"></a>00392   std::vector&lt;IntVar*&gt; vars;
-<a name="l00393"></a>00393   std::vector&lt;int64&gt; values;
+<a name="l00393"></a>00393   std::vector&lt;int64&gt; <a class="code" href="collect__variables_8cc.html#ec49e8404606ac252aef3e0f7b13f2cd">values</a>;
 <a name="l00394"></a>00394   vars.reserve(target.<a class="code" href="classoperations__research_1_1Assignment.html#2ff95e034e0f8eb5f50e67bdb71c2185">NumIntVars</a>());
 <a name="l00395"></a>00395   values.reserve(target.<a class="code" href="classoperations__research_1_1Assignment.html#2ff95e034e0f8eb5f50e67bdb71c2185">NumIntVars</a>());
 <a name="l00396"></a>00396   <span class="keywordflow">for</span> (ConstIter&lt;Elements&gt; it(elements); !it.at_end(); ++it) {
@@ -486,7 +486,7 @@
 <a name="l00403"></a><a class="code" href="classoperations__research_1_1Solver.html#3845a9bce6d9fe4f978e61e8dc23796c">00403</a> <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="&amp;lt; !defined(SWIG)">LocalSearchOperator</a>* <a class="code" href="classoperations__research_1_1Solver.html#1bd4a93ce8795df3d502c2f73a29967c" title="Creates a local search operator that tries to move the assignment of some variables...">Solver::MakeMoveTowardTargetOperator</a>(
 <a name="l00404"></a>00404       <span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; variables,
 <a name="l00405"></a>00405       <span class="keyword">const</span> std::vector&lt;int64&gt;&amp; target_values) {
-<a name="l00406"></a>00406   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> MoveTowardTargetLS(variables, target_values));
+<a name="l00406"></a>00406   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> MoveTowardTargetLS(variables, target_values));
 <a name="l00407"></a>00407 }
 <a name="l00408"></a>00408 
 <a name="l00409"></a>00409 <span class="comment">// ----- ChangeValue Operators -----</span>
@@ -1726,7 +1726,7 @@
 <a name="l01643"></a>01643 
 <a name="l01644"></a><a class="code" href="classoperations__research_1_1Solver.html#f9591aaf48469caffacc42569f7f2cfc">01644</a> <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="&amp;lt; !defined(SWIG)">LocalSearchOperator</a>* Solver::MakeNeighborhoodLimit(
 <a name="l01645"></a>01645     <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="&amp;lt; !defined(SWIG)">LocalSearchOperator</a>* <span class="keyword">const</span> op, int64 limit) {
-<a name="l01646"></a>01646   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> NeighborhoodLimit(op, limit));
+<a name="l01646"></a>01646   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> NeighborhoodLimit(op, limit));
 <a name="l01647"></a>01647 }
 <a name="l01648"></a>01648 
 <a name="l01649"></a>01649 <span class="comment">// ----- Concatenation of operators -----</span>
@@ -1812,7 +1812,7 @@
 <a name="l01729"></a>01729   <span class="keywordflow">return</span> <span class="keyword">false</span>;
 <a name="l01730"></a>01730 }
 <a name="l01731"></a>01731 
-<a name="l01732"></a><a class="code" href="namespaceoperations__research.html#8749cb42899bbfa170251de9ef34956f">01732</a> int64 <a class="code" href="namespaceoperations__research.html#8749cb42899bbfa170251de9ef34956f">CompoundOperatorNoRestart</a>(<span class="keywordtype">int</span> size,
+<a name="l01732"></a><a class="code" href="namespaceoperations__research.html#b0ae84135fa1a1d295dc51b965564d6f">01732</a> int64 <a class="code" href="namespaceoperations__research.html#b0ae84135fa1a1d295dc51b965564d6f">CompoundOperatorNoRestart</a>(<span class="keywordtype">int</span> size,
 <a name="l01733"></a>01733                                 <span class="keywordtype">int</span> active_index,
 <a name="l01734"></a>01734                                 <span class="keywordtype">int</span> operator_index) {
 <a name="l01735"></a>01735   <span class="keywordflow">if</span> (operator_index &lt; active_index) {
@@ -1822,7 +1822,7 @@
 <a name="l01739"></a>01739   }
 <a name="l01740"></a>01740 }
 <a name="l01741"></a>01741 
-<a name="l01742"></a><a class="code" href="namespaceoperations__research.html#d10f3c4e18d53e75cb641aed701062c5">01742</a> int64 <a class="code" href="namespaceoperations__research.html#d10f3c4e18d53e75cb641aed701062c5">CompoundOperatorRestart</a>(<span class="keywordtype">int</span> active_index, <span class="keywordtype">int</span> operator_index) {
+<a name="l01742"></a><a class="code" href="namespaceoperations__research.html#1b9539881c0bb7cfb15fed96f52a6470">01742</a> int64 <a class="code" href="namespaceoperations__research.html#1b9539881c0bb7cfb15fed96f52a6470">CompoundOperatorRestart</a>(<span class="keywordtype">int</span> active_index, <span class="keywordtype">int</span> operator_index) {
 <a name="l01743"></a>01743   <span class="keywordflow">return</span> 0;
 <a name="l01744"></a>01744 }
 <a name="l01745"></a>01745 }  <span class="comment">// namespace</span>
@@ -1838,11 +1838,11 @@
 <a name="l01755"></a>01755   <span class="keywordflow">if</span> (restart) {
 <a name="l01756"></a>01756     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#2d5e12aea6d0bdcc0d0763a6fb620ce2" title="Creates a local search operator which concatenates a vector of operators.">ConcatenateOperators</a>(
 <a name="l01757"></a>01757         ops,
-<a name="l01758"></a>01758         NewPermanentCallback(&amp;<a class="code" href="namespaceoperations__research.html#d10f3c4e18d53e75cb641aed701062c5">CompoundOperatorRestart</a>));
+<a name="l01758"></a>01758         NewPermanentCallback(&amp;<a class="code" href="namespaceoperations__research.html#1b9539881c0bb7cfb15fed96f52a6470">CompoundOperatorRestart</a>));
 <a name="l01759"></a>01759   } <span class="keywordflow">else</span> {
 <a name="l01760"></a>01760     <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#2d5e12aea6d0bdcc0d0763a6fb620ce2" title="Creates a local search operator which concatenates a vector of operators.">ConcatenateOperators</a>(
 <a name="l01761"></a>01761         ops,
-<a name="l01762"></a>01762         NewPermanentCallback(&amp;<a class="code" href="namespaceoperations__research.html#8749cb42899bbfa170251de9ef34956f">CompoundOperatorNoRestart</a>,
+<a name="l01762"></a>01762         NewPermanentCallback(&amp;<a class="code" href="namespaceoperations__research.html#b0ae84135fa1a1d295dc51b965564d6f">CompoundOperatorNoRestart</a>,
 <a name="l01763"></a>01763                              static_cast&lt;int&gt;(ops.size())));
 <a name="l01764"></a>01764   }
 <a name="l01765"></a>01765 }
@@ -1850,7 +1850,7 @@
 <a name="l01767"></a><a class="code" href="classoperations__research_1_1Solver.html#1b5349dd0df54835e516e32f8ef06c83">01767</a> <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="&amp;lt; !defined(SWIG)">LocalSearchOperator</a>* <a class="code" href="classoperations__research_1_1Solver.html#2d5e12aea6d0bdcc0d0763a6fb620ce2" title="Creates a local search operator which concatenates a vector of operators.">Solver::ConcatenateOperators</a>(
 <a name="l01768"></a>01768     <span class="keyword">const</span> std::vector&lt;LocalSearchOperator*&gt;&amp; ops,
 <a name="l01769"></a>01769     ResultCallback2&lt;int64, int, int&gt;* <span class="keyword">const</span> evaluator) {
-<a name="l01770"></a>01770   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> CompoundOperator(ops, evaluator));
+<a name="l01770"></a>01770   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> CompoundOperator(ops, evaluator));
 <a name="l01771"></a>01771 }
 <a name="l01772"></a>01772 
 <a name="l01773"></a>01773 <span class="keyword">namespace </span>{
@@ -1899,42 +1899,42 @@
 <a name="l01816"></a>01816 
 <a name="l01817"></a><a class="code" href="classoperations__research_1_1Solver.html#6775d5c83a1592ba07a6509226fa4d0a">01817</a> <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="&amp;lt; !defined(SWIG)">LocalSearchOperator</a>* <a class="code" href="classoperations__research_1_1Solver.html#6775d5c83a1592ba07a6509226fa4d0a" title="Randomized version of local search concatenator; calls a random operator at each...">Solver::RandomConcatenateOperators</a>(
 <a name="l01818"></a>01818     <span class="keyword">const</span> std::vector&lt;LocalSearchOperator*&gt;&amp; ops) {
-<a name="l01819"></a>01819   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> RandomCompoundOperator(ops));
+<a name="l01819"></a>01819   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> RandomCompoundOperator(ops));
 <a name="l01820"></a>01820 }
 <a name="l01821"></a>01821 
 <a name="l01822"></a>01822 <span class="comment">// ----- Operator factory -----</span>
 <a name="l01823"></a>01823 
 <a name="l01824"></a><a class="code" href="classoperations__research_1_1Solver.html#690d787d381fead53bcfd003d2fa34ac">01824</a> <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="&amp;lt; !defined(SWIG)">LocalSearchOperator</a>* <a class="code" href="classoperations__research_1_1Solver.html#690d787d381fead53bcfd003d2fa34ac" title="Local Search Operators.">Solver::MakeOperator</a>(<span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; vars,
-<a name="l01825"></a>01825                                           <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4">Solver::LocalSearchOperators</a> op) {
+<a name="l01825"></a>01825                                           <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4" title="This enum is used in Solver::MakeOperator to specify the neighborhood to create.">Solver::LocalSearchOperators</a> op) {
 <a name="l01826"></a>01826   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#690d787d381fead53bcfd003d2fa34ac" title="Local Search Operators.">MakeOperator</a>(vars.data(), vars.size(), op);
 <a name="l01827"></a>01827 }
 <a name="l01828"></a>01828 
 <a name="l01829"></a><a class="code" href="classoperations__research_1_1Solver.html#c798deffa56fd5b24b87efb8955a1109">01829</a> <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="&amp;lt; !defined(SWIG)">LocalSearchOperator</a>* <a class="code" href="classoperations__research_1_1Solver.html#690d787d381fead53bcfd003d2fa34ac" title="Local Search Operators.">Solver::MakeOperator</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span>* vars,
 <a name="l01830"></a>01830                                           <span class="keywordtype">int</span> size,
-<a name="l01831"></a>01831                                           <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4">Solver::LocalSearchOperators</a> op) {
+<a name="l01831"></a>01831                                           <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4" title="This enum is used in Solver::MakeOperator to specify the neighborhood to create.">Solver::LocalSearchOperators</a> op) {
 <a name="l01832"></a>01832   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#690d787d381fead53bcfd003d2fa34ac" title="Local Search Operators.">MakeOperator</a>(vars, NULL, size, op);
 <a name="l01833"></a>01833 }
 <a name="l01834"></a>01834 
 <a name="l01835"></a><a class="code" href="classoperations__research_1_1Solver.html#b24d69a07b79da230a0e206f0201559e">01835</a> <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="&amp;lt; !defined(SWIG)">LocalSearchOperator</a>* <a class="code" href="classoperations__research_1_1Solver.html#690d787d381fead53bcfd003d2fa34ac" title="Local Search Operators.">Solver::MakeOperator</a>(<span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; vars,
 <a name="l01836"></a>01836                                           <span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; secondary_vars,
-<a name="l01837"></a>01837                                           <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4">Solver::LocalSearchOperators</a> op) {
+<a name="l01837"></a>01837                                           <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4" title="This enum is used in Solver::MakeOperator to specify the neighborhood to create.">Solver::LocalSearchOperators</a> op) {
 <a name="l01838"></a>01838   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#690d787d381fead53bcfd003d2fa34ac" title="Local Search Operators.">MakeOperator</a>(vars.data(), secondary_vars.data(), vars.size(), op);
 <a name="l01839"></a>01839 }
 <a name="l01840"></a>01840 
 <a name="l01841"></a><a class="code" href="classoperations__research_1_1Solver.html#70fde8e6e30c986ce965bc4e45468ab2">01841</a> <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="&amp;lt; !defined(SWIG)">LocalSearchOperator</a>* <a class="code" href="classoperations__research_1_1Solver.html#690d787d381fead53bcfd003d2fa34ac" title="Local Search Operators.">Solver::MakeOperator</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span>* vars,
 <a name="l01842"></a>01842                                           <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span>* secondary_vars,
 <a name="l01843"></a>01843                                           <span class="keywordtype">int</span> size,
-<a name="l01844"></a>01844                                           <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4">Solver::LocalSearchOperators</a> op) {
+<a name="l01844"></a>01844                                           <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4" title="This enum is used in Solver::MakeOperator to specify the neighborhood to create.">Solver::LocalSearchOperators</a> op) {
 <a name="l01845"></a>01845   <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="&amp;lt; !defined(SWIG)">LocalSearchOperator</a>* result = NULL;
 <a name="l01846"></a>01846   <span class="keywordflow">switch</span> (op) {
-<a name="l01847"></a>01847     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a46954bf415a41a3e683060ce706cec2b6">Solver::TWOOPT</a>: {
-<a name="l01848"></a>01848       result = <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> TwoOpt(vars, secondary_vars, size));
+<a name="l01847"></a>01847     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a46954bf415a41a3e683060ce706cec2b6" title="Operator which reverves a sub-chain of a path.">Solver::TWOOPT</a>: {
+<a name="l01848"></a>01848       result = <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> TwoOpt(vars, secondary_vars, size));
 <a name="l01849"></a>01849       <span class="keywordflow">break</span>;
 <a name="l01850"></a>01850     }
-<a name="l01851"></a>01851     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4721d9e61cd2a9b9c221793b9b8086b09">Solver::OROPT</a>: {
+<a name="l01851"></a>01851     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4721d9e61cd2a9b9c221793b9b8086b09" title="Relocate: OROPT and RELOCATE.">Solver::OROPT</a>: {
 <a name="l01852"></a>01852       std::vector&lt;LocalSearchOperator*&gt; operators;
 <a name="l01853"></a>01853       <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt; 4; ++i)
-<a name="l01854"></a>01854         operators.push_back(<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> Relocate(vars,
+<a name="l01854"></a>01854         operators.push_back(<a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> Relocate(vars,
 <a name="l01855"></a>01855                                                   secondary_vars,
 <a name="l01856"></a>01856                                                   size,
 <a name="l01857"></a>01857                                                   i,
@@ -1942,64 +1942,64 @@
 <a name="l01859"></a>01859       result = <a class="code" href="classoperations__research_1_1Solver.html#2d5e12aea6d0bdcc0d0763a6fb620ce2" title="Creates a local search operator which concatenates a vector of operators.">ConcatenateOperators</a>(operators);
 <a name="l01860"></a>01860       <span class="keywordflow">break</span>;
 <a name="l01861"></a>01861     }
-<a name="l01862"></a>01862     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4e38682b404f0255b45c6c5a3d4d31399">Solver::RELOCATE</a>: {
-<a name="l01863"></a>01863       result = <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> Relocate(vars, secondary_vars, size));
+<a name="l01862"></a>01862     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4e38682b404f0255b45c6c5a3d4d31399" title="Relocate neighborhood with length of 1 (see OROPT comment).">Solver::RELOCATE</a>: {
+<a name="l01863"></a>01863       result = <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> Relocate(vars, secondary_vars, size));
 <a name="l01864"></a>01864       <span class="keywordflow">break</span>;
 <a name="l01865"></a>01865     }
-<a name="l01866"></a>01866     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a427e459c0332eecea29a0b793ec635b49">Solver::EXCHANGE</a>: {
-<a name="l01867"></a>01867       result = <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> Exchange(vars, secondary_vars, size));
+<a name="l01866"></a>01866     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a427e459c0332eecea29a0b793ec635b49" title="Operator which exchanges the positions of two nodes.">Solver::EXCHANGE</a>: {
+<a name="l01867"></a>01867       result = <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> Exchange(vars, secondary_vars, size));
 <a name="l01868"></a>01868       <span class="keywordflow">break</span>;
 <a name="l01869"></a>01869     }
-<a name="l01870"></a>01870     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a45dcd871e02933eb704b45ea8ea68a852">Solver::CROSS</a>: {
-<a name="l01871"></a>01871       result = <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> Cross(vars, secondary_vars, size));
+<a name="l01870"></a>01870     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a45dcd871e02933eb704b45ea8ea68a852" title="Operator which cross exchanges the starting chains of 2 paths, including exchanging...">Solver::CROSS</a>: {
+<a name="l01871"></a>01871       result = <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> Cross(vars, secondary_vars, size));
 <a name="l01872"></a>01872       <span class="keywordflow">break</span>;
 <a name="l01873"></a>01873     }
-<a name="l01874"></a>01874     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a441dc08543fce010d8ce65df80935ff38">Solver::MAKEACTIVE</a>: {
-<a name="l01875"></a>01875       result = <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> MakeActiveOperator(vars, secondary_vars, size));
+<a name="l01874"></a>01874     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a441dc08543fce010d8ce65df80935ff38" title="Operator which inserts an inactive node into a path.">Solver::MAKEACTIVE</a>: {
+<a name="l01875"></a>01875       result = <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> MakeActiveOperator(vars, secondary_vars, size));
 <a name="l01876"></a>01876       <span class="keywordflow">break</span>;
 <a name="l01877"></a>01877     }
-<a name="l01878"></a>01878     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a41a2beb32468f536c96644b3faa9c8d6e">Solver::MAKEINACTIVE</a>: {
-<a name="l01879"></a>01879       result = <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> MakeInactiveOperator(vars, secondary_vars, size));
+<a name="l01878"></a>01878     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a41a2beb32468f536c96644b3faa9c8d6e" title="Operator which makes path nodes inactive.">Solver::MAKEINACTIVE</a>: {
+<a name="l01879"></a>01879       result = <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> MakeInactiveOperator(vars, secondary_vars, size));
 <a name="l01880"></a>01880       <span class="keywordflow">break</span>;
 <a name="l01881"></a>01881     }
-<a name="l01882"></a>01882     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4eac9baf3ea4fa072bb9e4eccf691205d">Solver::SWAPACTIVE</a>: {
-<a name="l01883"></a>01883       result = <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> SwapActiveOperator(vars, secondary_vars, size));
+<a name="l01882"></a>01882     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4eac9baf3ea4fa072bb9e4eccf691205d" title="Operator which replaces an active node by an inactive one.">Solver::SWAPACTIVE</a>: {
+<a name="l01883"></a>01883       result = <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> SwapActiveOperator(vars, secondary_vars, size));
 <a name="l01884"></a>01884       <span class="keywordflow">break</span>;
 <a name="l01885"></a>01885     }
-<a name="l01886"></a>01886     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a499c891d39d424a087b7fd551b27906ec">Solver::EXTENDEDSWAPACTIVE</a>: {
-<a name="l01887"></a>01887       result = <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(
+<a name="l01886"></a>01886     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a499c891d39d424a087b7fd551b27906ec" title="Operator which makes an inactive node active and an active one inactive.">Solver::EXTENDEDSWAPACTIVE</a>: {
+<a name="l01887"></a>01887       result = <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(
 <a name="l01888"></a>01888           <span class="keyword">new</span> ExtendedSwapActiveOperator(vars, secondary_vars, size));
 <a name="l01889"></a>01889       <span class="keywordflow">break</span>;
 <a name="l01890"></a>01890     }
-<a name="l01891"></a>01891     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4ae749f308386810f29338c96daf0e4f8">Solver::PATHLNS</a>: {
-<a name="l01892"></a>01892       result = <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> PathLNS(vars, secondary_vars, size, 2, 3, <span class="keyword">false</span>));
+<a name="l01891"></a>01891     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4ae749f308386810f29338c96daf0e4f8" title="Operator which relaxes two sub-chains of three consecutive arcs each.">Solver::PATHLNS</a>: {
+<a name="l01892"></a>01892       result = <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> PathLNS(vars, secondary_vars, size, 2, 3, <span class="keyword">false</span>));
 <a name="l01893"></a>01893       <span class="keywordflow">break</span>;
 <a name="l01894"></a>01894     }
-<a name="l01895"></a>01895     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a45dbb9333b0dd7a380a85b4e1bd298667">Solver::UNACTIVELNS</a>: {
-<a name="l01896"></a>01896       result = <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> PathLNS(vars, secondary_vars, size, 1, 6, <span class="keyword">true</span>));
+<a name="l01895"></a>01895     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a45dbb9333b0dd7a380a85b4e1bd298667" title="Operator which relaxes all inactive nodes and one sub-chain of six consecutive arcs...">Solver::UNACTIVELNS</a>: {
+<a name="l01896"></a>01896       result = <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> PathLNS(vars, secondary_vars, size, 1, 6, <span class="keyword">true</span>));
 <a name="l01897"></a>01897       <span class="keywordflow">break</span>;
 <a name="l01898"></a>01898     }
-<a name="l01899"></a>01899     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4ed2205097d136a425fa309dcfc71586e">Solver::INCREMENT</a>: {
+<a name="l01899"></a>01899     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4ed2205097d136a425fa309dcfc71586e" title="Operator which defines one neighbor per variable.">Solver::INCREMENT</a>: {
 <a name="l01900"></a>01900       <span class="keywordflow">if</span> (secondary_vars == NULL) {
-<a name="l01901"></a>01901         result = <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> IncrementValue(vars, size));
+<a name="l01901"></a>01901         result = <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> IncrementValue(vars, size));
 <a name="l01902"></a>01902       } <span class="keywordflow">else</span> {
 <a name="l01903"></a>01903         LOG(FATAL) &lt;&lt; <span class="stringliteral">"Operator "</span> &lt;&lt; op
 <a name="l01904"></a>01904                    &lt;&lt; <span class="stringliteral">" does not support secondary variables"</span>;
 <a name="l01905"></a>01905       }
 <a name="l01906"></a>01906       <span class="keywordflow">break</span>;
 <a name="l01907"></a>01907     }
-<a name="l01908"></a>01908     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4d5eb45c9651dc49f7e2f0f9bf251dd40">Solver::DECREMENT</a>: {
+<a name="l01908"></a>01908     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a4d5eb45c9651dc49f7e2f0f9bf251dd40" title="Operator which defines a neighborhood to decrement values.">Solver::DECREMENT</a>: {
 <a name="l01909"></a>01909       <span class="keywordflow">if</span> (secondary_vars == NULL) {
-<a name="l01910"></a>01910         result = <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> DecrementValue(vars, size));
+<a name="l01910"></a>01910         result = <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> DecrementValue(vars, size));
 <a name="l01911"></a>01911       } <span class="keywordflow">else</span> {
 <a name="l01912"></a>01912         LOG(FATAL) &lt;&lt; <span class="stringliteral">"Operator "</span> &lt;&lt; op
 <a name="l01913"></a>01913                    &lt;&lt; <span class="stringliteral">" does not support secondary variables"</span>;
 <a name="l01914"></a>01914       }
 <a name="l01915"></a>01915       <span class="keywordflow">break</span>;
 <a name="l01916"></a>01916     }
-<a name="l01917"></a>01917     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a43a1a321416e317c8ed906573a937ffc4">Solver::SIMPLELNS</a>: {
+<a name="l01917"></a>01917     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c3c5b22fad8060ca1a66bd928182d8a43a1a321416e317c8ed906573a937ffc4" title="Operator which defines one neighbor per variable.">Solver::SIMPLELNS</a>: {
 <a name="l01918"></a>01918       <span class="keywordflow">if</span> (secondary_vars == NULL) {
-<a name="l01919"></a>01919         result = <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> SimpleLNS(vars, size, 1));
+<a name="l01919"></a>01919         result = <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> SimpleLNS(vars, size, 1));
 <a name="l01920"></a>01920       } <span class="keywordflow">else</span> {
 <a name="l01921"></a>01921         LOG(FATAL) &lt;&lt; <span class="stringliteral">"Operator "</span> &lt;&lt; op
 <a name="l01922"></a>01922                    &lt;&lt; <span class="stringliteral">" does not support secondary variables"</span>;
@@ -2015,7 +2015,7 @@
 <a name="l01932"></a><a class="code" href="classoperations__research_1_1Solver.html#36a996c8c26893ce321ccf131fd7cfe8">01932</a> <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="&amp;lt; !defined(SWIG)">LocalSearchOperator</a>* <a class="code" href="classoperations__research_1_1Solver.html#690d787d381fead53bcfd003d2fa34ac" title="Local Search Operators.">Solver::MakeOperator</a>(
 <a name="l01933"></a>01933     <span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; vars,
 <a name="l01934"></a>01934     <a class="code" href="classoperations__research_1_1Solver.html#fd80e55c6251fec492c4887f11b5b0e0">Solver::IndexEvaluator3</a>* <span class="keyword">const</span> evaluator,
-<a name="l01935"></a>01935     <a class="code" href="classoperations__research_1_1Solver.html#c1b3220ae80fb8430bc06310c5bea5f1">Solver::EvaluatorLocalSearchOperators</a> op) {
+<a name="l01935"></a>01935     <a class="code" href="classoperations__research_1_1Solver.html#c1b3220ae80fb8430bc06310c5bea5f1" title="This enum is used in Solver::MakeOperator associated with an evaluator to specify...">Solver::EvaluatorLocalSearchOperators</a> op) {
 <a name="l01936"></a>01936   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#690d787d381fead53bcfd003d2fa34ac" title="Local Search Operators.">MakeOperator</a>(vars.data(), vars.size(), evaluator, op);
 <a name="l01937"></a>01937 }
 <a name="l01938"></a>01938 
@@ -2023,7 +2023,7 @@
 <a name="l01940"></a>01940     <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span>* vars,
 <a name="l01941"></a>01941     <span class="keywordtype">int</span> size,
 <a name="l01942"></a>01942     <a class="code" href="classoperations__research_1_1Solver.html#fd80e55c6251fec492c4887f11b5b0e0">Solver::IndexEvaluator3</a>* <span class="keyword">const</span> evaluator,
-<a name="l01943"></a>01943     <a class="code" href="classoperations__research_1_1Solver.html#c1b3220ae80fb8430bc06310c5bea5f1">Solver::EvaluatorLocalSearchOperators</a> op) {
+<a name="l01943"></a>01943     <a class="code" href="classoperations__research_1_1Solver.html#c1b3220ae80fb8430bc06310c5bea5f1" title="This enum is used in Solver::MakeOperator associated with an evaluator to specify...">Solver::EvaluatorLocalSearchOperators</a> op) {
 <a name="l01944"></a>01944   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#690d787d381fead53bcfd003d2fa34ac" title="Local Search Operators.">MakeOperator</a>(vars, NULL, size, evaluator, op);
 <a name="l01945"></a>01945 }
 <a name="l01946"></a>01946 
@@ -2031,7 +2031,7 @@
 <a name="l01948"></a>01948     <span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; vars,
 <a name="l01949"></a>01949     <span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; secondary_vars,
 <a name="l01950"></a>01950     <a class="code" href="classoperations__research_1_1Solver.html#fd80e55c6251fec492c4887f11b5b0e0">Solver::IndexEvaluator3</a>* <span class="keyword">const</span> evaluator,
-<a name="l01951"></a>01951     <a class="code" href="classoperations__research_1_1Solver.html#c1b3220ae80fb8430bc06310c5bea5f1">Solver::EvaluatorLocalSearchOperators</a> op) {
+<a name="l01951"></a>01951     <a class="code" href="classoperations__research_1_1Solver.html#c1b3220ae80fb8430bc06310c5bea5f1" title="This enum is used in Solver::MakeOperator associated with an evaluator to specify...">Solver::EvaluatorLocalSearchOperators</a> op) {
 <a name="l01952"></a>01952   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#690d787d381fead53bcfd003d2fa34ac" title="Local Search Operators.">MakeOperator</a>(vars.data(),
 <a name="l01953"></a>01953                       secondary_vars.data(),
 <a name="l01954"></a>01954                       vars.size(),
@@ -2044,19 +2044,19 @@
 <a name="l01961"></a>01961     <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span>* secondary_vars,
 <a name="l01962"></a>01962     <span class="keywordtype">int</span> size,
 <a name="l01963"></a>01963     <a class="code" href="classoperations__research_1_1Solver.html#fd80e55c6251fec492c4887f11b5b0e0">Solver::IndexEvaluator3</a>* <span class="keyword">const</span> evaluator,
-<a name="l01964"></a>01964     <a class="code" href="classoperations__research_1_1Solver.html#c1b3220ae80fb8430bc06310c5bea5f1">Solver::EvaluatorLocalSearchOperators</a> op) {
+<a name="l01964"></a>01964     <a class="code" href="classoperations__research_1_1Solver.html#c1b3220ae80fb8430bc06310c5bea5f1" title="This enum is used in Solver::MakeOperator associated with an evaluator to specify...">Solver::EvaluatorLocalSearchOperators</a> op) {
 <a name="l01965"></a>01965   <a class="code" href="classoperations__research_1_1LocalSearchOperator.html" title="&amp;lt; !defined(SWIG)">LocalSearchOperator</a>* result = NULL;
 <a name="l01966"></a>01966   <span class="keywordflow">switch</span> (op) {
-<a name="l01967"></a>01967     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c1b3220ae80fb8430bc06310c5bea5f1ae6bcc97b395e12e9a8e54093a327512">Solver::LK</a>: {
+<a name="l01967"></a>01967     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c1b3220ae80fb8430bc06310c5bea5f1ae6bcc97b395e12e9a8e54093a327512" title="Lin–Kernighan local search.">Solver::LK</a>: {
 <a name="l01968"></a>01968       std::vector&lt;LocalSearchOperator*&gt; operators;
 <a name="l01969"></a>01969       operators.push_back(
-<a name="l01970"></a>01970           <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> LinKernighan(vars,
+<a name="l01970"></a>01970           <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> LinKernighan(vars,
 <a name="l01971"></a>01971                                     secondary_vars,
 <a name="l01972"></a>01972                                     size,
 <a name="l01973"></a>01973                                     evaluator,
 <a name="l01974"></a>01974                                     <span class="keyword">true</span>, <span class="keyword">false</span>)));
 <a name="l01975"></a>01975       operators.push_back(
-<a name="l01976"></a>01976           <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> LinKernighan(vars,
+<a name="l01976"></a>01976           <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> LinKernighan(vars,
 <a name="l01977"></a>01977                                     secondary_vars,
 <a name="l01978"></a>01978                                     size,
 <a name="l01979"></a>01979                                     evaluator,
@@ -2064,13 +2064,13 @@
 <a name="l01981"></a>01981       result = <a class="code" href="classoperations__research_1_1Solver.html#2d5e12aea6d0bdcc0d0763a6fb620ce2" title="Creates a local search operator which concatenates a vector of operators.">ConcatenateOperators</a>(operators);
 <a name="l01982"></a>01982       <span class="keywordflow">break</span>;
 <a name="l01983"></a>01983     }
-<a name="l01984"></a>01984     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c1b3220ae80fb8430bc06310c5bea5f1c712194c4e0edea857001e9cf2ed5811">Solver::TSPOPT</a>: {
-<a name="l01985"></a>01985       result = <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> TSPOpt(vars, secondary_vars, size, evaluator,
+<a name="l01984"></a>01984     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c1b3220ae80fb8430bc06310c5bea5f1c712194c4e0edea857001e9cf2ed5811" title="Sliding TSP operator.">Solver::TSPOPT</a>: {
+<a name="l01985"></a>01985       result = <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> TSPOpt(vars, secondary_vars, size, evaluator,
 <a name="l01986"></a>01986                                    FLAGS_cp_local_search_tsp_opt_size));
 <a name="l01987"></a>01987       <span class="keywordflow">break</span>;
 <a name="l01988"></a>01988     }
-<a name="l01989"></a>01989     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c1b3220ae80fb8430bc06310c5bea5f129c43618e41fc69d29d248c0031d5af1">Solver::TSPLNS</a>: {
-<a name="l01990"></a>01990       result = <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> TSPLns(vars, secondary_vars, size, evaluator,
+<a name="l01989"></a>01989     <span class="keywordflow">case</span> <a class="code" href="classoperations__research_1_1Solver.html#c1b3220ae80fb8430bc06310c5bea5f129c43618e41fc69d29d248c0031d5af1" title="TSP-base LNS.">Solver::TSPLNS</a>: {
+<a name="l01990"></a>01990       result = <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> TSPLns(vars, secondary_vars, size, evaluator,
 <a name="l01991"></a>01991                                    FLAGS_cp_local_search_tsp_lns_size));
 <a name="l01992"></a>01992       <span class="keywordflow">break</span>;
 <a name="l01993"></a>01993     }
@@ -2088,7 +2088,7 @@
 <a name="l02005"></a>02005  <span class="keyword">public</span>:
 <a name="l02006"></a>02006   LSOperation() {}
 <a name="l02007"></a>02007   <span class="keyword">virtual</span> ~LSOperation() {}
-<a name="l02008"></a>02008   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1Solver.html#ff69c43f533d38b3ed33f897c7ab3f5a" title="Init.">Init</a>() = 0;
+<a name="l02008"></a>02008   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Init() = 0;
 <a name="l02009"></a>02009   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Update(int64 update) = 0;
 <a name="l02010"></a>02010   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Remove(int64 <span class="keyword">remove</span>) = 0;
 <a name="l02011"></a>02011   <span class="keyword">virtual</span> int64 <a class="code" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>() = 0;
@@ -2097,7 +2097,7 @@
 <a name="l02014"></a>02014 
 <a name="l02015"></a>02015 <span class="keyword">class </span>SumOperation : <span class="keyword">public</span> LSOperation {
 <a name="l02016"></a>02016  <span class="keyword">public</span>:
-<a name="l02017"></a>02017   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1Solver.html#ff69c43f533d38b3ed33f897c7ab3f5a" title="Init.">Init</a>() { <a class="code" href="count__cst_8cc.html#c6e4658a955b43c47093a302239fc4ff">value_</a> = 0; }
+<a name="l02017"></a>02017   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Init() { <a class="code" href="count__cst_8cc.html#c6e4658a955b43c47093a302239fc4ff">value_</a> = 0; }
 <a name="l02018"></a>02018   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Update(int64 update) {
 <a name="l02019"></a>02019     <a class="code" href="count__cst_8cc.html#c6e4658a955b43c47093a302239fc4ff">value_</a> += update;
 <a name="l02020"></a>02020   }
@@ -2113,7 +2113,7 @@
 <a name="l02030"></a>02030 
 <a name="l02031"></a>02031 <span class="keyword">class </span>ProductOperation : <span class="keyword">public</span> LSOperation {
 <a name="l02032"></a>02032  <span class="keyword">public</span>:
-<a name="l02033"></a>02033   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1Solver.html#ff69c43f533d38b3ed33f897c7ab3f5a" title="Init.">Init</a>() { <a class="code" href="count__cst_8cc.html#c6e4658a955b43c47093a302239fc4ff">value_</a> = 1; }
+<a name="l02033"></a>02033   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Init() { <a class="code" href="count__cst_8cc.html#c6e4658a955b43c47093a302239fc4ff">value_</a> = 1; }
 <a name="l02034"></a>02034   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Update(int64 update) {
 <a name="l02035"></a>02035     <a class="code" href="count__cst_8cc.html#c6e4658a955b43c47093a302239fc4ff">value_</a> *= update;
 <a name="l02036"></a>02036   }
@@ -2131,8 +2131,8 @@
 <a name="l02048"></a>02048 
 <a name="l02049"></a>02049 <span class="keyword">class </span>MaxMinOperation : <span class="keyword">public</span> LSOperation {
 <a name="l02050"></a>02050  <span class="keyword">public</span>:
-<a name="l02051"></a>02051   <span class="keyword">explicit</span> MaxMinOperation(<span class="keywordtype">bool</span> <a class="code" href="alldiff__cst_8cc.html#9d0c202d5fdd62f4fa2c613339ff168a">max</a>) : <a class="code" href="count__cst_8cc.html#04f42738b419f5f5e893179e5857cf66">max_</a>(max) {}
-<a name="l02052"></a>02052   <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1Solver.html#ff69c43f533d38b3ed33f897c7ab3f5a" title="Init.">Init</a>() {
+<a name="l02051"></a>02051   <span class="keyword">explicit</span> MaxMinOperation(<span class="keywordtype">bool</span> <a class="code" href="alldiff__cst_8cc.html#9d0c202d5fdd62f4fa2c613339ff168a">max</a>) : <a class="code" href="count__cst_8cc.html#17ae9bddfc016f8466640f9de143f938">max_</a>(max) {}
+<a name="l02052"></a>02052   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Init() {
 <a name="l02053"></a>02053     <a class="code" href="local__search_8cc.html#99eb2381852d45ac62c01c2cee742ed8">values_set_</a>.clear();
 <a name="l02054"></a>02054   }
 <a name="l02055"></a>02055   <span class="keyword">virtual</span> <span class="keywordtype">void</span> Update(int64 update) {
@@ -2143,7 +2143,7 @@
 <a name="l02060"></a>02060   }
 <a name="l02061"></a>02061   <span class="keyword">virtual</span> int64 <a class="code" href="search_8cc.html#21edc7ca4cc5802c8779d68556bc09cf">value</a>() {
 <a name="l02062"></a>02062     <span class="keywordflow">if</span> (!<a class="code" href="local__search_8cc.html#99eb2381852d45ac62c01c2cee742ed8">values_set_</a>.empty()) {
-<a name="l02063"></a>02063       <span class="keywordflow">if</span> (<a class="code" href="count__cst_8cc.html#04f42738b419f5f5e893179e5857cf66">max_</a>) {
+<a name="l02063"></a>02063       <span class="keywordflow">if</span> (<a class="code" href="count__cst_8cc.html#17ae9bddfc016f8466640f9de143f938">max_</a>) {
 <a name="l02064"></a>02064         <span class="keywordflow">return</span> *<a class="code" href="local__search_8cc.html#99eb2381852d45ac62c01c2cee742ed8">values_set_</a>.rbegin();
 <a name="l02065"></a>02065       } <span class="keywordflow">else</span> {
 <a name="l02066"></a>02066         <span class="keywordflow">return</span> *<a class="code" href="local__search_8cc.html#99eb2381852d45ac62c01c2cee742ed8">values_set_</a>.begin();
@@ -2156,7 +2156,7 @@
 <a name="l02073"></a>02073 
 <a name="l02074"></a>02074  <span class="keyword">private</span>:
 <a name="l02075"></a><a class="code" href="local__search_8cc.html#99eb2381852d45ac62c01c2cee742ed8">02075</a>   std::set&lt;int64&gt; <a class="code" href="local__search_8cc.html#99eb2381852d45ac62c01c2cee742ed8">values_set_</a>;
-<a name="l02076"></a><a class="code" href="local__search_8cc.html#6ad25229f98df9d9d3b5863c3306948d">02076</a>   <span class="keywordtype">bool</span> <a class="code" href="count__cst_8cc.html#04f42738b419f5f5e893179e5857cf66">max_</a>;
+<a name="l02076"></a><a class="code" href="local__search_8cc.html#6ad25229f98df9d9d3b5863c3306948d">02076</a>   <span class="keywordtype">bool</span> <a class="code" href="count__cst_8cc.html#17ae9bddfc016f8466640f9de143f938">max_</a>;
 <a name="l02077"></a>02077 };
 <a name="l02078"></a>02078 
 <a name="l02079"></a>02079 <span class="comment">// ----- Variable domain filter -----</span>
@@ -2185,14 +2185,14 @@
 <a name="l02102"></a>02102 }  <span class="comment">// namespace</span>
 <a name="l02103"></a>02103 
 <a name="l02104"></a><a class="code" href="classoperations__research_1_1Solver.html#31c5f4f6a6e119c1e8f3aa35b0e83eb3">02104</a> <a class="code" href="classoperations__research_1_1LocalSearchFilter.html" title="Local Search Filters.">LocalSearchFilter</a>* Solver::MakeVariableDomainFilter() {
-<a name="l02105"></a>02105   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> VariableDomainFilter());
+<a name="l02105"></a>02105   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> VariableDomainFilter());
 <a name="l02106"></a>02106 }
 <a name="l02107"></a>02107 
 <a name="l02108"></a>02108 <span class="comment">// ----- IntVarLocalSearchFilter -----</span>
 <a name="l02109"></a>02109 
 <a name="l02110"></a><a class="code" href="classoperations__research_1_1IntVarLocalSearchFilter.html#af1e5c44d3d9f6b731f43da10d6426a3">02110</a> <a class="code" href="classoperations__research_1_1IntVarLocalSearchFilter.html#af1e5c44d3d9f6b731f43da10d6426a3" title="IntVarLocalSearchFilter.">IntVarLocalSearchFilter::IntVarLocalSearchFilter</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span>* vars,
 <a name="l02111"></a>02111                                                  <span class="keywordtype">int</span> size)
-<a name="l02112"></a>02112     : <a class="code" href="alldiff__cst_8cc.html#9547583a9de0b0177b68c0f73e1eb563">vars_</a>(NULL), <a class="code" href="count__cst_8cc.html#cef12b021ebe66b2440a7dcfbf277e91">values_</a>(NULL), size_(0) {
+<a name="l02112"></a>02112     : <a class="code" href="alldiff__cst_8cc.html#9547583a9de0b0177b68c0f73e1eb563">vars_</a>(NULL), <a class="code" href="count__cst_8cc.html#e2ff949ac514bc38d215d9c5aa5c4e28">values_</a>(NULL), size_(0) {
 <a name="l02113"></a>02113   <a class="code" href="classoperations__research_1_1IntVarLocalSearchFilter.html#c3e448ecea08986763169e2a517108fb" title="Add variables to &amp;quot;track&amp;quot; to the filter.">AddVars</a>(vars, size);
 <a name="l02114"></a>02114   CHECK_GE(size_, 0);
 <a name="l02115"></a>02115 }
@@ -2251,7 +2251,7 @@
 <a name="l02168"></a>02168   ObjectiveFilter(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span>* vars,
 <a name="l02169"></a>02169                   <span class="keywordtype">int</span> size,
 <a name="l02170"></a>02170                   <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span> objective,
-<a name="l02171"></a>02171                   <a class="code" href="classoperations__research_1_1Solver.html#8e9cbe2323b10c6b49da625f5bae14c0">Solver::LocalSearchFilterBound</a> filter_enum,
+<a name="l02171"></a>02171                   <a class="code" href="classoperations__research_1_1Solver.html#8e9cbe2323b10c6b49da625f5bae14c0" title="This enum is used in Solver::MakeLocalSearchObjectiveFilter.">Solver::LocalSearchFilterBound</a> filter_enum,
 <a name="l02172"></a>02172                   LSOperation* op);
 <a name="l02173"></a>02173   <span class="keyword">virtual</span> ~ObjectiveFilter();
 <a name="l02174"></a>02174   <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classoperations__research_1_1LocalSearchFilter.html#50fa8e9ba16ba0dcd2f9748afeebdb98" title="Accepts a &amp;quot;delta&amp;quot; given the assignment with which the filter has been synchronized;...">Accept</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* delta, <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* deltadelta);
@@ -2266,8 +2266,8 @@
 <a name="l02183"></a><a class="code" href="local__search_8cc.html#bb9d2b424ab39435d678a29eb290bb7c">02183</a>   <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="local__search_8cc.html#bb9d2b424ab39435d678a29eb290bb7c">primary_vars_size_</a>;
 <a name="l02184"></a><a class="code" href="local__search_8cc.html#f58160877e17fc8ff8c7ae94b20d0336">02184</a>   int64* <span class="keyword">const</span> <a class="code" href="local__search_8cc.html#f58160877e17fc8ff8c7ae94b20d0336">cache_</a>;
 <a name="l02185"></a><a class="code" href="local__search_8cc.html#734bde319e7f1d598c9bd3a8e795750a">02185</a>   int64* <span class="keyword">const</span> <a class="code" href="local__search_8cc.html#734bde319e7f1d598c9bd3a8e795750a">delta_cache_</a>;
-<a name="l02186"></a><a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">02186</a>   <span class="keyword">const</span> IntVar* <span class="keyword">const</span> <a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>;
-<a name="l02187"></a><a class="code" href="local__search_8cc.html#6fd39ac3fffc21b6844f418b311f6fc3">02187</a>   <a class="code" href="classoperations__research_1_1Solver.html#8e9cbe2323b10c6b49da625f5bae14c0">Solver::LocalSearchFilterBound</a> <a class="code" href="local__search_8cc.html#6fd39ac3fffc21b6844f418b311f6fc3">filter_enum_</a>;
+<a name="l02186"></a><a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">02186</a>   <span class="keyword">const</span> IntVar* <span class="keyword">const</span> <a class="code" href="hybrid_8cc.html#98ba95b549535b51328237bd4043ab28">objective_</a>;
+<a name="l02187"></a><a class="code" href="local__search_8cc.html#6fd39ac3fffc21b6844f418b311f6fc3">02187</a>   <a class="code" href="classoperations__research_1_1Solver.html#8e9cbe2323b10c6b49da625f5bae14c0" title="This enum is used in Solver::MakeLocalSearchObjectiveFilter.">Solver::LocalSearchFilterBound</a> <a class="code" href="local__search_8cc.html#6fd39ac3fffc21b6844f418b311f6fc3">filter_enum_</a>;
 <a name="l02188"></a><a class="code" href="local__search_8cc.html#1cd6884f47f6bb086001ce6b3d040f2d">02188</a>   scoped_ptr&lt;LSOperation&gt; <a class="code" href="local__search_8cc.html#1cd6884f47f6bb086001ce6b3d040f2d">op_</a>;
 <a name="l02189"></a><a class="code" href="local__search_8cc.html#a49db3b42a1b418ffdd05a42703594f5">02189</a>   int64 <a class="code" href="constraint__solver_8cc.html#d23798e2eb6681fd68436c2d050a8b24">old_value_</a>;
 <a name="l02190"></a><a class="code" href="local__search_8cc.html#1362f4dd0e01895505bfb44880e02b87">02190</a>   int64 <a class="code" href="local__search_8cc.html#1362f4dd0e01895505bfb44880e02b87">old_delta_value_</a>;
@@ -2284,13 +2284,13 @@
 <a name="l02201"></a>02201 ObjectiveFilter::ObjectiveFilter(<span class="keyword">const</span> IntVar* <span class="keyword">const</span>* vars,
 <a name="l02202"></a>02202                                  <span class="keywordtype">int</span> var_size,
 <a name="l02203"></a>02203                                  <span class="keyword">const</span> IntVar* <span class="keyword">const</span> objective,
-<a name="l02204"></a>02204                                  <a class="code" href="classoperations__research_1_1Solver.html#8e9cbe2323b10c6b49da625f5bae14c0">Solver::LocalSearchFilterBound</a> filter_enum,
+<a name="l02204"></a>02204                                  <a class="code" href="classoperations__research_1_1Solver.html#8e9cbe2323b10c6b49da625f5bae14c0" title="This enum is used in Solver::MakeLocalSearchObjectiveFilter.">Solver::LocalSearchFilterBound</a> filter_enum,
 <a name="l02205"></a>02205                                  LSOperation* op)
 <a name="l02206"></a>02206     : <a class="code" href="classoperations__research_1_1IntVarLocalSearchFilter.html#af1e5c44d3d9f6b731f43da10d6426a3" title="IntVarLocalSearchFilter.">IntVarLocalSearchFilter</a>(vars, var_size),
 <a name="l02207"></a>02207       <a class="code" href="local__search_8cc.html#bb9d2b424ab39435d678a29eb290bb7c">primary_vars_size_</a>(var_size),
 <a name="l02208"></a>02208       <a class="code" href="local__search_8cc.html#f58160877e17fc8ff8c7ae94b20d0336">cache_</a>(new int64[var_size]),
 <a name="l02209"></a>02209       <a class="code" href="local__search_8cc.html#734bde319e7f1d598c9bd3a8e795750a">delta_cache_</a>(new int64[var_size]),
-<a name="l02210"></a>02210       <a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>(objective),
+<a name="l02210"></a>02210       <a class="code" href="hybrid_8cc.html#98ba95b549535b51328237bd4043ab28">objective_</a>(objective),
 <a name="l02211"></a>02211       <a class="code" href="local__search_8cc.html#6fd39ac3fffc21b6844f418b311f6fc3">filter_enum_</a>(filter_enum),
 <a name="l02212"></a>02212       <a class="code" href="local__search_8cc.html#1cd6884f47f6bb086001ce6b3d040f2d">op_</a>(op),
 <a name="l02213"></a>02213       <a class="code" href="constraint__solver_8cc.html#d23798e2eb6681fd68436c2d050a8b24">old_value_</a>(0),
@@ -2334,9 +2334,9 @@
 <a name="l02251"></a>02251     value = Evaluate(delta, <a class="code" href="constraint__solver_8cc.html#d23798e2eb6681fd68436c2d050a8b24">old_value_</a>, <a class="code" href="local__search_8cc.html#f58160877e17fc8ff8c7ae94b20d0336">cache_</a>, <span class="keyword">false</span>);
 <a name="l02252"></a>02252   }
 <a name="l02253"></a>02253   <a class="code" href="local__search_8cc.html#1362f4dd0e01895505bfb44880e02b87">old_delta_value_</a> = value;
-<a name="l02254"></a>02254   int64 var_min = <a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>-&gt;Min();
-<a name="l02255"></a>02255   int64 var_max = <a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>-&gt;Max();
-<a name="l02256"></a>02256   <span class="keywordflow">if</span> (delta-&gt;Objective() == <a class="code" href="local__search_8cc.html#969f275acc83d2b7437c801eec4ea174">objective_</a>) {
+<a name="l02254"></a>02254   int64 var_min = <a class="code" href="hybrid_8cc.html#98ba95b549535b51328237bd4043ab28">objective_</a>-&gt;Min();
+<a name="l02255"></a>02255   int64 var_max = <a class="code" href="hybrid_8cc.html#98ba95b549535b51328237bd4043ab28">objective_</a>-&gt;Max();
+<a name="l02256"></a>02256   <span class="keywordflow">if</span> (delta-&gt;Objective() == <a class="code" href="hybrid_8cc.html#98ba95b549535b51328237bd4043ab28">objective_</a>) {
 <a name="l02257"></a>02257     var_min = <a class="code" href="alldiff__cst_8cc.html#9d0c202d5fdd62f4fa2c613339ff168a">std::max</a>(var_min, delta-&gt;ObjectiveMin());
 <a name="l02258"></a>02258     var_max = <a class="code" href="alldiff__cst_8cc.html#021e695f54a13bd809c34b2f4ca87c37">std::min</a>(var_max, delta-&gt;ObjectiveMax());
 <a name="l02259"></a>02259   }
@@ -2400,7 +2400,7 @@
 <a name="l02317"></a>02317  <span class="keyword">public</span>:
 <a name="l02318"></a>02318   BinaryObjectiveFilter(<span class="keyword">const</span> IntVar* <span class="keyword">const</span>* vars,
 <a name="l02319"></a>02319                         <span class="keywordtype">int</span> size,
-<a name="l02320"></a>02320                         Solver::IndexEvaluator2* values,
+<a name="l02320"></a>02320                         Solver::IndexEvaluator2* <a class="code" href="collect__variables_8cc.html#ec49e8404606ac252aef3e0f7b13f2cd">values</a>,
 <a name="l02321"></a>02321                         <span class="keyword">const</span> IntVar* <span class="keyword">const</span> objective,
 <a name="l02322"></a>02322                         Solver::LocalSearchFilterBound filter_enum,
 <a name="l02323"></a>02323                         LSOperation* op);
@@ -2532,7 +2532,7 @@
 <a name="l02449"></a>02449 
 <a name="l02450"></a>02450 <span class="comment">// ---- Local search filter factory ----</span>
 <a name="l02451"></a>02451 
-<a name="l02452"></a><a class="code" href="namespaceoperations__research.html#b4c9feb7a5cb2bfaa35794e3eb763a65">02452</a> LSOperation* <a class="code" href="namespaceoperations__research.html#b4c9feb7a5cb2bfaa35794e3eb763a65" title="Local search filter factory.">OperationFromEnum</a>(<a class="code" href="classoperations__research_1_1Solver.html#33dcc7075bc4e16ae357cfd975822abc">Solver::LocalSearchOperation</a> op_enum) {
+<a name="l02452"></a><a class="code" href="namespaceoperations__research.html#6899b876398e79ade147e3ed45ca1cc8">02452</a> LSOperation* <a class="code" href="namespaceoperations__research.html#6899b876398e79ade147e3ed45ca1cc8" title="Local search filter factory.">OperationFromEnum</a>(<a class="code" href="classoperations__research_1_1Solver.html#33dcc7075bc4e16ae357cfd975822abc" title="This enum is used in Solver::MakeLocalSearchObjectiveFilter.">Solver::LocalSearchOperation</a> op_enum) {
 <a name="l02453"></a>02453   LSOperation* operation = NULL;
 <a name="l02454"></a>02454   <span class="keywordflow">switch</span> (op_enum) {
 <a name="l02455"></a>02455     <span class="keywordflow">case</span> Solver::SUM: {
@@ -2561,24 +2561,24 @@
 <a name="l02478"></a><a class="code" href="classoperations__research_1_1Solver.html#4edf645400c8e4760d72042f289c7f97">02478</a> <a class="code" href="classoperations__research_1_1LocalSearchFilter.html" title="Local Search Filters.">LocalSearchFilter</a>* Solver::MakeLocalSearchObjectiveFilter(
 <a name="l02479"></a>02479     <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span>* vars,
 <a name="l02480"></a>02480     <span class="keywordtype">int</span> size,
-<a name="l02481"></a>02481     Solver::IndexEvaluator2* <span class="keyword">const</span> values,
+<a name="l02481"></a>02481     Solver::IndexEvaluator2* <span class="keyword">const</span> <a class="code" href="collect__variables_8cc.html#ec49e8404606ac252aef3e0f7b13f2cd">values</a>,
 <a name="l02482"></a>02482     <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span> objective,
-<a name="l02483"></a>02483     <a class="code" href="classoperations__research_1_1Solver.html#8e9cbe2323b10c6b49da625f5bae14c0">Solver::LocalSearchFilterBound</a> filter_enum,
-<a name="l02484"></a>02484     <a class="code" href="classoperations__research_1_1Solver.html#33dcc7075bc4e16ae357cfd975822abc">Solver::LocalSearchOperation</a> op_enum) {
-<a name="l02485"></a>02485   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> BinaryObjectiveFilter(vars,
+<a name="l02483"></a>02483     <a class="code" href="classoperations__research_1_1Solver.html#8e9cbe2323b10c6b49da625f5bae14c0" title="This enum is used in Solver::MakeLocalSearchObjectiveFilter.">Solver::LocalSearchFilterBound</a> filter_enum,
+<a name="l02484"></a>02484     <a class="code" href="classoperations__research_1_1Solver.html#33dcc7075bc4e16ae357cfd975822abc" title="This enum is used in Solver::MakeLocalSearchObjectiveFilter.">Solver::LocalSearchOperation</a> op_enum) {
+<a name="l02485"></a>02485   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> BinaryObjectiveFilter(vars,
 <a name="l02486"></a>02486                                             size,
 <a name="l02487"></a>02487                                             values,
 <a name="l02488"></a>02488                                             objective,
 <a name="l02489"></a>02489                                             filter_enum,
-<a name="l02490"></a>02490                                             <a class="code" href="namespaceoperations__research.html#b4c9feb7a5cb2bfaa35794e3eb763a65" title="Local search filter factory.">OperationFromEnum</a>(op_enum)));
+<a name="l02490"></a>02490                                             <a class="code" href="namespaceoperations__research.html#6899b876398e79ade147e3ed45ca1cc8" title="Local search filter factory.">OperationFromEnum</a>(op_enum)));
 <a name="l02491"></a>02491 }
 <a name="l02492"></a>02492 
 <a name="l02493"></a><a class="code" href="classoperations__research_1_1Solver.html#bc4594132d20b7cf0bf68deb8d68adca">02493</a> <a class="code" href="classoperations__research_1_1LocalSearchFilter.html" title="Local Search Filters.">LocalSearchFilter</a>* <a class="code" href="classoperations__research_1_1Solver.html#4edf645400c8e4760d72042f289c7f97" title="namespace">Solver::MakeLocalSearchObjectiveFilter</a>(
 <a name="l02494"></a>02494     <span class="keyword">const</span> std::vector&lt;IntVar*&gt;&amp; vars,
-<a name="l02495"></a>02495     <a class="code" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a>* <span class="keyword">const</span> values,
+<a name="l02495"></a>02495     <a class="code" href="classoperations__research_1_1Solver.html#487b521ee809f0f4ee397b9f6ea06f59">Solver::IndexEvaluator2</a>* <span class="keyword">const</span> <a class="code" href="collect__variables_8cc.html#ec49e8404606ac252aef3e0f7b13f2cd">values</a>,
 <a name="l02496"></a>02496     <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span> objective,
-<a name="l02497"></a>02497     <a class="code" href="classoperations__research_1_1Solver.html#8e9cbe2323b10c6b49da625f5bae14c0">Solver::LocalSearchFilterBound</a> filter_enum,
-<a name="l02498"></a>02498     <a class="code" href="classoperations__research_1_1Solver.html#33dcc7075bc4e16ae357cfd975822abc">Solver::LocalSearchOperation</a> op_enum) {
+<a name="l02497"></a>02497     <a class="code" href="classoperations__research_1_1Solver.html#8e9cbe2323b10c6b49da625f5bae14c0" title="This enum is used in Solver::MakeLocalSearchObjectiveFilter.">Solver::LocalSearchFilterBound</a> filter_enum,
+<a name="l02498"></a>02498     <a class="code" href="classoperations__research_1_1Solver.html#33dcc7075bc4e16ae357cfd975822abc" title="This enum is used in Solver::MakeLocalSearchObjectiveFilter.">Solver::LocalSearchOperation</a> op_enum) {
 <a name="l02499"></a>02499   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#4edf645400c8e4760d72042f289c7f97" title="namespace">MakeLocalSearchObjectiveFilter</a>(vars.data(),
 <a name="l02500"></a>02500                                         vars.size(),
 <a name="l02501"></a>02501                                         values,
@@ -2591,17 +2591,17 @@
 <a name="l02508"></a>02508     <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span>* vars,
 <a name="l02509"></a>02509     <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span>* secondary_vars,
 <a name="l02510"></a>02510     <span class="keywordtype">int</span> size,
-<a name="l02511"></a>02511     <a class="code" href="classoperations__research_1_1Solver.html#fd80e55c6251fec492c4887f11b5b0e0">Solver::IndexEvaluator3</a>* <span class="keyword">const</span> values,
+<a name="l02511"></a>02511     <a class="code" href="classoperations__research_1_1Solver.html#fd80e55c6251fec492c4887f11b5b0e0">Solver::IndexEvaluator3</a>* <span class="keyword">const</span> <a class="code" href="collect__variables_8cc.html#ec49e8404606ac252aef3e0f7b13f2cd">values</a>,
 <a name="l02512"></a>02512     <span class="keyword">const</span> <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span> objective,
-<a name="l02513"></a>02513     <a class="code" href="classoperations__research_1_1Solver.html#8e9cbe2323b10c6b49da625f5bae14c0">Solver::LocalSearchFilterBound</a> filter_enum,
-<a name="l02514"></a>02514     <a class="code" href="classoperations__research_1_1Solver.html#33dcc7075bc4e16ae357cfd975822abc">Solver::LocalSearchOperation</a> op_enum) {
-<a name="l02515"></a>02515   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> TernaryObjectiveFilter(vars,
+<a name="l02513"></a>02513     <a class="code" href="classoperations__research_1_1Solver.html#8e9cbe2323b10c6b49da625f5bae14c0" title="This enum is used in Solver::MakeLocalSearchObjectiveFilter.">Solver::LocalSearchFilterBound</a> filter_enum,
+<a name="l02514"></a>02514     <a class="code" href="classoperations__research_1_1Solver.html#33dcc7075bc4e16ae357cfd975822abc" title="This enum is used in Solver::MakeLocalSearchObjectiveFilter.">Solver::LocalSearchOperation</a> op_enum) {
+<a name="l02515"></a>02515   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> TernaryObjectiveFilter(vars,
 <a name="l02516"></a>02516                                              secondary_vars,
 <a name="l02517"></a>02517                                              size,
 <a name="l02518"></a>02518                                              values,
 <a name="l02519"></a>02519                                              objective,
 <a name="l02520"></a>02520                                              filter_enum,
-<a name="l02521"></a>02521                                              <a class="code" href="namespaceoperations__research.html#b4c9feb7a5cb2bfaa35794e3eb763a65" title="Local search filter factory.">OperationFromEnum</a>(op_enum)));
+<a name="l02521"></a>02521                                              <a class="code" href="namespaceoperations__research.html#6899b876398e79ade147e3ed45ca1cc8" title="Local search filter factory.">OperationFromEnum</a>(op_enum)));
 <a name="l02522"></a>02522 }
 <a name="l02523"></a>02523 
 <a name="l02524"></a>02524 <span class="comment">// ----- Finds a neighbor of the assignment passed -----</span>
@@ -2686,7 +2686,7 @@
 <a name="l02603"></a>02603 
 <a name="l02604"></a>02604   {
 <a name="l02605"></a>02605     <span class="comment">// Another assignment is needed to apply the delta</span>
-<a name="l02606"></a>02606     <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* assignment_copy = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(
+<a name="l02606"></a>02606     <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* assignment_copy = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(
 <a name="l02607"></a>02607             <span class="keyword">new</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>(reference_assignment_.get()));
 <a name="l02608"></a>02608     <span class="keywordtype">int</span> counter = 0;
 <a name="l02609"></a>02609 
@@ -2695,8 +2695,8 @@
 <a name="l02612"></a>02612     <span class="keywordflow">if</span> (sub_decision_builder_) {
 <a name="l02613"></a>02613       restore = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#ebbd0d209e96c3e6406f9a78061631b4" title="Sequential composition of Decision Builders.">Compose</a>(restore, sub_decision_builder_);
 <a name="l02614"></a>02614     }
-<a name="l02615"></a>02615     <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* delta = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>(solver));
-<a name="l02616"></a>02616     <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* deltadelta = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>(solver));
+<a name="l02615"></a>02615     <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* delta = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>(solver));
+<a name="l02616"></a>02616     <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* deltadelta = solver-&gt;<a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>(solver));
 <a name="l02617"></a>02617     <span class="keywordflow">while</span> (<span class="keyword">true</span>) {
 <a name="l02618"></a>02618       delta-&gt;<a class="code" href="classoperations__research_1_1Assignment.html#95769d12b65e9e41966f082e6be717e3">Clear</a>();
 <a name="l02619"></a>02619       deltadelta-&gt;<a class="code" href="classoperations__research_1_1Assignment.html#95769d12b65e9e41966f082e6be717e3">Clear</a>();
@@ -2869,7 +2869,7 @@
 <a name="l02786"></a>02786     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <span class="keyword">const</span> sub_decision_builder,
 <a name="l02787"></a>02787     <a class="code" href="classoperations__research_1_1SearchLimit.html" title="Search Limits.">SearchLimit</a>* <span class="keyword">const</span> limit,
 <a name="l02788"></a>02788     <span class="keyword">const</span> std::vector&lt;LocalSearchFilter*&gt;&amp; filters) {
-<a name="l02789"></a>02789   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>(pool,
+<a name="l02789"></a>02789   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>(pool,
 <a name="l02790"></a>02790                                                  ls_operator,
 <a name="l02791"></a>02791                                                  sub_decision_builder,
 <a name="l02792"></a>02792                                                  limit,
@@ -2906,7 +2906,7 @@
 <a name="l02823"></a>02823   <span class="keyword">virtual</span> <span class="keywordtype">string</span> <a class="code" href="classoperations__research_1_1Solver.html#a7a09bf2f27ccbdc1d1d386bd94e142a" title="misc debug string.">DebugString</a>()<span class="keyword"> const </span>{
 <a name="l02824"></a>02824     <span class="keywordflow">return</span> <span class="stringliteral">"NestedSolveDecision"</span>;
 <a name="l02825"></a>02825   }
-<a name="l02826"></a>02826   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1Solver.html#e964d4fa8d19980de529a6e771ee9a7e" title="state of the solver.">state</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="local__search_8cc.html#80151e3e5119fd23f5c8bd4125dafc11">state_</a>; }
+<a name="l02826"></a>02826   <span class="keywordtype">int</span> <a class="code" href="classoperations__research_1_1Solver.html#e964d4fa8d19980de529a6e771ee9a7e" title="State of the solver.">state</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code" href="local__search_8cc.html#80151e3e5119fd23f5c8bd4125dafc11">state_</a>; }
 <a name="l02827"></a>02827 
 <a name="l02828"></a>02828  <span class="keyword">private</span>:
 <a name="l02829"></a><a class="code" href="local__search_8cc.html#5d7ebe0debf7eb2b5d5e8bb2db5e526b">02829</a>   DecisionBuilder* <span class="keyword">const</span> <a class="code" href="default__search_8cc.html#f29e6f18a2e5762e7d38d946c540f43f">db_</a>;
@@ -3130,7 +3130,7 @@
 <a name="l03047"></a>03047   Solver* <span class="keyword">const</span> solver = <a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>-&gt;solver();
 <a name="l03048"></a>03048   DecisionBuilder* store = solver-&gt;MakeStoreAssignment(<a class="code" href="assignment_8cc.html#6743122cc2fc4818b402ba3d484c6ea4">assignment_</a>);
 <a name="l03049"></a>03049   DecisionBuilder* first_solution_and_store =
-<a name="l03050"></a>03050       solver-&gt;Compose(first_solution, store);
+<a name="l03050"></a>03050       solver-&gt;Compose(first_solution, <a class="code" href="local__search_8cc.html#a6206aa5f598643592ead3d5d4e06b8c">sub_decision_builder_</a>, store);
 <a name="l03051"></a>03051   std::vector&lt;SearchMonitor*&gt; monitor;
 <a name="l03052"></a>03052   monitor.push_back(<a class="code" href="local__search_8cc.html#1c69e7dcf9d555da2ceac2a003b9e647">limit_</a>);
 <a name="l03053"></a>03053   <a class="code" href="local__search_8cc.html#0b573d2c2cd7e2d4992ed1615761b4da">nested_decisions_</a>.push_back(
@@ -3179,13 +3179,13 @@
 <a name="l03096"></a>03096 }  <span class="comment">// namespace</span>
 <a name="l03097"></a>03097 
 <a name="l03098"></a><a class="code" href="classoperations__research_1_1Solver.html#71d2ee2d6714d7faa834b31a7c7753a6">03098</a> <a class="code" href="classoperations__research_1_1SolutionPool.html" title="SolutionPool.">SolutionPool</a>* Solver::MakeDefaultSolutionPool() {
-<a name="l03099"></a>03099   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> DefaultSolutionPool());
+<a name="l03099"></a>03099   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> DefaultSolutionPool());
 <a name="l03100"></a>03100 }
 <a name="l03101"></a>03101 
 <a name="l03102"></a><a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d">03102</a> <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b59e7e5baa7c33b6c2d9f69b610de9d" title="Local Search decision builders factories.">Solver::MakeLocalSearchPhase</a>(
 <a name="l03103"></a>03103     <a class="code" href="classoperations__research_1_1Assignment.html" title="Assignment.">Assignment</a>* assignment,
 <a name="l03104"></a>03104     <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b52d4efd0ccb1880d2f1bc794166872" title="Read-only Parameters.">parameters</a>) {
-<a name="l03105"></a>03105   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> LocalSearch(assignment,
+<a name="l03105"></a>03105   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> LocalSearch(assignment,
 <a name="l03106"></a>03106                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#6ffb119e946430226df7002254bc8d13">solution_pool</a>(),
 <a name="l03107"></a>03107                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#26bb0cb4dca27b5b3050abb13c0a75e0">ls_operator</a>(),
 <a name="l03108"></a>03108                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#095b809504a71c349e3f0dd3aca5e89d">sub_decision_builder</a>(),
@@ -3207,7 +3207,7 @@
 <a name="l03124"></a>03124     <a class="code" href="classoperations__research_1_1IntVar.html" title="The class IntVar is a subset of IntExpr.">IntVar</a>* <span class="keyword">const</span>* vars, <span class="keywordtype">int</span> size,
 <a name="l03125"></a>03125     <a class="code" href="classoperations__research_1_1DecisionBuilder.html" title="A DecisionBuilder is responsible for creating the search tree.">DecisionBuilder</a>* first_solution,
 <a name="l03126"></a>03126     <a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html" title="Local Search Phase Parameters.">LocalSearchPhaseParameters</a>* <a class="code" href="classoperations__research_1_1Solver.html#8b52d4efd0ccb1880d2f1bc794166872" title="Read-only Parameters.">parameters</a>) {
-<a name="l03127"></a>03127   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#83ceb54f811483fd1c0444cddba8a600" title="The RevAlloc method stores the corresponding object in a stack.">RevAlloc</a>(<span class="keyword">new</span> LocalSearch(vars, size,
+<a name="l03127"></a>03127   <span class="keywordflow">return</span> <a class="code" href="classoperations__research_1_1Solver.html#c668195dafc8397ada82227f605b0ed4" title="Registers the given object as being reversible.">RevAlloc</a>(<span class="keyword">new</span> LocalSearch(vars, size,
 <a name="l03128"></a>03128                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#6ffb119e946430226df7002254bc8d13">solution_pool</a>(),
 <a name="l03129"></a>03129                                   first_solution,
 <a name="l03130"></a>03130                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#26bb0cb4dca27b5b3050abb13c0a75e0">ls_operator</a>(),
@@ -3215,8 +3215,7 @@
 <a name="l03132"></a>03132                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#2b0643bc1871ce13b447bb50b4868760">limit</a>(),
 <a name="l03133"></a>03133                                   parameters-&gt;<a class="code" href="classoperations__research_1_1LocalSearchPhaseParameters.html#478156cabd760a885c3f8fb85d85cf90">filters</a>()));
 <a name="l03134"></a>03134 }
-<a name="l03135"></a>03135 
-<a name="l03136"></a>03136 }  <span class="comment">// namespace operations_research</span>
+<a name="l03135"></a>03135 }  <span class="comment">// namespace operations_research</span>
 </pre></div></div>
 
   <!-- Start of footer. -->
@@ -3225,7 +3224,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

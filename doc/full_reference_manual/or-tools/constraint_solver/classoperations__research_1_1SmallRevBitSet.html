@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -95,7 +95,7 @@
 <h1>operations_research::SmallRevBitSet Class Reference</h1><!-- doxytag: class="operations_research::SmallRevBitSet" -->This class represents a small reversible bitset (size &lt;= 64).  
 <a href="#_details">More...</a>
 <p>
-<code>#include &lt;<a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>&gt;</code>
+<code>#include &lt;<a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>&gt;</code>
 <p>
 
 <p>
@@ -107,22 +107,28 @@
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight"><a class="el" href="classoperations__research_1_1SmallRevBitSet.html" title="This class represents a small reversible bitset (size &lt;= 64).">SmallRevBitSet</a>.  <a href="#0984b7441a23c75de696103cadc044b5"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SmallRevBitSet.html#427373fdc21062991efa27f991862ff6">SetToOne</a> (<a class="el" href="classoperations__research_1_1Solver.html">Solver</a> *const solver, int64 pos)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Sets the 'pos' bit.  <a href="#427373fdc21062991efa27f991862ff6"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SmallRevBitSet.html#22f35c8d356a6bc1dfb95bb36da6d37a">SetToZero</a> (<a class="el" href="classoperations__research_1_1Solver.html">Solver</a> *const solver, int64 pos)</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Erases the 'pos' bit.  <a href="#22f35c8d356a6bc1dfb95bb36da6d37a"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SmallRevBitSet.html#8d5b430eed66fd29882693acb179e1c1">Cardinality</a> () const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Returns the number of bits set to one.  <a href="#8d5b430eed66fd29882693acb179e1c1"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SmallRevBitSet.html#c48a71fee237bc7b7c30da70964feac4">IsCardinalityZero</a> () const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Is bitset null?  <a href="#c48a71fee237bc7b7c30da70964feac4"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SmallRevBitSet.html#658d742e0b7ad7f6970fc767b6a109b6">IsCardinalityOne</a> () const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Does it contains only one bit set?  <a href="#658d742e0b7ad7f6970fc767b6a109b6"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int64&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SmallRevBitSet.html#8f2b8156245201ddfdb9df3d98f5ceb4">GetFirstOne</a> () const </td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Gets the index of the first bit set starting from 0.  <a href="#8f2b8156245201ddfdb9df3d98f5ceb4"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 This class represents a small reversible bitset (size &lt;= 64). 
 <p>
-It supports the following operations: SetToOne(pos) (reversible) SetToZero(solver, pos) (reversible, with stamp) <a class="el" href="classoperations__research_1_1SmallRevBitSet.html#8d5b430eed66fd29882693acb179e1c1">Cardinality()</a> IsCardZero() // fast test IsCardOne() // fast test <a class="el" href="classoperations__research_1_1SmallRevBitSet.html#8f2b8156245201ddfdb9df3d98f5ceb4">GetFirstOne()</a> This class is useful to maintain supports. 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l04087">4087</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+This class is useful to maintain supports. 
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00420">420</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="0984b7441a23c75de696103cadc044b5"></a><!-- doxytag: member="operations_research::SmallRevBitSet::SmallRevBitSet" ref="0984b7441a23c75de696103cadc044b5" args="(int64 size)" -->
 <div class="memitem">
@@ -144,7 +150,7 @@ It supports the following operations: SetToOne(pos) (reversible) SetToZero(solve
 <a class="el" href="classoperations__research_1_1SmallRevBitSet.html" title="This class represents a small reversible bitset (size &lt;= 64).">SmallRevBitSet</a>. 
 <p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00032">32</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00033">33</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -175,8 +181,10 @@ It supports the following operations: SetToOne(pos) (reversible) SetToZero(solve
 <div class="memdoc">
 
 <p>
+Sets the 'pos' bit. 
+<p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00037">37</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00038">38</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -206,8 +214,10 @@ It supports the following operations: SetToOne(pos) (reversible) SetToZero(solve
 <div class="memdoc">
 
 <p>
+Erases the 'pos' bit. 
+<p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00047">47</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00043">43</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -227,8 +237,10 @@ It supports the following operations: SetToOne(pos) (reversible) SetToZero(solve
 <div class="memdoc">
 
 <p>
+Returns the number of bits set to one. 
+<p>
 
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00057">57</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00048">48</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
@@ -248,8 +260,10 @@ It supports the following operations: SetToOne(pos) (reversible) SetToZero(solve
 <div class="memdoc">
 
 <p>
+Is bitset null? 
+<p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l04093">4093</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00430">430</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -269,8 +283,10 @@ It supports the following operations: SetToOne(pos) (reversible) SetToZero(solve
 <div class="memdoc">
 
 <p>
+Does it contains only one bit set? 
+<p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l04094">4094</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solveri_8h-source.html#l00432">432</a> of file <a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a>.</p>
 
 </div>
 </div><p>
@@ -290,13 +306,15 @@ It supports the following operations: SetToOne(pos) (reversible) SetToZero(solve
 <div class="memdoc">
 
 <p>
-
-<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00061">61</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
+Gets the index of the first bit set starting from 0. 
+<p>
+It returns -1 if the bitset is empty. 
+<p>Definition at line <a class="el" href="utilities_8cc-source.html#l00052">52</a> of file <a class="el" href="utilities_8cc-source.html">utilities.cc</a>.</p>
 
 </div>
 </div><p>
 <hr>The documentation for this class was generated from the following files:<ul>
-<li>or-tools/constraint_solver/<a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a><li>or-tools/constraint_solver/<a class="el" href="utilities_8cc-source.html">utilities.cc</a></ul>
+<li>or-tools/constraint_solver/<a class="el" href="constraint__solveri_8h-source.html">constraint_solveri.h</a><li>or-tools/constraint_solver/<a class="el" href="utilities_8cc-source.html">utilities.cc</a></ul>
 </div>
 
   <!-- Start of footer. -->
@@ -305,7 +323,7 @@ It supports the following operations: SetToOne(pos) (reversible) SetToZero(solve
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

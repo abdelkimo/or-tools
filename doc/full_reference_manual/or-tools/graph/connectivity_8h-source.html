@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:11 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/graph/index.html">graph</a>/
             </tt></b></font>
@@ -159,12 +159,12 @@
 <a name="l00076"></a><a class="code" href="classoperations__research_1_1ConnectedComponents.html#f4a4843aacdee2bed49e5bd4ec8cfa36">00076</a>   <a class="code" href="classoperations__research_1_1ConnectedComponents.html#f4a4843aacdee2bed49e5bd4ec8cfa36">~ConnectedComponents</a>() {}
 <a name="l00077"></a>00077 
 <a name="l00078"></a>00078   <span class="comment">// Reserves memory for num_nodes and resets the data structures.</span>
-<a name="l00079"></a><a class="code" href="classoperations__research_1_1ConnectedComponents.html#59ec176eeb45e9d811d2849d10c37203">00079</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1ConnectedComponents.html#59ec176eeb45e9d811d2849d10c37203" title="Reserves memory for num_nodes and resets the data structures.">Init</a>(<a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of EbertGraph, named &amp;#39;StarGraph&amp;#39;, and relevant type...">NodeIndex</a> num_nodes) {
+<a name="l00079"></a><a class="code" href="classoperations__research_1_1ConnectedComponents.html#59ec176eeb45e9d811d2849d10c37203">00079</a>   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1ConnectedComponents.html#59ec176eeb45e9d811d2849d10c37203" title="Reserves memory for num_nodes and resets the data structures.">Init</a>(<a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of ForwardEbertGraph (named &amp;#39;ForwardStarGraph&amp;#39;) of...">NodeIndex</a> num_nodes) {
 <a name="l00080"></a>00080     <a class="code" href="classoperations__research_1_1ConnectedComponents.html#59ec176eeb45e9d811d2849d10c37203" title="Reserves memory for num_nodes and resets the data structures.">Init</a>(0, num_nodes - 1);
 <a name="l00081"></a>00081   }
 <a name="l00082"></a>00082 
 <a name="l00083"></a>00083   <span class="comment">// Adds the information that NodeIndex tail and NodeIndex head are connected.</span>
-<a name="l00084"></a>00084   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1ConnectedComponents.html#c8bc2e5c9ec9a7a1666eac5b6d49df7a" title="Adds the information that NodeIndex tail and NodeIndex head are connected.">AddArc</a>(<a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of EbertGraph, named &amp;#39;StarGraph&amp;#39;, and relevant type...">NodeIndex</a> tail, <a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of EbertGraph, named &amp;#39;StarGraph&amp;#39;, and relevant type...">NodeIndex</a> head);
+<a name="l00084"></a>00084   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1ConnectedComponents.html#c8bc2e5c9ec9a7a1666eac5b6d49df7a" title="Adds the information that NodeIndex tail and NodeIndex head are connected.">AddArc</a>(<a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of ForwardEbertGraph (named &amp;#39;ForwardStarGraph&amp;#39;) of...">NodeIndex</a> tail, <a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of ForwardEbertGraph (named &amp;#39;ForwardStarGraph&amp;#39;) of...">NodeIndex</a> head);
 <a name="l00085"></a>00085 
 <a name="l00086"></a>00086   <span class="comment">// Adds a complete StarGraph to the object. Note that Depth-First Search</span>
 <a name="l00087"></a>00087   <span class="comment">// is a better algorithm for finding connected components on graphs.</span>
@@ -172,31 +172,31 @@
 <a name="l00089"></a>00089   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1ConnectedComponents.html#4d51d7625cb19a2018c3c4563090e16c" title="Adds a complete StarGraph to the object.">AddGraph</a>(<span class="keyword">const</span> <a class="code" href="classoperations__research_1_1EbertGraph.html" title="Most users should only use StarGraph, which is EbertGraph&amp;lt;int32, int32&amp;gt;, and...">StarGraph</a>&amp; graph);
 <a name="l00090"></a>00090 
 <a name="l00091"></a>00091   <span class="comment">// Compresses the path for node.</span>
-<a name="l00092"></a>00092   <a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of EbertGraph, named &amp;#39;StarGraph&amp;#39;, and relevant type...">NodeIndex</a> <a class="code" href="classoperations__research_1_1ConnectedComponents.html#e391172eb1b737c6f5a8aca621ad7be9" title="Compresses the path for node.">CompressPath</a>(<a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of EbertGraph, named &amp;#39;StarGraph&amp;#39;, and relevant type...">NodeIndex</a> node);
+<a name="l00092"></a>00092   <a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of ForwardEbertGraph (named &amp;#39;ForwardStarGraph&amp;#39;) of...">NodeIndex</a> <a class="code" href="classoperations__research_1_1ConnectedComponents.html#e391172eb1b737c6f5a8aca621ad7be9" title="Compresses the path for node.">CompressPath</a>(<a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of ForwardEbertGraph (named &amp;#39;ForwardStarGraph&amp;#39;) of...">NodeIndex</a> node);
 <a name="l00093"></a>00093 
 <a name="l00094"></a>00094   <span class="comment">// Returns the equivalence class representative for node.</span>
-<a name="l00095"></a>00095   <a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of EbertGraph, named &amp;#39;StarGraph&amp;#39;, and relevant type...">NodeIndex</a> <a class="code" href="classoperations__research_1_1ConnectedComponents.html#a97d67f1441caa34d09640ef0acecf6c" title="Returns the equivalence class representative for node.">GetClassRepresentative</a>(<a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of EbertGraph, named &amp;#39;StarGraph&amp;#39;, and relevant type...">NodeIndex</a> node);
+<a name="l00095"></a>00095   <a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of ForwardEbertGraph (named &amp;#39;ForwardStarGraph&amp;#39;) of...">NodeIndex</a> <a class="code" href="classoperations__research_1_1ConnectedComponents.html#a97d67f1441caa34d09640ef0acecf6c" title="Returns the equivalence class representative for node.">GetClassRepresentative</a>(<a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of ForwardEbertGraph (named &amp;#39;ForwardStarGraph&amp;#39;) of...">NodeIndex</a> node);
 <a name="l00096"></a>00096 
 <a name="l00097"></a>00097   <span class="comment">// Returns the number of connected components. Allocates num_nodes_ bits for</span>
 <a name="l00098"></a>00098   <span class="comment">// the computation.</span>
-<a name="l00099"></a>00099   <a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of EbertGraph, named &amp;#39;StarGraph&amp;#39;, and relevant type...">NodeIndex</a> <a class="code" href="classoperations__research_1_1ConnectedComponents.html#17fe3a074a8895ac18ab5d0e54a257c1" title="Returns the number of connected components.">GetNumberOfConnectedComponents</a>();
+<a name="l00099"></a>00099   <a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of ForwardEbertGraph (named &amp;#39;ForwardStarGraph&amp;#39;) of...">NodeIndex</a> <a class="code" href="classoperations__research_1_1ConnectedComponents.html#17fe3a074a8895ac18ab5d0e54a257c1" title="Returns the number of connected components.">GetNumberOfConnectedComponents</a>();
 <a name="l00100"></a>00100 
 <a name="l00101"></a>00101   <span class="comment">// Merges the equivalence classes of node1 and node2.</span>
-<a name="l00102"></a>00102   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1ConnectedComponents.html#87323fa01dc6f1555506902f87c812a4" title="Merges the equivalence classes of node1 and node2.">MergeClasses</a>(<a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of EbertGraph, named &amp;#39;StarGraph&amp;#39;, and relevant type...">NodeIndex</a> node1, <a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of EbertGraph, named &amp;#39;StarGraph&amp;#39;, and relevant type...">NodeIndex</a> node2);
+<a name="l00102"></a>00102   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1ConnectedComponents.html#87323fa01dc6f1555506902f87c812a4" title="Merges the equivalence classes of node1 and node2.">MergeClasses</a>(<a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of ForwardEbertGraph (named &amp;#39;ForwardStarGraph&amp;#39;) of...">NodeIndex</a> node1, <a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of ForwardEbertGraph (named &amp;#39;ForwardStarGraph&amp;#39;) of...">NodeIndex</a> node2);
 <a name="l00103"></a>00103 
 <a name="l00104"></a>00104  <span class="keyword">private</span>:
 <a name="l00105"></a>00105   <span class="comment">// Initializes the object and allocates memory.</span>
-<a name="l00106"></a>00106   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1ConnectedComponents.html#59ec176eeb45e9d811d2849d10c37203" title="Reserves memory for num_nodes and resets the data structures.">Init</a>(<a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of EbertGraph, named &amp;#39;StarGraph&amp;#39;, and relevant type...">NodeIndex</a> min_index, <a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of EbertGraph, named &amp;#39;StarGraph&amp;#39;, and relevant type...">NodeIndex</a> max_index);
+<a name="l00106"></a>00106   <span class="keywordtype">void</span> <a class="code" href="classoperations__research_1_1ConnectedComponents.html#59ec176eeb45e9d811d2849d10c37203" title="Reserves memory for num_nodes and resets the data structures.">Init</a>(<a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of ForwardEbertGraph (named &amp;#39;ForwardStarGraph&amp;#39;) of...">NodeIndex</a> min_index, <a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of ForwardEbertGraph (named &amp;#39;ForwardStarGraph&amp;#39;) of...">NodeIndex</a> max_index);
 <a name="l00107"></a>00107 
 <a name="l00108"></a>00108   <span class="comment">// The minimum index for nodes in the graph.</span>
-<a name="l00109"></a>00109   <a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of EbertGraph, named &amp;#39;StarGraph&amp;#39;, and relevant type...">NodeIndex</a>      min_index_;
+<a name="l00109"></a>00109   <a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of ForwardEbertGraph (named &amp;#39;ForwardStarGraph&amp;#39;) of...">NodeIndex</a>      min_index_;
 <a name="l00110"></a>00110 
 <a name="l00111"></a>00111   <span class="comment">// The exact number of nodes in the graph.</span>
-<a name="l00112"></a>00112   <a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of EbertGraph, named &amp;#39;StarGraph&amp;#39;, and relevant type...">NodeIndex</a>      max_index_;
+<a name="l00112"></a>00112   <a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of ForwardEbertGraph (named &amp;#39;ForwardStarGraph&amp;#39;) of...">NodeIndex</a>      max_index_;
 <a name="l00113"></a>00113 
 <a name="l00114"></a>00114   <span class="comment">// The maximum node index seen during AddArc. (set to Graph::num_nodes() by</span>
 <a name="l00115"></a>00115   <span class="comment">// AddGraph.)</span>
-<a name="l00116"></a>00116   <a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of EbertGraph, named &amp;#39;StarGraph&amp;#39;, and relevant type...">NodeIndex</a>      max_seen_index_;
+<a name="l00116"></a>00116   <a class="code" href="namespaceoperations__research.html#0e629e35bfa311b31dd7f5065eb834bb" title="Standard instantiation of ForwardEbertGraph (named &amp;#39;ForwardStarGraph&amp;#39;) of...">NodeIndex</a>      max_seen_index_;
 <a name="l00117"></a>00117 
 <a name="l00118"></a>00118   <span class="comment">// The equivalence class representative for each node.</span>
 <a name="l00119"></a>00119   <a class="code" href="namespaceoperations__research.html#389e5320fb5bcd0fb99d894488f9820b">NodeIndexArray</a> class_;
@@ -219,7 +219,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

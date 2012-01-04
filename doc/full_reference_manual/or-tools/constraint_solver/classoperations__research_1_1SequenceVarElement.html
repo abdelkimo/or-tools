@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -128,13 +128,23 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SequenceVarElement.html#136038294620a9a9d575eae64a3019eb">Restore</a> ()</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SequenceVarElement.html#33f4915db22c8d962c4c741cb95defa5">StoreFromProto</a> (const SequenceVarAssignmentProto &amp;sequence_var_assignment_proto)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SequenceVarElement.html#da4d514745efb4e51f25b633bd9b2c7d">LoadFromProto</a> (const SequenceVarAssignmentProto &amp;sequence_var_assignment_proto)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SequenceVarElement.html#c93c5f76d18f4debe4f64cda8895bd23">RestoreToProto</a> (SequenceVarAssignmentProto *sequence_var_assignment_proto) const </td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SequenceVarElement.html#3a55d1fcbee942d28828122510cbdf07">WriteToProto</a> (SequenceVarAssignmentProto *sequence_var_assignment_proto) const </td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">const std::vector&lt; int &gt; &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SequenceVarElement.html#292547884f1fda7bc5f79496ed5bf7a8">Sequence</a> () const </td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const std::vector&lt; int &gt; &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SequenceVarElement.html#50ddba41a7dafcfd140d1d4d16ada9b2">ForwardSequence</a> () const </td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SequenceVarElement.html#93adf4748d1ce3eb52c2f8a0f3f6ac74">SetSequence</a> (const std::vector&lt; int &gt; &amp;new_sequence)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const std::vector&lt; int &gt; &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SequenceVarElement.html#dfdacdd1ae3718f51abda334282a3358">BackwardSequence</a> () const </td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">const std::vector&lt; int &gt; &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SequenceVarElement.html#edbd5358dbd241258d54c10a197c0358">Unperformed</a> () const </td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SequenceVarElement.html#9240cc020d1d179aeb4ff57993ac822a">SetSequence</a> (const std::vector&lt; int &gt; &amp;forward_sequence, const std::vector&lt; int &gt; &amp;backward_sequence, const std::vector&lt; int &gt; &amp;unperformed)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SequenceVarElement.html#a416720977aa00d0f25d352166f4f005">SetForwardSequence</a> (const std::vector&lt; int &gt; &amp;forward_sequence)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SequenceVarElement.html#7296d95d6ce7890ff1ace7779dee8755">SetBackwardSequence</a> (const std::vector&lt; int &gt; &amp;backward_sequence)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SequenceVarElement.html#60768b9a65cc2b1f9b22dded7572556d">SetUnperformed</a> (const std::vector&lt; int &gt; &amp;unperformed)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classoperations__research_1_1SequenceVarElement.html#aa2fce00b601e05f40276998321c9f41">DebugString</a> () const </td></tr>
 
@@ -145,7 +155,11 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 <a class="el" href="classoperations__research_1_1SequenceVarElement.html" title="SequenceVarElement.">SequenceVarElement</a>. 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l03726">3726</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>
+The sequence var element stores a partial representation of ranked interval variables in the underlying sequence variable. This representation consists of three vectors:<ul>
+<li>the forward sequence. That is the list of interval variables ranked first in the sequence. The first element of the backward sequence is the first interval in the sequence variable.</li><li>the backward sequence. That is the list of interval variables ranked last in the sequence. The first element of the backward sequence is the last interval in the sequence variable.</li><li>The list of unperformed interval variables. Furthermore, if all performed variables are ranked, then by convention, the forward_sequence will contains all such variables and the backward_sequence will be empty. </li></ul>
+
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l04390">4390</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 <hr><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" name="40179b14fb9451e5d8f6fc3666a6caa9"></a><!-- doxytag: member="operations_research::SequenceVarElement::SequenceVarElement" ref="40179b14fb9451e5d8f6fc3666a6caa9" args="()" -->
 <div class="memitem">
@@ -166,7 +180,7 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
 <a class="el" href="classoperations__research_1_1SequenceVarElement.html" title="SequenceVarElement.">SequenceVarElement</a>. 
 <p>
 
-<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00257">257</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
+<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00277">277</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
 
 </div>
 </div><p>
@@ -188,7 +202,7 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00261">261</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
+<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00281">281</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
 
 </div>
 </div><p>
@@ -211,7 +225,7 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00265">265</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
+<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00285">285</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
 
 </div>
 </div><p>
@@ -232,7 +246,7 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00270">270</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
+<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00292">292</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
 
 </div>
 </div><p>
@@ -254,7 +268,7 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00276">276</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
+<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00298">298</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
 
 </div>
 </div><p>
@@ -275,7 +289,7 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l03733">3733</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l04397">4397</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -296,7 +310,7 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00286">286</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
+<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00310">310</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
 
 </div>
 </div><p>
@@ -317,16 +331,16 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00290">290</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
+<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00314">314</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="33f4915db22c8d962c4c741cb95defa5"></a><!-- doxytag: member="operations_research::SequenceVarElement::StoreFromProto" ref="33f4915db22c8d962c4c741cb95defa5" args="(const SequenceVarAssignmentProto &amp;sequence_var_assignment_proto)" -->
+<a class="anchor" name="da4d514745efb4e51f25b633bd9b2c7d"></a><!-- doxytag: member="operations_research::SequenceVarElement::LoadFromProto" ref="da4d514745efb4e51f25b633bd9b2c7d" args="(const SequenceVarAssignmentProto &amp;sequence_var_assignment_proto)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void operations_research::SequenceVarElement::StoreFromProto           </td>
+          <td class="memname">void operations_research::SequenceVarElement::LoadFromProto           </td>
           <td>(</td>
           <td class="paramtype">const SequenceVarAssignmentProto &amp;&nbsp;</td>
           <td class="paramname"> <em>sequence_var_assignment_proto</em>          </td>
@@ -339,16 +353,16 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00296">296</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
+<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00318">318</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="c93c5f76d18f4debe4f64cda8895bd23"></a><!-- doxytag: member="operations_research::SequenceVarElement::RestoreToProto" ref="c93c5f76d18f4debe4f64cda8895bd23" args="(SequenceVarAssignmentProto *sequence_var_assignment_proto) const " -->
+<a class="anchor" name="3a55d1fcbee942d28828122510cbdf07"></a><!-- doxytag: member="operations_research::SequenceVarElement::WriteToProto" ref="3a55d1fcbee942d28828122510cbdf07" args="(SequenceVarAssignmentProto *sequence_var_assignment_proto) const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void operations_research::SequenceVarElement::RestoreToProto           </td>
+          <td class="memname">void operations_research::SequenceVarElement::WriteToProto           </td>
           <td>(</td>
           <td class="paramtype">SequenceVarAssignmentProto *&nbsp;</td>
           <td class="paramname"> <em>sequence_var_assignment_proto</em>          </td>
@@ -361,16 +375,16 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00308">308</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
+<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00346">346</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="292547884f1fda7bc5f79496ed5bf7a8"></a><!-- doxytag: member="operations_research::SequenceVarElement::Sequence" ref="292547884f1fda7bc5f79496ed5bf7a8" args="() const " -->
+<a class="anchor" name="50ddba41a7dafcfd140d1d4d16ada9b2"></a><!-- doxytag: member="operations_research::SequenceVarElement::ForwardSequence" ref="50ddba41a7dafcfd140d1d4d16ada9b2" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const std::vector&lt; int &gt; &amp; operations_research::SequenceVarElement::Sequence           </td>
+          <td class="memname">const std::vector&lt; int &gt; &amp; operations_research::SequenceVarElement::ForwardSequence           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
@@ -382,11 +396,53 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00348">348</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
+<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00389">389</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
 
 </div>
 </div><p>
-<a class="anchor" name="93adf4748d1ce3eb52c2f8a0f3f6ac74"></a><!-- doxytag: member="operations_research::SequenceVarElement::SetSequence" ref="93adf4748d1ce3eb52c2f8a0f3f6ac74" args="(const std::vector&lt; int &gt; &amp;new_sequence)" -->
+<a class="anchor" name="dfdacdd1ae3718f51abda334282a3358"></a><!-- doxytag: member="operations_research::SequenceVarElement::BackwardSequence" ref="dfdacdd1ae3718f51abda334282a3358" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; int &gt; &amp; operations_research::SequenceVarElement::BackwardSequence           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00393">393</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="edbd5358dbd241258d54c10a197c0358"></a><!-- doxytag: member="operations_research::SequenceVarElement::Unperformed" ref="edbd5358dbd241258d54c10a197c0358" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::vector&lt; int &gt; &amp; operations_research::SequenceVarElement::Unperformed           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00397">397</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="9240cc020d1d179aeb4ff57993ac822a"></a><!-- doxytag: member="operations_research::SequenceVarElement::SetSequence" ref="9240cc020d1d179aeb4ff57993ac822a" args="(const std::vector&lt; int &gt; &amp;forward_sequence, const std::vector&lt; int &gt; &amp;backward_sequence, const std::vector&lt; int &gt; &amp;unperformed)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -394,7 +450,44 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
           <td class="memname">void operations_research::SequenceVarElement::SetSequence           </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; int &gt; &amp;&nbsp;</td>
-          <td class="paramname"> <em>new_sequence</em>          </td>
+          <td class="paramname"> <em>forward_sequence</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; int &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>backward_sequence</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; int &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>unperformed</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00401">401</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="a416720977aa00d0f25d352166f4f005"></a><!-- doxytag: member="operations_research::SequenceVarElement::SetForwardSequence" ref="a416720977aa00d0f25d352166f4f005" args="(const std::vector&lt; int &gt; &amp;forward_sequence)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::SequenceVarElement::SetForwardSequence           </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; int &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>forward_sequence</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
         </tr>
@@ -404,7 +497,51 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00352">352</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
+<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00410">410</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="7296d95d6ce7890ff1ace7779dee8755"></a><!-- doxytag: member="operations_research::SequenceVarElement::SetBackwardSequence" ref="7296d95d6ce7890ff1ace7779dee8755" args="(const std::vector&lt; int &gt; &amp;backward_sequence)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::SequenceVarElement::SetBackwardSequence           </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; int &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>backward_sequence</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00415">415</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="60768b9a65cc2b1f9b22dded7572556d"></a><!-- doxytag: member="operations_research::SequenceVarElement::SetUnperformed" ref="60768b9a65cc2b1f9b22dded7572556d" args="(const std::vector&lt; int &gt; &amp;unperformed)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void operations_research::SequenceVarElement::SetUnperformed           </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; int &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>unperformed</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00420">420</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
 
 </div>
 </div><p>
@@ -425,7 +562,7 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00317">317</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
+<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00361">361</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
 
 </div>
 </div><p>
@@ -447,7 +584,7 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00325">325</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
+<p>Definition at line <a class="el" href="assignment_8cc-source.html#l00372">372</a> of file <a class="el" href="assignment_8cc-source.html">assignment.cc</a>.</p>
 
 </div>
 </div><p>
@@ -469,7 +606,7 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l03749">3749</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l04420">4420</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -483,7 +620,7 @@ Inheritance diagram for operations_research::SequenceVarElement:</div>
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

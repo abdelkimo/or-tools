@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/examples/index.html">examples</a>/
             </tt></b></font>
@@ -91,6 +91,8 @@
 <code>#include &quot;base/recordio.h&quot;</code><br>
 <code>#include &quot;constraint_solver/constraint_solver.h&quot;</code><br>
 <code>#include &quot;constraint_solver/model.pb.h&quot;</code><br>
+<code>#include &quot;util/graph_export.h&quot;</code><br>
+<code>#include &quot;util/string_array.h&quot;</code><br>
 
 <p>
 <a href="model__util_8cc-source.html">Go to the source code of this file.</a><table border="0" cellpadding="0" cellspacing="0">
@@ -105,6 +107,8 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="model__util_8cc.html#1ed0bc652bd5dd470f70d310903e0882">DEFINE_string</a> (output,&quot;&quot;,&quot;Output file when doing modifications.&quot;)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="model__util_8cc.html#64baa49529f4d27c325c6d57c47d319f">DEFINE_string</a> (dot_file,&quot;&quot;,&quot;Exports model to dot file.&quot;)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="model__util_8cc.html#13ba1a9c2e918b528b2e9e03ec7cd14a">DEFINE_string</a> (gml_file,&quot;&quot;,&quot;Exports model to gml file.&quot;)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="model__util_8cc.html#9f160f48c886f8689c5361e9e0e8cd22">DEFINE_bool</a> (print_proto, false,&quot;Prints the raw model protobuf.&quot;)</td></tr>
 
@@ -124,29 +128,36 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="model__util_8cc.html#7b6240bc61c3364eb05d4e21cece8699">DEFINE_string</a> (insert_license,&quot;&quot;,&quot;Insert content of the given file into the license file.&quot;)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#0c6c2bf157215007dfa680a438d508c5">operations_research::Write</a> (File *const file, const string &amp;string)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="model__util_8cc.html#2441074b393c9c51ed3f5f4d2b781034">DEFINE_bool</a> (collect_variables, false,&quot;Shows effect of the variable collector.&quot;)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Export to .dot file.  <a href="#0c6c2bf157215007dfa680a438d508c5"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#339bf200e042bbe6b3490248eda8fa65">operations_research::WriteExprLink</a> (const string &amp;origin, int index, const string &amp;label, File *const file)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#8ee344723d4a3707e2a1c4f7bcc67eb1">operations_research::ExprLabel</a> (int index)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds one link in the generated graph.  <a href="#339bf200e042bbe6b3490248eda8fa65"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#42a9170935c48165dcb353190acd2a3e">operations_research::WriteIntervalLink</a> (const string &amp;origin, int index, const string &amp;label, File *const file)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creates node labels.  <a href="#8ee344723d4a3707e2a1c4f7bcc67eb1"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#0b191e193606749ad65fac1ae042ee9e">operations_research::IntervalLabel</a> (int index)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Adds one link in the generated graph.  <a href="#42a9170935c48165dcb353190acd2a3e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#987655e6b51a86cbf99b8399b039c0f3">operations_research::SequenceLabel</a> (int index)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#651e3e1e22b250ad94ecf0d02825a498">operations_research::ConstraintLabel</a> (int index)</td></tr>
+
 <tr><td class="memTemplParams" nowrap colspan="2">template&lt;class T&gt; </td></tr>
-<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#e945cf6d49fc1946e8f56f47cde46804">operations_research::ExportLinks</a> (const CPModelProto &amp;model, const string &amp;origin, const T &amp;proto, File *const file)</td></tr>
+<tr><td class="memTemplItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#2655a2836229a3f724d55ce83ee55f05">operations_research::ExportLinks</a> (const CPModelProto &amp;model, const string &amp;source, const T &amp;proto, GraphExporter *const exporter)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scans argument to add links in the graph.  <a href="#e945cf6d49fc1946e8f56f47cde46804"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#33fdcb3997edd2e39566b1774f873555">operations_research::DeclareExpression</a> (int index, const CPModelProto &amp;proto, File *const file)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scans argument to add links in the graph.  <a href="#2655a2836229a3f724d55ce83ee55f05"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#3c0596a2962b7c77ea79d8681c1bde9d">operations_research::GetValueIfConstant</a> (const CPModelProto &amp;model, const CPIntegerExpressionProto &amp;proto, int64 *const value)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Declares a labelled expression in the .dot file.  <a href="#33fdcb3997edd2e39566b1774f873555"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#cfd77b58e4d36e62691023cee9097ef5">operations_research::DeclareInterval</a> (int index, const CPModelProto &amp;proto, File *const file)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Scans the expression protobuf to see if it corresponds to an integer variable with min_value == max_value.  <a href="#3c0596a2962b7c77ea79d8681c1bde9d"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#0446f59d3edeb79435629562da6d07dd">operations_research::DeclareExpression</a> (int index, const CPModelProto &amp;proto, GraphExporter *const exporter)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#de3d7e9d8b9a9947669165cf945cd84d">operations_research::DeclareConstraint</a> (int index, const CPModelProto &amp;proto, File *const file)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Declares a labelled expression in the graph file.  <a href="#0446f59d3edeb79435629562da6d07dd"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#f39b7ece8a7be26a0490092ea2199c9d">operations_research::DeclareInterval</a> (int index, const CPModelProto &amp;proto, GraphExporter *const exporter)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#8f2abdb34af6e6e382361ca21fa6b322">operations_research::ExportToDot</a> (const CPModelProto &amp;proto, File *const file)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#02cd9117c6ab87daf965b4160880ff21">operations_research::DeclareSequence</a> (int index, const CPModelProto &amp;proto, GraphExporter *const exporter)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Parses the proto and exports it to a .dot file.  <a href="#8f2abdb34af6e6e382361ca21fa6b322"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#f7ad42813b11c3661b5e745c87f553a6">operations_research::DeclareConstraint</a> (int index, const CPModelProto &amp;proto, GraphExporter *const exporter)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#46d4836f19a13beb463275ca101ae5b6">operations_research::ExportToGraphFile</a> (const CPModelProto &amp;proto, File *const file, GraphExporter::GraphFormat format)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Parses the proto and exports it to a graph file.  <a href="#46d4836f19a13beb463275ca101ae5b6"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#a0f820c1e673b6461855daadded396b7">operations_research::Run</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Main Method.  <a href="#a0f820c1e673b6461855daadded396b7"></a><br></td></tr>
@@ -156,10 +167,61 @@
 <tr><td colspan="2"><br><h2>Variables</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#71edf6fb703a48b776368d88039dad82">operations_research::kProblem</a> = -1</td></tr>
 
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Utilities.  <a href="#71edf6fb703a48b776368d88039dad82"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#e3fad1c21562dd1fcf23844425ff13ae">operations_research::kOk</a> = 0</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#2e0ad007373c8e93819c0c5ed05fe3b2">operations_research::kGreen1</a> [] = &quot;#A2CD5A&quot;</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Colors.  <a href="#2e0ad007373c8e93819c0c5ed05fe3b2"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#36e48f5a9da037be7801d1800b48f520">operations_research::kGreen2</a> [] = &quot;#76EEC6&quot;</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#528d09b96465bee791f514e9f1046e11">operations_research::kGreen3</a> [] = &quot;#00CD00&quot;</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#39235fccf3102b8dc3925d7c6c95f96c">operations_research::kWhite</a> [] = &quot;#FAFAFA&quot;</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#633b5f629e240b9934625681a8d44740">operations_research::kBlue</a> [] = &quot;#87CEFA&quot;</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#d314aca11317ab34c24ecc4ec7a73b53">operations_research::kYellow</a> [] = &quot;#FFF68F&quot;</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#5a90a71ae39b2f4f017ad1bc28a26627">operations_research::kRed</a> [] = &quot;#A52A2A&quot;</td></tr>
 
 </table>
 <hr><h2>Function Documentation</h2>
+<a class="anchor" name="2441074b393c9c51ed3f5f4d2b781034"></a><!-- doxytag: member="model_util.cc::DEFINE_bool" ref="2441074b393c9c51ed3f5f4d2b781034" args="(collect_variables, false,&quot;Shows effect of the variable collector.&quot;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_bool           </td>
+          <td>(</td>
+          <td class="paramtype">collect_variables&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">false&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Shows effect of the variable collector.&quot;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
 <a class="anchor" name="af7d3b1e047296b6035ec59a54d47d06"></a><!-- doxytag: member="model_util.cc::DEFINE_bool" ref="af7d3b1e047296b6035ec59a54d47d06" args="(upgrade_proto, false,&quot;Upgrade the model to the latest version.&quot;)" -->
 <div class="memitem">
 <div class="memproto">
@@ -475,6 +537,41 @@
 
 </div>
 </div><p>
+<a class="anchor" name="13ba1a9c2e918b528b2e9e03ec7cd14a"></a><!-- doxytag: member="model_util.cc::DEFINE_string" ref="13ba1a9c2e918b528b2e9e03ec7cd14a" args="(gml_file,&quot;&quot;,&quot;Exports model to gml file.&quot;)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string           </td>
+          <td>(</td>
+          <td class="paramtype">gml_file&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;&quot;&nbsp;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Exports model to gml file.&quot;&nbsp;</td>
+          <td class="paramname"></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
 <a class="anchor" name="64baa49529f4d27c325c6d57c47d319f"></a><!-- doxytag: member="model_util.cc::DEFINE_string" ref="64baa49529f4d27c325c6d57c47d319f" args="(dot_file,&quot;&quot;,&quot;Exports model to dot file.&quot;)" -->
 <div class="memitem">
 <div class="memproto">
@@ -613,7 +710,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 namespace <a class="el" href="namespaceoperations__research.html" title="Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may...">operations_research</a> 
 <p>
 
-<p>Definition at line <a class="el" href="model__util_8cc-source.html#l00309">309</a> of file <a class="el" href="model__util_8cc-source.html">model_util.cc</a>.</p>
+<p>Definition at line <a class="el" href="model__util_8cc-source.html#l00418">418</a> of file <a class="el" href="model__util_8cc-source.html">model_util.cc</a>.</p>
 
 </div>
 </div><p>
@@ -625,7 +722,7 @@ namespace <a class="el" href="namespaceoperations__research.html" title="License
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

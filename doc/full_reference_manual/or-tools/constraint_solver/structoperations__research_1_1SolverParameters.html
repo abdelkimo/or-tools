@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/constraint_solver/index.html">constraint_solver</a>/
             </tt></b></font>
@@ -110,6 +110,10 @@
 <a class="el" href="structoperations__research_1_1SolverParameters.html#bb1b746ad99155bea2d44ba46db07187c7c3e28de50389c56f047efac78d0061">NORMAL_PROFILING</a>
  }</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">enum &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoperations__research_1_1SolverParameters.html#dc2227e594bd04f2c7081315cb8a187a">TraceLevel</a> { <a class="el" href="structoperations__research_1_1SolverParameters.html#dc2227e594bd04f2c7081315cb8a187a32ba180aa4cc3b88ad4420b9fcdf9c36">NO_TRACE</a>, 
+<a class="el" href="structoperations__research_1_1SolverParameters.html#dc2227e594bd04f2c7081315cb8a187a2674abc5adf7a85c120527739300ad17">NORMAL_TRACE</a>
+ }</td></tr>
+
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoperations__research_1_1SolverParameters.html#96250ef7c8113b78cc680d7cc66cd3d0">SolverParameters</a> ()</td></tr>
 
@@ -123,13 +127,19 @@
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This parameter indicates the default size of a block of the trail.  <a href="#23aa6007c62ce05590a21a5a4b2894e0"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoperations__research_1_1SolverParameters.html#ee3c55f5ee656ea3c169322ebdf80668">array_split_size</a></td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">When a sum/min/max operations is applied on a large array, this array is recursively split into blocks of size 'array_split_size'.  <a href="#ee3c55f5ee656ea3c169322ebdf80668"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">When a sum/min/max operation is applied on a large array, this array is recursively split into blocks of size 'array_split_size'.  <a href="#ee3c55f5ee656ea3c169322ebdf80668"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoperations__research_1_1SolverParameters.html#5d5f9c102935ade16c7782999b8b1b0b">store_names</a></td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">This parameters indicates if the solver should store the names of the objets it manages.  <a href="#5d5f9c102935ade16c7782999b8b1b0b"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structoperations__research_1_1SolverParameters.html#bb1b746ad99155bea2d44ba46db07187">ProfileLevel</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoperations__research_1_1SolverParameters.html#8fe1248f3b6a31d68cb718a961ea4a06">profile_level</a></td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Support for profiling propagation.  <a href="#8fe1248f3b6a31d68cb718a961ea4a06"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="structoperations__research_1_1SolverParameters.html#dc2227e594bd04f2c7081315cb8a187a">TraceLevel</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoperations__research_1_1SolverParameters.html#276c76c5dc123313876223ca1e44971e">trace_level</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Support for full trace of propagation.  <a href="#276c76c5dc123313876223ca1e44971e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoperations__research_1_1SolverParameters.html#c5aebc3290ddf313acea40ed97158f91">name_all_variables</a></td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Should anonymous variables be given a name.  <a href="#c5aebc3290ddf313acea40ed97158f91"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Static Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const <a class="el" href="structoperations__research_1_1SolverParameters.html#63c6fe2e32ced9f83a4064c800130651">TrailCompression</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoperations__research_1_1SolverParameters.html#6f804a79d6f2f5b989cef147e5642ecf">kDefaultTrailCompression</a> = SolverParameters::NO_COMPRESSION</td></tr>
 
@@ -141,10 +151,16 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static const <a class="el" href="structoperations__research_1_1SolverParameters.html#bb1b746ad99155bea2d44ba46db07187">ProfileLevel</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoperations__research_1_1SolverParameters.html#8e1e96280d622b55f6e620b76032f1e6">kDefaultProfileLevel</a></td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const <a class="el" href="structoperations__research_1_1SolverParameters.html#dc2227e594bd04f2c7081315cb8a187a">TraceLevel</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoperations__research_1_1SolverParameters.html#4ab70d10dc885a1487d5b4c45e32d680">kDefaultTraceLevel</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">static const bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoperations__research_1_1SolverParameters.html#be3280854e33011564fd5696c5ef42b6">kDefaultNameAllVariables</a> = false</td></tr>
+
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 This struct holds all parameters for the <a class="el" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a> object. 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00165">165</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>
+<a class="el" href="structoperations__research_1_1SolverParameters.html" title="This struct holds all parameters for the Solver object.">SolverParameters</a> is only used by the <a class="el" href="classoperations__research_1_1Solver.html" title="Solver Class.">Solver</a> constructor to define solving parameters such as the trail compression or the profile level. Note this is for advanced users only. 
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00169">169</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 <hr><h2>Member Enumeration Documentation</h2>
 <a class="anchor" name="63c6fe2e32ced9f83a4064c800130651"></a><!-- doxytag: member="operations_research::SolverParameters::TrailCompression" ref="63c6fe2e32ced9f83a4064c800130651" args="" -->
 <div class="memitem">
@@ -167,7 +183,7 @@ This struct holds all parameters for the <a class="el" href="classoperations__re
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00167">167</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00171">171</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -192,7 +208,32 @@ This struct holds all parameters for the <a class="el" href="classoperations__re
 </table>
 </dl>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00171">171</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00175">175</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="dc2227e594bd04f2c7081315cb8a187a"></a><!-- doxytag: member="operations_research::SolverParameters::TraceLevel" ref="dc2227e594bd04f2c7081315cb8a187a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="structoperations__research_1_1SolverParameters.html#dc2227e594bd04f2c7081315cb8a187a">operations_research::SolverParameters::TraceLevel</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<dl compact><dt><b>Enumerator: </b></dt><dd>
+<table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" name="dc2227e594bd04f2c7081315cb8a187a32ba180aa4cc3b88ad4420b9fcdf9c36"></a><!-- doxytag: member="NO_TRACE" ref="dc2227e594bd04f2c7081315cb8a187a32ba180aa4cc3b88ad4420b9fcdf9c36" args="" -->NO_TRACE</em>&nbsp;</td><td>
+</td></tr>
+<tr><td valign="top"><em><a class="anchor" name="dc2227e594bd04f2c7081315cb8a187a2674abc5adf7a85c120527739300ad17"></a><!-- doxytag: member="NORMAL_TRACE" ref="dc2227e594bd04f2c7081315cb8a187a2674abc5adf7a85c120527739300ad17" args="" -->NORMAL_TRACE</em>&nbsp;</td><td>
+</td></tr>
+</table>
+</dl>
+
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00180">180</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -216,7 +257,7 @@ This struct holds all parameters for the <a class="el" href="classoperations__re
 <a class="el" href="structoperations__research_1_1SolverParameters.html" title="This struct holds all parameters for the Solver object.">SolverParameters</a>. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00064">64</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8cc-source.html#l00069">69</a> of file <a class="el" href="constraint__solver_8cc-source.html">constraint_solver.cc</a>.</p>
 
 </div>
 </div><p>
@@ -234,7 +275,7 @@ This struct holds all parameters for the <a class="el" href="classoperations__re
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00176">176</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00185">185</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -251,7 +292,7 @@ This struct holds all parameters for the <a class="el" href="classoperations__re
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00177">177</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00186">186</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -268,7 +309,7 @@ This struct holds all parameters for the <a class="el" href="classoperations__re
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00178">178</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00187">187</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -285,7 +326,7 @@ This struct holds all parameters for the <a class="el" href="classoperations__re
 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00179">179</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00188">188</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -304,7 +345,43 @@ This struct holds all parameters for the <a class="el" href="classoperations__re
 <b>Initial value:</b><div class="fragment"><pre class="fragment">
          <a class="code" href="structoperations__research_1_1SolverParameters.html#bb1b746ad99155bea2d44ba46db0718723a03d3fac4ba780d9caa8ae38f5dea9">SolverParameters::NO_PROFILING</a>
 </pre></div>
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00180">180</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00189">189</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="4ab70d10dc885a1487d5b4c45e32d680"></a><!-- doxytag: member="operations_research::SolverParameters::kDefaultTraceLevel" ref="4ab70d10dc885a1487d5b4c45e32d680" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structoperations__research_1_1SolverParameters.html#dc2227e594bd04f2c7081315cb8a187a">SolverParameters::TraceLevel</a> <a class="el" href="structoperations__research_1_1SolverParameters.html#4ab70d10dc885a1487d5b4c45e32d680">operations_research::SolverParameters::kDefaultTraceLevel</a><code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<b>Initial value:</b><div class="fragment"><pre class="fragment">
+         <a class="code" href="structoperations__research_1_1SolverParameters.html#dc2227e594bd04f2c7081315cb8a187a32ba180aa4cc3b88ad4420b9fcdf9c36">SolverParameters::NO_TRACE</a>
+</pre></div>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00190">190</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="be3280854e33011564fd5696c5ef42b6"></a><!-- doxytag: member="operations_research::SolverParameters::kDefaultNameAllVariables" ref="be3280854e33011564fd5696c5ef42b6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const bool <a class="el" href="structoperations__research_1_1SolverParameters.html#be3280854e33011564fd5696c5ef42b6">operations_research::SolverParameters::kDefaultNameAllVariables</a> = false<code> [static]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00191">191</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -322,8 +399,8 @@ This struct holds all parameters for the <a class="el" href="classoperations__re
 <p>
 This parameter indicates if the solver should compress the trail during the search. 
 <p>
-No compression means the solver will be faster, but will use more memory. 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00187">187</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+No compression means that the solver will be faster, but will use more memory. 
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00198">198</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -342,7 +419,7 @@ No compression means the solver will be faster, but will use more memory.
 This parameter indicates the default size of a block of the trail. 
 <p>
 Compression applies at the block level. 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00190">190</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00202">202</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -358,10 +435,10 @@ Compression applies at the block level.
 <div class="memdoc">
 
 <p>
-When a sum/min/max operations is applied on a large array, this array is recursively split into blocks of size 'array_split_size'. 
+When a sum/min/max operation is applied on a large array, this array is recursively split into blocks of size 'array_split_size'. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00193">193</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00206">206</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -380,7 +457,7 @@ When a sum/min/max operations is applied on a large array, this array is recursi
 This parameters indicates if the solver should store the names of the objets it manages. 
 <p>
 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00196">196</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00210">210</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -399,7 +476,45 @@ This parameters indicates if the solver should store the names of the objets it 
 Support for profiling propagation. 
 <p>
 LIGHT supports only a reduced version of the summary. COMPLETE supports the full version of the summary, as well as the csv export. 
-<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00200">200</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00215">215</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="276c76c5dc123313876223ca1e44971e"></a><!-- doxytag: member="operations_research::SolverParameters::trace_level" ref="276c76c5dc123313876223ca1e44971e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structoperations__research_1_1SolverParameters.html#dc2227e594bd04f2c7081315cb8a187a">TraceLevel</a> <a class="el" href="structoperations__research_1_1SolverParameters.html#276c76c5dc123313876223ca1e44971e">operations_research::SolverParameters::trace_level</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Support for full trace of propagation. 
+<p>
+
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00218">218</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
+
+</div>
+</div><p>
+<a class="anchor" name="c5aebc3290ddf313acea40ed97158f91"></a><!-- doxytag: member="operations_research::SolverParameters::name_all_variables" ref="c5aebc3290ddf313acea40ed97158f91" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="structoperations__research_1_1SolverParameters.html#c5aebc3290ddf313acea40ed97158f91">operations_research::SolverParameters::name_all_variables</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Should anonymous variables be given a name. 
+<p>
+
+<p>Definition at line <a class="el" href="constraint__solver_8h-source.html#l00221">221</a> of file <a class="el" href="constraint__solver_8h-source.html">constraint_solver.h</a>.</p>
 
 </div>
 </div><p>
@@ -413,7 +528,7 @@ LIGHT supports only a reduced version of the summary. COMPLETE supports the full
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

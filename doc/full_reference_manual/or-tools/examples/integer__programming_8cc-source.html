@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/examples/index.html">examples</a>/
             </tt></b></font>
@@ -110,13 +110,13 @@
 <a name="l00027"></a>00027   MPVariable* <span class="keyword">const</span> x2 = solver.MakeIntVar(0.0, infinity, <span class="stringliteral">"x2"</span>);
 <a name="l00028"></a>00028 
 <a name="l00029"></a>00029   <span class="comment">// Minimize x1 + 2 * x2.</span>
-<a name="l00030"></a>00030   solver.AddObjectiveTerm(x1, 1);
-<a name="l00031"></a>00031   solver.AddObjectiveTerm(x2, 2);
+<a name="l00030"></a>00030   solver.SetObjectiveCoefficient(x1, 1);
+<a name="l00031"></a>00031   solver.SetObjectiveCoefficient(x2, 2);
 <a name="l00032"></a>00032 
 <a name="l00033"></a>00033   <span class="comment">// 2 * x2 + 3 * x1 &gt;= 17.</span>
 <a name="l00034"></a>00034   MPConstraint* <span class="keyword">const</span> c0 = solver.MakeRowConstraint(17, infinity);
-<a name="l00035"></a>00035   c0-&gt;AddTerm(x1, 3);
-<a name="l00036"></a>00036   c0-&gt;AddTerm(x2, 2);
+<a name="l00035"></a>00035   c0-&gt;SetCoefficient(x1, 3);
+<a name="l00036"></a>00036   c0-&gt;SetCoefficient(x2, 2);
 <a name="l00037"></a>00037 
 <a name="l00038"></a>00038   <span class="keyword">const</span> MPSolver::ResultStatus result_status = solver.Solve();
 <a name="l00039"></a>00039 
@@ -169,7 +169,7 @@
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 

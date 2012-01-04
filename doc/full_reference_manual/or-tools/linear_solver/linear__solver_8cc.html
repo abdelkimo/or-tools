@@ -13,21 +13,21 @@
   <!-- Second part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
   <style>
     a.doxy_logo:hover {
-      background-color: #785251
+      background-color: #139444
     }
   </style>
 
   <table width=100% cellpadding=0 cellspacing=0 border=0>
     <!-- Top horizontal line with the color of the day. -->
     <tr valign=top>
-      <td colspan=3 bgcolor=#785251 height=3></td>
+      <td colspan=3 bgcolor=#139444 height=3></td>
     </tr>
 
     <!-- Header row with the links at the right. -->
     <tr valign=top>
       <td colspan=3 align=right>
         <font size=-1>
-          Generated on: <font color=#785251><b>Thu Nov  3 05:40:09 PDT 2011</b></font>
+          Generated on: <font color=#139444><b>Wed Jan  4 14:38:10 PST 2012</b></font>
             for <b>custom file set</b>
         </font>
       </td>
@@ -40,7 +40,7 @@
         <table width=150 height=54 cellpadding=0 cellspacing=0 border=0>
           <tr valign=top>
             <!-- First part of the secret behind Doxy logo always having the word "Doxy" with the color of the day. -->
-            <td bgcolor=#785251>
+            <td bgcolor=#139444>
               <a class="doxy_logo" href="../../index.html"><img src="../../doxy_logo.png" alt="Doxy" border=0></a>
             </td>
           </tr>
@@ -59,7 +59,7 @@
     <table width=100% cellpadding=0 cellspacing=0 border=0>
       <tr>
         <td align=left style="padding-left: 20px"><font size=+1><b><tt><font color=#333333>//
-            <a href="../../index.html"><font color=#785251>doxy</font></a>/</font>
+            <a href="../../index.html"><font color=#139444>doxy</font></a>/</font>
             <a href="../../or-tools/index.html">or-tools</a>/
             <a href="../../or-tools/linear_solver/index.html">linear_solver</a>/
             </tt></b></font>
@@ -84,7 +84,8 @@
 </div>
 <div class="contents">
 <h1>or-tools/linear_solver/linear_solver.cc File Reference</h1><code>#include &quot;<a class="el" href="linear__solver_8h-source.html">linear_solver/linear_solver.h</a>&quot;</code><br>
-<code>#include &lt;stddef.h&gt;</code><br>
+<code>#include &lt;cmath&gt;</code><br>
+<code>#include &lt;cstddef&gt;</code><br>
 <code>#include &lt;utility&gt;</code><br>
 <code>#include &quot;base/commandlineflags.h&quot;</code><br>
 <code>#include &quot;base/integral_types.h&quot;</code><br>
@@ -108,15 +109,6 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="linear__solver_8cc.html#5a4467119e8e21bbdad28163377531a3">DEFINE_string</a> (solver_write_model,&quot;&quot;,&quot;path of the file to write the model to&quot;)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.  <a href="#5a4467119e8e21bbdad28163377531a3"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#bb28147842fbf22b6c51a375b54f4c47">operations_research::InsertOrDieIfNotUnique</a> (hash_set&lt; string &gt; *name_set, const string &amp;name)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Inserts name in name_set and checks that it is unique.  <a href="#bb28147842fbf22b6c51a375b54f4c47"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#cc8bed08a4033cfde4a4f83fb4a0a3d1">operations_research::CreateValidVariableName</a> (const <a class="el" href="classoperations__research_1_1MPVariable.html">operations_research::MPVariable</a> &amp;variable, int i)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creates a valid name (unique) for a variable i in case it does not already have one.  <a href="#cc8bed08a4033cfde4a4f83fb4a0a3d1"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#ce115c1c8528a3ad9d4e4b7cd0322ba9">operations_research::CreateValidConstraintName</a> (const <a class="el" href="classoperations__research_1_1MPConstraint.html">operations_research::MPConstraint</a> &amp;constraint, int i)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Creates a valid name (unique) for constraint i in case it does not already have one.  <a href="#ce115c1c8528a3ad9d4e4b7cd0322ba9"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">MPSolverInterface *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceoperations__research.html#d0fceee09c21d1b22512b15333a496d8">operations_research::BuildSolverInterface</a> (MPSolver *const solver, MPSolver::OptimizationProblemType problem_type)</td></tr>
 
 </table>
@@ -169,7 +161,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
       <td colspan=2 height=10></td>
     </tr>
     <tr valign=top>
-      <td colspan=2 bgcolor=#785251 height=3></td>
+      <td colspan=2 bgcolor=#139444 height=3></td>
     </tr>
   </table>
 
