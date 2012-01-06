@@ -38,6 +38,11 @@ For linux users, please intall zlib-devel, bison, flex, autoconf, libtool, pytho
 {{{
 sudo apt-get install bison flex python-setuptools python-dev autoconf libtool zlib-devel
 }}}
+The fedora command is:
+{{{
+sudo yum install subversion bison flex python-setuptools python-dev autoconf libtool zlib-devel swig
+}}}
+Please note that for some unknown reasons, you need to install swig although we will rebuild it.
 
 If you wish to use glpk, please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.47.tar.gz and put the archive in or-tools/dependencies/archives.
 If you have the license, please download ziboptsuite-2.1.0.tgz from http://zibopt.zib.de/download.shtml and  put the archive in or-tools/dependencies/archives.
