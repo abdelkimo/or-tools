@@ -34,13 +34,15 @@ or-tools/
 
 This is the recommended way on unix platforms.
 
-For linux users, please intall zlib-devel, bison, flex, autoconf, libtool, python-setuptools, and python-dev. The command on ubuntu is the following:
+For linux users, please intall zlib-devel, bison, flex, autoconf, libtool, python-setuptools, and python-dev. 
+
+The command on ubuntu is the following:
 {{{
 sudo apt-get install bison flex python-setuptools python-dev autoconf libtool zlib-devel
 }}}
-The fedora command is (Please note that for some unknown reasons, you need to install swig although we will rebuild it):
+The fedora command is:
 {{{
-sudo yum install subversion bison flex python-setuptools python-dev autoconf libtool zlib-devel swig
+ sudo yum install subversion bison flex python-setuptools python-dev autoconf libtool zlib-devel
 }}}
 
 
