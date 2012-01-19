@@ -54,6 +54,9 @@ run:
    make install_python_modules
 }}}  
 
+If you are on opensuse and maybe redhat, the {{{make install_python_module}}} will fail.
+One workaround is described on this page http://stackoverflow.com/questions/4495120/combine-user-with-prefix-error-with-setup-py-install.
+
 If you have root privilieges, you can replace the last line and install the python modules for all users with the following command:
 {{{
   cd dependencies/sources/google-apputils
