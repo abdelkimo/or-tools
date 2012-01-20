@@ -81,9 +81,11 @@ On Mac Os X, you need 64 bit support. Thus you need to build mono by hand.
 
 =Installation on Windows=
 
-First, create the or-tools svn copy where you want to work. 
+Create the or-tools svn copy where you want to work. 
 
-Then install python from http://www.python.org/download/releases/2.7/
+Install python from http://www.python.org/download/releases/2.7/
+
+Install java JDK from http://www.oracle.com/technetwork/java/javase/downloads/jdk-7u2-download-1377129.html
 
 You need to install python-setuptools for windows. Please fetch it from http://pypi.python.org/pypi/setuptools#files .
 
