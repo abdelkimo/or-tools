@@ -30,9 +30,7 @@ or-tools/
 || tools/ || Binaries and scripts needed by various platforms ||
 || util/ || More utilities needed by the constraint solver || 
 
-=Automatic installation on unix platforms =
-
-This is the recommended way on unix platforms.
+=Installation on unix platforms =
 
 For linux users, please intall zlib-devel, bison, flex, autoconf, libtool, python-setuptools, and python-dev. 
 
@@ -81,7 +79,7 @@ On Mac Os X, you need 64 bit support. Thus you need to build mono by hand.
   * download mono-2.10.8.1.tar.gz from http://download.mono-project.com/sources/mono/
   * compile it using the build instructions for 64 bit support at http://mono-project.com/Compiling_Mono_on_OSX. Use a custom prefix and add the prefix/bin to you path.
 
-=Automatic installation under windows=
+=Installation under windows=
 
 First, create the or-tools svn copy where you want to work. 
 
