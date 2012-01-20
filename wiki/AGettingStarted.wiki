@@ -138,11 +138,11 @@ You can then compile the library, examples and python wrapping for the constrain
 
 To compile in debug mode, please use
 
-{{{make DEBUG=-g cpexe pycp}}}
+{{{make DEBUG=-g all}}}
 
 or
 
-{{{make DEBUG="/Od /Zi" cpexe pycp}}}
+{{{make DEBUG="/Od /Zi" all}}}
 
 under windows.
 
