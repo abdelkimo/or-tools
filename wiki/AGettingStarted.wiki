@@ -73,6 +73,14 @@ Please note that the command:
 will clean all downloaded sources, all compiled dependencies, and Makefile.local.
 It is useful to get a clean state, or if you have added an archive in dependencies.archives.
 
+If you wish to use .NET, you need to install mono.
+On linux platforms, just install the mono-devel package. You need a recent one (at least 2.8 I believe) to work correctly.
+
+On Mac Os X, you need 64 bit support. Thus you need to build mono by hand.
+
+  * download mono-2.10.8.1.tar.gz from http://download.mono-project.com/sources/mono/
+  * compile it using the build instructions for 64 bit support at http://mono-project.com/Compiling_Mono_on_OSX. Use a custom prefix and add the prefix/bin to you path.
+
 =Automatic installation under windows=
 
 First, create the or-tools svn copy where you want to work. 
@@ -115,6 +123,8 @@ On windows, it will also run C# examples.
 
 =Compiling libraries and running examples=
 
+==Compiling libraries==
+
 All build rules use make (gnu make), even on windows. A make.exe binary is provided in the tools sub-directory.
 
 You can query the list of targets just by typing
@@ -147,17 +157,19 @@ When everything is compiled, you will find under operations_research:
   * C++ wrapping libraries (_pywrapcp.so, linjniwrapconstraint_solver.so)
   * Java jars (com.google.ortools.constraintsolver.jar...)
 
+==C++ examples==
+
 You can execute C++ examples just by running then:
 
 {{{./magic_square }}}
 
 
-For the python examples, as we have not installed the constraint_solver module, we need to use the following command:
+==Python examples==
 
+For the python examples, as we have not installed the constraint_solver module, we need to use the following command:
 
 on windows:
 {{{set PYTHONPATH=%PYTHONPATH%;<path to or-tools>}}}, then {{{c:\Python27\python.exe python/sample.py}}}.
-
 
 On unix:
 {{{PYTHONPATH= <python_binary> python/<sample.py>}}}
@@ -166,6 +178,8 @@ As in
 
 {{{PYTHONPATH= python2.6 python/golomb8.py}}}
 
+==Java examples==
+
 You can run java examples with the 
 {{{ run_<name> makefile}}} target as in:
 
@@ -173,3 +187,21 @@ You can run java examples with the
 
 This has been tested with python 2.5, 2.6., and 2.7.
 The wrapping using SWIG has been tested with SWIG 1.3.31, 1.3.40, and 2.0.x.
+
+==.NET examples==
+
+If you have .NET support compiled in, you can build .NET libraries with the command: {{{make csharp}}}.
+
+You can compile C# examples typing: {{{make csharpexe}}}.
+
+To run a C# example, on windows, just type the name 
+
+{{{
+  csflow.exe
+}}}
+
+On unix, use the mono interpreter:
+
+{{{
+  mono csflow.exe
+}}}
