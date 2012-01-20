@@ -79,7 +79,7 @@ On Mac Os X, you need 64 bit support. Thus you need to build mono by hand.
   * download mono-2.10.8.1.tar.gz from http://download.mono-project.com/sources/mono/
   * compile it using the build instructions for 64 bit support at http://mono-project.com/Compiling_Mono_on_OSX. Use a custom prefix and add the prefix/bin to you path.
 
-=Installation under windows=
+=Installation on Windows=
 
 First, create the or-tools svn copy where you want to work. 
 
