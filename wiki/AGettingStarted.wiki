@@ -176,6 +176,12 @@ As in
 
 {{{PYTHONPATH= python2.6 python/golomb8.py}}}
 
+There is a special target in the makefile to run python examples. The above example can be run with
+
+{{{
+  make rpy EX=golomb8
+}}}
+
 ==Java examples==
 
 You can run java examples with the 
@@ -183,8 +189,11 @@ You can run java examples with the
 
 {{{make run_RabbitsPheasants}}}
 
-This has been tested with python 2.5, 2.6., and 2.7.
-The wrapping using SWIG has been tested with SWIG 1.3.31, 1.3.40, and 2.0.x.
+There is a special target in the makefile to run java examples. The above example can be run with
+
+{{{
+  make rjava EX=RabbitsPheasants
+}}}
 
 ==.NET examples==
 
@@ -202,4 +211,10 @@ On unix, use the mono interpreter:
 
 {{{
   mono csflow.exe
+}}}
+
+There is a special target in the makefile to run C# examples. The above example can be run with
+
+{{{
+  make rcs EX=csflow
 }}}
