@@ -1,7 +1,17 @@
-This site contains the documentation of the [http://code.google.com/p/or-tools] project.
+#sidebar Sidebar
 
-Please discuss the content on the [https://groups.google.com/group/or-tools-discuss or-tools-discuss] mailing list.
+= or-tools library's documentation =
 
-Some preliminary reference manual can be downloaded as complete archive at the following [http://or-tools.googlecode.com/svn/resources/or-tools-full-reference-manual.tar.gz location].
+This project hosts open source *operations research tools* developed at _Google_.
 
-<img src="http://or-tools.googlecode.com/svn/resources/or2doodle.gif"/>
+Although there is a main [http://or-tools.googlecode.com/svn/trunk/documentation/documentation_hub.html or-tools documentation hub], 
+it is currently quite empty.
+
+We are working hard to provide a user's manual, 
+presentation slides and even  lab sessions.
+
+In the meantime:
+    * have a look at the examples in [http://or-tools.googlecode.com/svn/trunk/examples C++], [http://or-tools.googlecode.com/svn/trunk/python Python], [http://or-tools.googlecode.com/svn/trunk/com/google/ortools Java] and [http://or-tools.googlecode.com/svn/trunk/csharp C#];
+    * read the documents referenced on the sidebar;
+    * ask your questions on the [http://groups.google.com/group/or-tools-discuss mailing list].
+
