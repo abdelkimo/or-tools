@@ -16,6 +16,7 @@ or-tools/
 || README || This file ||
 || algorithms/ || A collection of OR algorithms (non graph related) ||
 || base/ || Directory containing basic utilities ||
+|| bin/  || Where all binary files will be created ||
 || csharp/ || Directory containing C# examples and a visual studio 2010 solution to build them ||
 || constraint_solver/ || The main directory for the constraint solver library ||
 || com/ || The main directory for the java code, and the C# library code ||
@@ -23,6 +24,7 @@ or-tools/
 || gen/ || The root directory for all generated code (java classes, protocol buffers) ||
 || examples/ || C++ examples ||
 || graph/ || Standard OR graph algorithms ||
+|| lib/ || Where libraries and jar files will be created ||
 || linear_solver/ || The main directory for the linear solver wrapper library ||
 || makefiles/ || Directory that contains sub-makefiles ||
 || objs/ || Where C++ objs files will be stored ||
@@ -159,7 +161,7 @@ When everything is compiled, you will find under operations_research:
 
 You can execute C++ examples just by running then:
 
-{{{./magic_square }}}
+{{{./bin/magic_square }}}
 
 
 ==Python examples==
@@ -204,13 +206,13 @@ You can compile C# examples typing: {{{make csharpexe}}}.
 To run a C# example, on windows, just type the name 
 
 {{{
-  csflow.exe
+  bin\csflow.exe
 }}}
 
 On unix, use the mono interpreter:
 
 {{{
-  mono csflow.exe
+  mono bin/csflow.exe
 }}}
 
 There is a special target in the makefile to run C# examples. The above example can be run with
