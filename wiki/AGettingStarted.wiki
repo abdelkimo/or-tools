@@ -120,8 +120,7 @@ You can check that everything is running correctly by running:
   make test
 }}}
 
-If everything is OK, it will run a selection of examples from all technologies in C++, python, and java.
-On windows, it will also run C# examples.
+If everything is OK, it will run a selection of examples from all technologies in C++, python, java, and C#.
 
 =Compiling libraries and running examples=
 
@@ -133,7 +132,7 @@ You can query the list of targets just by typing
 
 {{{make}}}
 
-You can then compile the library, examples and python wrapping for the constraint solver, the linear solver wrappers, and the algorithms:
+You can then compile the library, examples and python, java, and .NET wrappings for the constraint solver, the linear solver wrappers, and the algorithms:
 
 {{{make all}}}
 
@@ -153,11 +152,12 @@ You can clean everything using
 
 {{{make clean}}}
 
-When everything is compiled, you will find under operations_research:
+When everything is compiled, you will find under or-tools/bin and or-tools/lib:
   * some static libraries (libcp.a, libutil.a and libbase.a, and more)
   * One binary per C++ example (e.g. nqueens)
   * C++ wrapping libraries (_pywrapcp.so, linjniwrapconstraint_solver.so)
   * Java jars (com.google.ortools.constraintsolver.jar...)
+  * C# assemblies
 
 ==C++ examples==
 
