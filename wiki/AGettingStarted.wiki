@@ -115,15 +115,6 @@ Please note that the command:
 
 will clean all downloaded sources, all compiled dependencies, and Makefile.local. It is useful to get a clean state, or if you have added an archive in dependencies.archives.
 
-=Running tests=
-
-You can check that everything is running correctly by running:
-{{{
-  make test
-}}}
-
-If everything is OK, it will run a selection of examples from all technologies in C++, python, java, and C#.
-
 =Compiling libraries and running examples=
 
 ==Compiling libraries==
@@ -224,3 +215,12 @@ There is a special target in the makefile to run C# examples. The above example 
 {{{
   make rcs EX=csflow
 }}}
+
+=Running tests=
+
+You can check that everything is running correctly by running:
+{{{
+  make test
+}}}
+
+If everything is OK, it will run a selection of examples from all technologies in C++, python, java, and C#.
