@@ -105,7 +105,16 @@ Then you can download all dependencies and build them using:
    make third_party
 }}}  
 
-then edit Makefile.local to point to the correct python and java installation. Afterwards, to use python, you need to install google-apputils.
+then edit Makefile.local to point to the correct python and java installation. For instance, on my system, it is:
+{{{
+WINDOWS_JDK_DIR = c:\\Program Files\\Java\\jdk1.7.0_02
+WINDOWS_PYTHON_VERSION = 27
+WINDOWS_PYTHON_PATH = C:\\python27
+}}}
+
+Please note that you should not put "" aroud the java paths to take care of the space. This is taken care of in the makefiles.
+
+Afterwards, to use python, you need to install google-apputils.
 
 {{{
   cd dependencies/sources/google-apputils
