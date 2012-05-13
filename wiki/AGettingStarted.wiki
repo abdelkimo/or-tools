@@ -112,7 +112,7 @@ WINDOWS_PYTHON_VERSION = 27
 WINDOWS_PYTHON_PATH = C:\\python27
 }}}
 
-Please note that you should not put "" aroud the java paths to take care of the space. This is taken care of in the makefiles.
+Please note that you should not put "" aroud the jdk path to take care of the space. This is taken care of in the makefiles.
 
 Afterwards, to use python, you need to install google-apputils.
 
