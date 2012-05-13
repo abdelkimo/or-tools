@@ -89,7 +89,7 @@ Install python from http://www.python.org/download/releases/2.7/
 
 Install java JDK from http://www.oracle.com/technetwork/java/javase/downloads/jdk-7u2-download-1377129.html
 
-You need to install python-setuptools for windows. Please fetch it from http://pypi.python.org/pypi/setuptools#files .
+You need to install python-setuptools for windows. See the installation instructions at: http://pypi.python.org/pypi/setuptools#windows
 
 If you wish to use glpk, please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.47.tar.gz and put the archive in or-tools/dependencies/archives.
 
