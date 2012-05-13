@@ -85,6 +85,10 @@ It is useful to get a clean state, or if you have added an archive in dependenci
 
 Create the or-tools svn copy where you want to work. 
 
+At this point, you must choose if you are going to compile in 32 or 64 bit mode. If windows is 32 bit, you have no choice but to use the 32 bit version.
+If windows is 64 bit, you can choose. We recommend compiling in 64 bit mode. This choice affects the following steps. You must install the corresponding java and python versions. 
+You must also use a same compilation terminal from the visual studio tools menu.
+
 Install python from http://www.python.org/download/releases/2.7/
 
 Install java JDK from http://www.oracle.com/technetwork/java/javase/downloads/jdk-7u2-download-1377129.html
