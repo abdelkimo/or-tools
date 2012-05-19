@@ -12,6 +12,5 @@ presentation slides and even  lab sessions.
 
 In the meantime:
     * have a look at the examples in [http://or-tools.googlecode.com/svn/trunk/examples C++], [http://or-tools.googlecode.com/svn/trunk/python Python], [http://or-tools.googlecode.com/svn/trunk/com/google/ortools Java] and [http://or-tools.googlecode.com/svn/trunk/csharp C#];
-    * read the documents referenced on the sidebar;
     * ask your questions on the [http://groups.google.com/group/or-tools-discuss mailing list].
 
