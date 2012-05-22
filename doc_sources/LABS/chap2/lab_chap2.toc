@@ -1,0 +1,5 @@
+\contentsline {section}{\numberline {1}Content}{1}{section.1}
+\contentsline {section}{\numberline {2}Is my installed or-tools library operational?}{1}{section.2}
+\contentsline {section}{\numberline {3}Hello world}{1}{section.3}
+\contentsline {section}{\numberline {4}A better model to solve cryptarithmetic puzzles}{3}{section.4}
+\contentsline {section}{\numberline {5}How to generate a cryptarithmetic puzzle?}{4}{section.5}

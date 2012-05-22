@@ -1,0 +1,11 @@
+# Current changes.
+* Major changes in the scripts to generate the doc:
+  - the scripts have been completely rewritten and the directories
+    completely rearranged.
+* Minor enhancements to the manual:
+  chap3:
+  - a lots of small improvements from Hakan (Thanks again!).
+  - some images resized in html version.
+* Tutorials:
+  - few corrections in the C++ code.
+

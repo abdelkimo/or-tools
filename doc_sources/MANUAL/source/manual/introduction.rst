@@ -1,0 +1,40 @@
+
+..  raw:: latex 
+    
+    \part{Basics}
+
+.. _chapter_introduction:
+
+Introduction to constraint programming
+======================================
+
+..  In this chapter, we introduce you to Constraint Programming (CP) and help you
+    make your first steps with the or-tools library in CP.
+
+
+
+    Let's start with some examples.
+
+..  toctree::
+    :maxdepth: 1
+
+    introduction/4queens
+    introduction/what_is_cp
+    introduction/theory
+    introduction/real_examples.rst
+    introduction/three_stages
+    introduction/or_tools
+
+
+
+
+
+
+
+
+
+
+
+
+
+

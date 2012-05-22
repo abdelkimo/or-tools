@@ -1,0 +1,196 @@
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{xstring}
+\usepackage{etoolbox}
+\usepackage{minted}
+\usepackage{hyperref}
+\usepackage{xr}
+\usepackage{fontspec}
+
+% to ref the manual
+\externaldocument{/home/nikolaj/Documents/RESEARCH/google/new_tech_writer/BUILD/MANUAL/build/latex/Googleor-toolslibrary}
+\newcommand{\manualref}[1]{%
+\autoref{#1} of the manual%
+}
+%\usepackage[T1]{fontenc}
+
+
+%vertical spaces in tables
+\newcommand\TStrut{\rule{0pt}{2.6ex}}       % Top strut
+\newcommand\BStrut{\rule[-1.2ex]{0pt}{0pt}} % Bottom strut
+
+
+% Mint
+\newminted{cpp}{mathescape,
+%               linenos,
+%               numbersep=5pt,
+               frame=single,
+               framesep=2mm%
+               }
+
+% Mint
+\newminted{bash}{%
+               frame=lines,
+               framesep=2mm%
+               }
+
+\newminted{text}{mathescape,
+%               linenos,
+%               numbersep=5pt,
+%               frame=single,
+               framesep=2mm%
+               }
+
+
+
+% Title
+\date{}
+
+\newcounter{chapterCounter}
+\title{\vspace{-1.5cm}\mytitle\vspace{-1.5cm}}
+%\author{Nikolaj van Omme \and Laurent Perron}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Meta data
+\hypersetup {
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobats bookmarks
+    pdftoolbar=true,        % show Acrobat's toolbar?
+    pdfmenubar=true,        % show Acrobat's menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={Lab sessions},    % title
+    pdfauthor={Google},     % author
+    pdfsubject={Lab sessions for the Google or-tools library},   % subject of the document
+    pdfcreator={Google},   % creator of the document
+    pdfproducer={Google}, % producer of the document
+    pdfkeywords={or-tools} {open source} {constraint programming} {operations research}, % list of keywords
+    %pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,          % color of internal links
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+
+%resizing the toc
+\usepackage{tocloft}
+
+\setlength\cftparskip{-2pt}
+\setlength\cftbeforesecskip{1pt}
+\setlength\cftaftertoctitleskip{0.4cm}
+
+
+%\usepackage[latin1]{inputenc}
+
+%\usepackage{lmodern}
+%\usepackage[usenames]{color}
+\usepackage{geometry}
+\geometry{hmargin=2cm,vmargin=2cm}
+%fin 
+
+
+
+%headers and footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{lastpage}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Google or-tools lab sessions}
+\fancyhead[R]{\mytitle}
+\renewcommand\footrulewidth{1pt}
+\fancyfoot[C]{\thepage/\pageref{LastPage}}
+%\fancyfoot[R]{\today}
+%fin
+
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+
+% Fancy Quotation Boxes in Latex
+% from Jevon Wright
+
+% for adjustwidth environment
+\usepackage[strict]{changepage}
+
+% for formal definitions
+\usepackage{framed}
+
+% environment derived from framed.sty: see leftbar environment definition
+\definecolor{formalshade}{rgb}{0.95,0.95,1}
+\definecolor{darkblue}{rgb}{0.1,0,0.55} 
+
+\newenvironment{formal}{%
+  \def\FrameCommand{%
+    \hspace{1pt}%
+    {\color{darkblue}\vrule width 2pt}%
+    {\color{formalshade}\vrule width 4pt}%
+    \colorbox{formalshade}%
+  }%
+  \MakeFramed{\advance\hsize-\width\FrameRestore}%
+  \noindent\hspace{-4.55pt}% disable indenting first paragraph
+  \begin{adjustwidth}{}{7pt}%
+  \vspace{2pt}\vspace{2pt}%
+}
+{%
+  \vspace{2pt}\end{adjustwidth}\endMakeFramed%
+}
+
+\newsavebox{\textBox}
+\newlength{\textW}
+\newlength{\insideW}
+\newlength{\boxH}
+\newlength{\boxW}
+\newlength{\raiseLineHeight}
+\newlength{\leftLineLength}
+
+% usage \title_line{`Exercice`}{13}{1pt}{Difficulty}
+\newcommand{\titleLine}[3]{%
+%save text
+\sbox{\textBox}{#1~#2}
+
+%length of the text inside the box
+\settowidth{\textW}{\usebox{\textBox}}
+
+%length of the content inside the box, i.e. the length of the text + some margins
+\setlength{\insideW}{\textW}
+\addtolength{\insideW}{0.2cm}
+
+%length and height of the framed text
+\settoheight{\boxH}{\fbox{\parbox{\insideW}{\it \centering \usebox{\textBox}}}}
+\settowidth{\boxW}{\fbox{\parbox{\insideW}{\it \centering \usebox{\textBox}}}}
+
+%raise height
+\setlength{\raiseLineHeight}{0.5\boxH}
+\addtolength{\raiseLineHeight}{-\fboxsep}
+
+%left line length
+\setlength{\leftLineLength}{0.5\textwidth}
+\addtolength{\leftLineLength}{-0.5\boxW}
+
+%line with box
+\noindent\raisebox{\raiseLineHeight}[\height][\depth]{\rule{\leftLineLength}{#3}}\fbox{\parbox{\insideW}{\it \centering \usebox{\textBox}}}\raisebox{\raiseLineHeight}[\height][\depth]{\rule{\leftLineLength}{#3}}\\
+}
+
+
+%Environment exercise
+
+\newcommand{\difficultyOne}{\ensuremath{\star}}
+\newcommand{\difficultyTwo}{\ensuremath{\star \star}}
+\newcommand{\difficultyThree}{\ensuremath{\star \star \star}}
+\newcounter{exerciseCounter}
+
+
+\newenvironment{exercise}[1][]%
+{%
+\stepcounter{exerciseCounter}
+\titleLine{#1 Mission}{\arabic{chapterCounter}.\arabic{exerciseCounter}}{1pt}~\\
+}%
+{%
+~\\
+\titleLine{End Mission}{\arabic{chapterCounter}.\arabic{exerciseCounter}}{1pt}~\\
+}%

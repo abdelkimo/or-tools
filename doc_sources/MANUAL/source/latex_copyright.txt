@@ -1,0 +1,37 @@
+\thispagestyle{empty}
+
+{\Large Welcome to the or-tools user's manual!}\\
+
+\vspace{\stretch{1}}
+
+\copyright\ Copyright 2012, Google\\
+
+
+\vspace{\stretch{1}}
+
+\section*{License information}
+
+This document is provided under the terms of the 
+\begin{center}
+  \begin{large}\code{Apache License 2.0}\end{large}
+\end{center}
+You can find the complete license text at the following address: \url{http://www.apache.org/licenses/LICENSE-2.0}.\\
+
+We kindly ask you not to make this document available on the Internet. This document should only be available at the following address:
+\begin{center}
+  \url{http://or-tools.googlecode.com/svn/trunk/documentation/documentation_hub.html}
+\end{center}
+This is the address of our documentation hub where you can find other useful sources of documentation about the \code{or-tools} library.\\
+
+All the cliparts used in this manual are public domain.
+
+\section*{Trademarks}
+GOOGLE is a trademark of Google Inc.\\
+Linux is a registered trademark of Linus Torvald in the United States, other countries, or both.\\
+Java and all Java-based trademarks and logos are trademarks of Sun Microsystem Inc. in the United States, other countries, or both.\\
+Other companies, products, or service names may be trademarks or service marks of others.\\
+
+
+\section*{Ackowledgments}
+We thank the following people for their helpful comments:\\
+Dania El-Khechen, H\r{a}kan Kjellerstrand, Louis-Martin Rousseau

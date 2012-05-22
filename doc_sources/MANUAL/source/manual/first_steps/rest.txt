@@ -1,0 +1,78 @@
+
+We will use
+a C++ integer constant and check that it is indeed greater than or equal to 10. If not,
+we know that there is no solution and we can abort the program.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Solve
+"""""
+
+We will systematically branch on the first unbounded variable and assign it 
+the smallest possible value. [ADD TEXT]
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+..  admonition:: Under the hood
+
+    ``MakeProp`` and ``MakeSum`` don't return a pointer to an ``IntVar`` but
+    to a more general class ``IntExpr`` (``IntVar`` inherits from ``IntExpr``)
+    to represent all integer expressions. The sum of two integer expressions
+    is again an integer expression. Look at the signature of ``MakeSum``::
+    
+        IntExpr * Solver::MakeSum(IntExpr *const left, IntExpr *const right)
+    
+    Variables are stateful objects that provide a rich API. On the other hand,
+    ``IntExpr`` represent range-only stateless objects. That is,  ``Min(A + B)``
+    is recomputed each time as ``Min(A) + Min(B)``. 
+    Furthermore, sometimes, the propagation on an expression is not complete, 
+    and ``Min()``, ``Max()`` are not monononic with respect to ``SetMin()`` 
+    and ``SetMax()``. For instance, if ``A`` is a variable with domain ``[0..5]``,
+    and ``B`` is another variable with domain ``[0..5]``, then ``Sum(A, B)`` 
+    has domain ``[0..10]``. If we apply ``SetMax(Add(A, B), 4))`` then we will 
+    deduce that both ``A`` and ``B`` will have domain ``[0..4]``. 
+    In that case, ``Max(Add(A, B))`` is ``8`` and not ``4``. 
+    To get back monotonicity, we need to *cast* the expression into a variable
+    using the ``Var()`` method. The resulting variable will be stateful and monotonic.
+
+.. Caution::
+    Never use explicitly an object ``IntExpr`` nor a pointer to an ``IntExpr`` in
+    your code unless you know what you do! The same rule apply to ``BaseIntExpr``. Use ``IntVar`` to 
+    store an integer expression instead.
+
+
+
+Here are some more methods to construct integer expressions:
+
+- ``MakeBoolVar``: returns a pointer to an ``IntVar`` with domain ``[0,1]``.
+- ``MakeIntConst``: returns a pointer to an integer constant.
+- ``MakeDifference``
+- ``MakeDiv``
+- ``MakeAbs``
+- ``MakeMin``
+- ...
+
+Take a look at the file ``constraint_solver.h``, you will find plenty more.
+
+
+
+To construct constraints, the solver provides several factory methods. Among
+others:
+
+- ``MakeNonEquality``
+- ``MakeLessOrEqual`` 
+- ``MakeGreater``
+- ...
+
+and some variations on arrays:
+
+- ``MakeSumEquality``
+- ``MakeScalProdEquality``
+- ``MakeScalProdLessOrEqual``
+- ...
+
+There are also global constraints like ``AllDifferent``.
+
+For a complete list, scour the file ``constraint_solver.h``.
+
+

@@ -1,0 +1,12 @@
+\frametitle {Other supported languages}
+
+Everything is coded in C++. \uncover<2->{Thanks to SWIG, the or-tools library is also available in:}
+
+
+\begin{itemize}
+\item<3-> Python.
+\item<4-> Java.
+\item<5-> .NET (using Mono on non Windows platforms).
+\item<6-> \ldots
+\end{itemize}
+

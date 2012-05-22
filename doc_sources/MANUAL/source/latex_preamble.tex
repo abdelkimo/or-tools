@@ -1,0 +1,177 @@
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{xstring}
+\usepackage{etoolbox}
+\usepackage{relsize}
+\usepackage{subfigure}
+
+
+% Meta data
+\hypersetup {
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobats bookmarks
+    pdftoolbar=true,        % show Acrobat's toolbar?
+    pdfmenubar=true,        % show Acrobat's menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={or-tools user's manual},    % title
+    pdfauthor={Google},     % author
+    pdfsubject={User's manual for the Google or-tools library},   % subject of the document
+    pdfcreator={Google},   % creator of the document
+    pdfproducer={Google}, % producer of the document
+    pdfkeywords={or-tools} {open source} {constraint programming} {operations research}, % list of keywords
+    %pdfnewwindow=true,      % links in new window
+    %colorlinks=true,       % false: boxed links; true: colored links
+    %linkcolor=blue,          % color of internal links
+    %citecolor=green,        % color of links to bibliography
+    %filecolor=magenta,      % color of file links
+    %urlcolor=cyan           % color of external links
+}
+
+%\definecolor{MyGray}{rgb}{0.80,0.80,0.80}
+
+%\makeatletter\newenvironment{graybox}{%
+%   \begin{lrbox}{\@tempboxa}\begin{minipage}{\columnwidth}}{\end{minipage}\end{lrbox}%
+%   \colorbox{MyGray}{\usebox{\@tempboxa}}
+%}\makeatother
+
+%\makeatletter
+%\renewenvironment{notice}[2]{
+%  \begin{graybox}
+%  \bf\it
+%  \def\py@noticetype{#1}
+%  \par\strong{#2}
+%  \csname py@noticestart@#1\endcsname
+%}
+%{
+%  \csname py@noticeend@\py@noticetype\endcsname
+%  \end{graybox}
+%}
+%\makeatother
+
+%vertical spaces in tables
+\newcommand\TStrut{\rule{0pt}{2.6ex}}       % Top strut
+\newcommand\BStrut{\rule[-1.2ex]{0pt}{0pt}} % Bottom strut
+
+
+% To redefine footers and headers
+
+\renewcommand{\sectionmark}[1]{% #1 contains the section title
+ \markright{\thesection\ #1}{}}
+\renewcommand{\chaptermark}[1]{% #1 contains the chapter title
+ \markboth{\thechapter\ #1}{}} 
+
+\makeatletter
+\fancypagestyle{normal}{
+\fancyhf{}
+\fancyfoot[LE,RO]{{\py@HeaderFamily\thepage}}
+\fancyhead[RO]{{\py@HeaderFamily\nouppercase{\leftmark}}}
+\fancyhead[LE]{{\py@HeaderFamily\nouppercase{\rightmark}}}
+%\fancyhead[LE,RO]{{\py@HeaderFamily \@title}} % here's the change
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+}
+\makeatother
+
+% To redefine chapter pages
+\fancypagestyle{plain}{
+\fancyhf{}
+%\fancyfoot[C]{\bf\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+}
+
+% "Belle page" in front of first chapter page
+\makeatletter
+\renewcommand{\cleardoublepage}{%
+  \clearpage\ifodd\c@page\else
+  \hbox{}
+  \vspace*{\fill}
+  \thispagestyle{empty}
+  \newpage
+  \fi
+}
+\makeatother
+
+% Redefine these colors to something not white if you want to have colored
+% background and border for code examples.
+\definecolor{VerbatimColor}{rgb}{0.97,0.97,0.97} % light gray
+\definecolor{VerbatimBorderColor}{rgb}{0,0,0} %black
+
+% Redefine length of verbatim environment
+% depending if the a4paper option was passed or not...
+
+\makeatletter
+\IfSubStr{\@classoptionslist}{a4paper}%
+{% IF TRUE
+\newcommand{\myfontsize}{\fontsize{10.5}{12.5}\selectfont}%
+\fvset{fontsize=\myfontsize}%
+\message{The paper option is a4paper and the text height is \the\textheight}%
+\newcommand{\MyPaperVersionString}{(A4 version)}
+}%
+{% IF FALSE
+\newcommand{\MyPaperVersionString}{(USLetter version)}%
+}%
+\makeatother 
+
+
+% Redefine tables
+% Centering tables
+%\AtBeginEnvironment{tabulary}{\centering} % Not working...
+\BeforeBeginEnvironment{tabulary}{\begin{center}}
+\AfterEndEnvironment{tabulary}{\end{center}}
+
+%\AtBeginEnvironment{document}{\setcounter{page}{7}}
+
+
+% Redefine admonitions
+
+\renewenvironment{notice}[2]%
+  {\begin{Sbox}\begin{minipage}{0.10\textwidth}\includegraphics{dialog-warning.pdf}\end{minipage}\begin{minipage}{0.89\textwidth}}%
+  {\end{minipage}\end{Sbox}\fbox{\TheSbox}}%
+
+% To redifine the title
+\renewcommand{\maketitle} {
+\begin{titlepage}
+  \thispagestyle{empty}
+  \begin{center}
+    \begin{flushright}
+      \begin{minipage}[c]{0.5\textwidth}
+	\vspace{2cm}
+	\centering
+	\mbox{\includegraphics[height=20mm]{google.pdf} \ \raisebox{+2mm}{\includegraphics[height=17mm]{logo.pdf}}}\\
+	{\fontsize{18}{20}\selectfont or-tools open source library}
+      \end{minipage}
+    \end{flushright}
+
+    \vspace{\stretch{0.5}}
+  
+    {\fontsize{50}{60}\selectfont User's Manual}\\
+  \end{center}
+
+\begin{flushright}
+\begin{minipage}[c]{0.3\textwidth}
+\large
+\begin{flushright}
+\vspace{2cm}
+
+Nikolaj van Omme\\
+%\vspace{0cm}
+Laurent Perron\\
+Vincent Furnon
+\end{flushright}
+\end{minipage}
+\end{flushright}
+
+
+  \vspace{\stretch{1}}
+  \today  \hspace{\stretch{1}}\copyright\ Copyright 2012, Google\\
+  \MyPaperVersionString
+\end{titlepage}
+
+
+}
+

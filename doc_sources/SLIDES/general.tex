@@ -1,0 +1,66 @@
+\usepackage{fancyhdr}
+\usepackage{fancyvrb}
+\usepackage{color}
+\usepackage{listings}
+
+\lstset{%
+basicstyle=\footnotesize,
+language=C++,
+backgroundcolor=\color{lightgray},
+frame=single,
+tabsize=2,
+breaklines=true,
+showspaces=false,
+showstringspaces=false,
+%framexleftmargin=5mm, frame=shadowbox, rulesepcolor=\color{blue}
+}
+% Redefine these colors to something not white if you want to have colored
+% background and border for code examples.
+\definecolor{VerbatimColor}{rgb}{0.97,0.97,0.97} % light gray
+\definecolor{VerbatimBorderColor}{rgb}{0,0,0} %black
+
+% Redefine the Verbatim environment to allow border and background colors.
+% The original environment is still used for verbatims within tables.
+\let\OriginalVerbatim=\Verbatim
+\let\endOriginalVerbatim=\endVerbatim
+
+% Play with vspace to be able to keep the indentation.
+\newlength\distancetoright
+\def\mycolorbox#1{%
+  \setlength\distancetoright{\linewidth}%
+  \advance\distancetoright -\@totalleftmargin %
+  \fcolorbox{VerbatimBorderColor}{VerbatimColor}{%
+  \begin{minipage}{\distancetoright}%
+    #1
+  \end{minipage}%
+  }%
+}
+\def\FrameCommand{\mycolorbox}
+
+\renewcommand{\Verbatim}[1][1]{%
+  % list starts new par, but we don't want it to be set apart vertically
+  \bgroup\parskip=0pt%
+  \smallskip%
+  % The list environement is needed to control perfectly the vertical
+  % space.
+  \list{}{%
+  \setlength\parskip{0pt}%
+  \setlength\itemsep{0ex}%
+  \setlength\topsep{0ex}%
+  \setlength\partopsep{0pt}%
+  \setlength\leftmargin{0pt}%
+  }%
+  \item\MakeFramed {\FrameRestore}%
+     \small%
+    \OriginalVerbatim[#1]%
+}
+\renewcommand{\endVerbatim}{%
+    \endOriginalVerbatim%
+  \endMakeFramed%
+  \endlist%
+  % close group to restore \parskip
+  \egroup%
+}
+
+
+\newcommand{\code}[1]{\texttt{#1}}

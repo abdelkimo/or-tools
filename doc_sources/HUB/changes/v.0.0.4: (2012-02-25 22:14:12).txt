@@ -1,0 +1,4 @@
+# Current changes. 
+* Minor enhancements to the manual:
+    - pdf version: admonitions, background around code, page layout
+* Minor corrections.

@@ -1,0 +1,5 @@
+# Current changes.
+* Minor enhancements to the manual:
+  - few corrections.
+* Tutorial code in C++ for chap 3 added.
+

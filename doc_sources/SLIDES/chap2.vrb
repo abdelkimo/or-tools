@@ -1,0 +1,17 @@
+\frametitle {Headers}\par To use the library, we need to include a few headers:\\
+~\\
+\begin{uncoverenv}<2->
+\begin{mycode}
+#include "base/logging.h"
+#include "constraint_solver/constraint_solver.h"
+\end{mycode}
+\end{uncoverenv}
+~\\
+~\\
+\begin{itemize}
+ \item<3-> \code{logging.h}: logging facilities and some assert-like macros.
+ \item<4-> \code{constraint\_solver.h}: main entry point to the CP solver.
+
+
+\end{itemize}
+

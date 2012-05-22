@@ -1,0 +1,12 @@
+# Current changes.
+* Minor enhancements to the manual:
+  - conditional compilation in LaTeX:
+      code doesn't overflow anymore in A4 mode...
+  - few corrections.
+* Hub: 
+  - we recommend calibre as Cross-platform ebook viewer.
+* Tutorials:
+  - tutorial_all_examples.zip added.
+* Lab sessions:
+  - chap2 added.
+

@@ -1,0 +1,53 @@
+REFERENCE:
+
+..  _asserting:
+
+
+..  raw:: latex
+
+    You can find more about the assert-like macros in section~\ref{manual/utilities/asserting:asserting}.
+
+..  only:: html
+
+    In :ref:`Asserting <asserting>`, we cover assert-like macros in more details.
+    
+
+FOOTNOTE:
+
+Ideally, a good cryptarithmetic puzzle must have only
+one solution [#famous_cryptarithmetic]_. We derogate from this tradition. The above example
+has multiple solutions. We use it to show you how to collect all solutions of a problem.
+
+.. [#famous_cryptarithmetic] Like the famous ``SEND + MORE = MONEY``.
+
+IMAGES:
+
+# How to convert pdf to png for html documents:
+convert -density 300 golomb_4_non_optimal.pdf -resize 40% golomb_4_non_optimal.png
+convert -quality 100 -density 1200x1200 symmetry_helper_function.pdf symmetry_helper_function.png
+
+..  raw:: latex
+
+    Figure~\ref{manual/objectives/golomb_first_model:golomb-4-optimal} illustrates 
+    an optimal Golomb ruler of order 4 and all its - distinct - differences.
+
+..  only:: html
+
+    Figure :ref:`golomb_4_optimal` 
+    illustrates an optimal Golomb ruler of order 4 and all its - distinct - differences.
+
+..  _golomb_4_optimal:
+
+..  figure:: images/golomb_4_optimal.*
+    :alt: An optimal Golomb ruler of order 4.
+    :align: center
+    
+    An optimal Golomb ruler of order 4.
+
+
+
+BIBLIO:
+
+(see [Lopez-Ortiz2003]_)
+
+.. [Lopez-Ortiz2003] Alejandro Lopez-Ortiz, Claude-Guy Quimper, John Tromp and Peter Van Beek. *A fast and simple algorithm for bounds consistency of the all different constraint*, Proceedings of the 18\ :sup:`th` international joint conference on Artificial intelligence, Acapulco, Mexico, pp 245-250, 2003, Morgan Kaufmann Publishers Inc.

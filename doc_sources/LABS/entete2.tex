@@ -1,0 +1,192 @@
+%Partie essentielle
+\documentclass[]{article}
+\usepackage[T1]{fontenc}
+\usepackage{minted}
+\usepackage{fontspec}
+
+\newcounter{chapterCounter}
+\setcounter{chapterCounter}{2}%current chapter
+\newcommand{\mytitle}{Chapter~\arabic{chapterCounter}: First steps with or-tools}
+\title{\mytitle}
+\author{Nikolaj van Omme \and Laurent Perron}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\usepackage[latin1]{inputenc}
+
+%\usepackage{lmodern}
+%\usepackage[usenames]{color}
+\usepackage{geometry}
+\geometry{hmargin=2cm,vmargin=2cm}
+%fin 
+
+
+
+%partie concernant la gestion des entêtes
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{lastpage}
+\renewcommand\headrulewidth{1pt}
+\fancyhead[L]{Google or-tools lab sessions}
+\fancyhead[R]{\mytitle}
+\renewcommand\footrulewidth{1pt}
+\fancyfoot[C]{\thepage/\pageref{LastPage}}
+%\fancyfoot[R]{\today}
+%fin
+
+
+
+
+
+% Fancy Quotation Boxes in Latex
+% from Jevon Wright
+
+% for adjustwidth environment
+\usepackage[strict]{changepage}
+
+% for formal definitions
+\usepackage{framed}
+
+% environment derived from framed.sty: see leftbar environment definition
+\definecolor{formalshade}{rgb}{0.95,0.95,1}
+\definecolor{darkblue}{rgb}{0.1,0,0.55} 
+
+\newenvironment{formal}{%
+  \def\FrameCommand{%
+    \hspace{1pt}%
+    {\color{darkblue}\vrule width 2pt}%
+    {\color{formalshade}\vrule width 4pt}%
+    \colorbox{formalshade}%
+  }%
+  \MakeFramed{\advance\hsize-\width\FrameRestore}%
+  \noindent\hspace{-4.55pt}% disable indenting first paragraph
+  \begin{adjustwidth}{}{7pt}%
+  \vspace{2pt}\vspace{2pt}%
+}
+{%
+  \vspace{2pt}\end{adjustwidth}\endMakeFramed%
+}
+
+\newsavebox{\textBox}
+\newlength{\textW}
+\newlength{\insideW}
+\newlength{\boxH}
+\newlength{\boxW}
+\newlength{\raiseLineHeight}
+\newlength{\leftLineLength}
+
+% usage \title_line{`Exercice`}{13}{1pt}{Difficulty}
+\newcommand{\titleLine}[3]{%
+%save text
+\sbox{\textBox}{#1~#2}
+
+%length of the text inside the box
+\settowidth{\textW}{\usebox{\textBox}}
+
+%length of the content inside the box, i.e. the length of the text + some margins
+\setlength{\insideW}{\textW}
+\addtolength{\insideW}{0.2cm}
+
+%length and height of the framed text
+\settoheight{\boxH}{\fbox{\parbox{\insideW}{\it \centering \usebox{\textBox}}}}
+\settowidth{\boxW}{\fbox{\parbox{\insideW}{\it \centering \usebox{\textBox}}}}
+
+%raise height
+\setlength{\raiseLineHeight}{0.5\boxH}
+\addtolength{\raiseLineHeight}{-\fboxsep}
+
+%left line length
+\setlength{\leftLineLength}{0.5\textwidth}
+\addtolength{\leftLineLength}{-0.5\boxW}
+
+%line with box
+\noindent\raisebox{\raiseLineHeight}[\height][\depth]{\rule{\leftLineLength}{#3}}\fbox{\parbox{\insideW}{\it \centering \usebox{\textBox}}}\raisebox{\raiseLineHeight}[\height][\depth]{\rule{\leftLineLength}{#3}}\\
+}
+
+
+%Environment exercise
+
+\newcounter{exerciseCounter}
+
+
+\newenvironment{exercise}[1][1pt]%
+{%
+\stepcounter{exerciseCounter}
+\titleLine{Mission}{\arabic{chapterCounter}.\arabic{exerciseCounter}}{#1}~\\
+}%
+{
+%
+}
+
+%corps du document
+\begin{document}
+\maketitle
+\thispagestyle{fancy} 
+\section{What you will learn in this lab session}
+We will first  test if your installation of the or-tools library is operational in section~\ref{working_settings}.
+After being relieved it does work, we will write our first \emph{hello world} codes in section~\ref{hello_world}.
+
+\section{Is my installed or-tools library operational?}\label{working_settings}
+
+\section{Hello world}\label{hello_world}
+
+
+\section{How to generate a criptaritymetic puzzle?}\label{how_to_generate_crytarithmetic_puzzle}
+TOTO\\
+\titleLine{Exercise}{1}{1pt}
+\titleLine{Exercise}{11}{2pt}
+\titleLine{Exercise de mes deux}{34}{3pt}
+\titleLine{Debriefing Mission}{2.1}{0.5pt}
+TIOTI\\
+
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               gobble=2,
+               frame=lines,
+               framesep=2mm]{c++}
+  string title = "This is a Unicode \pi in the sky"
+  /*
+  Defined as $\pi=\lim_{n\to\infty}\frac{P_n}{d}$ where $P$ is the perimeter
+  of an $n$-sided regular polygon circumscribing a
+  circle of diameter $d$.
+  */
+  const double pi = 3.1415926535
+\end{minted}
+
+\begin{exercise}
+ ceci est un exercice...
+\end{exercise}
+
+
+\begin{exercise}
+ ceci en est un autre
+\end{exercise}
+
+
+\begin{exercise}[2pt]
+ et un troisième plus compliqué! et surtout avec beaucoup de textes le long de la première ligne!
+\end{exercise}
+
+\begin{exercise}[4pt]
+ et un 4e horriblement compliqué!
+\end{exercise}
+
+\begin{formal}
+
+Some text goes here.\\
+and herer\\
+
+what do you think?
+\end{formal}
+
+\newpage
+Numerotation des pages.
+
+\newpage
+Numerotation des pages.
+
+\newpage
+Numerotation des pages.
+\end{document}
+%fin

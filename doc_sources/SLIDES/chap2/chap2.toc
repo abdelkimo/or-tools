@@ -1,0 +1,20 @@
+\beamer@endinputifotherversion {3.07pt}
+\beamer@sectionintoc {1}{The problem and a first model}{12}{0}{1}
+\beamer@subsectionintoc {1}{1}{Description of the problem}{12}{0}{1}
+\beamer@sectionintoc {2}{Anatomy of a basic C++ code}{36}{0}{2}
+\beamer@subsectionintoc {2}{1}{At a glance}{36}{0}{2}
+\beamer@subsectionintoc {2}{2}{Headers}{37}{0}{2}
+\beamer@subsectionintoc {2}{3}{The namespace \texttt {operations\_research}}{41}{0}{2}
+\beamer@subsectionintoc {2}{4}{The CP solver}{45}{0}{2}
+\beamer@subsectionintoc {2}{5}{Variables}{52}{0}{2}
+\beamer@subsectionintoc {2}{6}{Assert-like macros}{56}{0}{2}
+\beamer@subsectionintoc {2}{7}{Constraints}{62}{0}{2}
+\beamer@subsectionintoc {2}{8}{The Decision Builder}{79}{0}{2}
+\beamer@subsectionintoc {2}{9}{The search and the solutions}{85}{0}{2}
+\beamer@sectionintoc {3}{\texttt {SolutionCollector}s and \texttt {Assignment}s to collect solutions}{97}{0}{3}
+\beamer@subsectionintoc {3}{1}{\texttt {SolutionCollector}s}{97}{0}{3}
+\beamer@subsectionintoc {3}{2}{\texttt {Assignment}s}{126}{0}{3}
+\beamer@sectionintoc {4}{Parameters}{132}{0}{4}
+\beamer@subsectionintoc {4}{1}{Google's gflags}{132}{0}{4}
+\beamer@subsectionintoc {4}{2}{CP \texttt {Solver}`s parameters}{155}{0}{4}
+\beamer@sectionintoc {5}{Other supported languages}{164}{0}{5}

@@ -1,0 +1,60 @@
+
+
+.. _faq:documentation:answers:
+
+General answers about the documentation
+---------------------------------------
+
+.. _faq:documentation:help:
+
+Help! I'm lost. Where can I get some help?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _faq:documentation:translation:
+
+Do you plan to translate the documentation?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+No.
+
+.. _faq:documentation:contribute:
+
+I'd like to improve a section in the documentation. How do I contribute?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _faq:documentation:compile:
+
+How do I compile and run the examples in the tutorial section?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+.. ******************************************************************************
+
+.. _faq:installation:
+
+General answers about the installation
+--------------------------------------
+
+
+
+
+
+
+.. ******************************************************************************
+
+.. _faq:library:answers:
+
+General answers about the library
+---------------------------------
+
+
+
+
+.. ******************************************************************************
+
+.. _faq:CPsolver:answers:
+
+General answers about the CP solver
+-----------------------------------
+
+

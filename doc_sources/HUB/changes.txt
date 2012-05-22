@@ -1,0 +1,12 @@
+# Current changes.
+* Minor enhancements to the manual:
+  - tried to add page numbers to the preface: not easy! and not done yet...
+  - chapter structure changed. 
+  - chap2: 
+    + getting started added.
+    + minor enhancements.
+    + comments from Hakan (Thanks!) added.
+  - html version: search options changed.
+* Major enhancement to the manual:
+  - chap 5: Search Strategies added. Happy reading!
+

@@ -1,0 +1,3 @@
+user_manual/_images/anatomy3_4.png
+user_manual/_images/anatomy1_2.png
+user_manual/_images/math/0d9f85ba90d8b2b497781f983ddd845cec6a2df2.png

@@ -1,0 +1,19 @@
+\BOOKMARK [2][]{Outline0.1}{The problem and a first model}{}
+\BOOKMARK [3][]{Outline0.1.1.12}{Description of the problem}{Outline0.1}
+\BOOKMARK [2][]{Outline0.2}{Anatomy of a basic C++ code}{}
+\BOOKMARK [3][]{Outline0.2.1.36}{At a glance}{Outline0.2}
+\BOOKMARK [3][]{Outline0.2.2.37}{Headers}{Outline0.2}
+\BOOKMARK [3][]{Outline0.2.3.41}{The namespace operations\137research}{Outline0.2}
+\BOOKMARK [3][]{Outline0.2.4.45}{The CP solver}{Outline0.2}
+\BOOKMARK [3][]{Outline0.2.5.52}{Variables}{Outline0.2}
+\BOOKMARK [3][]{Outline0.2.6.56}{Assert-like macros}{Outline0.2}
+\BOOKMARK [3][]{Outline0.2.7.62}{Constraints}{Outline0.2}
+\BOOKMARK [3][]{Outline0.2.8.79}{The Decision Builder}{Outline0.2}
+\BOOKMARK [3][]{Outline0.2.9.85}{The search and the solutions}{Outline0.2}
+\BOOKMARK [2][]{Outline0.3}{SolutionCollectors and Assignments to collect solutions}{}
+\BOOKMARK [3][]{Outline0.3.1.97}{SolutionCollectors}{Outline0.3}
+\BOOKMARK [3][]{Outline0.3.2.126}{Assignments}{Outline0.3}
+\BOOKMARK [2][]{Outline0.4}{Parameters}{}
+\BOOKMARK [3][]{Outline0.4.1.132}{Google's gflags}{Outline0.4}
+\BOOKMARK [3][]{Outline0.4.2.155}{CP Solver`s parameters}{Outline0.4}
+\BOOKMARK [2][]{Outline0.5}{Other supported languages}{}

@@ -1,0 +1,200 @@
+%\documentclass[a4paper]{article}
+\documentclass[]{article}
+
+\input{../latex_preamble}
+
+\setcounter{chapterCounter}{2}%current chapter
+\newcommand{\mytitle}{Chapter~\arabic{chapterCounter}: First steps with or-tools}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+\thispagestyle{fancy} 
+\section{Content}
+We will start by testing that your installation of the or-tools library is operational in section~\ref{working_settings}.
+After being relieved (phew, it does work, does it?), we will write our first \emph{hello world} codes in section~\ref{hello_world} and we'll learn the basic functionnalities of the CP solver. In section~\ref{better_model}, we propose a better model to solve the cryptarithmetic puzzle we solved in the manual. This model will be used to create a cryptarithmetic puzzle generator in section~\ref{how_to_generate_crytarithmetic_puzzle}.
+
+\section{Is my installed or-tools library operational?}
+\label{working_settings}
+
+In the~\manualref{manual/first_steps/getting_started:getting-started}, you can find how to download and install the \emph{or-tools library}. If everything goes smoothly, you should be able to compile the next code:
+
+\begin{cppcode}
+#include "constraint_solver/constraint_solver.h"
+
+int main(int argc, char **argv) {
+  operations_research::Solver solver("First try!");
+  return 0;
+}
+\end{cppcode}
+
+\begin{exercise}
+ Grab your favorite text editor/IDE (Integrated Development Environment) and write the code above in a file named \code{first\_try.cc}. Open the provided \code{Makefile} and edit the variable~\code{OR\_TOOLS\_TOP} to the top main directory of your \emph{or-tools library}. Invoke the makefile with the associated~\code{TARGET} variable set to~\code{first\_try}:
+\begin{bashcode}
+make cpexe TARGET=first_try
+\end{bashcode}
+\vspace{-0.8cm}
+\end{exercise}
+
+Were you able to compile and link the code? If not, retry installing the~\emph{or-tools library}. If you face too many difficulties, ask for help on the mailing list (\url{http://groups.google.com/group/or-tools-discuss}).
+\section{Hello world}
+\label{hello_world}
+For our first real code, we will ask the solver to decide between two variables each with a $0-1$~domain. We want the solver to assign them different values. Our first try will be to use a simple linear model:
+
+\begin{align*}
+ a + b & \leqslant 1 \\
+ a + b & \geqslant 1
+\end{align*}
+
+with $a, b \in \{0,1\}$. We will do this step by step.
+
+\begin{exercise}
+Open a file named~\code{hello\_world1.cc}. As explained in~\manualref{manual/first_steps/anatomy:headers}, we need some headers:
+
+\begin{cppcode}
+#include <vector>
+
+#include "base/logging.h"
+#include "constraint_solver/constraint_solver.h"
+\end{cppcode}
+
+Our preferred way to code is to nest our functions in the~\code{namespace operations\_research} (see the~\manualref{manual/first_steps/anatomy:the-namespace-operations-research}):
+
+
+\begin{cppcode}
+namespace operations_research {
+
+void Hello_World() {
+  // Constraint programming engine
+  Solver solver("Hello World!");
+  ...
+}
+}   // namespace operations_research
+
+// ----- MAIN -----
+int main(int argc, char **argv) {
+  operations_research::Hello_World();
+  return 0;
+}
+\end{cppcode}
+
+Now, you know how to compile and link this file:
+
+\begin{bashcode}
+make cpexe TARGET=hello_world1
+\end{bashcode}
+
+Because the domain of our two variables is $\{0,1\}$, we can use the nifty
+\code{MakeBoolVar()} factory method. Don't forget the remark about
+factory methods we made in the~\manualref{manual/first_steps/anatomy:variables}.
+
+\begin{cppcode}
+  // Decision variables
+  IntVar* const a = solver.MakeBoolVar("A");
+  IntVar* const b = solver.MakeBoolVar("B");
+
+  // We need to group variables in a vector to be able to create
+  // the DecisionBuilder
+  std::vector<IntVar*> vars;
+  vars.push_back(a);
+  vars.push_back(b);
+\end{cppcode}
+
+Our two constraints don't represent any challenge:
+
+\begin{cppcode}
+  // Constraints
+  solver.AddConstraint(solver.MakeLessOrEqual(solver.MakeSum(a,b)->Var(),1));
+  solver.AddConstraint(solver.MakeGreaterOrEqual(solver.MakeSum(a,b)->Var(),1));
+\end{cppcode}
+
+Do you remember why we {\bf must} call the~\code{Var()} method? If not, see
+the~\manualref{manual/first_steps/anatomy:constraints} about constraints.\\
+
+To define the search, we need a~\code{DecisionBuilder}:
+
+\begin{cppcode}
+  DecisionBuilder* const db = solver.MakePhase(vars,
+                                               Solver::CHOOSE_FIRST_UNBOUND,
+                                               Solver::ASSIGN_MIN_VALUE);
+\end{cppcode}
+
+Next, we start the search and ask for the values of the solution:
+
+\begin{cppcode}
+  solver.NewSearch(db);
+
+  if (solver.NextSolution()) {
+    LOG(INFO) << "Solution found:";
+    LOG(INFO) << "A=" << a->Value() << " " << "B=" << b->Value();
+  } else {
+    LOG(INFO) << "Cannot solve problem.";
+  }  // if (solver.NextSolution())
+
+  solver.EndSearch();
+\end{cppcode}
+
+If you are not sure what we are doing here, you can refresh your memory
+by reading~\manualref{manual/first_steps/anatomy:the-search-and-the-solutions}.
+\end{exercise}
+
+For our second try, let's use a non linear constraint:
+\[ ab + a = 1.\]
+
+\begin{exercise}
+Implement the non linear constraint in a file named~\code{hello\_world2.cc}.
+\end{exercise}
+
+\begin{exercise}[\difficultyOne]
+What happens if you change the constraint to $ab + a = 0$ and why?
+\end{exercise}
+\vspace{-1cm}
+\section{A better model to solve cryptarithmetic puzzles}
+\label{better_model}
+In~\manualref{manual/first_steps/cryptarithmetic:model}, to solve 
+\begin{center}
+\begin{minipage}{3cm}
+\begin{textcode}
+    C P
++   I S
++ F U N
+-------
+T R U E 
+\end{textcode}
+\end{minipage}
+\end{center}
+we proposed a model with only two constraints: one linear constraint to represent the equality between the two sums and the~\code{AllDifferent} constraint to ensure that all the letters represent different digits. A better model consists in several linear equalities, one for each column. Indeed, this equality can be distributed among the columns. If we use a general base~$b$ as in the manual, the equality becomes
+
+\begin{center}
+\begin{tabular}{cccccccc}
+    &                                         &   &                                        & + & ${\color{blue}{\mathtt{C}}} \cdot b$ & + & ${\color{blue}{\mathtt{P}}}$\\
+    &                                         &   &                                        & + & ${\color{blue}{\mathtt{I}}} \cdot b$ & + & ${\color{blue}{\mathtt{S}}}$\\
+    &                                         & + & ${\color{blue}{\mathtt{F}}} \cdot b^2$ & + & ${\color{blue}{\mathtt{U}}} \cdot b$ & + & ${\color{blue}{\mathtt{N}}}$\BStrut\\
+\hline
+  = & ${\color{blue}{\mathtt{T}}} \cdot b^3$ & + & ${\color{blue}{\mathtt{R}}} \cdot b^2$ & + & ${\color{blue}{\mathtt{U}}} \cdot b$ & + & ${\color{blue}{\mathtt{E}}}\TStrut$
+\end{tabular}
+\end{center}
+
+To distribute the sum among the columns, we must be carreful as the sums in the columns can "overflow" in the next column, i.e. we must use carry variables. For instance, in the last column, \textcolor{blue}{\code{P}} + \textcolor{blue}{\code{S}} + \textcolor{blue}{\code{N}} might be greater than \textcolor{blue}{\code{E}} in base~$b$. Therefore, to ensure the equality, we must add a carry variable~$\code{C}_1$:
+\[ \textcolor{blue}{\code{P}} + \textcolor{blue}{\code{S}} + \textcolor{blue}{\code{N}} = \textcolor{blue}{\code{E}} + \code{C}_1. \]
+
+\begin{exercise}[\difficultyOne]
+ Develop and implement a model that uses carry variables to solve the cryptarithmetic puzzle \code{CP + IS + FUN = TRUE} in any base~$b$. The base is given as a command line parameters (use the Google gflags library as explained in~\manualref{manual/first_steps/parameters:google-s-gflags}). Try to use the smallest possible domains for the carry variables. Collect also all the solutions with a~\code{AllSolutionCollector} (see~\manualref{manual/first_steps/monitors:solutioncollectors-and-assignments-to-collect-solutions}) and print them.
+\end{exercise}
+\vspace{-1cm}
+\section{How to generate a cryptarithmetic puzzle?}\label{how_to_generate_crytarithmetic_puzzle}
+
+Unlike in our example, a real cryptarithmetic puzzle should only have one solution.\\
+
+\begin{exercise}[\difficultyTwo]
+Write a program that generates real cryptarithmetic puzzles in any base~$b$ with the help of the CP solver. Use two text files containing each a list of word, one per line. The first file provides the words you'll use in your addition  (you can choose another operation if you wish). A parameter $m$ indicates the number of words to use. The second file contains the result of the addition (operation). Generate all existing cryptarithmetic puzzles (with a unique solution).\\
+
+For instance, if the number of words is $m = 2$, the base~$b = 10$, the first file contains the words \code{CRASH} and~\code{HACKER} and the second file contains the word~\code{REBOOT}, you program should generate
+the cryptarithmetic puzzle~\code{CRASH + HACKER = REBOOT}.\\
+
+Don't try to create a clever algorithm, choose an elegant and simple solution. Limit the search time using a command line parameter. If you don't remember how to limit the search time, read~\manualref{manual/first_steps/parameters:searchmonitors}.
+\end{exercise}
+
+
+\end{document}

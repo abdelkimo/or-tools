@@ -1,0 +1,64 @@
+
+
+* **search tree:** Is it balanced? Big? Deep? By visualizing the search tree
+  we can gain a wealth of information about the chosen search strategy.
+  
+  Search tree
+^^^^^^^^^^^
+
+..  raw:: latex
+
+    Thanks to the wonderful \code{cpviz} library (http://sourceforge.net/projects/cpviz), it is possible to visualize the search 
+    tree (and do other things, see section~\ref{manual/utilities/visualizing:visualizing}).
+
+..  only:: html
+
+    Thanks to the wonderful :program:`cpviz` library (http://sourceforge.net/projects/cpviz), it is possible to visualize the search tree 
+    (and do other things, see section :ref:`visualizing`).
+    
+In short, to generate the search tree. First, install the :program:`cpviz` library. Next, add the following to your
+code:
+
+..  code-block:: c++
+
+    SearchMonitor* const cpviz = solver.MakeTreeMonitor(vars, "tree.xml", 
+                                                       "visualization.xml");
+
+and then add the ``SearchMonitor`` with your preferred method. For instance:
+
+..  code-block:: c++
+
+    s.Solve(db, collector, length, cpviz);
+    
+If the search is successful, the solver creates the two files :file:`tree.xml` and :file:`visualization.xml`. You need a third configuration file to visualize the search tree with
+:program:`cpviz`. This basic configuration file :file:`configuration.xml` will do:
+
+..  code-block:: xml
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <configuration version="1.0" directory="/tmp"
+    xsi:noNamespaceSchemaLocation="configuration.xsd" xmlns:xsi="http://
+    www.w3.org/2001/XMLSchema-instance">
+    <tool show="tree" type="layout" display="expanded" repeat="all"
+    width="700" height="700" fileroot="tree"  />
+    </configuration>
+
+Modify the directory :file:`/tmp` to whatever directory suits you. This is where the :program:`cpviz` program 
+:program:`Viz` will generate the images of the search tree, so you need the be able to write inside this directory.
+
+From the directory :file:`viz/bin`, invoke 
+
+..  code-block:: bash
+
+    java ie.ucc.cccc.viz.Viz configuration.xml tree.xml vizualization.xml
+    
+Yes, the :program:`cpviz` library is written in Java. If everything goes well, you'll find the images of the search tree (one for each node)
+in the given directory. The image format is ``svg``. Here is the final image of the complete search tree for the program in :file:`golomb1.cc`:
+
+..  figure:: images/tree22.*
+    :alt: The search tree for :file:`golomb1.cc`.
+    :align: center
+    :scale: 50%
+    :height: 300pt
+    
+    The final search tree for :file:`golomb1.cc`.

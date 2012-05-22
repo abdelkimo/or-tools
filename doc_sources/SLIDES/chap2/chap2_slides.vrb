@@ -1,0 +1,11 @@
+\frametitle {\code{SolverParameters} struct}
+
+You can invoke the constructor of the \code{Solver} that takes a \code{SolverParameters} struct:
+\medskip
+
+\begin{uncoverenv}<2->
+\begin{mycode}
+\PYG{c+c1}{// Use some profiling and change the default parameters of the solver}
+\PYG{n}{SolverParameters} \PYG{n}{solver\PYGZus{}params} \PYG{o}{=} \PYG{n}{SolverParameters}\PYG{p}{(}\PYG{p}{)}\PYG{p}{;}
+\PYG{c+c1}{// Change the profile level}
+\PYG{n}{s

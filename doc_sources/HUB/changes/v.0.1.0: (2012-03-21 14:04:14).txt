@@ -1,0 +1,11 @@
+# Current changes. 
+* Major enhancements to the manual:
+  - chapter 3.
+* Minor enhancements to the manual:
+  - section SolutionCollectors and Assigments with subsections.
+  - index improved.
+* Minor corrections:
+  - code in C++.
+
+
+
