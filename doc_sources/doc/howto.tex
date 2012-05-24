@@ -40,9 +40,10 @@
 \maketitle
 
 \begin{abstract}
-This little document explains how to generate and upload all the documentation for the Google or-tools library. This document doesn't explain how to write the documentation i.e. the use of \emph{Sphinx}, \emph{Jinja2}, \emph{html}, \emph{css}, etc., only how to generate the output files once
+This little document explains how to generate and upload all the documentation for the Google or-tools library. This document doesn't explain how to write the documentation i.e. how to use of \emph{Sphinx}, \emph{Jinja2}, \emph{html}, \emph{css}, etc., only how to generate the output files once
 the documentation is written and how to upload the output files on the Google servers. All the scripts are written in Python and must be called in the correct sequence.\\
 \begin{center}\textcolor{red}{Only tested under Linux.}\end{center}
+\begin{center}\textcolor{red}{THIS DOCUMENT IS NOT UP TO DATE AND CONTAINS ERRORS!}\end{center}
 \end{abstract}
 
 \setcounter{tocdepth}{2}
@@ -52,7 +53,7 @@ the documentation is written and how to upload the output files on the Google se
 
 This documentation and the process to generate the or-tools library's documentation was designed with the or-tools people in mind. As such, the whole generation process isn't bullet-proof nor idiot-proof.\\
 
-You can get your local copy of the documentation and generate it if you want but there is no reason to do so as all the generated documentation is already available on the Google servers. If you find better way to generate some parts of the documentation, please share with the whole community (but keep in mind that our main purpose is not to spend too much time on this).\\
+You can get your local copy of the documentation and generate it if you want but there is no reason to do so as all the generated documentation is already available on the Google servers. If you find better ways to generate some parts of the documentation, please share with the whole community (but keep in mind that our main purpose is not to spend too much time on this).\\
 
 This document itself is written in~\LaTeX\ and generated with~PDF\LaTeX.
 
@@ -69,7 +70,7 @@ To avoid misunderstanding, let's agree on some wordings.
 
 \subsection{Directories}
 
-There are five main directories: three on the Local home side and two on the Google servers side. Figure~\ref{pic_directories} illustrates those directories. The three local directories can be named to your liking (see section~\ref{installation}).
+There are six main directories: three on the Local home side and three on the Google servers side. Figure~\ref{pic_directories} illustrates those directories. The three local directories can be named to your liking (see section~\ref{installation}).
 
 \begin{figure}[h]
    \centering
@@ -128,23 +129,23 @@ We use also Python (2.7), make, html, css, ...
 \subsection{Scripts}
 The Python scripts are not bullet-proof.\\
 
-There are three main directories:
-\begin{description}
- \item[SOURCES] contains all the sources. This is the directory where you write the documentation. This directory is located in the \verb+or-tools/documentation/SOURCES+ directory of the project.
- \item[DEPLOY] is an ``exact'' copy of the \verb+or-tools/trunk/documentation+ directory. Some directories/files are only present as links (for instance \verb+reference_manual+).
- \item[SVN] is an exact copy of the \verb+or-tools/trunk/documentation+ directory.
- \end{description}
+% There are three main directories:
+% \begin{description}
+%  \item[SOURCES] contains all the sources. This is the directory where you write the documentation. This directory is located in the \verb+or-tools/documentation/SOURCES+ directory of the project.
+%  \item[DEPLOY] is an ``exact'' copy of the \verb+or-tools/trunk/documentation+ directory. Some directories/files are only present as links (for instance \verb+reference_manual+).
+%  \item[SVN] is an exact copy of the \verb+or-tools/trunk/documentation+ directory.
+%  \end{description}
+% 
+% I use the directory~\verb+DEPLOY+ as an intermediate directory to be able to test some new stuff without polluting \verb+SVN+.\\
+% 
 
-I use the directory~\verb+DEPLOY+ as an intermediate directory to be able to test some new stuff without polluting \verb+SVN+.\\
 
-
-
-\begin{description}
- \item[Step 1] \verb+deploy.py+ generates and copies the documentation to directory~\verb+DEPLOY+. It is also responsible for the generation of all needed files and repertories.
- \item[Step 2] \verb+upload.py+ uploads certain files to the \verb+download+ directory of the or-tools project and copies the documentation to directory~\verb+SVN+. Along the way, this script generates the list of
-	       \verb+svn+ commands in \verb+snv_commands_xxx.txt+ and this is the \textbf{only} file that it generates.
- \item[Step 3] \verb+svn+: the traditional \verb+svn+ commands.
- \end{description}
+% \begin{description}
+%  \item[Step 1] \verb+deploy.py+ generates and copies the documentation to directory~\verb+DEPLOY+. It is also responsible for the generation of all needed files and repertories.
+%  \item[Step 2] \verb+upload.py+ uploads certain files to the \verb+download+ directory of the or-tools project and copies the documentation to directory~\verb+SVN+. Along the way, this script generates the list of
+% 	       \verb+svn+ commands in \verb+snv_commands_xxx.txt+ and this is the \textbf{only} file that it generates.
+%  \item[Step 3] \verb+svn+: the traditional \verb+svn+ commands.
+%  \end{description}
 
 \section{Update the documentation sources (SVN)}
 \label{update_source_code}

@@ -177,7 +177,7 @@ The global constraint ``AllDifferent`` springs to mind to model that variables m
     The one used in ``or-tools`` is bound based (see [Lopez-Ortiz2003]_).
 
 
-..  [#all_different_in_or_tools] We talk here about the generic ``AllDifferent`` constriant. In *or-tools*, we use the method ``MakeAllDifferent()``.
+..  [#all_different_in_or_tools] We talk here about the generic ``AllDifferent`` constraint. In *or-tools*, we use the method ``MakeAllDifferent()``.
 
 ..  raw:: html
 
