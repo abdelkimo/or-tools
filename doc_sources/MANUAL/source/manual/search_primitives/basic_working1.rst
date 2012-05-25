@@ -478,7 +478,12 @@ The basic search algorithm and the callback hooks for the ``SearchMonitor``\s
           return result;
         }
 
-    Let's try to gently dissect this algorithm.
+    Let's dissect this algorithm. First of all, you might wonder where the 
+    progagation takes place. It's the responsibility of the main ``PropagationMonitor``.
+    The ``PropagationMonitor`` is in fact a... ``SearchMonitor`` with added functionalities. 
+    It listens to search events as well as propagation events.
+    
+    
     
 ``EndSearch()``
 """"""""""""""""""

@@ -51,7 +51,8 @@ The n-queens Problem
     ..  [Jordan2009] Jordan and Brett. *A survey of known results and research areas for n-queens*, Discrete Mathematics, 
                      Volume 309, Issue 1, 2009, pp 1-31.
 
-    As with the Golomb rulers problem, the experts could only find the number of solutions for small values: :math:`n \leqslant 26`. The 
+    As with the Golomb rulers problem, the experts could only find the number of all the 
+    solutions for small values: :math:`n \leqslant 26`. The 
     `On-Line Encyclopedia of Integer Sequences <http://oeis.org/>`_ keeps track of the number of solutions 
     (`sequence A002562 <http://oeis.org/A002562>`_ for unique solutions (up to a symmetry) and 
     `sequence A000170 <http://oeis.org/A000170>`_ for distinct solutions). The next table reports
@@ -158,7 +159,7 @@ Model
     that every column will be populated by a queen. 
 
     We have to ensure that the variables cannot take the same value. This is easily done with
-    :math:`\textrm{AllDifferent}(x_0, \ldots, x_{n-1})`. We have to ensure that no two queens can be on the same diagonal. It would be nice to 
+    :math:`\texttt{AllDifferent}(x_0, \ldots, x_{n-1})`. We have to ensure that no two queens can be on the same diagonal. It would be nice to 
     have the variables on the diagonals so that we could use again the ``AllDifferent`` constraint. Actually, we know when 
     two variables represent two queens that are 
     on the same diagonal. We'll use a known trick to model this constraint in the next section. 

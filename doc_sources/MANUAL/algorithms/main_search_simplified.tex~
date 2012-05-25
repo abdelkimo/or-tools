@@ -1,0 +1,83 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8x]{inputenc}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage[hmargin=3cm,vmargin=2.5cm]{geometry}
+\usepackage{nameref}
+\usepackage[ruled,vlined]{algorithm2e}
+
+% Meta data
+\hypersetup {
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobats bookmarks
+    pdftoolbar=true,        % show Acrobat's toolbar?
+    pdfmenubar=true,        % show Acrobat's menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={or-tools: basic search algorithms},    % title
+    pdfauthor={Google},     % author
+    pdfsubject={Basic search algorithms from the the Google or-tools library},   % subject of the document
+    pdfcreator={Google},   % creator of the document
+    pdfproducer={Google}, % producer of the document
+    pdfkeywords={or-tools} {open source} {constraint programming} {operations research}, % list of keywords
+    %pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=blue,          % color of internal links
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+%opening
+\title{Basic (and simplified) algorithms from the or-tools library}
+\author{Nikolaj van Omme\footnote{You can reach me at ortools.doc@gmail.com if you need some help. ;-) }}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This little document collects different algorithms from the Google or-tools library.
+\end{abstract}
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+\section{Main search algorithms}
+
+\subsection{Simplified version}
+
+\begin{function}[H]
+\SetLine
+%\SetKwInOut{Input}{input}\SetKwInOut{Output}{output}
+\KwIn{\emph{db}: a constant pointer to a \code{DecisionBuilder}}
+\KwIn{\emph{monitors}: a constant reference to a constant \code{std::vector<SearchMonitor*>}}
+
+\ForEach{Task $i$}{
+\ForEach{Processor $j$}{
+Calculate EW($i$,$j$)\;
+\If{EW($i$,$j$) $\le$ EW($a$,$b$)}{
+$a$ = $i$\;
+$b$ = $j$\;
+}
+}
+}
+\While{Unscheduled tasks remaining}{
+\ForEach{Processor $j$}{
+Calculate FT($a$,$j$)\;
+\If{FT($a$,$j$) $\le$ FT($a$,$c$)}{
+$c$ = $j$\;
+}
+}
+Schedule(Task $a$ on Processor $c$) \;
+}
+\caption{NewSearch(db, monitors)}
+\label{alg:mine}
+\end{function}
+
+
+\end{document}

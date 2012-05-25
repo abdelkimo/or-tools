@@ -122,6 +122,14 @@ Not for the moment.
 Give us some time. For the moment, the structure of the documentation is still changing and the documentation is quite empty.
 
 
+.. _`faq:documentation:computer_used`:
+
+What computer did you use for the numerical results?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+It doesn't really matter. What matters is that ALL experiments where done with 
+the same computer. You insist? OK, we used a laptop computer running under Linux with 3.9 GB of RAM. Happy now?
+
+
 .. _`faq:documentation:end_of_project`:
 
 When do you expect to finish?
