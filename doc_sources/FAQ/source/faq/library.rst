@@ -92,6 +92,18 @@ this.
 Why did Google, a private company, open source such a project?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+..  _faq:library:why_coding_style:
 
+Why didn't you use... or did you use... in your library?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As member of Google, we have to follow some guidelines.
+
+For instance, streams are highly discouraged. Why? Because...
+
+Another convention we have to follow is to use small letter "k" in front
+of global constants. 
+
+We cannot use reference if there are not constant.
 
 

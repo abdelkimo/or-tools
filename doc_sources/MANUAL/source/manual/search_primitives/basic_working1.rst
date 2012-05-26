@@ -295,7 +295,7 @@ The basic search algorithm and the callback hooks for the ``SearchMonitor``\s
     We use exceptions in our simplified version while the actual implementation uses
     the more efficient (and cryptic) ``setjmp - longjmp`` mechanism.
     
-    To follow the main search algorithm, you have to know in what states the solver
+    To follow the main search algorithm, it is best to know in what states the solver
     can be. The ``enum`` ``SolverState`` enumerates the possibilities:
     
     ..  table::
@@ -514,11 +514,9 @@ The basic search algorithm and the callback hooks for the ``SearchMonitor``\s
 The ``DecisionBuilder`` and ``Decision``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ``MakePhase()`` method in details
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Nested searches and ``NestedSolve()``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Composing ``DecisionBuilder``\s
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Nested searches
+^^^^^^^^^^^^^^^
+
+

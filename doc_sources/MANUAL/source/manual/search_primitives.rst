@@ -79,8 +79,9 @@ Defining search primitives: n-queens problems
 
         The files inside this directory are:
 
-        - :file:`nqueen1.cc`: A first implementation of our basic model.
-        - :file:`nqueen2.cc`: 
+        - :file:`nqueens_utilities.h`: Contains two helper functions to test the number of solutions found and to print a solution.
+        - :file:`nqueen1.cc`: A first implementation of our basic model to find all solutions.
+        - :file:`nqueen2.cc`: The same implementation as in :file:`nqueen1.cc` but this time to find only one solution.
         - :file:`nqueen3.cc`: 
         - :file:`nqueen4.cc`: 
         - :file:`nqueen5.cc`: 
@@ -100,9 +101,9 @@ Defining search primitives: n-queens problems
     search_primitives/basic_model_implementation
     search_primitives/basic_working1
     search_primitives/cpviz
-    search_primitives/predefined_next_var
-    search_primitives/predefined_next_value
-    search_primitives/customization
+    search_primitives/out_of_the_box_search_primitives
+    search_primitives/customized_search_primitives
+    search_primitives/default_search
     search_primitives/breaking_symmetry
     search_primitives/summary
 

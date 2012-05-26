@@ -3,23 +3,17 @@
 
 .. highlight:: cpp
 
-..  _predefined_next_var
+..  _out_of_the_box_search_primitives:
 
-Predefined choices: next variable to branch on
-----------------------------------------------
+Out of the box search primitives
+----------------------------------------
+
+
+
+To select next variable
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
-
-
-    The Golomb Ruler Problem is one of these very easy to state problems but 
-    that are extremely difficult to solve despite their apparent simplicity. 
-
-    In this section, we describe the problem and propose a first model to solve it. 
-    This model is not very efficient and we will develop better models in
-    the next sections.
-
-    Description of the problem
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     enum operations_research::Solver::IntVarStrategy
 
@@ -45,3 +39,22 @@ Predefined choices: next variable to branch on
 
         the smallest number of possible values. In case of tie, the selected variables is the one with the highest max value. In case of tie, the first one is selected, first being defined by the order in the vector of IntVars used to create the selector.
         CHOOSE_PATH 	Selects the next unbound variable on a path, the path being defined by the variables: var[i] corresponds to the index of the next of i. 
+
+To select next value
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    enum operations_research::Solver::IntValueStrategy
+
+    This enum describes the strategy used to select the next variable value to set.
+
+    Enumerator:
+        INT_VALUE_DEFAULT 	The default behavior is ASSIGN_MIN_VALUE.
+        INT_VALUE_SIMPLE 	The simple selection is ASSIGN_MIN_VALUE.
+        ASSIGN_MIN_VALUE 	Selects the min value of the selected variable.
+        ASSIGN_MAX_VALUE 	Selects the max value of the selected variable.
+        ASSIGN_RANDOM_VALUE 	Selects randomly one of the possible values of the selected variable.
+        ASSIGN_CENTER_VALUE 	Selects the first possible value which is the closest to the center of the domain of the selected variable.
+
+        The center is defined as (min + max) / 2. 
