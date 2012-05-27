@@ -1,31 +1,26 @@
 \BOOKMARK [1][-]{section.1}{Introduction \(How it works\)}{}
 \BOOKMARK [2][-]{subsection.1.1}{Vocabulary}{section.1}
 \BOOKMARK [2][-]{subsection.1.2}{Directories}{section.1}
-\BOOKMARK [2][-]{subsection.1.3}{Work flow}{section.1}
-\BOOKMARK [2][-]{subsection.1.4}{Preferred use}{section.1}
+\BOOKMARK [2][-]{subsection.1.3}{Content of the documentation}{section.1}
+\BOOKMARK [2][-]{subsection.1.4}{Work flow}{section.1}
+\BOOKMARK [2][-]{subsection.1.5}{Preferred use}{section.1}
 \BOOKMARK [1][-]{section.2}{Install the documentation and the needed tools}{}
 \BOOKMARK [2][-]{subsection.2.1}{External libraries and tools}{section.2}
 \BOOKMARK [2][-]{subsection.2.2}{Scripts}{section.2}
-\BOOKMARK [1][-]{section.3}{Update the documentation sources \(SVN\)}{}
-\BOOKMARK [1][-]{section.4}{Write the documentation OK}{}
-\BOOKMARK [2][-]{subsection.4.1}{To add a chapter}{section.4}
-\BOOKMARK [2][-]{subsection.4.2}{To add a section}{section.4}
-\BOOKMARK [2][-]{subsection.4.3}{To add a label and a reference}{section.4}
+\BOOKMARK [1][-]{section.3}{or-tools Sphinx extension}{}
+\BOOKMARK [1][-]{section.4}{Add to the manual \203}{}
+\BOOKMARK [2][-]{subsection.4.1}{a part}{section.4}
+\BOOKMARK [2][-]{subsection.4.2}{a chapter}{section.4}
+\BOOKMARK [2][-]{subsection.4.3}{a section}{section.4}
 \BOOKMARK [2][-]{subsection.4.4}{Front material}{section.4}
 \BOOKMARK [1][-]{section.5}{Generate the documentation}{}
 \BOOKMARK [2][-]{subsection.5.1}{The manual}{section.5}
 \BOOKMARK [2][-]{subsection.5.2}{The documentation hub}{section.5}
 \BOOKMARK [2][-]{subsection.5.3}{The tutorial code}{section.5}
 \BOOKMARK [2][-]{subsection.5.4}{The slides}{section.5}
-\BOOKMARK [1][-]{section.6}{Deploy the documentation}{}
-\BOOKMARK [1][-]{section.7}{Check the documentation}{}
-\BOOKMARK [1][-]{section.8}{Update the version}{}
-\BOOKMARK [1][-]{section.9}{Commit your changes in the source files}{}
-\BOOKMARK [1][-]{section.10}{Prepare the documentation}{}
-\BOOKMARK [1][-]{section.11}{Upload the documentation}{}
-\BOOKMARK [2][-]{subsection.11.1}{The version}{section.11}
-\BOOKMARK [2][-]{subsection.11.2}{Documentation Hub}{section.11}
-\BOOKMARK [1][-]{section.12}{Global cripts}{}
-\BOOKMARK [1][-]{section.13}{Gotchas}{}
-\BOOKMARK [1][-]{section.14}{Resources}{}
-\BOOKMARK [2][-]{subsection.14.1}{Images}{section.14}
+\BOOKMARK [2][-]{subsection.5.5}{The version}{section.5}
+\BOOKMARK [2][-]{subsection.5.6}{Documentation Hub}{section.5}
+\BOOKMARK [1][-]{section.6}{Global cripts}{}
+\BOOKMARK [1][-]{section.7}{Gotchas}{}
+\BOOKMARK [1][-]{section.8}{Resources}{}
+\BOOKMARK [2][-]{subsection.8.1}{Images}{section.8}

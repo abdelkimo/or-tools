@@ -6,6 +6,7 @@
 \usepackage[hmargin=3cm,vmargin=2.5cm]{geometry}
 \usepackage{nameref}
 
+
 % Meta data
 \hypersetup {
     bookmarks=true,         % show bookmarks bar?
@@ -65,45 +66,66 @@ To avoid misunderstanding, let's agree on some wordings.
  \item[Source/Code file] a file in wich you write the documentation. It can be restructuredText (.rst), \LaTeX\ (.tex) or text (.txt, .css, html, \ldots)\footnote{Basically, \emph{all} source files are text files.}. Some files are at the same time source and output files.
  \item[Output file] a file that will be published on the server side, including html files, images, etc. Some files are at the same time source and output files.
  \item[Local home] the computer you use to write the documentation.
- \item[Google servers] the computers where the documentation is publicly accessible from the Internet. 
+ \item[Google servers] the servers where the documentation is publicly accessible from the Internet.
+ \item[Documentation hub] a central html page from which all the documentation is accessible except the downloadable files. The url is:\\
+ \href{http://or-tools.googlecode.com/svn/trunk/documentation/documentation\_hub.html}{http://or-tools.googlecode.com/svn/trunk/documentation/documentation\_hub.html}.
 \end{description}
 
 \subsection{Directories}
 
-There are six main directories: three on the Local home side and three on the Google servers side. Figure~\ref{pic_directories} illustrates those directories. The three local directories can be named to your liking (see section~\ref{installation}).
+There are seven main directories: four on the Local home side (\code{SOURCES}, \code{BUILD}, \code{DEPLOY} and \code{DOCUMENTATION}) and three on the Google servers side (\code{svn/doc\_sources}, \code{files} and  \code{svn/trunk/documentation}). Figure~\ref{pic_directories} illustrates those directories. The four local directories can be named to your liking (see section~\ref{installation}).
 
 \begin{figure}[h]
    \centering
    \includegraphics[scale=0.8]{images/directories.pdf}
-   \caption{The six main directories and the scripts/commands to move the files between them. The base url for the Google Servers is~\href{http://or-tools.googlecode.com/}{http://or-tools.googlecode.com/}.}\label{pic_directories}
+   \caption{figure}{The six main directories and the scripts/commands to move the files between them. The base url for the Google Servers is~\href{http://or-tools.googlecode.com/}{http://or-tools.googlecode.com/}. The directories colored in the same color are svn copies of each other\footnotemark.}\label{pic_directories}
  \end{figure}
- 
+
 \begin{description}
  \item[\code{SOURCES}] This local directory contains the sources files, the scripts files and some configuration files. This directory is a local copy of the the directory \code{doc\_sources}.
-                       
- \item[\code{DEPLOY}]  This local directory contains all the generated output files. It is not a local copy of the \code{trunk/documentation} directory as the directory structure is slightly different.
- \item[\code{DOCUMENTATION}] This local directory is a local copy of the \code{trunk/documentation} directory.
+ \item[\code{BUILD}] This local directory contains all the automatically generated output files. 
+ \item[\code{DEPLOY}]  This local directory contains all the generated output files (automatically or by hand). It is not a local copy of the \code{trunk/documentation} directory as the directory structure is slightly different. We use it essentially for testing purpose.
+ \item[\code{DOCUMENTATION}] The real thing, i.e. the documentation you can access from the documentation hub. This local directory is a local copy of the \code{trunk/documentation} directory. Actually, it is more the opposite: \code{svn/trunk/documentation} is a copy of your local directory \code{DOCUMENTATION} as we push (commit) the generated documentation on the Google servers without pulling (updating) it.
  \item[\code{svn/doc\_sources}] A server directory containing the sources files of the documentation. All the files you need to generate the documentation are stored in this directory. The full url is~\href{http://or-tools.googlecode.com/svn/doc\_sources}{http://or-tools.googlecode.com/svn/doc\_sources}.
- \item[\code{files}] A server directory containing the downloadable files. The full url is~\href{http://or-tools.googlecode.com/files}{http://or-tools.googlecode.com/files}. Notice that you don't have public access to the directory, only to the files stored in it.
+ \item[\code{files}] A server directory containing the downloadable files. The full url is~\href{http://or-tools.googlecode.com/files}{http://or-tools.googlecode.com/files}. Note that you don't have public access to the directory, only to the files stored in it.
  \item[\code{svn/trunk/documentation}] A server directory with the or-tools library's documentation (except for the downloadable files). The full url is~\href{http://or-tools.googlecode.com/svn/trunk/documentation}{http://or-tools.googlecode.com/svn/trunk/documentation}.
+\end{description}
+
+\footnotetext{We don't consider white as a color, at least not in this document.} 
+
+\subsection{Content of the documentation}
+\label{doc_content}
+
+Everything is explained on the documentation hub.
+
+The local directory \code{SOURCES} contains the following directories:
+
+\begin{description}
+ \item[\code{doc}] The doc of the doc, i.e. the \LaTeX\ files to generate this document.
+ \item[\code{FAQ}] Source files for the Frequently Asked Questions. The FAQ is generated by Sphinx.
+ \item[\code{HUB}] Sources files for the documentation hub. Written by hand but with the help of the Python \code{generate.py} script.
 \end{description}
 
 \subsection{Work flow}
 
-The whole process is divided in 11 steps\footnote{Once you get used to the documentation generation, you will be able to skip some steps (when you don't need to update the whole documentation tree) and to only use the specific manual commands you need.}. Most of the steps are automated by Python scripts and to simplify your life (and mine), several scripts are bundled in the global scripts (see section~\ref{global_scripts}). These scripts need to be called in sequence.\\
-
-The whole process is divided in eight steps (see Figure~\ref{pic_directories}) you have to follow in sequence. 
+The whole process is divided in 9~steps\footnote{Once you get used to the documentation generation, you will be able to skip some of the steps (when you don't need to update the whole documentation tree) and to only use the specific manual commands you need.}. Most of the steps are automated by Python scripts and to simplify your life (and mine), several scripts are bundled in the global scripts (see section~\ref{global_scripts}). These scripts need to be called in sequence. In each of the subdirectories of the directory~\code{SOURCES} (see section~\ref{doc_content}), you will find the corresponding Python scripts if needed. If you don't 
+find a specific script in a subdirectory, it means this script is not needed for that type of documentation.\\
 
 \begin{description}
- \item[Step 1] {\bf Update the source code:} (script: none)\\Update your local copy of the documentation via svn. See section~\ref{update_source_code}.
- \item[Step 2] {\bf Generate the documentation:} (script: \code{generate.py})\\Use Sphinx to generate the documentation. See section~\ref{generate_documentation}.
- \item[Step 3] {\bf Deploy the documentation:} (script: \code{deploy.py})\\Copy locally the generated output files in the directory DEPLOY. See section~\ref{deploy_documentation} to understand why.
- \item[Step 4] {\bf Check the documentation:} (script: \code{check.py})\\Check the documentation without messing with the SVN tree. See section~\ref{check_documentation}.
- \item[Step 5] {\bf Update the version:} (script: \code{version.py})\\If you're happy with the new documentation, update the new version number and keep the old one. See section~\ref{update_version}.
- \item[Step 6] {\bf Commit your changes in the source files:} (script: none)\\. Commit your changes. See section~\ref{commit_source_files}.
- \item[Step 7] {\bf Prepare the documentation:} (script: \code{prepare.py})\\Prepare the documentation to be uploaded. See section~\ref{prepare_documentation}.
- \item[Step 8] {\bf Upload the documentation:} (script: \code{upload.py})\\Upload the generated output files on the Google servers. See section~\ref{upload_documentation}.
+ \item[Step \raisebox{.3pt}{\textcircled{\raisebox{-.9pt} {1}}}] {\bf Update the source code:} (script: none)\\Update your local copy of the documentation via svn: \code{svn update}.
+ \item[Step \raisebox{.3pt}{\textcircled{\raisebox{-.9pt} {2}}}] {\bf Write the documentation:} (script: none)\\Let your talent speak!
+ \item[Step \raisebox{.3pt}{\textcircled{\raisebox{-.9pt} {3}}}] {\bf Generate the documentation:} (script: \code{generate.py})\\Generate automatically the documentation. 
+ \item[Step \raisebox{.3pt}{\textcircled{\raisebox{-.9pt} {1}}}] {\bf Deploy the documentation:} (script: \code{deploy.py})\\Copy locally the generated output files in the directory DEPLOY. See section~\ref{deploy_documentation} to understand why.
+ \item[Step \raisebox{.3pt}{\textcircled{\raisebox{-.9pt} {1}}}] {\bf Check the documentation:} (script: \code{check.py})\\Check the documentation without messing with the SVN tree. See section~\ref{check_documentation}.
+ \item[Step \raisebox{.3pt}{\textcircled{\raisebox{-.9pt} {1}}}] {\bf Update the version:} (script: \code{version.py})\\If you're happy with the new documentation, update the new version number and keep the old one. See section~\ref{update_version}.
+ \item[Step \raisebox{.3pt}{\textcircled{\raisebox{-.9pt} {1}}}] {\bf Commit your changes in the source files:} (script: none)\\. Commit your changes. See section~\ref{commit_source_files}.
+ \item[Step \raisebox{.3pt}{\textcircled{\raisebox{-.9pt} {1}}}] {\bf Prepare the documentation:} (script: \code{prepare.py})\\Prepare the documentation to be uploaded. See section~\ref{prepare_documentation}.
+ \item[Step \raisebox{.3pt}{\textcircled{\raisebox{-.9pt} {1}}}] {\bf Upload the documentation:} (script: \code{upload.py})\\Upload the generated output files on the Google servers. See
+ section~\ref{upload_documentation}.
+\item[Step \raisebox{.3pt}{\textcircled{\raisebox{-.9pt} {1}}}] {\bf Upload the documentation:} (script: \code{upload.py})\\Upload the generated output files on the Google servers. See
 \end{description}
+
+\raisebox{.3pt}{\textcircled{\raisebox{-.9pt} {9}}}
 
 \subsection{Preferred use}
 
@@ -147,15 +169,18 @@ The Python scripts are not bullet-proof.\\
 %  \item[Step 3] \verb+svn+: the traditional \verb+svn+ commands.
 %  \end{description}
 
-\section{Update the documentation sources (SVN)}
-\label{update_source_code}
+\section{or-tools Sphinx extension}
 
-\section{Write the documentation OK}
+To do.
+
+\section{Add to the manual~\ldots}
 \label{write_documentation}
 
 This section convers only the manual. To correct or add some material, just open the corresponding~\code{rst} file, follow the~\code{rst} syntax and the more specialized~\code{Sphinx} syntax and adapt the file to your needs. If you want to add a chapter or a section, read the next two sections. We discuss also how to add a label and a reference in section~\ref{adding_ref} and the front material as it requires a special treatment.
 
-\subsection{To add a chapter}
+\subsection{a part}
+
+\subsection{a chapter}
 To add a chapter, follow the next steps:
 \begin{enumerate}
  \item In \code{SOURCES/MANUAL/source/manual}, create a file \code{mychapter.rst} and a folder \code{mychapter} where you will write the different sections of the chapter. See the other \code{rst} files.
@@ -170,39 +195,39 @@ To add a chapter, follow the next steps:
 
 There is nothing more to do for the~\LaTeX\ version.
 
-\subsection{To add a section}
+\subsection{a section}
 
 Just write your section in a~\code{rst} file in the folder corresponding to the chapter and add an entry in the corresponding~\code{rst} file of the chapter.
 
-\subsection{To add a label and a reference}
-\label{adding_ref}
-
-Use the~\code{rst} syntax: \code{.. \_myreference:}. To refer to this reference, unfortunately, you have to produce two versions: one for the~\code{html} version and one for the~\LaTeX~version.\\
-
-Here is an example:\\
-
-\begin{verbatim}
-..  _myreference:
-
-Mysection
----------
-
-Text text text text text text ...
-
-..  raw:: latex
-
-    You can find more in section~\ref{manual/chaptername/filename_without_extension:myreference}
-    ...
-
-..  only:: html
-
-    In :ref:`Mysection <myreference>`, we cover ... in more details.
-\end{verbatim}
-
-
-This duplication is needed because references are treated differently in the~\code{pdf} manual and the~\code{html} version. In the~\code{pdf} manual, you refer by the corresponding numbers (like this: You can find more in section~\ref{adding_ref}~\ldots) while in~\code{html}, your refer with the title name and a link (like this: In~\nameref{adding_ref}, we cover~\ldots\ in more details).\\
-
-See the gotchas about some references and how~\code{Sphinx} transforms them.
+% \subsection{To add a label and a reference}
+% \label{adding_ref}
+% 
+% Use the~\code{rst} syntax: \code{.. \_myreference:}. To refer to this reference, unfortunately, you have to produce two versions: one for the~\code{html} version and one for the~\LaTeX~version.\\
+% 
+% Here is an example:\\
+% 
+% \begin{verbatim}
+% ..  _myreference:
+% 
+% Mysection
+% ---------
+% 
+% Text text text text text text ...
+% 
+% ..  raw:: latex
+% 
+%     You can find more in section~\ref{manual/chaptername/filename_without_extension:myreference}
+%     ...
+% 
+% ..  only:: html
+% 
+%     In :ref:`Mysection <myreference>`, we cover ... in more details.
+% \end{verbatim}
+% 
+% 
+% This duplication is needed because references are treated differently in the~\code{pdf} manual and the~\code{html} version. In the~\code{pdf} manual, you refer by the corresponding numbers (like this: You can find more in section~\ref{adding_ref}~\ldots) while in~\code{html}, your refer with the title name and a link (like this: In~\nameref{adding_ref}, we cover~\ldots\ in more details).\\
+% 
+% See the gotchas about some references and how~\code{Sphinx} transforms them.
 
 \subsection{Front material}
 
@@ -227,24 +252,6 @@ Again, we have duplicated the text as~\code{Sphinx} treats the~\code{pdf} and~\c
 \subsection{The tutorial code}
 
 \subsection{The slides}
-
-\section{Deploy the documentation}
-\label{deploy_documentation}
-
-\section{Check the documentation}
-\label{check_documentation}
-
-\section{Update the version}
-\label{update_version}
-
-\section{Commit your changes in the source files}
-\label{commit_source_files}
-
-\section{Prepare the documentation}
-\label{prepare_documentation}
-
-\section{Upload the documentation}
-\label{upload_documentation}
 
 \subsection{The version}
 All the automatic generation of the doc is based on the current version number, so don't mess with it\footnote{An assert-like script is run by all the other scripts to verify that at least the current version is

@@ -1,19 +1,11 @@
-##############################
-This is a part
-##############################
+..  _vrp_vrp:
 
-Is it? 
+The Vehicle Routing Problem
+-----------------------------------
 
+..  only:: draft
 
-..  vrp_with_constraints:
-
-Vehicule Routing Problem with constraints
-=========================================
-
-..  toctree::
-    :maxdepth: 2
-    
-    vrp/vrp
+    What is the VRP?
 
 
 ..  raw:: html
