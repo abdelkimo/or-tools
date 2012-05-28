@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.2.11)  26 MAY 2012 22:57
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.2.11)  27 MAY 2012 14:10
 entering extended mode
  %&-line parsing enabled.
 **howto.tex
@@ -351,7 +351,7 @@ s \OT1/cmr/m/n/10 and \OT1/cmtt/m/n/10 svn/trunk/documentation\OT1/cmr/m/n/10 )
 .
  []
 
-<images/directories.pdf, id=154, 497.86pt x 279.0425pt>
+<images/directories.pdf, id=155, 497.86pt x 279.0425pt>
 File: images/directories.pdf Graphic file (type pdf)
 
 <use images/directories.pdf>
@@ -373,76 +373,64 @@ ols.googlecode.com/svn/trunk/documentation[][].
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 111--113
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 96.
+
+Underfull \hbox (badness 10000) in paragraph at lines 99--100
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 115.
+
+Underfull \hbox (badness 10000) in paragraph at lines 122--124
+
+ []
+
+[3 <./images/directories.pdf>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 126.
+
 
 (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/bx/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 115.
+(Font)              Font shape `OMS/cmsy/b/n' tried instead on input line 126.
 
-
-LaTeX Warning: Reference `deploy_documentation' on page 3 undefined on input li
-ne 118.
-
-[3 <./images/directories.pdf>]
-
-LaTeX Warning: Reference `check_documentation' on page 4 undefined on input lin
-e 119.
-
-
-LaTeX Warning: Reference `update_version' on page 4 undefined on input line 120
-.
-
-
-LaTeX Warning: Reference `commit_source_files' on page 4 undefined on input lin
-e 121.
-
-
-LaTeX Warning: Reference `prepare_documentation' on page 4 undefined on input l
-ine 122.
-
-
-LaTeX Warning: Reference `upload_documentation' on page 4 undefined on input li
-ne 124.
+Overfull \hbox (3.01892pt too wide) in paragraph at lines 136--137
+\OT1/cmr/m/n/10 Push (com-mit) the doc-u-men-ta-tion on the Google servers. Pre
+-fer to use the \OT1/cmtt/m/n/10 transfer.py \OT1/cmr/m/n/10 script
+ []
 
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 128.
-
-Underfull \hbox (badness 10000) in paragraph at lines 152--153
-
- []
-
-
-LaTeX Warning: Reference `adding_ref' on page 4 undefined on input line 179.
-
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 137.
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 257--260
+Underfull \hbox (badness 10000) in paragraph at lines 167--168
 
  []
+
+
+LaTeX Warning: Reference `adding_ref' on page 5 undefined on input line 196.
 
 [5]
-LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 281
-.
-LaTeX Font Info:    No file OMScmtt.fd. on input line 281.
+Underfull \hbox (badness 10000) in paragraph at lines 275--278
 
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 299
+.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 299.
 
 LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbackslash' on input line 281.
+(Font)              for symbol `textbackslash' on input line 299.
 
 
-Overfull \hbox (54.56796pt too wide) in paragraph at lines 281--282
+Overfull \hbox (54.56796pt too wide) in paragraph at lines 299--300
 []\OT1/cmr/m/n/10 L[]T[]X slides files have to start with \OMS/cmtt/m/n/10 n\OT
 1/cmtt/m/n/10 documentclass\OMS/cmtt/m/n/10 fg \OT1/cmr/m/n/10 on the first lin
 e (re-quired by \OT1/cmtt/m/n/10 generate[]slides.py\OT1/cmr/m/n/10 ). 
  []
 
-[6] (./howto.aux)
+[6] [7] (./howto.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -451,13 +439,13 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6202 strings out of 493848
- 86341 string characters out of 1152823
- 169076 words of memory out of 3000000
- 9353 multiletter control sequences out of 15000+50000
- 10291 words of font info for 36 fonts, out of 3000000 for 9000
+ 6201 strings out of 493848
+ 86287 string characters out of 1152823
+ 171136 words of memory out of 3000000
+ 9350 multiletter control sequences out of 15000+50000
+ 10460 words of font info for 37 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 38i,11n,36p,1192b,366s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,11n,36p,1082b,368s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/sh
 are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf-t
 exlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-texlive/font
@@ -474,10 +462,11 @@ r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texm
 f-texlive/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-texlive/fo
 nts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texmf-texlive/fonts/type1/pu
 blic/amsfonts/cm/cmti9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
-s/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on howto.pdf (6 pages, 297263 bytes).
+s/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt12
+.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on howto.pdf (7 pages, 304815 bytes).
 PDF statistics:
- 293 PDF objects out of 1000 (max. 8388607)
- 48 named destinations out of 1000 (max. 500000)
+ 306 PDF objects out of 1000 (max. 8388607)
+ 49 named destinations out of 1000 (max. 500000)
  214 words of extra memory for PDF output out of 10000 (max. 10000000)
 
