@@ -175,7 +175,7 @@ html_static_path = ['docstatic']
 
 # Custom sidebar templates, maps document names to template names.
 html_sidebars = {
-	'**': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','mylocaltoc.html'],
+	'**': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','relations.html','mylocaltoc.html'],
 	'index': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
 	'about': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
 	'manual/introduction': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],

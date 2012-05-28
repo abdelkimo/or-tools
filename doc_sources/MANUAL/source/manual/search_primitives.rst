@@ -82,10 +82,12 @@ Defining search primitives: n-queens problems
         - :file:`nqueens_utilities.h`: Contains two helper functions to test the number of solutions found and to print a solution.
         - :file:`nqueen1.cc`: A first implementation of our basic model to find all solutions.
         - :file:`nqueen2.cc`: The same implementation as in :file:`nqueen1.cc` but this time to find only one solution.
-        - :file:`nqueen3.cc`: 
+        - :file:`nqueen3.cc`: The same implementation as in :file:`nqueen2.cc` but this time we use a ``TreeMonitor`` to visualize the 
+          search with cpviz.
         - :file:`nqueen4.cc`: 
         - :file:`nqueen5.cc`: 
         - :file:`nqueen6.cc`: 
+        - :file:`nqueen7.cc`: 
 
 
 ..  only:: html

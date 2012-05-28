@@ -1,5 +1,6 @@
 # Current changes.
 * Minor enhancements to the manual:
+  - html version: several graphic enhancements.
   - tried to add page numbers to the preface: not easy! and not done yet...
   - chapter structure changed. 
   - chap2: 

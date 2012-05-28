@@ -1,0 +1,19 @@
+
+Automatization:
+---------------
+
+- Check spelling;
+- Check ALL links;
+
+Customization:
+---------------
+
+- create Sphinx extension:
+  - markup role: nice references in both HTML and LaTeX outputs;
+  - markup for downloable files in both HTML and LaTeX outputs;
+  - a better doxylink;
+  - size of LaTeX sections when including code;
+  - find a solution for tables...
+  - include intro sections in parts;
+  
+

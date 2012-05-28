@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.2.11)  27 MAY 2012 14:10
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.2.11)  28 MAY 2012 16:07
 entering extended mode
  %&-line parsing enabled.
 **howto.tex
@@ -464,7 +464,7 @@ nts/type1/public/amsfonts/cm/cmti8.pfb></usr/share/texmf-texlive/fonts/type1/pu
 blic/amsfonts/cm/cmti9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
 s/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt12
 .pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on howto.pdf (7 pages, 304815 bytes).
+Output written on howto.pdf (7 pages, 304862 bytes).
 PDF statistics:
  306 PDF objects out of 1000 (max. 8388607)
  49 named destinations out of 1000 (max. 500000)
