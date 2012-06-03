@@ -177,14 +177,14 @@ You can execute C++ examples just by running then:
 For the python examples, as we have not installed the constraint_solver module, we need to use the following command:
 
 on windows:
-{{{set PYTHONPATH=%PYTHONPATH%;<path to or-tools>\src}}}, then {{{c:\Python27\python.exe python/sample.py}}}.
+{{{set PYTHONPATH=%PYTHONPATH%;<path to or-tools>\src}}}, then {{{c:\Python27\python.exe example\python\sample.py}}}.
 
 On unix:
-{{{PYTHONPATH=src <python_binary> python/<sample.py>}}}
+{{{PYTHONPATH=src <python_binary> examples/python/<sample.py>}}}
 
 As in
 
-{{{PYTHONPATH=src python2.6 python/golomb8.py}}}
+{{{PYTHONPATH=src python2.6 examples/python/golomb8.py}}}
 
 There is a special target in the makefile to run python examples. The above example can be run with
 
