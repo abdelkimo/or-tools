@@ -1,4 +1,7 @@
 # Current changes.
+* sphinxortools extension:
+  - roles:
+    or-tools-ref: nice references both foth html and LaTeX ouputs.
 * Minor enhancements to the manual:
   - html version: several graphic enhancements.
   - tried to add page numbers to the preface: not easy! and not done yet...

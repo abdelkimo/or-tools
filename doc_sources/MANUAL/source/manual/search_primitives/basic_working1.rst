@@ -10,11 +10,11 @@ Basic working of the solver: part I
 
     Basically, the CP solver consists of three main components:
     
-    * the **search algorithm** that permits to traverse the search tree and to call the callbacks at the right moments;
+    * the **main search algorithm** that permits to traverse the search tree and to call the callbacks at the right moments;
     * the **Trail** that is responsible for reversibility (when backtracking, you have to restore the previous states) and
     * the **Queue** where the propagation takes place thanks to the ``Demon``\s.
 
-    In this section, we only discuss the search algorithm.
+    In this section, we only discuss the main search algorithm.
     
     We present a simplified version of the main search algorithm. Although far from being 
     complete, it gathers all the necessary basic elements and allows you to understand
@@ -35,19 +35,23 @@ Basic working of the solver: part I
     
         For the juicy details, we refer the reader to chapter~\ref{manual/under_the_hood:chapter-under-the-hood}.
 
-Basic definitions
+Basic definitions 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
-    We need...
+    Let's agree on some wording we will use throughout this chapter and the rest of the manual. 
 
 Search trees
-""""""""""""
+"""""""""""" 
 ..  only:: draft
 
     A search tree [#search_tree_not_BST]_ represents the search space that the search algorithm will, implicitly or explicitly, 
-    traverse or explore if you prefer. Each node of the tree corresponds to a state of the search. 
+    traverse or explore if you prefer. Each node of the tree corresponds to a state of the search. Take an array of variables :math:`x[]`. 
+    At one node in the search tree, we divide the search space by imposing :math:`x[i] = 2` at one branch and :math:`x[i] \neq 2` 
+    at another branch like in Figure :yref:`TOTO <chapter_under_the_hood>`. 
+    
+    sdsd :rfc-reference:`123`  et :ortools_ref:`This suchs <chapter_under_the_hood>`
 
     ..  [#] Not to be confused with a binary search tree (BST) used to store ordered sets.
 

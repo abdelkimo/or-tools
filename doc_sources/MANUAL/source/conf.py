@@ -18,6 +18,8 @@ import sys, os
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #sys.path.insert(0, os.path.abspath('.'))
 
+sys.path.append(os.path.abspath('../..'))
+
 # -- General configuration -----------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -25,7 +27,7 @@ needs_sphinx = '1.0'
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.pngmath', 'sphinx.ext.ifconfig', 'sphinxcontrib.doxylink']
+extensions = ['sphinx.ext.pngmath', 'sphinx.ext.ifconfig', 'sphinxcontrib.doxylink', 'sphinxortools.ortools']
 
 # -- PNGmath configuration -----------------------------------------------------
 pngmath_latex_preamble = r'\usepackage{color}  \usepackage[active]{preview}  \newcommand\TStrut{\rule{0pt}{2.6ex}}  \newcommand\BStrut{\rule[-1.2ex]{0pt}{0pt}}' 
@@ -53,6 +55,9 @@ copyright = u'2012, Google'
 
 #**************************************************************************************
 #ADDED FUNCTIONNALITIES
+
+# ortools extension 
+#bitbucket_project_url = 'toto'
 
 html_add_permalinks = None
 
