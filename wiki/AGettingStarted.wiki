@@ -45,7 +45,7 @@ sudo apt-get install bison flex python-setuptools python-dev autoconf libtool zl
 
 The command on ubuntu >= 12.04 is the following:
 {{{
-sudo apt-get install bison flex python-setuptools python-dev autoconf libtoo
+sudo apt-get install bison flex python-setuptools python-dev autoconf libtool
 }}}
 
 The fedora command is:
