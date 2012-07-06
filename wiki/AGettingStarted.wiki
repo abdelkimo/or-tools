@@ -104,7 +104,10 @@ You need to install python-setuptools for windows. See the installation instruct
 If you wish to use glpk, please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.47.tar.gz and put the archive in or-tools/dependencies/archives.
 
 Then launch a terminal from the visual studio tools menu (32 or 64 bit according to your installation, this must be consistent with the java and python versions installed before) and use it to launch the following commands.
-Please make sure that svn.exe, nmake.exe and cl.exe are in your path. If you do not find svn.exe, please install a svn version that offers the command line tool. If cl.exe or nmame.exe are not in your path, it means that the terminal is not the one found in the visual studio tools menu but a generic one.
+
+*Please make sure that svn.exe, nmake.exe and cl.exe are in your path*. 
+
+If you do not find svn.exe, please install a svn version that offers the command line tool. If cl.exe or nmame.exe are not in your path, it means that the terminal is not the one found in the visual studio tools menu but a generic one.
 
 Then you can download all dependencies and build them using:
 
