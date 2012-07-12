@@ -61,7 +61,7 @@
     
         java ie.ucc.cccc.viz.Viz configuration.xml tree.xml visualization.xml 
     
-    into a command line near you. 
+    on a command line into a terminal near you. 
     
     ..  only:: html 
     
@@ -88,8 +88,77 @@
     Basically, it tells cpviz to produces  the graphic files for the 
     search tree (``show="tree"``) and the variables (``show="viz"``) 
     in the directory :file:`/tmp/`.
-        
+    
+    If you are really lazy, we even have provided a factory method which 
+    generates automatically this configuration file:
+    
+    ..  code-block:: c++
+    
+        SearchMonitor* const cpviz = s.MakeTreeMonitor(vars, 
+                                                       "configuration.xml", 
+                                                       "tree.xml",
+                                                       "visualization.xml");
+
 Interpreting the graphic results
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To do.
+..  only:: draft
+
+    To better understand the output of cpviz and to follow the search with precision,
+    let's trace the search and the propagation of our program ``nqueens4``:
+
+    ..  code-block:: bash
+    
+        ./nqueens4 --size=4 --cp_trace_search --cp_trace_propagation 2> 
+                                                    cpviz_nqueens4_basic.txt
+        
+    ..  only:: html 
+    
+        We redirect ``std::err`` into the file :file:`trace_propagation.txt` (this what the ``2>`` stands for). You can find 
+        a cleaned version of this file :download:`here <cpviz_nqueens4_basic.txt>`.
+        
+    ..  only:: latex
+    
+        We redirect ``std::err`` into the file :file:`cpviz_nqueens4_basic.txt`.
+        
+    We will transcibe the information contained in the file :file:`cpviz_nqueens4_basic.txt` but
+    in a more graphical way. Pay attention to the order in which the variables and
+    the constraints are processed.
+    
+    Recall that we are solving the problem of finding all distinct solutions
+    of the n-queens problem with :math:`4` queens. Our search strategy is to
+    choose the first variable with a non empty domain with a least two elements (``Solver::CHOOSE_FIRST_UNBOUND``).
+    Once this variable is choosen, we give it the smallest possible value contained in its domain (``Solver::ASSIGN_MIN_VALUE``).
+    We have :math:`4` variables :math:`x_0, x_1, x_2` and :math:`x_3` introduced in that order. The :math:`3` constraints 
+    are all ``AllDifferent`` contraints introduced in the following order:
+    
+    ..  math::
+    
+        \textrm{AllDifferent}(x_0, x_1, x_2, x_3)\\
+        \textrm{AllDifferent}(x_0, x_1 + 1, x_2 + 2, x_3 + 3)\\
+        \textrm{AllDifferent}(x_0, x_1 - 1, x_2 - 2, x_3 - 3)
+
+The search tree
+"""""""""""""""
+    
+Propagation
+"""""""""""
+
+..  only:: draft
+
+    We start at the root node with
+    
+    ``node 0``: :math:`x_0 \in \{0,1,2,3\}, x_1 \in \{0,1,2,3\}, x_2 \in \{0,1,2,3\}, x_3 \in \{0,1,2,3\}`
+        We apply the ``Decision`` :math:`x_0 = 0` which corresponds to our search strategy.
+      
+    ``node 1``: :math:`x_0 \in \{0\}, x_1 \in \{0,1,2,3\}, x_2 \in \{0,1,2,3\}, x_3 \in \{0,1,2,3\}`
+        The propagation is done in the following order.
+        
+        ..  math::
+        
+            \textrm{AllDifferent}(x_0, x_1 -1, x_2 - 2, x_3 - 3)
+
+
+Cpviz's graphic results
+"""""""""""""""""""""""
+    

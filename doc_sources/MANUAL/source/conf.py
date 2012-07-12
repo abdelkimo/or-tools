@@ -30,7 +30,7 @@ needs_sphinx = '1.0'
 extensions = ['sphinx.ext.pngmath', 'sphinx.ext.ifconfig', 'sphinxcontrib.doxylink', 'sphinxortools.ortools']
 
 # -- PNGmath configuration -----------------------------------------------------
-pngmath_latex_preamble = r'\usepackage{color}  \usepackage[active]{preview}  \newcommand\TStrut{\rule{0pt}{2.6ex}}  \newcommand\BStrut{\rule[-1.2ex]{0pt}{0pt}}' 
+pngmath_latex_preamble = r'\usepackage{color} \usepackage{cancel}  \usepackage[active]{preview}  \newcommand\TStrut{\rule{0pt}{2.6ex}}  \newcommand\BStrut{\rule[-1.2ex]{0pt}{0pt}}' 
 pngmath_use_preview=True
 
 pngmath_dvipng_args = ['-gamma 1.5', '-D 110', '-bg Transparent']
@@ -59,6 +59,12 @@ copyright = u'2012, Google'
 # ortools extension 
 #bitbucket_project_url = 'toto'
 
+ortools_labels = {}
+ortools_ext = 'rst'
+ortools_chap_char = '='
+ortools_basedirname = '/home/nikolaj/Documents/RESEARCH/google/new_tech_writer/SOURCES/MANUAL/source'
+
+####
 html_add_permalinks = None
 
 doxylink = {

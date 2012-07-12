@@ -3,8 +3,8 @@
 
 ..  _basic_workingI:
 
-Basic working of the solver: part I
------------------------------------
+Basic working of the solver
+------------------------------------
 
 ..  only:: draft
 
@@ -23,7 +23,7 @@ Basic working of the solver: part I
     ..  warning::
     
         We describe a simplified version of the main search algorithm.
-        
+
     The real implementation is more complex (and a little bit different!) and deals with other cases not mentioned here 
     (especially nested searches and restarting the search). 
     
@@ -35,6 +35,8 @@ Basic working of the solver: part I
     
         For the juicy details, we refer the reader to chapter~\ref{manual/under_the_hood:chapter-under-the-hood}.
 
+..  _basic_definition:
+
 Basic definitions 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -43,15 +45,29 @@ Basic definitions
     Let's agree on some wording we will use throughout this chapter and the rest of the manual. 
 
 Search trees
-"""""""""""" 
+""""""""""""  
 ..  only:: draft
 
     A search tree [#search_tree_not_BST]_ represents the search space that the search algorithm will, implicitly or explicitly, 
     traverse or explore if you prefer. Each node of the tree corresponds to a state of the search. Take an array of variables :math:`x[]`. 
     At one node in the search tree, we divide the search space by imposing :math:`x[i] = 2` at one branch and :math:`x[i] \neq 2` 
-    at another branch like in Figure :yref:`TOTO <chapter_under_the_hood>`. 
+    at another branch like in Figure  houpla 
     
-    sdsd :rfc-reference:`123`  et :ortools_ref:`This suchs <chapter_under_the_hood>`
+.. comment  :yref:`^titi <search_primitives_breaking_symmetry>`
+    
+.. comment :yref_sec:`basic_workingI` :yref_sec:`monitors_solutions`
+    
+    In :ref:`basic_fig_tata`  
+    
+..  _basic_fig_tata:
+
+..  figure:: images/basic_4x4_grid_explained_with_sol.*
+      :alt: Variables to model the n-queens problem.
+      :align: center
+        
+      Variables to model the n-queens problem.
+
+..  only:: draft
 
     ..  [#] Not to be confused with a binary search tree (BST) used to store ordered sets.
 
@@ -515,9 +531,10 @@ The basic search algorithm and the callback hooks for the ``SearchMonitor``\s
           }
         }
 
+.. _decision_toto:
+
 The ``DecisionBuilder`` and ``Decision``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 
 
 Nested searches

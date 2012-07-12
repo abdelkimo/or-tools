@@ -12,7 +12,7 @@ The n-queens Problem
 
     ..  only:: html 
         
-        We have approached the n-queens problem (and defined what a solution is) in chapter :ref:`chapter_introduction`.
+        We have met the n-queens problem (and defined what a solution is) in chapter :ref:`chapter_introduction`.
         
     ..  raw:: latex 
     
@@ -20,7 +20,7 @@ The n-queens Problem
         
     Little is known that finding one solution for every :math:`n` is... quite easy [#n_queens_easy]_. 
     Indeed, there exist polynomial-time algorithms that compute a solution given a size :math:`n`. For instance, Hoffman
-    et al. proposed a simple algorithm to return a solution of the n-queens problem in [Hoffman]_. 
+    et al. proposed a simple algorithm to return a solution of the n-queens problem in [Hoffman1969]_. 
  
     ..  [#n_queens_easy] In computer science jargon, we say that the problem  of finding one solution for the n-queens problem is
                         in :math:`P`. Actually, it's the *decision version* of this problem but to keep it simple, let's say that 
@@ -30,7 +30,7 @@ The n-queens Problem
     
         <br>
 
-    ..  [Hoffman] Hoffman, Loessi and Moore. *Constructions for the Solution of the m Queens Problem*, Mathematics
+    ..  [Hoffman1969] Hoffman, Loessi and Moore. *Constructions for the Solution of the m Queens Problem*, Mathematics
                   Magazine, p. 66-72, 1969.
 
     So we have to be careful when we talk about the n-queens problem. There are at least three different problems that people refer to 
@@ -38,7 +38,7 @@ The n-queens Problem
     
     * finding one solution,
     * counting the number of solutions and
-    * finding all solutions.
+    * finding (explicitly) all these solutions.
     
     While the first problem is easy, the two others are difficult [#n_queens_hard]_.
 
@@ -52,7 +52,8 @@ The n-queens Problem
                      Volume 309, Issue 1, 2009, pp 1-31.
 
     As with the Golomb rulers problem, the experts could only find the number of all the 
-    solutions for small values: :math:`n \leqslant 26`. The 
+    solutions for small values. The biggest number of queens for which we know precisely the number of 
+    solutions is :math:`n = 26`. The 
     `On-Line Encyclopedia of Integer Sequences <http://oeis.org/>`_ keeps track of the number of solutions 
     (`sequence A002562 <http://oeis.org/A002562>`_ for unique solutions (up to a symmetry) and 
     `sequence A000170 <http://oeis.org/A000170>`_ for distinct solutions). The next table reports
@@ -119,7 +120,7 @@ Describe
     :math:`n \times n` chessboard, place :math:`n` queens [#queens_has_solutions]_ so that no two queens attack each other. 
  
     ..  [#queens_has_solutions] It is not obvious that for every :math:`n`, there exist at least a solution. In fact, for :math:`n=2` and 
-        :math:`n=3` there are no solution. Hoffman et al. proved that there are solutions for every :math:`n \geqslant 4` in [Hoffman]_.
+        :math:`n=3` there are no solution. Hoffman et al. proved that there are solutions for every :math:`n \geqslant 4` in [Hoffman1969]_.
 
     What are the **decision variables** (unknowns)? We have different choices of course. One clever way to reduce the number of variables is
     to introduce only one variable for each queen. 

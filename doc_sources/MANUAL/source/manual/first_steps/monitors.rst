@@ -1,4 +1,4 @@
-..  _monitors_solutions:
+
 
 ..  index:: ! SolutionCollector, Assignment, SearchMonitors, MakeFirstSolutionCollector(), MakeLastSolutionCollector(), MakeBestValueSolutionCollector(), MakeAllSolutionCollector()
     single: SolutionCollector; FirstSolutionCollector
@@ -6,6 +6,7 @@
     single: SolutionCollector; BestValueSolutionCollector
     single: SolutionCollector; AllSolutionCollector
 
+..  _monitors_solutions:
 
 ``SolutionCollector``\s and ``Assignment``\s to collect solutions
 -----------------------------------------------------------------

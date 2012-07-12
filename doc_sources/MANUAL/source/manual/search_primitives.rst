@@ -75,7 +75,7 @@ Defining search primitives: n-queens problems
 
     ..  only:: draft
     
-        You can find the code in the directory ``documentation/tutorials/C++/chap4``.
+        You can find the code in the directory ``documentation/tutorials/C++/chap5``.
 
         The files inside this directory are:
 

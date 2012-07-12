@@ -188,6 +188,58 @@ The Python scripts are not bullet-proof.\\
 
 To do.
 
+\subsection{Links and references}
+
+The right way to define references is to subclass \code{XRefRole} from \code{sphinx.roles} and tho redefine its methods \code{process\_link()} and
+\code{result\_nodes()}. In the standard domain (\code{domain = env.domains['std']}), two dictionnaries are defined with anonymous labels and non anonymous labels. You can 
+retrieve their values with:\\
+
+\code{docname, labelid = domain.data['anonlabels'].get(target, ('',''))}\\
+
+and\\
+
+\code{docname, labelid, sectname = domain.data['labels'].get(target, ('','',''))}.\\~\\
+
+However, some labels are not stored in those dictionnaries (I really have no idea why...). After some thoughts, I decided to construct my own references my own way.
+
+\subsubsection{Labels}
+
+I use the same labels:\\
+
+\code{..  \_my\_beautiful\_label:}\\
+
+Note that you can only use one label per line. The labels have to be placed right above a title, a table, a topic, etc. as mentioned in the Sphinx documentation.
+
+\subsubsection{References}
+
+You still can use the classical references:\\
+
+\code{:ref:`My beautiful title <my\_beautiful\_label>`} or \code{:ref:`my\_beautiful\_label`}\\
+
+but their use is quite limited. Instead use the ones defined in the extension:\\
+
+\code{:yref:`My beautiful title <my\_beautiful\_label>`} or \code{:yref:`my\_beautiful\_label`}.\\
+
+Not only are they resolved differently (and correctly) in \LaTeX\ and HTML but they are "clever" and know what type of references they are (reference to a Figure, a title, a table, etc.).
+
+If you want to start a sentence with a reference and thus ask for a first capitalized letter, use "\textcolor{red}{\textrm{\^}}" (the circumflex character) in front of the title or the label in the \code{yref}. Table~\ref{tab_yref} shows several examples.\\
+
+\begin{table}[h!]
+\begin{center}
+\caption{Several examples using \code{yref}}\label{tab_yref}
+\begin{tabular}{lll}
+code & HTML & \LaTeX\\
+\hline
+\code{:yref:`\textrm{\^}Tabula rasa <my\_ref>`} & The Tabla rasa & Tabula rasa~\emph{x}\\
+\code{:yref:`<\textrm{\^}ref\_to\_my\_tabel>`} & The table~\emph{tablename} & Table~\emph{x}\\
+\code{:yref:`Tabla <ref\_to\_my\_tabel>`} & the Tabla~\emph{tablename} & Tabla~\emph{x}\\
+\code{:yref:`<ref\_to\_my\_tabel>`} & The table~\emph{tablename} & Table~\emph{x}
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
 \section{Add to the manual~\ldots}
 \label{write_documentation}
 

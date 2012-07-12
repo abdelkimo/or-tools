@@ -134,7 +134,7 @@ the same computer. You insist? OK, we used a laptop computer running under Linux
 
 When do you expect to finish?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-15 :superscript:`th` of June... 2012! 
+1 :superscript:`st` of September 2012 for the first draft. This is more realistic.
 
 ..  raw:: html
 
