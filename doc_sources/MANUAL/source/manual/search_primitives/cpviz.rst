@@ -150,15 +150,231 @@ Propagation
     
     ``node 0``: :math:`x_0 \in \{0,1,2,3\}, x_1 \in \{0,1,2,3\}, x_2 \in \{0,1,2,3\}, x_3 \in \{0,1,2,3\}`
         We apply the ``Decision`` :math:`x_0 = 0` which corresponds to our search strategy.
-      
+
+    ..  raw:: html
+    
+        <hr>
+
     ``node 1``: :math:`x_0 \in \{0\}, x_1 \in \{0,1,2,3\}, x_2 \in \{0,1,2,3\}, x_3 \in \{0,1,2,3\}`
         The propagation is done in the following order.
         
         ..  math::
         
-            \textrm{AllDifferent}(x_0, x_1 -1, x_2 - 2, x_3 - 3)
+            \textrm{AllDifferent}(x_0, x_1 -1, x_2 - 2, x_3 - 3):\\
+            x_1: \cancel{1}, x_2: \cancel{2}, x_3: \cancel{3}
+        
+        ..  figure:: images/propagation/propagation1.*
+            :width: 162px
+            :align: center
+            :height: 162px
+            :alt: alternate text
+            :figclass: align-center
+        
+        :math:`x_0 \in \{0\}, x_1 \in \{0,2,3\}, x_2 \in \{0,1,3\}, x_3 \in \{0,1,2\}`
+        
+        ..  math::
+        
+            \textrm{AllDifferent}(x_0, x_1, x_2, x_3):\\
+            x_1: \cancel{0}, x_2: \cancel{0}, x_3: \cancel{0}
 
+        ..  figure:: images/propagation/propagation2.*
+            :width: 162px
+            :align: center
+            :height: 162px
+            :alt: alternate text
+            :figclass: align-center
 
+        :math:`x_0 \in \{0\}, x_1 \in \{2,3\}, x_2 \in \{1,3\}, x_3 \in \{1,2\}`.
+        
+        We then apply the ``Decision`` :math:`x_1 = 2`
+
+    ..  raw:: html
+    
+        <hr>
+
+    ``node 2``: :math:`x_0 \in \{0\}, x_1 \in \{2\}, x_2 \in \{1,3\}, x_3 \in \{1,2\}`.
+        The propagation is as follow:
+        
+        ..  math::
+        
+            \textrm{AllDifferent}(x_0, x_1 -1, x_2-2, x_3-3):\\
+            x_2: \cancel{3}
+
+        ..  figure:: images/propagation/propagation3.*
+            :width: 162px
+            :align: center
+            :height: 162px
+            :alt: alternate text
+            :figclass: align-center
+        
+        :math:`x_0 \in \{0\}, x_1 \in \{2\}, x_2 \in \{1\}, x_3 \in \{1,2\}`.
+        
+        ..  math::
+        
+            \textrm{AllDifferent}(x_0, x_1 +1, x_2+2, x_3+3):\\
+            x_2: \cancel{1}
+            
+        ..  figure:: images/propagation/propagation4.*
+            :width: 162px
+            :align: center
+            :height: 162px
+            :alt: alternate text
+            :figclass: align-center
+            
+        :math:`x_0 \in \{0\}, x_1 \in \{2\}, x_2 \in \emptyset, x_3 \in \{1,2\}`.
+        We have a failure as the domaine of :math:`x_2` is empty. We backtrack to node :math:`1`
+        and refute the ``Decision`` :math:`x_1 = 2`.
+
+    ..  raw:: html
+    
+        <hr>
+
+    ``node 3``: :math:`x_0 \in \{0\}, x_1 \in \{3\}, x_2 \in \{1,3\}, x_3 \in \{1,2\}`.
+        :math:`x_1` is fixed to :math:`3` because we removed the value :math:`2` of its domain 
+        (refuting the ``Decision`` :math:`x_1 = 2`).
+
+        Propagation:
+
+        ..  math::
+        
+            \textrm{AllDifferent}(x_0, x_1 +1, x_2+2, x_3+3):\\
+            x_3: \cancel{1}
+            
+        ..  figure:: images/propagation/propagation5.*
+            :width: 162px
+            :align: center
+            :height: 162px
+            :alt: alternate text
+            :figclass: align-center
+            
+        :math:`x_0 \in \{0\}, x_1 \in \{3\}, x_2 \in \{1,3\}, x_3 \in \{2\}`.
+        
+        ..  math::
+        
+            \textrm{AllDifferent}(x_0, x_1, x_2, x_3):\\
+            x_2: \cancel{3}
+            
+        ..  figure:: images/propagation/propagation6.*
+            :width: 162px
+            :align: center
+            :height: 162px
+            :alt: alternate text
+            :figclass: align-center
+        
+        :math:`x_0 \in \{0\}, x_1 \in \{3\}, x_2 \in \{1\}, x_3 \in \{2\}`.
+        
+        This is of course not possible and the following propogation detects this impossibility:
+        
+        ..  math::
+        
+            \textrm{AllDifferent}(x_0, x_1-1, x_2-2, x_3-3):\\
+            x_2: \cancel{1}
+        
+        :math:`x_0 \in \{0\}, x_1 \in \{3\}, x_2 \in \emptyset, x_3 \in \{2\}`.
+        We have again a failure as the domain of :math:`x_2` is empty. We need 
+        to backtrack to the root node and refute the ``Decision`` :math:`x_0 = 0`.
+
+    ..  raw:: html
+    
+        <hr>
+
+    ``node 4``: :math:`x_0 \in \{1,2,3\}, x_1 \in \{0,1,2,3\}, x_2 \in \{0,1,2,3\}, x_3 \in \{0,1,2,3\}`.
+        We apply ``Decision`` :math:`x_0 = 1` which complies with our search strategy.
+        
+    ..  raw:: html
+    
+        <hr>
+
+    ``node 5``: :math:`x_0 \in \{1\}, x_1 \in \{0,1,2,3\}, x_2 \in \{0,1,2,3\}, x_3 \in \{0,1,2,3\}`.
+        Propagation:
+        
+        ..  math::
+        
+            \textrm{AllDifferent}(x_0, x_1 -1, x_2-2, x_3-3):\\
+            x_1: \cancel{2}, x_2: \cancel{3}
+            
+        ..  figure:: images/propagation/propagation7.*
+            :width: 162px
+            :align: center
+            :height: 162px
+            :alt: alternate text
+            :figclass: align-center
+        
+        :math:`x_0 \in \{1\}, x_1 \in \{0,1,3\}, x_2 \in \{0,1,2\}, x_3 \in \{0,1,2,3\}`.
+
+        ..  math::
+        
+            \textrm{AllDifferent}(x_0, x_1 +1, x_2+2, x_3+3):\\
+            x_1: \cancel{0}
+            
+        ..  figure:: images/propagation/propagation8.*
+            :width: 162px
+            :align: center
+            :height: 162px
+            :alt: alternate text
+            :figclass: align-center
+
+        :math:`x_0 \in \{1\}, x_1 \in \{1,3\}, x_2 \in \{0,1,2\}, x_3 \in \{0,1,2,3\}`.
+
+        ..  math::
+        
+            \textrm{AllDifferent}(x_0, x_1, x_2, x_3):\\
+            x_1: \cancel{1}, x_2: \cancel{1}, x_3: \cancel{1}
+            
+        ..  figure:: images/propagation/propagation9.*
+            :width: 162px
+            :align: center
+            :height: 162px
+            :alt: alternate text
+            :figclass: align-center
+
+        :math:`x_0 \in \{1\}, x_1 \in \{3\}, x_2 \in \{0,2\}, x_3 \in \{0,2,3\}`.
+
+        ..  math::
+        
+            \textrm{AllDifferent}(x_0, x_1+1, x_2+2, x_3+3):\\
+            x_2: \cancel{2}
+            
+        ..  figure:: images/propagation/propagation10.*
+            :width: 162px
+            :align: center
+            :height: 162px
+            :alt: alternate text
+            :figclass: align-center
+
+        :math:`x_0 \in \{1\}, x_1 \in \{3\}, x_2 \in \{0\}, x_3 \in \{0,2,3\}`.
+
+        ..  math::
+        
+            \textrm{AllDifferent}(x_0, x_1, x_2, x_3):\\
+            x_3: \cancel{3}
+            
+        ..  figure:: images/propagation/propagation11.*
+            :width: 162px
+            :align: center
+            :height: 162px
+            :alt: alternate text
+            :figclass: align-center
+
+        :math:`x_0 \in \{1\}, x_1 \in \{3\}, x_2 \in \{0\}, x_3 \in \{0,2\}`.
+
+        ..  math::
+        
+            \textrm{AllDifferent}(x_0, x_1, x_2, x_3):\\
+            x_3: \cancel{0}
+            
+        ..  figure:: images/propagation/propagation12.*
+            :width: 162px
+            :align: center
+            :height: 162px
+            :alt: alternate text
+            :figclass: align-center
+
+        :math:`x_0 \in \{1\}, x_1 \in \{3\}, x_2 \in \{0\}, x_3 \in \{2\}`.
+        
+        We have a solution! We have now to backtrack to node :math:`4` and refute
+        ``Decision`` :math:`x_0 = 1`.
+        
 Cpviz's graphic results
 """""""""""""""""""""""
     
