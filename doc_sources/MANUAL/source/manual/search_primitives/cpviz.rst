@@ -5,8 +5,8 @@
 
 ..  _cpviz:
 
-``cpviz``: how to visualize the search 
---------------------------------------
+:program:`cpviz`: how to visualize the search 
+----------------------------------------------
 
 ..  only:: draft 
 
@@ -23,7 +23,7 @@
 
     To get a better feeling of the way the CP solver explores the search tree,
     we will use the wonderful *open-source visualization toolkit for finite 
-    domain constraint programming*. Here is a description from their website of what cpviz provides:
+    domain constraint programming*. Here is a description from their website of what :program:`cpviz` provides:
     
     ..  code-block:: text
     
@@ -34,15 +34,15 @@
     
     http://sourceforge.net/projects/cpviz/
 
-``TreeMonitor``\s to provide the cpviz input
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``TreeMonitor``\s to provide the :program:`cpviz` input
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
     To monitor the search, we use ``SearchMonitor``\s. The ``TreeMonitor`` class inherits from ``SearchMonitor`` and 
     creates the files needed by cpviz to visualize the search: :file:`tree.xml` and :file:`visualization.xml`.
     
-    To produce CPViz output for your search, add the following to your code:
+    To produce :program:`cpviz` output for your search, add the following to your code:
 
     ..  code-block:: c++
     
@@ -52,17 +52,6 @@
                                                        "visualization.xml");
         monitors.push_back(cpviz);
         
-    After your search is finished AND you have called (implicitley or explicitly)
-    ``EndSearch()`` (files are created in the ``ÈxitSearch()`` callback),
-    you can run cpviz to digest the XML output of your search by going to :file:`viz/bin` and
-    typing:
-    
-    ..  code-block:: bash
-    
-        java ie.ucc.cccc.viz.Viz configuration.xml tree.xml visualization.xml 
-    
-    on a command line into a terminal near you. 
-    
     ..  only:: html 
     
         You need also a configuration file (named ``configuration.xml``) as this one:
@@ -85,12 +74,12 @@
         width="700" height="700" fileroot="viz"/>
         </configuration>
             
-    Basically, it tells cpviz to produces  the graphic files for the 
+    Basically, it tells :program:`cpviz` to produces  the graphic files for the 
     search tree (``show="tree"``) and the variables (``show="viz"``) 
     in the directory :file:`/tmp/`.
     
     If you are really lazy, we even have provided a factory method which 
-    generates automatically this configuration file:
+    generates automatically a configuration file:
     
     ..  code-block:: c++
     
@@ -98,6 +87,48 @@
                                                        "configuration.xml", 
                                                        "tree.xml",
                                                        "visualization.xml");
+
+        
+    After your search is finished AND you have called (implicitley or explicitly)
+    ``EndSearch()`` (files are created in the ``ÈxitSearch()`` callback),
+    you can run :program:`cpviz` to digest the XML output of your search by going to :file:`viz/bin` and
+    typing:
+    
+    ..  code-block:: bash
+    
+        java ie.ucc.cccc.viz.Viz configuration.xml tree.xml visualization.xml 
+    
+    on a command line into a terminal near you to produce the following picture of the search tree:
+    
+    ..  only:: html
+    
+        ..  image:: images/cpviz/tree8.*
+            :width: 400px
+            :align: center
+            :height: 400px
+            :alt: alternate text
+
+    ..  only:: latex
+    
+        ..  image:: images/cpviz/tree8.*
+            :width: 200pt
+            :align: center
+            :height: 200pt
+            :alt: alternate text
+
+    
+    ..  only:: html
+    
+        :program:`cpviz` produces the construction of the search tree, node after node.
+        
+        You can find an animated version of the search tree produced by :program:`cpviz` :download:`here <images/cpviz/animated_tree.gif>`.
+        
+    This is probably not what you expected. First of all, this is not a binary tree. There seems to be an extra dummy root node.
+    A binary tree --- which is what is exactly used during the search --- is not really suited for a graphical representation as it can 
+    quickly become very big (compare with the actual search tree that is represented below). To avoid huge trees, we have reduced their 
+    sizes by contracting several nodes. Except for the dummy root node, each node is denoted by a variable name. The numbers along the branches
+    denote ...
+    
 
 Interpreting the graphic results
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -192,7 +223,7 @@ The search tree
       The two last statistics are more difficult to understand by only looking at the search tree.
       
       Backtracks (9):
-        Because of the way the search is coded, the ``fail_stamp()`` counter starts already at :math:`2` before any top level search.
+        Because of the way the search is coded, the ``fail_stamp`` counter starts already at :math:`2` before any top level search.
         There are :math:`6` failures (one for each node, see Failures above) and this brings the counter to :math:`8`. To end the search, 
         a last backtrack [#real_last_backtrack]_ is necessary to reach the root node and undo the search which brings the counter to :math:`9`.
     
@@ -200,10 +231,30 @@ The search tree
     
       Stamps (29):
         This statistic is more an internal statistic than a real indicator of the search. It is related to the 
-        movements in the queue during the search.
+        queue actions during the search. The queue is responsible for the reversibility of the search. At some 
+        points during the search, the current state is pushed on the queue. When backtracking, the solver pops those states. Everytime
+        a state is pushed or popped, the ``stamp`` counter is increased. Other queue actions also increase this counter. For instance, when 
+        the queue is frozen or when a reversible action is added [#stamp_increased_by_reversible_actions]_. For a simple search,
+        this statistic is more or less equivalent to the length of a pre-order traversal of the search tree (:math:`20` in our case). 
+        This statistic reflects the amount of work needed by the solver during the search. We refer the curious reader
+        to the source code for more details.
         
+        ..  [#stamp_increased_by_reversible_actions] See the solver's ``AddBacktrackAction()`` method.
+        
+        
+Cpviz's graphic results
+"""""""""""""""""""""""
+
+..  only::draft
+
+    
+
 Propagation
 """""""""""
+
+..  only::draft
+    
+    To better understand the search, let's have a look at the propagation in details.
 
 ..  only:: html
 
@@ -695,6 +746,5 @@ Propagation
         a failure and we have to backtrack... to the root node as we have exhausted the search tree. The search is thus finished
         and we have found :math:`2` distinct solutions.
         
-Cpviz's graphic results
-"""""""""""""""""""""""
+
     
