@@ -143,12 +143,65 @@ The search tree
 
 ..  only:: draft
 
+    By reading the file :file:`cpviz_nqueens4_basic.txt`, we can retrace the search and reconstruct the search tree:
+    
     ..  image:: images/search_tree1.*
         :width: 297px
         :align: center
         :height: 286px
         :alt: alternate text
     
+    As you can see, at each node, the solver took a ``Decision``: the left branch to *apply* the ``Decision`` and the right branch 
+    to *refute* this ``Decision``. The leaf nodes in red denote subtrees that are not worth exploring explicitly: we cannot find any solution 
+    along this branch of the tree. The leaf nodes in green denote on the contrary feasible solutions. The nodes are numbered in the order
+    of creation and we can see that the search tree is traversed in pre-order by the solver.
+    
+    In the file :file:`nqeens4.cc`, we have printed some statistics about the search:
+    
+    ..  code-block:: c++
+    
+        std::cout << "Number of solutions: " << num_solutions << std::endl;
+        std::cout << "Failures: " << s.failures() << std::endl;
+        std::cout << "Branches: " << s.branches() << std::endl;
+        std::cout << "Backtracks: " << s.fail_stamp() << std::endl;
+        std::cout << "Stamps: " << s.stamp() << std::endl;
+    
+    and when the ``size`` is :math:`4`, we get as output:
+    
+    ..  code-block:: bash
+    
+        Number of solutions: 2
+        Failures: 6
+        Branches: 10
+        Backtracks: 9
+        Stamps: 29
+
+    Let's see if we can relate those statistics with the search tree. The three first statistics are easy to spot in the tree:
+    
+      Number of solutions (2):
+        There are indeed two distinct solutions denoted by the two green leafs.
+        
+      Failures (6):
+        A failure occurs whenever the solver has to backtrack, wether it is because of a real failure (nodes :math:`2-3` and :math:`9-10`)
+        or a success (nodes :math:`5` and :math:`7`). Indeed, when the solver finds a solution, it has to backtrack to find other solutions.
+        The method ``failures()`` returns the number of leaves of the search tree. In our case, :math:`6`.
+        
+      Branches (10):
+        Number of branches in the tree, indeed :math:`10`.
+        
+      The two last statistics are more difficult to understand by only looking at the search tree.
+      
+      Backtracks (9):
+        Because of the way the search is coded, the ``fail_stamp()`` counter starts already at :math:`2` before any top level search.
+        There are :math:`6` failures (one for each node, see Failures above) and this brings the counter to :math:`8`. To end the search, 
+        a last backtrack [#real_last_backtrack]_ is necessary to reach the root node and undo the search which brings the counter to :math:`9`.
+    
+        ..  [#real_last_backtrack] Actually, the very last backtrack happens when the solver is deleted.
+    
+      Stamps (29):
+        This statistic is more an internal statistic than a real indicator of the search. It is related to the 
+        movements in the queue during the search.
+        
 Propagation
 """""""""""
 
