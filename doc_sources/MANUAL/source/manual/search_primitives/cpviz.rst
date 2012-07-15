@@ -176,12 +176,16 @@ The search tree
 
     By reading the file :file:`cpviz_nqueens4_basic.txt`, we can retrace the search and reconstruct the search tree:
     
-    ..  image:: images/search_tree1.*
+    ..  _search_tree_of_nqueens_with_n_equal_to_4:
+    
+    ..  figure:: images/search_tree1.*
         :width: 297px
         :align: center
         :height: 286px
         :alt: alternate text
     
+        The actual search tree of our search 
+        
     As you can see, at each node, the solver took a ``Decision``: the left branch to *apply* the ``Decision`` and the right branch 
     to *refute* this ``Decision``. The leaf nodes in red denote subtrees that are not worth exploring explicitly: we cannot find any solution 
     along this branch of the tree. The leaf nodes in green denote on the contrary feasible solutions. The nodes are numbered in the order
