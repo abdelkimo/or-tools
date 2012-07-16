@@ -310,7 +310,25 @@ latex_additional_files = ['images/logo.pdf',
                           'latex_copyright.txt',
                           'latex_foreword.txt',
                           'images/sol_4x4_a.pdf',
-                          'images/sol_4x4_b.pdf']
+                          'images/sol_4x4_b.pdf',
+                          'images/tree0.pdf',
+                          'images/tree1_w.pdf',
+                          'images/tree2_w.pdf',
+                          'images/tree3_w.pdf',
+                          'images/tree4_w.pdf',
+                          'images/tree5_w.pdf',
+                          'images/tree6_w.pdf',
+                          'images/tree7_w.pdf',
+                          'images/tree8_w.pdf',
+                          'images/real_tree1.pdf',
+                          'images/real_tree2.pdf',
+                          'images/real_tree3.pdf',
+                          'images/real_tree4.pdf',
+                          'images/real_tree5.pdf',
+                          'images/real_tree6.pdf',
+                          'images/real_tree7.pdf',
+                          'images/real_tree8.pdf'
+                          ]
 # -- Options for manual page output --------------------------------------------
 
 # One entry per manual page. List of tuples

@@ -574,7 +574,8 @@ The basic search algorithm and the callback hooks for the ``SearchMonitor``\s
       * ``finish``: becomes ``true`` when the search is over;
       * ``result``: denotes if a feasible solution was indeed found or not.
       
-    These two variables are ``volatile`` because...TO BE COMPLETED
+    These two variables are ``volatile`` to allow the use of these variables between ``setjmp`` and ``longjmp``, otherwise the compiler
+    might optimize certain portions of code away. Basically, it tells the compiler that these variables can be changed from the *outside*.
 
     ..  [#two_bool_variables_playing_another_roles] These two variables play a role when we use nested searches, restart or finish a search 
         but these possibilities are not shown here.

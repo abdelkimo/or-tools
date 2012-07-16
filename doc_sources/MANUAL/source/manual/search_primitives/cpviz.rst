@@ -119,15 +119,18 @@
     
     ..  only:: html
     
-        :program:`cpviz` produces the construction of the search tree, node after node.
+        :program:`cpviz` produces the construction of the search tree, step by step. In our case, 8 files were generated.
         
         You can find an animated version of the search tree produced by :program:`cpviz` :download:`here <images/cpviz/animated_tree.gif>`.
         
     This is probably not what you expected. First of all, this is not a binary tree. There seems to be an extra dummy root node.
-    A binary tree --- which is what is exactly used during the search --- is not really suited for a graphical representation as it can 
+    A binary tree --- which is what is exactly constructed during the search --- is not really suited for a graphical representation as it can 
     quickly become very big (compare with the actual search tree that is represented below). To avoid huge trees, we have reduced their 
-    sizes by contracting several nodes. Except for the dummy root node, each node is denoted by a variable name. The numbers along the branches
-    denote ...
+    sizes by contracting several nodes. Except for the dummy root node, each node is denoted by a variable name. Also, we only 
+    give the left branches explicitly. The numbers along the branches denote the *applied decisions* and the numbers in the right 
+    corner above the names of the nodes are the number of values in the domain of the corresponding variable just before the decision was
+    taken. Nodes in green denote feasible solutions, nodes in red subtrees without any feasible solutions and nodes in blue, intermediate
+    try nodes  (these only exist during the search).
     
 
 Interpreting the graphic results
@@ -246,13 +249,442 @@ The search tree
         ..  [#stamp_increased_by_reversible_actions] See the solver's ``AddBacktrackAction()`` method.
         
         
-Cpviz's graphic results
-"""""""""""""""""""""""
-
-..  only::draft
-
+    How can we compare the real tree with our :program:`cpviz` output? The trick is to observe the construction of the tree one node at a
+    time. We construct the real tree node by node from the tree produced by :program:`cpviz`. The left image is the :program:`cpviz` output
+    while the right image is the actual tree.
     
+    ..  raw:: html 
+            
+        <hr>
+        <strong>Step 0:</strong>
+        
+    ..  raw:: latex 
+    
+        \rule{\linewidth}{0.1mm}
+        \paragraph{Step 0:}
+            
+    We start with a dummy node. This node is needed in our construction. You'll see why in a moment.
+    
+    ..  only:: html 
+    
+        ..  image:: images/cpviz/tree0.*
+            :width: 100 pt
+            :align: center
 
+    ..  raw:: latex
+
+        \begin{figure}[H]
+        \centering
+        \includegraphics[height=50pt]{tree0.pdf}
+        \caption{Contruction of the real search tree from the cpviz tree: step 0}\label{fig:tree0}
+        \end{figure}
+
+    ..  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:
+    
+    ..  raw:: latex
+        
+        \rule{\linewidth}{0.1mm}
+        \paragraph{Step 1:}
+        
+        \begin{figure}[H]
+        \centering
+        \subfigure[cpviz]{
+        \includegraphics[height=75pt]{tree1_w.pdf}
+        \label{fig:cpviz_tree1}
+        }
+        \subfigure[Real search tree]{
+        \includegraphics[height=75pt]{real_tree1.pdf}
+        \label{fig:real_tree1}
+        }
+        \caption{Contruction of the real search tree from the cpviz tree: step 1}\label{fig:tree1}
+        \end{figure}
+
+        Next, we start with the actual root node. As you can see in our \textbf{cpviz} output, the dummy root node doesn't even 
+        have a name and the little number $0$ next to this non existing name doesn't mean anything.
+
+    ..  only:: html 
+
+        
+        ..  raw:: html 
+            
+            <hr>
+            <strong>Step 1:</strong>
+            <div align="center">  
+            
+        ..  image:: images/cpviz/tree1_w.*
+            :height: 200 pt
+
+        ..  image:: images/transparent.*
+            :height: 50 pt
+            
+        ..  image:: images/real_tree/real_tree1.*
+            :height: 100 pt
+
+        ..  raw:: html 
+        
+            </div>   
+            
+        Next, we start with the actual root node. As you can see in our :program:`cpviz` output, the dummy root node doesn't even 
+        have a name and the little number :math:`0` next to this non existing name doesn't mean anything.
+
+
+    ..  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:
+    
+    ..  raw:: latex
+        
+        \rule{\linewidth}{0.1mm}
+        \paragraph{Step 2:}
+        
+        \begin{figure}[H]
+        \centering
+        \subfigure[cpviz]{
+        \includegraphics[height=85pt]{tree2_w.pdf}
+        \label{fig:cpviz_tree2}
+        }
+        \subfigure[Real search tree]{
+        \includegraphics[height=85pt]{real_tree2.pdf}
+        \label{fig:real_tree2}
+        }
+        \caption{Contruction of the real search tree from the cpviz tree: step 2}\label{fig:tree2}
+        \end{figure}
+
+        You can see in our \textbf{cpviz} output that the solver has applied the \code{Decision} $x_0 = 0$ but that it couldn't 
+        realize if this was a good choice or not. The little number $4$ next to the variable name $x_0$ means that before
+        the decision was applied, the number of values in its domain was $4$. Indeed: $x_0 \in \{0, 1, 2, 3\}$ before being
+        assigned the value $0$.\\[0.01cm]
+
+    ..  only:: html 
+
+        
+        ..  raw:: html 
+            
+            <hr>
+            <strong>Step 2:</strong>
+            <div align="center">  
+            
+        ..  image:: images/cpviz/tree2_w.*
+            :height: 200 pt
+
+        ..  image:: images/transparent.*
+            :height: 50 pt
+            
+        ..  image:: images/real_tree/real_tree2.*
+            :height: 100 pt
+
+        ..  raw:: html 
+        
+            </div>   
+            
+        You can see in our :program:`cpviz` output that the solver has applied the ``Decision`` :math:`x_0 = 0` but that it couldn't 
+        realize if this was a good choice or not. The little number :math:`4` next to the variable name :math:`x_0` means that before
+        the decision was applied, the number of values in its domain was :math:`4`. Indeed: :math:`x_0 \in \{0, 1, 2, 3\}` before being
+        assigned the value :math:`0`.
+
+
+    ..  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:
+    
+    ..  raw:: latex
+        
+        \rule{\linewidth}{0.1mm}
+        \paragraph{Step 3:}
+        
+        \begin{figure}[H]
+        \centering
+        \subfigure[cpviz]{
+        \includegraphics[height=100pt]{tree3_w.pdf}
+        \label{fig:cpviz_tree3}
+        }
+        \subfigure[Real search tree]{
+        \includegraphics[height=100pt]{real_tree3.pdf}
+        \label{fig:real_tree3}
+        }
+        \caption{Contruction of the real search tree from the cpviz tree: step 3}\label{fig:tree3}
+        \end{figure}
+
+        After having applied the \code{Decision} $x_0 = 0$ at step 2, the solver now applies the \code{Decision} $x_1 = 2$ which 
+        leads, after propagation, to a failure.\\[0.01cm]
+
+    ..  only:: html 
+
+        
+        ..  raw:: html 
+            
+            <hr>
+            <strong>Step 3:</strong>
+            <div align="center">  
+            
+        ..  image:: images/cpviz/tree3_w.*
+            :height: 200 pt
+
+        ..  image:: images/transparent.*
+            :height: 50 pt
+            
+        ..  image:: images/real_tree/real_tree3.*
+            :height: 150 pt
+
+        ..  raw:: html 
+        
+            </div>   
+            
+        After having applied the ``Decision`` :math:`x_0 = 0` at step 2, the solver now applies the ``Decision`` :math:`x_1 = 2` which 
+        leads, after propagation, to a failure.
+
+
+    ..  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:
+    
+    ..  raw:: latex
+        
+        \rule{\linewidth}{0.1mm}
+        \paragraph{Step 4:}
+        
+        \begin{figure}[H]
+        \centering
+        \subfigure[cpviz]{
+        \includegraphics[height=110pt]{tree4_w.pdf}
+        \label{fig:cpviz_tree4}
+        }
+        \subfigure[Real search tree]{
+        \includegraphics[height=110pt]{real_tree4.pdf}
+        \label{fig:real_tree4}
+        }
+        \caption{Contruction of the real search tree from the cpviz tree: step 4}\label{fig:tree4}
+        \end{figure}
+
+        Our \textbf{cpviz} output now clearly warns that taking $x_0 = 0$ is not compatible with a feasible solution. This can 
+        only mean that the solver tried also to refute the \code{Decision} $x_1 = 2$. So we know that the branch $x_1 \neq 2$
+        after the branch $x_0 = 0$ is leading nowhere. We have to backtrack and to refute the \code{Decision} $x_0 = 0$.
+        We have thus a new branch $x_0 \neq 0$ in the real search tree.\\[0.01cm]
+        
+
+    ..  only:: html 
+
+        
+        ..  raw:: html 
+            
+            <hr>
+            <strong>Step 4:</strong>
+            <div align="center">  
+            
+        ..  image:: images/cpviz/tree4_w.*
+            :height: 200 pt
+
+        ..  image:: images/transparent.*
+            :height: 50 pt
+            
+        ..  image:: images/real_tree/real_tree4.*
+            :height: 150 pt
+
+        ..  raw:: html 
+        
+            </div>   
+            
+        Our :program:`cpviz` output now clearly warns that taking :math:`x_0 = 0` is not compatible with a feasible solution. This can 
+        only mean that the solver tried also to refute the ``Decision`` :math:`x_1 = 2`. So we know that the branch :math:`x_1 \neq 2`
+        after the branch :math:`x_0 = 0` is leading nowhere. We have to backtrack and to refute the ``Decision`` :math:`x_0 = 0`.
+        We have thus a new branch :math:`x_0 \neq 0` in the real search tree.
+        
+        
+
+
+    ..  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:
+    
+    ..  raw:: latex
+        
+        \rule{\linewidth}{0.1mm}
+        \paragraph{Step 5:}
+        
+        \begin{figure}[H]
+        \centering
+        \subfigure[cpviz]{
+        \includegraphics[height=120pt]{tree5_w.pdf}
+        \label{fig:cpviz_tree5}
+        }
+        \subfigure[Real search tree]{
+        \includegraphics[height=120pt]{real_tree5.pdf}
+        \label{fig:real_tree5}
+        }
+        \caption{Contruction of the real search tree from the cpviz tree: step 5}\label{fig:tree5}
+        \end{figure}
+
+        We have found a feasible solution when $x_0 = 1$. Thus we add the branch $x_0 = 1$ and indicate success.\\[0.01cm]
+        
+    ..  only:: html 
+
+        
+        ..  raw:: html 
+            
+            <hr>
+            <strong>Step 5:</strong>
+            <div align="center">  
+            
+        ..  image:: images/cpviz/tree5_w.*
+            :height: 200 pt
+
+        ..  image:: images/transparent.*
+            :height: 50 pt
+            
+        ..  image:: images/real_tree/real_tree5.*
+            :height: 200 pt
+
+        ..  raw:: html 
+        
+            </div>   
+            
+        We have found a feasible solution when :math:`x_0 = 1`. Thus we add the branch :math:`x_0 = 1` and indicate success. 
+
+
+
+
+    ..  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:
+    
+    ..  raw:: latex
+        
+        \rule{\linewidth}{0.1mm}
+        \paragraph{Step 6:}
+        
+        \begin{figure}[H]
+        \centering
+        \subfigure[cpviz]{
+        \includegraphics[height=120pt]{tree6_w.pdf}
+        \label{fig:cpviz_tree0}
+        }
+        \subfigure[Real search tree]{
+        \includegraphics[height=120pt]{real_tree6.pdf}
+        \label{fig:real_tree0}
+        }
+        \caption{Contruction of the real search tree from the cpviz tree: step 6}\label{fig:tree6}
+        \end{figure}
+
+        We have found a second feasible solution when $x_0 = 2$. Because we came from a feasible solution with $x_0 = 1$, 
+        we have first to refute this decision $x_0 \neq 1$ before we can proceed by applying \code{Decision} $x_0 = 2$.\\[0.01cm]
+
+    ..  only:: html 
+
+        
+        ..  raw:: html 
+            
+            <hr>
+            <strong>Step 6:</strong>
+            <div align="center">  
+            
+        ..  image:: images/cpviz/tree6_w.*
+            :height: 200 pt
+
+        ..  image:: images/transparent.*
+            :height: 50 pt
+            
+        ..  image:: images/real_tree/real_tree6.*
+            :height: 200 pt
+
+        ..  raw:: html 
+        
+            </div>   
+            
+        We have found a second feasible solution when :math:`x_0 = 2`. Because we came from a feasible solution with :math:`x_0 = 1`, 
+        we have first to refute this decision :math:`x_0 \neq 1` before we can proceed by applying ``Decision`` :math:`x_0 = 2`.
+
+            
+
+    ..  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:
+    
+    ..  raw:: latex
+        
+        \rule{\linewidth}{0.1mm}
+        \paragraph{Step 7:}
+        
+        \begin{figure}[H]
+        \centering
+        \subfigure[cpviz]{
+        \includegraphics[height=145pt]{tree7_w.pdf}
+        \label{fig:cpviz_tree0}
+        }
+        \subfigure[Real search tree]{
+        \includegraphics[height=145pt]{real_tree7.pdf}
+        \label{fig:real_tree0}
+        }
+        \caption{Contruction of the real search tree from the cpviz tree: step 7}\label{fig:tree7}
+        \end{figure}
+
+        We add a tentative branch in the \textbf{cpviz} output. The branch before was a branch were we applied the \code{Decision} 
+        $x_2 = 0$ that lead to a feasible solution, so now we know that the solver is trying to refute that decision: 
+        $x_2 \neq 0$.\\[0.01cm]
+
+    ..  only:: html 
+
+        
+        ..  raw:: html 
+            
+            <hr>
+            <strong>Step 7:</strong>
+            <div align="center">  
+            
+        ..  image:: images/cpviz/tree7_w.*
+            :height: 200 pt
+
+        ..  image:: images/transparent.*
+            :height: 50 pt
+            
+        ..  image:: images/real_tree/real_tree7.*
+            :height: 200 pt
+
+        ..  raw:: html 
+        
+            </div>   
+            
+        We add a tentative branch in the :program:`cpviz` output. The branch before was a branch were we applied the ``Decision`` 
+        :math:`x_2 = 0` that lead to a feasible solution, so now we know that the solver is trying to refute that decision: 
+        :math:`x_2 \neq 0`.
+
+
+
+    ..  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:
+    
+    ..  raw:: latex
+        
+        \rule{\linewidth}{0.1mm}
+        \paragraph{Step 8:}
+        
+        \begin{figure}[H]
+        \centering
+        \subfigure[cpviz]{
+        \includegraphics[height=160pt]{tree8_w.pdf}
+        \label{fig:cpviz_tree0}
+        }
+        \subfigure[Real search tree]{
+        \includegraphics[height=160pt]{real_tree8.pdf}
+        \label{fig:real_tree0}
+        }
+        \caption{Contruction of the real search tree from the cpviz tree: step 8}\label{fig:tree8}
+        \end{figure}
+
+        The final step  is the branch in the \textbf{cpviz} output $x_1 = 0$ that leads to a failure. This means that when we apply 
+        and refute $x_1 = 0$, we get a failure. Thus we know that both tentatives $x_0 = 1$ and $x_0 \neq 1$ both fail.
+
+    ..  only:: html 
+
+        
+        ..  raw:: html 
+            
+            <hr>
+            <strong>Step 8:</strong>
+            <div align="center">  
+            
+        ..  image:: images/cpviz/tree8_w.*
+            :height: 200 pt
+
+        ..  image:: images/transparent.*
+            :height: 50 pt
+            
+        ..  image:: images/real_tree/real_tree8.*
+            :height: 200 pt
+
+        ..  raw:: html 
+        
+            </div>   
+            
+        The final step is the branch in the :program:`cpviz` output :math:`x_1 = 0` that leads to a failure. This means that when we apply 
+        and refute :math:`x_1 = 0`, we get a failure. Thus we know that both tentatives :math:`x_0 = 1` and :math:`x_0 \neq 1` both fail.
+        
 Propagation
 """""""""""
 
