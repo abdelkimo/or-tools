@@ -1217,13 +1217,13 @@ Our :program:`cpviz`'s output of the propagation
         \label{fig:cpviztree1}
         }
         \subfigure[cpviz's propagation's output]{
-        \includegraphics[height=100pt]{viz0.pdf}
+        \includegraphics[height=125pt]{viz0.pdf}
         \label{fig:cpviz_vars0}
         }
         \caption{\textbf{cpviz}'s output of the propagation: step 0}\label{fig:cpviz0}
         \end{figure}
         
-        Nothing happens as we add a dummy root node. Notice that the variables are numbered from 1 to 4.
+        Nothing happens as we add a dummy root node. Notice that the variables are numbered from 1 to 4.\\[0.01cm]
     
     ..  only:: html 
         
@@ -1257,7 +1257,7 @@ Our :program:`cpviz`'s output of the propagation
        
         \begin{figure}[H]
         \centering
-        \subfigure[cpviz]{
+        \subfigure[\textbf{cpviz} tree]{
         \includegraphics[height=75pt]{tree1_w.pdf}
         \label{fig:cpviz_tree1}
         }
@@ -1265,11 +1265,15 @@ Our :program:`cpviz`'s output of the propagation
         \includegraphics[height=75pt]{real_tree1.pdf}
         \label{fig:real_tree1}
         }
-        \caption{Contruction of the real search tree from the cpviz tree: step 1}\label{fig:tree1}
+        \subfigure[\textbf{cpviz} propagation]{
+        \includegraphics[height=125pt]{viz1.pdf}
+        \label{fig:real_tree1}
+        }
+        \caption{\textbf{cpviz}'s output of the propagation: step 1}\label{fig:tree1}
         \end{figure}
         
-        Next, we start with the actual root node. As you can see in our \textbf{cpviz} output, the dummy root node doesn't even 
-        have a name and the little number $0$ next to this non existing name doesn't mean anything.
+        The yellow reactangle tells us that the focus is on variable $1 (x_0)$, which means that at the next step a value will 
+        assigned to this variable.\\[0.01cm]
     
     ..  only:: html 
     
@@ -1303,52 +1307,63 @@ Our :program:`cpviz`'s output of the propagation
  
     ..  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:
    
-   ..  raw:: latex
+    ..  raw:: latex
        
-       \rule{\linewidth}{0.1mm}
-       \paragraph{Step 2:}
+        \rule{\linewidth}{0.1mm}
+        \paragraph{Step 2:}
        
-       \begin{figure}[H]
-       \centering
-       \subfigure[cpviz]{
-       \includegraphics[height=85pt]{tree2_w.pdf}
-       \label{fig:cpviz_tree2}
-       }
-       \subfigure[Real search tree]{
-       \includegraphics[height=85pt]{real_tree2.pdf}
-       \label{fig:real_tree2}
-       }
-       \caption{Contruction of the real search tree from the cpviz tree: step 2}\label{fig:tree2}
-       \end{figure}
-        You can see in our \textbf{cpviz} output that the solver has applied the \code{Decision} $x_0 = 0$ but that it couldn't 
-       realize if this was a good choice or not. The little number $4$ next to the variable name $x_0$ means that before
-       the decision was applied, the number of values in its domain was $4$. Indeed: $x_0 \in \{0, 1, 2, 3\}$ before being
-       assigned the value $0$.\\[0.01cm]
+        \begin{figure}[H]
+        \centering
+        \subfigure[\textbf{cpviz} tree]{
+        \includegraphics[height=85pt]{tree2_w.pdf}
+        \label{fig:cpviz_tree2}
+        }
+        \subfigure[Real search tree]{
+        \includegraphics[height=85pt]{real_tree2.pdf}
+        \label{fig:real_tree2}
+        }
+        \subfigure[\textbf{cpviz} propagation]{
+        \includegraphics[height=125pt]{viz2.pdf}
+        \label{fig:real_tree2}
+        }
+        \caption{\textbf{cpviz}'s output of the propagation: step 2}\label{fig:tree2}
+        \end{figure}
+       
+        The red square indicates that the variable $x_0$ was fixed to $0$.
+        The dark green squares show the propagation. The focus is on variable $2 \ (x_1)$.\\[0.01cm]
+        
     ..  only:: html 
         
-       ..  raw:: html 
+        ..  raw:: html 
            
-           <hr>
-           <strong>Step 2:</strong>
-           <div align="center">  
+            <hr>
+            <strong>Step 2:</strong>
+            <div align="center">  
            
-       ..  image:: images/cpviz/tree2_w.*
-           :height: 200 pt
+        ..  image:: images/cpviz/tree2_w.*
+            :height: 200 pt
+            
         ..  image:: images/transparent.*
-           :height: 50 pt
+            :height: 50 pt
            
-       ..  image:: images/real_tree/real_tree2.*
-           :height: 100 pt
+        ..  image:: images/real_tree/real_tree2.*
+            :height: 100 pt
+
+        ..  image:: images/transparent.*
+            :height: 50 pt
+           
+        ..  image:: images/cpviz_propagation/viz2.*
+            :height: 200 pt
+
+            
         ..  raw:: html 
        
-           </div>   
+            </div>   
            
-       You can see in our :program:`cpviz` output that the solver has applied the ``Decision`` :math:`x_0 = 0` but that it couldn't 
-       realize if this was a good choice or not. The little number :math:`4` next to the variable name :math:`x_0` means that before
-       the decision was applied, the number of values in its domain was :math:`4`. Indeed: :math:`x_0 \in \{0, 1, 2, 3\}` before being
-       assigned the value :math:`0`.
+        The red square indicates that the variable :math:`x_0` was fixed to :math:`0`.
+        The dark green squares show the propagation. The focus is on variable :math:`2 (x_1)`.
 
-   ..  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:
+    ..  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:
    
     ..  raw:: latex
         
@@ -1357,7 +1372,7 @@ Our :program:`cpviz`'s output of the propagation
         
         \begin{figure}[H]
         \centering
-        \subfigure[cpviz]{
+        \subfigure[\textbf{cpviz} tree]{
         \includegraphics[height=100pt]{tree3_w.pdf}
         \label{fig:cpviz_tree3}
         }
@@ -1365,11 +1380,15 @@ Our :program:`cpviz`'s output of the propagation
         \includegraphics[height=100pt]{real_tree3.pdf}
         \label{fig:real_tree3}
         }
-        \caption{Contruction of the real search tree from the cpviz tree: step 3}\label{fig:tree3}
+        \subfigure[\textbf{cpviz} propagation]{
+        \includegraphics[height=125pt]{viz3.pdf}
+        \label{fig:real_tree3}
+        }
+        \caption{\textbf{cpviz}'s output of the propagation: step 3}\label{fig:tree3}
         \end{figure}
 
-        After having applied the \code{Decision} $x_0 = 0$ at step 2, the solver now applies the \code{Decision} $x_1 = 2$ which 
-        leads, after propagation, to a failure.\\[0.01cm]
+        The red rectangle warns of a failure: there is no feasible solution with 
+        $x_0 = 0$ and $x_1 = 2$.\\[0.01cm]
 
     ..  only:: html 
 
@@ -1389,12 +1408,18 @@ Our :program:`cpviz`'s output of the propagation
         ..  image:: images/real_tree/real_tree3.*
             :height: 150 pt
 
+        ..  image:: images/transparent.*
+            :height: 50 pt
+           
+        ..  image:: images/cpviz_propagation/viz3.*
+            :height: 200 pt
+
         ..  raw:: html 
         
             </div>   
             
-        After having applied the ``Decision`` :math:`x_0 = 0` at step 2, the solver now applies the ``Decision`` :math:`x_1 = 2` which 
-        leads, after propagation, to a failure.
+        The red rectangle warns of a failure: there is no feasible solution with 
+        :math:`x_0 = 0` and :math:`x_1 = 2`.
 
 
     ..  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:
@@ -1406,7 +1431,7 @@ Our :program:`cpviz`'s output of the propagation
         
         \begin{figure}[H]
         \centering
-        \subfigure[cpviz]{
+        \subfigure[\textbf{cpviz} tree]{
         \includegraphics[height=110pt]{tree4_w.pdf}
         \label{fig:cpviz_tree4}
         }
@@ -1414,13 +1439,15 @@ Our :program:`cpviz`'s output of the propagation
         \includegraphics[height=110pt]{real_tree4.pdf}
         \label{fig:real_tree4}
         }
-        \caption{Contruction of the real search tree from the cpviz tree: step 4}\label{fig:tree4}
+        \subfigure[\textbf{cpviz} propagation]{
+        \includegraphics[height=125pt]{viz4.pdf}
+        \label{fig:real_tree4}
+        }
+        \caption{\textbf{cpviz}'s output of the propagation: step 4}\label{fig:tree4}
         \end{figure}
 
-        Our \textbf{cpviz} output now clearly warns that taking $x_0 = 0$ is not compatible with a feasible solution. This can 
-        only mean that the solver tried also to refute the \code{Decision} $x_1 = 2$. So we know that the branch $x_1 \neq 2$
-        after the branch $x_0 = 0$ is leading nowhere. We have to backtrack and to refute the \code{Decision} $x_0 = 0$.
-        We have thus a new branch $x_0 \neq 0$ in the real search tree.\\[0.01cm]
+        There is not much information here: only that the last variable tried
+        was $x_1$ and that we ended up with a failure.\\[0.01cm]
         
 
     ..  only:: html 
@@ -1441,14 +1468,17 @@ Our :program:`cpviz`'s output of the propagation
         ..  image:: images/real_tree/real_tree4.*
             :height: 150 pt
 
+        ..  image:: images/transparent.*
+            :height: 50 pt
+           
+        ..  image:: images/cpviz_propagation/viz4.*
+            :height: 200 pt
         ..  raw:: html 
         
             </div>   
             
-        Our :program:`cpviz` output now clearly warns that taking :math:`x_0 = 0` is not compatible with a feasible solution. This can 
-        only mean that the solver tried also to refute the ``Decision`` :math:`x_1 = 2`. So we know that the branch :math:`x_1 \neq 2`
-        after the branch :math:`x_0 = 0` is leading nowhere. We have to backtrack and to refute the ``Decision`` :math:`x_0 = 0`.
-        We have thus a new branch :math:`x_0 \neq 0` in the real search tree.
+        There is not much information here: only that the last variable tried
+        was :math:`x_1` and that we ended up with a failure.
         
         
 
@@ -1462,7 +1492,7 @@ Our :program:`cpviz`'s output of the propagation
         
         \begin{figure}[H]
         \centering
-        \subfigure[cpviz]{
+        \subfigure[\textbf{cpviz} tree]{
         \includegraphics[height=120pt]{tree5_w.pdf}
         \label{fig:cpviz_tree5}
         }
@@ -1470,10 +1500,14 @@ Our :program:`cpviz`'s output of the propagation
         \includegraphics[height=120pt]{real_tree5.pdf}
         \label{fig:real_tree5}
         }
-        \caption{Contruction of the real search tree from the cpviz tree: step 5}\label{fig:tree5}
+        \subfigure[\textbf{cpviz} propagation]{
+        \includegraphics[height=125pt]{viz5.pdf}
+        \label{fig:real_tree5}
+        }
+        \caption{\textbf{cpviz}'s output of the propagation: step 5}\label{fig:tree5}
         \end{figure}
 
-        We have found a feasible solution when $x_0 = 1$. Thus we add the branch $x_0 = 1$ and indicate success.\\[0.01cm]
+        Solution found.\\[0.01cm]
         
     ..  only:: html 
 
@@ -1493,11 +1527,16 @@ Our :program:`cpviz`'s output of the propagation
         ..  image:: images/real_tree/real_tree5.*
             :height: 200 pt
 
+        ..  image:: images/transparent.*
+            :height: 50 pt
+           
+        ..  image:: images/cpviz_propagation/viz5.*
+            :height: 200 pt
         ..  raw:: html 
         
             </div>   
             
-        We have found a feasible solution when :math:`x_0 = 1`. Thus we add the branch :math:`x_0 = 1` and indicate success. 
+        Solution found. 
 
 
 
@@ -1511,7 +1550,7 @@ Our :program:`cpviz`'s output of the propagation
         
         \begin{figure}[H]
         \centering
-        \subfigure[cpviz]{
+        \subfigure[\textbf{cpviz} tree]{
         \includegraphics[height=120pt]{tree6_w.pdf}
         \label{fig:cpviz_tree0}
         }
@@ -1519,11 +1558,14 @@ Our :program:`cpviz`'s output of the propagation
         \includegraphics[height=120pt]{real_tree6.pdf}
         \label{fig:real_tree0}
         }
-        \caption{Contruction of the real search tree from the cpviz tree: step 6}\label{fig:tree6}
+        \subfigure[\textbf{cpviz} propagation]{
+        \includegraphics[height=125pt]{viz6.pdf}
+        \label{fig:real_tree2}
+        }
+        \caption{\textbf{cpviz}'s output of the propagation: step 6}\label{fig:tree6}
         \end{figure}
 
-        We have found a second feasible solution when $x_0 = 2$. Because we came from a feasible solution with $x_0 = 1$, 
-        we have first to refute this decision $x_0 \neq 1$ before we can proceed by applying \code{Decision} $x_0 = 2$.\\[0.01cm]
+        Solution found.\\[0.01cm]
 
     ..  only:: html 
 
@@ -1543,12 +1585,16 @@ Our :program:`cpviz`'s output of the propagation
         ..  image:: images/real_tree/real_tree6.*
             :height: 200 pt
 
+        ..  image:: images/transparent.*
+            :height: 50 pt
+           
+        ..  image:: images/cpviz_propagation/viz6.*
+            :height: 200 pt
         ..  raw:: html 
         
             </div>   
             
-        We have found a second feasible solution when :math:`x_0 = 2`. Because we came from a feasible solution with :math:`x_0 = 1`, 
-        we have first to refute this decision :math:`x_0 \neq 1` before we can proceed by applying ``Decision`` :math:`x_0 = 2`.
+        Solution found.
 
             
 
@@ -1561,7 +1607,7 @@ Our :program:`cpviz`'s output of the propagation
         
         \begin{figure}[H]
         \centering
-        \subfigure[cpviz]{
+        \subfigure[\textbf{cpviz} tree]{
         \includegraphics[height=145pt]{tree7_w.pdf}
         \label{fig:cpviz_tree0}
         }
@@ -1569,12 +1615,14 @@ Our :program:`cpviz`'s output of the propagation
         \includegraphics[height=145pt]{real_tree7.pdf}
         \label{fig:real_tree0}
         }
-        \caption{Contruction of the real search tree from the cpviz tree: step 7}\label{fig:tree7}
+        \subfigure[\textbf{cpviz} propagation]{
+        \includegraphics[height=125pt]{viz7.pdf}
+        \label{fig:real_tree2}
+        }
+        \caption{\textbf{cpviz}'s output of the propagation: step 7}\label{fig:tree7}
         \end{figure}
 
-        We add a tentative branch in the \textbf{cpviz} output. The branch before was a branch were we applied the \code{Decision} 
-        $x_2 = 0$ that lead to a feasible solution, so now we know that the solver is trying to refute that decision: 
-        $x_2 \neq 0$.\\[0.01cm]
+        End of propagation at node 8 and focus on variable $x_1$.\\[0.01cm]
 
     ..  only:: html 
 
@@ -1594,13 +1642,17 @@ Our :program:`cpviz`'s output of the propagation
         ..  image:: images/real_tree/real_tree7.*
             :height: 200 pt
 
+        ..  image:: images/transparent.*
+            :height: 50 pt
+           
+        ..  image:: images/cpviz_propagation/viz7.*
+            :height: 200 pt
+            
         ..  raw:: html 
         
             </div>   
             
-        We add a tentative branch in the :program:`cpviz` output. The branch before was a branch were we applied the ``Decision`` 
-        :math:`x_2 = 0` that lead to a feasible solution, so now we know that the solver is trying to refute that decision: 
-        :math:`x_2 \neq 0`.
+        End of propagation at node 8 and focus on variable :math:`x_1`.
 
 
 
@@ -1613,7 +1665,7 @@ Our :program:`cpviz`'s output of the propagation
         
         \begin{figure}[H]
         \centering
-        \subfigure[cpviz]{
+        \subfigure[\textbf{cpviz} tree]{
         \includegraphics[height=160pt]{tree8_w.pdf}
         \label{fig:cpviz_tree0}
         }
@@ -1621,11 +1673,14 @@ Our :program:`cpviz`'s output of the propagation
         \includegraphics[height=160pt]{real_tree8.pdf}
         \label{fig:real_tree0}
         }
-        \caption{Contruction of the real search tree from the cpviz tree: step 8}\label{fig:tree8}
+        \subfigure[\textbf{cpviz} propagation]{
+        \includegraphics[height=125pt]{viz8.pdf}
+        \label{fig:real_tree2}
+        }
+        \caption{\textbf{cpviz}'s output of the propagation: step 8}\label{fig:tree8}
         \end{figure}
 
-        The final step  is the branch in the \textbf{cpviz} output $x_1 = 0$ that leads to a failure. This means that when we apply 
-        and refute $x_1 = 0$, we get a failure. Thus we know that both tentatives $x_0 = 1$ and $x_0 \neq 1$ both fail.
+        Failure. The first failure was when $x_1 = 0$.\\[0.01cm]
 
     ..  only:: html 
 
@@ -1645,10 +1700,15 @@ Our :program:`cpviz`'s output of the propagation
         ..  image:: images/real_tree/real_tree8.*
             :height: 200 pt
 
+        ..  image:: images/transparent.*
+            :height: 50 pt
+           
+        ..  image:: images/cpviz_propagation/viz8.*
+            :height: 200 pt
+
         ..  raw:: html 
         
             </div>   
             
-        The final step is the branch in the :program:`cpviz` output :math:`x_1 = 0` that leads to a failure. This means that when we apply 
-        and refute :math:`x_1 = 0`, we get a failure. Thus we know that both tentatives :math:`x_0 = 1` and :math:`x_0 \neq 1` both fail.
+        Failure. The first failure was when :math:`x_1 = 0`.
   

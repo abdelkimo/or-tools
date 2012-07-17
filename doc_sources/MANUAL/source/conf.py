@@ -328,7 +328,15 @@ latex_additional_files = ['images/logo.pdf',
                           'images/real_tree6.pdf',
                           'images/real_tree7.pdf',
                           'images/real_tree8.pdf',
-                          'images/viz0.pdf'
+                          'images/viz0.pdf',
+                          'images/viz1.pdf',
+                          'images/viz2.pdf',
+                          'images/viz3.pdf',
+                          'images/viz4.pdf',
+                          'images/viz5.pdf',
+                          'images/viz6.pdf',
+                          'images/viz7.pdf',
+                          'images/viz8.pdf',
                           ]
 # -- Options for manual page output --------------------------------------------
 
