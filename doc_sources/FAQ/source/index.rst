@@ -17,9 +17,21 @@ From time to time, we will add questions asked on the `mailing list <http://grou
 
 General questions about:
 ^^^^^^^^^^^^^^^^^^^^^^^^
+  :ref:`the documentation <faq:documentation:questions>`:
+    We try to answer questions on the documentation itself and on the documentation generation.
+    
+  :ref:`the installation and compilation <faq:installation:questions>`:
+    How to compile the library? How to compile your own code? We try to answer common installation questions or at least
+    to give you some links to the appropriate documentation.
+    
+  :ref:`the library <faq:library:questions>`:
+    We try to answer general questions about the library.
+    
+  :ref:`the CP Solver <faq/CPsolver>`
 
 .. toctree::
    :maxdepth: 1
+   :hidden:
 
    the documentation <faq/documentation>
    the installation and compilation <faq/installation>
