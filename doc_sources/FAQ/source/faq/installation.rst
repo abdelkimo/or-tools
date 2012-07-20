@@ -5,7 +5,9 @@ General questions about the installation and the compilation of the library
 
 * :ref:`faq:installation:compile`
 * :ref:`faq:installation:compile_independently`
-* :ref:`faq:documentation:compile`
+* :ref:`faq:installation:compile_tutorial`
+* :ref:`faq:installation:update`
+* :ref:`faq:installation:what_to_do_when_update_is_broken`
  
  .. _faq:installation:compile:
 
@@ -20,17 +22,55 @@ how to donwload, install and compile the or-tools library.
 How do I compile and run my code in a directory of my choice?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For the easy solution, have a look at :ref:`faq:documentation:compile`
+Take a look at :ref:`faq:installation:compile`
 
-For the less easy solution. Let's say, you want to keep your code up to date with your version of the library.
-We suggest you to use a ``Makefile``. More about this later.
 
-.. _faq:documentation:compile:
+.. _faq:installation:compile_tutorial:
 
 How do I compile and run the examples in the tutorial section?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``Makefiles`` are (will be) provided to compile the examples (soon).
+
+.. _faq:installation:update:
+
+How do I update the library?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In your base directory, type:
+
+..  code-block:: bash
+
+    svn update
+
+then:
+
+..  code-block:: bash
+
+    make all
+
+.. _faq:installation:what_to_do_when_update_is_broken:
+
+The update process is not working and I get an error. What should I do?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We try our best to commit only working versions of the *or-tools* library.
+From time to time, it can happen that for your configuration we forgot something but
+it should not happen too often. What could happen is that you need to clean the library.
+
+Try in your base directory:
+
+..  code-block:: bash
+
+    make clean
+
+then:
+
+..  code-block:: bash
+
+    make all
+
+If the problem persists, ask for some help on the `mailing list <http://groups.google.com/group/or-tools-discuss>`_.
 
 ..  raw:: html 
 

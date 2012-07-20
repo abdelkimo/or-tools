@@ -43,9 +43,6 @@ How can I serialize my model?
 How can I serialize my solutions?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-What is NestedSolve()?
-~~~~~~~~~~~~~~~~~~~~~~
-
 Why would I need to restart my search?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

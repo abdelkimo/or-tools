@@ -3,23 +3,17 @@
 General questions about the library
 -----------------------------------
 
- * :ref:`faq:library:separate_directory`
-
+ * :ref:`faq:library:when_released`
  * :ref:`faq:library:licence`
-
+ * :ref:`faq:library:really_free`
+ * :ref:`faq:library:guarantuees`
  * :ref:`faq:library:language_coded`
-
  * :ref:`faq:library:language_supported`
-
  * :ref:`faq:library:supported_platforms`
-
  * :ref:`faq:library:use_at_google`
-
-
-.. _faq:library:separate_directory:
-
-How can I use a separate directory, i.e. a directory outside the main or-tools directory, to compile and run my code?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * :ref:`faq:library:future`
+ * :ref:`faq:library:future_plans`
+ * :ref:`faq:library:why_open_source`
 
 .. _faq:library:when_released:
 
@@ -33,30 +27,52 @@ It was released as an open project in September 2010.
 What is the licence you use?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+`Apache License 2.0 <http://www.apache.org/licenses/LICENSE-2.0>`_
+
 .. _faq:library:really_free:
 
 Is it really free and open source?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As long as you comply with the license.
 
 .. _faq:library:guarantuees:
 
 What guarantees do you provide about the quality of this library?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+None. We use it internally at Google and we are happy with it.
+
 .. _faq:library:language_coded:
 
 In what language(s) is the library coded?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The library itself is coded in C++.
 
 .. _faq:library:language_supported:
 
 What are the supported languages?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Through SWIG, the library is available in 
+  
+* Python,
+* Java,
+* and .NET (using mono on non windows platforms).
+
 .. _faq:library:supported_platforms:
 
 What are the supported platforms?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The code is known to compile on:
+
+* gcc 4.4.x on ubuntu 10.04 and up (10.10, 11.04, 11.10 and 12.04)
+* xcode >= 3.2.3 on Mac OS X Snow Leopard and Mac OS X Lion (gcc 4.2.1)
+* Microsoft Visual Studio 10. 
+
+Both 32 bit and 64 bit architectures are supported, although the code is optimized to run in 64 bit mode. 
 
 .. _faq:library:use_at_google:
 
@@ -92,18 +108,5 @@ this.
 Why did Google, a private company, open source such a project?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-..  _faq:library:why_coding_style:
-
-Why didn't you use... or did you use... in your library?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-As member of Google, we have to follow some guidelines.
-
-For instance, streams are highly discouraged. Why? Because...
-
-Another convention we have to follow is to use small letter "k" in front
-of global constants. 
-
-We cannot use reference if there are not constant.
-
+We would like to make contacts with the academic community and benefit from mutual and productive exchanges.
 

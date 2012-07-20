@@ -19,6 +19,8 @@ General questions about the documentation
 
 * :ref:`faq:documentation:search_tool`
 
+* :ref:`faq:documentation:computer_used`
+
 * :ref:`faq:documentation:end_of_project`
 
 .. _faq:documentation:help:
@@ -115,7 +117,7 @@ Give us some time. For the moment, the structure of the documentation is still c
 What computer did you use for the numerical results?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 It doesn't really matter. What matters is that ALL experiments where done with 
-the same computer. You insist? OK, we used a laptop computer running under Linux with 3.9 GB of RAM. Happy now?
+the same computer. You insist? OK, we used a laptop computer running under Linux (Kernel 2.6.38-15) with 3.9 GB of RAM and two Intel Core2 Duo processors at 2,26 Ghz each. Happy now?
 
 
 .. _`faq:documentation:end_of_project`:

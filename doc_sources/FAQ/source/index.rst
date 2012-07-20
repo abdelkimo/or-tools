@@ -27,7 +27,15 @@ General questions about:
   :ref:`the library <faq:library:questions>`:
     We try to answer general questions about the library.
     
-  :ref:`the CP Solver <faq/CPsolver>`
+  :ref:`the CP Solver <faq:CPsolver:qestions>`:
+    We try to answer general questions about the CP Solver engine. 
+    
+    This section is broken down into several sub-sections:
+    
+  :ref:`the CP Routing Solver <faq:routing:questions>`
+    We try to answer general questions about the CP Routing Solver engine.
+    
+    This section is broken down into several sub-sections:
 
 .. toctree::
    :maxdepth: 1

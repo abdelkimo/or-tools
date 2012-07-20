@@ -7,7 +7,7 @@ The Google or-tools library
 
 ..  only:: draft
 
-    The Google *or-tools* open source library was publicly released on September 2010.
+    The Google *or-tools* open source library was publicly released in September 2010.
     Since then it has evolved to a huge project containing more than 65K lines of code written in ``C++``! The constraint programming part
     - including the important vehicle routing engine  - has the lion's share with approximatively 55K lines of code.
     

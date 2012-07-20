@@ -11,9 +11,26 @@ Introduction to constraint programming
 ..  In this chapter, we introduce you to Constraint Programming (CP) and help you
     make your first steps with the or-tools library in CP.
 
+..  rubric:: Overview:
 
 
-    Let's start with some examples.
+..  rubric:: Prerequisites:
+
+..  only:: html
+    
+    - None.
+
+..  raw:: latex
+
+    \begin{itemize}
+      \item None.
+    \end{itemize}
+
+
+
+..  only:: html
+
+    ..  rubric:: Content:
 
 ..  toctree::
     :maxdepth: 1
