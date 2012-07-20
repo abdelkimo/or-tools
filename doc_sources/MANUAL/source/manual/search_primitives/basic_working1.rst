@@ -509,7 +509,7 @@ The basic search algorithm and the callback hooks for the ``SearchMonitor``\s
                   d->Apply(this);
                   search->AfterDecision(d, true);// SEARCHMONITOR CALLBACK
                   ...
-                } else {//  No Decision left, the DecisionBuilder has done its job
+                } else {//  No Decision left, the DecisionBuilder has finished
                   break;
                 }
               }//  while (true) 

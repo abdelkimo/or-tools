@@ -175,7 +175,6 @@ The class ``Assignment`` has a rich API that allows you to retrieve not only the
 also additional information. You can also act on some of the variables for instance to disable them during a search. We will see this class in more details in chapter XXX. 
 
 ..  code-block:: c++
-    :emphasize-lines: 17
     
     SolutionCollector* const all_solutions = 
                                           solver.MakeAllSolutionCollector();
