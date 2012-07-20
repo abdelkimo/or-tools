@@ -34,4 +34,4 @@ Other companies, products, or service names may be trademarks or service marks o
 
 \section*{Ackowledgments}
 We thank the following people for their helpful comments:\\
-Dania El-Khechen, H\r{a}kan Kjellerstrand, Louis-Martin Rousseau
+Dania El-Khechen, H\r{a}kan Kjellerstrand, Louis-Martin Rousseau, Thomas Carton de Wiart

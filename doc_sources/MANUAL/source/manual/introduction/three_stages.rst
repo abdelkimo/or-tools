@@ -6,7 +6,7 @@ The three-stage method: describe, model and solve
 ..  only:: draft
 
     We propose a recipe that belongs to the folklore. Like all recipe it is 
-    only a guide and should not be followed exactly. When it comes to research, everything is permitted
+    only a guide and should not be followed blindly. When it comes to research, everything is permitted
     and your imagination is the limit.
     
     The three stages are inter-mingled and are not intended to be followed one after the other rigidly
@@ -77,7 +77,7 @@ Solve
     
     ..  only:: html
     
-        We discuss this stage in details in chapter :ref:`search_primitives`.
+        We discuss this stage in details in the chapter :ref:`search_primitives`.
         
     ..  raw:: latex
     

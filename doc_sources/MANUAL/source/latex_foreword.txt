@@ -184,14 +184,14 @@ and post your questions, suggestions, remarks, \ldots\ to the~or-tools~discussio
 
 Use this simple reference:
 \begin{center}
-N. van Omme and L. Perron, \emph{or-tools user's manual}, Google, 2012.
+N. van Omme,  L. Perron and V. Furnon, \emph{or-tools user's manual}, Google, 2012.
 \end{center}
 
 Here is a bibtex entry:
 
 \code{%
 \symbol{64}TECHREPORT\{or-tools-user-manual,\\
-\hspace*{5mm}  author = Nikolaj van Omme and Laurent Perron,\\
+\hspace*{5mm}  author = Nikolaj van Omme and Laurent Perron and Vincent Furnon,\\
 \hspace*{5mm}  title = or-tools user's manual,\\
 \hspace*{5mm}  institution = Google,\\
 \hspace*{5mm}  year = 2012\\

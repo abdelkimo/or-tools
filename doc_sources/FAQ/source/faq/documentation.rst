@@ -17,8 +17,6 @@ General questions about the documentation
 
 * :ref:`faq:documentation:page_layout`
 
-* :ref:`faq:documentation:first_chapter`
-
 * :ref:`faq:documentation:search_tool`
 
 * :ref:`faq:documentation:end_of_project`
@@ -103,17 +101,6 @@ then we format the documents.
 
 You can send us your comments about the layout (see :ref:`faq:documentation:contribute`). We might not correct the layout right away but we'll
 keep your suggestions for later.
-
-
-.. _`faq:documentation:first_chapter`:
-
-What about the first chapter?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This is probably the most difficult to write chapter and will be written last.
-
-This chapter will be an introduction to Constraint Programming and... the manual. Expect to see some common concepts explained here. If 
-you see important notions in the other chapters that are not explained, this is because we will detail them in this first chapter. 
 
 .. _`faq:documentation:search_tool`:
 

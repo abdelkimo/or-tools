@@ -323,14 +323,14 @@ Foreword
     
     Refer to the written document like this:
     
-    N. van Omme and L. Perron, *or-tools user's manual*\ , Google, 2012. 
+    N. van Omme, L. Perron and V. Furnon, *or-tools user's manual*\ , Google, 2012. 
     
     Here is a bibtex entry:
     
     ..  code-block:: text
     
         @TECHREPORT{or-tools-user-manual,
-          author = {Nikolaj van Omme and Laurent Perron},
+          author = {Nikolaj van Omme and Laurent Perron and Vincent Furnon},
           title = {or-tools user's manual},
           institution = {Google},
           year = {2012}
