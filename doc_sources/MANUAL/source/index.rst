@@ -53,7 +53,7 @@ Foreword
          
              <p>
              <a class="reference internal" href="manual/search_primitives.html"><em>5. Search primitives</em></a><br>
-             <a class="reference internal" href="manual/LSO.html"><em>6. Local Search operators</em></a><br>
+             <a class="reference internal" href="manual/LSO.html"><em>6. Local Search</em></a><br>
              <a class="reference internal" href="manual/LNS.html"><em>7. Large Neighbourhood Search</em></a><br>
              <a class="reference internal" href="manual/custom_constraints.html"><em>8. Custom constraints</em></a>
              </p>
@@ -380,7 +380,7 @@ Foreword
    Using objectives <manual/objectives>
    Reification <manual/reification>
    Search primitives <manual/search_primitives>
-   Local Search operators <manual/LSO>
+   Local Search <manual/LS>
    Large Neighbourhood Search <manual/LNS>
    Custom constraints <manual/custom_constraints>
    TSP with constraints <manual/TSP>
