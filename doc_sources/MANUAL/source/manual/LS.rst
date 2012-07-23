@@ -9,9 +9,23 @@ Local Search
 
 ..  rubric:: Overview:
 
+..  only:: draft
+
+    And here goes my text
+
 ..  rubric:: Prerequisites:
 
+..  only:: draft
+
+    And here goes my text
+
+
 ..  rubric:: Files:
+
+..  only:: draft
+
+    And here goes my text
+
 
 ..  only:: html
 

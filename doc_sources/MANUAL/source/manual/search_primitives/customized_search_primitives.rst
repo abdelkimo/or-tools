@@ -11,10 +11,22 @@ Customized search primitives
 ..  only:: draft
 
 
-    tada customization
+    customization
     
 The ``MakePhase()`` method more in details
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Composing ``DecisionBuilder``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Nested searches
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+MakeSolveOnce
+
+MakeNestedOptimize
+
+..  raw:: html
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+

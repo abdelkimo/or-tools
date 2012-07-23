@@ -53,7 +53,7 @@ Foreword
          
              <p>
              <a class="reference internal" href="manual/search_primitives.html"><em>5. Search primitives</em></a><br>
-             <a class="reference internal" href="manual/LSO.html"><em>6. Local Search</em></a><br>
+             <a class="reference internal" href="manual/LS.html"><em>6. Local Search</em></a><br>
              <a class="reference internal" href="manual/LNS.html"><em>7. Large Neighbourhood Search</em></a><br>
              <a class="reference internal" href="manual/custom_constraints.html"><em>8. Custom constraints</em></a>
              </p>

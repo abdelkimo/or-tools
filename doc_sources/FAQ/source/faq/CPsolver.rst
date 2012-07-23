@@ -3,6 +3,12 @@
 General questions about the CP solver
 -------------------------------------
 
+THIS IS WORK IN PROGRESS.
+
+..  only:: draft
+
+    change How can I by How do I...
+
 * :ref:`faq:CPsolver:diff_solve_newsearch`
 * :ref:`faq:CPsolver:basic_functionnality`
 * :ref:`faq:CPsolver:main_methods`
@@ -14,7 +20,7 @@ What is the difference between ``Solve()`` and ``NewSearch()``?
 
 ..  _faq:CPsolver:basic_functionnality:
 
-Could you explain the basic functionnality of the CP solver?
+Could you explain the basic functionality of the CP solver?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ..  _faq:CPsolver:main_methods:
