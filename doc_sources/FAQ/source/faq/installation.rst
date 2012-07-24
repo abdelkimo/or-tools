@@ -71,6 +71,13 @@ then:
     make all
 
 If the problem persists, ask for some help on the `mailing list <http://groups.google.com/group/or-tools-discuss>`_.
+Meanwhile, you can revert to an older and working version:
+
+..  code-block:: bash
+
+    svn update -r REV
+    
+where ``REV`` is the revision number.
 
 ..  raw:: html 
 
