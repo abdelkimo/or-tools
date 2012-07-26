@@ -15,6 +15,8 @@ several selection primitives are available.
 To select next variable
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+..  warning:: TO BE UPDATED AND SYNC WITH THE CODE!!!
+
 ..  only:: draft
 
     To select next variable in the search tree, several selection primitives are already defined. The ``enum``
