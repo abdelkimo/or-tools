@@ -22,6 +22,10 @@ Local Search
     ..  [#watch_out_for_quantic_computers] But watch out for the next generation
         of computers: computers based on quantum mechanics!
     
+    ..  topic:: What do we mean by a *garantee* on the solution?
+    
+        Blibli
+        
 ..  rubric:: Overview:
 
 ..  only:: draft
