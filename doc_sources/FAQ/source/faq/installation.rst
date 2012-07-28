@@ -15,7 +15,7 @@ How do I download, install and compile the or-tools library?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The wiki page `Getting Started <http://code.google.com/p/or-tools/wiki/AGettingStarted>`_ explains 
-how to donwload, install and compile the or-tools library.
+how to download, install and compile the or-tools library.
 
  .. _faq:installation:compile_independently:
 
@@ -56,7 +56,7 @@ The update process is not working and I get an error. What should I do?
 
 We try our best to commit only working versions of the *or-tools* library.
 From time to time, it can happen that for your configuration we forgot something but
-it should not happen too often. What could happen is that you need to clean the library.
+it should not happen too often. It could be that you need to clean the library.
 
 Try in your base directory:
 

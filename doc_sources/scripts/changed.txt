@@ -5,5 +5,3 @@ faq/faq/documentation.html
 faq/faq/library.html
 faq/faq/routing.html
 faq/faq/CPsolver.html
-faq/_static/underscore.js
-faq/_static/jquery.js

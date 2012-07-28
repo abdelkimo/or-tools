@@ -65,7 +65,7 @@ I'd like to improve a section in the documentation. How do I contribute?
 
 .. _faq:documentation:english:
 
-I've spotted strangely formulated sentences in the documention. How come?
+I've spotted strangely formulated sentences in the documentation. How come?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Maybe becauze it iz my third language? We are always trying to improve our work. If you have comments, suggestions, corrections,...
@@ -124,7 +124,7 @@ the same computer. You insist? OK, we used a laptop computer running under Linux
 
 When do you expect to finish?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-1 :superscript:`st` of September 2012 for the first draft. This is more realistic.
+September 1 :superscript:`st`, 2012 for the first draft. 
 
 ..  raw:: html
 
