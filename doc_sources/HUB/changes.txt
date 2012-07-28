@@ -14,6 +14,8 @@
   - html version: search options changed.
 * Minor enhancements to the FAQ:
   - html version: search options changed.
+  - few questions added.
+  - few corrections.
 * Major enhancement to the manual:
   - chap 5: Search primitives added. Happy reading!
 

@@ -1,7 +1,1 @@
-faq/index.html
-faq/genindex.html
-faq/faq/installation.html
-faq/faq/documentation.html
-faq/faq/library.html
-faq/faq/routing.html
-faq/faq/CPsolver.html
+documentation_hub.html
