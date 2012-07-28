@@ -48,7 +48,7 @@ The basic ingredients
 
     ..  [#no_free_lunch] Google for the *No Free Lunch Theorem* in optimization to learn more about this.
     
-    ..  [#reactive_search_links] See `Wikipedia <http://en.wikipedia.org/wiki/Reactive_search_optimization>`_  or 
+    ..  [#reactive_search_links] See `Wikipedia Reactive search optimization <http://en.wikipedia.org/wiki/Reactive_search_optimization>`_  or 
         `reactive-search.org <http://www.reactive-search.org/>`_.
     
     
@@ -84,9 +84,20 @@ The basic ingredients
 
 ..  only:: draft
 
-    ..  topic:: What is it with the word *meta*?
+    ..  topic:: What is it with the word *meta* [#meta_meaning_wiki]_?
     
-        blabla
+        An heuristic is an algorithm that provides a (hopefully) good solution 
+        for a given problem. A *meta*-heuristic is more like a theoretical framework to solve 
+        problems: you have to adapt the meta-heuristic to your needs. For instance, Genetic Algorithms
+        use a recombination of parts of solutions (the genes) but for a specific problem, you have to find
+        out what parts of solution you can combine and how you can combine them. A meta-heuristic gives you 
+        guidelines to construct your algorithm.
+        
+        It's a recipee on how to write a recipee. You have one level of indirection 
+        like in *meta*-programming where you write code to generate code.
+
+
+        ..  [#meta_meaning_wiki] See `Wikipedia meta <http://en.wikipedia.org/wiki/Meta>`_ for the meaning of the word *meta*.
 
 ..  _local_search_efficiency:
 
