@@ -90,7 +90,7 @@
 
         
     After your search is finished AND you have called (implicitley or explicitly)
-    ``EndSearch()`` (files are created in the ``ÈxitSearch()`` callback),
+    ``EndSearch()`` (files are created in the ``ExitSearch()`` callback),
     you can run :program:`cpviz` to digest the XML output of your search by going to :file:`viz/bin` and
     typing:
     
@@ -129,7 +129,7 @@
     sizes by contracting several nodes. Except for the dummy root node, each node is denoted by a variable name. Also, we only 
     give the left branches explicitly. The numbers along the branches denote the *applied decisions* and the numbers in the right 
     corner above the names of the nodes are the number of values in the domain of the corresponding variable just before the decision was
-    taken. Nodes in green denote feasible solutions, nodes in red subtrees without any feasible solutions and nodes in blue, intermediate
+    taken. Nodes in green denote feasible solutions, nodes in red sub-trees without any feasible solutions and nodes in blue, intermediate
     try nodes  (these only exist during the search).
     
 
@@ -155,16 +155,16 @@ Interpreting the graphic results
     
         We redirect ``std::err`` into the file :file:`cpviz_nqueens4_basic.txt`.
         
-    We will transcibe the information contained in the file :file:`cpviz_nqueens4_basic.txt` but
+    We will transcribe the information contained in the file :file:`cpviz_nqueens4_basic.txt` but
     in a more graphical way. Pay attention to the order in which the variables and
     the constraints are processed.
     
     Recall that we are solving the problem of finding all distinct solutions
     of the n-queens problem with :math:`4` queens. Our search strategy is to
     choose the first variable with a non empty domain with a least two elements (``Solver::CHOOSE_FIRST_UNBOUND``).
-    Once this variable is choosen, we give it the smallest possible value contained in its domain (``Solver::ASSIGN_MIN_VALUE``).
+    Once this variable is chosen, we give it the smallest possible value contained in its domain (``Solver::ASSIGN_MIN_VALUE``).
     We have :math:`4` variables :math:`x_0, x_1, x_2` and :math:`x_3` introduced in that order. The :math:`3` constraints 
-    are all ``AllDifferent`` contraints introduced in the following order:
+    are all ``AllDifferent`` constraints introduced in the following order:
     
     ..  math::
     
@@ -190,7 +190,8 @@ The search tree
         The actual search tree of our search 
         
     As you can see, at each node, the solver took a ``Decision``: the left branch to *apply* the ``Decision`` and the right branch 
-    to *refute* this ``Decision``. The leaf nodes in red denote subtrees that are not worth exploring explicitly: we cannot find any solution 
+    to *refute* this ``Decision``. The leaf nodes in red denote sub-trees that are not worth exploring explicitly: 
+    we cannot find any solution 
     along this branch of the tree. The leaf nodes in green denote on the contrary feasible solutions. The nodes are numbered in the order
     of creation and we can see that the search tree is traversed in pre-order by the solver.
     
@@ -220,7 +221,7 @@ The search tree
         There are indeed two distinct solutions denoted by the two green leafs.
         
       Failures (6):
-        A failure occurs whenever the solver has to backtrack, wether it is because of a real failure (nodes :math:`2-3` and :math:`9-10`)
+        A failure occurs whenever the solver has to backtrack, whether it is because of a real failure (nodes :math:`2-3` and :math:`9-10`)
         or a success (nodes :math:`5` and :math:`7`). Indeed, when the solver finds a solution, it has to backtrack to find other solutions.
         The method ``failures()`` returns the number of leaves of the search tree. In our case, :math:`6`.
         
@@ -239,7 +240,7 @@ The search tree
       Stamps (29):
         This statistic is more an internal statistic than a real indicator of the search. It is related to the 
         queue actions during the search. The queue is responsible for the propagation which occurs when one or more variables domains
-        change. Everytime the propagation process is triggered, the ``stamp`` counter is increased. 
+        change. Every time the propagation process is triggered, the ``stamp`` counter is increased. 
         Other queue actions also increase this counter. For instance, when 
         the queue is frozen. For a simple search,
         this statistic is more or less equivalent to the length of a pre-order traversal of the search tree (:math:`20` in our case). 
@@ -298,7 +299,7 @@ Our :program:`cpviz`'s output of the search tree
         \includegraphics[height=75pt]{real_tree1.pdf}
         \label{fig:real_tree1}
         }
-        \caption{Contruction of the real search tree from the cpviz tree: step 1}\label{fig:tree1}
+        \caption{Construction of the real search tree from the cpviz tree: step 1}\label{fig:tree1}
         \end{figure}
 
         Next, we start with the actual root node. As you can see in our \textbf{cpviz} output, the dummy root node doesn't even 
@@ -347,7 +348,7 @@ Our :program:`cpviz`'s output of the search tree
         \includegraphics[height=85pt]{real_tree2.pdf}
         \label{fig:real_tree2}
         }
-        \caption{Contruction of the real search tree from the cpviz tree: step 2}\label{fig:tree2}
+        \caption{Construction of the real search tree from the cpviz tree: step 2}\label{fig:tree2}
         \end{figure}
 
         You can see in our \textbf{cpviz} output that the solver has applied the \code{Decision} $x_0 = 0$ but that it couldn't 
@@ -400,7 +401,7 @@ Our :program:`cpviz`'s output of the search tree
         \includegraphics[height=100pt]{real_tree3.pdf}
         \label{fig:real_tree3}
         }
-        \caption{Contruction of the real search tree from the cpviz tree: step 3}\label{fig:tree3}
+        \caption{Construction of the real search tree from the cpviz tree: step 3}\label{fig:tree3}
         \end{figure}
 
         After having applied the \code{Decision} $x_0 = 0$ at step 2, the solver now applies the \code{Decision} $x_1 = 2$ which 
@@ -449,7 +450,7 @@ Our :program:`cpviz`'s output of the search tree
         \includegraphics[height=110pt]{real_tree4.pdf}
         \label{fig:real_tree4}
         }
-        \caption{Contruction of the real search tree from the cpviz tree: step 4}\label{fig:tree4}
+        \caption{Construction of the real search tree from the cpviz tree: step 4}\label{fig:tree4}
         \end{figure}
 
         Our \textbf{cpviz} output now clearly warns that taking $x_0 = 0$ is not compatible with a feasible solution. This can 
@@ -505,7 +506,7 @@ Our :program:`cpviz`'s output of the search tree
         \includegraphics[height=120pt]{real_tree5.pdf}
         \label{fig:real_tree5}
         }
-        \caption{Contruction of the real search tree from the cpviz tree: step 5}\label{fig:tree5}
+        \caption{Construction of the real search tree from the cpviz tree: step 5}\label{fig:tree5}
         \end{figure}
 
         We have found a feasible solution when $x_0 = 1$. Thus we add the branch $x_0 = 1$ and indicate success.\\[0.01cm]
@@ -554,7 +555,7 @@ Our :program:`cpviz`'s output of the search tree
         \includegraphics[height=120pt]{real_tree6.pdf}
         \label{fig:real_tree0}
         }
-        \caption{Contruction of the real search tree from the cpviz tree: step 6}\label{fig:tree6}
+        \caption{Construction of the real search tree from the cpviz tree: step 6}\label{fig:tree6}
         \end{figure}
 
         We have found a second feasible solution when $x_0 = 2$. Because we came from a feasible solution with $x_0 = 1$, 
@@ -604,7 +605,7 @@ Our :program:`cpviz`'s output of the search tree
         \includegraphics[height=145pt]{real_tree7.pdf}
         \label{fig:real_tree0}
         }
-        \caption{Contruction of the real search tree from the cpviz tree: step 7}\label{fig:tree7}
+        \caption{Construction of the real search tree from the cpviz tree: step 7}\label{fig:tree7}
         \end{figure}
 
         We add a tentative branch in the \textbf{cpviz} output. The branch before was a branch were we applied the \code{Decision} 
@@ -656,11 +657,11 @@ Our :program:`cpviz`'s output of the search tree
         \includegraphics[height=160pt]{real_tree8.pdf}
         \label{fig:real_tree0}
         }
-        \caption{Contruction of the real search tree from the cpviz tree: step 8}\label{fig:tree8}
+        \caption{Construction of the real search tree from the cpviz tree: step 8}\label{fig:tree8}
         \end{figure}
 
         The final step  is the branch in the \textbf{cpviz} output $x_1 = 0$ that leads to a failure. This means that when we apply 
-        and refute $x_1 = 0$, we get a failure. Thus we know that both tentatives $x_0 = 1$ and $x_0 \neq 1$ both fail.
+        and refute $x_1 = 0$, we get a failure. Thus we know that $x_0 = 1$ and $x_0 \neq 1$ both fail.
 
     ..  only:: html 
 
@@ -685,7 +686,7 @@ Our :program:`cpviz`'s output of the search tree
             </div>   
             
         The final step is the branch in the :program:`cpviz` output :math:`x_1 = 0` that leads to a failure. This means that when we apply 
-        and refute :math:`x_1 = 0`, we get a failure. Thus we know that both tentatives :math:`x_0 = 1` and :math:`x_0 \neq 1` both fail.
+        and refute :math:`x_1 = 0`, we get a failure. Thus we know that :math:`x_0 = 1` and :math:`x_0 \neq 1` both fail.
         
 Propagation
 """""""""""
@@ -782,7 +783,7 @@ Propagation
 
             
         :math:`x_0 \in \{0\}, x_1 \in \{2\}, x_2 \in \emptyset, x_3 \in \{1,2\}`.
-        We have a failure as the domaine of :math:`x_2` is empty. We backtrack to node :math:`1`
+        We have a failure as the domain of :math:`x_2` is empty. We backtrack to node :math:`1`
         and refute the ``Decision`` :math:`x_1 = 2`.
 
     ..  raw:: html
@@ -827,7 +828,7 @@ Propagation
         
         :math:`x_0 \in \{0\}, x_1 \in \{3\}, x_2 \in \{1\}, x_3 \in \{2\}`.
         
-        This is of course not possible and the following propogation detects this impossibility:
+        This is of course not possible and the following propagation detects this impossibility:
         
         ..  math::
         
@@ -1200,7 +1201,7 @@ Our :program:`cpviz`'s output of the propagation
       
     We also display what variable we focus on next.
     
-    Let's go again throught the 9 steps. We display in the left column our :program:`cpviz`'s tree output, in the middel column the 
+    Let's go again through the 9 steps. We display in the left column our :program:`cpviz`'s tree output, in the middle column the 
     actual search tree and in the right column our :program:`cpviz`'s output of the propagation.
     
     ..  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:
@@ -1272,7 +1273,7 @@ Our :program:`cpviz`'s output of the propagation
         \caption{\textbf{cpviz}'s output of the propagation: step 1}\label{fig:tree1}
         \end{figure}
         
-        The yellow reactangle tells us that the focus is on variable $1 (x_0)$, which means that at the next step a value will 
+        The yellow rectangle tells us that the focus is on variable $1 (x_0)$, which means that at the next step a value will 
         assigned to this variable.\\[0.01cm]
     
     ..  only:: html 
@@ -1302,7 +1303,7 @@ Our :program:`cpviz`'s output of the propagation
        
             </div>   
            
-        The yellow reactangle tells us that the focus is on variable :math:`1 (x_0)`, which means that at the next step a value will 
+        The yellow rectangle tells us that the focus is on variable :math:`1 (x_0)`, which means that at the next step a value will 
         assigned to this variable.
  
     ..  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX:

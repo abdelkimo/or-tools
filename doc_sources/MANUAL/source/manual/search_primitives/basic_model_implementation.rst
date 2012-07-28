@@ -161,7 +161,7 @@ The model
     
     ..  [#univeral_quantificator] :math:`\forall \, j : j > i` simply means that we consider all :math:`j` greater than :math:`i`.
     
-    This means that we can restrict ourself to inequalities involving only :math:`x_i + i` terms. Each of these
+    This means that we can restrict ourselves to inequalities involving only :math:`x_i + i` terms. Each of these
     terms must be different from all others. Doesn't this ring a bell? Yep, this is the ``AllDifferent``
     constraint:
     

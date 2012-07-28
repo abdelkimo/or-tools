@@ -108,7 +108,7 @@ To select next value
     variable at each node during the search:
 
     ``INT_VALUE_DEFAULT``
-      The default behavior is ``ASSIGN_MIN_VALUE``.
+      The default behaviour is ``ASSIGN_MIN_VALUE``.
     ``INT_VALUE_SIMPLE``
       The simple selection is ``ASSIGN_MIN_VALUE``.
     ``ASSIGN_MIN_VALUE``

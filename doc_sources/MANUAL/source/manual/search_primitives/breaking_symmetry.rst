@@ -249,7 +249,7 @@ Breaking symmetry with ``SymmetryBreaker``\s
     The ``SymmetryManager``
     """"""""""""""""""""""""""
     
-    Because the nqueens problem is defined on a square, we have a lots of symmetries we can avoid:
+    Because the n-queens problem is defined on a square, we have a lots of symmetries we can avoid:
     
     * Vertical axis symmetry: we already defined the ``SY`` class;
     * Horizontal axis symmetry: class ``SX``;

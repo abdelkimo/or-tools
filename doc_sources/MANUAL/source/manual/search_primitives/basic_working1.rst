@@ -58,10 +58,10 @@ Search trees
     ..  _search_space_divided_in_two:
 
     ..  figure:: images/search_tree0.*
-        :alt: The search space is divided in two search subtrees.
+        :alt: The search space is divided in two search sub-trees.
         :align: center
         
-        The search space is divided in two search subtrees
+        The search space is divided in two search sub-trees
 
     Each subspace is now smaller and we hope easier to solve. We continue this divide and conquer mechanism until we 
     know that a subspace doesn't contain a feasible solution or if we find all feasible solutions of a subtree.
@@ -130,7 +130,7 @@ Phases
 
 ..  only:: draft
 
-    The CP solver allows you to combine several searches, i.e. different types of *subsearches*. You can search a subtree of the search tree 
+    The CP solver allows you to combine several searches, i.e. different types of *sub-searches*. You can search a subtree of the search tree 
     differently from the rest of your search. This is called *nested* search while the whole search is called a *top-level* search. 
     There is no limitation and you can nest as many searches as 
     you like. You can also restart a (top level or nested) search. In or-tools, each time you use a new ``DecisionBuilder``, we say you 
@@ -549,7 +549,7 @@ The basic search algorithm and the callback hooks for the ``SearchMonitor``\s
         }
 
     Let's dissect this algorithm. First of all, you might wonder where the 
-    progagation takes place. In a few words: Constraints are responsible to attach 
+    propagation takes place. In a few words: Constraints are responsible to attach 
     ``Demon``\s to variables. These ``Demon``\s are on their turn responsible for implementing the
     actual propagation. Whenever the domain of a variable changes, the corresponding ``Demon``\s are 
     triggered. In the main search algorithm, this happens twice: when we ``Apply()`` a ``Decision`` (line 75)
@@ -569,7 +569,7 @@ The basic search algorithm and the callback hooks for the ``SearchMonitor``\s
     
     Next, the corresponding ``DecisionBuilder`` to the current search is kept on line 41.
     
-    We enter now the main loop of the ``NextSolution()`` method. Two boolean variables are defined [#two_bool_variables_playing_another_roles]_
+    We enter now the main loop of the ``NextSolution()`` method. Two Boolean variables are defined [#two_bool_variables_playing_another_roles]_
     
       * ``finish``: becomes ``true`` when the search is over;
       * ``result``: denotes if a feasible solution was indeed found or not.
