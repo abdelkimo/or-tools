@@ -136,7 +136,15 @@ Defining a custom LSN operator
       * ``IntVar* Var(int64 index)``: returns the variable of given index.
       
 
-
+    To construct a new feasible solution, just redefine ``MakeOneNeighbor()``. What are the issues you need to pay attention to?
+    First, you have to be sure to visit the neighborhood, i.e. to iterate among the feasible solutions of this neighborhood. If you 
+    return the same solution(s) again and again or if you don't provide any solution, the solver will not detect this (in the second 
+    case, the solver will enter an infinite loop). You are responsible to scour correctly the neighborhood. Second, you have
+    to be sure the variables you want to change do exist (i.e. beware of going out of bounds on arrays).
+    
+    Now the good news is that you don't have to test for feasibility: it's the job of the solver. You even can give wrong values 
+    to the variables (i.e. values not belonging to the domains). Again, the solver will disregard such solutions.
+    
 
 Combining LSN operators 
 ^^^^^^^^^^^^^^^^^^^^^^^^
