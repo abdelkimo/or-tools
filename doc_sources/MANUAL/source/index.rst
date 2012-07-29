@@ -388,5 +388,5 @@ Foreword
    Utilities <manual/utilities>
    Modeling tricks <manual/modeling_tricks>
    Under the hood <manual/under_the_hood>
-   
+
 

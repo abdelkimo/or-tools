@@ -12,6 +12,7 @@
     + minor enhancements.
     + comments from Hakan (Thanks!) added.
   - html version: search options changed.
+  - glossary disregarded: definitions can be found throughout the manual.
 * Minor enhancements to the FAQ:
   - html version: search options changed.
   - few questions added.

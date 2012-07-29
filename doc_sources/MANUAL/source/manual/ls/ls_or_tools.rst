@@ -8,6 +8,9 @@ Local Search in *or-tools*
     We will use a fictive example throughout this section so
     we can solely focus on the basic ingredients provided by the or-tools 
     library to do the local search.
+    Our fictive example concists in minimizing the sum of :math:`n` ``IntVar``\s
+    :math:`\{x_0, \ldots, x_{n - 1}\}` each with domain :math:`[0, n - 1]`.
+    We add the fictive constraint :math:`x_0 \geqslant 1` (and thus ask for :math:`n \geqslant 2`).
     
     We provide two real yet simple examples in the next section.
 
@@ -35,13 +38,18 @@ The basic idea
             :width: 400pt
             :align: center
 
+    We start with an initial feasible solution. The ``MakeOneNeighbor()`` callback method 
+    from the Local Search Operator (or from the Local Search Operator\ **s** if there are more than one)
+    constructs one by one neighboring solutions. These solutions are checked by the CP solver. The best solution
+    is chosen and the process is repeated starting with this new improved solution. The whole process stops
+    whenever a stopping criterion is reached or the CP solver cannot improve anymore the current best solution.
     
 First solution
 """""""""""""""
 
 ..  only:: draft
 
-    To start the local search, we need a first solution. You can either give a starting 
+    To start the local search, we need a first *feasible* solution. You can either give a starting 
     solution or you can ask the CP solver to find one for you. Corresponding to these two options,
     there are two factories methods:
 
@@ -55,16 +63,80 @@ First solution
                                       DecisionBuilder* first_solution,
                                       LocalSearchPhaseParameters* parameters)
     
+    In file :file:`simple_lns1.cc`, we use a :program:`gflags` flag ``FLAG_initial_phase``
+    to switch between these two possibilities.
     
+``LocalSearchPhaseParameters``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Local Search Neighbordhood (LSN) Operators
+..  only:: draft
+
+    TO DO
+
+Local Search Neighborhood (LSN) Operators
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-LSN operators out of the box
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..  only:: draft
 
+    The base class for all local search operators is ``LocalSearchOperator``.
+    The behaviour of this class is similar to the one of an iterator. 
+    The operator is synchronized with a feasible solution (an ``Assignment`` that gives the
+    current values of the variables). This is done in the ``Start()`` method.
+    Then one can iterate over the neighbors using the ``MakeNextNeighbor()`` method.
+    Only the modified part of the solution (an ``Assignment`` called ``delta``) is broadcast. You need also
+    to define a second ``Assignment`` representing the changes to the 
+    last solution defined by the neighborhood operator (an ``Assignment`` called ``deltadelta``).
+    
+    The or-tools takes care of these *delta* and other hassles for the most common cases. The next Figure shows the 
+    LSN Operators hierarchy.
+    
+    ..  only:: html 
+    
+        .. image:: images/lns_hierarchy.*
+            :width: 400pt
+            :align: center
+
+    ..  only:: latex
+    
+        .. image:: images/lns_hierarchy.*
+            :width: 300pt
+            :align: center
+    
+    The ``PathOperator`` class is itself the base class of several other path specialized 
+    LSN Operators. We will review them in section XXX.
+    
+    ``IntVarLocalSearchOperator`` is a specialization of ``LocalSearchOperator`` built for an array of ``IntVar``\s while
+    ``SequenceVarLocalSearchOperator`` is a specialization of ``LocalSearchOperator`` built for an array of ``SequenceVar``\s.
+    
 Defining a custom LSN operator 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+    
+    We will construct an LSN Operator for an array of ``IntVar``\s but the API for an array of ``SequenceVar``\s is similar.
+    
+    There are two methods to overwrite:
+    
+      * ``OnStart()``: this ``private`` method is called each time the operator is synced with a new feasible solution;
+      
+      * ``MakeOneNeighbor()``: this ``protected`` method creates a new feasible solution. As long as there are new solutions to construct 
+        it returns ``true``, ``false`` otherwise.
+
+    Some helper methods are provided:
+    
+      * ``int64 Value(int64 index)``: returns the value in the current assignment of the variable of given index;
+      
+      * ``int64 OldValue(int64 index)``: returns the value in the last assignment of the variable of given index;
+      
+      * ``SetValue(int64 i, int64 value)``: sets the value of the ``i`` :superscript:`th` to ``value`` in the current assignment
+          and allows to construct a new feasible solution;
+      
+      * ``Size()``: returns the size of the array of ``IntVar``\s;
+      
+      * ``IntVar* Var(int64 index)``: returns the variable of given index.
+      
+
+
 
 Combining LSN operators 
 ^^^^^^^^^^^^^^^^^^^^^^^^
