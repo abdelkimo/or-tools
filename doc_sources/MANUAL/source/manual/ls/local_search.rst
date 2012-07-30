@@ -67,7 +67,7 @@ The basic ingredients
         to find a solution to the n-queens problem.
         
 
-        ..  [#relaxing_constraints] Relaxing a constraint in a model means that you remove this contraint or weaken it.
+        ..  [#relaxing_constraints] Relaxing a constraint in a model means that you remove this constraint or weaken it.
 
       2. they improve locally this solution;
       
@@ -75,10 +75,10 @@ The basic ingredients
         you need to define a *neighborhood* (explicitly or implicitly) for a given solution and a way to explore this
         neighborhood.
         
-        In or-tools, you define a neighborhood by implementing a ``MakeOneNeighborhood`` callback method: every time 
+        In or-tools, you define a neighborhood by implementing a ``MakeOneNeighbor`` callback method: every time 
         this method is called internally by the solver, it constructs one solution of the neighborhood defined around a given 
-        solution. As long as there are candidates to test, ``MakeOneNeighborhood`` returns ``true``. When the whole neighborhood
-        has been visited, it returns ``false``.
+        solution. If you have constructed a successful candidate, make ``MakeOneNeighbor`` returns ``true``. When the whole neighborhood
+        has been visited, make it returns ``false``.
 
  
 
