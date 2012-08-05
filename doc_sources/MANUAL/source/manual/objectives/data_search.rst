@@ -3,8 +3,6 @@
 Some global statistics about the search and how to limit the search  
 ---------------------------------------------------------------------
 
-[THIS SECTION IS IN CONSTRUCTION]
-
 ..  raw:: latex
 
     In section~\ref{manual/objectives/objective_functions:objective-functions}, we talked about some global statistics about the search.
@@ -14,10 +12,15 @@ Some global statistics about the search and how to limit the search
 
 ..  only:: html
 
-    In section :ref:`objective_functions`, we talked about some global statistics about the search.
+    In the section :ref:`objective_functions`, we talked about some global statistics about the search.
     In this section we review them one by one.
     
     You can find the code in the file `tutorials/C++/chap3/golomb2.cc <../../../tutorials/C++/chap3/golomb2.cc>`_
+
+..  only:: draft
+
+    To have a very precise idea of the statistics we are talking about in this section, we refer the reader to 
+    section XXX were a more detailed discussion is provided about them.
 
 
 .. index::
@@ -49,9 +52,10 @@ The time is given in milliseconds. If you only want to measure the time spent to
     LOG(INFO) << "The Solve method took " << (time2 - time1)/1000.0 << 
                                                                  " seconds";
 
-As its name implies, the time measured is the wall time, i.e. ... TO BE COMPLETED.
+As its name implies, the time measured is the wall time, i.e. it is the difference between the time at which a task 
+finishes and the time at which the task started and not the actual time spent by the computer to solve a problem.
 
-For instance, on my computer, the program in :file:`golomb1.cc` for :math:`n = 9` takes 
+For instance, on our computer, the program in :file:`golomb1.cc` for :math:`n = 9` takes 
 
 ..  code-block:: bash
 
@@ -62,8 +66,38 @@ For instance, on my computer, the program in :file:`golomb1.cc` for :math:`n = 9
 Failures
 ^^^^^^^^
 
+..  only:: draft
+
+    A failure occurs whenever the solver has to backtrack whether it is because of a real failure, a success or because the 
+    search is restarted or continued.
+    There are two main statistics about failures given by:
+    
+    ..  code-block:: c++
+    
+        Solver s("Global statistics");
+        LOG(INFO) << "Failures: " << s.failures() << std::endl;
+        LOG(INFO) << "Fail stamps: " << s.fail_stamp() << std::endl;
+        
+    ``failures()`` gives the number of leaves in the search tree because this is exactly the number of time the solver 
+    has to backtrack whenever it doesn't find a solution or it does find a solution. Indeed, whenever a solution is found, 
+    that branch of the tree doesn't need any development any more and the solver needs to backtrack to other branches to find
+    other solutions.
+    
+    ``fail_stamp()`` counts the failures counted by ``failure()`` but add some more when the solver internally needs to backtrack 
+    for some reason.
+    
+    
 Branches
 ^^^^^^^^
+
+..  only:: draft
+
+    This one is easy as ``branches()`` returns exactly the number of branches in the search tree:
+    
+    ..  code-block:: c++
+    
+        Solver s("I count my branches");
+        LOG(INFO) << "Branches: " << s.branches() << std::endl;
 
 ``SearchLimit``\s
 ^^^^^^^^^^^^^^^^^^

@@ -31,3 +31,9 @@ To do so, we will look at the following statistics:
 .. [#golom_honesty] To be honest, if you really want to solve the Golomb Ruler Problem, you 
    shouldn't use CP as, until now, no one found how to use CP in an efficient manner to solve this difficult
    problem.             
+   
+..  raw:: html
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+

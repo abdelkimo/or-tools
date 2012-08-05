@@ -183,14 +183,14 @@ Note that we set the minimum value of the difference to ``1``, ``diff1->SetMin(1
 ``MakeDifference()`` doesn't allow us to give a name to the new variable, which is normal as this new variable is the difference of two 
 existing variables. Its name is simply ``name1 - name2``.
 
-Let's compare the first and second implementation. The next table compares some global indicators about the search for :math:`G(9)`.
+Let's compare the first and second implementation. The next table compares some global statistics about the search for :math:`G(9)`.
 
 ..  tabularcolumns:: |l|r|r|
 
 ..  table::
 
     ========== ======== =========
-    Indicators   Impl1     Impl2
+    Statistics Impl1    Impl2
     ========== ======== =========
     Time (s)     4,712    48,317
     Failures    51 833    75 587
@@ -250,7 +250,7 @@ and compare this improved version with the two others, again to compute :math:`G
 ..  table::
 
     ========== ======== ========= =========
-    Indicators   Impl1     Impl2   Impl2+
+    Statistics Impl1    Impl2     Impl2+
     ========== ======== ========= =========
     Time (s)     4,712    48,317    1,984
     Failures    51 833    75 587   53 516

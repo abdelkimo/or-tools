@@ -21,10 +21,11 @@ Large Neighbourhood Search
     
     ..  [#very_large_scale_neighborhood_methods] *Very Large-Scale Neighbourhood* methods are more defined by the fact that the neighborhoods
         considered are growing exponentially in the size of the input than the way these neighborhoods are explored. But if you want
-        to expore these huge neighborhoods efficiently, you must do so heuristically, hence our shortcut in the "definition" of 
-        *Very Large Neighbourhood* methods.
+        to explore these huge neighborhoods efficiently, you must do so heuristically, hence our shortcut in the "definition" of 
+        *Very Large-Scale Neighbourhood* methods.
     
-    **Large Neighbourhood Search (LNS)** is one of those VLN methods.
+    **Large Neighbourhood Search (LNS)** is one of those VLN methods and is especially well suited to be combined with 
+    Constraint Programming.
     
     
 ..  toctree::

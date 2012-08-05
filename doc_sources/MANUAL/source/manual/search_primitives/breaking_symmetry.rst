@@ -1,7 +1,7 @@
 ..  _search_primitives_breaking_symmetry:
 
-Breaking symmetry with ``SymmetryBreaker``\s
----------------------------------------------
+Breaking symmetries (part II) with ``SymmetryBreaker``\s
+------------------------------------------------------------
 
 ..  only:: draft
 

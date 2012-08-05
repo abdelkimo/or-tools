@@ -12,6 +12,7 @@ Implementing custom constraints
     :maxdepth: 2
     
     custom_constraints/basic_working2
+    custom_constraints/dynamic_improvements
     
 ..  raw:: html
     

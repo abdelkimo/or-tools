@@ -24,8 +24,8 @@ visiting (preferably implicitly) the whole search tree to be able to prove optim
 
 ..  _objectives_breaking_symmetries:
 
-Breaking symmetries
-^^^^^^^^^^^^^^^^^^^
+Breaking symmetries (part I)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  raw:: latex
 
@@ -121,7 +121,10 @@ Golomb ruler :math:`\{0,1,4,6\}` has :math:`\{0,2,5,6\}` as mirror Golomb ruler.
     s.AddConstraint(s.MakeLess(s.MakeDifference(X[2],X[1])->Var(),
                                s.MakeDifference(X[n],X[n-1])->Var()));
 
+..  only:: draft
 
+    Later, in section XXX, we will see how to give some rules (by implementing ``SymmetryBreaker``\s) to the solver so that
+    it is the solver itself that will generate the constraints to break symmetries *on the fly* during the search!
 
 Better bounds helps
 ^^^^^^^^^^^^^^^^^^^
@@ -211,7 +214,7 @@ Let's compare our tightened third implementation with the rest, again to compute
 ..  table::
 
     ========== ======== ========= ========= ========= ================== 
-    Indicators   Impl1     Impl2   Impl2+     Impl3    tightened Impl3
+    Statistics Impl1    Impl2     Impl2+    Impl3     tightened Impl3
     ========== ======== ========= ========= ========= ================== 
     Time (s)     4,712    48,317    1,984     0,338     0,137
     Failures    51 833    75 587   53 516     7 521      2288

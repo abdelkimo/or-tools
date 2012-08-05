@@ -36,7 +36,7 @@ and compare our three implementations, again to compute :math:`G(9)`:
 ..  table::
 
     ========== ======== ========= ========= =========
-    Indicators   Impl1     Impl2   Impl2+     Impl3
+    Statistics Impl1    Impl2     Impl2+    Impl3
     ========== ======== ========= ========= =========
     Time (s)     4,712    48,317    1,984     0,338
     Failures    51 833    75 587   53 516     7 521
