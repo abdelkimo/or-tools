@@ -23,25 +23,29 @@ The basic ingredients
         escapes you, read the box.
         
     We will discuss these three ingredients in details in a moment but before that we give some examples of
-    local search (meta-)heuristics:
+    local search (meta-)heuristics [#google_scholar_meta_heur_results]_:
     
-      - **Tabu Search** (implemented in or-tools)
-      - Hill Climbing
-      - Scatter Search
-      - **Simulated Annealing** (implemented in or-tools)
-      - Beam Search
-      - Particle Swarm Optimization
-      - Greedy Descent
-      - Gradient Search
-      - Variable Neighbourhood Search
-      - **Guided Local Search** (implemented in or-tools)
-      - Genetic Algorithms
-      - Ant Colony Optimization
-      - Greedy Adaptive Search Procedure (GRASP):
+      - **Tabu Search** (implemented in or-tools) | (62 100)
+      - Hill Climbing | (54 300)
+      - Scatter Search | (5 600)
+      - **Simulated Annealing** (implemented in or-tools) | (474 000)
+      - Beam Search | (12 700)
+      - Particle Swarm Optimization | (74 500)
+      - Greedy Descent | (263)
+      - Gradient Search | (16 300)
+      - Variable Neighbourhood Search | (1 620)
+      - **Guided Local Search** (implemented in or-tools) | (2 020)
+      - Genetic Algorithms | (530 000)
+      - Ant Colony Optimization | (31 100)
+      - Greedy Adaptive Search Procedure (GRASP)
 
       - ...
       
     and there are a lot more! Most of these methods are quite recent in optimization theory (from the eighties and later).
+    
+    ..  [#google_scholar_meta_heur_results] The numbers are the number of results obtained on Google Scholar on August 5, 2012. There
+        isn't much we can say about those numbers but we though it would be fun to show them. The search for "GRASP" or 
+        "Greedy Adaptive Search Procedure" didn't return any meaningful results.
       
     Most successful methods take into account their search history to guide the search. Even better - when well implemented - 
     *reactive* methods [#reactive_search_links]_ learn and adapt themselves during the search. As you might have guessed from the long list of different
