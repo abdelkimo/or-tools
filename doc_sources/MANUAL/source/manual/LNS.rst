@@ -14,11 +14,12 @@ Large Neighbourhood Search
         without any guarantee to find a good optimum.
         
     Could we combine advantages of both approaches? Visit huge neighborhoods but only paying 
-    the cost needed to visit small neighborhoods? This is what **Very Large Neighbourhood (VLN)** [#very_large_neighborhood_methods]_ methods
+    the cost needed to visit small neighborhoods? This is what **Very Large-Scale Neighbourhood (VLSN)**
+    [#very_large_scale_neighborhood_methods]_ methods
     try to achieve. The basic idea is to create large neighborhoods but to only (heuristically) visit the more interesting
     parts of it.
     
-    ..  [#very_large_neighborhood_methods] *Very Large Neighbourhood* methods are more defined by the fact that the neighborhoods
+    ..  [#very_large_scale_neighborhood_methods] *Very Large-Scale Neighbourhood* methods are more defined by the fact that the neighborhoods
         considered are growing exponentially in the size of the input than the way these neighborhoods are explored. But if you want
         to expore these huge neighborhoods efficiently, you must do so heuristically, hence our shortcut in the "definition" of 
         *Very Large Neighbourhood* methods.
