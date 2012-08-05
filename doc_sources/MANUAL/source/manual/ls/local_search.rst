@@ -37,6 +37,8 @@ The basic ingredients
       - **Guided Local Search** (implemented in or-tools)
       - Genetic Algorithms
       - Ant Colony Optimization
+      - Greedy Adaptive Search Procedure (GRASP):
+
       - ...
       
     and there are a lot more! Most of these methods are quite recent in optimization theory (from the eighties and later).
@@ -107,12 +109,29 @@ The basic ingredients
 Is Local Search efficient?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+..  only:: draft
+
+    LS is a trade off efficiency/no global optimum.
+
 A certain blindness
 """""""""""""""""""""
 
+What about the quality of the solutions found by local search?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    Sometimes, we can have some kind of guarantee on the quality of the solutions found and we speak 
+    about *approximations*, sometimes we don't have a clue of what we are doing and we just hope 
+    for the best.
+
+
+    
+    ..  topic:: What do we mean by a *guarantee* on the solution?
+    
+        Blibli
+ 
+
 Global optimization methods
-""""""""""""""""""""""""""""""
-
-
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

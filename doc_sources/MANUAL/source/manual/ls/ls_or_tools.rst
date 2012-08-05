@@ -359,7 +359,8 @@ Defining a custom LSN operator
     neighborhood 9 around :math:`[1,0,0,1]`:
       :math:`[0,0,0,1]`, :math:`[1,-1,0,1]`, :math:`[1,0,-1,1]` are rejected as infeasible, :math:`[1,0,0,0]` is a new better solution with value 1;
 
-    At this point, the solver is able to recognize that there are no more possibilities. The two last lines printed 
+    At this point, the solver is able to recognize that there are no more possibilities. 
+    The two last lines printed 
     by the ``SearchLog`` summarize the local search:
     
     ..  code-block:: bash
@@ -378,11 +379,16 @@ Defining a custom LSN operator
     to disregard them. We didn't filter any solution (and this is the reason why the number of constructed neighbors is equal
     to the number of filtered neighbors). You can learn more about filtering in section XXX.
     
-    Try to start with the solution provided by the ``DecisionBuilder`` (:math:`[3,3,3,3]`) and see if you can figure out 
+    If you want, you can try to start with the solution provided by the ``DecisionBuilder`` (:math:`[3,3,3,3]` when :math:`n=4`) 
+    and see if you can figure out 
     what the 29 constructed neighbors and 11 accepted solutions are. 
     
 Combining LSN operators 
 ^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    TO BE DONE.
 
 ..  raw:: html 
     
