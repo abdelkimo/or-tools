@@ -52,7 +52,7 @@ Search trees
     traverse or explore. Each node of the tree corresponds to a state of the search. Take an array of variables :math:`x[]`
     and a valid index :math:`i`. 
     
-    ..  raw:: html
+    ..  only:: html
     
         At one node in the search tree, we divide the search space in two exclusive search subspaces by imposing 
         :math:`x[i] = 2` at one branch and :math:`x[i] \neq 2` at another branch like in Figure 
@@ -418,7 +418,7 @@ The basic search algorithm and the callback hooks for the ``SearchMonitor``\s
     
     The initialization part consists in installing the backtracking and  
     propagation mechanisms, the monitors and the print 
-    trace if needed. If everything went smoothly, the solver is in state 
+    trace if needed. If everything goes smoothly, the solver is in state 
     ``IN_SEARCH``.
 
 ``NextSolution()``
@@ -427,9 +427,9 @@ The basic search algorithm and the callback hooks for the ``SearchMonitor``\s
 
     The ``NextSolution()`` method returns ``true`` if if finds the next solution, 
     ``false`` otherwise. Notice that the statistics are not reset whatsoever from one call of ``NextSolution()``
-    to the other even if another phase is started.
+    to the next one.
     
-    We present this algorithm and discuss it right after in more details. ``SearchMonitor``'s callbacks are indicated by the 
+    We present and discuss this algorithm below. ``SearchMonitor``'s callbacks are indicated by the 
     comment:
     
     ..  code-block:: c++
@@ -558,22 +558,22 @@ The basic search algorithm and the callback hooks for the ``SearchMonitor``\s
           return result;
         }
 
-    Let's dissect this algorithm. First of all, you might wonder where the 
-    propagation takes place. In a few words: Constraints are responsible to attach 
+    Let's dissect the algorithm. First of all, you might wonder where does the propagation take place. 
+    In a few words: ``Constraint``\s are responsible of attaching 
     ``Demon``\s to variables. These ``Demon``\s are on their turn responsible for implementing the
     actual propagation. Whenever the domain of a variable changes, the corresponding ``Demon``\s are 
     triggered. In the main search algorithm, this happens twice: when we ``Apply()`` a ``Decision`` (line 75)
     and when we ``Refute()`` a ``Decision`` (line 53).
     
-    Back to the algorithm. On line 2, the solver takes the last search as several searches can be nested
+    Back to the algorithm. On line 2, the solver grabs the last search. Indeed, several searches can be nested
     and queued.
     
-    The ``Search`` object is responsible to monitor the search for one ``DecisionBuilder`` (one phase) and triggers
+    The ``Search`` object is responsible of monitoring the search for one ``DecisionBuilder`` (one phase) and triggers
     the callbacks of the installed ``SearchMonitor``\s at the right moments.
     
-    Following the solver's state, some actions are needed and this is done lines 6-39. The case ``AT_SOLUTION`` is worth
-    and explanation. The solver is in this state because if found a feasible solution when ``NextSolution()`` was called.
-    The solver needs thus to backtrack (method ``BacktrackOneLevel() on line 14). If a right branch exists, it is stored in the 
+    Following the solver's state, some action  is needed (see lines 6-39). The case ``AT_SOLUTION`` is worth
+    an explanation. The solver is in this state because it found a feasible solution when ``NextSolution()`` was called.
+    The solver thus needs to backtrack (method ``BacktrackOneLevel() on line 14). If a right branch exists, it is stored in the 
     ``Decision`` pointer ``fd`` (failed decision) and ``BacktrackOneLevel()`` returns ``false``. If there are no more right branches 
     to visit, the search tree has been exhausted and the method returns ``true``.
     
