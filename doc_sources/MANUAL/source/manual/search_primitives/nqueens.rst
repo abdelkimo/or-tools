@@ -12,15 +12,15 @@ The n-queens Problem
 
     ..  only:: html 
         
-        We have met the n-queens problem (and defined what a solution is) in chapter :ref:`chapter_introduction`.
+        We have discussed the n-queens problem (and defined what a solution is) in chapter :ref:`chapter_introduction`.
         
     ..  raw:: latex 
     
-        We have approached the n-queens problem (and defined what a solution is) in chapter~\ref{manual/introduction:chapter-introduction}.
+        We have discussed the n-queens problem (and defined what a solution is) in chapter~\ref{manual/introduction:chapter-introduction}.
         
     Little is known that finding one solution for every :math:`n` is... quite easy [#n_queens_easy]_. 
     Indeed, there exist polynomial-time algorithms that compute a solution given a size :math:`n`. For instance, Hoffman
-    et al. proposed a simple algorithm to return a solution of the n-queens problem in [Hoffman1969]_. 
+    et al. proposed a simple algorithm to return a solution of the n-queens problem [Hoffman1969]_. 
  
     ..  [#n_queens_easy] In computer science jargon, we say that the problem  of finding one solution for the n-queens problem is
                         in :math:`P`. Actually, it's the *decision version* of this problem but to keep it simple, let's say that 
@@ -89,7 +89,7 @@ The n-queens Problem
 
 ..  only:: draft
 
-    Quite impressive, isn't? It's even more impressive when you know that these numbers were obtained by actually
+    Quite impressive, isn't it? It's even more impressive when you know that these numbers were obtained by explicitly
     finding all these solutions!
     
     ..  topic:: Is the n-queens problem only a "toy" problem?
@@ -116,13 +116,13 @@ Describe
 
 ..  only:: draft
 
-    What is the **goal** of the n-queens problem? We will focus on finding one or all solutions. Given a size :math:`n` of the 
+    What is the **goal** of the n-queens problem? We will focus on finding one or all solutions. Given a size :math:`n` for the 
     :math:`n \times n` chessboard, place :math:`n` queens [#queens_has_solutions]_ so that no two queens attack each other. 
  
     ..  [#queens_has_solutions] It is not obvious that for every :math:`n`, there exist at least a solution. In fact, for :math:`n=2` and 
         :math:`n=3` there are no solution. Hoffman et al. proved that there are solutions for every :math:`n \geqslant 4` in [Hoffman1969]_.
 
-    What are the **decision variables** (unknowns)? We have different choices of course. One clever way to reduce the number of variables is
+    What are the **decision variables** (unknowns)? We have different choices. One clever way to reduce the number of variables is
     to introduce only one variable for each queen. 
     
     What are the **constraints**? No two queens can attack each other. This means to place :math:`n`
@@ -162,7 +162,7 @@ Model
     We have to ensure that the variables cannot take the same value. This is easily done with
     :math:`\texttt{AllDifferent}(x_0, \ldots, x_{n-1})`. We have to ensure that no two queens can be on the same diagonal. It would be nice to 
     have the variables on the diagonals so that we could use again the ``AllDifferent`` constraint. Actually, we know when 
-    two variables represent two queens that are 
+    two queens are 
     on the same diagonal. We'll use a known trick to model this constraint in the next section. 
 
 Solve
@@ -170,6 +170,6 @@ Solve
 
 ..  only:: draft
 
-    This time we will... test some search strategies. We will not yet devise a good search strategy because 
+    This time we will... test some search strategies. We will not devise a good search strategy because 
     we don't know yet what possibilities are implemented in the CP solver. We will test different search strategies and see what works
     and why.

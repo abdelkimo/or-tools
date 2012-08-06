@@ -1,6 +1,6 @@
 ..  _custom_constraints:
 
-Implementing custom constraints
+Custom constraints
 ===============================
 
 ..  only:: html

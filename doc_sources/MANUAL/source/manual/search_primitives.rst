@@ -56,7 +56,7 @@ Defining search primitives: n-queens problems
         - Basic knowledge of C++.
         - Basic knowledge of Constraint Programming and the n-queens problem (see chapter :ref:`chapter_introduction`).
         - Basic knowledge of the Constraint Programming Solver (see chapter :ref:`chapter_first_steps`).
-        - The willingness to roll up your sleeves and be prepared to look a little under the hood.
+        - The willingness to roll up your sleeves and be prepared to look under the hood.
 
     ..  raw:: latex
 

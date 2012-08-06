@@ -49,11 +49,21 @@ Search trees
 ..  only:: draft
 
     A search tree represents the search space that the search algorithm will, implicitly or explicitly, 
-    traverse or explore if you prefer. Each node of the tree corresponds to a state of the search. Take an array of variables :math:`x[]`
+    traverse or explore. Each node of the tree corresponds to a state of the search. Take an array of variables :math:`x[]`
     and a valid index :math:`i`. 
-    At one node in the search tree, we divide the search space in two exclusive search subspaces by imposing 
-    :math:`x[i] = 2` at one branch and :math:`x[i] \neq 2` at another branch like in Figure 
-    :ref:`search_space_divided_in_two`.
+    
+    ..  raw:: html
+    
+        At one node in the search tree, we divide the search space in two exclusive search subspaces by imposing 
+        :math:`x[i] = 2` at one branch and :math:`x[i] \neq 2` at another branch like in Figure 
+        :ref:`search_space_divided_in_two`.
+
+    ..  raw:: latex
+    
+        At one node in the search tree, we divide the search space in two exclusive search subspaces by imposing 
+        $x[i] = 2$ at one branch and $x[i] \neq 2$ at another branch like in 
+        Figure~\ref{manual/search_primitives/basic_working1:search-space-divided-in-two}.
+
     
     ..  _search_space_divided_in_two:
 
@@ -68,7 +78,7 @@ Search trees
     The first node is called the root node and represent the complete search space.
     
     When we divide the search space by applying a decision (:math:`x[i] = 2`) in one branch and by refuting this 
-    decision  (:math:`x[i] \neq 2`)in another, we obtain a binary search trees [#search_tree_not_BST]_.
+    decision  (:math:`x[i] \neq 2`) in another, we obtain a binary search trees [#search_tree_not_BST]_.
     This way of dividing the search tree in two is basically the algorithm used by the CP solver to explore a search tree.
 
     ..  [#] Not to be confused with a binary search tree (BST) used to store ordered sets.
@@ -91,11 +101,11 @@ Callbacks
 ..  only:: draft
 
     To customize the search, we use **callbacks**. A callback is a reference to a piece of executable code (like a function or an object)
-    that is passed as an argument to other code. This is a very common and handy way to pass high level code to low level code. For 
+    that is passed as an argument to another code. This is a very common and handy way to pass high level code to low level code. For 
     example, the search algorithm is low level code. You don't want to change this code but you would like to change the behaviour of the
-    search algorithm to your liking. How could you do this? Callbacks are to the rescue! At some places of the low level code, calls
-    are placed to some functions and you redefine those functions. There are several techniques available. In this section, we redefine
-    a set a virtual functions of an abstract class. In section XXX, we will see another yet similar mechanism.
+    search algorithm to your liking. How do you do this? Callbacks are to the rescue! At some places in the low level code,
+    some functions are called and you can redefine those functions. There are several techniques available. In this section, we redefine
+    some virtual functions of an abstract class. In section XXX, we will see yet another similar mechanism.
     
     An example will clarify this mechanism. Take a ``SearchMonitor`` class. If you want to implement your own search monitor, you 
     inherit from ``SearchMonitor`` and you redefine the methods you need:

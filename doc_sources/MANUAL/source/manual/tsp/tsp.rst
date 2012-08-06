@@ -1,11 +1,14 @@
 ..  _tsp_tsp:
 
-The traveling Salesman Problem
+The travelling Salesman Problem
 -----------------------------------
 
 ..  only:: draft
 
-    What is the TSP?
+    
+    
+What is the Travelling Salesman Problem?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 ..  raw:: html

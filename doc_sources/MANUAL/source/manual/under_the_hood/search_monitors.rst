@@ -11,3 +11,9 @@
     are called at the right places (in the same order the ``SearchMonitor``\s were added to 
     the solver). For instance, at the beginning of the search, each installed 
     ``SearchMonitor`` has its ``EnterSearch()`` callback method called.
+    
+..  raw:: html
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+

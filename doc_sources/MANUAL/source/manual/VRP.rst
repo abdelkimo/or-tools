@@ -1,10 +1,3 @@
-##############################
-This is a part
-##############################
-
-Is it? 
-
-
 ..  vrp_with_constraints:
 
 Vehicule Routing Problem with constraints

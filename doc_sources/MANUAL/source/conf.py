@@ -194,7 +194,7 @@ html_sidebars = {
 	'manual/objectives': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
 	'manual/search_primitives': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
 	'manual/LNS': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
-	'manual/LSO': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
+	'manual/LS': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
 	'manual/custom_constraints': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
 	'manual/modeling_tricks': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
 	'manual/TSP': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],

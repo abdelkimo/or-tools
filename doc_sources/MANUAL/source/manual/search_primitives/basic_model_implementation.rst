@@ -42,7 +42,7 @@ Implementation of the basic model
         in section~\ref{manual/search_primitives/breaking_symmetry:search-primitives-breaking-symmetry}
         page~\pageref{manual/search_primitives/breaking_symmetry:search-primitives-breaking-symmetry}.
         
-    A boolean gflag ``FLAGS_use_symmetry`` allows the us or not of the ``SymmetryBreaker``\s. This flag is defined
+    A boolean gflag ``FLAGS_use_symmetry`` allows or disallows the use of ``SymmetryBreaker``\s. This flag is defined
     in the header ``./nqueens_utilities.h`` and to be able to use it in our main file, we need to *declare* it:
     
     ..  code-block:: c++
@@ -248,8 +248,8 @@ The helper functions
           return;
         }
     
-    where ``kNumUniqueSolutions[]`` and ``kNumSolutions[]`` are static arrays
-    with the right number of solutions. We restrict ourself to test the number of all distinct solutions
+    ``kNumUniqueSolutions[]`` and ``kNumSolutions[]`` are static arrays
+    with the right number of solutions. We restrict ourselves to testing the number of all distinct solutions
     up to ``kKnownSolutions = 15`` and unique solutions up to ``kKnownUniqueSolutions = 19``.
     
     The second helper function ``PrintFirstSolution``, as its name implies, prints the first 
@@ -292,8 +292,8 @@ First results
 
 ..  only:: draft
 
-    Because finding all solutions is hard, we expect the solver to show more and more
-    difficulties to solve the problem of finding all the solutions as the size :math:`n` grows but
+    Because finding all solutions is hard, we expect the solver to face more and more
+    difficulties as the size :math:`n` grows but
     what about the easy problem of finding only one solution?
     
     In the file :file:`nqueens2.cc`, we stop the search as soon as a solution has been found.
@@ -312,7 +312,7 @@ First results
         
 
     To find all solutions, the solver shows a typical exponential behaviour for 
-    intractable problems. The problem sizes are too small to conclude anything
+    intractable problems. The sizes are too small to conclude anything
     about the problem of finding one solution. In the next Table, we try bigger sizes.
     The results are again in seconds.
     

@@ -1,7 +1,7 @@
 ..  _tsp_routing_solver:
 
-The Routing Solver
------------------------------------
+The Vehicle Routing Library in a nutshell
+-------------------------------------------
 
 ..  only:: draft
 
