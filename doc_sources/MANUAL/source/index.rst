@@ -44,7 +44,8 @@ Foreword
              <a class="reference internal" href="manual/introduction.html"><em>1. Introduction to CP</em></a><br>
              <a class="reference internal" href="manual/first_steps.html"><em>2. First steps with or-tools</em></a><br>
              <a class="reference internal" href="manual/objectives.html"><em>3. Using objectives</em></a><br>
-             <a class="reference internal" href="manual/reification.html"><em>4. Reification</em></a>
+             <a class="reference internal" href="manual/reification.html"><em>4. Reification</em></a><br>
+             <a class="reference internal" href="manual/scheduling.html"><em>5. Scheduling</em></a>
              </p>
 
        * Part II: Customization
@@ -52,10 +53,10 @@ Foreword
          ..  raw:: html
          
              <p>
-             <a class="reference internal" href="manual/search_primitives.html"><em>5. Search primitives</em></a><br>
-             <a class="reference internal" href="manual/LS.html"><em>6. Local Search</em></a><br>
-             <a class="reference internal" href="manual/LNS.html"><em>7. Large Neighbourhood Search</em></a><br>
-             <a class="reference internal" href="manual/custom_constraints.html"><em>8. Custom constraints</em></a>
+             <a class="reference internal" href="manual/search_primitives.html"><em>6. Search primitives</em></a><br>
+             <a class="reference internal" href="manual/LS.html"><em>7. Local Search</em></a><br>
+             <a class="reference internal" href="manual/LNS.html"><em>8. Large Neighbourhood Search</em></a><br>
+             <a class="reference internal" href="manual/custom_constraints.html"><em>9. Custom constraints</em></a>
              </p>
 
        * Part III: Routing
@@ -63,8 +64,8 @@ Foreword
          ..  raw:: html
          
              <p>
-             <a class="reference internal" href="manual/TSP.html"><em>9. TSP with constraints</em></a><br>
-             <a class="reference internal" href="manual/VRP.html"><em>10. VRP with constraints</em></a>
+             <a class="reference internal" href="manual/TSP.html"><em>10. TSP with constraints</em></a><br>
+             <a class="reference internal" href="manual/VRP.html"><em>11. VRP with constraints</em></a>
              </p>
 
        * Part IV: Technicalities
@@ -72,9 +73,9 @@ Foreword
          ..  raw:: html
          
              <p>
-             <a class="reference internal" href="manual/utilities.html"><em>11. Utilities</em></a><br>
-             <a class="reference internal" href="manual/modeling_tricks.html"><em>12. Modeling tricks</em></a><br>
-             <a class="reference internal" href="manual/under_the_hood.html"><em>13. Under the hood</em></a>
+             <a class="reference internal" href="manual/utilities.html"><em>12. Utilities</em></a><br>
+             <a class="reference internal" href="manual/modeling_tricks.html"><em>13. Modeling tricks</em></a><br>
+             <a class="reference internal" href="manual/under_the_hood.html"><em>14. Under the hood</em></a>
              </p>
              
         If you are lost, use the links on the right sidebar |rarr|
@@ -379,6 +380,7 @@ Foreword
    First steps with or-tools <manual/first_steps>
    Using objectives <manual/objectives>
    Reification <manual/reification>
+   Scheduling <manual/scheduling>
    Search primitives <manual/search_primitives>
    Local Search <manual/LS>
    Large Neighbourhood Search <manual/LNS>
