@@ -142,7 +142,7 @@ Phases
 
     The CP solver allows you to combine several searches, i.e. different types of *sub-searches*. You can search a subtree of the search tree 
     differently from the rest of your search. This is called *nested* search while the whole search is called a *top-level* search. 
-    There is no limitation and you can nest as many searches as 
+    There are no limitations and you can nest as many searches as 
     you like. You can also restart a (top level or nested) search. In or-tools, each time you use a new ``DecisionBuilder``, we say you 
     are in a new *phase*. This is where the name ``MakePhase`` comes from.
 
@@ -180,7 +180,7 @@ The basic idea
     From the root node, we follow the left branch whenever possible and backtrack
     to the first available right branch when needed. When you see a search tree 
     produced by the CP solver, you can easily track the search by following
-    a *preorder* traversal (see box *What is a pre-order traversal of a binary tree?*) 
+    a *preorder* traversal (see the box *What is a pre-order traversal of a binary tree?*) 
     of the binary search tree.
     
     ..  [#basic_idea_search_algo_without_details] The real code deals with a lots of subtleties 
@@ -273,8 +273,8 @@ The basic search algorithm and the callback hooks for the ``SearchMonitor``\s
             "``EndFail()``", "After completing the backtrack."
             "``BeginInitialPropagation()``", "Before the initial propagation."
             "``EndInitialPropagation()``", "After the initial propagation."
-            "``AcceptSolution()``", "This method is called when a solution is found. It asserts of the solution is valid. A value of false indicate that the solution should be discarded."
-            "``AtSolution()``", "This method is called when a valid solution is found. If the return value is true, then search will resume after. If the result is false, then search will stop there."
+            "``AcceptSolution()``", "This method is called when a solution is found. It asserts if the solution is valid. A value of false indicates that the solution should be discarded."
+            "``AtSolution()``", "This method is called when a valid solution is found. If the return value is true, then search will resume. If the result is false, then search will stop there."
             "``NoMoreSolutions()``", "When the search tree has been visited."
             
          
@@ -315,9 +315,9 @@ The basic search algorithm and the callback hooks for the ``SearchMonitor``\s
             \hline
               \code{EndInitialPropagation()} &  After the initial propagation.\\
             \hline
-              \code{AcceptSolution()} &  This method is called when a solution is found. It asserts of the solution is valid. A value of \code{false} indicate that the solution should be discarded.\\
+              \code{AcceptSolution()} &  This method is called when a solution is found. It asserts if the solution is valid. A value of \code{false} indicates that the solution should be discarded.\\
             \hline
-              \code{AtSolution()} &  This method is called when a valid solution is found. If the return value is \code{true}, then search will resume after. If the result is \code{false}, then search will stop there.\\
+              \code{AtSolution()} &  This method is called when a valid solution is found. If the return value is \code{true}, then search will resume. If the result is \code{false}, then search will stop there.\\
             \hline
               \code{NoMoreSolutions()} &  When the search tree has been visited.\\
             \hline
