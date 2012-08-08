@@ -1,6 +1,6 @@
 .. _chapter_local_search:
 
-Local Search
+Local search: the jobshop problem
 ===================================
 
 ..  only:: draft
@@ -45,12 +45,14 @@ Local Search
     :maxdepth: 2
 
     ls/local_search
-    ls/examples
     ls/ls_or_tools
-    ls/examples_revisited
+    ls/jobshop_first_model
+    ls/jobshop_ls
     ls/ls_filtering
-    ls/guided_ls
     ls/metaheuristics
+    ls/tabu_search
+    ls/simulated_annealing
+    ls/guided_ls
     ls/ls_summary
     
 ..  raw:: html

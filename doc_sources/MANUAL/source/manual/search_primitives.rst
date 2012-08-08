@@ -4,8 +4,8 @@
 
 ..  _search_primitives:
 
-Defining search primitives: n-queens problems
-=============================================
+Defining search primitives: the n-queens problem
+==================================================
 
 ..  only:: draft
 

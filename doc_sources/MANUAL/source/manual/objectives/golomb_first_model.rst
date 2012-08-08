@@ -5,7 +5,7 @@
 
 ..  _golomb_ruler_problem:
 
-The Golomb Ruler Problem and a first model
+The Golomb ruler problem and a first model
 ------------------------------------------
 
 The Golomb Ruler Problem (GRP) is one of these problems that are easy to state but 

@@ -1,7 +1,7 @@
 
 
 
-Large Neighbourhood Search
+Large neighbourhood search
 =======================================
 
 ..  only:: draft

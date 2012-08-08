@@ -1,19 +1,9 @@
-.. _chapter_scheduling:
-
-Scheduling
-==============
-
-..  only:: draft
-
-    To be written later.
-    
-..  toctree::
-    :maxdepth: 1
-
-    scheduling/scheduling
+Tabu search 
+-------------
 
 ..  raw:: html
     
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
 

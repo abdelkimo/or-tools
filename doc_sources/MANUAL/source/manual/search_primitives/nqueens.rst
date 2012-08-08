@@ -5,7 +5,7 @@
 
 ..  _nqueen_problem:
 
-The n-queens Problem
+The n-queens problem
 --------------------
 
 ..  only:: draft

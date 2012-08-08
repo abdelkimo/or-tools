@@ -9,7 +9,7 @@
 
 ..  _cryptarithmetic_problem:
 
-The Cryptarithmetic Puzzle Problem and a first model
+The cryptarithmetic puzzle problem and a first model
 ----------------------------------------------------
 
 ..  raw:: latex

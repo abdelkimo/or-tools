@@ -1,6 +1,6 @@
 ..  _guided_local_search:
 
-Guided Local Search
+Guided local search
 ------------------------------------
 
 ..  raw:: html

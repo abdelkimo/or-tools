@@ -1,5 +1,5 @@
-Using objectives in constraint programming: Golomb rulers
-=========================================================
+Using objectives in constraint programming: the Golomb ruler problem
+======================================================================
 
 ..  index:: objective functions 
     pair: Golomb Ruler; Problem

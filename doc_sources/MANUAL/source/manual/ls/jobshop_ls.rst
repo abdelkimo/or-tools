@@ -1,13 +1,7 @@
-..  _local_search_examples:
+..  _jobshop_ls:
 
-Examples of Local Search
-------------------------------------
-
-The Golomb ruler problem 
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The n-queens problem
-^^^^^^^^^^^^^^^^^^^^^
+The jobshop problem: and now with local search!
+-----------------------------------------------
 
 ..  raw:: html
     

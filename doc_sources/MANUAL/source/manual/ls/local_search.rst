@@ -1,6 +1,6 @@
 ..  _local_search_def:
 
-What is Local Search (LS)?
+What is local search?
 ------------------------------------
 
 The basic ingredients

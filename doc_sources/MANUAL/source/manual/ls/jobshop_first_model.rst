@@ -1,8 +1,7 @@
-..  _metaheuristics:
+..  _jobshop_def:
 
-Metaheuristics and ``SearchMonitor``\s
---------------------------------------
-
+The jobshop problem and a first model 
+---------------------------------------
 
 
 ..  raw:: html

@@ -13,10 +13,10 @@ What are the strengths of Constraint Progamming?
     
     
     , which can completely change the form of the production scheduling
-problem. New products with new requirements will be introduced on a regu-
-lar basis. If a scheduling system can not be adapted to these changes, it will
-rapidly become outdated and useless.
-Another aspect is that the complexit
+    problem. New products with new requirements will be introduced on a regu-
+    lar basis. If a scheduling system can not be adapted to these changes, it will
+    rapidly become outdated and useless.
+    Another aspect is that the complexit
 
 
 ..  raw:: html
