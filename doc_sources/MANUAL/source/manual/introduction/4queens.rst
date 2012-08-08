@@ -152,38 +152,32 @@ Propagation and search
     
         \hrulefill
 
-    ``node 2``: :math:`x_0 \in \{0\}, x_1 \in \{2\}, x_2 \in \{1,3\}, x_3 \in \{1,2\}`.
-        The propagation is as follow:
-        
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1 -1, x_2-2, x_3-3):\\
-            x_2: \cancel{3}
+    The second step starts with the solver trying to place a second queen. It does so in the first available square from above
+    in the second column. As in the first step, the solver knows that no other queen can be placed in a column were it just placed
+    a queen, hence the new grey crosses on the next Figure. 
+    
+    The propagation is as follow:
 
-        ..  image:: images/propagation/propagation3.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
+    The same negative diagonal constraint as in step 1 tells the solver that no queen can be on the negative diagonal of the second
+    queen, hence the red cross.
 
-        
-        :math:`x_0 \in \{0\}, x_1 \in \{2\}, x_2 \in \{1\}, x_3 \in \{1,2\}`.
-        
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1 +1, x_2+2, x_3+3):\\
-            x_2: \cancel{1}
-            
-        ..  image:: images/propagation/propagation4.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
+    ..  image:: images/propagation/propagation3.*
+        :width: 162px
+        :align: center
+        :height: 162px
+        :alt: alternate text
 
-            
-        :math:`x_0 \in \{0\}, x_1 \in \{2\}, x_2 \in \emptyset, x_3 \in \{1,2\}`.
-        We have a failure as the domaine of :math:`x_2` is empty. We backtrack to node :math:`1`
-        and refute the ``Decision`` :math:`x_1 = 2`.
+    Another constraint for the diagonals with positive slopes (diagonals going up then right)
+    tells the solver that no queen can be placed on the positive diagonal of second queen, hence the red cross.
+
+    ..  image:: images/propagation/propagation4.*
+        :width: 162px
+        :align: center
+        :height: 162px
+        :alt: alternate text
+
+    Now, we have a failure as there is no possibility to place a third queen in the third column: there simply can not be 
+    a solution with this configuration. It has to backtrack!
 
     ..  raw:: html
     
@@ -193,267 +187,33 @@ Propagation and search
     
         \hrulefill
 
-    ``node 3``: :math:`x_0 \in \{0\}, x_1 \in \{3\}, x_2 \in \{1,3\}, x_3 \in \{1,2\}`.
-        :math:`x_1` is fixed to :math:`3` because we removed the value :math:`2` of its domain 
-        (refuting the ``Decision`` :math:`x_1 = 2`).
+    The solver decides to challenge its last decision to place the second queen in the third row from above and places it in the 
+    fourth row.
 
-        Propagation:
+    The propagation is as follow:
 
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1 +1, x_2+2, x_3+3):\\
-            x_3: \cancel{1}
+    First the positive diagonal constraint which removes the square with the red cross. This leaves only one possibility to place 
+    a queen in the fourth column.
             
-        ..  image:: images/propagation/propagation5.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
+    ..  image:: images/propagation/propagation5.*
+        :width: 162px
+        :align: center
+        :height: 162px
+        :alt: alternate text
 
+    The "no two queen on the same row" constraint removes one more square in the third column, leaving only one square to place the last 
+    remaining queen.
             
-        :math:`x_0 \in \{0\}, x_1 \in \{3\}, x_2 \in \{1,3\}, x_3 \in \{2\}`.
-        
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1, x_2, x_3):\\
-            x_2: \cancel{3}
-            
-        ..  image:: images/propagation/propagation6.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
+    ..  image:: images/propagation/propagation6.*
+        :width: 162px
+        :align: center
+        :height: 162px
+        :alt: alternate text
 
         
-        :math:`x_0 \in \{0\}, x_1 \in \{3\}, x_2 \in \{1\}, x_3 \in \{2\}`.
-        
-        This is of course not possible and the following propogation detects this impossibility:
-        
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1-1, x_2-2, x_3-3):\\
-            x_2: \cancel{1}
-        
-        :math:`x_0 \in \{0\}, x_1 \in \{3\}, x_2 \in \emptyset, x_3 \in \{2\}`.
-        We have again a failure as the domain of :math:`x_2` is empty. We need 
-        to backtrack to the root node and refute the ``Decision`` :math:`x_0 = 0`.
-
-    ..  raw:: html
-    
-        <hr>
-
-    ..  raw:: latex
-    
-        \hrulefill
-
-    ``node 4``: :math:`x_0 \in \{1,2,3\}, x_1 \in \{0,1,2,3\}, x_2 \in \{0,1,2,3\}, x_3 \in \{0,1,2,3\}`.
-        We apply ``Decision`` :math:`x_0 = 1` which complies with our search strategy.
-        
-    ..  raw:: html
-    
-        <hr>
-
-    ..  raw:: latex
-    
-        \hrulefill
-
-    ``node 5``: :math:`x_0 \in \{1\}, x_1 \in \{0,1,2,3\}, x_2 \in \{0,1,2,3\}, x_3 \in \{0,1,2,3\}`.
-        Propagation:
-        
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1 -1, x_2-2, x_3-3):\\
-            x_1: \cancel{2}, x_2: \cancel{3}
-            
-        ..  image:: images/propagation/propagation7.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
-
-        
-        :math:`x_0 \in \{1\}, x_1 \in \{0,1,3\}, x_2 \in \{0,1,2\}, x_3 \in \{0,1,2,3\}`.
-
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1 +1, x_2+2, x_3+3):\\
-            x_1: \cancel{0}
-            
-        ..  image:: images/propagation/propagation8.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
-
-
-        :math:`x_0 \in \{1\}, x_1 \in \{1,3\}, x_2 \in \{0,1,2\}, x_3 \in \{0,1,2,3\}`.
-
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1, x_2, x_3):\\
-            x_1: \cancel{1}, x_2: \cancel{1}, x_3: \cancel{1}
-            
-        ..  image:: images/propagation/propagation9.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
-
-
-        :math:`x_0 \in \{1\}, x_1 \in \{3\}, x_2 \in \{0,2\}, x_3 \in \{0,2,3\}`.
-
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1+1, x_2+2, x_3+3):\\
-            x_2: \cancel{2}
-            
-        ..  image:: images/propagation/propagation10.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
-
-
-        :math:`x_0 \in \{1\}, x_1 \in \{3\}, x_2 \in \{0\}, x_3 \in \{0,2,3\}`.
-
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1, x_2, x_3):\\
-            x_3: \cancel{3}
-            
-        ..  image:: images/propagation/propagation11.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
-
-
-        :math:`x_0 \in \{1\}, x_1 \in \{3\}, x_2 \in \{0\}, x_3 \in \{0,2\}`.
-
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1, x_2, x_3):\\
-            x_3: \cancel{0}
-            
-        ..  image:: images/propagation/propagation12.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
-
-
-        :math:`x_0 \in \{1\}, x_1 \in \{3\}, x_2 \in \{0\}, x_3 \in \{2\}`.
-        
-        We have a solution! We have now to backtrack to node :math:`4` and refute
-        ``Decision`` :math:`x_0 = 1`.
-        
-    ..  raw:: html
-    
-        <hr>
-
-    ..  raw:: latex
-    
-        \hrulefill
-
-    ``node 6``: :math:`x_0 \in \{2,3\}, x_1 \in \{0,1,2,3\}, x_2 \in \{0,1,2,3\}, x_3 \in \{0,1,2,3\}`.
-        We apply the ``Decision`` :math:`x_0 = 2`.
-        
-    ..  raw:: html
-    
-        <hr>
-
-    ..  raw:: latex
-    
-        \hrulefill
-
-    ``node 7``: :math:`x_0 \in \{2\}, x_1 \in \{0,1,2,3\}, x_2 \in \{0,1,2,3\}, x_3 \in \{0,1,2,3\}`.
-        Propagation:
-        
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1 -1, x_2-2, x_3-3):\\
-            x_1: \cancel{3}
-            
-        ..  image:: images/propagation/propagation13.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
-
-        
-        :math:`x_0 \in \{2\}, x_1 \in \{0,1,2\}, x_2 \in \{0,1,2, 3\}, x_3 \in \{0,1,2,3\}`.
-
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1 +1, x_2+2, x_3+3):\\
-            x_1: \cancel{1}, x_2: \cancel{0}
-            
-        ..  image:: images/propagation/propagation14.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
-
-        
-        :math:`x_0 \in \{2\}, x_1 \in \{0,2\}, x_2 \in \{1,2, 3\}, x_3 \in \{0,1,2,3\}`.
-
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1, x_2, x_3):\\
-            x_1: \cancel{2}, x_2: \cancel{2}, x_3: \cancel{2}
-            
-        ..  image:: images/propagation/propagation15.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
-
-        
-        :math:`x_0 \in \{2\}, x_1 \in \{0\}, x_2 \in \{1,3\}, x_3 \in \{0,1,3\}`.
-
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1-1, x_2-2, x_3-3):\\
-            x_2: \cancel{1}
-            
-        ..  image:: images/propagation/propagation16.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
-
-        
-        :math:`x_0 \in \{2\}, x_1 \in \{0\}, x_2 \in \{3\}, x_3 \in \{0,1,3\}`.
-
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1, x_2, x_3):\\
-            x_3: \cancel{0}
-            
-        ..  image:: images/propagation/propagation17.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
-
-        
-        :math:`x_0 \in \{2\}, x_1 \in \{0\}, x_2 \in \{3\}, x_3 \in \{1,3\}`.
-
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1, x_2, x_3):\\
-            x_3: \cancel{3}
-            
-        ..  image:: images/propagation/propagation18.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
-
-        
-        :math:`x_0 \in \{2\}, x_1 \in \{0\}, x_2 \in \{3\}, x_3 \in \{1\}` and 
-        we have a second distinct solution! We backtrack to node :math:`6` and
-        refute ``Decision`` :math:`x_0 = 2`.
+    This is of course not possible and the negative diagonal constraint tells the solver that no queen 
+    can be on a negative diagonal from the fourth queen. As there **is** one, the solver concludes that there is 
+    a failure. It has to backtrack again! 
         
 
     ..  raw:: html
@@ -464,126 +224,63 @@ Propagation and search
     
         \hrulefill
 
-    ``node 8``: :math:`x_0 \in \{3\}, x_1 \in \{0,1,2,3\}, x_2 \in \{0,1,2,3\}, x_3 \in \{0,1,2,3\}`.
-        :math:`x_0` is fixed because there is only one value left in its domains.
-        
-        Propagation:
-        
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1 +1, x_2+2, x_3+3):\\
-            x_1: \cancel{2}, x_2: \cancel{1}, x_3: \cancel{0}
-            
-        ..  image:: images/propagation/propagation19.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
+    First, it tries to challenge its last choice for the second queen but it detects
+    that there are no more other choices. The solver has to challenge its choice to place the first queen in the first row and places
+    the first queen in the first column second row.
 
-        
-        :math:`x_0 \in \{3\}, x_1 \in \{0,1,3\}, x_2 \in \{0,2, 3\}, x_3 \in \{1,2,3\}`.
-        
-
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1, x_2, x_3):\\
-            x_1: \cancel{3}, x_2: \cancel{3}, x_3: \cancel{3}
-            
-        ..  image:: images/propagation/propagation20.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
-
-        
-        :math:`x_0 \in \{3\}, x_1 \in \{0,1\}, x_2 \in \{0,2\}, x_3 \in \{1,2\}`.
-        No more propagation. We thus apply our search strategy and apply ``Decision`` :math:`x_1 = 0`.
-        
-        
-
-    ..  raw:: html
+    The propagation can now take place:
     
-        <hr>
-
-    ..  raw:: latex
+    The negative diagonal constraint is responsible to take two squares away:
     
-        \hrulefill
+    ..  image:: images/propagation/propagation7.*
+        :width: 162px
+        :align: center
+        :height: 162px
+        :alt: alternate text
 
-    ``node 9``: :math:`x_0 \in \{3\}, x_1 \in \{0\}, x_2 \in \{0,2\}, x_3 \in \{1,2\}`.
-        Propagation:
-
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1-1, x_2-2, x_3-3):\\
-            x_3: \cancel{2}
+    while the positive diagonal constraint one:
             
-        ..  image:: images/propagation/propagation21.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
+    ..  image:: images/propagation/propagation8.*
+        :width: 162px
+        :align: center
+        :height: 162px
+        :alt: alternate text
 
-        
-        :math:`x_0 \in \{3\}, x_1 \in \{0\}, x_2 \in \{0,2\}, x_3 \in \{1\}`.
-
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1, x_2, x_3):\\
-            x_3: \cancel{0}
-            
-        ..  image:: images/propagation/propagation22.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
-
-        
-        :math:`x_0 \in \{3\}, x_1 \in \{0\}, x_2 \in \{2\}, x_3 \in \{1\}` which is impossible as the next propagation shows:
-        
-
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1+1, x_2+2, x_3+3):\\
-            x_2: \cancel{2}
-            
-        
-        :math:`x_0 \in \{3\}, x_1 \in \{0\}, x_2 \in \emptyset, x_3 \in \{1\}`. As the domain of :math:`x_2` is empty,
-        we have failure and have to backtrack to node :math:`8` and refute ``Decision`` :math:`x_1 = 0`.
-
-    ..  raw:: html
+    Now comes the turn of the "no two queen on the same row" constraint and it is responsible of removing 
+    the next three red crosses:
     
-        <hr>
+    ..  image:: images/propagation/propagation9.*
+        :width: 162px
+        :align: center
+        :height: 162px
+        :alt: alternate text
 
-    ..  raw:: latex
-    
-        \hrulefill
+    The positive diagonal constraint kicks in and forbids the red square leaving no choice to place 
+    a third queen in the third column first row.
+     
+    ..  image:: images/propagation/propagation10.*
+        :width: 162px
+        :align: center
+        :height: 162px
+        :alt: alternate text
 
-    ``node 10``: :math:`x_0 \in \{3\}, x_1 \in \{1\}, x_2 \in \{0,2\}, x_3 \in \{1,2\}`.
-        Propagation:
-
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1-1, x_2-2, x_3-3):\\
-            x_2: \cancel{2}
+    The "no two queen on the same row" constraint forbids any other queen to be placed on the fourth row:
             
-        ..  image:: images/propagation/propagation23.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
-
-        
-        :math:`x_0 \in \{3\}, x_1 \in \{0\}, x_2 \in \{0\}, x_3 \in \{1,2\}`.
-        
-
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1+1, x_2+2, x_3+3):\\
-            x_2: \cancel{0}
-            
-        :math:`x_0 \in \{3\}, x_1 \in \{0\}, x_2 \in \emptyset, x_3 \in \{1,2\}`. The empty domain for :math:`x_2` indicates
-        a failure and we have to backtrack... to the root node as we have exhausted the search tree. The search is thus finished
-        and we have found :math:`2` distinct solutions.
+    ..  image:: images/propagation/propagation11.*
+        :width: 162px
+        :align: center
+        :height: 162px
+        :alt: alternate text
 
 
+    and any other queen on the first row, leaving no choice but to place the fourth queen in the fourth column third row:
+
+    ..  image:: images/propagation/propagation12.*
+        :width: 162px
+        :align: center
+        :height: 162px
+        :alt: alternate text
+
+
+    The solver finds out that the model is respected, so we have our first solution!
 
