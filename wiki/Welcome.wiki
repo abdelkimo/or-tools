@@ -7,6 +7,8 @@ This project hosts open source *operations research tools* developed at _Google_
 Although there is a main [http://or-tools.googlecode.com/svn/trunk/documentation/documentation_hub.html or-tools documentation hub], 
 it is currently quite empty.
 
+You can see our progress [http://or-tools.googlecode.com/svn/trunk/documentation/documentation_hub.html#progress here].
+
 We are working hard to provide a user's manual, 
 presentation slides and even  lab sessions.
 
