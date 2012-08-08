@@ -91,16 +91,25 @@ Propagation and search
     ..  [#constraint_programming_poor_def] These are two key elements of a Constraint Programming solving algorithm but 
         there are many more!
          
-    To better understand the search, let's have a look at the propagation in details. First, we look at the real propagation, then
-    we try to understand our :program:`cpviz`'s output.
+    To better understand Constraint Programming, let's have a look at a real solving process [#real_process_details]_. In the following
+    Figures, crosses represent the action of removing values from variables. Each step in the solving process is separated by 
+    horizontal lines.
+
+    ..  [#real_process_details] 
+    
+        ..  only:: html
+        
+            You can find this search process detailed in the sections :ref:`nqueen_implementation_basic_model` and
+            :ref:`cpviz`. 
+            
+        ..  raw:: latex
+
+            You can find this search process detailed in 
+            sections~\ref{manual/search_primitives/basic_model_implementation:nqueen-implementation-basic-model} 
+            and~\ref{manual/search_primitives/cpviz:cpviz}. 
 
 
 ..  only:: draft
-
-    We start at the root node with
-    
-    ``node 0``: :math:`x_0 \in \{0,1,2,3\}, x_1 \in \{0,1,2,3\}, x_2 \in \{0,1,2,3\}, x_3 \in \{0,1,2,3\}`.
-        We apply the ``Decision`` :math:`x_0 = 0` which corresponds to our search strategy.
 
     ..  raw:: html
     
@@ -110,36 +119,31 @@ Propagation and search
     
         \hrulefill
 
-    ``node 1``: :math:`x_0 \in \{0\}, x_1 \in \{0,1,2,3\}, x_2 \in \{0,1,2,3\}, x_3 \in \{0,1,2,3\}`
-        The propagation is done in the following order.
-        
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1 -1, x_2 - 2, x_3 - 3):\\
-            x_1: \cancel{1}, x_2: \cancel{2}, x_3: \cancel{3}
-        
-        ..  image:: images/propagation/propagation1.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
-        
-        :math:`x_0 \in \{0\}, x_1 \in \{0,2,3\}, x_2 \in \{0,1,3\}, x_3 \in \{0,1,2\}`
-        
-        ..  math::
-        
-            \textrm{AllDifferent}(x_0, x_1, x_2, x_3):\\
-            x_1: \cancel{0}, x_2: \cancel{0}, x_3: \cancel{0}
+    The solver starts by placing the first queen in the upper left corner.
+    Because of the model we gave to the solver, it knows that there cannot be any other queen in the 
+    same column, hence the grey crosses on the following Figure. 
+    One constraint tells the solver that there cannot be 
+    another queen on the same diagonal with a negative slope (the diagonals going down then right). The red crosses show 
+    this impossibility. 
 
-        ..  image:: images/propagation/propagation2.*
-            :width: 162px
-            :align: center
-            :height: 162px
-            :alt: alternate text
+        
+    ..  image:: images/propagation/propagation1.*
+        :width: 162px
+        :align: center
+        :height: 162px
+        :alt: alternate text
+        
+    One constraint tells the solver that no two queens can be on the same row, hence the next red crosses.
+    
+    ..  image:: images/propagation/propagation2.*
+        :width: 162px
+        :align: center
+        :height: 162px
+        :alt: alternate text
 
-        :math:`x_0 \in \{0\}, x_1 \in \{2,3\}, x_2 \in \{1,3\}, x_3 \in \{1,2\}`. No more
-        propagation is possible. We then apply the ``Decision`` :math:`x_1 = 2`
-
+    After this first step, only the white squares are still available to place the three remaining queens.
+    The process of excluding some squares to place queens is what is called *propagation*.
+    
     ..  raw:: html
     
         <hr>
