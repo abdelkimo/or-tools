@@ -6,15 +6,69 @@ The 4-queens problem
     ..  only:: html 
     
         We present here a well-known problem among Constraint Programming practitionners: the 4-queens problem.
-        We shall encounter this problem again in Chapter :ref:`search_primitives`.
+        We shall encounter this problem again and generalize it in the Chapter :ref:`search_primitives`.
     
     ..  raw:: latex 
     
         We present here a well-known problem among Constraint Programming practitionners: the 4-queens problem.
-        We shall encounter this problem again in Chapter~\ref{manual/search_primitives:search-primitives}.
+        We shall encounter this problem again and generalize it in Chapter~\ref{manual/search_primitives:search-primitives}.
 
 The problem
 ^^^^^^^^^^^
+
+..  only:: draft
+
+    The *4-queens problem* [#see_what_n_queens_problem_really_is]_ concists in 
+    placing four queens on a 4 x 4 chessboard so that no two queens can capture each other.
+    That is, no two queens are allowed to be placed on the same row, the same column or the same diagonal.
+
+    The following figure illustrates a solution to the 4-queens problem: none of the 4 queens can capture each other.
+
+
+    ..  image:: images/sol_4x4_b.*
+        :width: 162px
+        :align: center
+        
+
+    Although this particular problem isn't very impressive, keep in mind that you can generalize it to :math:`n \times n` chessboards with 
+    :math:`n \geqslant 4`. 
+    
+A mathematical translation of the problem 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+..  only:: draft
+
+    In Constraint Programming we replace a problem by a *mathematical model* with *variables* and *constraints*. Variables 
+    represent available decisions (for instance a binary variable :math:`x_{ij}` that tells if a queens is present on the given
+    :math:`(i,j)` square (:math:`x_{ij} = 1`) or not (:math:`x_{ij} = 0`)) and constraints restraint the variables of taking 
+    arbitrary values. Only possible combinations of values corresponding to real solutions are accepted i.e. values that will not violate
+    the model's constraints [#model_more_complicated_than_that]_.
+    
+    In the next section, we will see how the CP solver of the or-tools library tries to solve this problem, i.e. tries to find 
+    a solution to the mathematical model.
+    
+..  [#see_what_n_queens_problem_really_is] 
+    
+    ..  only:: html
+      
+        See the section :ref:`nqueen_problem`   for a more precise definition of this problem.
+          
+    ..  raw:: latex
+    
+        See section~\ref{manual/search_primitives/nqueens:nqueen-problem} for a more precise definition of this problem.
+          
+..  [#model_more_complicated_than_that]  
+
+    ..  only:: html
+      
+        Things are a little bit more complex than that but let's keep it simple for the moment. See the
+        section :ref:`a_little_bit_of_theory` for more.
+          
+    ..  raw:: latex
+    
+        Things are a little bit more complex than that but let's keep it simple for the moment.
+        See section~\ref{manual/introduction/theory:a-little-bit-of-theory} for a more.
+
 
 
 Propagation and search 
@@ -22,6 +76,21 @@ Propagation and search
 
 ..  only:: draft
     
+    Constrainst Programming solvers are mainly based on two concepts [#constraint_programming_poor_def]_: 
+    
+      - **propagation**: variables can have different values but the solver must remove some of those values to keep all the variables
+        values compatible with the model. In Constraint Programming, clever algorithms are devised to remove those values in an 
+        efficient manner. These algorithms *propagate* the current state of the solver and removes incompatible or undesirable values.
+      
+      - **backtracking**: from time to time, the solver is stuck because it tried to assign some values 
+        to some variables that are just not possible (or desirable). The solver must then challenge its previous choices and try other values. 
+        This is called *backtracking*. Backtracking also occurs when the solver finds a solution but continues the search 
+        and tries to find another solution.
+    
+    
+    ..  [#constraint_programming_poor_def] These are two key elements of a Constraint Programming solving algorithm but 
+        there are many more!
+         
     To better understand the search, let's have a look at the propagation in details. First, we look at the real propagation, then
     we try to understand our :program:`cpviz`'s output.
 

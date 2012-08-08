@@ -18,6 +18,8 @@ The n-queens problem
     
         We have discussed the n-queens problem (and defined what a solution is) in chapter~\ref{manual/introduction:chapter-introduction}.
         
+    In the general *n-queens problem*, a set of n queens is to be placed on an n x n chessboard so that no two queens attack each other.
+        
     Little is known that finding one solution for every :math:`n` is... quite easy [#n_queens_easy]_. 
     Indeed, there exist polynomial-time algorithms that compute a solution given a size :math:`n`. For instance, Hoffman
     et al. proposed a simple algorithm to return a solution of the n-queens problem [Hoffman1969]_. 
