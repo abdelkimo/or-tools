@@ -16,4 +16,19 @@ Customization:
   - find a solution for tables...
   - include intro sections in parts;
   
+Check:
+------
+
+- nqueens model from Hakank: 
+http://www.hakank.org/constraint_programming_blog/2010/10/a_first_look_a_google_cp_solverpython_google_ortools_1.html
+Too quick to be true? ;-)
+
+Makefiles:
+----------
+
+- Adapt:
+OBJ_OUT = /Fo$(OR_ROOT)objs\\
+EXEOUT = /Fe$(OR_ROOT)bin\\
+
+  
 

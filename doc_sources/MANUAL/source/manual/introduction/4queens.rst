@@ -282,5 +282,6 @@ Propagation and search
         :alt: alternate text
 
 
-    The solver finds out that the model is respected, so we have our first solution!
+    The solver finds out that the model is respected, so we have our first solution! Should the solver continue the search, it would have 
+    to backtrack and try to place the first queen in the first column third row.
 

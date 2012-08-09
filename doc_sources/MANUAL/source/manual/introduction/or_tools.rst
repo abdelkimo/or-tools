@@ -17,6 +17,7 @@ The Google or-tools library
     
     finite-domain constraint programming 
     
+    Flatzinc!
     
 ..  raw:: html
     
