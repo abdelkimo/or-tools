@@ -23,12 +23,29 @@ The file formats
 JSSP format 
 """""""""""""
 
+..  only:: draft
+
+    *JSSP* stands for *Job Shop Scheduling Problem*. Let's consider the beginning of file :file:`abz9`:
+    
+    ..  code-block:: text
+    
+        +++++++++++++++++++++++++++++
+
+        instance abz9
+
+        +++++++++++++++++++++++++++++
+        Adams, Balas, and Zawack 15 x 20 instance (Table 1, instance 9)
+        20 15
+         6 14  5 21  8 13  4 11  1 11 14 35 13 20 11 17 10 18 12 11  2 23  3 13  0 15  7 11  9 35
+         1 35  5 31  0 13  3 26  6 14  9 17  7 38 12 20 10 19 13 12  8 16  4 34 11 15 14 12  2 14
+         0 30  4 35  2 40 10 35  6 30 14 23  8 29 13 37  7 38  3 40  9 26 12 11  1 40 11 36  5 17
+
 Taillard's instances format
 """"""""""""""""""""""""""""
 
 ..  only:: draft
 
-    You can find all you ever wanted and more the this format in 
+    You can find all you ever wanted and more about this format in 
     
     Taillard, E., 1993.
     "Benchmarks for basic scheduling problems," European Journal of Operational Research, Elsevier, vol. 64(2), pages 278-285, January.
