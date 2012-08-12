@@ -1,6 +1,3 @@
-..  _local_search_or_tools:
-
-
 ..  _basic_workingII:
 
 Basic working of the solver: part II

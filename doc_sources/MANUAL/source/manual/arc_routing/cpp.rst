@@ -1,13 +1,7 @@
-..  vrp_with_constraints:
+..  _chinese_postman_problem:
 
-Vehicule Routing Problems with constraints: the capacitated vehicle routing problem
-======================================================================================
-
-..  toctree::
-    :maxdepth: 2
-    
-    vrp/vrp
-
+The chinese postman problem
+------------------------------------
 
 ..  raw:: html
     

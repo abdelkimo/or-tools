@@ -385,6 +385,7 @@ Foreword
    Custom constraints <manual/custom_constraints>
    TSP with constraints <manual/TSP>
    VRP with constraints <manual/VRP>
+   Arc routing with constraints <manual/arc_routing>
    Utilities <manual/utilities>
    Modeling tricks <manual/modeling_tricks>
    Under the hood <manual/under_the_hood>

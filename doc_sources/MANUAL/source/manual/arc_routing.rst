@@ -1,18 +1,13 @@
-..  raw:: latex 
-    
-    \part{Routing}
+..  arc_routing_with_constraints:
 
-..  tsp_with_constraints:
-
-Travelling Salesman Problems with constraints: the TSP with time windows
-============================================================================
+Arc Routing  Problems with constraints: the cumulative chinese postman problem
+======================================================================================
 
 ..  toctree::
     :maxdepth: 2
     
-    tsp/routing_library
-    tsp/tsp
-    
+    arc_routing/cpp 
+
 
 ..  raw:: html
     

@@ -5,7 +5,7 @@
     
 ..  _dynamic_objective_improvements:
 
-Improving dynamically the improvement step with a ``SearchMonitor``
+Changing dynamically the improvement step with a ``SearchMonitor``
 --------------------------------------------------------------------
 
 ..  only:: draft

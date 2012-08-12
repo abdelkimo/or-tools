@@ -1,13 +1,7 @@
-..  vrp_with_constraints:
+..  _custom_constraints_summary:
 
-Vehicule Routing Problems with constraints: the capacitated vehicle routing problem
-======================================================================================
-
-..  toctree::
-    :maxdepth: 2
-    
-    vrp/vrp
-
+Summary
+------------------------------------
 
 ..  raw:: html
     
