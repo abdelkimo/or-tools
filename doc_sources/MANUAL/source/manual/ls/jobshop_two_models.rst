@@ -1,6 +1,6 @@
 ..  _jobshop_def:
 
-The jobshop problem and a first model 
+The jobshop problem and two models 
 ---------------------------------------
 
 Description of the problem 
@@ -19,8 +19,8 @@ The data and file formats
 
     To collect the data, we use two different file formats: **JSSP** and professor **Taillard's instances format**.
     In the directory :file:`data/jobshop`, you can find data files for the jobshop problem.
-    The file :file:`jobshop.h` lets you read both formats and store the data into a ``JobshopData`` class we wil use 
-    thorought this chapter.
+    The file :file:`jobshop.h` lets you read both formats and store the data into a ``JobshopData`` class we will use 
+    throughout this chapter.
 
 
 JSSP format 
@@ -84,6 +84,10 @@ Taillard's instances format
 
 The first model
 ^^^^^^^^^^^^^^^
+
+
+A second model with dedicated variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  raw:: html
     
