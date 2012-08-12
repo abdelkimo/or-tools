@@ -45,7 +45,8 @@ Local search: the jobshop problem
     :maxdepth: 2
 
     ls/local_search
-    ls/ls_or_tools
+    ls/basic_working2
+    ls/ls_operators
     ls/jobshop_two_models
     ls/jobshop_ls
     ls/ls_filtering
