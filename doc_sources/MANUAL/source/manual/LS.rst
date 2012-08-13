@@ -1,6 +1,6 @@
 .. _chapter_local_search:
 
-Local search: the jobshop problem
+Local search: the job-shop problem
 ===================================
 
 ..  only:: draft
