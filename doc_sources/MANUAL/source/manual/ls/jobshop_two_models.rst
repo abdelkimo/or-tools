@@ -78,7 +78,7 @@ The data and file formats
 ..  only:: draft
 
     To collect the data, we use two different file formats: **JSSP** and professor **Taillard's instances format**.
-    In the directory :file:`data/jobshop`, you can find data files for the jobshop problem.
+    In the directory :file:`data/jobshop`, you can find data files for the job-shop problem.
     The file :file:`jobshop.h` lets you read both formats and store the data into a ``JobshopData`` class we will use 
     throughout this chapter.
 
@@ -114,7 +114,7 @@ JSSP format
     This instance has :math:`15` machines and :math:`20` jobs to process. If you open the file 
     you'll see that each job is composed of exactly 15 tasks.
     
-    Then you have 20 lines each corresponding to a job:
+    Then you have 20 lines, each corresponding to a job:
     
     ..  code-block:: text
     
@@ -122,7 +122,9 @@ JSSP format
     
     Each pair corresponds to a task: the first number is the machine and the second one 
     is the time needed to process the task on that machine. As is often the case, 
-    there is a one to one matching between the tasks and the machines.
+    there is a one to one correspondence between the tasks and the machines.
+    For the first job, the first task needs 14 units of time on machine 6, the second task needs 21 units of time
+    on machine 5 and so on.
     
     
 Taillard's instances format
@@ -151,24 +153,102 @@ Taillard's instances format
         71 99 15 68 85 
         ...
         
-    You can find all you ever wanted and more about this format in 
+    This format is made for *flow-shop problems* and not job-shop problems. The two first lines tell that this instance 
+    has 20 jobs to be processed on 5 machines. The next line (873654221) is a random seed number. The jobs are numbered from 
+    0 to 19. The data for the first job are:
     
-    Taillard, E., 1993.
-    "Benchmarks for basic scheduling problems," European Journal of Operational Research, Elsevier, vol. 64(2), pages 278-285, January.
+    ..  code-block:: text
+    
+        0
+        468
+        54 79 16 66 58 
+    
+    0 is the number of the first job. The next number is not important for the job-shop problem. The last line contains 
+    numbers corresponding to processing times. We use the trick to assign these times to machines 0, 1, 2 and so on. So job 0 is 
+    actually
+    
+    ..  math::
+    
+        [(0,54), (1,79), (2,16), (3,66), (4,58)]
+    
+    You can find all you ever wanted to know and more about this format in [Taillard1993]_.
+    
+..  [Taillard1993] Taillard, E., 1993. *Benchmarks for basic scheduling problems*, 
+    European Journal of Operational Research, Elsevier, vol. 64(2), pages 278-285, January.
 
 ``JobshopData``
 """"""""""""""""""
 
 ..  only:: draft
 
-    The ``JobshopData`` class in a simple container 
+    The ``JobshopData`` class in a simple container for job-shop instances. It is defined in the file :file:`jobshop.h`.
+    Basically, it wraps a ``std::vector<std::vector<Task> >`` container where ``Task`` is a ``struct`` defined as follow:
+    
+    ..  code-block:: c++
+    
+        struct Task {
+          Task(int j, int m, int d) : job_id(j), machine_id(m), duration(d) 
+          {}
+          int job_id;
+          int machine_id;
+          int duration;
+        };
 
+    Most part of the ``JobshopData`` class is devoted to read both file formats.
+    
+    The public methods are
+    
+      * ``void Load(const std::string& filename)``: parses and loads the tasks for each job. We use a ``FileLineReader`` (declared in 
+        :file:`base/filelinereader.h`) to parse a text file:
+        
+        ..  code-block:: c++
+        
+            void Load(const string& filename) {
+              FileLineReader reader(filename.c_str());
+              reader.set_line_callback(NewPermanentCallback(
+                  this,
+                  &JobShopData::ProcessNewLine));
+              reader.Reload();
+              if (!reader.loaded_successfully()) {
+                LOG(ERROR) << "Could not open jobshop file";
+              }
+            } 
+            
+        ``void ProcessNewLine(char* const line)`` is a callback that parses one line at a time.
+        It is triggered by the ``Reload()`` method of the ``FileLineReader``.
+        
+      * the *getters*:
+      
+        - ``machine_count()``: number of machines;
+        - ``job_count()``: number of jobs;
+        - ``name()``: instance name;
+        - ``horizon()``: the sum of all durations (and a trivial upper bound on the makespan).
+        
+      * ``const std::vector<Task>& TasksOfJob(int job_id) const`` that returns a reference to the corresponding ``std::vector<Task>`` of tasks.
+        
 The first model
 ^^^^^^^^^^^^^^^
 
+..  only:: draft
+
+    This first model is a direct naive translation of the definition of a job-shop problem. You can find the code in 
+    the file :file:`jobshop_wrong.cc`. As the filename suggests, this is NOT the way to model a job-shop problem. This first 
+    model will help us better understand what the job-shop problem is. In the next section, we will 
+    use ``IntervalVar``\s, ``SequenceVar``\s and special constraints made to handle scheduling problems.
+    
+    We again rely on the *three-stage method*. What are the decision **variables**? 
+    To construct a schedule, we need the starting times to process each task. We use the variables :math:`t_{ij}` to store 
+    the starting time of task :math:`i` of job :math:`j`.
+    
+    What are the **constraints**? 
 
 A second model with dedicated variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    To keep the code simple, we only parse instances with at least two tasks for each job.
+    ?????????????? or not? ;-)
 
 ..  raw:: html
     
