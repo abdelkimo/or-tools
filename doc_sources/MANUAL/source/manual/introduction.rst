@@ -17,14 +17,13 @@ Introduction to constraint programming
 
 ..  only:: draft
 
-    This chapter is divided in three parts. First, we introduce Constraint Programming and its working
+    This chapter is divided in three parts. First, we introduce Constraint Programming 
     by looking at a real solving process done by our CP solver. Along the way, we will try to define
     Constraint Programming and show some practical problems where CP stands out. A little bit of theory
     will lay the foundations for the whole manual.
     Second, we introduce a simple strategy (the *three-stage method*) that can help you when confronted with 
     a problem to solve. You will see this method applied again and again in this manual. Another recurrent idea 
-    in this manual is to be aware of tradeoffs. It is so important (and the key to successful optimization) 
-    that we devote a whole section to this subject.
+    in this manual is to be aware of tradeoffs. This idea is the key to successful optimization and well worth a whole section.
     Finally, we outline the general principles of the library and tell you where to find what in this manual.
 
 ..  rubric:: Prerequisites:
