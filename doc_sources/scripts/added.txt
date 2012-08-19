@@ -1,0 +1,9 @@
+user_manual/manual/arc_routing.html
+user_manual/manual/arc_routing
+user_manual/manual/introduction/manual_content.html
+user_manual/manual/introduction/tradeoffs.html
+user_manual/manual/ls/basic_working2.html
+user_manual/manual/ls/jobshop_two_models.html
+user_manual/manual/ls/ls_operators.html
+user_manual/manual/custom_constraints/summary.html
+user_manual/manual/custom_constraints/basic_working3.html

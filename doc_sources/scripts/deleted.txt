@@ -1,0 +1,3 @@
+user_manual/manual/ls/ls_or_tools.html
+user_manual/manual/ls/jobshop_first_model.html
+user_manual/manual/custom_constraints/basic_working2.html

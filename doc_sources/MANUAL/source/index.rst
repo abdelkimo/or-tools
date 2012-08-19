@@ -64,7 +64,8 @@ Foreword
          
              <p>
              <a class="reference internal" href="manual/TSP.html"><em>9. TSP with constraints</em></a><br>
-             <a class="reference internal" href="manual/VRP.html"><em>10. VRP with constraints</em></a>
+             <a class="reference internal" href="manual/VRP.html"><em>10. VRP with constraints</em></a><br>
+             <a class="reference internal" href="manual/arc_routing.html"><em>11. ARP with constraints</em></a>
              </p>
 
        * Part IV: Technicalities
@@ -72,9 +73,9 @@ Foreword
          ..  raw:: html
          
              <p>
-             <a class="reference internal" href="manual/utilities.html"><em>11. Utilities</em></a><br>
-             <a class="reference internal" href="manual/modeling_tricks.html"><em>12. Modeling tricks</em></a><br>
-             <a class="reference internal" href="manual/under_the_hood.html"><em>13. Under the hood</em></a>
+             <a class="reference internal" href="manual/utilities.html"><em>12. Utilities</em></a><br>
+             <a class="reference internal" href="manual/modeling_tricks.html"><em>13. Modeling tricks</em></a><br>
+             <a class="reference internal" href="manual/under_the_hood.html"><em>14. Under the hood</em></a>
              </p>
              
         If you are lost, use the links on the right sidebar |rarr|
