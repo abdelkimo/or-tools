@@ -22,8 +22,17 @@ The cryptarithmetic puzzle problem and a first model
     Now that your system is up and running (if not, see :ref:`Getting started <getting_started>`), let us solve a cryptarithmetic
     puzzle with the help of the or-tools library.
 
-In this section, we describe the problem and propose a first model to solve it. This model is by  no means efficient but allows us
-a gentle introduction to the library. A better model is presented in the corresponding lab session.
+..  only:: html 
+
+    In this section, we describe the problem and propose a first model to solve it. This model is by  no means efficient but allows us
+    a gentle introduction to the library. A better model is presented in the corresponding `lab session 
+    <http://or-tools.googlecode.com/svn/trunk/documentation/documentation_hub.html#lab_sessions>`_.
+
+..  only:: latex
+
+    In this section, we describe the problem and propose a first model to solve it. This model is by  no means efficient but allows us
+    a gentle introduction to the library. A better model is presented in the corresponding lab session.
+
 
 Description of the problem
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -79,7 +88,7 @@ Ideally, a good cryptarithmetic puzzle must have only
 one solution [#famous_cryptarithmetic]_. We derogate from this tradition. The above example
 has multiple solutions. We use it to show you how to collect all solutions of a problem.
 
-.. [#famous_cryptarithmetic] Like the famous ``SEND + MORE = MONEY``.
+.. [#famous_cryptarithmetic] Like the famous ``SEND + MORE = MONEY`` ... in base 10.
 
 How to solve the problem?
 ^^^^^^^^^^^^^^^^^^^^^^^^^

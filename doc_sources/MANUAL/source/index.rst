@@ -1,4 +1,4 @@
-.. Google or-tools library documentation documentation master file, created by
+.. Google or-tools library documentation master file, created by
    sphinx-quickstart on Thu Dec 15 11:41:31 2011.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
@@ -118,13 +118,14 @@ Foreword
       programming solvers (GLPK, CLP, CBC and SCIP).
     - Knapsack algorithms.
     - Graph algorithms (shortest paths, min cost flow, max flow, linear sum assignment).
+    - *FlatZinc* support.
 
 ..  only:: html
 
     In short, the or-tools library is:
     
     - **Open source and free** Everything, including the examples, the implementations of the 
-      algorithms, the various documentations2 , is licenced under the Apache License 2.0 and
+      algorithms, the various documentations, is licenced under the Apache License 2.0 and
       is available for download. If you make substantial improvements to our code, please share it
       with the whole community.
     - **Alive** The library is actively maintained and updates and improvements are made on an
@@ -188,7 +189,7 @@ Foreword
     
     You could read this document from cover to cover but we have put a lot of efforts to make each
     chapter stands on its own. The best way to read this manual is to look for a specific answer, use
-    the index, the table of contents or the glossary to find a reference to that information. If you are
+    the index or the table of contents to find a reference to that information. If you are
     missing some requirements to understand a section, you can always backtrack on prerequisite
     knowledge. For each chapter, we list those prerequisites. This non-linear way of reading is
     probably the most efficient and rewarding one!
@@ -198,7 +199,7 @@ Foreword
     is an introduction on how to use the CP solver to solve small problems. For real problems, you
     need to customize your search and this is explained in the second part (*Customization*). If you are
     interested in the routing part of the library, the third part is for you (*Routing*). Finally, some utilities
-    and tricks are explained in the appendices.
+    and tricks are described in the last part (*Technicalities*).
 
     .. _foreword:targeted_audience:
     

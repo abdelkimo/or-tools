@@ -37,7 +37,7 @@ about the other supported languages (Python, Java and C#).
 ..  only:: html
     
     - basic knowledge of C++.
-    - basic knowledge of Constraint Programming (see chapter :ref:`chapter_introduction`).
+    - basic knowledge of Constraint Programming (see the chapter :ref:`chapter_introduction`).
 
 ..  raw:: latex
 

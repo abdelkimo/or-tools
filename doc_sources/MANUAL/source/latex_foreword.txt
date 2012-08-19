@@ -30,6 +30,7 @@ The main tools are:
 integer programming solvers (GLPK, CLP, CBC and SCIP).
   \item Knapsack algorithms.
   \item Graph algorithms (shortest paths, min cost flow, max flow, linear sum assignment).
+  \item \emph{FlatZinc} support.
 \end{itemize}
 
 \newpage
@@ -80,13 +81,13 @@ This document will not describe how to use the library (and the syntactic sugar 
 \section*{How to read this document?}
 
 You could read this document from cover to cover but we have put a lot of efforts to make each chapter stands on its own.
-The best way to read this manual is to look for a specific answer, use the index, the table of contents or the glossary to find a reference to that information.
+The best way to read this manual is to look for a specific answer, use the index or the table of contents to find a reference to that information.
 If you are missing some requirements to understand a section, you can always backtrack on prerequisite knowledge. For each chapter, we list those prerequisites. This
 non-linear way of reading is probably the most efficient and rewarding one!\\
 
 That said, the manual is kept short so that you can read it in its entirety. The first part (\emph{Basics}) is an introduction on how to use the CP solver
 to solve small problems. For real problems, you need to customize your search and this is explained in the second part (\emph{Customization}). If you are interested
-in the routing part of the library, the third part is for you (\emph{Routing}). Finally, some utilities and tricks are explained in the last part (\emph{Technicalities}).
+in the routing part of the library, the third part is for you (\emph{Routing}). Finally, some utilities and tricks are described in the last part (\emph{Technicalities}).
 
 \section*{Targeted audience}
 
