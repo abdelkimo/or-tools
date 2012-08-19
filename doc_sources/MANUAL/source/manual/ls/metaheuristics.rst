@@ -7,7 +7,7 @@ Meta-heuristics and ``SearchMonitor``\s
   
     A lots of 
     meta-heuristics are based on local search: they start with an initial solution and improve it
-    little by little. One way to implement meta-heuristics is to use ``SearchMonitor``\s
+    little by little. One way to implement meta-heuristics in *or-tools* is to use ``SearchMonitor``\s
     and a ``LocalSearch`` decision builder.
     This is how we implemented basic versions of *Tabu Search*,
     *Simulated Annealing* and *Guided Local Search*. We devote the next three sections to each of these meta-heuristics and our 

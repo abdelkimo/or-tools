@@ -6,12 +6,7 @@ The job-shop problem and two models
 ..  only:: draft
 
     We describe the job-shop problem and two different models. The first one is a simple model using ``IntVar``\s while the 
-    second one uses the dedicated ``IntervalVar``\s and ``SequenceVar``\s. Because we consider different tasks for each job, we need to
-    be able to distinguish between those different tasks. We choose to use the notation :math:`t_{ij}` to denote the 
-    :math:`i^\textrm{th}` task of job :math:`j`. This notation simplifies the writing of constraints but at the expense of two 
-    index variables. To simplify things further, we decided to use the same notation :math:`t_{ij}` to denote different concepts.
-    It's only a matter of taste but we really tried to keep things as simple as possible.
-    
+    second one uses the dedicated ``IntervalVar``\s and ``SequenceVar``\s. 
     
 Description of the problem 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -22,28 +17,54 @@ Description of the problem
     Each job consists of a sequence of different tasks. Each task needs to be processed during an 
     uninterrupted period of time on a given machine.
 
-    Given a  set :math:`J` of jobs, a set :math:`M` of machines and a set :math:`T` of tasks, we denote
-    by :math:`o_j` the number of tasks for a given job :math:`j \in J` and by the triple :math:`(t_{ij}, m_{ij}, p_{ij})`
-    the task :math:`t_{ij}` corresponding to the :math:`i^\textrm{th}` task of job :math:`j`.
+    To distinguish the different tasks each job is made of, we use a two index notation. :math:`a_{ij}` denotes the 
+    :math:`i^\textrm{th}` task of job :math:`j`. 
+
+    Given a  set :math:`J` of jobs, a set :math:`M` of machines and a set :math:`T` of tasks, we denote [#job_shop_pedagogical_notation]_
+    by :math:`o_j` the number of tasks for a given job :math:`j \in J`. To each task :math:`a_{ij}` corresponds 
+    an ordered pair :math:`(m_{ij}, p_{ij})` where :math:`m_{ij} \in M` is the machine the task  :math:`a_{ij}`
+    needs to be processed on for a period of :math:`p_{ij}` units of time.
+    
+    ..  [#job_shop_pedagogical_notation] We use a slightly different and we hope easier notation than the ones used in the 
+        scheduling community.
     
     Here is an example with :math:`m=3` machines and :math:`n=3` jobs. We count jobs, machines and tasks starting from 0.
     
-      - job 0 = :math:`[(t_{00}, 0,  3), (t_{10}, 2, 1), (t_{20}, 1, 2)]`
-      - job 1 = :math:`[(t_{01}, 2, 4), (t_{11}, 1, 2)]`
-      - job 2 = :math:`[(t_{02}, 1, 5), (t_{12}, 0, 3), (t_{22}, 2, 3)]`
+      - job 0 = :math:`[(0,3), (1,2), (2,2)]`
+      - job 1 = :math:`[(0,2), (2,1), (1,4)]`
+      - job 2 = :math:`[(1,4), (2,3)]`
 
-    For instance, job 1 is composed of :math:`o_1 = 2` tasks: task :math:`t_{01}` which must be processed on machine 2 
-    during 4 units of time and task :math:`t_{11}` which must be processed on machine 1 during 2 units of time.
+    For instance, job 2 is composed of :math:`o_1 = 2` tasks: task :math:`a_{02}` which must be processed on machine :math:`m_{02} = 1` 
+    during :math:`p_{02} = 4` units of time and task :math:`a_{12}` which must be processed on machine :math:`m_{02} = 2` 
+    during :math:`p_{02} = 3` units of time.
 
-    To have a job-shop problem, the tasks must be processed in the order given by the sequence: for job 0 this means that task :math:`t_{00}` 
-    on machine 0 must be processed before task :math:`t_{10}` on machine 2 that itself must be processed before task :math:`t_{20}` 
-    on machine 1. We also have for job 0 that :math:`m_{00} = 0`, :math:`m_{10} = 2` and :math:`m_{20} = 1` as well that
-    :math:`p_{00} = 3`, :math:`p_{10} = 1` and :math:`p_{20} = 2`\.
+    To have a **job-shop problem**, the tasks must be processed in the order given by the sequence: 
+    for job 0 this means that task :math:`a_{00}` 
+    on machine 0 must be processed before task :math:`a_{10}` on machine 1 that itself must be processed before task :math:`a_{20}` 
+    on machine 2. It is not mandatory but most of the literature and benchmark data are concerned by problems where each job 
+    is made of :math:`m` tasks and each task in a job must be processed on a different machine, i.e. each job needs to be 
+    processed exactly once on each machine.
     
     We seek a **schedule** (solution) that minimizes the **makespan** (duration) of the whole process. 
     
     The *makespan* is the duration between the start of the first task (across all machines) and the completion of the last task 
     (again across all machines). The classical notation for the makespan is :math:`C_{\textrm{max}}`.
+    
+    A *schedule* is a set of non negative integers :math:`\{t_{ij}\}` such that the definition of a job-shop problem is respected.
+    
+    The makespan can then be defined as
+    
+    ..  math::
+    
+        C_{\textrm{max}} = \max_{t_{ij}} \{t_{ij} + p_{ij}\}
+        
+    or equivalently as the maximum time needed among all jobs to be completely processed. Recall that :math:`o_j`
+    denotes the number of tasks for each job :math:`j` and that we count starting from 0. :math:`t_{o_j-1,j}` denotes thus
+    the starting time of the last task of job :math:`i` and we have
+    
+    ..  math::
+    
+        C_{\textrm{max}} = \max_{t_{o_j-1,j}} \{t_{o_j-1,j} + p_{o_j-1,j}\}
     
 The disjunctive graph model
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -78,11 +99,32 @@ JSSP format
         +++++++++++++++++++++++++++++
         Adams, Balas, and Zawack 15 x 20 instance (Table 1, instance 9)
         20 15
-         6 14  5 21  8 13  4 11  1 11 14 35 13 20 11 17 10 18 12 11  2 23  3 13  0 15  7 11  9 35
-         1 35  5 31  0 13  3 26  6 14  9 17  7 38 12 20 10 19 13 12  8 16  4 34 11 15 14 12  2 14
-         0 30  4 35  2 40 10 35  6 30 14 23  8 29 13 37  7 38  3 40  9 26 12 11  1 40 11 36  5 17
+         6 14  5 21  8 13  4 11  1 11 14 35 13 20 11 17 10 18 12 11  ...
+         1 35  5 31  0 13  3 26  6 14  9 17  7 38 12 20 10 19 13 12  ...
+         0 30  4 35  2 40 10 35  6 30 14 23  8 29 13 37  7 38  3 40  ...
          ...
 
+
+    The first line of real data is 
+    
+    ..  code-block:: text
+    
+        20 15
+        
+    This instance has :math:`15` machines and :math:`20` jobs to process. If you open the file 
+    you'll see that each job is composed of exactly 15 tasks.
+    
+    Then you have 20 lines each corresponding to a job:
+    
+    ..  code-block:: text
+    
+        6 14  5 21  8 13  4 11  1 11 14 35 13 20 11 17 10 18 12 11  ...
+    
+    Each pair corresponds to a task: the first number is the machine and the second one 
+    is the time needed to process the task on that machine. As is often the case, 
+    there is a one to one matching between the tasks and the machines.
+    
+    
 Taillard's instances format
 """"""""""""""""""""""""""""
 
