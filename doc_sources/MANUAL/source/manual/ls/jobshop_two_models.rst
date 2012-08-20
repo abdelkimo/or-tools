@@ -117,8 +117,12 @@ Description of the problem
       - Machine 1: job 2, job 0, job 1
       - Machine 2: job 1, job 0, job 2
 
-    The Gantt chart offers a nice visualization of schedules but it doesn't really give any inside into the problem. The disjunctive graph  
+    The Gantt chart offers a nice visualization of schedules but it doesn't really give any inside into the 
+    problem [#except_if_you_see_disjunctive_graphs]_. 
+    The disjunctive graph  
     allows a better understanding of the structure of the problem.
+    
+    ..  [#except_if_you_see_disjunctive_graphs] Except if you see the disjunctive graph in the Gantt chart!
     
 The disjunctive graph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
