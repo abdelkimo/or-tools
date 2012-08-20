@@ -50,8 +50,6 @@ Description of the problem
     The *makespan* is the duration between the start of the first task (across all machines) and the completion of the last task 
     (again across all machines). The classical notation for the makespan is :math:`C_{\textrm{max}}`.
     
-    A *schedule* is a set of non negative integers :math:`\{t_{ij}\}` such that the definition of a job-shop problem is respected.
-    
     The makespan can then be defined as
     
     ..  math::
@@ -66,7 +64,63 @@ Description of the problem
     
         C_{\textrm{max}} = \max_{t_{o_j-1,j}} \{t_{o_j-1,j} + p_{o_j-1,j}\}
     
-The disjunctive graph model
+    Now let's try to find a schedule for our example. Suppose you want to favour job 1 because not only did you see that
+    it is the longest job to process but its last task takes a big 4 units of time. Here is the *Gantt chart* of a possible
+    schedule:
+    
+    ..  only:: html 
+    
+        .. image:: images/schedule1.*
+            :width: 400pt
+            :align: center
+
+    ..  only:: latex
+    
+        .. image:: images/schedule1.*
+            :width: 300pt
+            :align: center
+    
+    This is a feasible schedule as every task within one job is processed one after the other in the right sequence. Its makespan
+    is 12 units of time. Can we do better? Focusing on one job is probably not the best strategy. Indeed, here is an optimal solution:
+    
+    ..  only:: html 
+    
+        .. image:: images/schedule2.*
+            :width: 400pt
+            :align: center
+
+    ..  only:: latex
+    
+        .. image:: images/schedule2.*
+            :width: 300pt
+            :align: center
+    
+    Its makespan is 11 units of time.
+    
+    How can we simply describe a schedule? We could define :math:`t_{ij}` as the starting time of task :math:`a_{ij}`. A feasible 
+    *schedule* would then be a set of non negative integers :math:`\{t_{ij}\}` such that the definition of a job-shop problem is respected.
+    If we only consider schedules where all tasks are completely left shifted on the Gantt chart [#left_shifted_schedules]_ , we can define 
+    a feasible schedule by giving the sequence of job processing on each machine.
+    
+    ..  [#left_shifted_schedules] A rigorous definition of *schedules where all tasks are completely left shifted on the Gantt chart*
+        would take us too far away. In scheduling jargon, such schedules are called *semi-active* schedules.
+
+    The first schedule can be described by:
+    
+      - Machine 0: job 1, job 0
+      - Machine 1: job 2, job 1, job 0
+      - Machine 2: job 1, job 2, job 0
+
+    and the second optimal one by
+    
+      - Machine 0: job 0, job 1
+      - Machine 1: job 2, job 0, job 1
+      - Machine 2: job 1, job 0, job 2
+
+    The Gantt chart offers a nice visualization of schedules but it doesn't really give any inside into the problem. The disjunctive graph  
+    allows a better understanding of the structure of the problem.
+    
+The disjunctive graph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
