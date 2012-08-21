@@ -5,16 +5,26 @@ The job-shop problem, benchmark data and a first model
 
 ..  only:: draft
 
-    We describe the job-shop problem and the benchmark data.
+    We describe the job-shop problem, a first model and the benchmark data. The job-shop problem belongs to the 
+    intractable problems (:math:`\in` NP). Only few very special cases can be solved in 
+    polynomial time (see for instance [Garey1976]_ and [Kis2002]_).
     
+..  [Garey1976] Garey, M. R., Johnson, D. S. and Sethi, R., *The complexity of flowshop and jobshop scheduling*,
+    Mathematics of Operations Research, volume 1, pp 117-129, 1976.
+
+..  [Kis2002] Kis, T., *On the complexity of non-preemptive shop scheduling with two jobs*, Computing, volume 69, nbr 1, pp 37-49, 
+    2002.
+
 Description of the problem 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
     In the classical job-shop problem there are :math:`n` jobs that must be processed on :math:`m` machines. 
-    Each job consists of a sequence of different tasks. Each task needs to be processed during an 
+    Each job consists of a sequence of different tasks [#tasks_operations]_. Each task needs to be processed during an 
     uninterrupted period of time on a given machine.
+
+    ..  [#tasks_operations] Tasks are also called *operations*.
 
     To distinguish the different tasks each job is made of, we use a two index notation. :math:`a_{ij}` denotes the 
     :math:`i^\textrm{th}` task of job :math:`j`. 
@@ -33,7 +43,7 @@ Description of the problem
       - job 1 = :math:`[(0,2), (2,1), (1,4)]`
       - job 2 = :math:`[(1,4), (2,3)]`
 
-    For instance, job 2 is composed of :math:`o_1 = 2` tasks: task :math:`a_{02}` which must be processed on machine :math:`m_{02} = 1` 
+    For instance, job 2 is composed of :math:`o_2 = 2` tasks: task :math:`a_{02}` which must be processed on machine :math:`m_{02} = 1` 
     during :math:`p_{02} = 4` units of time and task :math:`a_{12}` which must be processed on machine :math:`m_{02} = 2` 
     during :math:`p_{02} = 3` units of time.
 
@@ -97,12 +107,15 @@ Description of the problem
     Its makespan is 11 units of time.
     
     How can we simply describe a schedule? We could define :math:`t_{ij}` as the starting time of task :math:`a_{ij}`. A feasible 
-    *schedule* would then be a set of non negative integers :math:`\{t_{ij}\}` such that the definition of a job-shop problem is respected.
+    *schedule* would then be a set [#set_and_a_correspondence_rule]_ of non negative integers :math:`\{t_{ij}\}` 
+    such that the definition of a job-shop problem is respected.
     If we only consider schedules where all tasks are completely left shifted on the Gantt chart [#left_shifted_schedules]_ , we can define 
-    a feasible schedule by giving the sequence of job processing on each machine.
+    a feasible schedule by giving the sequence of job processed on each machine.
     
     ..  [#left_shifted_schedules] A rigorous definition of *schedules where all tasks are completely left shifted on the Gantt chart*
         would take us too far away. In scheduling jargon, such schedules are called *semi-active* schedules.
+
+    ..  [#set_and_a_correspondence_rule] And a correspondence rule between those integers and the tasks.
 
     The first schedule can be described by:
     
@@ -122,6 +135,8 @@ Description of the problem
     allows a better understanding of the structure of the problem.
     
     ..  [#except_if_you_see_disjunctive_graphs] Except if you see the disjunctive graph in the Gantt chart!
+    
+
     
 The disjunctive graph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -184,29 +199,29 @@ The disjunctive graph
         \end{itemize}
 
     To determine a schedule we have to define an ordering of all tasks processed on each machine. This can be done by orienting 
-    all dotted edges such that each clique corresponding to a machine becomes acyclic [#acyclic_machine_clique]_.
+    all dotted or dashed edges such that each clique corresponding to a machine becomes acyclic [#acyclic_machine_clique]_.
     
     
-    ..  [#acyclic_machine_clique] An acyclic graph is a graph without cycle. It can be shown that an acyclic graph induces 
-          a total order on its vertices, i.e. an acyclic graph lets you order all its vertices unequivocally.
+    ..  [#acyclic_machine_clique] An acyclic graph is a graph without cycle. It can be shown that a complete directed acyclic graph induces 
+          a total order on its vertices, i.e. a complete directed acyclic graph lets you order all its vertices unequivocally.
           
     Our first schedule is represented in the next Figure.
     
     ..  only:: html 
     
         .. image:: images/disjunctive_graph2.*
-            :width: 400pt
-            :align: center
+           :width: 400pt
+           :align: center
 
     ..  only:: latex
     
         .. image:: images/disjunctive_graph2.*
-            :width: 300pt
-            :align: center
+           :width: 300pt
+           :align: center
 
     We also want to avoid cycles between disjunctive and conjunctive arcs because they lead to infeasible schedules.
-    A feasible schedule is represented by an acyclic graph. In fact, the opposite is also true. A complete orientation 
-    of the edges in :math:`D` defines a feasible schedule if and only if the resulting directed graph is acyclic.
+    A feasible schedule is represented by an directed acyclic disjunctive graph. In fact, the opposite is also true. A complete orientation 
+    of the edges in :math:`D` defines a feasible schedule if and only if the resulting directed disjunctive graph is acyclic.
     
     The makespan is given by the longest weighted path from :math:`s` to :math:`t`. This path - thickened in the next Figure -
     is called the *critical path*.
@@ -225,27 +240,103 @@ The disjunctive graph
 
     Its length is :math:`0+4+4+2+2+0=12`.
 
-    We can now define the job-shop problem as a graph problem: give a complete a complete
-    orientation on a disjunctive graph such that the resulting graph is acyclic and the longest weighted path
+    We can now define the job-shop problem as a graph problem: give a complete 
+    orientation on a disjunctive graph such that the resulting directed graph is acyclic and the longest weighted path
     from :math:`s` to :math:`t` is minimized. We will use this representation of the problem for our first model.
 
 
-The first model: the disjunctive programming formulation
+A first model: the disjunctive programming formulation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
-    This first model is a direct naive translation of the definition of a job-shop problem. You can find the code in 
-    the file :file:`jobshop_wrong.cc`. As the filename suggests, this is NOT the way to model a job-shop problem. This first 
-    model will help us better understand what the job-shop problem is. In the next section, we will 
+    This first model is a direct naive translation of the definition of a job-shop problem and
+    its disjunctive graph reprensentation. You can find the code in 
+    the file :file:`jobshop_wrong.cc`. As the filename suggests, this is NOT the way to model a job-shop problem ... when 
+    using Constraint Programming. This first 
+    model will help us better understand the job-shop problem. Later in this chapter, we will 
     use ``IntervalVar``\s, ``SequenceVar``\s and special constraints made to handle scheduling problems.
     
-    We again rely on the *three-stage method*. What are the decision **variables**? 
-    To construct a schedule, we need the starting times to process each task. We use the variables :math:`t_{ij}` to store 
-    the starting time of task :math:`i` of job :math:`j`.
+    We again rely on the :ref:`three_stages`. What are the decision **variables**? 
+    We use the variables :math:`t_{ij}` to store 
+    the starting time of task :math:`i` of job :math:`j`. We could use two fictive variables corresponding to the fictive 
+    vertices :math:`s` and :math:`t` but this is not necessary.
     
-    What are the **constraints**? 
+    To simplify the notation, instead of using :math:`t_{ij}`, we will also use :math:`t_k` where :math:`k` denotes a vertex (a task)
+    of the disjunctive graph. We use the same simplified notation for the processing times (:math:`p`) and the machine ids (:math:`m`).
+    
+    What are the **constraints**? In the disjunctive graph, we have two kind of edges to model a feasible schedule:
+    
+      * conjunctive arcs modelling the order in which each task of one job has to be processed:
+        
+        ..  math:: 
+        
+            \forall (k,j) \in C (k \neq s, l \neq t):\\
+            
+            t_k + p_k \leqslant t_l
+            
+        These constraints are called *conjunctive constraints*.
+        
+      * disjunctive edges modelling the order in which each task has to be processed on one machine:
+      
+        ..  math::
+        
+            \forall (k,l) \in D: m_k = m_l\\
+            
+            t_k + p_k \leqslant t_l \vee t_l + p_l \leqslant t_k
+            
+        These constraints are called *disjunctive constraints*. These disjunctive constraints enforce that
+        you cannot have an orientation that leads to a cycle in a clique corresponding to a machine. Indeed, if 
+        such cycle existed, the disjunctive constraints wouldn't hold [#cycle_and_disjunctive_constraint]_.
+        
+        ..  [#cycle_and_disjunctive_constraint] Take the next situtation
+        
+            ..  only:: html 
+        
+                .. image:: images/no_cycle.*
+                   :width: 100pt
+                   :align: center
 
+            ..  only:: latex
+                
+                .. image:: images/no_cycle.*
+                   :width: 70pt
+                    
+            We have :math:`t_1 + p_1 \leqslant t_2`, :math:`t_2 + p_2 \leqslant t_3` and :math:`t_3 + p_3 \leqslant t_1`. Add 
+            these three inequations and you obtain :math:`p_1 + p_2 + p_3 \leqslant 0`. If one of the :math:`p_i` is greater than 0, 
+            this is not possible.
+        
+    What is the **objective function**? The objective function (the makespan) doesn't correspond to a variable of the model. We 
+    have to construct its value. Let's denote it by the variable :math:`C_{\textrm{max}}`. Because we minimize the makespan, we can use
+    a little trick.  Let :math:`S` be the set of all end tasks of all jobs. In our example, 
+    :math:`S = \{a_{20}(2,2), a_{21}(1,4), a_{12}(2,3)\}`. The makespan must be greater than the overall time it takes to process these
+    tasks:
+    
+    ..  math::
+    
+        \forall k \in S:\\
+        
+        C_{\textrm{max}} \geqslant t_k + p_k.
+    
+    Here is the model [#jobshop_model_exact]_:
+    
+    ..  math::
+    
+        \begin{array}{lcl}
+        \min_{t_k}   & C_{\textrm{max}} & \\
+        \textrm{s.t.:} &  & \\
+         & C_{\textrm{max}} \geqslant t_k + p_k & \forall \, k \in S\\
+         & t_k + p_k \leqslant t_l & \forall \, (k,l) \in C\\
+         & t_k + p_k \leqslant t_l \vee t_l + p_l \leqslant t_k & \forall \, (k,l) \in D: m_k = m_l\\
+         & t_k \geqslant 0 & \forall \, k \in V \setminus \{s,t\}
+        \end{array}
+    
+    ..  [#jobshop_model_exact] It is not obvious that this model produces optimal solution that are feasible schedules but it can 
+        be shown that it does.
+    
+    We will implement and solve this model in the next section but first we need to read and process the data representing 
+    instances of job-shop problems.
+    
 The data and file formats
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -294,7 +385,7 @@ JSSP format
     
         6 14  5 21  8 13  4 11  1 11 14 35 13 20 11 17 10 18 12 11  ...
     
-    Each pair corresponds to a task: the first number is the machine and the second one 
+    Each pair corresponds to a task: the first number is the machine id and the second one 
     is the time needed to process the task on that machine. As is often the case, 
     there is a one to one correspondence between the tasks and the machines.
     For the first job, the first task needs 14 units of time on machine 6, the second task needs 21 units of time
