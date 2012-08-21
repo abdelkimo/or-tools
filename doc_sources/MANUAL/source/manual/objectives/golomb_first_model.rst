@@ -30,7 +30,7 @@ of marks (elements in the sequence) is called the *order* of the Golomb ruler.
 
 ..  only:: html
 
-    Figure :ref:`golomb_4_non_optimal` 
+    The Figure :ref:`golomb_4_non_optimal` 
     illustrates a Golomb ruler of order 4 and all its - distinct - differences.
 
 ..  _golomb_4_non_optimal:

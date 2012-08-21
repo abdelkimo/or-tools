@@ -1,12 +1,11 @@
 ..  _jobshop_def:
 
-The job-shop problem and two models 
----------------------------------------
+The job-shop problem, benchmark data and a first model 
+--------------------------------------------------------
 
 ..  only:: draft
 
-    We describe the job-shop problem and two different models. The first one is a simple model using ``IntVar``\s while the 
-    second one uses the dedicated ``IntervalVar``\s and ``SequenceVar``\s. 
+    We describe the job-shop problem and the benchmark data.
     
 Description of the problem 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -127,8 +126,125 @@ Description of the problem
 The disjunctive graph
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+..  only:: draft
+
+    ..  raw:: latex
+
+        Figure~\ref{manual/ls/jobshop_def_data:disjunctive-graph1} represents the \emph{disjunctive graph} of 
+        our example.
 
 
+    ..  only:: html
+
+        The Figure :ref:`disjunctive_graph1` 
+        represents the *disjunctive graph* of 
+        our example.
+
+    ..  _disjunctive_graph1:
+
+    ..  figure:: images/disjunctive_graph1.*
+        :alt: A disjunctive graph.
+        :align: center
+        :width: 400pt
+        
+        A disjunctive graph.
+
+    ..  only:: html
+
+        The graph is :math:`G = (V, C \cup D)` where
+    
+          :math:`V` is the set of vertices corresponding to the tasks. Two fictive vertices :math:`s` and :math:`t` are added to
+            represent the start and end times. Each vertex has a weight corresponding to the processing time of the task it represents.
+            Vertices :math:`s` and :math:`t` have weight 0.
+      
+          :math:`C` are the *conjunctive arcs* between the :math:`i^{\textrm{th}}` and :math:`(i+1)^{\textrm{th}}` tasks of a job.
+            We also add conjunctive arcs from :math:`s` to the first task of every job and from the last task of every job to :math:`t`.
+            These arcs are plain in the Figure :ref:`disjunctive_graph1`.
+
+          :math:`D` are the *disjunctive arcs* between task to be processed on the same machine.
+            These arcs are dotted or dashed in the Figure :ref:`disjunctive_graph1`.
+
+
+    ..  raw:: latex
+
+        The graph is $G = (V, C \cup D)$ where
+
+        \begin{itemize}
+        
+        \item $V$ is  the set of vertices corresponding to the tasks. Two fictive vertices $s$ and $t$ are added to
+         represent the start and end times. Each vertex has a weight corresponding to the processing time of the task it represents.
+         Vertices $s$ and $t$ have weight 0.
+    
+        \item $C$ are the \emph{conjunctive arcs} between the $i^{\textrm{th}}$ and $(i+1)^{\textrm{th}}$ tasks of a job.
+          We also add conjunctive arcs from $s$ to the first task of every job and from the last task of every job to $t$.
+          These arcs are plain in Figure~\ref{manual/ls/jobshop_def_data:disjunctive-graph1}.
+          
+        \item $D$ are the \emph{disjunctive arcs} between task to be processed on the same machine.
+            These arcs are dotted or dashed in Figure~\ref{manual/ls/jobshop_def_data:disjunctive-graph1}.
+        \end{itemize}
+
+    To determine a schedule we have to define an ordering of all tasks processed on each machine. This can be done by orienting 
+    all dotted edges such that each clique corresponding to a machine becomes acyclic [#acyclic_machine_clique]_.
+    
+    
+    ..  [#acyclic_machine_clique] An acyclic graph is a graph without cycle. It can be shown that an acyclic graph induces 
+          a total order on its vertices, i.e. an acyclic graph lets you order all its vertices unequivocally.
+          
+    Our first schedule is represented in the next Figure.
+    
+    ..  only:: html 
+    
+        .. image:: images/disjunctive_graph2.*
+            :width: 400pt
+            :align: center
+
+    ..  only:: latex
+    
+        .. image:: images/disjunctive_graph2.*
+            :width: 300pt
+            :align: center
+
+    We also want to avoid cycles between disjunctive and conjunctive arcs because they lead to infeasible schedules.
+    A feasible schedule is represented by an acyclic graph. In fact, the opposite is also true. A complete orientation 
+    of the edges in :math:`D` defines a feasible schedule if and only if the resulting directed graph is acyclic.
+    
+    The makespan is given by the longest weighted path from :math:`s` to :math:`t`. This path - thickened in the next Figure -
+    is called the *critical path*.
+    
+    ..  only:: html 
+    
+        .. image:: images/disjunctive_graph3.*
+            :width: 400pt
+            :align: center
+
+    ..  only:: latex
+    
+        .. image:: images/disjunctive_graph3.*
+            :width: 300pt
+            :align: center
+
+    Its length is :math:`0+4+4+2+2+0=12`.
+
+    We can now define the job-shop problem as a graph problem: give a complete a complete
+    orientation on a disjunctive graph such that the resulting graph is acyclic and the longest weighted path
+    from :math:`s` to :math:`t` is minimized. We will use this representation of the problem for our first model.
+
+
+The first model: the disjunctive programming formulation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    This first model is a direct naive translation of the definition of a job-shop problem. You can find the code in 
+    the file :file:`jobshop_wrong.cc`. As the filename suggests, this is NOT the way to model a job-shop problem. This first 
+    model will help us better understand what the job-shop problem is. In the next section, we will 
+    use ``IntervalVar``\s, ``SequenceVar``\s and special constraints made to handle scheduling problems.
+    
+    We again rely on the *three-stage method*. What are the decision **variables**? 
+    To construct a schedule, we need the starting times to process each task. We use the variables :math:`t_{ij}` to store 
+    the starting time of task :math:`i` of job :math:`j`.
+    
+    What are the **constraints**? 
 
 The data and file formats
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -282,31 +398,10 @@ Taillard's instances format
         - ``name()``: instance name;
         - ``horizon()``: the sum of all durations (and a trivial upper bound on the makespan).
         
-      * ``const std::vector<Task>& TasksOfJob(int job_id) const`` that returns a reference to the corresponding ``std::vector<Task>`` of tasks.
+      * ``const std::vector<Task>& TasksOfJob(int job_id) const``: returns a reference to the corresponding ``std::vector<Task>`` of tasks.
         
-The first model
-^^^^^^^^^^^^^^^
 
-..  only:: draft
 
-    This first model is a direct naive translation of the definition of a job-shop problem. You can find the code in 
-    the file :file:`jobshop_wrong.cc`. As the filename suggests, this is NOT the way to model a job-shop problem. This first 
-    model will help us better understand what the job-shop problem is. In the next section, we will 
-    use ``IntervalVar``\s, ``SequenceVar``\s and special constraints made to handle scheduling problems.
-    
-    We again rely on the *three-stage method*. What are the decision **variables**? 
-    To construct a schedule, we need the starting times to process each task. We use the variables :math:`t_{ij}` to store 
-    the starting time of task :math:`i` of job :math:`j`.
-    
-    What are the **constraints**? 
-
-A second model with dedicated variables
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-..  only:: draft
-
-    To keep the code simple, we only parse instances with at least two tasks for each job.
-    ?????????????? or not? ;-)
 
 ..  raw:: html
     

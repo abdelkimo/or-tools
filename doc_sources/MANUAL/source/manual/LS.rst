@@ -47,7 +47,8 @@ Local search: the job-shop problem
     ls/local_search
     ls/basic_working2
     ls/ls_operators
-    ls/jobshop_two_models
+    ls/jobshop_def_data
+    ls/jobshop_right_model
     ls/jobshop_ls
     ls/ls_filtering
     ls/metaheuristics
