@@ -17,7 +17,7 @@ verify_version()
 config = LoadConfig('../../config.ini', _ConfigDefault)
 
 # List of files and directories not to be compared
-tabu_list = ['.svn', '*~', 'UPLOAD']
+tabu_list = ['.svn', '*~', 'UPLOAD', 'reference_manual']
 
 # TARGETS
 documentation_dir = join(config['root.dir'],

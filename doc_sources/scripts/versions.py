@@ -42,7 +42,22 @@ def fetch_and_increment_version(filename):
     incremented_version = increment_version(version_text)
     return incremented_version
 
-
+def compare_version(old_version, new_version):
+    """ Returns true if old_version is indeed older than new version.
+    """
+    old_v = old_version.split('.')
+    new_v = new_version.split('.')
+    if (len(old_v) != len(new_v)):
+      exit("versions are not compatible")
+    for i in range(len(old_v)):
+      old_nbr = int(old_v[i])
+      new_nbr = int(new_v[i])
+      if (old_nbr < new_nbr):
+        return True
+      if (old_nbr > new_nbr):
+        return False
+    return False
+    
 def verify_version():
     # Parameters
     config = LoadConfig("../../config.ini", _ConfigDefault)
@@ -54,7 +69,7 @@ def verify_version():
     current_version = fetch_version(join(config['root.dir'],
                                          config['sources.dir'],
                                     config['sources.current_version_file']))
-    if not old_version < current_version:
+    if not compare_version(old_version,current_version):
         exit("Current version " + current_version +  \
                    " is not older thant old version (" + old_version + ")")
     return None

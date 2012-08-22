@@ -161,16 +161,16 @@ The disjunctive graph
 
     The graph is :math:`G = (V, C \cup D)` where
     
-      :math:`V` is the set of vertices corresponding to the tasks. Two fictive vertices :math:`s` and :math:`t` are added to
-        represent the start and end times. Each vertex has a weight corresponding to the processing time of the task it represents.
-        Vertices :math:`s` and :math:`t` have weight 0.
-  
-      :math:`C` is a set of *conjunctive arcs* between the :math:`i^{\textrm{th}}` and :math:`(i+1)^{\textrm{th}}` tasks of a job.
-        We also add conjunctive arcs from :math:`s` to the first task of every job and from the last task of every job to :math:`t`.
-        These arcs are plain in the Figure :ref:`disjunctive_graph1`.
+          :math:`V` is the set of vertices corresponding to the tasks. Two fictive vertices :math:`s` and :math:`t` are added to
+            represent the start and end times. Each vertex has a weight corresponding to the processing time of the task it represents.
+            Vertices :math:`s` and :math:`t` have weight 0.
+      
+          :math:`C` is a set of *conjunctive arcs* between the :math:`i^{\textrm{th}}` and :math:`(i+1)^{\textrm{th}}` tasks of a job.
+            We also add conjunctive arcs from :math:`s` to the first task of every job and from the last task of every job to :math:`t`.
+            These arcs are plain in the Figure :ref:`disjunctive_graph1`.
 
-      :math:`D` is a set of *disjunctive arcs* between tasks to be processed on the same machine.
-        These arcs are dotted or dashed in the Figure :ref:`disjunctive_graph1`.
+          :math:`D` is a set of *disjunctive arcs* between tasks to be processed on the same machine.
+            These arcs are dotted or dashed in the Figure :ref:`disjunctive_graph1`.
 
 
 ..  raw:: latex
@@ -234,7 +234,7 @@ is called the *critical path*.
 Its length is :math:`0+4+4+2+2+0=12`.
 
 We can now define the job-shop problem as a graph problem: find a complete 
-orientation of the edges of a disjunctive graph such that the resulting directed graph is acyclic and the longest weighted path
+orientation of a disjunctive graph such that the resulting directed graph is acyclic and the longest weighted path
 from :math:`s` to :math:`t` is minimized. We will use this representation of the problem to design our first model.
 
 
@@ -258,43 +258,43 @@ of the disjunctive graph. We use the same simplified notation for the processing
     
 What are the **constraints**? In the disjunctive graph, we have two kind of edges to model a feasible schedule:
     
-  * conjunctive arcs modelling the order in which each task of a job has to be processed:
-    
-    ..  math:: 
-    
-        \forall (k,j) \in C (k \neq s, l \neq t):\\
+      * conjunctive arcs modelling the order in which each task of a job has to be processed:
         
-        t_k + p_k \leqslant t_l
+        ..  math:: 
         
-    These constraints are called *conjunctive constraints*.
-    
-  * disjunctive edges modelling the order in which tasks have to be processed on a single machine:
-  
-    ..  math::
-    
-        \forall (k,l) \in D: m_k = m_l\\
-        
-        t_k + p_k \leqslant t_l \vee t_l + p_l \leqslant t_k
-        
-    These constraints are called *disjunctive constraints*. They forbid 
-    cycles in a clique corresponding to a machine [#cycle_and_disjunctive_constraint]_.
-    
-    ..  [#cycle_and_disjunctive_constraint] Consider the following situation
-    
-        ..  only:: html 
-    
-            .. image:: images/no_cycle.*
-               :width: 100pt
-               :align: center
-
-        ..  only:: latex
+            \forall (k,j) \in C (k \neq s, l \neq t):\\
             
-            .. image:: images/no_cycle.*
-               :width: 70pt
+            t_k + p_k \leqslant t_l
+            
+        These constraints are called *conjunctive constraints*.
+        
+      * disjunctive edges modelling the order in which tasks have to be processed on a single machine:
+      
+        ..  math::
+        
+            \forall (k,l) \in D: m_k = m_l\\
+            
+            t_k + p_k \leqslant t_l \vee t_l + p_l \leqslant t_k
+            
+        These constraints are called *disjunctive constraints*. They forbid 
+        cycles in a clique corresponding to a machine [#cycle_and_disjunctive_constraint]_.
+        
+        ..  [#cycle_and_disjunctive_constraint] Consider the following situation
+        
+            ..  only:: html 
+        
+                .. image:: images/no_cycle.*
+                   :width: 100pt
+                   :align: center
+
+            ..  only:: latex
                 
-        We have :math:`t_1 + p_1 \leqslant t_2`, :math:`t_2 + p_2 \leqslant t_3` and :math:`t_3 + p_3 \leqslant t_1`. Add 
-        these three inequalities and you obtain :math:`p_1 + p_2 + p_3 \leqslant 0`. This is impossible if one of the 
-        :math:`p_i` is greater than 0.
+                .. image:: images/no_cycle.*
+                   :width: 70pt
+                    
+            We have :math:`t_1 + p_1 \leqslant t_2`, :math:`t_2 + p_2 \leqslant t_3` and :math:`t_3 + p_3 \leqslant t_1`. Add 
+            these three inequalities and you obtain :math:`p_1 + p_2 + p_3 \leqslant 0`. This is impossible if one of the 
+            :math:`p_i` is greater than 0.
         
 What is the **objective function**? The objective function (the makespan) :math:`C_{\textrm{max}}` doesn't 
 correspond to a variable of the model. We 
@@ -331,149 +331,162 @@ instances of job-shop problems.
 The data and file formats
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To collect the data, we use two different file formats: **JSSP** and professor **Taillard's instances format**.
-In the directory :file:`data/jobshop`, you can find data files for the job-shop problem.
-The file :file:`jobshop.h` lets you read both formats and store the data into a ``JobshopData`` class we will use 
-throughout this chapter.
+..  only:: draft
+
+    To collect the data, we use two different file formats: **JSSP** and professor **Taillard's instances format**.
+    In the directory :file:`data/jobshop`, you can find data files for the job-shop problem.
+    The file :file:`jobshop.h` lets you read both formats and store the data into a ``JobshopData`` class we will use 
+    throughout this chapter.
 
 
 JSSP format 
 """""""""""""
 
-*JSSP* stands for *Job Shop Scheduling Problem*. Let's consider the beginning of file :file:`abz9`:
+..  only:: draft
 
-..  code-block:: text
-
-    +++++++++++++++++++++++++++++
-
-    instance abz9
-
-    +++++++++++++++++++++++++++++
-    Adams, Balas, and Zawack 15 x 20 instance (Table 1, instance 9)
-    20 15
-     6 14  5 21  8 13  4 11  1 11 14 35 13 20 11 17 10 18 12 11  ...
-     1 35  5 31  0 13  3 26  6 14  9 17  7 38 12 20 10 19 13 12  ...
-     0 30  4 35  2 40 10 35  6 30 14 23  8 29 13 37  7 38  3 40  ...
-     ...
-
-
-The first line of real data is 
-
-..  code-block:: text
-
-    20 15
+    *JSSP* stands for *Job Shop Scheduling Problem*. Let's consider the beginning of file :file:`abz9`:
     
-This instance has 20 jobs to process on 15 machines. Each job is composed of exactly 15 tasks.
+    ..  code-block:: text
+    
+        +++++++++++++++++++++++++++++
 
-Each job corresponds to a line:
+        instance abz9
 
-..  code-block:: text
-
-    6 14  5 21  8 13  4 11  1 11 14 35 13 20 11 17 10 18 12 11  ...
-
-Each pair :math:`(m_{ij}, p_{ij})` corresponds to a task. 
-For this first job, the first task needs 14 units of time on machine 6, the second task needs 21 units of time
-on machine 5 and so on.
-
-As is often the case, 
-there is a one to one correspondence between the tasks and the machines.
+        +++++++++++++++++++++++++++++
+        Adams, Balas, and Zawack 15 x 20 instance (Table 1, instance 9)
+        20 15
+         6 14  5 21  8 13  4 11  1 11 14 35 13 20 11 17 10 18 12 11  ...
+         1 35  5 31  0 13  3 26  6 14  9 17  7 38 12 20 10 19 13 12  ...
+         0 30  4 35  2 40 10 35  6 30 14 23  8 29 13 37  7 38  3 40  ...
+         ...
 
 
+    The first line of real data is 
+    
+    ..  code-block:: text
+    
+        20 15
+        
+    This instance has 20 jobs to process on 15 machines. Each job is composed of exactly 15 tasks.
+    
+    Each job corresponds to a line:
+    
+    ..  code-block:: text
+    
+        6 14  5 21  8 13  4 11  1 11 14 35 13 20 11 17 10 18 12 11  ...
+    
+    Each pair :math:`(m_{ij}, p_{ij})` corresponds to a task. 
+    For this first job, the first task needs 14 units of time on machine 6, the second task needs 21 units of time
+    on machine 5 and so on.
+    
+    As is often the case, 
+    there is a one to one correspondence between the tasks and the machines.
+    
+    
 Taillard's instances format
 """"""""""""""""""""""""""""
 
+..  only:: draft
 
-Let's consider the beginning of file :file:`20_5_01_ta001.txt`:
-
-..  code-block:: text
-
-    20
-    5
-    873654221
-    0
-    468
-    54 79 16 66 58 
-    1
-    325
-    83 3 89 58 56 
-    2
-    923
-    15 11 49 31 20 
-    3
-    513
-    71 99 15 68 85 
-    ...
+    Let's consider the beginning of file :file:`20_5_01_ta001.txt`:
     
-This format is made for *flow-shop problems* and not job-shop problems. The two first lines indicate that this instance 
-has 20 jobs to be processed on 5 machines. The next line (873654221) is a random seed number. The jobs are numbered from 
-0 to 19. The data for the first job are:
-
-..  code-block:: text
-
-    0
-    468
-    54 79 16 66 58 
-
-0 is the number of the first job. The next number is not important for the job-shop problem. The last line contains 
-numbers corresponding to processing times. We use the trick to assign these times to machines 0, 1, 2 and so on. So job 0 is 
-actually
-
-..  math::
-
-    [(0,54), (1,79), (2,16), (3,66), (4,58)]
-
-You can find all you ever wanted to know and more about this format in [Taillard1993]_.
-
+    ..  code-block:: text
+    
+        20
+        5
+        873654221
+        0
+        468
+        54 79 16 66 58 
+        1
+        325
+        83 3 89 58 56 
+        2
+        923
+        15 11 49 31 20 
+        3
+        513
+        71 99 15 68 85 
+        ...
+        
+    This format is made for *flow-shop problems* and not job-shop problems. The two first lines indicate that this instance 
+    has 20 jobs to be processed on 5 machines. The next line (873654221) is a random seed number. The jobs are numbered from 
+    0 to 19. The data for the first job are:
+    
+    ..  code-block:: text
+    
+        0
+        468
+        54 79 16 66 58 
+    
+    0 is the number of the first job. The next number is not important for the job-shop problem. The last line contains 
+    numbers corresponding to processing times. We use the trick to assign these times to machines 0, 1, 2 and so on. So job 0 is 
+    actually
+    
+    ..  math::
+    
+        [(0,54), (1,79), (2,16), (3,66), (4,58)]
+    
+    You can find all you ever wanted to know and more about this format in [Taillard1993]_.
+    
 ..  [Taillard1993] Taillard, E., 1993. *Benchmarks for basic scheduling problems*, 
     European Journal of Operational Research, Elsevier, vol. 64(2), pages 278-285, January.
 
 ``JobshopData``
 """"""""""""""""""
 
+..  only:: draft
 
-The ``JobshopData`` class is a simple container for job-shop instances. It is defined in the file :file:`jobshop.h`.
-Basically, it wraps an ``std::vector<std::vector<Task> >`` container where ``Task`` is a ``struct`` defined as follows:
-
-..  code-block:: c++
-
-    struct Task {
-      Task(int j, int m, int d) : job_id(j), machine_id(m), duration(d) 
-      {}
-      int job_id;
-      int machine_id;
-      int duration;
-    };
-
-Most part of the ``JobshopData`` class is devoted to the reading of both file formats.
-
-The public methods are
-
-  * ``void Load(const std::string& filename)``: parses and loads the tasks for each job. We use a ``FileLineReader`` (declared in 
-    :file:`base/filelinereader.h`) to parse a text file:
+    The ``JobshopData`` class is a simple container for job-shop instances. It is defined in the file :file:`jobshop.h`.
+    Basically, it wraps an ``std::vector<std::vector<Task> >`` container where ``Task`` is a ``struct`` defined as follows:
     
     ..  code-block:: c++
     
-        void Load(const string& filename) {
-          FileLineReader reader(filename.c_str());
-          reader.set_line_callback(NewPermanentCallback(
-              this,
-              &JobShopData::ProcessNewLine));
-          reader.Reload();
-          if (!reader.loaded_successfully()) {
-            LOG(ERROR) << "Could not open jobshop file";
-          }
-        } 
+        struct Task {
+          Task(int j, int m, int d) : job_id(j), machine_id(m), duration(d) 
+          {}
+          int job_id;
+          int machine_id;
+          int duration;
+        };
+
+    Most part of the ``JobshopData`` class is devoted to the reading of both file formats.
+    
+    The public methods are
+    
+      * ``void Load(const std::string& filename)``: parses and loads the tasks for each job. We use a ``FileLineReader`` (declared in 
+        :file:`base/filelinereader.h`) to parse a text file:
         
-    ``void ProcessNewLine(char* const line)`` is a callback that parses one line at a time.
-    It is triggered by the ``Reload()`` method of the ``FileLineReader``.
+        ..  code-block:: c++
+        
+            void Load(const string& filename) {
+              FileLineReader reader(filename.c_str());
+              reader.set_line_callback(NewPermanentCallback(
+                  this,
+                  &JobShopData::ProcessNewLine));
+              reader.Reload();
+              if (!reader.loaded_successfully()) {
+                LOG(ERROR) << "Could not open jobshop file";
+              }
+            } 
+            
+        ``void ProcessNewLine(char* const line)`` is a callback that parses one line at a time.
+        It is triggered by the ``Reload()`` method of the ``FileLineReader``.
+        
+      * the *getters*:
+      
+        - ``machine_count()``: number of machines;
+        - ``job_count()``: number of jobs;
+        - ``name()``: instance name;
+        - ``horizon()``: the sum of all durations (and a trivial upper bound on the makespan).
+        
+      * ``const std::vector<Task>& TasksOfJob(int job_id) const``: returns a reference to the corresponding ``std::vector<Task>`` of tasks.
+        
+
+
+
+..  raw:: html
     
-  * the *getters*:
-  
-    - ``machine_count()``: number of machines;
-    - ``job_count()``: number of jobs;
-    - ``name()``: instance name;
-    - ``horizon()``: the sum of all durations (and a trivial upper bound on the makespan).
-    
-  * ``const std::vector<Task>& TasksOfJob(int job_id) const``: returns a reference to the corresponding ``std::vector<Task>`` of tasks.
-    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
