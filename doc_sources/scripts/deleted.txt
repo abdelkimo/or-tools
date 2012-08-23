@@ -1,2 +1,2 @@
-doxygen
-user_manual/manual/ls/jobshop_two_models.html
+user_manual/manual/ls/jobshop_right_model.html
+user_manual/manual/ls/jobshop_first_model_implementation.html
