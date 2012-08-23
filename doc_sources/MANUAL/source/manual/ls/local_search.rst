@@ -48,7 +48,8 @@ The basic ingredients
         "Greedy Adaptive Search Procedure" didn't return any meaningful results.
       
     Most successful methods take into account their search history to guide the search. Even better - when well implemented - 
-    *reactive* methods [#reactive_search_links]_ learn and adapt themselves during the search. As you might have guessed from the long list of different
+    *reactive* methods [#reactive_search_links]_ learn and adapt themselves during the search. 
+    As you might have guessed from the long list of different
     local search (meta-) heuristics, there is no universal solving method [#no_free_lunch]_. The more insight/knowledge of the 
     structure of your specific problem you gather, the better you can shape your algorithm to solve efficiently your problem.
 
@@ -69,7 +70,7 @@ The basic ingredients
         What if your problem *is* to find a feasible solution? You relax the constraints [#relaxing_constraints]_ until you can 
         construct a starting solution for that relaxed model. From there, you enforced the relaxed constraints by adding 
         corresponding terms in the objective function (like in *Lagrangian relaxation* for instance). 
-        You'll find a detailed example of this kind of relaxation and the use of local search in section XXX where we will try
+        You'll find a detailed example of this kind of relaxation and the use of local search in the lab exercises  XXX where we will try
         to find a solution to the n-queens problem.
         
 

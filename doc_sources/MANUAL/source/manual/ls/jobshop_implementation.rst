@@ -207,8 +207,8 @@ The ``DecisionBuilder``\s
         DecisionBuilder* const main_phase = 
                                  solver.Compose(sequence_phase, obj_phase);
     
-The search
-^^^^^^^^^^^^^^
+The search and first results
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
@@ -264,6 +264,63 @@ The search
         [09:21:44] jobshop.cc:150: Machine_2: 1, 0, 2
 
     which is exactly the optimal solution depicted in the previous section.
+    
+    What about getting the start and end times for all tasks?
+    
+    You have to declare what variables you want to collect in the 
+    ``SolutionCollector``:
+    
+    ..  code-block:: c++
+    
+        SolutionCollector* const collector =
+                                        solver.MakeLastSolutionCollector();
+        collector->Add(all_sequences);
+        collector->AddObjective(objective_var);
+
+        for (int seq = 0; seq < all_sequences.size(); ++seq) {
+          const SequenceVar * sequence = all_sequences[seq];
+          const int sequence_count = sequence->size();
+          for (int i = 0; i < sequence_count; ++i) {
+            IntervalVar * t = sequence->Interval(i);
+            collector->Add(t->StartExpr()->Var());
+            collector->Add(t->EndExpr()->Var());
+          }
+        }
+
+    and then print the desired information:
+    
+    ..  code-block:: c++
+    
+        for (int m = 0; m < machine_count; ++m) {
+          SequenceVar* const seq = all_sequences[m];
+          std::ostringstream s;
+          s << seq->name() << ": ";
+          const std::vector<int> & sequence = 
+                                        collector->ForwardSequence(0, seq);
+          const int seq_size = sequence.size();
+          for (int i = 0; i < seq_size; ++i) {
+            IntervalVar * t = seq->Interval(sequence[i]);
+            s << "Job " << sequence[i] << " (";
+            s << collector->Value(0,t->StartExpr()->Var());
+            s << ",";
+            s << collector->Value(0,t->EndExpr()->Var());
+            s << ")  ";
+          }
+          s.flush();
+          LOG(INFO) << s.str();
+        }
+
+    The result for our instance is:
+    
+    ..  code-block:: c++
+    
+        ...: Machine_0: Job 0 (0,3)  Job 1 (3,5)  
+        ...: Machine_1: Job 2 (0,4)  Job 0 (4,6)  Job 1 (6,10)  
+        ...: Machine_2: Job 1 (5,6)  Job 0 (6,8)  Job 2 (8,11)  
+
+    Now you can solve other instances but don't forget that this problem 
+    is hard. This is why we use local search to find a good solution in the 
+    next section.
     
 ..  raw:: html
     
