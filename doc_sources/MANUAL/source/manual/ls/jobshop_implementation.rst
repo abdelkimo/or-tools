@@ -164,7 +164,8 @@ The objective function
         // Objective: minimize the makespan (maximum end times of all tasks)
         // of the problem.
         IntVar* const objective_var = solver.MakeMax(all_ends)->Var();
-        OptimizeVar* const objective_monitor = solver.MakeMinimize(objective_var, 1);
+        OptimizeVar* const objective_monitor = 
+                                      solver.MakeMinimize(objective_var, 1);
 
     To obtain the end time of a ``IntervalVar``, use its ``EndExpr()`` method that returns an ``IntExpr``.
     You can also query the start time and duration:
@@ -177,8 +178,93 @@ The ``DecisionBuilder``\s
 
 ..  only:: draft
 
-    fff
+    The solving process is done in two phases: first we rank the tasks for each machine, then 
+    we schedule each task at its earliest start time. This is done with *two* ``DecisionBuilder``\s
+    that are combined in a top-down fashion, i.e. one ``DecisionBuilder`` is applied and when we reach
+    a leaf in the search tree, the second ``DecisionBuilder`` kicks in. As this chapter is about Local Search, 
+    we will use default search strategies for both phases.
+    
+    First, we define the phase to rank the tasks on all machines:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder* const sequence_phase =
+                  solver.MakePhase(all_sequences, Solver::SEQUENCE_DEFAULT);
+  
+    Second, we define the phase to schedule the ranked tasks. This is conveniently done
+    by fixing the objective variable to its minimum value:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder* const obj_phase = solver.MakePhase(objective_var,
+                                           Solver::CHOOSE_FIRST_UNBOUND,
+                                           Solver::ASSIGN_MIN_VALUE);
 
+    Third, we combine both phases one after the other in the search tree:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder* const main_phase = 
+                                 solver.Compose(sequence_phase, obj_phase);
+    
+The search
+^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    We use the usual ``SearchMonitor``\s:
+    
+    ..  code-block:: c++
+    
+        // Search log.
+        const int kLogFrequency = 1000000;
+        SearchMonitor* const search_log =
+                    solver.MakeSearchLog(kLogFrequency, objective_monitor);
+
+        SearchLimit* limit = NULL;
+        if (FLAGS_time_limit_in_ms > 0) {
+          limit = solver.MakeTimeLimit(FLAGS_time_limit_in_ms);
+        }
+
+        SolutionCollector* const collector = 
+                                         solver.MakeLastSolutionCollector();
+        collector->Add(all_sequences);
+        collector->AddObjective(objective_var);
+
+
+    and lauch the search:
+    
+    ..  code-block:: c++
+    
+        // Search.
+        if (solver.Solve(main_phase,
+                         search_log,
+                         objective_monitor,
+                         limit,
+                         collector)) {
+          for (int m = 0; m < machine_count; ++m) {
+            LOG(INFO) << "Objective value: " << 
+                                              collector->objective_value(0);
+            SequenceVar* const seq = all_sequences[m];
+            LOG(INFO) << seq->name() << ": "
+            << IntVectorToString(collector->ForwardSequence(0, seq), ", ");
+          }
+        }
+    
+    ``collector->ForwardSequence(0, seq)`` is a shortcut to return the ``std::vector<int>``
+    containing the order in which the tasks are processed on each machine for solution 0.
+    
+    This order corresponds exactly to the job ids because we gave the tasks on each machine ordered by job ids.
+    The result for our instance is:
+    
+    ..  code-block:: text
+    
+        [09:21:44] jobshop.cc:150: Machine_0: 0, 1
+        [09:21:44] jobshop.cc:150: Machine_1: 2, 0, 1
+        [09:21:44] jobshop.cc:150: Machine_2: 1, 0, 2
+
+    which is exactly the optimal solution depicted in the previous section.
+    
 ..  raw:: html
     
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

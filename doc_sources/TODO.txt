@@ -30,5 +30,7 @@ Makefiles:
 OBJ_OUT = /Fo$(OR_ROOT)objs\\
 EXEOUT = /Fe$(OR_ROOT)bin\\
 
-  
+Scripts
+---------
 
+- double check if reference_manual, doxygen are out of sync.
