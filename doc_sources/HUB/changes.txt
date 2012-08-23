@@ -1,5 +1,5 @@
 # Current changes.
 * Minor enhancements to the manual:
-  - new script (convert_draft_to_final.py)
-  - section 6.4 added to test new script
+  - section 6.4 modified
+  - section 6.5 added
 

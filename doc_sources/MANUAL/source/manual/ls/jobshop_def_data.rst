@@ -1,7 +1,7 @@
 ..  _jobshop_def:
 
-The job-shop problem, benchmark data and a first model 
---------------------------------------------------------
+The job-shop problem, benchmark data and the disjunctive model 
+-------------------------------------------------------------------
 
 We describe the job-shop problem, a first model and the benchmark data. The job-shop problem belongs to the 
 intractable problems (:math:`\in` NP). Only few very special cases can be solved in 
@@ -238,16 +238,12 @@ orientation of the edges of a disjunctive graph such that the resulting directed
 from :math:`s` to :math:`t` is minimized. We will use this representation of the problem to design our first model.
 
 
-A first model: the disjunctive programming formulation
+The disjunctive model
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This first model is a straightforward translation of the definition of a job-shop problem and
-its disjunctive graph reprensentation. You can find the code in 
-the file :file:`jobshop_wrong.cc`. As the filename suggests, this is NOT the way to model a job-shop problem when 
-using Constraint Programming. However, this first 
-model will help us better understand the job-shop problem. Later in this chapter, we will 
-use ``IntervalVar``\s, ``SequenceVar``\s and special constraints better suited to handle scheduling problems.
-    
+This model is a straightforward translation of the definition of a job-shop problem and
+its disjunctive graph reprensentation. 
+
 We again rely on the :ref:`three_stages`. What are the decision **variables**? 
 We use the variables :math:`t_{ij}` to store 
 the starting time of task :math:`i` of job :math:`j`. We could use two fictive variables corresponding to the fictive 
