@@ -1,2 +1,0 @@
-user_manual/manual/ls/jobshop_right_model.html
-user_manual/manual/ls/jobshop_first_model_implementation.html

@@ -1,1 +1,0 @@
-user_manual/manual/ls/jobshop_implementation.html

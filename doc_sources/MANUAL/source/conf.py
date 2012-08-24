@@ -79,8 +79,8 @@ feed_author = 'Google'
 rst_prolog = open('../../global.rst', 'r').read()
 
 # The setting for draft or final display. Uncomment the relevant line:
-#tags.add('draft')
-tags.add('final') 
+tags.add('draft')
+#tags.add('final') 
 #**************************************************************************************
 
 # The version info for the project you're documenting, acts as replacement for
