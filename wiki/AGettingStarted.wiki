@@ -53,13 +53,24 @@ The fedora command is:
  sudo yum install subversion bison flex python-setuptools python-dev autoconf libtool zlib-devel
 }}}
 
+On mac OS X, you need to install xcode. If the OS is before Mountain Lion (Lion, Snow Leopard), then it should be enough.
+If the OS is Mountain Lion, it is a bit more complicated:
+
+  * You then need to install xcode 4.4.1 and the august command line tools for xcode.
+  * To install javac, just run {{{javac}}}, it will start the procedure to download java and install it.
+  * autotools and libtool are no longer distributed with xcode. You need to compile them yourself if you want to run make third_party
+    * cd into the or-tools directory
+    * run {{{./tools/build_aclocal_on_mountain_lion.sh}}}
+    * type {{{export PATH=`pwd`/dependencies/install/bin:$PATH}}}
+  * You only need to run the first time or after make clean_third_party. You need to export the augmented PATH each time you run make third_party.
+
 If you wish to use glpk, please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.47.tar.gz and put the archive in or-tools/dependencies/archives.
 If you have the license, please download ziboptsuite-2.1.1.tgz from http://zibopt.zib.de/download.shtml and  put the archive in or-tools/dependencies/archives.
 
 If you wish to use .NET, you need to install mono.
 On linux platforms, just install the mono-devel package. You need a recent one (at least 2.8 I believe) to work correctly. If mono is not supported on your platform, you can install it using the procedure for Mac OS X.
 
-On Mac OS X, you need 64 bit support. Thus you need to build mono by hand. Copy the mono archive http://download.mono-project.com/sources/mono/mono-2.11.1.tar.gz to dependencies/archives.
+On Mac OS X, you need 64 bit support. Thus you need to build mono by hand. Copy the mono archive http://download.mono-project.com/sources/mono/mono-2.10.9.tar.gz to dependencies/archives.
 You can use {{{dependencies/install/bin/gmcs}}} to compile C# files and {{{dependencies/install/bin/mono}}} to run resulting .exe files.
 
 run:
