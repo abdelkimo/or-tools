@@ -59,7 +59,7 @@ Introduction to constraint programming
 
 ..  raw:: html
     
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br>
 
 
 

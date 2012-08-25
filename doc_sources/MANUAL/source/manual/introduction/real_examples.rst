@@ -1,3 +1,5 @@
+..  _cp_real_examples:
+
 Real examples
 -------------
 
