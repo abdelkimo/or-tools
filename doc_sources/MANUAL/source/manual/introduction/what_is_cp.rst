@@ -89,42 +89,89 @@ The ease to model a problem
     be *any* constraints. They even don't have to be numerical and can deal with symbolic variables! This allows to model your problems
     in a very natural fashion.
     
-    One of the most well-known global contraints [#global_constraints]_ is the ``AllDifferent`` constraint.
+    One of the most well-known global contraints is the :math:`\text{AllDifferent}` constraint.
     This constraint ensures that the variables it is applied on, all have different values in a feasible solution. For instance
-    ``AllDifferent(t0, t1, t2)`` forces the three variables ``t0``, ``t1`` and ``t2`` to have different values. Compare 
+    :math:`\text{AllDifferent}(t_0, t_1, t_2)` forces the three variables 
+    :math:`t_0`, :math:`t_1` and :math:`t_2` to have different values. Say that :math:`t_0`, 
+    :math:`t_1` and :math:`t_2` can take the integer values in :math:`[0,2]`. Compare 
     
-    ..  code-block:: text
+    ..  math::
     
-        AllDifferent(t0, t1, t2)
+        \text{AllDifferent}(t_0, t_1, t_2)
          
-    to the classical way of translating this constraint in linear programming for instance:
+    to the classical way (see [Williams2001]_) of translating this constraint in linear integer programming for instance:
     
-    [TO BE DONE]
+    ..  math::
     
-    Of course if ``AllDifferent(t0, t1, t2)`` was being replaced by its linear programming translation for instance, it would only be
+        \begin{array}{rccl}
+          t_i - \sum_{j=0}^2 j \lambda_{ij} & = & 0 & \forall \, i\\
+          \sum_{j=0}^2 \lambda_{ij}         & = & 1 & \forall \, i\\
+          \sum_{i=0}^2 \lambda_{ij}         & \leqslant & 1 & \forall \, j
+        \end{array}
+    
+    Only to model the :math:`\text{AllDifferent}(t_0, \ldots, t_{n-1})` constraint [#model_alldifferent_mip_exceptions]_ 
+    with :math:`t_i \in \, [0, n-1]`, we need 
+    :math:`n^2` auxiliary variables :math:`\lambda_{ij}`:
+    
+    ..  math::
+    
+        \lambda_{ij} = \left\{
+        \begin{array}{l l}
+        1 & \quad \text{if $t_i$ takes value $j$}\\
+        0 & \quad \text{otherwise}\\
+        \end{array} \right.
+    
+    and :math:`3n` linear equations!
+    
+    ..  [Williams2001] Williams, H.P. and Yan, H. *Representations of the all_different Predicate of 
+        Constraint Satisfaction in Integer Programming*, INFORMS Journal on Computing, V.3, n. 2, pp 96-103, 2001.
+    
+    ..  [#model_alldifferent_mip_exceptions] In some special cases, we are able to model the :math:`\text{AllDifferent}` 
+        constraint in a more efficient manner.
+    
+    Of course if :math:`\text{AllDifferent}(t_0, t_1, t_2)` was being replaced by its linear integer 
+    programming translation for instance, it would only be
     syntactic sugar but it is not.
-    Specialized and efficient propagation algorithms (see below) were (and are still!) developed to ensure ``t0``, ``t1`` and ``t2`` keep
+    Specialized and efficient propagation algorithms were (and are still!) developed to ensure :math:`t_0`, :math:`t_1` 
+    and :math:`t_2` keep
     different values during the search.
     
     Numerous specialized and general global constraints exist. The 
     `Global Constraint Catalog <http://www.emn.fr/z-info/sdemasse/gccat/>`_ references 
     354 global constraints at the time of writing.
+
+    Because CP deals locally [#cp_deals_locally_with_constraints]_ with each constraints, 
+    adding constraints, even on the fly (i.e. during the search), 
+    is not a problem. This makes CP a perfect framework to prototype and test ideas: you can change the model 
+    without changing (too much) your search strategy/algorithm.
     
-    
-    ..  [#global_constraints] Blabalab
+    ..  [#cp_deals_locally_with_constraints] Propagation is done globally on all involved variables but the propagation is done
+        constraint by constraint.
 
 The possibility to add heterogeneous constraints
 """"""""""""""""""""""""""""""""""""""""""""""""""
 
 ..  only:: draft
 
-    Because CP deals locally with each constraints, adding heterogeneous constraints, even on the fly, 
-    is not a problem. This makes CP a perfect framework to prototype and test ideas: you can change the model 
-    without changing (too much) your search strategy/algorithm.
+    Because the type of relationships among variables that can be modelled in CP is quite large [#only_need_propagation]_,
+    you can play with quite heterogeneous constraints and mix all type of variables.
+
+    ..  [#only_need_propagation] Basically, you only need to be able to propagate (hopefully efficiently) your constraints.
     
     One of the *curiosities* of CP is its ability to deal with *meta-constraints*: constraints on constraints!
     
-    [TO BE DONE]
+    Take for instance the :math:`\text{Element}` constraint. Let :math:`[x_0, \ldots, x_{n-1}]` be an array of integers variables
+    with domain :math:`\{0,\ldots, n-1\}`, :math:`y` an integer variables with domain contained in :math:`\{0,\ldots, n-1\}` and 
+    :math:`z` with domain :math:`\{0,\ldots, n-1\}`. The :math:`\text{Element}` constraint assign the :math:`y^{\text{th}}` variable
+    in :math:`[x_0, \ldots, x_{n-1}]` to :math:`z`, i.e.:
+    
+    ..  math::
+    
+        z = x_y.
+    
+    If you change :math:`y` or the array :math:`[x_0, \ldots, x_{n-1}]`, :math:`z` will change accordingly but remember than
+    you have an equality, so this works the other way around too: if you change :math:`z` then :math:`y` or/and the array
+    :math:`[x_0, \ldots, x_{n-1}]` will have to change!
     
     ..  raw:: latex
     
@@ -136,11 +183,19 @@ The possibility to add heterogeneous constraints
         This technique is called *reification* and you can learn more about it in the chapter :ref:`chapter_reification`.
 
 
+    The ease to model a problem and the possibility to add heterogeneous constraints sometimes make CP the preferred or only 
+    framework to model some difficult problems with a lots of side-constraints. In part 3 on *Routing*, 
+    we emphasize arc-, node- and vehicle-routing problems *with* constraints. For instance, CP cannot beat the state of the art approaches to 
+    solve the Travelling Salesman Problem but add a few side-constraints to the problem and CP is competitive!
+
 The search
 ^^^^^^^^^^^^
 
 ..  only:: draft
 
+
+    Propagation is not enough to find a feasible solution most of the time.
+    
     ..  topic:: CP for the MIP practitioners [#CP_MIP_practitioners_jargon]_
     
         There are strong similarities between the two basic search algorithms

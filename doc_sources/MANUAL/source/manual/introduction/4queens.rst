@@ -99,7 +99,7 @@ Propagation and search
     
     Constrainst Programming solvers are mainly based on two concepts [#constraint_programming_poor_def]_: 
     
-      - **propagation**: variables can have different values but the solver must remove some of those values to keep all the variables
+      - **propagation** [#propagation_also_called]_: variables can have different values but the solver must remove some of those values to keep all the variables
         values compatible with the model. In Constraint Programming, clever algorithms are devised to remove those values in an 
         efficient manner. These algorithms *propagate* the current state of the solver and removes incompatible or undesirable values.
       
@@ -111,6 +111,8 @@ Propagation and search
     
     ..  [#constraint_programming_poor_def] These are two key elements of a Constraint Programming solving algorithm but 
         there are many more!
+        
+    ..  [#propagation_also_called] Propagation is also called *domain filtering*, *pruning* or *consistency technique*.
          
     To better understand Constraint Programming, let's have a look at a real solving process [#real_process_details]_. In the following
     Figures, crosses represent the action of removing values from variables. Each step in the solving process is separated by 
