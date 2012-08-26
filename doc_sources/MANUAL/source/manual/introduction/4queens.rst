@@ -38,14 +38,35 @@ A mathematical translation of the problem
     
 ..  only:: draft
 
-    In Constraint Programming we replace a problem by a *mathematical model* with *variables* and *constraints*. Variables 
-    represent available decisions (for instance a binary variable :math:`x_{ij}` that tells if a queens is present on the given
-    :math:`(i,j)` square (:math:`x_{ij} = 1`) or not (:math:`x_{ij} = 0`)) and constraints restraint the variables of taking 
-    arbitrary values. Only possible combinations of values corresponding to real solutions are accepted i.e. values that will not violate
-    the model's constraints [#model_more_complicated_than_that]_.
+    In Constraint Programming we translate a real problem by a *mathematical model* with *variables* and *constraints*. Variables 
+    represent decisions and constraints restraint the variables of taking arbitrary values altogether. For instance, to model the 
+    4-queens problem, we could use a binary variable :math:`x_{ij}` that indicates if a queen is present on the given
+    :math:`(i,j)` square (:math:`x_{ij} = 1`) or not (:math:`x_{ij} = 0`). We need several constraints to model that no two queens
+    can capture each other. We also need to constraint the need for 4 queens. We could add the constraint:
     
-    In the next section, we will see how the CP solver of the or-tools library tries to solve this problem, i.e. tries to find 
-    a solution to the mathematical model.
+    ..  math::
+    
+        \sum_{(i,j) \in \, \textrm{squares}} x_{ij} = 4.
+        
+    This constraints ensure that we place 4 queens on the chessboard. In general, constraints only permit possible combinations of values 
+    of variables corresponding to real solutions [#model_more_complicated_than_that]_.
+    
+    ..  only:: html 
+
+        In the next section, we will see how the or-tools' CP solver tries to solve this problem, i.e. tries to find 
+        a solution to the mathematical model we will develop and explain in the sections :ref:`nqueen_problem` and
+        :ref:`nqueen_implementation_basic_model` [#dont_need_to_know_model]_.
+        
+        ..  [#dont_need_to_know_model] We don't need to know the details of the model right now.
+
+    ..  raw:: latex 
+
+        In the next section, we will see how the or-tools' CP solver tries to solve this problem, i.e. tries to find 
+        a solution to the mathematical model we will develop and explain in 
+        sections~\ref{manual/search_primitives/nqueens:nqueen-problem} and
+        \ref{manual/search_primitives/basic_model_implementation:nqueen-implementation-basic-model}\footnote{
+        We don't need to know the details of the model right now.}.
+
     
 ..  [#see_what_n_queens_problem_really_is] 
     
@@ -67,7 +88,7 @@ A mathematical translation of the problem
     ..  raw:: latex
     
         Things are a little bit more complex than that but let's keep it simple for the moment.
-        See section~\ref{manual/introduction/theory:a-little-bit-of-theory} for a more.
+        See section~\ref{manual/introduction/theory:a-little-bit-of-theory} for more.
 
 
 
@@ -93,7 +114,7 @@ Propagation and search
          
     To better understand Constraint Programming, let's have a look at a real solving process [#real_process_details]_. In the following
     Figures, crosses represent the action of removing values from variables. Each step in the solving process is separated by 
-    horizontal lines.
+    an horizontal line.
 
     ..  [#real_process_details] 
     
@@ -117,7 +138,7 @@ Propagation and search
 
     ..  raw:: latex
     
-        \hrulefill
+        \HRule
 
     The solver starts by placing the first queen in the upper left corner.
     Because of the model we gave to the solver, it knows that there cannot be any other queen in the 
@@ -150,7 +171,7 @@ Propagation and search
 
     ..  raw:: latex
     
-        \hrulefill
+        \HRule
 
     The second step starts with the solver trying to place a second queen. It does so in the first available square from above
     in the second column. As in the first step, the solver knows that no other queen can be placed in a column were it just placed
@@ -177,7 +198,7 @@ Propagation and search
         :alt: alternate text
 
     Now, we have a failure as there is no possibility to place a third queen in the third column: there simply can not be 
-    a solution with this configuration. It has to backtrack!
+    a solution with this configuration. The solver has to backtrack!
 
     ..  raw:: html
     
@@ -185,7 +206,7 @@ Propagation and search
 
     ..  raw:: latex
     
-        \hrulefill
+        \HRule
 
     The solver decides to challenge its last decision to place the second queen in the third row from above and places it in the 
     fourth row.
@@ -222,10 +243,10 @@ Propagation and search
 
     ..  raw:: latex
     
-        \hrulefill
+        \HRule
 
     First, it tries to challenge its last choice for the second queen but it detects
-    that there are no more other choices. The solver has to challenge its choice to place the first queen in the first row and places
+    that there are no more other choices. The solver has to challenge its first choice to place the first queen in the first row and places
     the first queen in the first column second row.
 
     The propagation can now take place:
