@@ -24,6 +24,10 @@ A little bit of theory
       - bloblo 
     
 
+Constraint Satisfaction Problems
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 ..  _complexity_in_a_few_lines:
 
 Complexity theory in a few lines
