@@ -130,6 +130,8 @@ Describe
     What are the **constraints**? No two queens can attack each other. This means to place :math:`n`
     queens on the chessboard such that no two queens are placed on the same row, the same column or the same diagonal.
 
+..  _simple_model_n_queens:
+
 Model
 """""
 

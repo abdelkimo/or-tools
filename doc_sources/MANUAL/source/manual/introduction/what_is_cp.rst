@@ -7,7 +7,7 @@ What is constraint programming?
 
     Constraint Programming (CP) is an emergent field in operations research [#no_origin_war]_.
     It is based on *feasibility* (i.e. finding a feasible solution) rather than 
-    optimization (i.e. finding an optimal solution) and focus on the constraints
+    optimization (i.e. finding an optimal solution) and focuses on the constraints
     and variables' domain rather than the objective function.
     
     ..  [#no_origin_war] This new field has its origins in a number of fields including 
@@ -48,25 +48,25 @@ What is constraint programming?
         
             This section was written with different readers in mind. The ones described in the preface but also
             our colleagues from operations research that are new to CP.<br>
-            From time to time, we compare CP with their fields and we use some jargon. Don't be afraid if you don't 
+            From time to time, we compare CP with their field and we use some jargon. Don't be afraid if you don't 
             understand those asides and just read on.
             
         ..  raw:: latex        
         
             This section was written with different readers in mind. The ones described in the preface but also
             our colleagues from operations research that are new to CP.\\
-            From time to time, we compare CP with their fields and we use some jargon. Don't be afraid if you don't 
+            From time to time, we compare CP with their field and we use some jargon. Don't be afraid if you don't 
             understand those asides and just read on.
 
     ..  topic:: Constraint Programming does optimization too!
     
-        When faced with an optimization problem, CP first finds a feasible solution x0
-        with an objective value of z(x0). It then adds the constraint z(x) < z(x0) and tries
+        When faced with an optimization problem, CP first finds a feasible solution :math:`x_0`
+        with an objective value of :math:`z(x_0)`. It then adds the constraint :math:`z(x) < z(x_0)` and tries
         to find a feasible solution for this enhanced model.
         
-        The same trick is applied again and again until the addition of constraint z(x) < z(xi)
-        for a feasible solution xi renders the model incoherent, i.e. there is no feasible solution for this model.
-        The last feasible solution xi is thus an optimal solution.
+        The same trick is applied again and again until the addition of constraint :math:`z(x) < z(x_i)`
+        for a feasible solution :math:`x_i` renders the model incoherent, i.e. there is no feasible solution for this model.
+        The last feasible solution :math:`x_i` is thus an optimal solution.
         
 Strength of Constraint Programming
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -93,7 +93,9 @@ The ease to model a problem
     This constraint ensures that the variables it is applied on, all have different values in a feasible solution. For instance
     :math:`\text{AllDifferent}(t_0, t_1, t_2)` forces the three variables 
     :math:`t_0`, :math:`t_1` and :math:`t_2` to have different values. Say that :math:`t_0`, 
-    :math:`t_1` and :math:`t_2` can take the integer values in :math:`[0,2]`. Compare 
+    :math:`t_1` and :math:`t_2` can take the integer values in :math:`[0,2]`. 
+    
+    Compare 
     
     ..  math::
     
@@ -186,7 +188,7 @@ The possibility to add heterogeneous constraints
     The ease to model a problem and the possibility to add heterogeneous constraints sometimes make CP the preferred or only 
     framework to model some difficult problems with a lots of side-constraints. In part 3 on *Routing*, 
     we emphasize arc-, node- and vehicle-routing problems *with* constraints. For instance, CP cannot beat the state of the art approaches to 
-    solve the Travelling Salesman Problem but add a few side-constraints to the problem and CP is competitive!
+    solve the Travelling Salesman Problem but add a few side-constraints to the problem and CP becomes competitive!
 
 The search
 ^^^^^^^^^^^^
@@ -194,7 +196,58 @@ The search
 ..  only:: draft
 
 
-    Propagation is not enough to find a feasible solution most of the time.
+    Propagation is not enough to find a feasible solution most of the time. The solver needs to test partial or complete assignments
+    of the variables. The basic search algorithm (and the one implemented in *or-tools*) is a *systematic* search algorithm: it 
+    systematically generates all possible assignments one by one [#search_algorithm_details]_, trying to extend a partial solution 
+    toward a complete solution. If it finds an impossibility along the way, it *backtracks* and reconsider last assignments as we have seen
+    in the previous section.
+    
+    There exist numerous refinements (some implemented in *or-tools* too) to this basic version.
+    
+    The assignment possibilities define the *search space* [#search_space_details]_. In our 4-queens example, the search space is defined 
+    by all possible assignments for the 16 variables :math:`x_{ij}`. For each of them, we have 2 possibilities: 
+    :math:`0` or :math:`1`. Thus in total,
+    we have :math:`16^2 = 256` possibilities. This is the *size* of the search space. It's important to understand that the search space
+    is defined by the variables and their domain (i.e. the model) you use and not by the problem itself [#four_queens_reduced_search_space]_.
+    Actually, it is also defined by the constraints you add to the model because those constraints reduce the possibilities and the thus
+    the search space [#determining_search_space_size]_.
+    
+    The search algorithm visits systematically the whole search space. The *art* of optimization is to model a problem such that the 
+    search space is not too big and such that the search algorithm visit only interesting parts of the 
+    search space quickly [#search_space_too_big]_.
+    
+    ..  [#four_queens_reduced_search_space] In section :ref:`simple_model_n_queens`, we will see a model 
+        with a search space of size 16 for the 4-queens problem. 
+    
+    ..  [#determining_search_space_size] Determining the exact (or even approximate) search space size is very often a (very) difficult
+        problem by itself.
+    
+    ..  [#search_algorithm_details] See the section :ref:`basic_workingI` for more details.
+    
+    ..  [#search_space_details] See next section for more.
+    
+    ..  [#search_space_too_big] Most of the time, we want good solutions quite rapidly. It might be more interesting to have a 
+        huge search space but that we can easily visit than a smaller search space that is more difficult to scan. See the section
+        :ref:`always_tradeoffs`.
+    
+    When the solver has done its propagation and didn't find a solution, it has to assign a value to a 
+    variable [#branching_on_several_variables]_. Say variable :math:`x_{21}`. Because we don't want to miss some part of 
+    the search space, we want to visit solutions were :math:`x_{21} = 1` but also solutions where :math:`x_{21} = 0`.
+    This alternative choice is called *branching*. Most systematic search algorithms are called *branch-and-something*:
+    
+      * branch and bound;
+      * branch and prune;
+      * branch and cut;
+      * branch and price;
+      * ...
+    
+    In Constraint Programming, we use *Branch and prune* where pruning is another term for *propagation*.
+    You can also combine different techniques. For instance *branch, price and cut*.
+    
+    ..  [#branching_on_several_variables] Or a bunch of variables. Or it can just restrict the values some variables can take. Or 
+        a combination of both but let's
+        keep it simple for the moment: the solver assigns a value to one variable at a time. 
+        
     
     ..  topic:: CP for the MIP practitioners [#CP_MIP_practitioners_jargon]_
     
@@ -216,7 +269,7 @@ The search
         **View**: Objective oriented **View**: Domain oriented
         ============================ ============================
         
-      ..  [#CP_MIP_practitioners_jargon] This is an aside for our MIP
+      ..  [#CP_MIP_practitioners_jargon] This is an aside for our MIP (Mix Integer Programming)
           colleagues. It's full of jargon on purpose.
         
 ..  raw:: html
