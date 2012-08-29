@@ -5,12 +5,12 @@ The 4-queens problem
 
     ..  only:: html 
     
-        We present here a well-known problem among Constraint Programming practitionners: the 4-queens problem.
+        We present here a well-known problem among Constraint Programming practitioners: the 4-queens problem.
         We shall encounter this problem again and generalize it in the Chapter :ref:`search_primitives`.
     
     ..  raw:: latex 
     
-        We present here a well-known problem among Constraint Programming practitionners: the 4-queens problem.
+        We present here a well-known problem among Constraint Programming practitioners: the 4-queens problem.
         We shall encounter this problem again and generalize it in Chapter~\ref{manual/search_primitives:search-primitives}.
 
 The problem
@@ -18,7 +18,7 @@ The problem
 
 ..  only:: draft
 
-    The *4-queens problem* [#see_what_n_queens_problem_really_is]_ concists in 
+    The *4-queens problem* [#see_what_n_queens_problem_really_is]_ consists in 
     placing four queens on a 4 x 4 chessboard so that no two queens can capture each other.
     That is, no two queens are allowed to be placed on the same row, the same column or the same diagonal.
 
@@ -38,7 +38,7 @@ A mathematical translation of the problem
     
 ..  only:: draft
 
-    In Constraint Programming we translate a real problem by a *mathematical model* with *variables* and *constraints*. Variables 
+    In Constraint Programming we translate a real problem to a *mathematical model* with *variables* and *constraints*. Variables 
     represent decisions and constraints restraint the variables of taking arbitrary values altogether. For instance, to model the 
     4-queens problem, we could use a binary variable :math:`x_{ij}` that indicates if a queen is present on the given
     :math:`(i,j)` square (:math:`x_{ij} = 1`) or not (:math:`x_{ij} = 0`). We need several constraints to model that no two queens
@@ -53,21 +53,21 @@ A mathematical translation of the problem
     
     ..  only:: html 
 
-        In the next section, we will see how the or-tools' CP solver tries to solve this problem, i.e. tries to find 
-        a solution to the mathematical model we will develop and explain in the sections :ref:`nqueen_problem` and
+        In the next section, we will see how the or-tools' CP solver tries to solve this problem. More precisely, 
+        how the solver will try to solve the model we will develop and explain in the sections :ref:`nqueen_problem` and
         :ref:`nqueen_implementation_basic_model` [#dont_need_to_know_model]_.
         
         ..  [#dont_need_to_know_model] We don't need to know the details of the model right now.
 
     ..  raw:: latex 
 
-        In the next section, we will see how the or-tools' CP solver tries to solve this problem, i.e. tries to find 
-        a solution to the mathematical model we will develop and explain in 
+        In the next section, we will see how the or-tools' CP solver tries to solve this problem. More precisely, 
+        how the solver will try to solve the model we will develop and explain in 
         sections~\ref{manual/search_primitives/nqueens:nqueen-problem} and
         \ref{manual/search_primitives/basic_model_implementation:nqueen-implementation-basic-model}\footnote{
         We don't need to know the details of the model right now.}.
-
-    
+        
+   
 ..  [#see_what_n_queens_problem_really_is] 
     
     ..  only:: html
@@ -104,7 +104,8 @@ Propagation and search
         efficient manner. These algorithms *propagate* the current state of the solver and removes incompatible or undesirable values.
       
       - **backtracking**: from time to time, the solver is stuck because it tried to assign some values 
-        to some variables that are just not possible (or desirable). The solver must then challenge its previous choices and try other values. 
+        to some variables that are just not possible (or desirable) because they don't respect the constraints. 
+        The solver must then challenge its previous choices and try other values. 
         This is called *backtracking*. Backtracking also occurs when the solver finds a solution but continues the search 
         and tries to find another solution.
     
@@ -112,11 +113,11 @@ Propagation and search
     ..  [#constraint_programming_poor_def] These are two key elements of a Constraint Programming solving algorithm but 
         there are many more!
         
-    ..  [#propagation_also_called] Propagation is also called *domain filtering*, *pruning* or *consistency technique*.
+    ..  [#propagation_also_called] Propagation is also called *domain filtering*, *pruning* or *consistency techniques*.
          
     To better understand Constraint Programming, let's have a look at a real solving process [#real_process_details]_. In the following
-    Figures, crosses represent the action of removing values from variables. Each step in the solving process is separated by 
-    an horizontal line.
+    Figures, crosses represent the action of removing values from variables' domain. Each step in the solving process is 
+    separated from the following one by an horizontal line.
 
     ..  [#real_process_details] 
     
@@ -165,7 +166,7 @@ Propagation and search
         :alt: alternate text
 
     After this first step, only the white squares are still available to place the three remaining queens.
-    The process of excluding some squares to place queens is what is called *propagation*.
+    The process of excluding some squares is what is called *propagation*.
     
     ..  raw:: html
     
@@ -176,8 +177,8 @@ Propagation and search
         \HRule
 
     The second step starts with the solver trying to place a second queen. It does so in the first available square from above
-    in the second column. As in the first step, the solver knows that no other queen can be placed in a column were it just placed
-    a queen, hence the new grey crosses on the next Figure. 
+    in the second column. As in the first step, the solver knows that no other queen can be placed in a column where it just placed
+    a queen, hence the new grey crosses in the next Figure. 
     
     The propagation is as follow:
 
@@ -215,7 +216,7 @@ Propagation and search
 
     The propagation is as follow:
 
-    First the positive diagonal constraint which removes the square with the red cross. This leaves only one possibility to place 
+    First, the square with the red cross is removed because of the positive diagonal constraint. This leaves only one possibility to place 
     a queen in the fourth column.
             
     ..  image:: images/propagation/propagation5.*
@@ -235,7 +236,7 @@ Propagation and search
 
         
     This is of course not possible and the negative diagonal constraint tells the solver that no queen 
-    can be on a negative diagonal from the fourth queen. As there **is** one, the solver concludes that there is 
+    can be on a negative diagonal from the fourth queen. Since there **is** one, the solver concludes that there is 
     a failure. It has to backtrack again! 
         
 
@@ -253,7 +254,7 @@ Propagation and search
 
     The propagation can now take place:
     
-    The negative diagonal constraint is responsible to take two squares away:
+    Two values are taken away because of the negative diagonal constraint:
     
     ..  image:: images/propagation/propagation7.*
         :width: 162px
