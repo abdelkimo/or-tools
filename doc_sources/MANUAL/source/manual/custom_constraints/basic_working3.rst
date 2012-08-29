@@ -26,6 +26,10 @@ Description
     of marks (elements in the sequence) is called the *order* of the Golomb ruler. 
 
 
+..  raw:: html
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 

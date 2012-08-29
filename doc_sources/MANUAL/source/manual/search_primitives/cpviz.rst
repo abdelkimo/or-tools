@@ -1712,4 +1712,10 @@ Our :program:`cpviz`'s output of the propagation
             </div>   
             
         Failure. The first failure was when :math:`x_1 = 0`.
+        
+..  raw:: html
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
   

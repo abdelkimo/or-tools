@@ -14,3 +14,9 @@ Changing dynamically the improvement step with a ``SearchMonitor``
     
     AtSolution():
     obj->setMax(log(z))
+    
+..  raw:: html
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+

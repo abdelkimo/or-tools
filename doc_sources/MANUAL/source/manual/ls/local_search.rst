@@ -140,3 +140,9 @@ What about the quality of the solutions found by local search?
 Global optimization methods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+
+..  raw:: html
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+

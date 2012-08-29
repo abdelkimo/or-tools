@@ -330,3 +330,9 @@ First results
     We will also customize our strategies, i.e. define strategies of our own but before 
     we do so, we need to learn a little bit about the basic working of the solver.
     
+..  raw:: html
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    

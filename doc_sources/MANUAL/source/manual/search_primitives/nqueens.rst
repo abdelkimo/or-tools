@@ -177,3 +177,9 @@ Solve
     This time we will... test some search strategies. We will not devise a good search strategy because 
     we don't know yet what possibilities are implemented in the CP solver. We will test different search strategies and see what works
     and why.
+    
+..  raw:: html
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+

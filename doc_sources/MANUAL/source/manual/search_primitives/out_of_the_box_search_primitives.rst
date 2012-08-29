@@ -122,3 +122,9 @@ To select next value
       The center is defined as ``(min + max) / 2``. 
       
     The funniest part is to define our own selection strategies. This is the subject of the next section.
+    
+..  raw:: html
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+

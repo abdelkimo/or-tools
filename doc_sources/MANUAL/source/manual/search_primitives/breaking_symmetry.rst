@@ -307,3 +307,9 @@ Breaking symmetries with ``SymmetryBreaker``\s
     """""""""
     
     Let's compare the time and the search trees again.
+    
+..  raw:: html
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
