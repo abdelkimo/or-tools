@@ -213,11 +213,11 @@ A default basic strategy will do for the moment.
 
 ..  raw:: latex
 
-    The next chapter~\ref{manual/search_primitives:search-primitives} is entirely devoted to the subject of search strategies.
+    The next chapter~\ref{manual/search_primitives:chapter-search-primitives} is entirely devoted to the subject of search strategies.
 
 ..  only:: html
 
-    The next chapter :ref:`Defining search primitives in constraint programming <search_primitives>` is entirely devoted to the subject 
+    The next chapter :ref:`Defining search primitives in constraint programming <chapter_search_primitives>` is entirely devoted to the subject 
     of search strategies.
 
 

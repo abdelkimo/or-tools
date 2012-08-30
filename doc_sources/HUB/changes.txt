@@ -1,4 +1,5 @@
 # Current changes.
 * Minor enhancements to the manual:
-  - sections 1.1 and 1.2 added
+  - epub: cover and authors added, some corrections.
+  - minor corrections.
 

@@ -1,4 +1,4 @@
-..  vrp_with_constraints:
+..  _chapter_vrp_with_constraints:
 
 Vehicule Routing Problems with constraints: the capacitated vehicle routing problem
 ======================================================================================

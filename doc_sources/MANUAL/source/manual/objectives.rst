@@ -1,3 +1,5 @@
+..  _chapter_using_objectives:
+
 Using objectives in constraint programming: the Golomb ruler problem
 ======================================================================
 

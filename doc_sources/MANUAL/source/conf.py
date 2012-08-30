@@ -79,8 +79,8 @@ feed_author = 'Google'
 rst_prolog = open('../../global.rst', 'r').read()
 
 # The setting for draft or final display. Uncomment the relevant line:
-#tags.add('draft')
-tags.add('final') 
+tags.add('draft')
+#tags.add('final') 
 #**************************************************************************************
 
 # The version info for the project you're documenting, acts as replacement for
@@ -199,6 +199,7 @@ html_sidebars = {
 	'manual/modeling_tricks': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
 	'manual/TSP': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
 	'manual/VRP': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
+	'manual/arc_routing': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
 	'manual/utilities': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
 	'manual/reification': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
 	'manual/under_the_hood': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
@@ -376,7 +377,7 @@ texinfo_show_urls = 'footnote'
 
 # Bibliographic Dublin Core info.
 epub_title = u'Google or-tools library'
-epub_author = u'Google'
+epub_author = u'Nikolaj van Omme, Laurent Perron and Vincent Furnon'
 epub_publisher = u'Google'
 epub_copyright = u'2012, Google'
 
@@ -395,7 +396,7 @@ epub_identifier = 'http://or-tools.googlecode.com/'
 #epub_uid = ''
 
 # A tuple containing the cover image and cover page html template filenames.
-#epub_cover = ()
+epub_cover = ('user_manual_cover.jpeg', 'epub_cover.xhtml')
 
 # HTML files that should be inserted before the pages created by sphinx.
 # The format is a list of tuples containing the path and title.

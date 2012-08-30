@@ -206,5 +206,5 @@ A default basic strategy will do for the moment.
 
 ..  only:: html
 
-    Chapter :ref:`Defining search primitives in constraint programming <search_primitives>` is entirely devoted to the subject of search strategies.
+    Chapter :ref:`Defining search primitives in constraint programming <chapter_search_primitives>` is entirely devoted to the subject of search strategies.
 

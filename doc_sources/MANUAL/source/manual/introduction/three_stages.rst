@@ -77,8 +77,8 @@ Solve
     
     ..  only:: html
     
-        We discuss this stage in details in the chapter :ref:`search_primitives`.
+        We discuss this stage in details in the chapter :ref:`chapter_search_primitives`.
         
     ..  raw:: latex
     
-        We discuss this stage in details in chapter~\ref{manual/search_primitives:search-primitives}.
+        We discuss this stage in details in chapter~\ref{manual/search_primitives:chapter-search-primitives}.

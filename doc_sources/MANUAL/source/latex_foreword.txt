@@ -66,6 +66,8 @@ how to customize your search in Constraint Programming (CP). One of the strength
 We describe how to customize your routing algorithms. After reading this manual, you will be able to understand our way of coding and how to use the
 full potential of our library. 
     
+We detail the content of the manual in section~\ref{manual/introduction/manual_content:manual-content}.
+
 \section*{What you will not learn in this document}
 
 This document is by no means a tutorial on Operations Research nor on Contraint Programming. 

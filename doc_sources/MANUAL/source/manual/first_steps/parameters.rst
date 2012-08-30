@@ -185,6 +185,7 @@ The ``DefaultPhaseParameters`` struct
 ..  only:: html
 
     A third way is to pass parameters through the ``DefaultPhaseParameters`` struct and call ``MakeDefaultPhase()`` but
-    we delay the discussion of this topic until the chapter :ref:`Defining search primitives in Constraint Programming <search_primitives>`.
+    we delay the discussion of this topic until the chapter 
+    :ref:`Defining search primitives in Constraint Programming <chapter_search_primitives>`.
 
 

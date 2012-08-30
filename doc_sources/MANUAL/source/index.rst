@@ -161,6 +161,8 @@ Foreword
     CP to solve arc- and vehicle routing problems with constraints. We describe how to customize your
     routing algorithms. After reading this manual, you will be able to understand our way of coding
     and how to use the full potential of our library.
+    
+    We detail the content of the manual in the section :ref:`manual_content`.
 
     .. _foreword:will_not_learn:
     

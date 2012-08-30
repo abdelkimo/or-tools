@@ -1,3 +1,5 @@
+..  _four_queens_problem:
+
 The 4-queens problem
 --------------------
 
@@ -5,7 +7,7 @@ The 4-queens problem
 ..  only:: html 
 
     We present here a well-known problem among Constraint Programming practitioners: the 4-queens problem.
-    We shall encounter this problem again and generalize it in the Chapter :ref:`search_primitives`.
+    We shall encounter this problem again and generalize it in the Chapter :ref:`chapter_search_primitives`.
 
 ..  raw:: latex 
 
@@ -38,7 +40,8 @@ A mathematical translation of the problem
 In Constraint Programming we translate a real problem to a *mathematical model* with *variables* and *constraints*. Variables 
 represent decisions and constraints restraint the variables of taking arbitrary values altogether. For instance, to model the 
 4-queens problem, we could use a binary variable :math:`x_{ij}` that indicates if a queen is present on the given
-:math:`(i,j)` square (:math:`x_{ij} = 1`) or not (:math:`x_{ij} = 0`). We need several constraints to model that no two queens
+:math:`(i,j)` square (:math:`x_{ij} = 1`) or not (:math:`x_{ij} = 0`). The first index :math:`i` denotes the :math:`i^\text{th}` row
+and the second index :math:`j` the :math:`j^\text{th}` column. We need several constraints to model that no two queens
 can capture each other. We also need to constraint the need for 4 queens. We could add the constraint:
 
 ..  math::

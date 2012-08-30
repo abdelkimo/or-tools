@@ -19,6 +19,19 @@ The Google or-tools library
     
     Flatzinc!
     
+    No matrix API.
+    
+
+Coding philosophy
+^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    First or foremost, our code is used internaly to solve problems at Google. We don't aim to provide a complete 
+    set of algorithms, constraints, etc. you sometimes can find in other libraries. Our released code is mainly generic and lightweight.
+    This is on purpose. We believe that specialized problems need specialized code. Our library aims at simplicity because simple code, 
+    when well-written, is efficient and can be easily adapted.
+    
 ..  raw:: html
     
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
