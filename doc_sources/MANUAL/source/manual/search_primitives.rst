@@ -24,7 +24,8 @@ Defining search primitives: the n-queens problem
     To use efficiently your tools, you need to know them a little and this 
     chapter introduces you in a gentle manner to the inner working of the solver.
     We show you enough to understand how you can customize your search primitives without
-    being drowned in the often tedious but necessary details of the implementation [#tedious_but_necessary_implementation_details]_.
+    being drowned in the often tedious but necessary details of the implementation
+    [#tedious_but_necessary_implementation_details]_.
 
     ..  [#tedious_but_necessary_implementation_details] If you take a look at the source code, we hope you will enjoy
         the clarity (?) of our code. We believe that the most efficient code, in its broad terms, should remain
