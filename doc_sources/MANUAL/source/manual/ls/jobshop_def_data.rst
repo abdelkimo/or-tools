@@ -1,6 +1,6 @@
 ..  _jobshop_def:
 
-The job-shop problem, benchmark data and the disjunctive model 
+The job-shop problem, the disjunctive model and benchmark data
 -------------------------------------------------------------------
 
 We describe the job-shop problem, a first model and the benchmark data. The job-shop problem belongs to the 

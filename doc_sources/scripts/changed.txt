@@ -1,16 +1,1 @@
-changes_list.txt
 documentation_hub.html
-user_manual/manual/TSP.html
-user_manual/manual/custom_constraints.html
-user_manual/manual/LS.html
-user_manual/manual/introduction.html
-user_manual/manual/introduction/real_examples.html
-user_manual/manual/introduction/manual_content.html
-user_manual/manual/introduction/tradeoffs.html
-user_manual/manual/introduction/theory.html
-user_manual/manual/introduction/4queens.html
-user_manual/manual/introduction/what_is_cp.html
-user_manual/manual/search_primitives/nqueens.html
-user_manual/manual/custom_constraints/summary.html
-user_manual/manual/custom_constraints/basic_working3.html
-user_manual/manual/custom_constraints/dynamic_improvements.html
