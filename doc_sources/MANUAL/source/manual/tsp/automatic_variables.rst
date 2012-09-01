@@ -9,17 +9,20 @@ Automatic variables
     allow an easy modelisation of the different Routing Problems. But before we do so, we need  to understand an 
     important distinction between nodes and their indices in solutions. Nodes have a unique ``NodeIndex`` identifier. Solutions
     to Routing Problems are made of routes. To follow these routes, we use ``int64`` indices. To one node ``NodeIndex``
-    identifier may correspond several ``int64`` indices if the node is visited several times but to one ``int64`` 
+    identifier may correspond several ``int64`` indices if the node is visited several times [#node_visited_several_times]_
+    but to one ``int64`` 
     index corresponds only one node ``NodeIndex``.
-     
+    
+    ..  [#node_visited_several_times] For the moment, one node can only be visited by one route/vehicle except if it the 
+        start or end node of several routes. TO BE VERIFIED!
 
 ``NodeIndex`` or ``int64``?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
-    The VRL uses both ``NodeIndex``\es and ``int64``\s. Even thought it might sound strange, ``NodeIndex``\es represent 
-    the true nodes while ``int64``\s are used as indices corresponding to nodes. ``NodeIndex`` behaves like 
+    The VRL uses both ``NodeIndex``\es and ``int64``\s. ``NodeIndex``\es represent 
+    the true nodes while ``int64``\s are used as indices corresponding to nodes in solutions. ``NodeIndex`` behaves like 
     a regular ``int`` but it is an ``IntType``. We use ``IntType``\s internally to avoid annoying automatic castings between
     different integer types and thus they preserve a certain type-safety. A ``NodeIndex`` is a ``NodeIndex`` and shouldn't be 
     compatible with anything else. A ``value()`` method allows the cast thought:
@@ -43,7 +46,7 @@ Automatic variables
     ..  [#more_about_inttype] Have a look at :file:`base/int-type.h` if you want to know more about the ``IntType`` class.
     
     If you want or need to 
-    translate an ``int64`` index to the corresponding ``NodeIndex`` node or vice-versa, use the 
+    translate an ``int64`` index in a solution to the corresponding ``NodeIndex`` node or vice-versa, use the 
     following methods of the ``RoutingModel`` class:
     
     ..  code-block:: c++
@@ -51,15 +54,15 @@ Automatic variables
         NodeIndex IndexToNode(int64 index) const;
         int64 NodeToIndex(NodeIndex node) const;
     
-    They are quicker and safer than a ``static_cast``.
+    They are quicker and safer than a ``static_cast``. Beside, they also give correct results! Read on.
     
     ..  warning:: Try to avoid ``RoutingModel::NodeIndex::value()`` unless really necessary.
     
-    You might wonder why there is such a distinction between nodes ``NodeIndex`` and indices ``int64``?
+    You might wonder why there is such a distinction between node ids ``NodeIndex`` and indices ``int64``?
     The reason is simple. A solution to a Routing Problem is made of *routes*. A route is
     equivalent to a path connecting nodes. It starts at a starting node and ends at an ending
-    node. But what happens if a route starts and ends at the same node? The way we handle 
-    this in the VRL is to have two different indices corresponding to the same starting and 
+    node. What happens if a route starts and ends at the same node? The way we handle 
+    this in the VRL is to have two different ``int64`` indices corresponding to the same starting and 
     ending node. This means that you shouldn't use the method ``NodeToIndex()`` to determine the ``int64`` index 
     of a starting or ending node in a route. Use instead
     
@@ -69,20 +72,23 @@ Automatic variables
         int64 End(int vehicle) const;
     
     where ``vehicle`` is the number of the vehicle or route considered which is the same.
+    Most of the times, the ``NodeIndex`` of a node and the ``int64`` index in a route corresponding to the same node 
+    will be the same,
+    **except** if the node is a starting or ending node of a route.
     
     Consider
     
     ..  code-block:: c++
     
         RoutingModel routing(...);
-        // solve TSP
+        // solve Routing Problem
         ...
-        // we have a solution, we query it 
+        // we have a solution, we query it: 
         int route_number = 0;
-        int64 end_node_index = routing.End(route_number);
-        RoutingModel::NodeIndex end_node = routing.IndexToNode(end_node_index);
+        int64 end_node = routing.End(route_number);
+        RoutingModel::NodeIndex end_node_id = routing.IndexToNode(end_node);
     
-    ``end_node_index`` and ``end_node`` will not be the same.
+    ``end_node`` and ``end_node_id`` are not be the same.
     
     ..  warning:: Never use ``NodeToIndex()`` on starting or ending nodes of a route.
     
@@ -94,13 +100,26 @@ Path variables
 
 
 
-How to follow a path?
+How to follow a route?
 """"""""""""""""""""""""
 
 ..  only:: draft
 
-    Once you have a solution, you can queried it and follow its paths.
+    Once you have a solution, you can queried it and follow its route:
     
+    ..  code-block:: c++
+    
+        const int route_number = 7;
+        for (int64 node = routing.Start(route_number); !routing.IsEnd(node);
+                            node = solution->Value(routing.NextVar(node))) {
+          RoutingModel::NodeIndex node_id = routing.IndexToNode(node);
+          // Do something with node_id
+          ...
+        }
+        const int64 last_node = routing.End(route_number);
+        RoutingModel::NodeIndex node_id = routing.IndexToNode(last_node);
+        // Do something with last node_id
+        ...
     
 
 Dimension variables

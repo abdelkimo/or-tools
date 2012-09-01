@@ -62,7 +62,7 @@ if isdir(target):
 # Create hmtl
 print "Building HTML version..."
 try:
-    retcode = check_call("make html", shell=True)
+    retcode = check_call("make html RELEASE=final", shell=True)
     if retcode != 0:
         exit("Child was terminated by signal " + str(retcode))
 except OSError, e:
@@ -72,7 +72,7 @@ except OSError, e:
 # A4 version
 print "Building A4 pdf version..."
 try:
-    retcode = check_call("make PAPER=a4 latexpdf", shell=True)
+    retcode = check_call("make PAPER=a4 RELEASE=final latexpdf", shell=True)
 except OSError, e:
     exit("Execution failed: " + e)
 
@@ -84,7 +84,7 @@ rename(join(target_latex, latex_filename) + '.pdf',
 # US Letter version
 print "Building US letter pdf version..."
 try:
-    retcode = check_call("make PAPER=letter latexpdf", shell=True)
+    retcode = check_call("make PAPER=letter RELEASE=final latexpdf ", shell=True)
 except OSError, e:
     exit("Execution failed: " + e)
 
@@ -96,7 +96,7 @@ rename(join(target_latex, latex_filename) + '.pdf',
 # Create epub
 print "Building epub version..."
 try:
-    retcode = check_call("make epub", shell=True)
+    retcode = check_call("make epub RELEASE=final EPUB=epub", shell=True)
 except:
     exit("Execution failed")
 

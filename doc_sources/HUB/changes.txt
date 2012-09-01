@@ -1,6 +1,5 @@
 # Current changes.
+* Scripts:
+  generate_manual.py improved.
 * Minor enhancements to the manual:
-  - epub: cover and authors added, some corrections.
-  - minor corrections.
-  - 5.1, 5.2 and (partially) 5.3 added.
 

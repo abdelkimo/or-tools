@@ -78,7 +78,9 @@ Foreword
              <a class="reference internal" href="manual/under_the_hood.html"><em>14. Under the hood</em></a>
              </p>
              
-        If you are lost, use the links on the right sidebar |rarr|
+        ..  only:: no_epub
+        
+            If you are lost, use the links on the right sidebar |rarr|
         
 
 .. |rarr| image:: images/rarr.png

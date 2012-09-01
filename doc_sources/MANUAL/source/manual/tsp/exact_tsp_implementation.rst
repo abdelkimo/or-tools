@@ -1,7 +1,10 @@
-..  _tsp_first_implementation:
+..  _exact_tsp_implementation:
 
 An exact implementation of the TSP
 ------------------------------------
+
+
+
 
 
 ..  raw:: html

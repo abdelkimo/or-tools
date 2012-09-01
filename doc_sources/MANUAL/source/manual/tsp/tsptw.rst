@@ -1,7 +1,11 @@
-..  _tsptw_first_implementation:
+..  _tspwtw:
 
-An exact implementation of the TSPTW
-------------------------------------
+The Travelling Salesman Problem with Time Windows (TSPTW)
+-----------------------------------------------------------
+
+
+Benchmark data
+^^^^^^^^^^^^^^^^
 
 
 ..  raw:: html

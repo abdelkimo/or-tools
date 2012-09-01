@@ -79,8 +79,11 @@ feed_author = 'Google'
 rst_prolog = open('../../global.rst', 'r').read()
 
 # The setting for draft or final display. Uncomment the relevant line:
+# The tags are automatically added within the makefile.
 #tags.add('draft')
-tags.add('final') 
+#tags.add('final') 
+#tags.add('no_epub')
+#tags.add('epub')
 #**************************************************************************************
 
 # The version info for the project you're documenting, acts as replacement for
@@ -387,6 +390,8 @@ epub_copyright = u'2012, Google'
 
 # The scheme of the identifier. Typical schemes are ISBN or URL.
 epub_scheme = 'URL'
+
+epub_theme = 'epub'
 
 # The unique identifier of the text. This can be a ISBN number
 # or the project homepage.

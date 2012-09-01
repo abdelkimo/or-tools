@@ -3,9 +3,11 @@
 The two phases approach
 ---------------------------
 
+The initial solution
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-Local Path Operator
-^^^^^^^^^^^^^^^^^^^^
+Local Search ``PathOperator``\s
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  raw:: html
     

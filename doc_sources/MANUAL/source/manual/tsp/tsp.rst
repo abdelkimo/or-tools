@@ -10,6 +10,8 @@ The travelling Salesman Problem
 What is the Travelling Salesman Problem?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Benchmark data
+^^^^^^^^^^^^^^^^
 
 ..  raw:: html
     

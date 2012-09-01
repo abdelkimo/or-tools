@@ -1,7 +1,8 @@
-..  _tspwtw:
+..  _first_tsptw_implementation:
 
-The Travelling Salesman Problem with Time Windows (TSPTW)
------------------------------------------------------------
+The TSPTW in or-tools
+------------------------------------
+
 
 ..  raw:: html
     

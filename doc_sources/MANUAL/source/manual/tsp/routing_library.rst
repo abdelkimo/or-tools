@@ -1,7 +1,30 @@
 ..  _tsp_routing_solver:
 
-The Vehicle Routing Library (VRL) in a nutshell
+The Routing Library (RL) in a nutshell
 -------------------------------------------------
+
+
+Objectives
+^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    The objectives of the RL are to
+    
+      * model and solve generic vehicle routing problems out of the box;
+      * provide modelling and solving blocks;
+      * make simple models simple to model;
+      * allow extensibility.
+
+
+Out of the box models
+^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+
+On top of the CP library
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
@@ -15,12 +38,32 @@ The Vehicle Routing Library (VRL) in a nutshell
         RoutingModel routing(...);
         Solver* const solver = routing.solver();
 
-    The ``RoutingModel`` class only uses ``IntVar``\s to model Routing Problems but you 
-    can add whatever variables and/or constraints you wish.
+    This means that you have access to all the variables and constraints of the ``Solver`` and use all we have seen 
+    in this manual.
+    
+Node oriented
+^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    The ``RoutingModel`` class by itself only uses ``IntVar``\s to model Routing Problems. 
+    
+    
     
     
     By default it is node oriented.
     
+
+Local Search
+^^^^^^^^^^^^^^
+
+..  only:: draft
+
+Limitations
+^^^^^^^^^^^^^^^^^^^^^^^
+    
+..  only:: draft 
+
     The ``RoutingModel`` class has a limit on the maximum number of nodes it can handle. Indeed, its  
     constructors take an regular ``int`` as the number of nodes it can model:
     
@@ -33,16 +76,11 @@ The Vehicle Routing Library (VRL) in a nutshell
     are intractable, ``32767`` should be enough. We don't try to solve the bare Travelling Salesman Problem. 
     Constraint Programming techniques - at the time of writing - are not competitive with state of the art techniques
     (mostly *Branch, Price and Cut*) than can solve TSP with millions of nodes. The strength of Constraint Programming is 
-    to be able to handle well side constraints as Time Windows for instance.
+    to be able to handle well side constraints as Time Windows for instance [#stuck_with_node_limitations]_.
     
-    
+    ..  [#stuck_with_node_limitations] If your platform retricts you too much, you always can adapt the code!
     -------------------------
 
-    It's objectives are to
-      * model and solve generic vehicle routing problems out of the box;
-      * provide modelling and solving blocks;
-      * make simple models simple to model;
-      * allow extensibility 
 
 
     It's a
