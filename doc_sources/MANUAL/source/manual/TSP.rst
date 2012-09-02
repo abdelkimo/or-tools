@@ -15,7 +15,10 @@ Travelling Salesman Problems with constraints: the TSP with time windows
     What better problem than the Travelling Salesman Problem could we take to illustrate 
     
     
-    with this chapter on the Travelling Salesman Problem.
+    with this chapter on the Travelling Salesman Problem [#tsp_two_l]_.
+    
+    ..  [#tsp_two_l] We use the Canadian (and British) spelling of the verb *travelling* but you'll find much more 
+                     scientific articles with the American spelling: *traveling*.
     
 ..  rubric:: Overview:
 
@@ -29,7 +32,7 @@ Travelling Salesman Problems with constraints: the TSP with time windows
     - Basic knowledge of C++.
     - Basic knowledge of Constraint Programming (see chapter :ref:`chapter_introduction`).
     - Basic knowledge of the Constraint Programming Solver (see chapter :ref:`chapter_first_steps`).
-    - Basic knowledge of Local Search (see section :ref:`chapter_local_search`).
+    - Basic knowledge of Local Search (see chapter :ref:`chapter_local_search`).
 
 
 ..  raw:: latex
@@ -38,7 +41,7 @@ Travelling Salesman Problems with constraints: the TSP with time windows
       \item Basic knowledge of C++.
       \item Basic knowledge of Constraint Programming (see chapter~\ref{manual/introduction:chapter-introduction}).
       \item Basic knowledge of the Constraint Programming Solver (see chapter~\ref{manual/first_steps:chapter-first-steps}).
-      \item Basic knowledge of Local Search (see section~\ref{manual/LS:chapter-local-search}).
+      \item Basic knowledge of Local Search (see chapter~\ref{manual/LS:chapter-local-search}).
     \end{itemize}
 
 
@@ -48,10 +51,10 @@ You can find the code in the directory ``documentation/tutorials/C++/chap9``.
 
 The files inside this directory are:
 
-- :file:`tsp_base.h`: 
 - :file:`tsp_random.h`:
-- :file:`tsp_data.h`:
+- :file:`tsp.cc`:
 - :file:`tsp_exact.cc`:
+- :file:`tsptw.cc`:
 
 ..  only:: html
 

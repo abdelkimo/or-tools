@@ -3,6 +3,15 @@
 The Routing Library (RL) in a nutshell
 -------------------------------------------------
 
+The vehicle routing library lets one model and solve generic vehicle routing
+problems ranging from the Traveling Salesman Problem to more complex
+problems such as the Capacitated Vehicle Routing Problem with Time Windows.
+The objective of a vehicle routing problem is to build routes covering a set
+of nodes minimizing the overall cost of the routes (usually proportional to
+the sum of the lengths of each segment of the routes) while respecting some
+problem-specific constraints (such as the length of a route). A route is
+equivalent to a path connecting nodes, starting/ending at specific
+starting/ending nodes.
 
 Objectives
 ^^^^^^^^^^^^^^^
@@ -41,8 +50,8 @@ On top of the CP library
     This means that you have access to all the variables and constraints of the ``Solver`` and use all we have seen 
     in this manual.
     
-Node oriented
-^^^^^^^^^^^^^^^
+Node and vehicle oriented
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
@@ -79,9 +88,10 @@ Limitations
     to be able to handle well side constraints as Time Windows for instance [#stuck_with_node_limitations]_.
     
     ..  [#stuck_with_node_limitations] If your platform retricts you too much, you always can adapt the code!
+    
     -------------------------
 
-
+..  only:: draft
 
     It's a
     layer above the CP Solver which lets you model a wide range of vehicle
