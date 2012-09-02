@@ -74,7 +74,7 @@ The files inside this directory are:
     tsp/zoo_routing_problems
     tsp/routing_library
     tsp/tsp
-    tsp/automatic_variables
+    tsp/model_behind_scene
     tsp/two_phases_approaches
     tsp/first_tsp_implementation
     tsp/exact_tsp_implementation
