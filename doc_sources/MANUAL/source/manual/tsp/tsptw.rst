@@ -137,7 +137,7 @@ The da Silva-Urrutia format
            21    20.00    35.00   0.00    275.00       300.00       0.00
           999     0.00     0.00   0.00      0.00         0.00       0.00
 
-    Having see the same instance, you don't need much complementary info to 
+    Having seen the same instance, you don't need much complementary info to 
     understand this format [#not_easy_transformation]_. The first line represent the depot and 
     the last line marks the end of the file.
     
@@ -149,8 +149,19 @@ The da Silva-Urrutia format
 The ``TSPTWData`` class
 --------------------------
 
-..  raw:: html
-    
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+Visualization with ``ePix``
+---------------------------
+
+
+..  only:: draft
+
+    dfss
+
+..  only:: final
+
+
+    ..  raw:: html
+        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 

@@ -133,6 +133,14 @@ The ``TSPData`` class
     method that returns the edge weight between two nodes of the graph.
 
 
+Visualization with ``ePix``
+---------------------------
+
+
+..  only:: draft
+
+
+
 ..  only:: final
 
     ..  raw:: html
