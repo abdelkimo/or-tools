@@ -7,15 +7,15 @@ The travelling Salesman Problem
 
     
     
-What is the Travelling Salesman Problem?
-------------------------------------------
+The Travelling Salesman Problem
+-------------------------------
 
 ..  only:: draft
 
 
     ..  topic:: Do I really need a complete graph?
     
-        Well...
+        Well... no!
 
 
 
@@ -122,8 +122,21 @@ The solution file
     Since this file contains an optimal tour, there are no sub-tours and the list of integers contains only one ``-1`` at 
     the end of the file.
 
-..  raw:: html
-    
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+The ``TSPData`` class
+---------------------------
+
+..  only:: draft
+
+    The ``TSPData`` class is a simple container for TSP instances. It is defined in the file tsp.h. Basically, it wraps 
+    an std::vector<std::vector<double> > container if the edge weight are explicitly given. Otherwise, if defines a weight
+    method that returns the edge weight between two nodes of the graph.
+
+
+..  only:: final
+
+    ..  raw:: html
+        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
