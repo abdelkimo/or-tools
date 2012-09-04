@@ -138,7 +138,7 @@ The da Silva-Urrutia format
           999     0.00     0.00   0.00      0.00         0.00       0.00
 
     Having seen the same instance, you don't need much complementary info to 
-    understand this format [#not_easy_transformation]_. The first line represent the depot and 
+    understand this format [#not_easy_transformation]_. The first line of data represent the depot and 
     the last line marks the end of the file.
     
     ..  [#not_easy_transformation] You might think that the translation from this second 
