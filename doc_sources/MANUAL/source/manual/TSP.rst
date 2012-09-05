@@ -51,13 +51,11 @@ You can find the code in the directory ``documentation/tutorials/C++/chap9``.
 
 The files inside this directory are:
 
-- :file:`routing_random.h`: contains common random routines to generate Routing Problems data. This file is used
-  throughout all the examples of part III.
-- :file:`tsp.h`: This file contents the ``TSPData`` class that records the data for Travelling Salesman Problems. 
+- :file:`tsp.h`: This file contents the ``TSPData`` class that records the data for the TSP. 
   This file is used throughout the TSP examples.
 - :file:`tsp.cc`: A basic implementation of the TSP with the RL.
 - :file:`tsp_exact.cc`: A basic exact implementation of the TSP with the RL.
-- :file:`tsptw.h`: This file contents the ``TSPTWData`` class that records the data for Travelling Salesman Problems with
+- :file:`tsptw.h`: This file contents the ``TSPTWData`` class that records the data for the Travelling Salesman Problem with
   Time Windows. This file is used throughout the TSPTW examples.
 - :file:`tsptw.cc`: A basic implementation of the TSPTW with the RL.
 - :file:`tsptw_ls.cc`: A specialized implementation of the TSPTW with the RL.

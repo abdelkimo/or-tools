@@ -21,7 +21,7 @@ Defining search primitives: the n-queens problem
     customized thanks to callbacks. You can also combine different search 
     strategies.
 
-    To use efficiently your tools, you need to know them a little and this 
+    To efficiently use your tools, you need to know them a little and this 
     chapter introduces you in a gentle manner to the inner working of the solver.
     We show you enough to understand how you can customize your search primitives without
     being drowned in the often tedious but necessary details of the implementation

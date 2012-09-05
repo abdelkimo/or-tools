@@ -32,11 +32,19 @@ Out of the box models
 ..  only:: draft
 
 
+    which lets you model a wide range of vehicle
+    routing problems from the Traveling Salesman Problem (and its
+    variants, ATSP, TSPTW, ...) to multi-vehicle problems with dimension
+    constraints (capacities, time windows) and various "routing"
+    constraints (optional nodes, alternate nodes,...). 
+
 On top of the CP library
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
+    It's a
+    layer above the CP Solver
     Compared to the Constraint Programming part of the or-tools library, the Vehicle Routing Library (VRL)
     is quite small. This is normal as the Vehicle Routing Library sits on top of the Contraint Programming part of 
     the or-tools library. Everything is contained is one class: the ``RoutingModel`` class. This class internaly uses
@@ -47,8 +55,9 @@ On top of the CP library
         RoutingModel routing(...);
         Solver* const solver = routing.solver();
 
-    This means that you have access to all the variables and constraints of the ``Solver`` and use all we have seen 
-    in this manual.
+    Given it exposes
+    the CP variables one can extend the model using the constraints
+    available in the CP Solver.
     
 Node and vehicle oriented
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -67,6 +76,49 @@ Local Search
 ^^^^^^^^^^^^^^
 
 ..  only:: draft
+
+    We are mainly using CP-based local search and large
+    neighborhood search using routing-specific neighborhoods.
+    Implementations of Tabu Search and Guided Local Search are available
+    too and have proven to give good results (especially GLS).
+
+Tuning the search
+^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+
+    Most of the *cabling* is
+    hidden so you just need to call the ``Solve()`` method of the ``RoutingModel``
+    class. However the search can be parametrized using command-line
+    gflags. 
+    For instance, you might want to use Tabu Search
+    and limit the allowed solving time to 3 minutes:
+    
+    ..  code-block:: bash
+    
+        ./my_beautiful_routing_algorithm --routing_no_tsp=false --routing_time_limit=180000
+        
+    To get the whole list of gflags defined in the RL:
+    
+    ..  code-block:: bash
+    
+        ./my_beautiful_routing_algorithm --helpon=routing
+
+
+    gflags are not universally available in all languages. This is why the RL provides
+    the handy
+    
+    ..  code-block:: c++
+    
+        routing.SetCommandLineOption("routing_first_solution", "PathCheapestArc");;
+
+    This is equivalent to call the program with the gflags ``routing_first_solution`` set to 
+    ``PathCheapestArc``:
+    
+    ..  code-block:: c++
+    
+        ./my_beautiful_routing_algorithm --routing_first_solution=PathCheapestArc
 
 Limitations
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -89,29 +141,14 @@ Limitations
     
     ..  [#stuck_with_node_limitations] If your platform retricts you too much, you always can adapt the code!
     
-    -------------------------
 
-..  only:: draft
 
-    It's a
-    layer above the CP Solver which lets you model a wide range of vehicle
-    routing problems from the Traveling Salesman Problem (and its
-    variants, ATSP, TSPTW, ...) to multi-vehicle problems with dimension
-    constraints (capacities, time windows) and various "routing"
-    constraints (optional nodes, alternate nodes,...). Given it exposes
-    the CP variables one can extend the model using the constraints
-    available in the CP Solver.
 
-    Concerning the resolution of the problem, most of the "cabling" is
-    hidden so you just need to call the Solve() method on the RoutingModel
-    class. However the search can be parametrized using command-line
-    flags. We are mainly using CP-based local search and large
-    neighborhood search using routing-specific neighborhoods.
-    Implementations of Tabu Search and Guided Local Search are available
-    too and have proven to give good results (especially GLS).
-    
-..  raw:: html
-    
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+..  only:: final
+
+     
+    ..  raw:: html
+        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
