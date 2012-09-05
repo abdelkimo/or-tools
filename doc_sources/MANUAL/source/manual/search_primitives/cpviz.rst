@@ -22,8 +22,9 @@
 ..  only:: draft
 
     To get a better feeling of the way the CP solver explores the search tree,
-    we will use the wonderful *open-source visualization toolkit for finite 
-    domain constraint programming*. Here is a description from their website of what :program:`cpviz` provides:
+    we will use a wonderful *open-source visualization toolkit for finite 
+    domain constraint programming*: :program:`cpviz`. 
+    Here is a description from their website of what this toolkit provides:
     
     ..  code-block:: text
     
@@ -1713,9 +1714,11 @@ Our :program:`cpviz`'s output of the propagation
             
         Failure. The first failure was when :math:`x_1 = 0`.
         
-..  raw:: html
-    
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+..  only:: final
+
+    ..  raw:: html
+        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
   

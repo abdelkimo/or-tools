@@ -1,4 +1,3 @@
-
 .. highlight:: cpp
 
 ..  _basic_workingI:
@@ -52,7 +51,7 @@ and a valid index :math:`i`.
 ..  only:: html
 
     At one node in the search tree, we divide the search space in two exclusive search subspaces by imposing 
-    :math:`x[i] = 2` at one branch and :math:`x[i] \neq 2` at another branch like in Figure 
+    :math:`x[i] = 2` at one branch and :math:`x[i] \neq 2` at another branch like in the Figure 
     :ref:`search_space_divided_in_two`.
 
 ..  raw:: latex
@@ -101,7 +100,7 @@ that is passed as an argument to another code. This is a very common and handy w
 example, the search algorithm is low level code. You don't want to change this code but you would like to change the behaviour of the
 search algorithm to your liking. How do you do this? Callbacks are to the rescue! At some places in the low level code,
 some functions are called and you can redefine those functions. There are several techniques available. In this section, we redefine
-some virtual functions of an abstract class. In section XXX, we will see yet another similar mechanism.
+some virtual functions of an abstract class. In section XXX, we will see another similar mechanism.
 
 An example will clarify this mechanism. Take a ``SearchMonitor`` class. If you want to implement your own search monitor, you 
 inherit from ``SearchMonitor`` and you redefine the methods you need:
@@ -151,7 +150,7 @@ tree at this node by applying this decision (left branch) and by refuting this d
 
 At the current node, the ``DecisionBuilder`` of the current search returns
 a ``Decision``. The ``Decision`` class basically tells the solver what to do 
-going left (``Apply()``) or right (``Refute``) as illustrated on the next figure.
+going left (``Apply()``) or right (``Refute()``) as illustrated on the next figure.
 
 ..  only:: html 
 
@@ -183,7 +182,7 @@ of the binary search tree.
 
 ..  topic:: What is a pre-order traversal of a binary tree?
 
-    The search tree depicted on Figure :ref:`search_tree_of_nqueens_with_n_equal_to_4` has 
+    The search tree depicted on the Figure :ref:`search_tree_of_nqueens_with_n_equal_to_4` has 
     its node numbered in the order given by a pre-order traversal. There are two other traversals:
     *in-order* and *post-order*. We invite the curious reader to google *pre-order traversal of a tree*
     to find more. There are a number of applets showing the different traversals.
@@ -457,12 +456,12 @@ algorithm:
         case OUTSIDE_SEARCH: {
           state_ = IN_ROOT_NODE;
           search->BeginInitialPropagation();// SEARCHMONITOR CALLBACKS
-          CP_TRY(search) {
+          try {
             ProcessConstraints();
             search->EndInitialPropagation();// SEARCHMONITOR CALLBACKS
             ...
             state_ = IN_SEARCH;
-          } CP_ON_FAIL {
+          } catch(const FailException& e) {
             ...
             state_ = PROBLEM_INFEASIBLE;
             return false;
@@ -591,7 +590,8 @@ This main loop starts at line 47 and ends at line 108.
 The ``try - catch`` mechanism allows to easily explain the backtrack mechanism. Whenever we need to backtrack in the search, a
 ``FailException`` is thrown [#try_catch_not_used]_.
 
-..  [#try_catch_not_used] Did we already mention that the ``try - catch`` mechanism is *not* used in the production code?
+..  [#try_catch_not_used] Did we already mention that the ``try - catch`` mechanism is *not* used in the production 
+    code? ;-)
 
 If the ``Decision`` pointer ``fd`` is not ``NULL``, this means that we have backtracked to the first available (non visited)
 right branch in the search tree. This corresponds to refuting the decision (lines 50-57).

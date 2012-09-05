@@ -16,6 +16,8 @@ Customization:
   - find a solution for tables...
   - include intro sections in parts;
   
+- find how to use global substitution with relative path.
+
 Check:
 ------
 
