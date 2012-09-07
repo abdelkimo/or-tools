@@ -42,7 +42,9 @@ The TSPLIB format
 
     The TSPLIB format is explained in great details in the document 
     `TSPLIB95 <http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/DOC.PS>`_. Here is a small excerpt to understand the 
-    basics. Refer to the TSPLIB95 document for more.
+    basics. Refer to the TSPLIB95 document for more. With the solution of ``pla85900``, the complete TSPLIB collection 
+    of challenge problems has now been successfully solved to optimality with the 
+    `Concorde code <http://www.tsp.gatech.edu/concorde/index.html>`_ in 2005-2006.
     
 The instance file
 """"""""""""""""""""
@@ -166,6 +168,10 @@ The ``TSPData`` class
 
 Visualization with ``ePix``
 ---------------------------
+
+
+- :file:`routing_visualization.h`: Some routines to visualize Routing Problems solutions obtained with the RL. This file 
+  uses the excellent `ePiX library <http://mathcs.holycross.edu/~ahwang/current/ePiX.html>`_.
 
 
 ..  only:: draft
