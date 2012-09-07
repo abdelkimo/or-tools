@@ -89,6 +89,9 @@ The instance file
     There exist several other less obvious TSPLIB formats but we disregard them in this manual (graphs can be given
     by different types of explicit matrices or by edge lists for example).
     
+    You might wonder how the depot is given. It is nowhere written where to start a tour. This is normal because the 
+    TSP is not sensitive to the starting node: you can start a tour anywhere, the total cost of the tour remains the same.
+    
     ..  [#a280_fun_fact] The file :file:`a280.tsp` actually contains twice the same node but the name and the dimension
         have been kept. This is the only known defect in the TSPLIB.
 
@@ -128,9 +131,37 @@ The ``TSPData`` class
 
 ..  only:: draft
 
-    The ``TSPData`` class is a simple container for TSP instances. It is defined in the file tsp.h. Basically, it wraps 
-    an std::vector<std::vector<double> > container if the edge weight are explicitly given. Otherwise, if defines a weight
-    method that returns the edge weight between two nodes of the graph.
+    The ``TSPData`` class basically encapsulates a 2-dimensional matrix containing the distances between all nodes.
+    For efficiency reason, we use a 1-dimensional matrix with a smart pointer defined in the header :file:`base/scoped_ptr.h`:
+    
+    ..  code-block:: c++
+        
+        private:
+          scoped_array<int64> matrix_;
+    
+    To mimic the behaviour of a 2-dimensional matrix, we use:
+    
+    ..  code-block:: c++
+    
+        int64 MatrixIndex(RoutingModel::NodeIndex from,
+                          RoutingModel::NodeIndex to) const {
+         return (from * size_ + to).value();
+        }
+    
+    Notice how we cast the ``RoutingModel::NodeIndex`` into an ``int64`` by calling its ``value()`` method.
+    
+    The 1-dimensional matrix is made of the columns of the virtual 2-dimensional matrix placed one after the other.
+    
+    
+    ..  topic:: What is a smart pointer?
+    
+        A *smart pointer* is a class that behaves like a pointer. It's main advantage is that it
+        destroys the object it points to when the smart pointer class is itself destroyed. This behaviour
+        ensures that, no matter what happens (exceptions, wrong ownership of pointees, bad programming, etc.),
+        the pointed object will be destroyed as soon as the pointer object is out of scope and destroyed.
+    
+    
+
 
 
 Visualization with ``ePix``
