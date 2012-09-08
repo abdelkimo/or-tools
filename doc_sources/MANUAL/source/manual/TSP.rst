@@ -10,7 +10,7 @@ Travelling Salesman Problems with constraints: the TSP with time windows
 ..  only:: draft
 
     The third part of this manual deals with *Routing Problems*: we have a graph and seek
-    to find routes covering some or all nodes and/or arcs while optimizing a certain quantity along
+    to find a set of routes covering some or all nodes and/or arcs while optimizing a certain objective function along
     the routes [#transportation_metaphor]_ (time, goods delivered, etc.) and respecting at the same time
     certain constraints (number of vehicles, fixed depots, capacities, clients to deliver, time windows, etc.).
     
@@ -23,32 +23,29 @@ Travelling Salesman Problems with constraints: the TSP with time windows
     
     The next three chapters each deal with one of the three broad categories of Routing Problems:
     
-
+    ..  only:: html
     
-        * The chapter :ref:`chapter_tsp_with_constraints` deals with *Node Routing*. 
-          The routes pass through nodes. 
-          Genome sequencing is an example that isn't really related to transportation. See [Agarwala2000]_.
+        * The chapter :ref:`chapter_tsp_with_constraints` deals with *Node Routing* where routes pass through nodes. 
+        * The chapter :ref:`chapter_vrp_with_constraints` deals with *Vehicle Routing* where vehicles serve clients 
+          along the routes.
+        * The chapter :ref:`chapter_arc_routing_with_constraints` deals with *Arc Routing* where the routes pass 
+          through arcs/edges that are being serviced. 
           
-          ..  [Agarwala2000] R. Agarwala et al., *A Fast and Scalable Radiation Hybrid Map Construction and 
-              Integration Strategy*. Genome Research, 10, pp. 350-364 (2000). 
-          
-          
-        * The chapter :ref:`chapter_vrp_with_constraints` deals with *Vehicle Routing*. 
-          Vehicles serve clients along routes.
-          Transport and delivery of goods and/or persons are typical examples. For instance, the problem of repeatedly 
-          relocating ambulances in the same day to provide better coverage. See [Brotcorne2003]_.
 
-          ..  [Brotcorne2003] L. Brotcorne, G. Laporte, F. Semet, *Ambulance location and relocation models*, 
-              European Journal of Operational Research, Volume 147, Issue 3, 16 June 2003, Pages 451-463
+    ..  raw:: latex
+    
+        \begin{itemize}
+          \item Chapter~\ref{manual/TSP:chapter-tsp-with-constraints} deals with \emph{Node Routing} where routes 
+                pass through nodes. 
+          \item Chapter~\ref{manual/VRP:chapter-vrp-with-constraints} deals with \emph{Vehicle Routing} where 
+                vehicles serve clients along the routes.
+          \item Chapter~\ref{manual/arc_routing:chapter-arc-routing-with-constraints} deals with \emph{Arc Routing} 
+                where the routes pass through arcs/edges that are being serviced. 
+        \end{itemize}
 
-        * The chapter :ref:`chapter_arc_routing_with_constraints` deals with *Arc Routing*. 
-          The routes pass through arcs/edges that are being serviced. In cold regions, snow removal is a major issue. 
-          See [Salazar-Aguilar2012]_.
-          
-          ..  [Salazar-Aguilar2012] M. A. Salazar-Aguilar, A. Langevin, and G. Laporte. 2012. *Synchronized 
-              arc routing for snow plowing operations*. Comput. Oper. Res. 39, 7 (July 2012), 1432-1440. 
 
-    These three categories of problems share common properties but they all have their own paradigms and scientific communities.
+    These three categories of problems share common properties but they all have their 
+    own paradigms and scientific communities.
     
     In this chapter, we'll discover the RL by solving what is probably the most studied problem in Operations Research:
     the *Travelling Salesman Problem* (TSP) [#tsp_two_l]_. The best algorithms can now routinely 
@@ -106,15 +103,25 @@ Travelling Salesman Problems with constraints: the TSP with time windows
 
 You can find the code in the directory ``documentation/tutorials/C++/chap9``.
 
+We use the excellent ``C++`` [#epix_latex]_ `ePiX library <http://mathcs.holycross.edu/~ahwang/current/ePiX.html>`_ 
+to visualize TSP solutions in *TSPLIB* format and TSPTW solutions in *López-Ibáñez-Blum* and *da Silva-Urrutia* formats.
+
+..  [#epix_latex] The ePiX library uses the :math:`\text{\TeX/\LaTeX}` engine to create beautiful graphics.
+
+
+
 The files inside this directory are:
 
-- :file:`tsp.h`: This file contents the ``TSPData`` class that records the data for the TSP. 
+- :file:`tsp.h`: This file contains the ``TSPData`` class that records the data for the TSP. 
   This file is used throughout the TSP examples.
+- :file:`tsp_epix.h`: This file provide the helper functions to visualize TSPLIB solutions with the ePiX library.
+- :file:`tsplib_solution_to_epix.cc`: A simple program to visualize solutions in TSPLIB format with the ePiX library.
 - :file:`tsp.cc`: A basic implementation of the TSP with the RL.
 - :file:`tsp_forbidden_arcs.cc`: The TSP with forbidden connexions between some nodes.
 - :file:`tsp_exact.cc`: A basic exact implementation of the TSP with the RL.
-- :file:`tsptw.h`: This file contents the ``TSPTWData`` class that records the data for the Travelling Salesman Problem with
+- :file:`tsptw.h`: This file contains the ``TSPTWData`` class that records the data for the Travelling Salesman Problem with
   Time Windows. This file is used throughout the TSPTW examples.
+- :file:`tsptw_epix.h`: This file provide the helper functions to visualize TSPTW solutions with the ePiX library.
 - :file:`tsptw.cc`: A basic implementation of the TSPTW with the RL.
 - :file:`tsptw_ls.cc`: A specialized implementation of the TSPTW with the RL.
 
