@@ -1,0 +1,5 @@
+user_manual/manual/tsp/first_implementation.html
+user_manual/manual/tsp/third_implementation.html
+user_manual/manual/tsp/tspwtw.html
+user_manual/manual/tsp/automatic_variables.html
+user_manual/manual/tsp/second_implementation.html

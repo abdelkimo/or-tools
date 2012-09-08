@@ -3,15 +3,17 @@
 The Routing Library (RL) in a nutshell
 -------------------------------------------------
 
-The vehicle routing library lets one model and solve generic vehicle routing
-problems ranging from the Traveling Salesman Problem to more complex
-problems such as the Capacitated Vehicle Routing Problem with Time Windows.
-The objective of a vehicle routing problem is to build routes covering a set
-of nodes minimizing the overall cost of the routes (usually proportional to
-the sum of the lengths of each segment of the routes) while respecting some
-problem-specific constraints (such as the length of a route). A route is
-equivalent to a path connecting nodes, starting/ending at specific
-starting/ending nodes.
+..  only:: draft
+
+    The vehicle routing library lets one model and solve generic vehicle routing
+    problems ranging from the Traveling Salesman Problem to more complex
+    problems such as the Capacitated Vehicle Routing Problem with Time Windows.
+    The objective of a vehicle routing problem is to build routes covering a set
+    of nodes minimizing the overall cost of the routes (usually proportional to
+    the sum of the lengths of each segment of the routes) while respecting some
+    problem-specific constraints (such as the length of a route). A route is
+    equivalent to a path connecting nodes, starting/ending at specific
+    starting/ending nodes.
 
 Objectives
 ^^^^^^^^^^^^^^^

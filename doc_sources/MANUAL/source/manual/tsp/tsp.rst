@@ -170,13 +170,10 @@ Visualization with ``ePix``
 ---------------------------
 
 
-- :file:`routing_visualization.h`: Some routines to visualize Routing Problems solutions obtained with the RL. This file 
-  uses the excellent `ePiX library <http://mathcs.holycross.edu/~ahwang/current/ePiX.html>`_.
-
-
 ..  only:: draft
 
-
+    - :file:`routing_visualization.h`: Some routines to visualize Routing Problems solutions obtained with the RL. This file 
+      uses the excellent `ePiX library <http://mathcs.holycross.edu/~ahwang/current/ePiX.html>`_.
 
 ..  only:: final
 
