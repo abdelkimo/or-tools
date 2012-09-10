@@ -42,9 +42,18 @@ The TSPLIB format
 
     The TSPLIB format is explained in great details in the document 
     `TSPLIB95 <http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/DOC.PS>`_. Here is a small excerpt to understand the 
-    basics. Refer to the TSPLIB95 document for more. With the solution of ``pla85900``, the complete TSPLIB collection 
-    of challenge problems has now been successfully solved to optimality with the 
-    `Concorde code <http://www.tsp.gatech.edu/concorde/index.html>`_ in 2005-2006.
+    basics. Refer to the TSPLIB95 document for more. The complete TSPLIB collection of problems has been successfully solved 
+    to optimality with the `Concorde code <http://www.tsp.gatech.edu/concorde/index.html>`_ in 2005-2006.
+
+    The convention in the TSPLIB is to number the node starting with 1. We'll adopt this convention here 
+    [#fallback_starting_at_0]_ too.
+    The RL on the contrary starts numbering its node at 0. In all the codes in this chapter we will internally do the 
+    conversion.
+    
+    ..  [#fallback_starting_at_0] We have defined the ``bool`` gflags ``start_counting_at_1``. Be default, it is ``true``.
+        When ``false``, we number the nodes starting from 0.
+    
+    ..  warning:: Nodes are numbered from 1 to n in the TSPLIB.
     
 The instance file
 """"""""""""""""""""

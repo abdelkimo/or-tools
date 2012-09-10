@@ -119,6 +119,7 @@ The files inside this directory are:
 
 - :file:`tsp.h`: This file contains the ``TSPData`` class that records the data for the TSP. 
   This file is used throughout the TSP examples.
+- :file:`tsplib.h`: Declarations of TSPLIB specification and data keywords.
 - :file:`tsp_epix.h`: This file provide the helper functions to visualize TSPLIB solutions with the ePiX library.
 - :file:`tsplib_solution_to_epix.cc`: A simple program to visualize solutions in TSPLIB format with the ePiX library.
 - :file:`tsp.cc`: A basic implementation of the TSP with the RL.

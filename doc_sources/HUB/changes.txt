@@ -1,10 +1,5 @@
 # Milestone:
-The manual has now more than 200 pages.
 # Current changes.
-* Scripts:
-  generate_manual.py improved.
 * Minor enhancements to the manual:
-  - Intro of chapter 9 to give you an idea of its content.
-    The links to the tutorial material don't work: this is normal.
   - Minor corrections.
 
