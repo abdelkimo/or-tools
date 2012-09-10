@@ -60,7 +60,7 @@ The instance file
 
 ..  only:: draft 
 
-    The TSPLIB not only deals with the TSP but also with related problems. We only detail one type of TSP instance files.
+    The TSPLIB not only deals with the TSPd but also with related problems. We only detail one type of TSP instance files.
     This what the file :file:`a280.tsp` [#a280_fun_fact]_ looks like:
     
     ..  code-block:: text
@@ -103,8 +103,8 @@ The instance file
     You might wonder how the depot is given. It is nowhere written where to start a tour. This is normal because the 
     TSP is not sensitive to the starting node: you can start a tour anywhere, the total cost of the tour remains the same.
     
-    ..  [#a280_fun_fact] The file :file:`a280.tsp` actually contains twice the same node but the name and the dimension
-        have been kept. This is the only known defect in the TSPLIB.
+    ..  [#a280_fun_fact] The file :file:`a280.tsp` actually contains twice the same node (node 171 and 172) but the 
+        name and the dimension have been kept. This is the only known defect in the TSPLIB.
 
 The solution file
 """"""""""""""""""""
