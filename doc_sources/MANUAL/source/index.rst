@@ -19,7 +19,8 @@ Foreword
     most common questions a newcomer could have when discovering this manual or the library for
     the first time.
       
-    The **or-tools** library is a set of :strong:`o`\ perations :strong:`r`\ esearch **tools** developed at Google. If you have no idea
+    The **or-tools** library is a set of :strong:`o`\ perations :strong:`r`\ esearch **tools** developed at Google. 
+    If you have no idea
     what `operations research <http://en.wikipedia.org/wiki/Operations_research>`_ is, you still can use our
     library to solve common small problems with
     the help of our `Constraint Programming <http://en.wikipedia.org/wiki/Constraint_programming>`_ (CP) solver. 
@@ -211,9 +212,15 @@ Foreword
     ^^^^^^^^^^^^^^^^^
     
     This manual is written with two types of readers in mind. First, someone who is not familiar with Constraint Programming
-    nor is she a professional programmer. Second, an educated reader who masters Constraint Programming and is quite at ease without
-    necessarily mastering one of the supported computer languages. Did we succeed to write for such different profiles? You tell  
-    us! 
+    nor is she a professional programmer. Second, an educated reader who masters Constraint Programming and is 
+    quite at ease without
+    necessarily mastering one of the supported computer languages. 
+    
+    From time to time, we refer to scientific articles: you don't need to read and understand them to follow the 
+    manual. 
+    
+    Did we succeed to write for such different profiles? 
+    You tell us!
     
     .. _foreword:conventions:
     

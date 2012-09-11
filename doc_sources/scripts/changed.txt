@@ -1,14 +1,2 @@
-changes_list.txt
-documentation_hub.html
-user_manual/manual/search_primitives.html
-user_manual/manual/TSP.html
-user_manual/manual/search_primitives/basic_working1.html
-user_manual/manual/search_primitives/breaking_symmetry.html
-user_manual/manual/search_primitives/summary.html
-user_manual/manual/search_primitives/default_search.html
-user_manual/manual/search_primitives/basic_model_implementation.html
-user_manual/manual/tsp/tsp.html
-user_manual/manual/tsp/two_phases_approaches.html
-user_manual/manual/tsp/zoo_routing_problems.html
-user_manual/manual/tsp/routing_library.html
-user_manual/manual/tsp/tsptw_summary.html
+faq/faq/documentation.html
+faq/_static/basic.css

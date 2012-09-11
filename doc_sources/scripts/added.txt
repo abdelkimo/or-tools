@@ -1,8 +1,0 @@
-user_manual/manual/tsp/exact_tsp_implementation.html
-user_manual/manual/tsp/model_behind_scene.html
-user_manual/manual/tsp/first_tsp_implementation.html
-user_manual/manual/tsp/first_tsptw_implementation.html
-user_manual/manual/tsp/tsptw.html
-user_manual/_images/math/6e706c7be892b58ea1c3ab147eaae242299cf3da.png
-user_manual/_images/math/fa2fa899f0afb05d6837885523503a2d4df434f9.png
-user_manual/_images/math/b70ec1f605bd05af0f0f71e2631ec6f09d63890d.png

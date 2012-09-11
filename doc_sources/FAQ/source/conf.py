@@ -55,7 +55,7 @@ copyright = u'2012, Google'
 
 html_add_permalinks = None
 
-
+rst_prolog = open('../../global.rst', 'r').read()
 
 #**************************************************************************************
 

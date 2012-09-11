@@ -95,8 +95,11 @@ in the routing part of the library, the third part is for you (\emph{Routing}). 
 
 This manual is written with two types of readers in mind. First, someone who is not familiar with Constraint Programming
     nor is she a professional programmer. Second, an educated reader who masters Constraint Programming and is quite at ease without
-    necessarily mastering one of the supported computer languages. Did we succeed to write for such different profiles? You tell  
-    us! 
+    necessarily mastering one of the supported computer languages. 
+    
+From time to time, we refer to scientific articles: you don't need to read and understand them to follow the manual. 
+    
+Did we succeed to write for such different profiles? You tell us! 
     
 \section*{Conventions used in this manual}
 

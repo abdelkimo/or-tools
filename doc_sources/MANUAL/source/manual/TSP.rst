@@ -10,8 +10,8 @@ Travelling Salesman Problems with constraints: the TSP with time windows
 
 The third part of this manual deals with *Routing Problems*: we have a graph [#graph_or_network]_ and seek
 to find a set of routes covering some or all nodes and/or edges/arcs while optimizing an objective function along
-the routes [#transportation_metaphor]_ (time, goods delivered, etc.) and respecting 
-certain constraints (number of vehicles, fixed depots, capacities, clients to serve, time windows, etc.).
+the routes [#transportation_metaphor]_ (time, vehicle costs, etc.) and respecting 
+certain constraints (number of vehicles, goods delivered, fixed depots, capacities, clients to serve, time windows, etc.).
 
 ..  [#graph_or_network] A *graph* :math:`G=(V,E)` is a set of vertices (the set :math:`V`) connected by edges
     (the set :math:`E`). A directed edge is called an *arc*. When we have capacities on the edges, we talk 
@@ -119,7 +119,7 @@ The files inside this directory are:
 
 - :file:`tsp.h`: This file contains the ``TSPData`` class that records the data for the TSP. 
   This file is used throughout the TSP examples.
-- :file:`tsplib.h`: Declarations of TSPLIB specification and data keywords.
+- :file:`tsplib.h`: Declarations of TSPLIB keywords and the ``TSPLIBDistanceFunctions`` class.
 - :file:`tsp_epix.h`: This file provide the helper functions to visualize TSPLIB solutions with the ePiX library.
 - :file:`tsplib_solution_to_epix.cc`: A simple program to visualize solutions in TSPLIB format with the ePiX library.
 - :file:`tsp.cc`: A basic implementation of the TSP with the RL.

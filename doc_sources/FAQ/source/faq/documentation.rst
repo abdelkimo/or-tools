@@ -124,7 +124,12 @@ the same computer. You insist? OK, we used a laptop computer running under Linux
 
 When do you expect to finish?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-September 1 :superscript:`st`, 2012 for the first draft. 
+
+- :strike:`June 1` :superscript:`st`, :strike:`2012`
+- :strike:`September 1` :superscript:`st`, :strike:`2012`
+- December 1 :superscript:`st`, 2012
+
+for the first draft. 
 
 ..  raw:: html
 
