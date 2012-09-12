@@ -6,7 +6,8 @@ A whole zoo of Routing Problems
 ..  only:: draft
 
     This section is somewhat daunting and it's only purpose is to make you aware that the classification 
-    of *Routing Problems* is intricate. Actually, there is no real and widely adopted classification [#taxonomy_RP]_ 
+    of *Routing Problems* is intricate [#daunting_section_zoo_routing_problems]_. Actually, there is no real and 
+    widely adopted classification [#taxonomy_RP]_ 
     and the problems' names
     reflect the search history of the scientific community [#see_why_chinese_postman_problem_name]_. 
     
@@ -14,6 +15,9 @@ A whole zoo of Routing Problems
     The broad classification into three main categories is more rooted in the day to day research than in 
     theoretical justifications. 
     
+
+    ..  [#daunting_section_zoo_routing_problems] You can stop reading now if you want: nothing in this section involves 
+        Constraint Programming nor the or-tools library.
 
     ..  [#taxonomy_RP] From time to time, an article is published to propose a good classification but to no avail
         until now. See [Eksioglu2009]_ for instance.
