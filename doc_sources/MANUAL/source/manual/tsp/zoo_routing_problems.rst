@@ -29,12 +29,13 @@ A whole zoo of Routing Problems
     
         ..  only:: html 
         
-            Jump to the section :ref:`chinese_postman_problem` to discover why we talk about the *Chinese Postman* Problem.
+            Jump to the section :ref:`chinese_postman_problem` to discover why we talk about the *Chinese Postman* Problem
+            for instance.
         
         ..  raw:: latex 
         
             Jump to section~\ref{manual/arc_routing/cpp:chinese-postman-problem} to discover 
-            why we talk about the \emph{Chinese Postman} Problem.
+            why we talk about the \emph{Chinese Postman} Problem for instance.
 
 
     ..  [Eksioglu2009] B. Eksioglu, A. Volkan Vural, A. Reisman, *The vehicle routing problem: A taxonomic review*, 
@@ -49,7 +50,7 @@ A whole zoo of Routing Problems
 
 
     ..  warning:: Be aware of the complexity of the classification of Routing Problems when you search for 
-        a specific problem.
+        a specific routing problem.
 
     We can roughly divide Routing Problems in three broad - and often overlapping - categories:
     
@@ -57,7 +58,7 @@ A whole zoo of Routing Problems
       * **Arc** Routing Problems (ARP)
       * **Vehicle** Routing Problems (VRP)
       
-    For each category, we give an informal definition, list some problems, refer an (somewhat arbitrary) 
+    For each category, we give an informal definition, list some known mathematical problems, refer an (somewhat arbitrary) 
     authoritative source and present quickly the specific examples we detail in each chapter of part III. 
     
     Most problems have variants and 
@@ -86,8 +87,8 @@ A whole zoo of Routing Problems
             of some simple Routing Problems are *really* hard to solve.
 
         Notice that what is known as the *General Routing Problem* in the scientific literature 
-        is a combination of NRP and VRP: You have a graph or a network and you must find tours
-        covering/serving some required arcs/edges/nodes for a minimum cost.
+        is a combination of NRP and VRP: You have a graph or a network and you must find one tour
+        covering/serving some required arcs/edges/nodes for a minimum cost, i.e. you only have 1 vehicle.
 
             
     We present now the three broad categories of Routing Problems. All are *Optimization Problems* where we try not only
@@ -95,13 +96,15 @@ A whole zoo of Routing Problems
     the routes defined in the solution, typically the (linear) sum of the weights of the edges/arcs/nodes 
     the solution is made of and a cost for the vehicles when more than one is implied.
 
-    One main difference between Node Routing Problems and Arc Routing Problems is that 
+    One main difference between Arc Routing Problems and Node Routing Problems is that 
     basic ARPs (like the Chinese
     Postman Problem on undirected and directed graphs) are easy problems while basic NRPs 
     (like the Metric Travelling Salesman Problem) are intractable. 
     But add some basic constraints and/or consider mixed 
-    graphs and the ARPs too become intractable. More often than not, the size of ARPs we can solve are an order of magnitude 
-    smaller than the size of the corresponding NRPs we can solve. This can be partly explained by the fact that NRPs received
+    graphs and the ARPs too become intractable. More often than not, the size of ARPs we are able to solve are an 
+    order of magnitude 
+    smaller than the size of the corresponding NRPs we are able to solve. 
+    This can be partly explained by the fact that NRPs received
     (and still receive)
     more attention than their equivalent ARPs from the scientific community but ARP specialists tend to believe that 
     ARPs are intrinsically more difficult than NRPs. 

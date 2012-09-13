@@ -1,2 +1,1 @@
-faq/faq/documentation.html
-faq/_static/basic.css
+documentation_hub.html
