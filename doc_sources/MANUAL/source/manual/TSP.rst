@@ -7,11 +7,10 @@
 Travelling Salesman Problems with constraints: the TSP with time windows
 =========================================================================================
 
-
 The third part of this manual deals with *Routing Problems*: we have a graph [#graph_or_network]_ and seek
 to find a set of routes covering some or all nodes and/or edges/arcs while optimizing an objective function along
 the routes [#transportation_metaphor]_ (time, vehicle costs, etc.) and respecting 
-certain constraints (number of vehicles, goods delivered, fixed depots, capacities, clients to serve, time windows, etc.).
+certain constraints (number of vehicles, goods to pickup and deliver, fixed depots, capacities, clients to serve, time windows, etc.).
 
 ..  [#graph_or_network] A *graph* :math:`G=(V,E)` is a set of vertices (the set :math:`V`) connected by edges
     (the set :math:`E`). A directed edge is called an *arc*. When we have capacities on the edges, we talk 
@@ -20,7 +19,7 @@ certain constraints (number of vehicles, goods delivered, fixed depots, capaciti
 ..  [#transportation_metaphor] The transportation metaphor is helpful to visualize the problems but the class
     of Routing Problems is much broader. The *Transportation Problem* for instance is really an *Assignment Problem*.
     Networks can be of any type: telephone networks (circuit switching), electronic data 
-    networks (such as the internet), etc.
+    networks (such as the internet), VLSI (the design of chips), etc.
 
 To solve these problems, the or-tools offers a dedicated Constraint Programming sub-library:
 the *Routing Library* (RL).
