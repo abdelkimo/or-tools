@@ -258,3 +258,8 @@ You can check that everything is running correctly by running:
 }}}
 
 If everything is OK, it will run a selection of examples from all technologies in C++, python, java, and C#.
+
+=Troubleshooting=
+
+If you have trouble compiling or-tools, please write to or-tools-discuss@googlegroups.com.
+I will follow up from there.
