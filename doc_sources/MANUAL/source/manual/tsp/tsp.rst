@@ -17,8 +17,15 @@ The Travelling Salesman Problem
     
         Well... no!
 
+    ..  topic:: Symetric or Asymetric distances?
 
-
+        When we talk about a Travelling Salesman Problem, it is implicit that the distance between two nodes 
+        :math:`i` and :math:`j` must be the same as the distance between :math:`j` and :math:`i`. This is not 
+        mandatory. A distance in one direction could be larger than the distance in the other direction. For 
+        instance, climbing a hill might cost more than descending it.
+        
+        
+        
     If you want to know more about the TSP, visit the `TSP page <http://www.tsp.gatech.edu/>`_ which is the central place
     to discover this fascinating problem and hosts the best known implementation to solve the TSP (and it's open source!). 
     You also might be interested in the `8th DIMACS Implementation Challenge
@@ -167,9 +174,15 @@ The ``TSPData`` class
     ..  topic:: What is a smart pointer?
     
         A *smart pointer* is a class that behaves like a pointer. It's main advantage is that it
-        destroys the object it points to when the smart pointer class is itself destroyed. This behaviour
+        destroys the object it points to when the smart pointer class is itself destroyed [#smart_pointer_destroyed]_. 
+        This behaviour
         ensures that, no matter what happens (exceptions, wrong ownership of pointees, bad programming, etc.),
         the pointed object will be destroyed as soon as the pointer object is out of scope and destroyed.
+        
+        ..  [#smart_pointer_destroyed] Several scenarii are possible. With reference counting, when more than one pointer 
+            refer to an object, it is only when the last pointer
+            referring to the object is destroyed that the the object itself is destroyed. If you want to know more about
+            this technique, look up *RAII* (Resource Acquisition Is Initialization).
     
     
 
@@ -181,9 +194,28 @@ Visualization with ``ePix``
 
 ..  only:: draft
 
-    - :file:`routing_visualization.h`: Some routines to visualize Routing Problems solutions obtained with the RL. This file 
-      uses the excellent `ePiX library <http://mathcs.holycross.edu/~ahwang/current/ePiX.html>`_.
+    To visualize the solutions, we use the 
+    excellent `ePiX library <http://mathcs.holycross.edu/~ahwang/current/ePiX.html>`_. The
+    file :file:`tsp_epix.h` contains the ``TSPEpixData`` class. A ``TSPEpixData`` object is related to 
+    a ``RoutingModel`` and a ``TSPData``. It's unique constructor signature is
+    
+    ..  code-block:: c++
+    
+        TSPEpixData(const RoutingModel & routing, const TSPData & data);
 
+    To write a *ePiX* solution file, use the following methods:
+    
+    ..  code-block:: c++
+    
+        void WriteSolutionFile(const Assignment * solution, 
+                               const std::string & epix_filename);
+        void WriteSolutionFile(const std::string & tpslib_solution_filename,
+                               const std::string & epix_filename);
+
+    The first method takes an ``Assignment`` while the second method 
+    reads the solution from a TSPLIB solution file.
+    
+    
 ..  only:: final
 
     ..  raw:: html

@@ -5,61 +5,21 @@ A whole zoo of Routing Problems
 
 ..  only:: draft
 
-    This section is somewhat daunting and it's only purpose is to make you aware that the classification 
+    This section is meant to make you aware that the classification 
     of *Routing Problems* is intricate [#daunting_section_zoo_routing_problems]_. Actually, there is no real and 
-    widely adopted classification [#taxonomy_RP]_ [#routing_problems_not_universally_accepted]_
-    and the problems' names
-    reflect the search history of the scientific community [#see_why_chinese_postman_problem_name]_. 
+    widely adopted classification [#taxonomy_RP]_  [#routing_problems_not_universally_accepted]_.
     
-    All these problems are somewhat related to each others and to Scheduling Problems [#note_equivalence_scheduling_routing]_.
-    The broad classification into three main categories is more rooted in the day to day research than in 
-    theoretical justifications. 
     
-
-    ..  [#daunting_section_zoo_routing_problems] You can stop reading now if you want: this section involves neither 
-        Constraint Programming nor the or-tools library.
-
-    ..  [#taxonomy_RP] From time to time, an article is published to propose a good classification but to no avail
-        until now. See [Eksioglu2009]_ for instance.
-
-    ..  [#routing_problems_not_universally_accepted] Some people may actually even disagree with the terms used in this 
-        manual. 
-    
-    ..  [#see_why_chinese_postman_problem_name] 
-    
-        ..  only:: html 
-        
-            Jump to the section :ref:`chinese_postman_problem` to discover why we talk about the *Chinese Postman* Problem
-            for instance.
-        
-        ..  raw:: latex 
-        
-            Jump to section~\ref{manual/arc_routing/cpp:chinese-postman-problem} to discover 
-            why we talk about the \emph{Chinese Postman} Problem for instance.
-
-
-    ..  [Eksioglu2009] B. Eksioglu, A. Volkan Vural, A. Reisman, *The vehicle routing problem: A taxonomic review*, 
-        Computers & Industrial Engineering, Volume 57, Issue 4, November 2009, Pages 1472-1483.
-
-    ..  [#note_equivalence_scheduling_routing] Although Scheduling Problems and Routing Problems are not solved with the 
-        same techniques. See [Prosser2003]_ for instance.
-
-    ..  [Prosser2003] J. C. Beck, P. Prosser and E. Selensky, 
-        *Vehicle Routing and Job Shop Scheduling: What's the difference?*, 
-        Proc. of the 13th International Conference on Automated Planning and Scheduling, 2003, pages 267--276.
-
-
-    ..  warning:: Be aware of the complexity of the classification of Routing Problems when you search for 
-        a specific routing problem.
-
-    We can roughly divide Routing Problems in three broad - and often overlapping - categories:
+    All the Routing Problems are somewhat related to each others and to Scheduling Problems
+    [#note_equivalence_scheduling_routing]_. We can roughly divide Routing Problems in three 
+    broad - and often overlapping - categories:
     
       * **Node** Routing Problems (NRP)
       * **Arc** Routing Problems (ARP)
       * **Vehicle** Routing Problems (VRP)
       
-    For each category, we give an informal definition, list some known mathematical problems, refer an (somewhat arbitrary) 
-    authoritative source and present quickly the specific examples we detail in each chapter of part III. 
+    For each category, we give an informal definition, list some known mathematical problems, refer an 
+    authoritative source and present quickly the examples we detail in each chapter of part III. 
     
     Most problems have variants and 
     sometimes are known under different names. For instance, the *Cumulative Travelling Salesman Problem* is also known 
@@ -71,30 +31,49 @@ A whole zoo of Routing Problems
       - The Minimum Latency Problem 
       - The :math:`1/s_{jk}/\sum C_j` Scheduling Problem 
       - ...
+
+
+    ..  [#daunting_section_zoo_routing_problems] You can stop reading now if you want: this section involves neither 
+        Constraint Programming nor the or-tools library.
+
+    ..  [#taxonomy_RP] From time to time, an article is published to propose a good classification but none has 
+        been adopted by the community so far. See [Eksioglu2009]_ for instance.
+
+    ..  [#routing_problems_not_universally_accepted] Some people may actually disagree with the terms used in this 
+        manual. 
+    
+    ..  [#note_equivalence_scheduling_routing] Although Scheduling Problems and Routing Problems are not solved with the 
+        same techniques. See [Prosser2003]_ for instance.
+
+    ..  [Eksioglu2009] B. Eksioglu, A. Volkan Vural, A. Reisman, *The vehicle routing problem: A taxonomic review*, 
+        Computers & Industrial Engineering, Volume 57, Issue 4, November 2009, Pages 1472-1483.
+
+    ..  [Prosser2003] J. C. Beck, P. Prosser and E. Selensky, 
+        *Vehicle Routing and Job Shop Scheduling: What's the difference?*, 
+        Proc. of the 13th International Conference on Automated Planning and Scheduling, 2003, pages 267--276.
+
+
+    ..  warning:: Be aware of the complexity of the classification of Routing Problems when you search for 
+        a specific routing problem.
+
     
     ..  topic:: So what is a *Routing Problem* anyway?
     
-        Broadly speaking, it is a mathematical problem where you need to find *routes* in a graph 
+        Broadly speaking, a Routing Problem is a mathematical problem where you need to find *routes* in a graph 
         (or more generally a network) respecting some *visiting constraints*.
-        A *route* is a path connecting a starting and an ending vertex. *Visiting constraints* forbid or force to visit 
+        A *route* is a path connecting a starting vertex and an ending vertex (both can coincide). 
+        *Visiting constraints* forbid or force to visit 
         some or all nodes, edges and arcs. Often additional constraints are required to model real problems. 
         
-        These problems are so difficult that there are generally only solved when they belong to one of the three 
-        categories mentioned above [#routing_three_categories_problems]_. 
-        
-        ..  [#routing_three_categories_problems] But remember that these categories overlap. What is for sure, is
-            that there is no universal algorithm to solve any Routing Problem and that already basic versions 
-            of some simple Routing Problems are *really* hard to solve.
-
         Notice that what is known as the *General Routing Problem* in the scientific literature 
-        is a combination of NRP and VRP: You have a graph or a network and you must find one tour
+        is a combination of NRP and ARP: You have a graph or a network and you must find one tour
         covering/serving some required arcs/edges/nodes for a minimum cost, i.e. you only have 1 vehicle.
 
             
     We present now the three broad categories of Routing Problems. All are *Optimization Problems* where we try not only
     to find a solution but a good solution or even a best solution. Most problems minimize an objective function along 
-    the routes defined in the solution, typically the (linear) sum of the weights of the edges/arcs/nodes 
-    the solution is made of and a cost for the vehicles when more than one is implied.
+    the routes defined in the solution. Typically, the objective function is the sum of the weights of the edges/arcs/nodes 
+    the solution is made of and a cost for each of the vehicles when more than one is involved.
 
     One main difference between Arc Routing Problems and Node Routing Problems is that 
     basic ARPs (like the Chinese
@@ -132,7 +111,7 @@ Node Routing Problems
 
 
 
-    List of problems
+    Some problems
     """"""""""""""""""""""""""
     
     * The Travelling Salesman Problem 
@@ -170,7 +149,7 @@ Arc Routing Problems
     1 vehicle of :math:`\infty` capacity, i.e. we seek one tour that covers all the required edges and/or arcs.
     
     
-    List of problems
+    Some problems
     """"""""""""""""""""""""""
 
     * The Chinese Postman Problem 
@@ -206,7 +185,8 @@ Vehicle Routing Problems
 
     Vehicle Routing Problems (VRPs) are concerned 
     with a fleet of (maybe heterogeneous) vehicles. The number of vehicles can be 
-    fixed in advance or be part of the problem. Generally, a vehicle has a certain capacity (number of people, number 
+    fixed in advance or be one of a variable of the problem. 
+    Generally, a vehicle has a certain capacity (number of people, number 
     of tons of goods, etc.) and must respect some "time"-constraints (like the total duration of a route, time windows to 
     serve clients, etc.). Clients are usually modelled by nodes and to solve a VRP, one seeks to find
     several routes (1 per vehicle) that visit all clients and respect all given constraints!

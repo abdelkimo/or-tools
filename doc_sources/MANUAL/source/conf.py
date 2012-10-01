@@ -34,6 +34,9 @@ pngmath_latex_preamble = r'\usepackage{color} \usepackage{cancel}  \usepackage[a
 pngmath_use_preview=True
 
 pngmath_dvipng_args = ['-gamma 1.5', '-D 110', '-bg Transparent']
+# Adding Transparency for math images
+
+#pngmath_dvipng_args = ['gamma', '1.5', '-D', '110', '-bg', 'Transparent']
 
 # -- PNGmath configuration -----------------------------------------------------
 

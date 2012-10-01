@@ -113,7 +113,6 @@ to visualize TSP solutions in *TSPLIB* format and TSPTW solutions in *L√≥pez-Ib√
 ..  [#epix_latex] The ePiX library uses the :math:`\text{\TeX/\LaTeX}` engine to create beautiful graphics.
 
 
-
 The files inside this directory are:
 
 - :file:`tsp.h`: This file contains the ``TSPData`` class that records the data for the TSP. 
