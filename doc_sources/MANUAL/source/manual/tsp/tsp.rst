@@ -5,12 +5,44 @@ The travelling Salesman Problem
 
 ..  only:: draft
 
-    
+    The Travelling Salesman Problem (TSP) is probably the most known and studied problem in Operations Research.
+    In this section, we briefly present this fascinating problem and the 
+    `TSPLIB <http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/>`_
+    which stands for the *TSP library*
+    and is a library of sample instances for the TSP (and related problems) from various sources and of various types.
+    To read TSPLIB data, we have implemented our own ``TSPData`` class as none of the available code source available 
+    are compatible with our licence. Feel free to use it! Finally, we like to visualize what we are doing. To do so, 
+    we use the excellent `ePiX library <http://mathcs.holycross.edu/~ahwang/current/ePiX.html>`_  
+    through our ``TSPEpixData`` class.
     
 The Travelling Salesman Problem
 -------------------------------
 
 ..  only:: draft
+
+    Given a graph :math:`G=(V,E)` and pairwise distances between each nodes, the TSP consists in finding the shortest 
+    possible path that visits each node exactly once and return to the starting node. You can think about a  
+    salesman that must visit several cities and come back to his hometown.
+    
+    The cost we want to minimize is the sum of the distances along the path. Although there is a special vertex called 
+    the *depot* from which the tour starts and ends, we are really concerned with the overall cost of the tour, i.e. the 
+    we could start and end the tour at every node without changing the objective cost of the tour.
+
+
+    The best algorithms can now routinely 
+    solve TSP instances with then thousands of nodes to optimality [#tsp_record]_.
+
+    These problems are out of scope of the Constraint Programming paradigm [#tsp_difficult_for_cp]_. CP shines when
+    you consider complicated side constraints like the addition of *time windows*: each customer (represented by a node)
+    has to be visited inside a given time interval.
+
+    ..  [#tsp_record] The record at the time of writing is the ``pla85900`` instance in Gerd Reinelt's 
+        `TSPLIB <http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/>`_. This instance is a VLSI application
+        with 85 900 nodes. For many other instances with **millions** of nodes, solutions can be found that are 
+        guaranteed to be within 1\% of an optimal tour!
+
+
+    ..  [#tsp_difficult_for_cp] At least for now and if you try to solve them to optimality.
 
 
     ..  topic:: Do I really need a complete graph?
@@ -22,7 +54,8 @@ The Travelling Salesman Problem
         When we talk about a Travelling Salesman Problem, it is implicit that the distance between two nodes 
         :math:`i` and :math:`j` must be the same as the distance between :math:`j` and :math:`i`. This is not 
         mandatory. A distance in one direction could be larger than the distance in the other direction. For 
-        instance, climbing a hill might cost more than descending it.
+        instance, climbing a hill might cost more than descending it. When the distances are not symmetric, i.e.
+        :math:`\text{d}(i,j) \neq \text{d}(j,i)` we talk about an *Asymmetric* TSP.
         
         
         
@@ -36,7 +69,7 @@ Benchmark data
 
 ..  only:: draft
 
-    The TSP is one of the most studied problems in Operations Research and there are several known benchmark data sources 
+    Several known benchmark data sourcesare available
     on the internet. One of the most known is 
     the `TSPLIB page <http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/index.html>`_. 
     It's a little bit outdated but it contains a lot of instances and their proven optimal solutions. Their TSPLIB format
@@ -67,8 +100,8 @@ The instance file
 
 ..  only:: draft 
 
-    The TSPLIB not only deals with the TSPd but also with related problems. We only detail one type of TSP instance files.
-    This what the file :file:`a280.tsp` [#a280_fun_fact]_ looks like:
+    The TSPLIB not only deals with the TSP but also with related problems. We only detail one type of TSP instance files.
+    This is what the file :file:`a280.tsp` [#a280_fun_fact]_ looks like:
     
     ..  code-block:: text
     
@@ -103,6 +136,8 @@ The instance file
     
     ``Node_id`` is a unique *integer* node identifier and ``(x,y)`` are Cartesian coordinates unless 
     otherwise stated. The coordinates don't have to be integers and can be any real numbers.
+
+    Not all instances have node coordinates.
     
     There exist several other less obvious TSPLIB formats but we disregard them in this manual (graphs can be given
     by different types of explicit matrices or by edge lists for example).
@@ -122,7 +157,7 @@ The solution file
     corresponding to the Node ids ended by ``-1``.
 
     
-    This what the file :file:`a280.opt.tour` containing an optimal tour looks like:
+    This is what the file :file:`a280.opt.tour` containing an optimal tour looks like:
     
     ..  code-block:: text
 
@@ -176,7 +211,7 @@ The ``TSPData`` class
         A *smart pointer* is a class that behaves like a pointer. It's main advantage is that it
         destroys the object it points to when the smart pointer class is itself destroyed [#smart_pointer_destroyed]_. 
         This behaviour
-        ensures that, no matter what happens (exceptions, wrong ownership of pointees, bad programming, etc.),
+        ensures that, no matter what happens (exceptions, wrong ownership of pointees, bad programming (yep!), etc.),
         the pointed object will be destroyed as soon as the pointer object is out of scope and destroyed.
         
         ..  [#smart_pointer_destroyed] Several scenarii are possible. With reference counting, when more than one pointer 
@@ -215,7 +250,42 @@ Visualization with ``ePix``
     The first method takes an ``Assignment`` while the second method 
     reads the solution from a TSPLIB solution file.
     
+    You can define the *width* and *height* of the image ePiX will generate:
     
+    ..  code-block:: c++
+    
+        DEFINE_int32(epix_width, 10, "Width of the pictures in cm.");
+        DEFINE_int32(epix_height, 10, "Height  of the pictures in cm.");
+    
+    Once the ePiX file is written, you must evoke ePiX ``elaps`` script:
+    
+    ..  code-block:: bash
+    
+        ./elaps -pdf epix_file.xp
+    
+    Here is an example of a solution for the file :file:`a280.tsp`:
+    
+    ..  only:: html 
+    
+        .. image:: images/a280.*
+           :width: 250pt
+           :align: center
+
+    ..  only:: latex
+        
+        .. image:: images/a280.*
+           :width: 170pt
+           :align: center
+    
+    For your (and our!) convenience, we made the small program :program:`tsplib_solution_to_epix`.
+    Its implementation is in the file :file:`tsplib_solution_to_epix.cc`. To use it, invoke:
+    
+    ..  code-block:: bash
+    
+        ./tsplib_solution_to_epix TSPLIB_data_file TSPLIB_solution_file > 
+                                                                epix_file.xp
+        
+        
 ..  only:: final
 
     ..  raw:: html

@@ -53,25 +53,11 @@ These three categories of problems share common properties but they all have the
 own paradigms and scientific communities.
 
 In this chapter, we'll discover the RL with what is probably the most studied problem in Operations Research:
-the *Travelling Salesman Problem* (TSP) [#tsp_two_l]_. The best algorithms can now routinely 
-solve TSP instances with then thousands of nodes to optimality [#tsp_record]_.
-
-These problems are out of scope of the Constraint Programming paradigm [#tsp_difficult_for_cp]_. CP shines when
-you consider complicated side constraints like the addition of *time windows*: each customer (represented by a node)
-has to be visited inside a given time interval.
-
+the *Travelling Salesman Problem* (TSP) [#tsp_two_l]_. 
 
 ..  [#tsp_two_l] We use the Canadian (and British) spelling of the verb *travelling* but you'll find much more 
     scientific articles under the American spelling: *traveling*.
 
-
-..  [#tsp_record] The record at the time of writing is the ``pla85900`` instance in Gerd Reinelt's 
-    `TSPLIB <http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/>`_. This instance is a VLSI application
-    with 85 900 nodes. For many other instances with **millions** of nodes, solutions can be found that are 
-    guaranteed to be within 1\% of an optimal tour!
-
-
-..  [#tsp_difficult_for_cp] At least for now and if you try to solve them to optimality.
 
 ..  rubric:: Overview:
 
