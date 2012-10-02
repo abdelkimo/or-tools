@@ -1,0 +1,4 @@
+user_manual/_images/a280.png
+user_manual/_images/math/5bb88f3ab8f5de5bf528cafb1bddb4be445d6399.png
+user_manual/_images/math/c88d75016f6afa02d15d5f653143114ae65c638a.png
+user_manual/_images/math/b671f1bb7e4ee86584347d5d22f1dc8abdb5bef2.png
