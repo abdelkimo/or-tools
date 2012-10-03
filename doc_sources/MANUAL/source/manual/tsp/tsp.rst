@@ -5,7 +5,7 @@ The Travelling Salesman Problem
 
 
 The Travelling Salesman Problem (TSP) is probably the most known and studied problem in Operations Research.
-In this section, we briefly present this fascinating problem and the 
+In this section, we briefly [#tsp_examples_abond]_ present this fascinating problem and the 
 `TSPLIB <http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/>`_
 which stands for the *TSP library*
 and is a library of sample instances for the TSP (and related problems) from various origins and of various types.
@@ -13,6 +13,9 @@ To read TSPLIB data, we have implemented our own ``TSPData`` class as none of th
 are compatible with our licence. Feel free to use it! Finally, we like to visualize what we are doing. To do so, 
 we use the excellent `ePiX library <http://mathcs.holycross.edu/~ahwang/current/ePiX.html>`_  
 through our ``TSPEpixData`` class.
+
+..  [#tsp_examples_abond] Google *TSP*, *Traveling Saleman Problem* or *Travelling Salesman Problem* to find **lots**
+    of examples, explanations, applications, etc.
 
 The Problem
 -------------------------------
@@ -26,6 +29,7 @@ The cost we want to minimize is the sum of the distances along the path. Althoug
 the *depot* from which the tour starts and ends, we are really concerned with the overall cost of the tour, i.e. the 
 we could start and end the tour at every node without changing the objective cost of the tour.
 
+Below you can find a picture of a solution of the TSP with 280 cities (``a280``) in the section :ref:`section_visualization_epix_tsp`.
 
 The best algorithms can now routinely 
 solve TSP instances with then thousands of nodes to optimality [#tsp_record]_.
@@ -53,7 +57,7 @@ has to be visited inside a given time interval.
     :math:`i` and :math:`j` must be the same as the distance between :math:`j` and :math:`i`. This is not 
     mandatory. A distance in one direction could be larger than the distance in the other direction. For 
     instance, climbing a hill might cost more than descending it. When the distances are not symmetric, i.e.
-    :math:`\text{d}(i,j) \neq \text{d}(j,i)` we talk about an *Asymmetric* TSP.
+    :math:`\text{d}(i,j) \neq \text{d}(j,i)`, we talk about an *Asymmetric* TSP.
     
     
     
@@ -214,14 +218,10 @@ The 1-dimensional matrix is made of the columns of the virtual 2-dimensional mat
         referring to the object is destroyed that the the object itself is destroyed. If you want to know more about
         this technique, look up *RAII* (Resource Acquisition Is Initialization).
 
-
-
-
+..  _section_visualization_epix_tsp:
 
 Visualization with ``ePix``
 ---------------------------
-
-
 
 To visualize the solutions, we use the 
 excellent `ePiX library <http://mathcs.holycross.edu/~ahwang/current/ePiX.html>`_. The
@@ -278,12 +278,4 @@ Its implementation is in the file :file:`tsplib_solution_to_epix.cc`. To use it,
 
     ./tsplib_solution_to_epix TSPLIB_data_file TSPLIB_solution_file > 
                                                             epix_file.xp
-    
-        
-..  only:: final
-
-    ..  raw:: html
-        
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
