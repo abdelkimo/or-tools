@@ -172,7 +172,8 @@ Foreword
     What you will not learn in this document
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     
-    This document is by no means a tutorial on Operations Research nor on Contraint Programming.
+    This document is by no means a tutorial on Operations Research nor on Constraint Programming although we
+    try to give you a glimpse of the best practices.
     It is also NOT a reference manual (refer to the documentation hub to find the reference manual).
     There are way too many methods, parameters, functions, etc. to explain them all in details. Once
     you understand the concepts and methods explained in this manual, you shouldn’t have any

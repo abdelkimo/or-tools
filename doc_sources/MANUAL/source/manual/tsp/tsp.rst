@@ -49,7 +49,17 @@ has to be visited inside a given time interval.
 
 ..  topic:: Do I really need a complete graph?
 
-    Well... no!
+    ..  only:: draft
+    
+        This question might come as a surprise to CP practitioners. Indeed, in CP you can use whatever graph as input.
+        Outside the CP paradigm, most algorithms solving the TSP ask for a complete graph as input. The classical way to 
+        transform "quelconque" (non complete) graph is to replace each non existing edge :math:`(i,j)` by a well 
+        suited shortest path edge between :math:`i` and :math:`j`.
+        
+        Worse, if you want to avoid certain connections between two nodes :math:`i` and :math:`j` in a complete graph, 
+        the classical way to achieve this is to set a very high cost/weight to the edge :math:`(i,j)`. In the RL, you just
+        remove :math:`i` from the domain of the variable ``Next(j)`` of :math:`j` and vice-versa. See XXX for a detailed
+        example.
 
 ..  topic:: Symmetric or Asymmetric distances?
 
