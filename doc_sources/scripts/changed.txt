@@ -1,10 +1,8 @@
 changes_list.txt
 documentation_hub.html
 user_manual/index.html
-user_manual/manual/VRP.html
-user_manual/manual/TSP.html
-user_manual/manual/vrp/vrp.html
-user_manual/manual/tsp/model_behind_scene.html
+user_manual/manual/introduction.html
+user_manual/manual/introduction/real_examples.html
+user_manual/manual/introduction/tradeoffs.html
+user_manual/manual/introduction/three_stages.html
 user_manual/manual/tsp/tsp.html
-user_manual/manual/tsp/zoo_routing_problems.html
-user_manual/manual/tsp/routing_library.html
