@@ -5,23 +5,52 @@ A little bit of theory
 
 ..  only:: draft
 
-    If you are allergic to theory, you can completely skip this section. We give you in a nutshell the important ideas and 
-    the vocabulary we use throughout this manual. Of course - we took the time to write it, right? - we are convinced that 
-    you would benefit from reading it. 
+    We give you in a nutshell the important ideas and 
+    the vocabulary we use throughout this manual. If you are allergic to theory, read this introduction and the next 
+    subsection
+    but skip the rest of this section. We are convinced - we took the time to write it, right? - that 
+    you would benefit from reading this section in its entirety but it is up to you. 
+    Complexity theory is quite new (it really started in the '70s)
+    and is not easy (and after reading this section, you'll have more questions than answers). 
+    If you are interested in this fascinating subject, we recommend that you read the classical book 
+    *Computers and Intractability: A Guide to the Theory of NP-Completeness* from M. R. Garey and D. S. Johnson (see
+    [Garey1979]_ [#garey_outdated]_). 
     
-    Here are the main ideas:
+    ..  [Garey1979] Garey, M. R. and Johnson D. S. *Computers and Intractability: A Guide to the Theory of NP-Completeness*,
+        1979, W. H. Freeman & Co, New York, NY, USA, pp 338.
     
-      - problems are divided in two categories: **easy** (:math:`\in \textrm{P}`) and **hard** (:math:`\in \textrm{NP}`) problems. 
-        The last ones are also called *intractable* and in general we only can find good solutions not optimal ones for those problems.
-        Actually, this question is still open (:math:`P \stackrel{?}{=} NP`) and there is a one million dollars prize to decide this question;
+    Here are the main ideas of complexity theory [#time_complexity]_:
+    
+      - problems are divided in two categories: **easy** (:math:`\text{P}` problems) and **hard** (:math:`\text{NP-Hard}` or :math:`\text{NP-Complete}` problems)
+        problems. Hard problems are also called *intractable* [#intractable]_ and in general we only can find 
+        approximate solutions not 
+        exact ones for those problems [#good_vs_proven]_.
+        Actually, this question is still open and there is a $1,000,000 prize to decide 
+        this question (See the box XXX);
         
-      - good solutions are called *approximations* and since the '90ties a lot of effort has been spent in a complexity
+      - good solutions are called *approximations* and since the '90s a lot of effort has been spent in a complexity
         theory of approximations. There is a whole zoo of complexity classes. Some problems car be approximated but without any
         guarantee on the quality of the solution, others can be approximated with as much precision as you desire but 
-        you have to pay the price for this precision: the more precision you want the more time your algorithm will need to provide it. 
-        For some problems it is even hard to find approximations or it is even not possible to find an approximation with any certainty 
+        you have to pay the price for this precision: the more precision you want the more time your algorithm will 
+        need to provide it. 
+        For some problems it is even hard to find approximations or it is even not possible to find an approximation with 
+        any certainty 
         about its quality!
 
+    ..  [#time_complexity] We talk here about *Time*-complexity theory, i.e. we are concerned with the time we need 
+                           to solve problems. There exist other complexity theories, for instance the *Space*-complexity 
+                           theory where we are concerned with the memory space needed to solve problems.
+
+    ..  [#garey_outdated] The book is a little bit outdated but it clearly explains the NP-Completeness theory and 
+                          provides a long list of NP-Complete problems.
+
+    ..  [#intractable] *Intractable problems* are problems which in practice take too long to solve exactly, so there 
+                       is a gap between the theoretical definition (:math:`\textrm{NP-Hard}` problems) and the 
+                       practical definition (*Intractable* problems).
+    
+    ..  [#good_vs_proven] Technically, you could find an exact solution but you would not be able to prove that 
+                          it is indeed an exact solution in general.
+                          
 ..  _constraint_satisfaction_problem:
 
 Constraint Satisfaction Problems (CSP) and Constraint Optimization Problems (COP)
@@ -117,45 +146,140 @@ Complexity theory in a few lines
 
     ..  only:: html
     
-        Some problems such as the Travelling Salesman Problem (see the chapter :ref:`chapter_tsp_with_constraints`) 
+        Some problems such as the *Travelling Salesman Problem* (see the chapter :ref:`chapter_tsp_with_constraints`) 
         are hard to solve [#difficult_to_solve]_: 
         no one could ever come 
         with a very efficient algorithm to solve this problem. On the contrary, other problems, 
-        like the Chinese Postman Problem
+        like the *Chinese Postman Problem*
         (see the chapter :ref:`chapter_arc_routing_with_constraints`), are solved very efficiently by some algorithms. 
-        In the seventies, complexity experts could translate this
+        In the '70s, complexity experts could translate this
         state of facts into a beautiful *complexity theory*. 
 
         ..  [#difficult_to_solve] Roughly, we consider a problem to be hard to solve if we need a lot of time to solve it. Read on.
 
     ..  raw:: latex
     
-        Some problems such as the Travelling Salesman Problem (see chapter~\ref{manual/TSP:chapter-tsp-with-constraints}) 
+        Some problems such as the \emph{Travelling Salesman Problem} 
+        (see chapter~\ref{manual/TSP:chapter-tsp-with-constraints}) 
         are hard to solve\footnote{Roughly, we consider a problem to be hard to solve if we need a 
         lot of time to solve it. Read on.}: 
         no one could ever come 
         with a very efficient algorithm to solve this problem. On the contrary, other problems, 
-        like the Chinese Postman Problem
+        like the \emph{Chinese Postman Problem}
         (see chapter~\ref{manual/arc_routing:chapter-arc-routing-with-constraints}), 
         are solved very efficiently by some algorithms. 
-        In the seventies, complexity experts could 
+        In the '70s, complexity experts could 
         translate this state of facts into a beautiful \emph{complexity theory}.\\~\\ 
 
     Hard to solve problems are called *intractable* problems. When you cannot solve an intractable 
     problem to optimality, you can
-    try to find good solutions or *approximate* the problem. In the nineties, complexity experts continued their
+    try to find good solutions or *approximate* the problem. In the '90s, complexity experts continued their
     investigation on the 
     complexity of solving problems and developed what is now known as the *approximation complexity theory*. Both theories
     are quite new,
-    very interesting and ... not that easy to understand. We try the *tour the force* to explain them in a few lines.
-
-    
+    very interesting and ... not easy to understand. We try the *tour the force* to introduce them in a few lines.
+    We voluntary kept certain technical details out of the way. These technical details *are important* and actually without 
+    them, you can not construct a complexity theory.
 
 Intractability
 """"""""""""""""""""
 
 ..  only:: draft 
   
+    One of the main difficulties complexity experts faced in the '70s was to come up with a theoretical 
+    definition of the complexity 
+    of problems not algorithms. Indeed, it is easy [#complexity_algo_difficult]_ to define a complexity measure of 
+    algorithms but how would you define 
+    the complexity of a problem? If you have an efficient algorithm to solve a problem, you could say that the problem 
+    belongs to easy problems but what about difficult problems? The fact that we don't know an efficient algorithm to solve 
+    these doesn't mean these problems are really difficult. Someone could come up one day with an efficient algorithm!
+    The solution the experts came up with was to build equivalence classes between problems and define the complexity of 
+    a problem with respect to the complexity of other problems (so the notion of complexity is relative not absolute): 
+    a problem :math:`A` is as hard as a problem :math:`B` if there exists an efficient transformation :math:`\tau` that maps every 
+    instance :math:`b` of  
+    problem :math:`B` into an instance :math:`\tau(b) = a` of problem :math:`A`. 
+    
+    [Insert Figure]
+    
+    Indeed, if there exists an efficient algorithm to solve 
+    problem :math:`A`, you can also solve efficiently problem :math:`B`: transform an instance :math:`b` into into 
+    an instance :math:`\tau(b) = a` of problem :math:`A` and solve it with the efficient algorithm known to solve problem 
+    :math:`A`. So problem :math:`A` is as difficult as
+    problem :math:`B` (because if you know an efficient algorithm to solve problem :math:`A`, you can solve problem :math:`B`
+    as efficiently) and we write :math:`B \leqslant_{\text{T}} A` and say that problem :math:`B` reduces to problem :math:`A`
+    or that :math:`\tau` is a *reduction*.
+    The search for an efficient algorithm is replaced by the search of an efficient transformation between 
+    instances of two problems to prove complexity.
+     
+     
+    ..  [#complexity_algo_difficult] Well, to a certain degree. 
+    
+    This main idea leads to a lot of technicalities:
+    
+      - how to measure the complexity of an algorithm?
+      - what is an efficient transformation?
+      - what are the requirements for such a transformation?
+      - what type of computers do you use?
+      - ...
+    
+    We don't answer these interesting questions except the one on efficiency. We consider a transformation 
+    :math:`\tau` *efficient*
+    if there exist a polynomial-time bounded algorithm (this refers to the first question...) that can transform any 
+    instance :math:`b` of problem :math:`B` into an instance :math:`a` of problem :math:`A`. This also means that we 
+    consider an algorithm *efficient* if it is *polynomially time-bounded* (otherwise the efficiency of the 
+    transformation would be useless).
+    
+    The class of problems that can be efficiently solved is called :math:`P`, i.e. the class of problems that can be solved by 
+    a polynomial-time bounded algorithm [#P_technically_speaking]_ [#P_in_Practice]_. 
+    
+    ..  [#P_technically_speaking] For technical reasons, we don't compare problems but *languages* and only consider
+        *decision problems*, i.e. problems that have a *yes/no* answer. The *Subset Sum Problem* is such a problem.
+        Given a finite set of integers, is there a non-empty subset whose sum is zero? The answer is yes or no. By extension,
+        we say an optimization problem is in :math:`P`, if its equivalent *decision problem* is in :math:`P`. For instance, 
+        the Chinese Postman Problem (CPP) is an optimization problem where one wants to find a minimal route 
+        traversing all edges 
+        of a graph. The equivalent decision problem is " *Is it possible to find a feasible route with cost less or equal 
+        to* :math:`k` *?* " where :math:`k` is a given integer. By extension, we will say that the CPP
+        is in :math:`P` (we should rather say that the CPP is in :math:`P-\text{optimization}`).
+    
+    ..  [#P_in_Practice] This discussion is really about *theoretical* difficulties of problems. Some problems that 
+                         are theoretically easy (such as solving a Linear System or a Linear Program) are difficult in 
+                         practice and conversely, some problems that are theoretically difficult, such as the Knapsack Problem 
+                         are routinely solved on big instances.
+    
+    Some problems are difficult to solve but once you have an answer, it is quite straightforward to verify that a
+    given solution is indeed the solution of the problem. One such problem is the *Hamiltonian Path Problem (HPP)*. 
+    Given a graph, is there a path that visits each vertex exactly once? Finding such a path is difficult but verifying 
+    that a given path is indeed an Hamiltonian path, i.e. that is passes exactly once through each vertex can be 
+    easily done. Problems for which it is easy to verify their solutions, i.e. for which this verification can be done 
+    in polynomial time, are said to be in the class :math:`NP` [#NP_term]_. :math:`P \subset NP` because if you can 
+    find a solution in polynomial time, you can also verify this solution in polynomial time. Whether we have equality or not 
+    between these two sets is one of the major unsolved theoretical question in computer science (see box XXX).
+    
+    ..  [#NP_term] The abbreviation :math:`NP` refers to *nondeterministic polynomial time*, not to *non-polynomial*.
+
+    Not all problems in :math:`\text{NP}` seem to be of equal complexity. Some problems, such as the HPP are as hard as any problem 
+    in :math:`\text{NP}`. Remember our classification of the complexity of problems? This means that every problem in :math:`\text{NP}` can 
+    be transformed in polynomial time into the HPP. The hardiest problems of :math:`\text{NP}` form the class of :math:`\text{NP-Complete}` problems.
+    
+    Finally, if a problem is as hard as a :math:`\text{NP-Complete}` problem, it is called an :math:`\text{NP-Hard}` problem.
+    Optimization problems that have their equivalent decision problems being :math:`\text{NP-Complete}` fall into this category.
+    
+    The next Figure resumes the relations between the complexity classes [#zoo_complexity_classes]_ we have seen as most of the experts believe they stand.
+    
+    [Insert Figure]
+
+    ..  [#zoo_complexity_classes] Be aware that there are many more complexity classes.
+
+    ..  topic:: The :math:`P \stackrel{?}{=} NP` question
+    
+        The P versus NP problem is a major unsolved problem in computer science. Informally, it asks whether every problem whose solution can be quickly verified by a computer can also be quickly solved by a computer. It was introduced in 1971 by Stephen Cook in his seminal paper "The complexity of theorem proving procedures"[2] and is considered by many to be the most important open problem in the field.[3] It is one of the seven Millennium Prize Problems selected by the Clay Mathematics Institute to carry a US$ 1,000,000 prize for the first correct solution.
+    
+The practical aspect of intractability
+"""""""""""""""""""""""""""""""""""""""""
+    
+..  only:: draft 
+
     Complexity zoo
     
     Since the '70s
@@ -164,6 +288,8 @@ Intractability
     complexity of an algorithm.
     
     The classical book on complexity theory is Garey and Jonhson.
+    
+
     
 Approximation complexity
 """""""""""""""""""""""""""
