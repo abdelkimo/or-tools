@@ -220,7 +220,8 @@ Intractability
     of problems not algorithms. Indeed, it is relatively easy [#complexity_algo_difficult]_ to define a complexity measure of 
     algorithms but how would you define 
     the complexity of a problem? If you have an efficient algorithm to solve a problem, you could say that the problem 
-    belongs to easy problems but what about difficult problems? The fact that we don't know an efficient algorithm to solve 
+    belongs to the set of easy problems but what about difficult problems? 
+    The fact that we don't know an efficient algorithm to solve 
     these doesn't mean these problems are really difficult. Someone could come up one day with an efficient algorithm!
     The solution the experts came up with was to build equivalence classes between problems and define the complexity of 
     a problem with respect to the complexity of other problems (so the notion of complexity is relative not absolute): 
@@ -264,13 +265,13 @@ Intractability
       - how to measure the complexity of an algorithm?
       - what is an efficient transformation?
       - what are the requirements for such a transformation?
-      - what type of computers do you use?
       - ...
     
     We don't answer these interesting questions except the one on efficiency. We consider a transformation 
     :math:`\tau` *efficient*
     if there exist a polynomial-time bounded algorithm (this refers to the first question...) that can transform any 
-    instance :math:`b` of problem :math:`B` into an instance :math:`a` of problem :math:`A`. This also means that we 
+    instance :math:`b` of problem :math:`B` into an instance :math:`a` of problem :math:`A` such that the solutions 
+    correspond. This also means that we 
     consider an algorithm *efficient* if it is *polynomially time-bounded* (otherwise the efficiency of the 
     transformation would be useless).
     
@@ -305,20 +306,32 @@ Intractability
 
     Not all problems in :math:`\text{NP}` seem to be of equal complexity. Some problems, such as the HPP are as hard as any problem 
     in :math:`\text{NP}`. Remember our classification of the complexity of problems? This means that every problem in :math:`\text{NP}` can 
-    be transformed in polynomial time into the HPP. The hardiest problems of :math:`\text{NP}` form the class of :math:`\text{NP-Complete}` problems.
+    be transformed in polynomial time into the HPP. The hardest problems of :math:`\text{NP}` form the class of :math:`\text{NP-Complete}` problems.
     
-    Finally, if a problem is as hard as a :math:`\text{NP-Complete}` problem, it is called an :math:`\text{NP-Hard}` problem.
+    Finally, if a problem is as hard as an :math:`\text{NP-Complete}` problem, it is called an :math:`\text{NP-Hard}` problem.
     Optimization problems that have their equivalent decision problems being :math:`\text{NP-Complete}` fall into this category.
     
-    The next Figure resumes the relations between the complexity classes [#zoo_complexity_classes]_ we have seen as most of the experts believe they stand.
+    The next Figure summarizes the relations between the complexity classes [#zoo_complexity_classes]_ we have seen as most of the experts believe they stand, i.e. :math:`\text{P} \neq \text{NP}`.
     
-    [Insert Figure]
+    ..  only:: html
+    
+        ..  image:: images/complexity_classes.*
+            :height: 250px
+            :align: center
+    
+    ..  only:: latex
+    
+        ..  image:: images/complexity_classes.*
+            :height: 150px
+            :align: center
 
     ..  [#zoo_complexity_classes] Be aware that there are many more complexity classes.
 
     ..  topic:: The :math:`P \stackrel{?}{=} NP` question
     
+        [NOT FINISHED]
         The P versus NP problem is a major unsolved problem in computer science. Informally, it asks whether every problem whose solution can be quickly verified by a computer can also be quickly solved by a computer. It was introduced in 1971 by Stephen Cook in his seminal paper "The complexity of theorem proving procedures"[2] and is considered by many to be the most important open problem in the field.[3] It is one of the seven Millennium Prize Problems selected by the Clay Mathematics Institute to carry a US$ 1,000,000 prize for the first correct solution.
+        Add poll : most of the experts believe that... but this problem might also be non decidable!!! [EXPLANATION].
 
 
     If you are interested in this fascinating subject, we recommend that you read the classical book 
