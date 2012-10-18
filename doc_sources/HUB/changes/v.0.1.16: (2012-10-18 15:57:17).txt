@@ -1,0 +1,6 @@
+# Milestone:
+# Current changes.
+* Minor enhancements to the manual:
+  - Minor corrections.
+  - overview of chapter 1 added.
+
