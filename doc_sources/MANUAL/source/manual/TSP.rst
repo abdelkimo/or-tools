@@ -58,6 +58,13 @@ the *Travelling Salesman Problem* (TSP) [#tsp_two_l]_.
 ..  [#tsp_two_l] We use the Canadian (and British) spelling of the verb *travelling* but you'll find much more 
     scientific articles under the American spelling: *traveling*.
 
+We use the excellent ``C++`` [#epix_latex]_ `ePiX library <http://mathcs.holycross.edu/~ahwang/current/ePiX.html>`_ 
+to visualize TSP solutions in *TSPLIB* format and TSPTW solutions in *López-Ibáñez-Blum* and *da Silva-Urrutia* formats.
+
+..  [#epix_latex] The ePiX library uses the :math:`\text{\TeX/\LaTeX}` engine to create beautiful graphics.
+
+
+
 
 ..  rubric:: Overview:
 
@@ -91,12 +98,8 @@ solve the TSP with Time Windows.
 
 ..  rubric:: Files:
 
+
 You can find the code in the directory ``documentation/tutorials/C++/chap9``.
-
-We use the excellent ``C++`` [#epix_latex]_ `ePiX library <http://mathcs.holycross.edu/~ahwang/current/ePiX.html>`_ 
-to visualize TSP solutions in *TSPLIB* format and TSPTW solutions in *López-Ibáñez-Blum* and *da Silva-Urrutia* formats.
-
-..  [#epix_latex] The ePiX library uses the :math:`\text{\TeX/\LaTeX}` engine to create beautiful graphics.
 
 
 The files inside this directory are:

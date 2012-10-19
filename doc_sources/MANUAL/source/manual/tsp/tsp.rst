@@ -1,7 +1,7 @@
 ..  _tsp_tsp:
 
-The Travelling Salesman Problem
-==================================
+The Travelling Salesman Problem (TSP)
+======================================
 
 
 The Travelling Salesman Problem (TSP) is probably the most known and studied problem in Operations Research.

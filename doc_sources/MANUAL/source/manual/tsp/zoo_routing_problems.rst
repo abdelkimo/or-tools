@@ -14,8 +14,8 @@ All the Routing Problems are somewhat related to each others and to Scheduling P
 broad - and often overlapping - categories:
 
   * **Node** Routing Problems (NRP)
-  * **Arc** Routing Problems (ARP)
   * **Vehicle** Routing Problems (VRP)
+  * **Arc** Routing Problems (ARP)
   
 For each category, we give an informal definition, list some known mathematical problems, refer an 
 authoritative source and present quickly the examples we detail in each chapter of part III. 
@@ -136,41 +136,6 @@ The Travelling Salesman Problem with Time Windows is...
 [insert epix graphic]
 
 
-Arc Routing Problems
-^^^^^^^^^^^^^^^^^^^^^^
-
-
-Informal definition:
-""""""""""""""""""""""""
-
-In Arc Routing Problems, we visit and serve edges and/or arcs. Most of the problems consider 
-1 vehicle of :math:`\infty` capacity, i.e. we seek one tour that covers all the required edges and/or arcs.
-
-
-Some problems
-""""""""""""""""""""""""""
-
-* The Chinese Postman Problem 
-* The Canadian Postman Problem 
-* The Windy Postman Problem 
-* The Hierarchical Postman Problem 
-* The Rural Postman Problem 
-* The Cumulative Chinese Postman Problem 
-* The Route Inspection Problem 
-* The Capacitated Arc Routing Problems
-* ...
-
-Authoritative source:
-""""""""""""""""""""""
-
-Dror, M. (Ed.). *Arc Routing: Theory, Solutions and Applications*. Kluwer Academic Publishers, Dordrecht, 2000.  
-
-The CVRP:
-"""""""""""""""
-
-The Capacitated Vehicle Routing Problem is...
-
-[insert epix graphic]
 
 
 Vehicle Routing Problems
@@ -205,6 +170,42 @@ Authoritative source:
 Golden, Bruce L.; Raghavan, S.; Wasil, Edward A. (Eds.). *The Vehicle Routing Problem: Latest Advances and 
 New Challenges*. Springer, Series: Operations Research/Computer Science Interfaces Series, Vol. 43, 2008, 589 p. 
 
+The CVRP:
+"""""""""""""""
+
+The Capacitated Vehicle Routing Problem is...
+
+[insert epix graphic]
+
+
+Arc Routing Problems
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+Informal definition:
+""""""""""""""""""""""""
+
+In Arc Routing Problems, we visit and serve edges and/or arcs. Most of the problems consider 
+1 vehicle of :math:`\infty` capacity, i.e. we seek one tour that covers all the required edges and/or arcs.
+
+
+Some problems
+""""""""""""""""""""""""""
+
+* The Chinese Postman Problem 
+* The Canadian Postman Problem 
+* The Windy Postman Problem 
+* The Hierarchical Postman Problem 
+* The Rural Postman Problem 
+* The Cumulative Chinese Postman Problem 
+* The Route Inspection Problem 
+* The Capacitated Arc Routing Problems
+* ...
+
+Authoritative source:
+""""""""""""""""""""""
+
+Dror, M. (Ed.). *Arc Routing: Theory, Solutions and Applications*. Kluwer Academic Publishers, Dordrecht, 2000.  
 
 The CCPP:
 """""""""""""""
@@ -213,5 +214,4 @@ The Cumulative Chinese Postman Problem is ...
 
 
 [insert epix graphic]
-
 
