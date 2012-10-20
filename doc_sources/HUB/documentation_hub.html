@@ -6,6 +6,22 @@
 
 	<link rel="stylesheet" href="static/documentation_hub.css">
 
+<script type="text/javascript">
+ function unhide(divID) {
+ var item = document.getElementById(divID);
+ if (item) {
+ 
+if (item.className=='hidden') {
+  item.className= 'unhidden';
+} else {
+item.className= 'hidden';
+}
+
+
+ }
+ }
+ </script>
+
 </head>
 <body>
     <div id="wrap">
@@ -503,13 +519,15 @@ files in some languages as the features implemented just don't have an equivalen
 <h5>Code:</h5> 
 
 <p>Everything: <a href="http://or-tools.googlecode.com/files/tutorials_all_examples.zip">tutorial_all_examples.zip</a></p>
-<p>Jump to: <a href="#tutorial_C++">C++</a> &nbsp; | &nbsp;  <a href="#tutorial_Python">Python</a> &nbsp; | &nbsp;  <a href="#tutorial_Java">Java</a> &nbsp; | &nbsp;  <a href="#tutorial_Csharp">C#</a>. </p>
+<p>Jump to: <a href="javascript:unhide('tutorial_C++_block')">C++</a> &nbsp; | &nbsp;  <a href="#tutorial_Python">Python</a> &nbsp; | &nbsp;  <a href="#tutorial_Java">Java</a> &nbsp; | &nbsp;  <a href="#tutorial_Csharp">C#</a>. </p>
 
 <p>
+
 <div class="examples_list">
+
+<div id="tutorial_C++_block" class="hidden">
 <ul>
 <li class="language" id="tutorial_C++">C++</li>
-
 
 <dl>
 	<dt>all:</dt><dd><a href="http://or-tools.googlecode.com/files/tutorials_c++_examples.zip">tutorial_c++_examples.zip</a></dd>
@@ -533,7 +551,12 @@ files in some languages as the features implemented just don't have an equivalen
 	 <dt>chap12:</dt><dd>-</dd>
 	 <dt>chap13:</dt><dd>-</dd>
 </dl>
+</ul>
+</div>
 
+
+<div id="tutorial_Python_block" class="hidden">
+<ul>
 <li class="language" id="tutorial_Python">Python</li>
 <dl>
 	<dt>all:</dt><dd><a href="http://or-tools.googlecode.com/files/tutorials_python_examples.zip">tutorial_python_examples.zip</a></dd>
@@ -551,7 +574,12 @@ files in some languages as the features implemented just don't have an equivalen
 	 <dt>chap12:</dt><dd>-</dd>
 	 <dt>chap13:</dt><dd>-</dd>	 
 </dl>
+</ul>
+</div>
 
+
+<div id="tutorial_Java_block" class="hidden">
+<ul>
 <li class="language" id="tutorial_Java">Java</li>
 <dl>
 	<dt>all:</dt><dd><a href="http://or-tools.googlecode.com/files/tutorials_java_examples.zip">tutorial_java_examples.zip</a></dd>
@@ -570,6 +598,12 @@ files in some languages as the features implemented just don't have an equivalen
 	 <dt>chap13:</dt><dd>-</dd>	 
 </dl>
 
+</ul>
+</div>
+
+
+<div id="tutorial_Csharp_block" class="hidden">
+<ul>
 <li class="language" id="tutorial_Csharp">C#</li>
 <dl>
 	<dt>all:</dt><dd><a href="http://or-tools.googlecode.com/files/tutorials_csharp_examples.zip">tutorial_csharp_examples.zip</a></dd>
@@ -588,6 +622,7 @@ files in some languages as the features implemented just don't have an equivalen
 	 <dt>chap13:</dt><dd>-</dd>	 
 </dl>
 </ul>
+</div>
 </div>
 </p>
 
