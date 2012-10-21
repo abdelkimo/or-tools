@@ -2,5 +2,7 @@
 # Current changes.
 * Minor enhancements to the manual:
   - Minor corrections.
-  - overview of chapter 1 added.
+  - half of 1.3.
+* Documentation hub:
+  - +/- buttons to show/hide <div>.
 

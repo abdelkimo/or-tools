@@ -7,14 +7,17 @@
 	<link rel="stylesheet" href="static/documentation_hub.css">
 
 <script type="text/javascript">
- function unhide(divID) {
+ function unhide(divID, buttonId) {
  var item = document.getElementById(divID);
+ var item_button = document.getElementById(buttonId);
  if (item) {
  
 if (item.className=='hidden') {
   item.className= 'unhidden';
+  item_button.src = "static/icon_hide.gif";
 } else {
 item.className= 'hidden';
+item_button.src = "static/icon_show.gif";
 }
 
 
@@ -125,7 +128,10 @@ We also recommend to use the epub version as it is currently the best available 
 
 The following percentages show you the completion status of the manual. Note that what we publish online might be not up to date. 
 
-<h5 id="manual_progress">Manual</h5>
+<h5 id="manual_progress">Manual <a href="javascript:unhide('manual_progress_block', 'manual_progress_button')"><img id="manual_progress_button" src="static/icon_show.gif" alt="" /></a></h5>
+ 
+<div id="manual_progress_block" class="hidden">
+
 <table width="100%">
 <tr>
 <td width="25%">Foreword</td>
@@ -305,8 +311,12 @@ The following percentages show you the completion status of the manual. Note tha
 </td>
 </tr>
 </table>
+</div>
 
-<h5 id="documentation_progress">Documentation generation</h5>
+<h5 id="documentation_progress">Documentation generation <a href="javascript:unhide('documentation_progress_block', 'documentation_progress_button')"><img id="documentation_progress_button" src="static/icon_show.gif" alt="" /></a></h5>
+ 
+<div id="documentation_progress_block" class="hidden">
+
 
 <table width="100%">
 <th>Templates</th>
@@ -494,6 +504,8 @@ The following percentages show you the completion status of the manual. Note tha
 </td>
 </tr>
 </table>
+
+</div>
 <br>
 <hr>
 <h2 id="tutorial_examples">The tutorial examples</h2>
@@ -519,16 +531,15 @@ files in some languages as the features implemented just don't have an equivalen
 <h5>Code:</h5> 
 
 <p>Everything: <a href="http://or-tools.googlecode.com/files/tutorials_all_examples.zip">tutorial_all_examples.zip</a></p>
-<p>Jump to: <a href="javascript:unhide('tutorial_C++_block')">C++</a> &nbsp; | &nbsp;  <a href="#tutorial_Python">Python</a> &nbsp; | &nbsp;  <a href="#tutorial_Java">Java</a> &nbsp; | &nbsp;  <a href="#tutorial_Csharp">C#</a>. </p>
+<p>Jump to: </p>
 
 <p>
 
 <div class="examples_list">
 
-<div id="tutorial_C++_block" class="hidden">
 <ul>
-<li class="language" id="tutorial_C++">C++</li>
-
+<li class="language" id="tutorial_C++">C++: <a href="javascript:unhide('tutorial_C++_block', 'tutorial_C++_button')"><img id="tutorial_C++_button" src="static/icon_show.gif" alt="" /></a></li>
+<div id="tutorial_C++_block" class="hidden">
 <dl>
 	<dt>all:</dt><dd><a href="http://or-tools.googlecode.com/files/tutorials_c++_examples.zip">tutorial_c++_examples.zip</a></dd>
 	<dt>chap2:</dt><dd><a href="tutorials/c++/chap2/cp_is_fun1.cc">cp_is_fun1.cc</a> &nbsp; | &nbsp; <a href="tutorials/c++/chap2/cp_is_fun2.cc">cp_is_fun2.cc</a> &nbsp; | &nbsp;
@@ -551,13 +562,13 @@ files in some languages as the features implemented just don't have an equivalen
 	 <dt>chap12:</dt><dd>-</dd>
 	 <dt>chap13:</dt><dd>-</dd>
 </dl>
-</ul>
 </div>
 
 
+
+
+<li class="language" id="tutorial_Python">Python:  <a href="javascript:unhide('tutorial_Python_block', 'tutorial_Python_button')"><img id="tutorial_Python_button" src="static/icon_show.gif" alt="" /></a></li>
 <div id="tutorial_Python_block" class="hidden">
-<ul>
-<li class="language" id="tutorial_Python">Python</li>
 <dl>
 	<dt>all:</dt><dd><a href="http://or-tools.googlecode.com/files/tutorials_python_examples.zip">tutorial_python_examples.zip</a></dd>
 	<dt>chap2:</dt><dd><a href="tutorials/python/chap2/cp_is_fun1.py">cp_is_fun1.py</a> &nbsp; | &nbsp; <a href="tutorials/python/chap2/cp_is_fun2.py">cp_is_fun2.py</a> &nbsp; | &nbsp;
@@ -574,13 +585,12 @@ files in some languages as the features implemented just don't have an equivalen
 	 <dt>chap12:</dt><dd>-</dd>
 	 <dt>chap13:</dt><dd>-</dd>	 
 </dl>
-</ul>
 </div>
 
 
+
+<li class="language" id="tutorial_Java">Java: <a href="javascript:unhide('tutorial_Java_block', 'tutorial_Java_button')"><img id="tutorial_Java_button" src="static/icon_show.gif" alt="" /></a></li>
 <div id="tutorial_Java_block" class="hidden">
-<ul>
-<li class="language" id="tutorial_Java">Java</li>
 <dl>
 	<dt>all:</dt><dd><a href="http://or-tools.googlecode.com/files/tutorials_java_examples.zip">tutorial_java_examples.zip</a></dd>
 	<dt>chap2:</dt><dd><a href="tutorials/java/com/google/ortools/tutorial/chap2/CpIsFun1.java">CpIsFun1.java</a> &nbsp; | &nbsp; <a href="tutorials/java/com/google/ortools/tutorial/chap2/CpIsFun2.java">CpIsFun2.java</a> &nbsp; | &nbsp;
@@ -598,13 +608,12 @@ files in some languages as the features implemented just don't have an equivalen
 	 <dt>chap13:</dt><dd>-</dd>	 
 </dl>
 
-</ul>
 </div>
 
 
+
+<li class="language" id="tutorial_Csharp">C#: <a href="javascript:unhide('tutorial_Csharp_block', 'tutorial_Csharp_button')"><img id="tutorial_Csharp_button" src="static/icon_show.gif" alt="" /></a></li>
 <div id="tutorial_Csharp_block" class="hidden">
-<ul>
-<li class="language" id="tutorial_Csharp">C#</li>
 <dl>
 	<dt>all:</dt><dd><a href="http://or-tools.googlecode.com/files/tutorials_csharp_examples.zip">tutorial_csharp_examples.zip</a></dd>
 	<dt>chap2:</dt><dd><a href="tutorials/csharp/chap2/cp_is_fun1.cs">cp_is_fun1.cs</a> &nbsp; | &nbsp; <a href="tutorials/csharp/chap2/cp_is_fun2.cs">cp_is_fun2.cs</a> &nbsp; | &nbsp;
@@ -621,8 +630,9 @@ files in some languages as the features implemented just don't have an equivalen
 	 <dt>chap12:</dt><dd>-</dd>
 	 <dt>chap13:</dt><dd>-</dd>	 
 </dl>
-</ul>
 </div>
+</ul>
+
 </div>
 </p>
 
