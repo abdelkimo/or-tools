@@ -4,7 +4,7 @@
 
 This project hosts open source *operations research tools* developed at _Google_.
 
-You can find all the documentation here [http://or-tools.googlecode.com/svn/trunk/documentation/documentation_hub.html or-tools documentation hub].
+You can find all the documentation here: [http://or-tools.googlecode.com/svn/trunk/documentation/documentation_hub.html or-tools documentation hub].
 
 This is work in progress.
 
