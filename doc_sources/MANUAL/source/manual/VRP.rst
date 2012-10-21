@@ -21,8 +21,11 @@ Vehicule Routing Problems with constraints: the capacitated vehicle routing prob
     - Basic knowledge of Constraint Programming (see the chapter :ref:`chapter_introduction`).
     - Basic knowledge of the Constraint Programming Solver (see the chapter :ref:`chapter_first_steps`).
     - Basic knowledge of Local Search (see the chapter :ref:`chapter_local_search`).
-    - Basic knowledge of the Routing Library (see the two first sections of the chapter :ref:`chapter_tsp_with_constraints`).
-
+    - Basic knowledge of the Routing Library (see the chapter :ref:`chapter_tsp_with_constraints`), especially:
+    
+      * the section :ref:`tsp_routing_solver`;
+      * the section :ref:`automatic_variables`;
+      * the section :ref:`tsp_two_phases_approaches`.
 
 ..  raw:: latex
 
@@ -31,7 +34,12 @@ Vehicule Routing Problems with constraints: the capacitated vehicle routing prob
       \item Basic knowledge of Constraint Programming (see chapter~\ref{manual/introduction:chapter-introduction}).
       \item Basic knowledge of the Constraint Programming Solver (see chapter~\ref{manual/first_steps:chapter-first-steps}).
       \item Basic knowledge of Local Search (see chapter~\ref{manual/LS:chapter-local-search}).
-      \item Basic knowledge of the Routing Library (see the two first sections of chapter~\ref{manual/TSP:chapter-tsp-with-constraints}).
+      \item Basic knowledge of the Routing Library (see the chapter~\ref{manual/TSP:chapter-tsp-with-constraints}), especially:
+      \begin{itemize}
+        \item section~\ref{manual/tsp/routing_library:tsp-routing-solver};
+        \item section~\ref{manual/tsp/model_behind_scene:automatic-variables};
+        \item section~\ref{manual/tsp/two_phases_approaches:tsp-two-phases-approaches}.
+      \end{itemize}
     \end{itemize}
 
 
@@ -55,8 +63,10 @@ The files inside this directory are:
     vrp/first_cvrp_implementation
     vrp/cvrp_summary
 
-..  raw:: html
-    
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+..  only:: final
+
+    ..  raw:: html
+        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 

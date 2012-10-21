@@ -6,7 +6,7 @@ Real examples
 ..  only:: draft
 
     Since the '90s, CP is used by small and major companies around the world including Google. It has become 
-    the techology of choice for some problems in scheduling, rostering, timetabling, and configuration.
+    the technology of choice for some problems in scheduling, rostering, timetabling, and configuration.
     
     Here is a non-exhaustive list [#simonis_inspiration]_ were CP has being used with success:
     
@@ -34,8 +34,8 @@ Real examples
     * Aircraft rotation 
     * Supply chain management
     * Routing
-    * Manufactoring
-    * Ressource allocation
+    * Manufacturing
+    * Resource allocation
     * Circuit verification
     * Simulation
     * ...
@@ -62,7 +62,7 @@ Success stories
     - improve solutions *found by hand* by up to sometimes 30%.
     
     This can only happen if you find the right software that is readily well-adapted to your problem. Otherwise, 
-    a good option is to develop the product yourself. 
+    a good option is to develop the product yourself, using *or-tools* for instance.
 
 Can CP be compared to the holy grail of Operations Research?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
