@@ -194,7 +194,6 @@ html_static_path = ['docstatic']
 html_sidebars = {
 	'**': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','relations.html','mylocaltoc.html'],
 	'index': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
-	'about': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
 	'manual/introduction': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
 	'manual/first_steps': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
 	'manual/objectives': ['sidetitle.html','mysearchbox.html','welcome.html','examples.html','myglobaltoc.html'],
@@ -217,6 +216,8 @@ html_sidebars = {
 html_additional_pages = {
   #about : about
 }
+
+
 
 # If false, no module index is generated.
 html_domain_indices = False

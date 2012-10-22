@@ -2,6 +2,7 @@
     
     \part{Customization}
 
+
 ..  _chapter_search_primitives:
 
 Defining search primitives: the n-queens problem

@@ -384,10 +384,12 @@ Foreword
 
     \tableofcontents
 
+
+
 .. toctree::
    :maxdepth: 2
-   :numbered:
    :hidden:
+   :numbered:
 
    Introduction to CP <manual/introduction>
    First steps with or-tools <manual/first_steps>
