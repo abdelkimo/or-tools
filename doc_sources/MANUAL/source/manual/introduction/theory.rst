@@ -125,6 +125,30 @@ the value of the objective function for this solution. An **optimal solution** t
 that there are no other solutions with better objective values. Note that an optimal solution doesn't need to exist nor is it 
 unique.
 
+..  _problems_instances_solutions:
+
+Problems, instances and solutions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    We will not go into details about what a problem exactly is. We just saw two examples of problems (CSP and COP).
+    Let us emphasize that the or-tools CP-solver deals only with discrete and finite variables, i.e. the values 
+    a variable can take are elements of a finite set. If you want to solve a continuous problem,
+    you need to discretize it.
+    
+    One of the most basic problems is the SAT problem. This is the problem of determining if the variables of 
+    a given Boolean formula can be assigned 
+    (`TRUE` or `FALSE`)
+    in such a way as to make the formula evaluate to `TRUE`. 
+
+    Here is an example of such a formula:
+    
+    
+    Feasible solutions don't need to be real solutions for a problem. You could be interested in an approximate solution
+    because 
+    finding an exact solution might be too expensive. 
+
 ..  _two_important_ideas_complexity_theory_hurried_reader:
 
 Two important ideas of the complexity theory for the hurried reader
@@ -207,6 +231,9 @@ are quite new,
 very interesting and ... not easy to understand. We try the *tour the force* to introduce them in a few lines.
 We willingly kept certain technical details out of the way. These technical details *are important* and actually without 
 them, you can not construct a complexity theory.
+
+
+..  _intractability:
 
 Intractability
 """"""""""""""""""""
@@ -333,9 +360,7 @@ be transformed in polynomial time into the HPP. The hardest problems of :math:`\
        see `Wikipedia on the Cook-Levin Theorem <https://en.wikipedia.org/wiki/Cook%27s_theorem>`_), were able to 
        prove that
        all problems in :math:`\text{NP}` are reducible in polynomial time to the *Boolean satisfiability problem* (SAT).
-       The SAT problem is the problem of determining if the variables of a given Boolean formula can be assigned 
-       (`TRUE` or `FALSE`)
-       in such a way as to make the formula evaluate to `TRUE`. 
+       
        Proving that the SAT problem is :math:`\text{NP-Complete}` is a major achievement in the complexity
        theory (the proof is highly technical).
         

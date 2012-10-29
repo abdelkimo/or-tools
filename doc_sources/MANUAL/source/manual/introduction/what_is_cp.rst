@@ -68,6 +68,9 @@ Two of the main assets of CP are:
   * the ease to model a problem and
   * the possibility to add heterogeneous constraints.
   
+  
+..  _cp_ease_to_model_problem:
+
 The ease to model a problem
 """"""""""""""""""""""""""""
 

@@ -11,8 +11,9 @@ The 4-queens problem
 
 ..  raw:: latex 
 
-    We present here a well-known problem among Constraint Programming practitioners: the 4-queens problem.
-    We shall encounter this problem again and generalize it in Chapter~\ref{manual/search_primitives:search-primitives}.
+    We present a well-known problem among Constraint Programming practitioners: the 4-queens problem.
+    We shall encounter this problem again and generalize it in 
+    Chapter~\ref{manual/search_primitives:chapter-search-primitives}.
 
 The problem
 ^^^^^^^^^^^
@@ -21,6 +22,17 @@ The problem
 The *4-queens problem* [#see_what_n_queens_problem_really_is]_ consists in 
 placing four queens on a 4 x 4 chessboard so that no two queens can capture each other.
 That is, no two queens are allowed to be placed on the same row, the same column or the same diagonal.
+
+..  [#see_what_n_queens_problem_really_is] 
+
+    ..  only:: html
+      
+        See the section :ref:`nqueen_problem`   for a more precise definition of this problem.
+          
+    ..  raw:: latex
+
+        See section~\ref{manual/search_primitives/nqueens:nqueen-problem} for a more precise definition of this problem.
+
 
 The following figure illustrates a solution to the 4-queens problem: none of the 4 queens can capture each other.
 
@@ -51,6 +63,19 @@ can capture each other. We also need to constraint the need for 4 queens. We cou
 This constraints ensure that we place 4 queens on the chessboard. In general, constraints only permit possible combinations of values 
 of variables corresponding to real solutions [#model_more_complicated_than_that]_.
 
+..  [#model_more_complicated_than_that]  
+
+    ..  only:: html
+      
+        Things are a little bit more complex than that but let's keep it simple for the moment. See the
+        subsection :ref:`problems_instances_solutions` for more.
+          
+    ..  raw:: latex
+
+        Things are a little bit more complex than that but let's keep it simple for the moment.
+        See subsection~\ref{manual/introduction/theory:problems-instances-solutions} for more.
+
+
 ..  only:: html 
 
     In the next section, we will see how the or-tools' CP solver tries to solve this problem. More precisely, 
@@ -68,27 +93,6 @@ of variables corresponding to real solutions [#model_more_complicated_than_that]
     We don't need to know the details of the model right now.}.
     
 
-..  [#see_what_n_queens_problem_really_is] 
-
-..  only:: html
-  
-    See the section :ref:`nqueen_problem`   for a more precise definition of this problem.
-      
-..  raw:: latex
-
-    See section~\ref{manual/search_primitives/nqueens:nqueen-problem} for a more precise definition of this problem.
-      
-..  [#model_more_complicated_than_that]  
-
-..  only:: html
-  
-    Things are a little bit more complex than that but let's keep it simple for the moment. See the
-    section :ref:`a_little_bit_of_theory` for more.
-      
-..  raw:: latex
-
-    Things are a little bit more complex than that but let's keep it simple for the moment.
-    See section~\ref{manual/introduction/theory:a-little-bit-of-theory} for more.
 
 
 

@@ -4,7 +4,10 @@ The TSP in or-tools
 ------------------------------------
 
 
+..  _tsp_avoid_some_edges:
 
+How to avoid some edges?
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 ..  raw:: html

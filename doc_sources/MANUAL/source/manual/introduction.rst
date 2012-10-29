@@ -25,16 +25,7 @@ Finally, we outline the general principles of the library and detail the content
 
 ..  rubric:: Prerequisites:
 
-..  only:: html
-
 - None. Being open minded, relaxed and prepared to enjoy the *or-tools* library helps though.
-
-..  raw:: latex
-
-    \begin{itemize}
-      \item None. Being open minded, relaxed and prepared to enjoy the \emph{or-tools} library helps though.
-    \end{itemize}
-
 
 
 ..  only:: html

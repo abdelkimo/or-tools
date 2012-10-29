@@ -53,13 +53,26 @@ has to be visited inside a given time interval.
     
         This question might come as a surprise to CP practitioners. Indeed, in CP you can use whatever graph as input.
         Outside the CP paradigm, most algorithms solving the TSP ask for a complete graph as input. The classical way to 
-        transform "quelconque" (non complete) graph is to replace each non existing edge :math:`(i,j)` by a well 
+        transform any (non complete) graph into a complete graph is to replace each non existing edge :math:`(i,j)` by a well 
         suited shortest path edge between :math:`i` and :math:`j`.
         
-        Worse, if you want to avoid certain connections between two nodes :math:`i` and :math:`j` in a complete graph, 
-        the classical way to achieve this is to set a very high cost/weight to the edge :math:`(i,j)`. In the RL, you just
-        remove :math:`i` from the domain of the variable ``Next(j)`` of :math:`j` and vice-versa. See XXX for a detailed
-        example.
+        ..  only:: html
+        
+            Worse, if you want to avoid certain connections between two nodes :math:`i` and :math:`j` in a complete graph, 
+            the classical way to achieve this is to set a very high cost/weight to the edge :math:`(i,j)`. In the RL, you just
+            remove :math:`i` from the domain of the variable ``Next(j)`` of :math:`j` and vice-versa. See the subection 
+            :ref:`tsp_avoid_some_edges` for a detailed
+            example.
+
+        ..  raw:: latex
+        
+            Worse, if you want to avoid certain connections between two nodes $i$ and $j$ in a complete graph, 
+            the classical way to achieve this is to set a very high cost/weight to the edge $(i,j)$. In the RL, you just
+            remove $i$ from the domain of the variable $\text{Next}(j)$ of $j$ and vice-versa. 
+            See subection~\ref{manual/tsp/first_tsp_implementation:tsp-avoid-some-edges} for a detailed
+            example.
+
+
 
 ..  topic:: Symmetric or Asymmetric distances?
 
@@ -226,7 +239,23 @@ The 1-dimensional matrix is made of the columns of the virtual 2-dimensional mat
     ..  [#smart_pointer_destroyed] Several scenarii are possible. With reference counting, when more than one pointer 
         refer to an object, it is only when the last pointer
         referring to the object is destroyed that the the object itself is destroyed. If you want to know more about
-        this technique, look up *RAII* (Resource Acquisition Is Initialization).
+        this helpful technique, look up *RAII* (Resource Acquisition Is Initialization).
+
+To read ``TSPLIB`` files
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    To read ``TSPLIB`` files, the ``TSPData`` class presents the ``void LoadTSPLIBFile(const std::string& filename)`` method.
+    It parses a file in ``TSPLIB`` format and loads the coordinates (if any) for further treatment. 
+    Note that the format is only 
+    partially checked: bad inputs might cause undefined behaviour.
+
+To generate random TSP
+^^^^^^^^^^^^^^^^^^^^^^
+
+sdgfs
+
 
 ..  _section_visualization_epix_tsp:
 

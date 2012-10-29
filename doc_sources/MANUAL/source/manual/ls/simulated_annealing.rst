@@ -1,3 +1,5 @@
+..  _simulated_annealing:
+
 Simulated annealing
 -----------------------
 
