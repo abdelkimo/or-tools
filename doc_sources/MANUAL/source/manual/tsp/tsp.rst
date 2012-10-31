@@ -246,16 +246,59 @@ To read ``TSPLIB`` files
 
 ..  only:: draft
 
-    To read ``TSPLIB`` files, the ``TSPData`` class presents the ``void LoadTSPLIBFile(const std::string& filename)`` method.
+    To read ``TSPLIB`` files, the ``TSPData`` class offers the ``LoadTSPLIBFile(const std::string& filename)`` method.
     It parses a file in ``TSPLIB`` format and loads the coordinates (if any) for further treatment. 
     Note that the format is only 
     partially checked: bad inputs might cause undefined behaviour.
+    
+    If during the parse phase an unknown keyword is encountered, the method exists and prints a ``FATAL LOG`` message:
+    
+    ..  code-block:: bash
+    
+        Unknown keyword: UNKNOWN
+        
+    This method has been tested with all the files of the ``TSPLIB`` and should thus read any correct ``TSPLIB`` format
+    for the TSP.
 
+To set the depot
+^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    tsp_depot
+    
 To generate random TSP
 ^^^^^^^^^^^^^^^^^^^^^^
 
-sdgfs
+..  only:: draft
 
+    To generate random TSP instances, the ``TSPData`` class provides the ``RandomInitialize(const int size)`` method.
+    Several ``gflags`` parameters are available:
+    
+    - ``deterministic_random_seed``: Use deterministic random seeds or deterministic seeds? ``true`` by default;
+    - ``use_symmetric_distances``: Generate a symmetric TSP instance or not. ``true`` by default;
+    - ``min_distance``: Minimum allowed distance between two nodes. 10 by default;
+    - ``max_distance``: Maximum allowed distance between two nodes. 100 by default.
+
+Command line parameters read from a file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    When parameters start to pile up, writing them every time on the command line isn't very practical anymore. The ``gflags``
+    library provides the possibility to load the parameters from a text file. For instance, a parameters file
+    ``tsp_parameters.txt`` for our
+    ``TSPData`` class might look like this:
+    
+    ..  code-block:: text
+    
+        sds
+
+    You provide this file with the ``flagfile`` flag:
+    
+    ..  code-block:: bash
+    
+        ./tsp --flagfile=tsp_parameters.txt
 
 ..  _section_visualization_epix_tsp:
 
