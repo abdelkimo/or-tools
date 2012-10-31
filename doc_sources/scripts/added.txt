@@ -1,0 +1,10 @@
+static/icon_hide.gif
+static/icon_show.gif
+user_manual/manual/vrp/first_cvrp_implementation.html
+user_manual/manual/vrp/cvrp.html
+user_manual/manual/vrp/first_vrp_implementation.html
+user_manual/manual/vrp/exact_vrp_implementation.html
+user_manual/manual/vrp/cvrp_summary.html
+user_manual/_images/glasses-nerdy.png
+user_manual/_images/math/da4336404a17d014c52e78a9510286c0cfc1382e.png
+user_manual/_images/math/6cf7ad4dffbf76c56644d092bb4db00e81f8006e.png
