@@ -3,13 +3,27 @@
 The TSP in or-tools
 ------------------------------------
 
+..  only:: draft
+
+    We have implemented a basic program to solve the TSP. You can find the code in the file :file:`tsp.cc`. Basically, 
+    you can solve the TSP in a few lines with the help of the RL. Let say you have encoded your TSP instance into a 
+    
+    ..  code-block::
+    
+        #include "constraint_solver/routing.h"
+        
+        using operations_research;
+        
+        int main(int argc, char **argv) {
+          RoutingModel routing(size, 1);
+        }
 
 To set the depot
 ^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
-    tsp_depot
+    Thetsp_depot
 
 
 Command line parameters read from a file

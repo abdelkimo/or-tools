@@ -28,16 +28,17 @@ The variables
 
 ..  only:: draft
 
-    The VRL uses both ``NodeIndex``\es and ``int64``\s. ``NodeIndex``\es represent 
-    the true nodes while ``int64``\s are used as indices corresponding to nodes in solutions. ``NodeIndex`` behaves like 
-    a regular ``int`` but it is an ``IntType``. We use ``IntType``\s internally to avoid annoying automatic castings between
-    different integer types and thus they preserve a certain type-safety. A ``NodeIndex`` is a ``NodeIndex`` and shouldn't be 
+    The RL uses both ``NodeIndex``\es and ``int64``\s. ``NodeIndex``\es represent 
+    the true nodes *Ids* while ``int64``\s are used as (internal) indices corresponding to the nodes in the solutions.
+    ``NodeIndex`` behaves like 
+    a regular ``int`` but it is really an ``IntType``. We use ``IntType``\s to avoid annoying automatic castings between
+    different integer types and to preserve a certain type-safety. A ``NodeIndex`` is a ``NodeIndex`` and shouldn't be 
     compatible with anything else. A ``value()`` method allows the cast thought:
     
     ..  code-block:: c++
     
         RoutingModel::NodeIndex node(12);
-        // this fails to compile
+        // the next statement fails to compile
         int64 myint = node;
         // this is permitted
         int64 myint = node.value();
@@ -67,9 +68,9 @@ The variables
     
     You might wonder why there is such a distinction between node ids ``NodeIndex`` and indices ``int64``?
     The reason is simple. A solution to a Routing Problem is made of *routes*. A route is
-    equivalent to a path connecting nodes. It starts at a starting node and ends at an ending
+    a path connecting nodes. It starts at a starting node and ends at an ending
     node. What happens if a route starts and ends at the same node? The way we handle 
-    this in the VRL is to have two different ``int64`` indices corresponding to the same starting and 
+    this in the RL is to have two different ``int64`` indices corresponding to the same starting and 
     ending node. This means that you shouldn't use the method ``NodeToIndex()`` to determine the ``int64`` index 
     of a starting or ending node in a route. Use instead
     
@@ -83,7 +84,7 @@ The variables
     will be the same,
     **except** if the node is a starting or ending node of a route.
     
-    Consider
+    Consider for instance:
     
     ..  code-block:: c++
     
@@ -95,7 +96,7 @@ The variables
         int64 end_node = routing.End(route_number);
         RoutingModel::NodeIndex end_node_id = routing.IndexToNode(end_node);
     
-    ``end_node`` and ``end_node_id`` are not be the same.
+    ``end_node`` and ``end_node_id`` are not equal.
     
     ..  warning:: Never use ``NodeToIndex()`` on starting or ending nodes of a route.
     
@@ -112,7 +113,7 @@ How to follow a route?
 
 ..  only:: draft
 
-    Once you have a solution, you can queried it and follow its route:
+    Once you have a solution, you can query it and follow its route:
     
     ..  code-block:: c++
     
@@ -139,10 +140,10 @@ The constraints
 ------------------
 
 
+..  only:: final
 
-
-..  raw:: html
-    
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    ..  raw:: html
+        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
