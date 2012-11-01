@@ -162,7 +162,8 @@ otherwise stated. The coordinates don't have to be integers and can be any real 
 Not all instances have node coordinates.
 
 There exist several other less obvious TSPLIB formats but we disregard them in this manual (graphs can be given
-by different types of explicit matrices or by edge lists for example).
+by different types of explicit matrices or by edge lists for example). Not however that we take them into account in the 
+code.
 
 You might wonder how the depot is given. It is nowhere written where to start a tour. This is normal because the 
 TSP is not sensitive to the starting node: you can start a tour anywhere, the total cost of the tour remains the same.
@@ -270,8 +271,8 @@ To generate random TSP
     To generate random TSP instances, the ``TSPData`` class provides the ``RandomInitialize(const int size)`` method.
     Several ``gflags`` parameters are available:
     
-    - ``deterministic_random_seed``: Use deterministic random seeds or deterministic seeds? ``true`` by default;
-    - ``use_symmetric_distances``: Generate a symmetric TSP instance or not. ``true`` by default;
+    - ``deterministic_random_seed``: Use deterministic random seeds or not? ``true`` by default;
+    - ``use_symmetric_distances``: Generate a symmetric TSP instance or not? ``true`` by default;
     - ``min_distance``: Minimum allowed distance between two nodes. 10 by default;
     - ``max_distance``: Maximum allowed distance between two nodes. 100 by default.
 
@@ -310,7 +311,7 @@ You can define the *width* and *height* of the generated image:
     DEFINE_int32(epix_width, 10, "Width of the pictures in cm.");
     DEFINE_int32(epix_height, 10, "Height  of the pictures in cm.");
 
-Once the ePiX file is written, you must evoke ePiX ``elaps`` script:
+Once the ePiX file is written, you must evoke the ePiX ``elaps`` script:
 
 ..  code-block:: bash
 
