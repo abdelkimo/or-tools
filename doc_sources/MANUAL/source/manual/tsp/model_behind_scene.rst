@@ -7,8 +7,8 @@ The idea
 ------------
 
 
-The variables
----------------
+Variables to define the nodes and to follow routes
+-------------------------------------------------------
 
 ..  only:: draft
 
@@ -129,15 +129,43 @@ How to follow a route?
         // Do something with last node_id
         ...
     
+To summarize
+^^^^^^^^^^^^^
+
+..  only:: draft
+
+    Here is a little summary:
+    
+    =========================  ===================  ====================================================
+    What                       Types                Comments
+    =========================  ===================  ====================================================
+    True node *Ids*            ``NodeIndex``        Unique for each node from :math:`0` to :math:`n-1`.
+    Indices to follow routes   ``int64``            Not unique for each node. Could be bigger than
+                                                    :math:`n-1` if starting or ending node.
+    =========================  ===================  ====================================================
+    
+    To follow a route, use ``int64`` indices. If you need to deal with the corresponding nodes, use the 
+    ``IndexToNode(int64)`` method.
+        
+        
+Variables to define additional constraints
+---------------------------------------------
 
 Dimension variables
 ^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
+    JJ
 
-The constraints
-------------------
+Automatic variables
+^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    JJ
+
+
 
 
 ..  only:: final

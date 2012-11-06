@@ -5,26 +5,69 @@ The TSP in or-tools
 
 ..  only:: draft
 
-    We have implemented a basic program to solve the TSP. You can find the code in the file :file:`tsp.cc`. Basically, 
-    you can solve the TSP in a few lines with the help of the RL. Let say you have encoded your TSP instance into a 
+    We have implemented a basic program to solve the TSP but before we discuss it, let's have a look at a 
+    minimalist implementation (see :file:`simple_tsp.cc`). 
+    You can solve the TSP in a few lines of code with the help of the RL:
     
-    ..  code-block::
+    ..  code-block:: c++
     
+        #include <iostream>
         #include "constraint_solver/routing.h"
         
         using operations_research;
+
+        //  Cost function
+        int64 MyCost(RoutingModel::NodeIndex from, RoutingModel::NodeIndex to) {
+          ...
+          return ...;
+        }
         
         int main(int argc, char **argv) {
-          RoutingModel routing(size, 1);
+          RoutingModel TSP(42, 1);// 42 nodes, 1 vehicle
+          TSP.SetCost(NewPermanentCallback(MyCost));
+
+          const Assignment * solution = TSP.Solve();
+
+          //  Solution inspection
+          if (solution != NULL) {
+            std::cout << "Cost: " << solution->ObjectiveValue() << std::endl;
+            for (int64 index = TSP.Start(0); !TSP.IsEnd(index); 
+                              index = solution->Value(TSP.NextVar(index))) {
+              std::cout << TSP.IndexToNode(index) << " ";
+            }
+            std::cout << std::endl;
+          } else {
+            std::cout << "No solution found" << std::endl;
+          }
+          return 0;
         }
 
+
+Basic implementation
+^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    You can find the code in the file :file:`tsp.cc`. 
+    
+    ..  only:: html 
+    
+        This time we use the ``TSPData`` (see :ref:`tspdata_class`) and ``TSPEpixData``
+        (see :ref:`section_visualization_epix_tsp`) classes to 
+        read TSP instances and write TSP solutions in ``TSPLIB`` format.
+    
+    ..  raw:: latex
+    
+        This time we use the \code{TSPData} (see~\ref{manual/tsp/tsp:tspdata-class}) and \code{TSPEpixData}
+        (see~\ref{manual/tsp/tsp:section-visualization-epix-tsp}) classes to 
+        read TSP instances and write TSP solutions in \code{TSPLIB} format.
+
 To set the depot
-^^^^^^^^^^^^^^^^
+""""""""""""""""""""
 
 ..  only:: draft
 
     Thetsp_depot
-
 
 Command line parameters read from a file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

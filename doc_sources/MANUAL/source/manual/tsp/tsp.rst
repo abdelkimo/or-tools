@@ -49,28 +49,26 @@ has to be visited inside a given time interval.
 
 ..  topic:: Do I really need a complete graph?
 
-    ..  only:: draft
-    
-        This question might come as a surprise to CP practitioners. Indeed, in CP you can use whatever graph as input.
-        Outside the CP paradigm, most algorithms solving the TSP ask for a complete graph as input. The classical way to 
-        transform any (non complete) graph into a complete graph is to replace each non existing edge :math:`(i,j)` by a well 
-        suited shortest path edge between :math:`i` and :math:`j`.
+    This question might come as a surprise to CP practitioners. Indeed, in CP you can use any graph as input.
+    Outside the CP paradigm, most algorithms solving the TSP ask for a complete graph as input. The classical way to 
+    transform any (non complete) graph into a complete graph is to replace each non existing edge :math:`(i,j)` by a well 
+    suited shortest path edge between :math:`i` and :math:`j`.
         
-        ..  only:: html
+    ..  only:: html
         
-            Worse, if you want to avoid certain connections between two nodes :math:`i` and :math:`j` in a complete graph, 
-            the classical way to achieve this is to set a very high cost/weight to the edge :math:`(i,j)`. In the RL, you just
-            remove :math:`i` from the domain of the variable ``Next(j)`` of :math:`j` and vice-versa. See the subection 
-            :ref:`tsp_avoid_some_edges` for a detailed
-            example.
+        Worse, if you want to avoid certain connections between two nodes :math:`i` and :math:`j` in a complete graph, 
+        the classical way to achieve this is to set a very high cost/weight to the edge :math:`(i,j)`. In the RL, you just
+        remove :math:`i` from the domain of the variable ``Next(j)`` of :math:`j` and vice-versa. See the subection 
+        :ref:`tsp_avoid_some_edges` for a detailed
+        example.
 
-        ..  raw:: latex
+    ..  raw:: latex
         
-            Worse, if you want to avoid certain connections between two nodes $i$ and $j$ in a complete graph, 
-            the classical way to achieve this is to set a very high cost/weight to the edge $(i,j)$. In the RL, you just
-            remove $i$ from the domain of the variable $\text{Next}(j)$ of $j$ and vice-versa. 
-            See subection~\ref{manual/tsp/first_tsp_implementation:tsp-avoid-some-edges} for a detailed
-            example.
+        Worse, if you want to avoid certain connections between two nodes $i$ and $j$ in a complete graph, 
+        the classical way to achieve this is to set a very high cost/weight to the edge $(i,j)$. In the RL, you just
+        remove $i$ from the domain of the variable $\text{Next}(j)$ of $j$ and vice-versa. 
+        See subection~\ref{manual/tsp/first_tsp_implementation:tsp-avoid-some-edges} for a detailed
+        example.
 
 
 
@@ -202,6 +200,7 @@ This is what the file :file:`a280.opt.tour` containing an optimal tour looks lik
 Since this file contains an optimal tour, there are no sub-tours and the list of integers contains only one ``-1`` at 
 the end of the file.
 
+..  _tspdata_class:
 
 The ``TSPData`` class
 ---------------------------
@@ -245,36 +244,33 @@ The 1-dimensional matrix is made of the columns of the virtual 2-dimensional mat
 To read ``TSPLIB`` files
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-..  only:: draft
-
-    To read ``TSPLIB`` files, the ``TSPData`` class offers the ``LoadTSPLIBFile(const std::string& filename)`` method.
-    It parses a file in ``TSPLIB`` format and loads the coordinates (if any) for further treatment. 
-    Note that the format is only 
-    partially checked: bad inputs might cause undefined behaviour.
+To read ``TSPLIB`` files, the ``TSPData`` class offers the ``LoadTSPLIBFile(const std::string& filename)`` method.
+It parses a file in ``TSPLIB`` format and loads the coordinates (if any) for further treatment. 
+Note that the format is only 
+partially checked: bad inputs might cause undefined behaviour.
     
-    If during the parse phase an unknown keyword is encountered, the method exists and prints a ``FATAL LOG`` message:
+If during the parse phase an unknown keyword is encountered, the method exists and prints a ``FATAL LOG`` message:
     
-    ..  code-block:: bash
-    
-        Unknown keyword: UNKNOWN
+..  code-block:: bash
+   
+    Unknown keyword: UNKNOWN
         
-    This method has been tested with all the files of the ``TSPLIB`` and should thus read any correct ``TSPLIB`` format
-    for the TSP.
+This method has been tested with all the files of the ``TSPLIB`` and should thus read any correct ``TSPLIB`` format
+for the TSP.
 
 
     
 To generate random TSP
 ^^^^^^^^^^^^^^^^^^^^^^
 
-..  only:: draft
 
-    To generate random TSP instances, the ``TSPData`` class provides the ``RandomInitialize(const int size)`` method.
-    Several ``gflags`` parameters are available:
+To generate random TSP instances, the ``TSPData`` class provides the ``RandomInitialize(const int size)`` method.
+Several ``gflags`` parameters are available:
     
-    - ``deterministic_random_seed``: Use deterministic random seeds or not? ``true`` by default;
-    - ``use_symmetric_distances``: Generate a symmetric TSP instance or not? ``true`` by default;
-    - ``min_distance``: Minimum allowed distance between two nodes. 10 by default;
-    - ``max_distance``: Maximum allowed distance between two nodes. 100 by default.
+- ``deterministic_random_seed``: Use deterministic random seeds or not? ``true`` by default;
+- ``use_symmetric_distances``: Generate a symmetric TSP instance or not? ``true`` by default;
+- ``min_distance``: Minimum allowed distance between two nodes. 10 by default;
+- ``max_distance``: Maximum allowed distance between two nodes. 100 by default.
 
 
 
