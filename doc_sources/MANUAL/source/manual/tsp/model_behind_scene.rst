@@ -3,8 +3,16 @@
 The model behind the scene
 =============================
 
+..  only:: draft
+
+    TT
+    
 The idea
 ------------
+
+..  only:: draft
+
+    The model is node based: routes are path linking nodes. For each node, 
 
 
 Variables to define the nodes and to follow routes

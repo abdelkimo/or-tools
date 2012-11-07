@@ -128,7 +128,7 @@ Parameters
 
     ..  raw:: latex 
     
-        \begin{tabulary}{\linewidth}{|p{1.5cm}|p{6cm}| p{5cm}| p{2.5cm}|}
+        \begin{tabulary}{\linewidth}{|p{2.5cm}|p{6cm}| p{5cm}| p{2.5cm}|}
           \hline
           \textbf{Files} & \textbf{Parameter} & \textbf{Description} & \textbf{Default value}\\
           \hline
@@ -137,28 +137,25 @@ Parameters
                         &  \code{use\_symmetric\_distances}   & Generate a symmetric TSP instance or not?   & \code{true}\\
                         &  \code{min\_distance}               & Minimum allowed distance between two nodes. & \code{10}\\
                         &  \code{max\_distance}               & Maximum allowed distance between two nodes. & \code{100}\\
-          \code{tsplib.h} & \code{start\_counting\_at\_1}     & TSPLIB convention: first node is 1 (not 0). & \code{true}\\
-          \code{tsp\_epix.h} & \code{epix\_width}               & Width of the pictures in cm.                & \code{10}\\
-          
+          \hline
+          \code{tsplib.h} & \code{start\_counting\_at\_1}     & \code{TSPLIB} convention: first node is 1 (not 0). & \code{true}\\
+          \hline
+          \code{tsp\_epix.h} & \code{epix\_width}             & Width of the pictures in cm.                & \code{10}\\
+                        &  \code{epix\_height}                & Height  of the pictures in cm.              & \code{10}\\
+          \hline
+          \code{tsp.cc} &  \code{tsp\_size}                   & Size of TSP instance. If \code{0}, must be read from a \code{TSPLIB} file.& \code{0}\\
+                        &  \code{tsp\_depot}                  & The starting node of the tour.              & \code{0}\\
+                        &  \code{tsp\_data\_file}             & Input file with \code{TSPLIB} data.         & empty string\\
+                        &  \code{tsp\_distance\_matrix\_file} & Output file with distance matrix.           & empty string\\
+                        &  \code{tsp\_width\_size}            & Width size of fields in output files.       & \code{6}\\
+                        &  \code{tsp\_solution\_file}         & Output file with generated solution in \code{TSPLIB} format. & empty string\\
+                        &  \code{tsp\_epix\_file}             & ePiX solution file.                         & empty string\\
+                        &  \code{tsp\_time\_limit\_in\_ms}     & Time limit in ms, 0 means no limit.         & \code{0}\\
+                        &  \code{tsp\_initial\_heuristic}     & See next section.                           & Default\\
           \hline
         \end{tabulary}
         
     
-
-        :math:`~\\`                ``epix_height``                    Height  of the pictures in cm.                           ``10``
-        :file:`tsp.cc`             ``tsp_size``                       Size of TSP instance. If ``0``, must be read from        ``0``
-                                                                      a ``TSPLIB`` file.  
-        :math:`~\\`                ``tsp_depot``                      The starting node of the tour.                           ``0``
-        :math:`~\\`                ``tsp_data_file``                  Input file with TSPLIB data.                             empty string
-        :math:`~\\`                ``tsp_distance_matrix_file``       Output file with distance matrix.                        empty string
-        :math:`~\\`                ``tsp_width_size``                 Width size of fields in output files.                    ``6``
-        :math:`~\\`                ``tsp_solution_file``              Output file with generated solution in TSPLIB format.    empty string
-        :math:`~\\`                ``tsp_epix_file``                  ePiX solution file.                                      empty string
-        :math:`~\\`                ``tsp_time_limit_in_ms``           Time limit in ms, 0 means no limit.                      ``0``
-        :math:`~\\`                ``tsp_initial_heuristic``          See next section.                                        Default
-        =========================  =================================  =======================================================  ==============
-
- 
 
 Command line parameters read from a file
 """""""""""""""""""""""""""""""""""""""""""
@@ -205,6 +202,142 @@ Command line parameters read from a file
         44
         -1
 
+
+The main function 
+"""""""""""""""""""
+
+..  only:: draft
+
+    Here is the main function:
+
+    ..  code-block:: c++
+    
+        int main(int argc, char **argv) {
+          std::string usage("Computes a TSP from random data (given a size) 
+                                           or TPSLIB file (given a file).\n"
+                             "See Google or-tools tutorials\n"
+                             "Sample usage:\n\n");
+          usage += argv[0];
+          usage += " -tsp_size=<size>\n\n";
+          usage += argv[0];
+          usage += " -tsp_data_file=<TSPLIB file>";
+
+          google::SetUsageMessage(usage);
+          google::ParseCommandLineFlags(&argc, &argv, true);
+
+
+          operations_research::TSPData tsp_data;
+          
+          if (FLAGS_tsp_size > 0) {
+            tsp_data.RandomInitialize(FLAGS_tsp_size);
+          } else if (FLAGS_tsp_data_file != "") {
+            tsp_data.LoadTSPLIBFile(FLAGS_tsp_data_file);
+          } else {
+            google::ShowUsageWithFlagsRestrict(argv[0], "tsp");
+            exit(-1);
+          }
+
+          operations_research::TSP(tsp_data);
+
+          return 0;
+        }  //  main
+
+
+    We start by writing the ``usage message`` the user will see if she doesn't know what to do.
+    Next, we declare a ``TSPData`` object that will contain our TSP instance. As usual, all the machinery is 
+    hidden in a function declared in the ``operations_research`` ``namespace``: ``TSP()``.
+
+The ``TSP()`` function 
+"""""""""""""""""""""""
+
+..  only:: draft
+
+    We only detail the relevant parts of the ``TSP()`` function. First, we create the CP solver:
+    
+    ..  code-block:: c++
+    
+        const int size = data.Size();
+        RoutingModel routing(size, 1);
+        routing.SetCost(NewPermanentCallback(&data, &TSPData::Distance));
+
+    The constructor of the ``RoutingModel`` class takes the number of nodes (``size``) and the number of vehicle (``1``)
+    as parameters. The distance function is encoded in the ``TSPData`` object given to the ``TSP()`` function.
+
+    Next, we define some parameters:
+    
+    ..  code-block:: c++
+    
+        if (FLAGS_tsp_initial_heuristic != "") {
+          routing.SetCommandLineOption("routing_first_solution", 
+                                               FLAGS_tsp_initial_heuristic);
+        }
+
+        // Disabling Large Neighborhood Search, comment out to activate it.
+        routing.SetCommandLineOption("routing_no_lns", "true");
+
+        if (FLAGS_tsp_time_limit_in_ms > 0) {
+          routing.UpdateTimeLimit(FLAGS_tsp_time_limit_in_ms);
+        }
+        
+    Because Large Neighborhood Search (LNS) can be quite slow, we deactivate it.
+    
+    To define the depot, we have to be careful as internally the CP solver starts counting the nodes from 0 while 
+    in the ``TSPLIB`` format we start counting from 1:
+    
+    ..  code-block:: c++
+    
+        RoutingModel::NodeIndex depot(FLAGS_start_counting_at_1 ? 
+                                      FLAGS_tsp_depot -1 : FLAGS_tsp_depot);
+        routing.SetDepot(depot);
+        
+    Notice that we also have to cast an ``int32`` into a ``RoutingModel::NodeIndex``.
+    
+    Now that the instance and the parameters are given to the CP solver, we invoke its ``Solve()`` method:
+    
+    ..  code-block:: c++
+    
+        const Assignment* solution = routing.Solve();
+        
+    Notice that the ``Solve()`` method returns a pointer to a ``const Assigment``.
+    
+    The inspection of the solution is done as usual:
+    
+    ..  code-block:: c++
+    
+          if (solution != NULL) {
+            // test solution 
+            if (!data.CheckSolution(routing, solution)) {
+              LOG(ERROR) << "Solution didn't pass the check test.";
+            } else {
+              LG << "Solution did pass the check test.";
+            }
+            // Solution cost.
+            LG << "Cost: " << solution->ObjectiveValue();
+            // Inspect solution.
+
+            string route;
+            const int route_nbr = 0;
+            for (int64 node = routing.Start(route_nbr);
+                 !routing.IsEnd(node);
+            node = solution->Value(routing.NextVar(node))) {
+              
+              //LG << node;
+              route = StrCat(route, StrCat((FLAGS_start_counting_at_1 ? 
+                               routing.IndexToNode(node).value() + 1 :
+                               routing.IndexToNode(node).value()), " -> "));
+            }
+            route = StrCat(route, (FLAGS_start_counting_at_1 ? 
+                   routing.IndexToNode(routing.End(route_nbr)).value() + 1 : 
+                   routing.IndexToNode(routing.End(route_nbr)).value()));
+            LG << route;
+          } else {
+            LG << "No solution found.";
+          }
+          
+    We use the method ``CheckSolution()`` of the ``TSPData`` class to ensure that the solution returned by the CP Solver 
+    is valid. This method only checks is every node has been used only once in the tour and 
+    if the objective cost matches the objective value of the tour.
+    
 ..  _tsp_avoid_some_edges:
 
 How to avoid some edges?
