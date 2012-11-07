@@ -6,7 +6,7 @@ The TSP in or-tools
 ..  only:: draft
 
     We have implemented a basic program to solve the TSP but before we discuss it, let's have a look at a 
-    minimalist implementation (see :file:`simple_tsp.cc`). 
+    minimalist implementation (see :file:`tsp_minimal.cc`). 
     You can solve the TSP in a few lines of code with the help of the RL:
     
     ..  code-block:: c++
