@@ -12,10 +12,40 @@ The idea
 
 ..  only:: draft
 
-    The model is node based: routes are path linking nodes. For each node, 
+    ..  only:: html
+
+        The model is node based: routes are path linking nodes. For each node, a ``NextVar`` variable is defined
+        [#next_var_more_complicated]_ that represents the index of the direct successor of that node. 
+
+        ..  [#next_var_more_complicated] If you are used to model paths, you will have noticed that the model must be 
+            a little more detailed than that: how could you have only one variable for one node if you have multiple paths 
+            going through the same node? See the subsection :ref:`nodeindex_or_int64`.
+
+    ..  raw:: latex
+    
+        The model is node based: routes are path linking nodes. For each node, a \code{NextVar} variable is defined\footnote{
+        If you are used to model paths, you will have noticed that the model must be 
+        a little more detailed than that: how could you have only one variable for one node if you have multiple paths 
+        going through the same node? See subsection~\ref{manual/tsp/model_behind_scene:nodeindex-or-int64}.} 
+        that represents the index of the direct successor of that node.
+
+    These ``NextVar`` variables are the decision variables. You also have ``Vehicle`` variables for each node that 
+    represents the index of the vehicle visiting that node and ``Active`` boolean variables for each node that 
+    are true if the node is visited and false otherwise.
+
+    ..  only:: html
+    
+        We explain these variables more in details in the subsection :ref:`var_defining_nodes_and_routes`.
+        
+    ..  raw:: latex
+    
+        We explain these variables more in details in 
+        subsection~\ref{manual/tsp/model_behind_scene:var-defining-nodes-and-routes}.
 
 
-Variables to define the nodes and to follow routes
+..  _var_defining_nodes_and_routes:
+
+Variables to model the nodes and the routes
 -------------------------------------------------------
 
 ..  only:: draft
@@ -30,6 +60,8 @@ Variables to define the nodes and to follow routes
     
     ..  [#node_visited_several_times] For the moment, one node can only be visited by one route/vehicle except if it the 
         start or end node of several routes. TO BE VERIFIED!
+
+..  _nodeindex_or_int64:
 
 ``NodeIndex`` or ``int64``?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -144,6 +176,8 @@ To summarize
 
     Here is a little summary:
     
+    ..  rubric:: Type to represent nodes
+    
     ..  tabularcolumns:: |p{3cm}|p{3cm}| p{8cm}|
     
     =========================  ===================  ====================================================
@@ -151,32 +185,123 @@ To summarize
     =========================  ===================  ====================================================
     True node *Ids*            ``NodeIndex``        Unique for each node from :math:`0` to :math:`n-1`.
     Indices to follow routes   ``int64``            Not unique for each node. Could be bigger than
-                                                    :math:`n-1` if starting or ending node.
+                                                    :math:`n-1` if starting or ending node of a route.
     =========================  ===================  ====================================================
     
     To follow a route, use ``int64`` indices. If you need to deal with the corresponding nodes, use the 
     ``IndexToNode(int64)`` method.
         
+    ..  rubric:: Modelling variables
+    
+    All modelling variables describing nodes return ``int64`` indices corresponding to nodes in routes.
+    
+    ..  tabularcolumns:: |p{3cm}|p{3cm}| p{8cm}|
+    
+    =========================  ===================  ====================================================
+    Variables                  Return types         Descriptions
+    =========================  ===================  ====================================================
+    ``NextVar(int64)``         ``int64``            ``int64`` index of the direct successor of a node 
+                                                    (main decision variables).
+    ``VehicleVar(int64)``      ``int``              ``int`` index of the vehicle visiting a node.
+    ``ActiveVar(int64)``       ``boolean``          ``true`` if node is visited, ``false`` if not 
+                                                    (optional nodes)
+    ``Start(int)``             ``int64``
+    ``End(int)``               ``int64``
+    =========================  ===================  ====================================================
+
         
-Variables to define additional constraints
+Variables to model dimensions
 ---------------------------------------------
 
-Dimension variables
-^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
     JJ
 
-Automatic variables
-^^^^^^^^^^^^^^^^^^^^
+To summarize
+^^^^^^^^^^^^^
+
+..  only:: draft
+
+    Here is a little summary:
+    
+    ..  rubric:: Dimension variables
+    
+
+    
+    ..  tabularcolumns:: |p{3cm}|p{3cm}| p{8cm}|
+    
+    =========================  ===================  ====================================================
+    Variables                  Return types         Descriptions
+    =========================  ===================  ====================================================
+    ``NextVar(int64)``         ``IntVar*``          ``int64`` index of the direct successor of a node 
+                                                    (main decision variables).
+    ``Vehicle(int64)``         ``int``              ``int`` index of the vehicle visiting a node.
+    ``Active(int64)``          ``boolean``          ``true`` if node is visited, ``false`` if not 
+                                                    (optional nodes)
+    ``Start(int)``             ``int64``
+    ``End(int)``               ``int64``
+    =========================  ===================  ====================================================
+
+IntVar* CumulVar(int64 index, const string& name) const;
+  // Returns the transit variable for the dimension named 'name'.
+  IntVar* TransitVar(int64 index, const string& name) const;
+  // Return the slack variable for the dimension named 'name'.
+  IntVar* SlackVar(int64 index, const string& name) const;
+
+
+Constraints 
+---------------
 
 ..  only:: draft
 
     JJ
 
+To summarize
+^^^^^^^^^^^^^
 
+..  only:: draft
 
+    Here is a little summary:
+    
+    ..  rubric:: Type to represent nodes
+    
+    ..  tabularcolumns:: |p{3cm}|p{3cm}| p{8cm}|
+    
+    =========================  ===================  ====================================================
+    What                       Types                Comments
+    =========================  ===================  ====================================================
+    True node *Ids*            ``NodeIndex``        Unique for each node from :math:`0` to :math:`n-1`.
+    Indices to follow routes   ``int64``            Not unique for each node. Could be bigger than
+                                                    :math:`n-1` if starting or ending node of a route.
+    =========================  ===================  ====================================================
+    
+    To follow a route, use ``int64`` indices. If you need to deal with the corresponding nodes, use the 
+    ``IndexToNode(int64)`` method.
+        
+    ..  rubric:: Modelling variables
+    
+    All modelling variables describing nodes return ``int64`` indices corresponding to nodes in routes.
+    
+    ..  tabularcolumns:: |p{3cm}|p{3cm}| p{8cm}|
+    
+    =========================  ===================  ====================================================
+    Variables                  Return types         Descriptions
+    =========================  ===================  ====================================================
+    ``NextVar(int64)``         ``int64``            ``int64`` index of the direct successor of a node 
+                                                    (main decision variables).
+    ``Vehicle(int64)``         ``int``              ``int`` index of the vehicle visiting a node.
+    ``Active(int64)``          ``boolean``          ``true`` if node is visited, ``false`` if not 
+                                                    (optional nodes)
+    ``Start(int)``             ``int64``
+    ``End(int)``               ``int64``
+    =========================  ===================  ====================================================
+
+Objective function
+-------------------
+
+Miscellaneous
+------------------
 
 ..  only:: final
 

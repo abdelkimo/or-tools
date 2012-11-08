@@ -110,7 +110,7 @@ The files inside this directory are:
 - :file:`tsplib.h`: Declarations of TSPLIB keywords and the ``TSPLIBDistanceFunctions`` class.
 - :file:`tsp_epix.h`: This file provide the helper functions to visualize TSPLIB solutions with the ePiX library.
 - :file:`tsplib_solution_to_epix.cc`: A simple program to visualize solutions in TSPLIB format with the ePiX library.
-- :file:`simple_tsp.cc`: A minimalist implementation of the TSP.
+- :file:`tsp_minimal.cc`: A minimalist implementation of the TSP with the RL.
 - :file:`tsp.cc`: A basic implementation of the TSP with the RL.
 - :file:`tsp_forbidden_arcs.cc`: The TSP with forbidden connexions between some nodes.
 - :file:`tsp_exact.cc`: A basic exact implementation of the TSP with the RL.
