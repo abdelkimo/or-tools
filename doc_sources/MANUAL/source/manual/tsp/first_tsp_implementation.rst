@@ -3,6 +3,9 @@
 The TSP in or-tools
 ------------------------------------
 
+Minimal implementation
+^^^^^^^^^^^^^^^^^^^^^^^
+
 ..  only:: draft
 
     We have implemented a basic program to solve the TSP but before we discuss it, let's have a look at a 
@@ -121,10 +124,11 @@ Parameters
         :math:`~\\`                ``tsp_width_size``                 Width size of fields in output files.                    ``6``
         :math:`~\\`                ``tsp_solution_file``              Output file with generated solution in TSPLIB format.    empty string
         :math:`~\\`                ``tsp_epix_file``                  ePiX solution file.                                      empty string
-        :math:`~\\`                ``tsp_time_limit_in_ms``           Time limit in ms, 0 means no limit.                      ``0``
-        :math:`~\\`                ``tsp_initial_heuristic``          See next section.                                        Default
+        :math:`~\\`                ``tsp_time_limit_in_ms`` [#ee]_    Time limit in ms, 0 means no limit.                      ``0``
         =========================  =================================  =======================================================  ==============
     
+    ..  [#ee] This flag is redundant with the ``routing_time_limit`` flag provided in :file:`routing.cc` but we wanted to 
+              underline the fact that this limit is given in milliseconds.
 
     ..  raw:: latex 
     
@@ -150,12 +154,14 @@ Parameters
                         &  \code{tsp\_width\_size}            & Width size of fields in output files.       & \code{6}\\
                         &  \code{tsp\_solution\_file}         & Output file with generated solution in \code{TSPLIB} format. & empty string\\
                         &  \code{tsp\_epix\_file}             & ePiX solution file.                         & empty string\\
-                        &  \code{tsp\_time\_limit\_in\_ms}     & Time limit in ms, 0 means no limit.         & \code{0}\\
-                        &  \code{tsp\_initial\_heuristic}     & See next section.                           & Default\\
+                        &  \code{tsp\_time\_limit\_in\_ms}\footnote{This flag is redundant with the \code{routing\_time\_limit} flag provided in \code{routing.cc} but we wanted to 
+              underline the fact that this limit is given in milliseconds.}     & Time limit in ms, 0 means no limit.         & \code{0}\\
           \hline
         \end{tabulary}
         
     
+
+..  index:: gflags; parameters read from a file
 
 Command line parameters read from a file
 """""""""""""""""""""""""""""""""""""""""""
@@ -267,11 +273,6 @@ The ``TSP()`` function
     
     ..  code-block:: c++
     
-        if (FLAGS_tsp_initial_heuristic != "") {
-          routing.SetCommandLineOption("routing_first_solution", 
-                                               FLAGS_tsp_initial_heuristic);
-        }
-
         // Disabling Large Neighborhood Search, comment out to activate it.
         routing.SetCommandLineOption("routing_no_lns", "true");
 

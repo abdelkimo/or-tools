@@ -6,13 +6,15 @@ Parameters
 This section is divided in two parts. First, we show you how to use Google's 
 command line flag library. Second, we explain how to pass parameters to the CP solver.
 
-..  index:: DEFINE_bool, DEFINE_int32, DEFINE_int64, DEFINE_uint64, DEFINE_double, DEFINE_string, ParseCommandLineFlags()
+..  index:: DEFINE_bool, DEFINE_int32, DEFINE_int64, DEFINE_uint64, DEFINE_double, DEFINE_string, ParseCommandLineFlags(), ! gflags
 
 Google's gflags
 """""""""""""""
 
 The `Google's flags library  <http://code.google.com/p/gflags/>`_ is quite similar to other command flags libraries with the noticeable 
 difference that the flag definitions may be scattered in different files.
+
+..  index:: gflags; types
 
 To define a flag, we use the corresponding macro. Google's flags library supports six types:
 
@@ -69,6 +71,9 @@ To change the base with a command line argument:
     ./cp_is_fun4 --base=12
     
 ..  index:: --help, --helpshort, --helpon=FILE, --helpmatch=S
+    
+    
+..  index:: gflags; shortcuts
     
 If you want to know what the purpose of a flag is, just type one of the special flags on the command line:
 

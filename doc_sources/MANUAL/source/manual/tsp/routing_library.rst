@@ -84,6 +84,9 @@ To get the whole list of gflags defined in the RL:
 
     ./my_beautiful_routing_algorithm --helpon=routing
 
+..  index:: gflags; replacement (routing.SetCommandLineOption())
+
+..  index:: SetCommandLineOption()
 
 gflags are not universally available in all programming languages. 
 This is why the RL provides the handy ``SetCommandLineOption()`` method:
@@ -101,6 +104,15 @@ This is equivalent to calling the program with the gflag ``routing_first_solutio
     ./my_beautiful_routing_algorithm 
                                 --routing_first_solution=PathCheapestArc
 
+..  only:: draft 
+
+    If you want the list of all the available flags, just ask for it:
+    
+    ..  code-block:: bash
+    
+        ./your_program --helpon=routing 
+        
+  
 Limitations
 ^^^^^^^^^^^^^^^^^^^^^^^
 
