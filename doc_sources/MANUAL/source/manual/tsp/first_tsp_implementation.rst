@@ -287,6 +287,10 @@ The ``TSP()`` function
     
     ..  code-block:: c++
     
+        if (FLAGS_start_counting_at_1) {
+          CHECK_GT(FLAGS_tsp_depot, 0) << " Because we use the " <<
+                               "TSPLIB convention, the depot id must be > 0";
+        }
         RoutingModel::NodeIndex depot(FLAGS_start_counting_at_1 ? 
                                       FLAGS_tsp_depot -1 : FLAGS_tsp_depot);
         routing.SetDepot(depot);
