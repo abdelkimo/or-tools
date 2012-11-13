@@ -5,63 +5,26 @@ The model behind the scene
 
 ..  only:: draft
 
-    TT
-    
-The idea
-------------
-
-..  only:: draft
-
     ..  only:: html
-
-        The model is node based: routes are path linking nodes. Except for the starting and ending nodes, each node 
-        in a path has to be unique, i.e. you can not visit a node more than once. 
-        For each node, a ``NextVar`` variable is defined
-        [#next_var_more_complicated]_ that represents the index of the direct successor of that node. 
-
-        ..  [#next_var_more_complicated] If you are used to model paths, you will have noticed that the model must be 
-            a little more detailed than that: how could you have only one variable for one node if you have multiple paths 
-            going through the same node? See the subsection :ref:`nodeindex_or_int64`.
+    
+        We give the main ideas of the model used in the RL and an overview of its variables and constraints. 
+        In the section :ref:`hood_rl`, we describe the inner mechanisms of the RL in details.
 
     ..  raw:: latex
     
-        The model is node based: routes are path linking nodes. For each node, a \code{NextVar} variable is defined\footnote{
-        If you are used to model paths, you will have noticed that the model must be 
-        a little more detailed than that: how could you have only one variable for one node if you have multiple paths 
-        going through the same node? See subsection~\ref{manual/tsp/model_behind_scene:nodeindex-or-int64}.} 
-        that represents the index of the direct successor of that node.
+        We give the main ideas of the model used in the RL and an overview of its variables and constraints. 
+        In section~\ref{manual/under_the_hood/rl:hood-rl}, we describe the inner mechanisms of the RL in details.
 
-    These ``NextVar`` variables are the decision variables. You also have ``Vehicle`` variables for each node that 
-    represents the index of the vehicle visiting that node and ``Active`` boolean variables for each node that 
-    are true if the node is visited and false otherwise.
-
-    ..  only:: html
     
-        We explain these variables more in details in the subsection :ref:`var_defining_nodes_and_routes`.
-        
-    ..  raw:: latex
-    
-        We explain these variables more in details in 
-        subsection~\ref{manual/tsp/model_behind_scene:var-defining-nodes-and-routes}.
-
-
-..  _var_defining_nodes_and_routes:
-
-Variables to model the nodes and the routes
--------------------------------------------------------
+The main ideas
+---------------
 
 ..  only:: draft
 
-    In this section, we present *automatic variables* that are always present in a routing model. These variables 
-    allow an easy modelisation of the different Routing Problems. But before we do so, we need  to understand an 
-    important distinction between nodes and their indices in solutions. Nodes have a unique ``NodeIndex`` identifier. Solutions
-    to Routing Problems are made of routes. To follow these routes, we use ``int64`` indices. To one node ``NodeIndex``
-    identifier may correspond several ``int64`` indices if the node is visited several times [#node_visited_several_times]_
-    but to one ``int64`` 
-    index corresponds only one node ``NodeIndex``.
-    
-    ..  [#node_visited_several_times] For the moment, one node can only be visited by one route/vehicle except if it the 
-        start or end node of several routes. TO BE VERIFIED!
+    The model is node based: routes are paths linking nodes. Except for the starting and ending nodes, each node 
+    in a path has to be unique, i.e. you can not visit a node more than once. Before we present the main ideas,
+    we need to understand the difference between ``NodeIndex`` node identifiers and ``int64`` indices representing 
+    nodes in solutions.
 
 ..  _nodeindex_or_int64:
 
@@ -70,9 +33,43 @@ Variables to model the nodes and the routes
 
 ..  only:: draft
 
-    The RL uses both ``NodeIndex``\es and ``int64``\s. ``NodeIndex``\es represent 
-    the true nodes *Ids* while ``int64``\s are used as (internal) indices corresponding to the nodes in the solutions.
-    ``NodeIndex`` behaves like 
+    The RL uses both ``NodeIndex``\es [#nodeindices]_ and ``int64``\s. ``NodeIndex``\es represent 
+    the true nodes *Identifiers* (*Ids*) while ``int64``\s are used as (internal) indices corresponding to 
+    the nodes in the solutions.
+    You might wonder why there is such a distinction between ``NodeIndex`` node ids  and ``int64`` indices?
+    The reason is simple. A solution to a Routing Problem is made of *routes*. A route is
+    a path connecting nodes. It starts at a starting node and ends at an ending
+    node. There are different ways to code routes but you need to be aware of the starting and ending nodes.
+    What happens if the starting and ending nodes are the same node? 
+    The way we handle 
+    this in the RL is to have two different ``int64`` indices corresponding to the same starting and 
+    ending node.
+    
+    In the next figure, we detail the unique ``NodeIndex`` node ids:
+    
+    ..  image:: images/int64_NodeIndex.*
+        :align: center
+        :width: 300 px
+    
+    We have 9 Nodes each with an unique ``NodeIndex`` identifier going from 0 to 8. Two vehicles visit all the nodes 
+    from the same depot 7:
+    
+      - Path :math:`p_0`: 7 -> 0 -> 2 -> 4 -> 5 -> 6 -> 7
+      - Path :math:`p_1`: 7 -> 1 -> 8 -> 3 -> 7
+    
+    If we look at the internal ``int64`` indices, we have: 
+    
+      - Path :math:`p_0`: 7 -> 0 -> 2 -> 4 -> 5 -> 6 -> 10
+      - Path :math:`p_1`: 9 -> 1 -> 8 -> 3 -> 11
+
+    As you can see, each node that is uniquely visited has the same ``NodeIndex`` and ``int64`` index but the depot 
+    (``NodeIndex`` 7) has different ``int64`` indices: 7, 10, 9 and 11.
+    
+    ..  [#nodeindices] We should rather say *NodeIndices* but we pluralize the type name ``NodeIndex``. Note also
+                       that the ``NodeIndex`` type lies inside the ``RoutingModel`` class, so we should rather use 
+                       ``RoutingModel::NodeIndex``.
+    
+    A ``NodeIndex`` behaves like 
     a regular ``int`` but it is really an ``IntType``. We use ``IntType``\s to avoid annoying automatic castings between
     different integer types and to preserve a certain type-safety. A ``NodeIndex`` is a ``NodeIndex`` and shouldn't be 
     compatible with anything else. A ``value()`` method allows the cast thought:
@@ -108,12 +105,9 @@ Variables to model the nodes and the routes
     
     ..  warning:: Try to avoid ``RoutingModel::NodeIndex::value()`` unless really necessary.
     
-    You might wonder why there is such a distinction between node ids ``NodeIndex`` and indices ``int64``?
-    The reason is simple. A solution to a Routing Problem is made of *routes*. A route is
-    a path connecting nodes. It starts at a starting node and ends at an ending
-    node. What happens if a route starts and ends at the same node? The way we handle 
-    this in the RL is to have two different ``int64`` indices corresponding to the same starting and 
-    ending node. This means that you shouldn't use the method ``NodeToIndex()`` to determine the ``int64`` index 
+    [CUT]
+    
+    This means that you shouldn't use the method ``NodeToIndex()`` to determine the ``int64`` index 
     of a starting or ending node in a route. Use instead
     
     ..  code-block:: c++
@@ -141,6 +135,73 @@ Variables to model the nodes and the routes
     ``end_node`` and ``end_node_id`` are not equal.
     
     ..  warning:: Never use ``NodeToIndex()`` on starting or ending nodes of a route.
+
+
+
+
+
+[NEXT]
+
+
+..  only:: draft
+
+    
+
+    ..  only:: html
+
+        The model is node based: routes are path linking nodes. Except for the starting and ending nodes, each node 
+        in a path has to be unique, i.e. you can not visit a node more than once. 
+        For each node, an ``IntVar*`` variable is defined
+        [#next_var_more_complicated]_ that represents the index of the direct successor of that node in a route. 
+
+        ..  [#next_var_more_complicated] If you are used to model paths, you will have noticed that the model must be 
+            a little more detailed than that: how could you have only one variable for one node if you have multiple paths 
+            starting and/or ending at the same node(s)? See the subsection :ref:`nodeindex_or_int64`.
+
+    ..  raw:: latex
+    
+        The model is node based: routes are path linking nodes. For each node, a \code{NextVar} variable is defined\footnote{
+        If you are used to model paths, you will have noticed that the model must be 
+        a little more detailed than that: how could you have only one variable for one node if you have multiple paths 
+        starting and/or ending at the same node(s)? See subsection~\ref{manual/tsp/model_behind_scene:nodeindex-or-int64}.} 
+        that represents the index of the direct successor of that node.
+
+    These ``IntVar*`` are the main decision variables and are stored internally in an ``std::vector<IntVar*> next_``.
+    
+    These ``NextVar`` variables are the decision variables. You also have ``Vehicle`` variables for each node that 
+    represents the index of the vehicle visiting that node and ``Active`` boolean variables for each node that 
+    are true if the node is visited and false otherwise.
+
+    ..  only:: html
+    
+        We explain these variables more in details in the subsection :ref:`var_defining_nodes_and_routes`.
+        
+    ..  raw:: latex
+    
+        We explain these variables more in details in 
+        subsection~\ref{manual/tsp/model_behind_scene:var-defining-nodes-and-routes}.
+
+
+..  _var_defining_nodes_and_routes:
+
+Variables to model the nodes and the routes
+-------------------------------------------------------
+
+..  only:: draft
+
+    In this section, we present *automatic variables* that are always present in a routing model. These variables 
+    allow an easy modelisation of the different Routing Problems. But before we do so, we need  to understand an 
+    important distinction between nodes and their indices in solutions. Nodes have a unique ``NodeIndex`` identifier. Solutions
+    to Routing Problems are made of routes. To follow these routes, we use ``int64`` indices. To one node ``NodeIndex``
+    identifier may correspond several ``int64`` indices if the node is visited several times [#node_visited_several_times]_
+    but to one ``int64`` 
+    index corresponds only one node ``NodeIndex``.
+    
+    ..  [#node_visited_several_times] For the moment, one node can only be visited by one route/vehicle except if it the 
+        start or end node of several routes. TO BE VERIFIED!
+
+
+
     
 
 Path variables
