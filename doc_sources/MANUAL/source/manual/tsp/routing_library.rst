@@ -116,6 +116,15 @@ This is equivalent to calling the program with the gflag ``routing_first_solutio
 Limitations
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+..  only:: draft
+
+    There are several limitations [#RL_limitations]_ as in any code. We list 
+    the most important ones.
+    
+    ..  [#RL_limitations] Or can you call them *features* of the RL?
+
+Number of nodes
+""""""""""""""""""
 
 The ``RoutingModel`` class has a limit on the maximum number of nodes it can handle. Indeed, its  
 constructors take an regular ``int`` as the number of nodes it can model:
@@ -136,4 +145,19 @@ Time Windows for instance.
 
 ..  [#stuck_with_node_limitations] If your platform retricts you too much, you can always adapt the code!
 
+You cannot visit a node twice
+""""""""""""""""""""""""""""""
+
+..  only:: draft
+
+    ..  only:: html
+    
+        The way the model is coded (see the section :ref:`rl_model_behind_scene`) doesn't allow you to visit 
+        a node more than once. You can have several vehicles at one depot though.
+        
+    ..  raw:: latex
+    
+        The way the model is coded (see section~\ref{manual/tsp/model_behind_scene:rl-model-behind-scene}) 
+        doesn't allow you to visit 
+        a node more than once. You can have several vehicles at one depot though.
 

@@ -1,6 +1,6 @@
 ..  _vrp_partial_routes:
 
-Partial routes
+Partial routes and Assigments
 ==================================
 
 ..  only:: draft

@@ -1,4 +1,4 @@
-..  _automatic_variables:
+..  _rl_model_behind_scene:
 
 The model behind the scene
 =============================
@@ -14,7 +14,9 @@ The idea
 
     ..  only:: html
 
-        The model is node based: routes are path linking nodes. For each node, a ``NextVar`` variable is defined
+        The model is node based: routes are path linking nodes. Except for the starting and ending nodes, each node 
+        in a path has to be unique, i.e. you can not visit a node more than once. 
+        For each node, a ``NextVar`` variable is defined
         [#next_var_more_complicated]_ that represents the index of the direct successor of that node. 
 
         ..  [#next_var_more_complicated] If you are used to model paths, you will have noticed that the model must be 
@@ -257,6 +259,33 @@ Constraints
 
     JJ
 
+No cycle constraint
+^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    One of the most difficult constraint to model is to 
+    avoid cycles in the solutions. For one tour, we don't want to revisit some nodes
+    and we want to visit each node. Often, we get partial solutions like the one depicted on the next 
+    Figure (a):
+    
+    ..  image:: images/cycles.*
+        :width: 400px 
+        :align: center
+
+    It is often easy to obtain optimal solutions when we allow cycles (a) but extremely difficult to obtain 
+    a real solution (b), i.e. without cycles. Several constraints have been proposed, each with its cons and pros.
+    
+    In the RL, we use our dedicated ``NoCycle`` constraint (defined in :file:`constraint_solver/constraints.cc`).
+    
+    [TO BE COMPLETED]
+    
+    You can use your own *no cycle constraint*:
+    
+    [NOT YET]
+    
+        
+    
 To summarize
 ^^^^^^^^^^^^^
 
