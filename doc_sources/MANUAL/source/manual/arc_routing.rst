@@ -8,6 +8,12 @@ Arc Routing  Problems with constraints: the cumulative chinese postman problem
     :maxdepth: 2
     
     arc_routing/cpp 
+    arc_routing/ccpp
+    arc_routing/ccpp_first_implementation
+    arc_routing/disjunctions
+    arc_routing/ccpp_second_implementation
+    arc_routing/arc_routing_summary
+    
 
 
 ..  raw:: html
