@@ -8,7 +8,8 @@ The model behind the scene
     ..  only:: html
     
         We give the main ideas of the model used in the RL and an overview of its variables and constraints. 
-        In the section :ref:`hood_rl`, we describe the inner mechanisms of the RL in details.
+        In the section :ref:`hood_rl` of the chapter :ref:`chapter_under_the_hood`, 
+        we describe the inner mechanisms of the RL in details.
 
     ..  raw:: latex
     
@@ -40,7 +41,7 @@ The main ideas
     The reason is simple. A solution to a Routing Problem is made of *routes*. A route is
     a path connecting nodes. It starts at a starting node and ends at an ending
     node. There are different ways to code routes but you need to be aware of the starting and ending nodes.
-    What happens if the starting and ending nodes are the same node? 
+    What happens if the starting and ending nodes are the same node and you basically want to have only one variable per node? 
     The way we handle 
     this in the RL is to have two different ``int64`` indices corresponding to the same starting and 
     ending node.
