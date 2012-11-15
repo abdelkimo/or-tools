@@ -13,7 +13,7 @@ Under the hood
     ..  raw:: latex
 
         If you haven't read the sections~\ref{manual/search_primitives/basic_working1:basic-workingi}  
-        and~\ref{manual/custom_constraints/basic_working2:basic-workingii}  yet, 
+        and~\ref{manual/ls/basic_working2:basic-workingii}  yet, 
         we strongly encourage you to do so. These two sections explain the basics of the CP solver.
         
     ..  only:: html

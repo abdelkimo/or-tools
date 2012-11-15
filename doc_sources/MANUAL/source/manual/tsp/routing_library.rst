@@ -118,7 +118,8 @@ Limitations
 
 ..  only:: draft
 
-    There are several limitations [#RL_limitations]_ as in any code. We list 
+    There are several limitations [#RL_limitations]_ as in any code. These limitations are mainly due to 
+    coding choices and can be worked around. We list 
     the most important ones.
     
     ..  [#RL_limitations] Or can you call them *features* of the RL?
@@ -126,7 +127,7 @@ Limitations
 Number of nodes
 """"""""""""""""""
 
-The ``RoutingModel`` class has a limit on the maximum number of nodes it can handle. Indeed, its  
+The ``RoutingModel`` class has a limit on the maximum number of nodes it can handle [#limit_vehicles_nbr]_. Indeed, its  
 constructors take an regular ``int`` as the number of nodes it can model:
 
 ..  code-block:: c++
@@ -143,7 +144,13 @@ that can solve TSP with thousands of nodes to optimality.
 The strength of Constraint Programming lies in its ability to handle well side constraints such as 
 Time Windows for instance.
 
-..  [#stuck_with_node_limitations] If your platform retricts you too much, you can always adapt the code!
+..  [#limit_vehicles_nbr] And thus the number of vehicles too!
+
+..  [#stuck_with_node_limitations] If your platform restricts you too much, you can always adapt the code!
+
+..  only:: draft 
+
+    The next two limitations are easily overcome by adding fictive nodes.
 
 You cannot visit a node twice
 """"""""""""""""""""""""""""""
@@ -161,3 +168,9 @@ You cannot visit a node twice
         doesn't allow you to visit 
         a node more than once. You can have several vehicles at one depot though.
 
+A depot is a depot
+""""""""""""""""""""
+
+..  only:: draft
+
+    This means you can only start from a depot or arrive to a depot, no transit through a depot.

@@ -35,7 +35,13 @@ We provide different levels of logging:
   - ``ERROR``;
   - ``FATAL``.
     
-  To use them, just write ``LOG(severity)`` as in ``LOG(FATAL) << "This message will kill you!";``. For the moment, 
+  To use them, just write ``LOG(severity)`` as in:
+  
+  ..  code-block:: c++
+  
+      LOG(FATAL) << "This message will kill you!";
+      
+  For the moment, 
   ``INFO``, ``ERROR`` and 
   ``WARNING`` are treated the same way. ``FATAL`` works as expected and the program aborts (calls ``abort()``) after printing the message.
 
@@ -62,15 +68,18 @@ We provide different levels of logging:
     
   ..  code-block:: c++
     
-      VLOG(2) << "This information is too detailed for you to see with you log level...";
+      VLOG(2) << "This information is too detailed for you to see with you 
+                                                             log level...";
     
   We rarely (understand never) go over level 4.
 
 There is also a conditional logging: ``LOG_IF(severity, condition)`` and for debugging ``DLOG_IF(severity, condition)``
 that vanishes when ``NDEBUG`` is defined.
 
-A little word of advice. When logging is allowed, you create each time a logging object so this can be costly.
-When logging is disallowed, you don't pay anything.
+..  warning:: A little word of advice.
+
+    When logging is allowed, you create each time a logging object so this can be costly.
+    When logging is disallowed, you don't pay anything.
 
 
 
