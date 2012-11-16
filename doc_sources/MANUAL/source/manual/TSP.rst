@@ -131,6 +131,7 @@ The files inside this directory are:
     tsp/routing_library
     tsp/tsp
     tsp/model_behind_scene
+    tsp/model_behind_scene_overview
     tsp/first_tsp_implementation
     tsp/two_phases_approaches
     tsp/exact_tsp_implementation

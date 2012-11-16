@@ -111,7 +111,14 @@ This is equivalent to calling the program with the gflag ``routing_first_solutio
     ..  code-block:: bash
     
         ./your_program --helpon=routing 
-        
+
+Dimensions
+^^^^^^^^^^^^
+
+
+Disjunctions
+^^^^^^^^^^^^^
+
   
 Limitations
 ^^^^^^^^^^^^^^^^^^^^^^^

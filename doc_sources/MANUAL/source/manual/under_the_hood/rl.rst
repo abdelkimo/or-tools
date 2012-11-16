@@ -65,7 +65,7 @@ The ``RoutingModel`` class
     
     This is exactly what the ``int64 Size() const`` method returns.
     
-    For the domain of each ``IntVar``, we use the upper bound ``Size() + vehicles_ - 1``.
+    For the domain of each ``IntVar``, we use ``[0,Size() + vehicles_ - 1]``.
     
     index_to_node_.resize(size + vehicles_);
     node_to_index_.resize(nodes_, kUnassigned);

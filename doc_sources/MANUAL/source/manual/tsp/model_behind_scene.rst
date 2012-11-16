@@ -1,24 +1,24 @@
-..  _rl_model_behind_scene:
+..  _rl_model_behind_scene_decision_v:
 
-The model behind the scene
-=============================
+The model behind the scene: main decision variables
+=====================================================
 
 ..  only:: draft
 
     ..  only:: html
     
-        We give the basic ideas of the model used in the RL and an overview of its variables and constraints. 
+        We describe the main decision variables of the model used in the RL.
         In the section :ref:`hood_rl` of the chapter :ref:`chapter_under_the_hood`, 
         we describe the inner mechanisms of the RL in details.
 
     ..  raw:: latex
     
-        We give the basic ideas of the model used in the RL and an overview of its variables and constraints. 
+        We describe the main decision variables of the model used in the RL.
         In section~\ref{manual/under_the_hood/rl:hood-rl}, we describe the inner mechanisms of the RL in details.
 
     
-The main idea
----------------
+The main idea: node decision variables
+----------------------------------------
 
 ..  only:: draft
 
@@ -58,7 +58,7 @@ The main idea
 ..  _nodeindex_or_int64:
 
 ``NodeIndex`` or ``int64``?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------------------------
 
 ..  only:: draft
 
@@ -97,7 +97,7 @@ The main idea
     * 7 and 10 for route 0;
     * 9 and 11 for route 1.
     
-    Notice that the ``int64`` indices don't depend on the solution but only the given graph and depots.
+    Notice that the ``int64`` indices don't depend on a given solution but only on the given graph/network and depots.
     
     ..  [#nodeindices] We should rather say *NodeIndices* but we pluralize the type name ``NodeIndex``. Note also
                        that the ``NodeIndex`` type lies inside the ``RoutingModel`` class, so we should rather use 
@@ -105,7 +105,7 @@ The main idea
     
 
 How to switch from ``NodeIndex`` to ``int64`` and vice-versa?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------------------------------------------
 
 ..  only:: draft
 
@@ -162,7 +162,7 @@ How to switch from ``NodeIndex`` to ``int64`` and vice-versa?
 
 
 How to follow a route?
-^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------------------------------------------
 
 ..  only:: draft
 
@@ -194,9 +194,49 @@ How to follow a route?
     
     To access the main decision ``IntVar`` variables, we use the ``NextVar(int64)`` method.
     
+Not all ``int64`` indices have a corresponding ``IntVar nexts_`` variable 
+-----------------------------------------------------------------------------
 
+..  only:: draft
+
+    Only internal nodes that can lead somewhere possess a decision variable. Only the nodes that are visited and the 
+    starting depots do have a main decision ``IntVar`` variable. There are 9 real nodes on the next figure. They
+    have a ``NodeIndex`` ranging from 0 to 8. There are 2 starting depots (1 and 7) and 2 ending depot (5 and 8).
+    Route 0 starts at 1 and ends at 5 while route 1 starts at 7 and ends at 8.
+    
+    ..  image:: images/not_all_int64_have_v.*
+        :align: center
+        :width: 300 px
+    
+    Because nodes 5 and 8 are ending nodes, there is no ``nexts_ IntVar`` attached to them.
+    
+    The solution depicted is:
+    
+    * Path :math:`p_0` : 1 -> 0 -> 2 -> 3 -> 5
+    * Path :math:`p_1` : 7 -> 4 -> 6 -> 8
+    
+    If we look at the internal ``int64`` indices, we have: 
+    
+    - Path :math:`p_0`: 1 -> 0 -> 2 -> 3 -> 7
+    - Path :math:`p_1`: 6 -> 4 -> 5 -> 8
+    
+    There are actually 9 ``int64`` indices ranging from 0 to 8 because in this case there is no need to duplicate a node.
+    As you can see on the picture, there are only 7 ``nexts_ IntVar`` variables. The following code:
+    
+    ..  code-block:: c++
+    
+        LG << "Crash: " << Solution->Value(routing.NextVar(routing.End(0))); 
+        
+    compiles fine but triggers the feared 
+    
+    ..  code-block:: bash
+    
+        Segmentation fault
+
+    As you can see, there is no internal control on the ``int64`` index you can give to methods.
+    
 To summarize
-^^^^^^^^^^^^^
+-------------------------------------------------------------------------
 
 ..  only:: draft
 
@@ -214,201 +254,36 @@ To summarize
                                                     :math:`n-1` if starting or ending node of a route.
     =========================  ===================  ====================================================
     
-    To follow a route, use ``int64`` indices. If you need to deal with the corresponding nodes, use the 
-    ``NodeIndex IndexToNode(int64)`` method. Know how to convert ``NodeIndex``\es into ``int64``\s and vice-versa.
-
-
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-[NEXT]
-
-
-..  _var_defining_nodes_and_routes:
-
-Variables
--------------------------------------------------------
-
-
-Decision variables
-^^^^^^^^^^^^^^^^^^
-
-[To add]
-
-Only a strict minimum number of decision variables.
-
-if log_level == 2, programs shows variable names: not true! Only true for the 
-first Size() ones... 
-
-Additional variables
-^^^^^^^^^^^^^^^^^^^^^
-
-Vehicles
-"""""""""""
-
-Disjunctions
-"""""""""""""""
-
-Dimension variables
-^^^^^^^^^^^^^^^^^^^
-
-..  only:: draft
-
-    
-
- 
- 
- 
-
-    These ``IntVar*`` are the main decision variables and are stored internally in an ``std::vector<IntVar*> next_``.
-    
-    These ``NextVar`` variables are the decision variables. You also have ``Vehicle`` variables for each node that 
-    represents the index of the vehicle visiting that node and ``Active`` boolean variables for each node that 
-    are true if the node is visited and false otherwise.
-
-    ..  only:: html
-    
-        We explain these variables more in details in the subsection :ref:`var_defining_nodes_and_routes`.
-        
-    ..  raw:: latex
-    
-        We explain these variables more in details in 
-        subsection~\ref{manual/tsp/model_behind_scene:var-defining-nodes-and-routes}.
-
-
-
-..  only:: draft
-
-    In this section, we present *automatic variables* that are always present in a routing model. These variables 
-    allow an easy modelisation of the different Routing Problems. But before we do so, we need  to understand an 
-    important distinction between nodes and their indices in solutions. Nodes have a unique ``NodeIndex`` identifier. Solutions
-    to Routing Problems are made of routes. To follow these routes, we use ``int64`` indices. To one node ``NodeIndex``
-    identifier may correspond several ``int64`` indices if the node is visited several times [#node_visited_several_times]_
-    but to one ``int64`` 
-    index corresponds only one node ``NodeIndex``.
-    
-    ..  [#node_visited_several_times] For the moment, one node can only be visited by one route/vehicle except if it the 
-        start or end node of several routes. TO BE VERIFIED!
-
-
-
-    
-
-    
-To summarize
-^^^^^^^^^^^^^
-
-..  only:: draft
-
-    Here is a little summary:
-    
-    ..  rubric:: Modelling variables
-    
-    All modelling variables describing nodes return ``int64`` indices corresponding to nodes in routes.
-    
-    ..  tabularcolumns:: |p{3cm}|p{3cm}| p{8cm}|
-    
-    =========================  ===================  ====================================================
-    Variables                  Return types         Descriptions
-    =========================  ===================  ====================================================
-    ``NextVar(int64)``         ``int64``            ``int64`` index of the direct successor of a node 
-                                                    (main decision variables).
-    ``VehicleVar(int64)``      ``int``              ``int`` index of the vehicle visiting a node.
-    ``ActiveVar(int64)``       ``boolean``          ``true`` if node is visited, ``false`` if not 
-                                                    (optional nodes)
-    ``Start(int)``             ``int64``
-    ``End(int)``               ``int64``
-    =========================  ===================  ====================================================
-
-        
-
-..  comment: 
-
-    IntVar* CumulVar(int64 index, const string& name) const;
-      // Returns the transit variable for the dimension named 'name'.
-      IntVar* TransitVar(int64 index, const string& name) const;
-      // Return the slack variable for the dimension named 'name'.
-      IntVar* SlackVar(int64 index, const string& name) const;
-
-
-Constraints 
----------------
-
-..  only:: draft
-
-    JJ
-
-No cycle constraint
-^^^^^^^^^^^^^^^^^^^^
-
-..  only:: draft
-
-    One of the most difficult constraint to model is to 
-    avoid cycles in the solutions. For one tour, we don't want to revisit some nodes
-    and we want to visit each node. Often, we get partial solutions like the one depicted on the next 
-    Figure (a):
-    
-    ..  image:: images/cycles.*
-        :width: 400px 
-        :align: center
-
-    It is often easy to obtain optimal solutions when we allow cycles (a) but extremely difficult to obtain 
-    a real solution (b), i.e. without cycles. Several constraints have been proposed, each with its cons and pros.
-    
-    In the RL, we use our dedicated ``NoCycle`` constraint (defined in :file:`constraint_solver/constraints.cc`).
-    
-    [TO BE COMPLETED]
-    
-    You can use your own *no cycle constraint*:
-    
-    [NOT YET]
-    
-        
-    
-To summarize
-^^^^^^^^^^^^^
-
-..  only:: draft
-
-    Here is a little summary:
-    
-    ..  rubric:: Type to represent nodes
-    
-    ..  tabularcolumns:: |p{3cm}|p{3cm}| p{8cm}|
-    
-    =========================  ===================  ====================================================
-    What                       Types                Comments
-    =========================  ===================  ====================================================
-    True node *Ids*            ``NodeIndex``        Unique for each node from :math:`0` to :math:`n-1`.
-    Indices to follow routes   ``int64``            Not unique for each node. Could be bigger than
-                                                    :math:`n-1` if starting or ending node of a route.
-    =========================  ===================  ====================================================
+    Internally, the RL uses ``int64`` indices and duplicate some nodes (the depots). The main decision variables 
+    are ``IntVar`` only attached to nodes that lead somewhere. Each variable has the whole range of ``int64`` 
+    indices as domain [#domain_main_routing_vr]_.
     
     To follow a route, use ``int64`` indices. If you need to deal with the corresponding nodes, use the 
-    ``IndexToNode(int64)`` method.
-        
-    ..  rubric:: Modelling variables
+    ``NodeIndex IndexToNode(int64)`` method. The ``int64`` index corresponding to the first node of route ``k``
+    is given by:
     
-    All modelling variables describing nodes return ``int64`` indices corresponding to nodes in routes.
+    ..  code-block:: c++
     
-    ..  tabularcolumns:: |p{3cm}|p{3cm}| p{8cm}|
-    
-    =========================  ===================  ====================================================
-    Variables                  Return types         Descriptions
-    =========================  ===================  ====================================================
-    ``NextVar(int64)``         ``int64``            ``int64`` index of the direct successor of a node 
-                                                    (main decision variables).
-    ``Vehicle(int64)``         ``int``              ``int`` index of the vehicle visiting a node.
-    ``Active(int64)``          ``boolean``          ``true`` if node is visited, ``false`` if not 
-                                                    (optional nodes)
-    ``Start(int)``             ``int64``
-    ``End(int)``               ``int64``
-    =========================  ===================  ====================================================
+        int64 first_node = routing.Start(k);
 
-Objective function
--------------------
-
-Miscellaneous
-------------------
+    and the last node by:
+    
+    ..  code-block:: c++
+    
+        int64 last_node = routing.End(k);
+    
+    You can also test if an ``int64`` index is the beginning or the ending of a route with the methods ``bool IsStart(int64)``
+    and ``bool IsEnd(int64)``.
+    
+    ..  [#domain_main_routing_vr] The CP solver does an initial propagation to quickly skim 
+                                                    these domains.
+    In a solution, to get the next ``int64`` index ``next_node`` of a node given by an ``int64`` index ``current_node``,
+    use:
+    
+    ..  code-block:: c++
+    
+        int64 next_node = solution->Value(routing.NextVar(current_node));
+    
 
 ..  only:: final
 
