@@ -36,6 +36,7 @@ The main idea: node decision variables
     
     Internally, we use ``int64`` indices to name the nodes and their duplicates. You don't need to be concerned by
     the way we assign these indices but to run through the paths of a solution, you need to use these ``int64`` indices.
+    We'll show you how below.
 
     The domains of the ``IntVar`` ``nexts_`` variables are made of the ``int64`` indices. 
     Let's say we have a solution ``solution`` and a ``RoutingModel`` object ``routing``. In the following code:
@@ -48,7 +49,7 @@ The main idea: node decision variables
     ``next_node_index`` is the ``int64`` index of the node following immediately the node represented by the ``int64``
     index ``current_node``.
     
-    Before we present the basic ideas of our model,
+    Before we present the main decision variables of our model,
     we need to understand the difference between ``NodeIndex`` node identifiers and ``int64`` indices representing 
     nodes in solutions.
 
@@ -173,7 +174,7 @@ How to follow a route?
         RoutingModel routing(10000, 78); // 10000 nodes, 78 vehicles/routes
                                          // Don't do this at home!
         ...
-        const Assignment* solution routing.Solve();
+        const Assignment* solution = routing.Solve();
         ...
         const int route_number = 7;
         for (int64 node = routing.Start(route_number); !routing.IsEnd(node);
@@ -254,7 +255,7 @@ To summarize
                                                     :math:`n-1` if starting or ending node of a route.
     =========================  ===================  ====================================================
     
-    Internally, the RL uses ``int64`` indices and duplicate some nodes (the depots). The main decision variables 
+    Internally, the RL uses ``int64`` indices and duplicate some nodes if needed (the depots). The main decision variables 
     are ``IntVar`` only attached to nodes that lead somewhere. Each variable has the whole range of ``int64`` 
     indices as domain [#domain_main_routing_vr]_.
     
@@ -283,6 +284,7 @@ To summarize
     ..  code-block:: c++
     
         int64 next_node = solution->Value(routing.NextVar(current_node));
+    
     
 
 ..  only:: final

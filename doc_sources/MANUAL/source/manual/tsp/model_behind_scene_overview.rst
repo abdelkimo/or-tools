@@ -26,13 +26,13 @@ Variables
 -------------
 
 
-Main Decision variables
+Path variables
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 
-Additional variables
-^^^^^^^^^^^^^^^^^^^^^
+Main decision  variables
+""""""""""""""""""""""""""
 
 Vehicles
 """""""""""

@@ -26,16 +26,31 @@ In short, we provide specialized primitives that you can assemble and customize 
 Out of the box models
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+..  only:: draft
 
-[TO BE WRITTEN]
+    To be precise, there is only one model to solve different Routing Problems. It's a one fits for all. This approach 
+    has its advantages and disadvantages. On one side, the model already exist, has been tested and fine-tuned by our
+    team and you can reuse it to solve several Routing Problems (meaning the learning curve is low). 
+    On the other side, if you need to solve a very difficult Routing 
+    Problem, you probably would like to build one specialized model yourself. Our RL can then serve as an inspiration.
+    
+    The RL lets you model a wide range of vehicle
+    routing problems from the Travelling Salesman Problem (and its
+    variants, ATSP, TSPTW, ...) to multi-vehicles problems with dimension
+    constraints (capacities, time windows) and various *routing*
+    constraints (optional nodes, alternate nodes,...). 
+    
+    ..  only:: html 
+    
+        Have a look at the subsections :ref:`rl_dimensions_overview` and :ref:`rl_disjunctions_overview` below to have an idea 
+        on the additional constraints you can use in this model.
 
-which lets you model a wide range of vehicle
-routing problems from the Traveling Salesman Problem (and its
-variants, ATSP, TSPTW, ...) to multi-vehicle problems with dimension
-constraints (capacities, time windows) and various "routing"
-constraints (optional nodes, alternate nodes,...). 
+    ..  raw:: latex 
+    
+        Have a look at subsections~\ref{manual/tsp/routing_library:rl-dimensions-overview} and
+        and~\ref{manual/tsp/routing_library:rl-disjunctions-overview} below to have an idea 
+        on the additional constraints you can use in this model.
 
-Node and vehicle oriented
 
 On top of the CP library
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -104,21 +119,24 @@ This is equivalent to calling the program with the gflag ``routing_first_solutio
     ./my_beautiful_routing_algorithm 
                                 --routing_first_solution=PathCheapestArc
 
-..  only:: draft 
-
-    If you want the list of all the available flags, just ask for it:
-    
-    ..  code-block:: bash
-    
-        ./your_program --helpon=routing 
+..  _rl_dimensions_overview:
 
 Dimensions
 ^^^^^^^^^^^^
 
+[TO BE WRITTEN]
+
+..  _rl_disjunctions_overview:
 
 Disjunctions
 ^^^^^^^^^^^^^
 
+[TO BE WRITTEN]
+
+Routes are not mandatory
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+[TO BE WRITTEN]
   
 Limitations
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -166,12 +184,12 @@ You cannot visit a node twice
 
     ..  only:: html
     
-        The way the model is coded (see the section :ref:`rl_model_behind_scene`) doesn't allow you to visit 
+        The way the model is coded (see the section :ref:`rl_model_behind_scene_decision_v`) doesn't allow you to visit 
         a node more than once. You can have several vehicles at one depot though.
         
     ..  raw:: latex
     
-        The way the model is coded (see section~\ref{manual/tsp/model_behind_scene:rl-model-behind-scene}) 
+        The way the model is coded (see section~\ref{manual/tsp/model_behind_scene:rl-model-behind-scene-decision-v}) 
         doesn't allow you to visit 
         a node more than once. You can have several vehicles at one depot though.
 
