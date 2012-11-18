@@ -1,7 +1,7 @@
 ..  _rl_model_behind_scene_decision_v:
 
-The model behind the scene: main decision variables
-=====================================================
+The model behind the scene: the main decision variables
+========================================================
 
 ..  only:: draft
 
@@ -17,14 +17,14 @@ The model behind the scene: main decision variables
         In section~\ref{manual/under_the_hood/rl:hood-rl}, we describe the inner mechanisms of the RL in details.
 
     
-The main idea: node decision variables
-----------------------------------------
+The main idea: the node decision variables
+---------------------------------------------
 
 ..  only:: draft
 
     The model is node based: routes are paths linking nodes. For each node we keep an ``IntVar*`` variable 
     (stored internally in a ``private`` ``std::vector<IntVar*> nexts_``) that
-    tells us where to go next from that node (i.e. to which node). To access these variables, use the ``NextVar()`` method
+    tells us where to go next (i.e. to which node). To access these variables, use the ``NextVar()`` method
     (see below). These variables are the main decision variables of our model.
     
     For a node that is uniquely visited by a vehicle [#node_only_visited_once]_, we only need 
@@ -38,7 +38,7 @@ The main idea: node decision variables
     the way we assign these indices but to run through the paths of a solution, you need to use these ``int64`` indices.
     We'll show you how below.
 
-    The domains of the ``IntVar`` ``nexts_`` variables are made of the ``int64`` indices. 
+    The domains of the ``IntVar`` ``nexts_`` variables consist of these ``int64`` indices. 
     Let's say we have a solution ``solution`` and a ``RoutingModel`` object ``routing``. In the following code:
     
     ..  code-block:: c++
@@ -47,7 +47,7 @@ The main idea: node decision variables
         int64 next_node_index = solution.Value(routing.NextVar(current_node));
     
     ``next_node_index`` is the ``int64`` index of the node following immediately the node represented by the ``int64``
-    index ``current_node``.
+    index ``current_node`` in the ``Assignment`` ``solution``.
     
     Before we present the main decision variables of our model,
     we need to understand the difference between ``NodeIndex`` node identifiers and ``int64`` indices representing 
@@ -65,11 +65,11 @@ The main idea: node decision variables
 
     The RL uses both ``NodeIndex``\es [#nodeindices]_ and ``int64``\s. ``NodeIndex``\es represent 
     the true unique nodes *Identifiers* (*Ids*) while ``int64``\s are used as (internal) indices corresponding to 
-    the nodes in the solutions.
-    As written above, we use internally duplicate nodes to encode routes. Basically, we keep all nodes that are 
+    the nodes in the solutions [#auxiliary_graph_in_fact]_.
+    As mentioned above, we use internally duplicate nodes to encode routes. Basically, we keep all nodes that are 
     not starting or ending
-    depots and for each route (and thus vehicle) we use one node for the starting depot and one node for the ending depot
-    duplicating the initial nodes if needed.
+    depots. For each route (and thus vehicle), we use one node for the starting depot and one node for the ending depot
+    duplicating the original nodes if needed.
     
     An example will clarify our discussion.
     In the next figure, we detail the unique ``NodeIndex`` node ids:
@@ -104,6 +104,9 @@ The main idea: node decision variables
                        that the ``NodeIndex`` type lies inside the ``RoutingModel`` class, so we should rather use 
                        ``RoutingModel::NodeIndex``.
     
+    ..  [#auxiliary_graph_in_fact] Our model is based on an *auxiliary graph* detailed in the
+                                   subsection :ref:`auxiliary_graph_detailed`. The ``int64`` indices are simply the 
+                                   node identifiers of this auxiliary graph.
 
 How to switch from ``NodeIndex`` to ``int64`` and vice-versa?
 -------------------------------------------------------------------------
@@ -255,7 +258,7 @@ To summarize
                                                     :math:`n-1` if starting or ending node of a route.
     =========================  ===================  ====================================================
     
-    Internally, the RL uses ``int64`` indices and duplicate some nodes if needed (the depots). The main decision variables 
+    Internally, the RL uses ``int64`` indices and duplicates some nodes if needed (the depots). The main decision variables 
     are ``IntVar`` only attached to nodes that lead somewhere. Each variable has the whole range of ``int64`` 
     indices as domain [#domain_main_routing_vr]_.
     

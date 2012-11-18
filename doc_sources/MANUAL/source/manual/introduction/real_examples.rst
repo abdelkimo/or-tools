@@ -67,6 +67,8 @@ a good option is to develop the product yourself, using *or-tools* for instance.
 
 ..  [#claim_CP] This is common knowledge in the field.
 
+..  _CP_holy_grail:
+
 Can CP be compared to the holy grail of Operations Research?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

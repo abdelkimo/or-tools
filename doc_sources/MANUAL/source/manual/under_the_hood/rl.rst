@@ -37,6 +37,14 @@ The Routing Library (RL)
     exactly the minimal number of variables needed to model the problem at hand with one variable per node (see below). 
 
 
+..  _auxiliary_graph_detailed:
+
+The auxiliary graph
+^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    Details of the auxiliary graph...
 
 The ``RoutingModel`` class
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

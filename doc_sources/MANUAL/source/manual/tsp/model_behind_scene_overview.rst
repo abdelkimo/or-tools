@@ -7,15 +7,15 @@ The model behind the scene: overview
 
     ..  only:: html
 
-        In this section, we give an overview of the main basic components of our model. These 
-        components will be detailed later in the next two chapters.
+        In this section, we give an overview of the main basic components of our model. Most of these 
+        components will be detailed in this chapter and later in the next two chapters.
         In the section :ref:`hood_rl` of the chapter :ref:`chapter_under_the_hood`, 
         we describe the inner mechanisms of the RL in details.
 
     ..  raw:: latex
 
-        In this section, we give an overview of the main basic components of our model. These 
-        components will be detailed later in the next two chapters.
+        In this section, we give an overview of the main basic components of our model. Most of these 
+        components will be detailed in this chapter and later in the next two chapters.
         In section~\ref{manual/under_the_hood/rl:hood-rl}, we describe the inner mechanisms of the RL in details.
 
     tada

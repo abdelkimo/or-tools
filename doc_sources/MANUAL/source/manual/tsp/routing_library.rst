@@ -29,14 +29,14 @@ Out of the box models
 ..  only:: draft
 
     To be precise, there is only one model to solve different Routing Problems. It's a one fits for all. This approach 
-    has its advantages and disadvantages. On one side, the model already exist, has been tested and fine-tuned by our
+    has its advantages and disadvantages. On one side, the model already exists, has been tested and fine-tuned by our
     team and you can reuse it to solve several Routing Problems (meaning the learning curve is low). 
     On the other side, if you need to solve a very difficult Routing 
     Problem, you probably would like to build one specialized model yourself. Our RL can then serve as an inspiration.
     
     The RL lets you model a wide range of vehicle
     routing problems from the Travelling Salesman Problem (and its
-    variants, ATSP, TSPTW, ...) to multi-vehicles problems with dimension
+    variants, ATSP, TSPTW, ...) to multi-vehicles problems with *dimension*
     constraints (capacities, time windows) and various *routing*
     constraints (optional nodes, alternate nodes,...). 
     
@@ -148,6 +148,16 @@ Limitations
     the most important ones.
     
     ..  [#RL_limitations] Or can you call them *features* of the RL?
+
+Only one model 
+""""""""""""""""""""""""""""""""""""""""
+
+..  only:: draft
+
+    We wrote several times that there is no universal solver [#no_universal_solver_again]_ for all the problems.
+
+
+    ..  [#no_universal_solver_again] At least, to the best of our knowledge. See the subsection :ref:`CP_holy_grail` for more.
 
 Number of nodes
 """"""""""""""""""
