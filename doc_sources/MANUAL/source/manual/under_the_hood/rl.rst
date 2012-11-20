@@ -8,13 +8,13 @@ The Routing Library (RL)
     ..  only:: html
     
         Each node has a unique identifier of type ``RoutingModel::NodeIndex`` 
-        but we use internally a unique index of type ``int64`` (see the section :ref:`rl_model_behind_scene`).
+        but we use internally a unique index of type ``int64`` (see the section :ref:`rl_model_behind_scene_decision_v`).
 
     ..  raw:: latex 
     
-        Each node has a unique identifier of type \code{RoutingModel::NodeIndex}
+        Each node has a unique identifier of type \code{RoutingModel::NodeIndex}-v
         but we use internally a unique index of type \code{int64} 
-        (see section~\ref{manual/tsp/model_behind_scene:rl-model-behind-scene}).
+        (see section~\ref{manual/tsp/model_behind_scene:rl-model-behind-scene-decision-v}).
 
     Some basic paratemers of the model are:
     

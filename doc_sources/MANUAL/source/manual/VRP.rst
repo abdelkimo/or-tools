@@ -24,7 +24,7 @@ Vehicule Routing Problems with constraints: the capacitated vehicle routing prob
     - Basic knowledge of the Routing Library (see the chapter :ref:`chapter_tsp_with_constraints`), especially:
     
       * the section :ref:`tsp_routing_solver`;
-      * the section :ref:`automatic_variables`;
+      * the section :ref:`rl_model_behind_scene_decision_v`;
       * the section :ref:`tsp_two_phases_approaches`.
 
 ..  raw:: latex
@@ -37,7 +37,7 @@ Vehicule Routing Problems with constraints: the capacitated vehicle routing prob
       \item Basic knowledge of the Routing Library (see the chapter~\ref{manual/TSP:chapter-tsp-with-constraints}), especially:
       \begin{itemize}
         \item section~\ref{manual/tsp/routing_library:tsp-routing-solver};
-        \item section~\ref{manual/tsp/model_behind_scene:automatic-variables};
+        \item section~\ref{manual/tsp/model_behind_scene:rl-model-behind-scene-decision-v};
         \item section~\ref{manual/tsp/two_phases_approaches:tsp-two-phases-approaches}.
       \end{itemize}
     \end{itemize}
