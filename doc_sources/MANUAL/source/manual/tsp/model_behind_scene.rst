@@ -241,7 +241,18 @@ Not all ``int64`` indices have a corresponding ``IntVar nexts_`` variable
     
         Segmentation fault
 
-    As you can see, there is no internal control on the ``int64`` index you can give to methods.
+    ..  only:: html 
+    
+        As you can see, there is no internal control on the ``int64`` index you can give to methods. If you want to know more
+        about the way we internally number the indices, have a look at :ref:`uth_next_variables_details`.
+
+    ..  raw:: latex 
+    
+        As you can see, there is no internal control on the \code{int64} index you can give to methods. 
+        If you want to know more
+        about the way we internally number the indices, have a 
+        look at~\ref{manual/under_the_hood/rl:uth-next-variables-details}.
+
     
 To summarize
 -------------------------------------------------------------------------

@@ -9,6 +9,16 @@ Arc Routing  Problems with constraints: the cumulative chinese postman problem
     In contrast to Node Routing Problems (NRP, see XXX) and Vehicle Routing Problems (VRP, see XXX), ARP deals with 
     non-complete graphs and solutions often require to visit an edge/arc several times.
 
+    ..  topic:: Why is it not always paying of to transform an ARP into a NRP?
+    
+        You always can transform an ARP into a NRP but it is not necessarily the best move to do.
+        
+        First, basic versions of ARP (in particular the Chinese Postman Problem (CPP) on undirected and directed graphs)
+        are in :math:`\text{P}` while basic versions of NRP (in particular the TSP) are in :math:`\text{NP}`.
+    
+        Second, specialized algorithms tackling ARP as ARP (i.e. without somehow transforming the arcs/edges into nodes) 
+        are often better.
+
     ..  warning::
     
         Only use the RL to solve ARP for which a transformation into a NRP make sense!

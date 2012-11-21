@@ -15,6 +15,7 @@ Customization:
   - size of LaTeX sections when including code;
   - find a solution for tables...
   - include intro sections in parts;
+  - glossary is buggy... and doesn't work really well... pfff.
   
 - find how to use global substitution with relative path.
 
