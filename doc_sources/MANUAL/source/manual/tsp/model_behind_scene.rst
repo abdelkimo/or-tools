@@ -22,13 +22,14 @@ The main idea: the node decision variables
 
 ..  only:: draft
 
-    The model is node based: routes are paths linking nodes. For each node we keep an ``IntVar*`` variable 
+    The model is node based: routes are paths linking nodes. For each node [#nodes_that_lead_somwhere]_ 
+    we keep an ``IntVar*`` variable 
     (stored internally in a ``private`` ``std::vector<IntVar*> nexts_``) that
     tells us where to go next (i.e. to which node). To access these variables, use the ``NextVar()`` method
     (see below). These variables are the main decision variables of our model.
     
     For a node that is uniquely visited by a vehicle [#node_only_visited_once]_, we only need 
-    one variable. For a depot where a route finishes, it is even easier since we don't need any variable at all because 
+    one variable. For a depot where only a route finishes, it is even easier since we don't need any variable at all because 
     the route stops at this depot and there is no need to know where to go next. The situation is a little bit 
     messier if for instance we have two vehicles starting from the same depot. One variable will not do. In the RL, 
     we deal with this situation by *duplicating* this depot and give each node its own ``IntVar*`` variable 
@@ -53,6 +54,9 @@ The main idea: the node decision variables
     we need to understand the difference between ``NodeIndex`` node identifiers and ``int64`` indices representing 
     nodes in solutions.
 
+    ..  [#nodes_that_lead_somwhere] Not every nodes, only the nodes that lead somewhere in the solution. Keep reading.
+    
+    
     ..  [#node_only_visited_once] Remember that we don't allow a node to be visited more than once, i.e. only one 
                                   vehicle can visit a node in a solution.
 
