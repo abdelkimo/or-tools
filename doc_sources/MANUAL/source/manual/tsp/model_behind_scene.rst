@@ -16,6 +16,15 @@ The model behind the scene: the main decision variables
         We describe the main decision variables of the model used in the RL.
         In section~\ref{manual/under_the_hood/rl:hood-rl}, we describe the inner mechanisms of the RL in details.
 
+    A node can be:
+    
+      - a transit node;
+      - a starting depot;
+      - an ending depot;
+      - a starting and an ending depot.
+      
+    A depot **cannot** be an transit node.
+    The number of vehicles can be arbitrary (within the limit of an ``int``).
     
 The main idea: the node decision variables
 ---------------------------------------------

@@ -18,27 +18,86 @@ The model behind the scene: overview
         components will be detailed in this chapter and later in the next two chapters.
         In section~\ref{manual/under_the_hood/rl:hood-rl}, we describe the inner mechanisms of the RL in details.
 
-    tada
+The ``RoutingModel`` class
+---------------------------------------------------
+
+..  only:: draft
+
+    All ingredients are defined or accessible within the ``RoutingModel class`` defined in the header 
+    :file:`constraint_solver/routing.h` that is mandatory to use the RL.
+
+    There are several constructors available.
+    
+    If there is only 1 depot:
+    
+    ..  code-block:: c++
+    
+        //  42 nodes and 7 routes/vehicles
+        RoutingModel routing(42, 7);
+        //  depot is node with NodeIndex 5
+        routing.SetDepot(5);
+
+    If there are several start/end depots:
+    
+    ..  code-block:: c++
+    
+        //  create multi depots
+        std::vector<std::pair<RoutingModel::NodeIndex, RoutingModel::NodeIndex> > depots(2);
+        depots[0] = std::make_pair(1,5);
+        depots[1] = std::make_pair(7,1);
+  
+        RoutingModel VRP(9, 2, depots);
+        
+    A node can be:
+    
+      - a transit node;
+      - a starting depot;
+      - an ending depot;
+      - a starting and an ending depot.
+      
+    A depot **cannot** be an transit node.
+    The number of vehicles can be arbitrary (within the limit of an ``int``).
+
+
+
 
 ..  _var_defining_nodes_and_routes:
 
 Variables
 -------------
 
+..  only:: draft
+
+    vlv
+
 
 Path variables
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
+..  only:: draft
+
+    vlv
 
 
-Main decision  variables
+Main decision variables
 """"""""""""""""""""""""""
+
+..  only:: draft
+
+    vlv
 
 Vehicles
 """""""""""
+..  only:: draft
+
+    vlv
+
 
 Disjunctions
 """""""""""""""
+..  only:: draft
+
+    vlv
 
 Dimension variables
 ^^^^^^^^^^^^^^^^^^^

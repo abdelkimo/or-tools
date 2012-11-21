@@ -9,53 +9,20 @@ The Routing Library (RL)
     
         Each node has a unique identifier of type ``RoutingModel::NodeIndex`` 
         but we use internally a unique index of type ``int64`` (see the section :ref:`rl_model_behind_scene_decision_v`).
+        The model is explained in broad terms in the section :ref:`rl_model_behind_scene_overview`.
 
     ..  raw:: latex 
     
         Each node has a unique identifier of type \code{RoutingModel::NodeIndex}-v
         but we use internally a unique index of type \code{int64} 
         (see section~\ref{manual/tsp/model_behind_scene:rl-model-behind-scene-decision-v}).
+        The model is explained in broad terms in 
+        the section~\ref{manual/tsp/model_behind_scene_overview:rl-model-behind-scene-overview}.
 
-The ``RoutingModel`` class
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-..  only:: draft
 
     All ingredients are defined or accessible within the ``RoutingModel class`` defined in the header 
     :file:`constraint_solver/routing.h` that is mandatory to use the RL.
 
-    There are several constructors available.
-    
-    If there is only 1 depot:
-    
-    ..  code-block:: c++
-    
-        //  42 nodes and 7 routes/vehicles
-        RoutingModel routing(42, 7);
-        //  depot is node with NodeIndex 5
-        routing.SetDepot(5);
-
-    If there are several start/end depots.
-    
-    ..  code-block:: c++
-    
-        //  create multi depots
-        std::vector<std::pair<RoutingModel::NodeIndex, RoutingModel::NodeIndex> > depots(2);
-        depots[0] = std::make_pair(1,5);
-        depots[1] = std::make_pair(7,1);
-  
-        RoutingModel VRP(9, 2, depots);
-        
-    A node can be:
-    
-      - a transit node;
-      - a starting depot;
-      - an ending depot;
-      - a starting and an ending depot.
-      
-    A depot **cannot** be an transit node.
-    The number of vehicles can be arbitrary (within the limit of an ``int``).
-    
 Global constants
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -142,9 +109,9 @@ Variables
 Path variables
 """""""""""""""""""""""
 
-.. _index_to_node_.resize(size + vehicles_);
-   node_to_index_.resize(nodes_, kUnassigned);
-   index_to_vehicle_.resize(size + vehicles_, kUnassigned);
+..  index_to_node_.resize(size + vehicles_);
+    node_to_index_.resize(nodes_, kUnassigned);
+    index_to_vehicle_.resize(size + vehicles_, kUnassigned);
 
 Dimension variables
 """""""""""""""""""""""
@@ -152,7 +119,8 @@ Dimension variables
 
 Constraints
 ^^^^^^^^^^^^
-    
+
+
 ``NoCycle`` constraint
 """""""""""""""""""""""
 
