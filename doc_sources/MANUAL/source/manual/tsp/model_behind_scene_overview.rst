@@ -48,6 +48,28 @@ The ``RoutingModel`` class
   
         RoutingModel VRP(9, 2, depots);
         
+    or 
+    
+    ..  code-block:: c++
+    
+        //  create multi depots
+        std::vector<RoutingModel::NodeIndex>  start_depots(2);
+        std::vector<RoutingModel::NodeIndex>  end_depots(2);
+        start_depots[0] = 1;
+        end_depots[0] = 5;
+        start_depots[1] = 7;
+        end_depots[1] = 1;
+  
+        RoutingModel VRP(9, 2, start_depots, end_depots);
+
+    Notice that the space between the two ending `">"` in:
+    
+    ..  code-block:: c++
+    
+        std::vector<std::pair<RoutingModel::NodeIndex, RoutingModel::NodeIndex> > depots(2);
+        
+    is mandatory.
+    
     A node can be:
     
       - a transit node;

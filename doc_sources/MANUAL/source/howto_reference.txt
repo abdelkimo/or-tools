@@ -25,6 +25,7 @@ IMAGES:
 # How to convert pdf to png for html documents:
 convert -density 300 golomb_4_non_optimal.pdf -resize 40% golomb_4_non_optimal.png
 convert -quality 100 -density 1200x1200 symmetry_helper_function.pdf symmetry_helper_function.png
+convert -density 300 rl_original_graph.ps rl_original_graph.png
 
 ..  raw:: latex
 

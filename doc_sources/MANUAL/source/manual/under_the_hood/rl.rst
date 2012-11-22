@@ -44,7 +44,8 @@ Global constants
     
     (pu) stands for ``public`` and (pr) for ``private``.
     The ``int64 Size() const`` method returns  ``nodes_`` + ``vehicles_`` - ``start_end_count_``, which is 
-    exactly the minimal number of variables needed to model the problem at hand with one variable per node (see below). 
+    exactly the minimal number of variables needed to model the problem at hand with one variable per node (see next
+    subsection). 
 
 
 ..  _auxiliary_graph_detailed:
@@ -54,9 +55,58 @@ The auxiliary graph
 
 ..  only:: draft
 
-    Details of the auxiliary graph...
+    The auxiliary graph is a graph constructed from the original graph. Let's take the original graph of the next figure:
+    
+    ..  image:: images/rl_original_graph.*
+        :align: center
+        :width: 250 px
 
+    There are nine nodes of which two are starting depots (1 and 3), one is an ending 
+    depot (7) and one is a starting and ending depot (4). The ``NodeIndex``\es range from 0 to 8.
 
+    There are ``start_end_count_ = 4`` distinct depots (nodes 1, 3, 4 and 7) and ``(nodes_ - start_end_count_) = 5`` transit nodes (nodes 0, 2, 5, 6 and 8).
+    
+    In this example, we take four vehicles/routes:
+    
+    * route 0: starts at 1 and ends at 4
+    * route 1: starts at 3 and ends at 4
+    * route 2: starts at 3 and ends at 7
+    * route 3: starts at 4 and ends at 7
+    
+    Here is the code:
+    
+    ..  code-block:: c++
+    
+        std::vector<std::pair<RoutingModel::NodeIndex, 
+                                       RoutingModel::NodeIndex> > depots(4);
+        depots[0] = std::make_pair(1,4);
+        depots[1] = std::make_pair(3,4);
+        depots[2] = std::make_pair(3,7);
+        depots[3] = std::make_pair(4,7);
+        
+        RoutingModel VRP(9, 4, depots);
+        
+    The auxiliary graph is obtained by keeping the transit nodes and 
+    adding a starting and ending depot for each vehicle/route like in the following figure:
+    
+    ..  image:: images/rl_auxiliary_graph.*
+        :align: center
+        :width: 250 px
+    
+    Node 1 is not duplicated because there is only one route (route 0) that starts from 1. Node 3
+    is duplicated once because there are two routes (routes 1 and 2) that start from 3. Node 7 has been 
+    duplicated once because two routes (routes 2 and 3) end at 7 and finally there are two added copies 
+    of node 4 because two routes (routes 0 and 4) end at 4 and one route (route 3) starts from 4.
+    
+    The number of variables is:
+    
+    ..  math:: 
+       
+        \text{nodes\_} + \text{vehicles\_} - \text{start\_end\_count\_} = 9 + 4 - 4 = 9.
+        
+    These nine variables correspond to all the nodes in the auxiliary graph leading somewhere, i.e. starting depots 
+    and transit node in the auxiliary graph.
+    
 ..  _uth_next_variables_details:
 
 ``nexts_`` variables
@@ -84,13 +134,14 @@ The auxiliary graph
         int64 Size() const { return nodes_ + vehicles_ - start_end_count_; }
     
     For the domain of each ``IntVar``, we use ``[0,Size() + vehicles_ - 1]``.
-    The ``vehicles_`` more ``int64`` indices represent the end depots.
+    The ``vehicles_`` more ``int64`` indices represent the end depots. Thus, to each node in the auxiliary graph 
+    corresponds a unique ``int64`` index.
     
     ..  topic:: Numbering of the ``int64`` indices
     
         Original nodes that leads somewhere (starting depots and transit nodes) 
         are numbered from 0 to ``nodes_ + vehicles_ - start_end_count_ - 1``,
-        then the duplicated start depots, then the end depots (duplicated or not).
+        then the end depots (duplicated or not).
         
         The numbering corresponds to the numbering of the original nodes and the order in which the (start, end) 
         pairs of depots are given.
@@ -99,6 +150,37 @@ The auxiliary graph
         one index for each combination of depots and vehicles.
         
         This numbering is done in the method ``SetStartEnd()``.
+        
+        
+    For our example, this numbering is:
+    
+    ..  image:: images/rl_auxiliary_graph_numberred.*
+        :align: center
+        :width: 250 px
+
+[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 0 -> Node index 0
+[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 1 -> Node index 1
+[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 2 -> Node index 2
+[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 3 -> Node index 3
+[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 4 -> Node index 4
+[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 5 -> Node index 5
+[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 6 -> Node index 6
+[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 7 -> Node index 8
+[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 8 -> Node index 3
+[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 9 -> Node index 4
+[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 10 -> Node index 4
+[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 11 -> Node index 7
+[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 12 -> Node index 7
+[21:02:02] src/constraint_solver/routing.cc:1354: Node index 0 -> Variable index 0
+[21:02:02] src/constraint_solver/routing.cc:1354: Node index 1 -> Variable index 1
+[21:02:02] src/constraint_solver/routing.cc:1354: Node index 2 -> Variable index 2
+[21:02:02] src/constraint_solver/routing.cc:1354: Node index 3 -> Variable index 3
+[21:02:02] src/constraint_solver/routing.cc:1354: Node index 4 -> Variable index 4
+[21:02:02] src/constraint_solver/routing.cc:1354: Node index 5 -> Variable index 5
+[21:02:02] src/constraint_solver/routing.cc:1354: Node index 6 -> Variable index 6
+[21:02:02] src/constraint_solver/routing.cc:1354: Node index 7 -> Variable index -1
+[21:02:02] src/constraint_solver/routing.cc:1354: Node index 8 -> Variable index 7
+
         
         
 
