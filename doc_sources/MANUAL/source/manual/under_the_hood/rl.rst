@@ -40,12 +40,14 @@ Global constants
                                (starting and ending)      - ``Size()``
                                depots.
     ``kUnassigned`` (pu)       ``static const int`` = -1  ``kUnassigned``
+    ``Size()`` (pu)            Number of ``IntVar``       ``Size()``
+                               variables.
     =========================  =========================  ==========================================================
     
     (pu) stands for ``public`` and (pr) for ``private``.
     The ``int64 Size() const`` method returns  ``nodes_`` + ``vehicles_`` - ``start_end_count_``, which is 
     exactly the minimal number of variables needed to model the problem at hand with one variable per node (see next
-    subsection). 
+    subsection). ``kUnassigned`` is used for unassigned indices.
 
 
 ..  _auxiliary_graph_detailed:
@@ -54,6 +56,8 @@ The auxiliary graph
 ^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
+
+    You can find the source code in the file :file:`rl_auxiliary_graph.cc`.
 
     The auxiliary graph is a graph constructed from the original graph. Let's take the original graph of the next figure:
     
@@ -134,7 +138,7 @@ The auxiliary graph
         int64 Size() const { return nodes_ + vehicles_ - start_end_count_; }
     
     For the domain of each ``IntVar``, we use ``[0,Size() + vehicles_ - 1]``.
-    The ``vehicles_`` more ``int64`` indices represent the end depots. Thus, to each node in the auxiliary graph 
+    The ``vehicles_`` more ``int64`` indices represent the end depots. Thus, to each of the ``Size()`` nodes in the auxiliary graph 
     corresponds a unique ``int64`` index.
     
     ..  topic:: Numbering of the ``int64`` indices
@@ -158,32 +162,89 @@ The auxiliary graph
         :align: center
         :width: 250 px
 
-[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 0 -> Node index 0
-[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 1 -> Node index 1
-[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 2 -> Node index 2
-[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 3 -> Node index 3
-[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 4 -> Node index 4
-[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 5 -> Node index 5
-[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 6 -> Node index 6
-[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 7 -> Node index 8
-[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 8 -> Node index 3
-[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 9 -> Node index 4
-[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 10 -> Node index 4
-[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 11 -> Node index 7
-[21:02:02] src/constraint_solver/routing.cc:1350: Variable index 12 -> Node index 7
-[21:02:02] src/constraint_solver/routing.cc:1354: Node index 0 -> Variable index 0
-[21:02:02] src/constraint_solver/routing.cc:1354: Node index 1 -> Variable index 1
-[21:02:02] src/constraint_solver/routing.cc:1354: Node index 2 -> Variable index 2
-[21:02:02] src/constraint_solver/routing.cc:1354: Node index 3 -> Variable index 3
-[21:02:02] src/constraint_solver/routing.cc:1354: Node index 4 -> Variable index 4
-[21:02:02] src/constraint_solver/routing.cc:1354: Node index 5 -> Variable index 5
-[21:02:02] src/constraint_solver/routing.cc:1354: Node index 6 -> Variable index 6
-[21:02:02] src/constraint_solver/routing.cc:1354: Node index 7 -> Variable index -1
-[21:02:02] src/constraint_solver/routing.cc:1354: Node index 8 -> Variable index 7
-
+    If you set the ``FLAGS_log_level`` to 2 and skip the log prefix:
+    
+    ..  code-block:: bash
+    
+        ./rl_auxiliary_graph --log_level=2 --log_prefix=false
         
-        
+    you get:
+    
+    ..  code-block:: text 
+    
+        Number of nodes: 9
+        Number of vehicles: 4
+        Variable index 0 -> Node index 0
+        Variable index 1 -> Node index 1
+        Variable index 2 -> Node index 2
+        Variable index 3 -> Node index 3
+        Variable index 4 -> Node index 4
+        Variable index 5 -> Node index 5
+        Variable index 6 -> Node index 6
+        Variable index 7 -> Node index 8
+        Variable index 8 -> Node index 3
+        Variable index 9 -> Node index 4
+        Variable index 10 -> Node index 4
+        Variable index 11 -> Node index 7
+        Variable index 12 -> Node index 7
+        Node index 0 -> Variable index 0
+        Node index 1 -> Variable index 1
+        Node index 2 -> Variable index 2
+        Node index 3 -> Variable index 3
+        Node index 4 -> Variable index 4
+        Node index 5 -> Variable index 5
+        Node index 6 -> Variable index 6
+        Node index 7 -> Variable index -1
+        Node index 8 -> Variable index 7
 
+    The name ``Variable index`` is maybe a little bit abusive as there are only ``Size()`` ``IntVar`` 
+    variables (9 in our example).
+    These variable indices are the ``int64`` indices we use internally in the RL. The ``Node Index``\es correspond to the 
+    unique ``NodeIndex``\es of each node in the original graph. Notice that ``NodeIndex`` 7 doesn't have a 
+    corresponding ``int64`` index (-1 means exactly that) and that ``NodeIndex`` 8 corresponds to ``int64`` 7 (not 8!).
+    
+    Here is one possible solution:
+    
+    ..  image:: images/rl_sol1.*
+        :align: center
+        :width: 250 px
+    
+    We output the routes, first with the ``NodeIndex``\es and then with the internal ``int64`` indices with: 
+    
+    ..  code-block:: c++
+    
+          for (int p = 0; p < VRP.vehicles(); ++p) {
+            LG << "Route: " << p;
+            string route;
+            string index_route;
+            for (int64 index = VRP.Start(p); !VRP.IsEnd(index); index = Solution->Value(VRP.NextVar(index))) {
+              route = StrCat(route, StrCat(VRP.IndexToNode(index).value(), " -> "));
+              index_route = StrCat(index_route, StrCat(index, " -> "));
+            }
+            route = StrCat(route, VRP.IndexToNode(VRP.End(p)).value());
+            index_route = StrCat(index_route, VRP.End(p));
+            LG << route;
+            LG << index_route;
+          }
+  
+    and get:
+    
+    ..  code-block:: text
+    
+        Route: 0
+        1 -> 0 -> 2 -> 4
+        1 -> 0 -> 2 -> 9
+        Route: 1
+        3 -> 5 -> 4
+        3 -> 5 -> 10
+        Route: 2
+        3 -> 6 -> 7
+        8 -> 6 -> 11
+        Route: 3
+        4 -> 8 -> 7
+        4 -> 7 -> 12
+    
+    [PUT HERE TEXT WRITTEN IN NOTEBOOK ABOUT THE ``int64`` indices (list of properties)]
     
 Variables
 ^^^^^^^^^^

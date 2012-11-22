@@ -528,7 +528,7 @@ Our :program:`cpviz`'s output of the search tree
             :height: 50 pt
             
         ..  image:: images/real_tree/real_tree5.*
-            :height: 200 pt
+            :height: 170 pt
 
         ..  raw:: html 
         

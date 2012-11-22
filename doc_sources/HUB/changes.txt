@@ -7,3 +7,4 @@
   - Chapter 5 intro.
   - 12.1 added.
   - pending references corrected.
+  - png images: quality improved.

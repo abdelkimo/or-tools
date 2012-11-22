@@ -66,6 +66,7 @@ and a valid index :math:`i`.
 ..  figure:: images/search_tree0.*
     :alt: The search space is divided in two search sub-trees.
     :align: center
+    :width: 200px
     
     The search space is divided in two search sub-trees
 
