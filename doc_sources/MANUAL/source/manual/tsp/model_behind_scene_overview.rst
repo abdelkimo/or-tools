@@ -90,7 +90,10 @@ Variables
 
 ..  only:: draft
 
-    vlv
+    Basically, there are two type of variables: 
+      * Path variables: the main decision variables and additional variables to describe the different routes and
+      * Dimension variables: these variables allow to add side contraints like time-windows, capacities, etc.
+
 
 
 Path variables
@@ -98,15 +101,38 @@ Path variables
 
 ..  only:: draft
 
-    vlv
-
+    Path variables describe the different routes.
 
 Main decision variables
 """"""""""""""""""""""""""
 
 ..  only:: draft
 
-    vlv
+    ..  only:: html
+    
+        The previous section :ref:`rl_model_behind_scene_decision_v` describes the main variables.
+        
+    ..  raw:: latex
+    
+        Previous section~\ref{manual/tsp/model_behind_scene:rl-model-behind-scene-decision-v} describes the main variables.
+
+        
+    You can have access to the main variables with the method ``NextVar(int64)``:
+    
+    ..  code-block:: c++
+    
+        IntVar* var = routing.NextVar(42);
+        
+    ``var`` is a pointer to the ``IntVar`` corresponding to the node with ``int64`` 42 index.
+    In a solution ``solution``, the value of this variable gives the ``int64`` index of the next node visited after this node:
+    
+    ..  code-block:: c++
+    
+        int64 next_node = solution.Value(var);
+        
+    
+    
+    
 
 Vehicles
 """""""""""
