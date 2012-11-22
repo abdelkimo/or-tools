@@ -42,7 +42,8 @@ The ``RoutingModel`` class
     ..  code-block:: c++
     
         //  create multi depots
-        std::vector<std::pair<RoutingModel::NodeIndex, RoutingModel::NodeIndex> > depots(2);
+        std::vector<std::pair<RoutingModel::NodeIndex, 
+                                       RoutingModel::NodeIndex> > depots(2);
         depots[0] = std::make_pair(1,5);
         depots[1] = std::make_pair(7,1);
   
@@ -66,7 +67,8 @@ The ``RoutingModel`` class
     
     ..  code-block:: c++
     
-        std::vector<std::pair<RoutingModel::NodeIndex, RoutingModel::NodeIndex> > depots(2);
+        std::vector<std::pair<RoutingModel::NodeIndex, 
+                                       RoutingModel::NodeIndex> > depots(2);
         
     is mandatory.
     
@@ -91,17 +93,26 @@ Variables
 ..  only:: draft
 
     Basically, there are two type of variables: 
-      * Path variables: the main decision variables and additional variables to describe the different routes and
-      * Dimension variables: these variables allow to add side contraints like time-windows, capacities, etc.
+      * **Path variables**: the main decision variables and additional variables to describe the different routes and
+      * **Dimension variables**: these variables allow to add side constraints like time-windows, capacities, etc.
 
-
+    From now on in this section, we only use the internal ``int64`` indices. This is worth a warning:
+    
+    ..  warning::
+    
+        For the rest of this section, we only use the internal ``int64`` indices.
 
 Path variables
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
-    Path variables describe the different routes.
+    Path variables describe the different routes. There are three types of path variables:
+    
+      * ``NextVar(i)``: the main decision variables.
+      * ``VehicleVar(i)``: represents the vehicle/route index to which node ``i`` belongs in the solution.
+      * ``ActiveVar(i)``: a Boolean variable that indicates if a node ``i`` is visited or not.
+
 
 Main decision variables
 """"""""""""""""""""""""""
@@ -123,29 +134,67 @@ Main decision variables
     
         IntVar* var = routing.NextVar(42);
         
-    ``var`` is a pointer to the ``IntVar`` corresponding to the node with ``int64`` 42 index.
+    ``var`` is a pointer to the ``IntVar`` corresponding to the node with the ``int64`` 42 index.
     In a solution ``solution``, the value of this variable gives the ``int64`` index of the next node visited after this node:
     
     ..  code-block:: c++
     
         int64 next_node = solution.Value(var);
         
-    
-    
-    
-
 Vehicles
 """""""""""
 ..  only:: draft
 
-    vlv
+    Different routes/vehicles service different nodes. For each node ``i``, ``VehicleVar(i)`` represents the ``IntVar*`` that 
+    gives the ``int`` index of the route/vehicle servicing node ``i`` in the solution:
+    
+    ..  code-block:: c++
+    
+        int route_number = solution->Value(routing.VehicleVar(i));
 
+    Taking a shortcut in the notation, we have that:
+    
+      if ``NextVar(i) == j`` then ``VehicleVar(j) == VehicleVar(i)``.
 
-Disjunctions
-"""""""""""""""
+    That is, both nodes ``i`` and ``j`` are served by the same vehicle.
+    
+    To grab the first and last node (starting and ending depot) of a route/vehicle, we have already seen the 
+    ``Start()`` and ``End()`` methods:
+    
+    ..  code-block:: c++
+    
+        int64 starting_depot = routing.Start(i);
+        int64 ending_depot = routing.End(i);
+        
+
+``Disjunction``\s and optional nodes 
+""""""""""""""""""""""""""""""""""""""
 ..  only:: draft
 
-    vlv
+    A node doesn't have to be visited. When nodes are either optional or part of a ``Disjunction``, i.e. part of a subset 
+    of nodes from which only one node can be visited in one solution.
+    
+    ``ActiveVar(i)`` returns a boolean ``IntVar*`` (a ``IntVar`` variable with a {0, 1} domain) indicating if the node ``i``
+    is visited or not in the solution. The way to describe a node that is not visited is to make its ``NextVar(i)`` points 
+    to itself. Thus, and again with an abuse of notation, we have:
+    
+      ``ActiveVar(i) == (NextVar(i) != i)``.
+    
+    ..  only:: html
+    
+        We'll discuss ``Disjunction``\s and optional nodes  in details in the 
+        section :ref:`disjunctions` when we will transform 
+        a Cumulative Chinese Postman Problem (CCPP) into a *Generalized TSP* (GTSP). A GTSP is like a TSP except that you have 
+        clusters of nodes you want to visit, i.e. you only want to visit 1 node in each cluster.
+
+    ..  raw:: latex
+    
+        We'll discuss \code{Disjunction}s and optional nodes in details in  
+        section~\ref{manual/arc_routing/disjunctions:disjunctions} when we will transform 
+        a Cumulative Chinese Postman Problem (CCPP) into a \emph{Generalized TSP} (GTSP). 
+        A GTSP is like a TSP except that you have 
+        clusters of nodes you want to visit, i.e. you only want to visit 1 node in each cluster.
+
 
 Dimension variables
 ^^^^^^^^^^^^^^^^^^^

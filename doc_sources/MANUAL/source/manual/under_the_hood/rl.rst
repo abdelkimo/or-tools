@@ -217,8 +217,10 @@ The auxiliary graph
             LG << "Route: " << p;
             string route;
             string index_route;
-            for (int64 index = VRP.Start(p); !VRP.IsEnd(index); index = Solution->Value(VRP.NextVar(index))) {
-              route = StrCat(route, StrCat(VRP.IndexToNode(index).value(), " -> "));
+            for (int64 index = VRP.Start(p); !VRP.IsEnd(index); index = 
+                                      Solution->Value(VRP.NextVar(index))) {
+              route = StrCat(route, 
+                            StrCat(VRP.IndexToNode(index).value(), " -> "));
               index_route = StrCat(index_route, StrCat(index, " -> "));
             }
             route = StrCat(route, VRP.IndexToNode(VRP.End(p)).value());
@@ -251,6 +253,14 @@ Variables
 
 Path variables
 """""""""""""""""""""""
+
+..  only:: draft
+
+    Internally, three ``private`` ``std::vector<IntVar*>`` are defined:
+
+      * ``nexts_``: 
+      * ``vehicles_vars_``: 
+      * ``active_``:
 
 ..  index_to_node_.resize(size + vehicles_);
     node_to_index_.resize(nodes_, kUnassigned);
