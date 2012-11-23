@@ -226,43 +226,6 @@ Dimension variables
 
     
 
-    
-To summarize
-^^^^^^^^^^^^^
-
-..  only:: draft
-
-    Here is a little summary:
-    
-    ..  rubric:: Modelling variables
-    
-    All modelling variables describing nodes return ``int64`` indices corresponding to nodes in routes.
-    
-    ..  tabularcolumns:: |p{3cm}|p{3cm}| p{8cm}|
-    
-    =========================  ===================  ====================================================
-    Variables                  Return types         Descriptions
-    =========================  ===================  ====================================================
-    ``NextVar(int64)``         ``int64``            ``int64`` index of the direct successor of a node 
-                                                    (main decision variables).
-    ``VehicleVar(int64)``      ``int``              ``int`` index of the vehicle visiting a node.
-    ``ActiveVar(int64)``       ``boolean``          ``true`` if node is visited, ``false`` if not 
-                                                    (optional nodes)
-    ``Start(int)``             ``int64``
-    ``End(int)``               ``int64``
-    =========================  ===================  ====================================================
-
-        
-
-..  comment: 
-
-    IntVar* CumulVar(int64 index, const string& name) const;
-      // Returns the transit variable for the dimension named 'name'.
-      IntVar* TransitVar(int64 index, const string& name) const;
-      // Return the slack variable for the dimension named 'name'.
-      IntVar* SlackVar(int64 index, const string& name) const;
-
-
 Constraints 
 ---------------
 
@@ -285,60 +248,38 @@ No cycle constraint
         :align: center
 
     It is often easy to obtain optimal solutions when we allow cycles (a) but extremely difficult to obtain 
-    a real solution (b), i.e. without cycles. Several constraints have been proposed, each with its cons and pros.
+    a real solution (b), i.e. without cycles. Several constraints have been proposed in the scientific literature, 
+    each with its cons and pros.
     
-    In the RL, we use our dedicated ``NoCycle`` constraint (defined in :file:`constraint_solver/constraints.cc`).
+    ..  only:: html 
     
-    [TO BE COMPLETED]
+        In the RL, we use our dedicated ``NoCycle`` constraint (defined in :file:`constraint_solver/constraints.cc`).
+        We don't say no more about this constraint in this section and refer the reader to the subsection 
+        :ref:`uth_nocycle_constraint` for 
+        a detailed account of our internal ``NoCycle`` constraint.
     
-    You can use your own *no cycle constraint*:
+    ..  raw:: latex 
     
-    [NOT YET]
+        In the RL, we use our dedicated \code{NoCycle} constraint (defined in \code{constraint\_solver/constraints.cc}).
+        We don't say no more about this constraint in this section and refer the reader to 
+        subsection~\ref{manual/under_the_hood/rl:uth-nocycle-constraint} for 
+        a detailed account of our internal \code{NoCycle} constraint.
     
         
     
-To summarize
-^^^^^^^^^^^^^
-
-..  only:: draft
-
-    Here is a little summary:
-    
-    ..  rubric:: Type to represent nodes
-    
-    ..  tabularcolumns:: |p{3cm}|p{3cm}| p{8cm}|
-    
-    =========================  ===================  ====================================================
-    What                       Types                Comments
-    =========================  ===================  ====================================================
-    True node *Ids*            ``NodeIndex``        Unique for each node from :math:`0` to :math:`n-1`.
-    Indices to follow routes   ``int64``            Not unique for each node. Could be bigger than
-                                                    :math:`n-1` if starting or ending node of a route.
-    =========================  ===================  ====================================================
-    
-    To follow a route, use ``int64`` indices. If you need to deal with the corresponding nodes, use the 
-    ``IndexToNode(int64)`` method.
-        
-    ..  rubric:: Modelling variables
-    
-    All modelling variables describing nodes return ``int64`` indices corresponding to nodes in routes.
-    
-    ..  tabularcolumns:: |p{3cm}|p{3cm}| p{8cm}|
-    
-    =========================  ===================  ====================================================
-    Variables                  Return types         Descriptions
-    =========================  ===================  ====================================================
-    ``NextVar(int64)``         ``int64``            ``int64`` index of the direct successor of a node 
-                                                    (main decision variables).
-    ``Vehicle(int64)``         ``int``              ``int`` index of the vehicle visiting a node.
-    ``Active(int64)``          ``boolean``          ``true`` if node is visited, ``false`` if not 
-                                                    (optional nodes)
-    ``Start(int)``             ``int64``
-    ``End(int)``               ``int64``
-    =========================  ===================  ====================================================
 
 Objective function
 -------------------
+
+..  only:: draft
+
+    The objective function is defined by an ``IntVar``. To get access to it, call ``CostVar()``:
+    
+    ..  code-block:: c++
+    
+        IntVar* obj = routing.CostVar();
+
+    The RL tries to minimize this ``obj`` variable.
 
 Miscellaneous
 ------------------

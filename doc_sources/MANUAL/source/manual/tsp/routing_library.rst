@@ -37,19 +37,19 @@ Out of the box models
     The RL lets you model a wide range of vehicle
     routing problems from the Travelling Salesman Problem (and its
     variants, ATSP, TSPTW, ...) to multi-vehicles problems with *dimension*
-    constraints (capacities, time windows) and various *routing*
-    constraints (optional nodes, alternate nodes,...). 
+    constraints (capacities, time windows, ...) and various *routing*
+    constraints (optional nodes, alternate nodes, ...). 
     
     ..  only:: html 
     
         Have a look at the subsections :ref:`rl_dimensions_overview` and :ref:`rl_disjunctions_overview` below to have an idea 
-        on the additional constraints you can use in this model.
+        of the additional constraints you can use in this model.
 
     ..  raw:: latex 
     
         Have a look at subsections~\ref{manual/tsp/routing_library:rl-dimensions-overview} and
         and~\ref{manual/tsp/routing_library:rl-disjunctions-overview} below to have an idea 
-        on the additional constraints you can use in this model.
+        of the additional constraints you can use in this model.
 
 
 On top of the CP library
@@ -124,27 +124,68 @@ This is equivalent to calling the program with the gflag ``routing_first_solutio
 Dimensions
 ^^^^^^^^^^^^
 
-[TO BE WRITTEN]
+..  only:: draft
+
+    Often, real problems need to take into account some accumulated quantities along (the edges and/or the nodes of) 
+    the routes. To model such 
+    quantities, the RL proposes the concept of *dimensions*. A dimension is basically a set of variables that describe some 
+    quantities (given by callbacks) accumulated along the routes. These variables are associated with each node of the 
+    graph. You can add as many dimensions as you wish in an automated and easy fashion: just call the appropriate
+    ``AddDimension()`` method(s) and the RL creates and manages these variables automatically.
+    
+    You can add upper bounds (we develop this concept later) 
+    on a dimension and a capacity limits per route/vehicle on accumulated quantities for a given 
+    dimension.
+    
+    Examples of dimensions are weight or volume carried, distance and time.
 
 ..  _rl_disjunctions_overview:
 
-Disjunctions
+Disjunctions  
 ^^^^^^^^^^^^^
 
-[TO BE WRITTEN]
+..  only:: draft
 
-Routes are not mandatory
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+    Nodes don't have to be visited, i.e. some nodes can be optional. For this, the RL uses the ``struct`` ``Disjunction``
+    which basically is a set of nodes. In our model, we visit at most one node in each ``Disjunction``. If these sets are 
+    singletons, then you have optional nodes. You can also force to visit at least one node in each or some ``Disjunction``.
+    
+    Again, we have automated and simplified (and optimized!) the process to create these sets: just call the appropriate 
+    ``AddDisjunction()`` method(s).
+    
+Routes/Vehicles are not mandatory
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-[TO BE WRITTEN]
+..  only:: draft
+
+    As nodes don't have to be visited, vehicles/routes don't have to be used, i.e. some vehicles/routes can be optional.
+    You might want to minimize the number of vehicles needed as part of your problem.
+
+
+Heterogeneous fleet of vehicles 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   
+..  only:: draft
+
+    The RL offers the possibility to deal with different vehicles with each its own cost(s)/particularities.
+
+Costs
+^^^^^^^^^^^^^^
+  
+..  only:: draft
+
+    Basically, costs are associated (with callbacks) to each edge/arc (i,j) and the objective function sums these costs 
+    along the different routes in a solution. Our goal is to minimize this sum. The RL let you easily add some penalties 
+    to for instance non-visited nodes, add some cost to use a particular vehicle, etc. Actually, you are completely free
+    to add whatever terms to this sum.
+
 Limitations
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
     There are several limitations [#RL_limitations]_ as in any code. These limitations are mainly due to 
-    coding choices and can be worked around. We list 
+    coding choices and can often be worked around. We list 
     the most important ones.
     
     ..  [#RL_limitations] Or can you call them *features* of the RL?
@@ -155,10 +196,16 @@ Only one model
 ..  only:: draft
 
     We wrote several times that there is no universal solver [#no_universal_solver_again]_ for all the problems.
+    This is of course also true for the RL. We use a node-based model to solve quite a lot of different problems 
+    but not all Routing Problems can be solved with the RL. In particular, common Arc Routing Problems are probably 
+    best solved with a completely different model [#RL_not_universal_solver]_.
 
 
     ..  [#no_universal_solver_again] At least, to the best of our knowledge. See the subsection :ref:`CP_holy_grail` for more.
 
+    ..  [#RL_not_universal_solver] See the chapter on Arc Routing for a discussion about which Arc Routing Problems 
+        can be solved by the RL.
+    
 Number of nodes
 """"""""""""""""""
 
@@ -208,13 +255,16 @@ A depot is a depot
 
 ..  only:: draft
 
-    This means you can only start from a depot or arrive to a depot, not transit through a depot.
+    This means you can only start from a depot and/or arrive to a depot, not transit through a depot.
     
 The RL returns approximate solutions 
 """""""""""""""""""""""""""""""""""""""""
 
 ..  only:: draft
 
-    Most Routing Problems are intractable and we are only interested in good approximations. The RL was developed with 
-    this goal in mind. 
+    Most Routing Problems are intractable and we are mainly interested in good approximations. 
+    This is not really a limitation. You just need to know that by default you won't have any guarantee 
+    on the quality of the returned solution(s). 
+    You can *force* the RL to return proven optimal solutions but the RL wasn't coded 
+    with exact solutions and procedures in mind.
 
