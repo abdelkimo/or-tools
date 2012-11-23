@@ -208,4 +208,13 @@ A depot is a depot
 
 ..  only:: draft
 
-    This means you can only start from a depot or arrive to a depot, no transit through a depot.
+    This means you can only start from a depot or arrive to a depot, not transit through a depot.
+    
+The RL returns approximate solutions 
+"""""""""""""""""""""""""""""""""""""""""
+
+..  only:: draft
+
+    Most Routing Problems are intractable and we are only interested in good approximations. The RL was developed with 
+    this goal in mind. 
+

@@ -95,6 +95,7 @@ Variables
     Basically, there are two type of variables: 
       * **Path variables**: the main decision variables and additional variables to describe the different routes and
       * **Dimension variables**: these variables allow to add side constraints like time-windows, capacities, etc.
+        and denote some quantities (the *dimensions*) along the routes.
 
     From now on in this section, we only use the internal ``int64`` indices. This is worth a warning:
     
@@ -134,7 +135,7 @@ Main decision variables
     
         IntVar* var = routing.NextVar(42);
         
-    ``var`` is a pointer to the ``IntVar`` corresponding to the node with the ``int64`` 42 index.
+    ``var`` is a pointer to the ``IntVar`` corresponding to the node with thes ``int64`` 42 index.
     In a solution ``solution``, the value of this variable gives the ``int64`` index of the next node visited after this node:
     
     ..  code-block:: c++
@@ -201,43 +202,27 @@ Dimension variables
 
 ..  only:: draft
 
+    Dimension variables are used to accumulate quantities (or *dimensions*) along the routes. There are three types 
+    of dimension variables (we explain the type of ``d`` just after the list):
     
-
- 
- 
-    [CUT]
-
-    These ``IntVar*`` are the main decision variables and are stored internally in an ``std::vector<IntVar*> next_``.
-    
-    These ``NextVar`` variables are the decision variables. You also have ``Vehicle`` variables for each node that 
-    represents the index of the vehicle visiting that node and ``Active`` boolean variables for each node that 
-    are true if the node is visited and false otherwise.
-
-    ..  only:: html
-    
-        We explain these variables more in details in the subsection :ref:`var_defining_nodes_and_routes`.
+      * ``CumulVar(i, d)``: variables representing the quantity of dimension ``d`` when
+        arriving at the node ``i``.
+      * ``TransitVar(i, d)``: variables representing the quantity of dimension ``d`` added
+        after visiting the node ``i``.
+      * ``SlackVar(i, d)``: non negative slack variables such that (with the same abuse of notation as before):
         
-    ..  raw:: latex
+          if ``NextVar(i) == j`` then ``CumulVar(j) = CumulVar(i) + TransitVar(i) + SlackVar(i)``.
+          
+        For a time dimension, you can think of waiting times.
+
+    ``d`` is a ``const std::string`` 
+    by which a dimension is referenced. You can add as many dimensions as you want [#dimensions_limit]_.
     
-        We explain these variables more in details in 
-        subsection~\ref{manual/tsp/model_behind_scene:var-defining-nodes-and-routes}.
-
-
-
-..  only:: draft
-
-    In this section, we present *automatic variables* that are always present in a routing model. These variables 
-    allow an easy modelisation of the different Routing Problems. But before we do so, we need  to understand an 
-    important distinction between nodes and their indices in solutions. Nodes have a unique ``NodeIndex`` identifier. Solutions
-    to Routing Problems are made of routes. To follow these routes, we use ``int64`` indices. To one node ``NodeIndex``
-    identifier may correspond several ``int64`` indices if the node is visited several times [#node_visited_several_times]_
-    but to one ``int64`` 
-    index corresponds only one node ``NodeIndex``.
     
-    ..  [#node_visited_several_times] For the moment, one node can only be visited by one route/vehicle except if it the 
-        start or end node of several routes. TO BE VERIFIED!
-
-
+    ..  [#dimensions_limit] Well, as many as your memory allows.
+ 
+    We'll play with dimensions in the next chapter when we'll try to solve the the 
+    :ref:`Capacitated Vehicle Routing Problem <chapter_vrp_with_constraints>`.
 
     
 
