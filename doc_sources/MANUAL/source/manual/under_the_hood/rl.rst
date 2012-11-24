@@ -13,7 +13,7 @@ The Routing Library (RL)
 
     ..  raw:: latex 
     
-        Each node has a unique identifier of type \code{RoutingModel::NodeIndex}-v
+        Each node has a unique identifier of type \code{RoutingModel::NodeIndex}
         but we use internally a unique index of type \code{int64} 
         (see section~\ref{manual/tsp/model_behind_scene:rl-model-behind-scene-decision-v}).
         The model is explained in broad terms in 
@@ -28,21 +28,22 @@ Global constants
 
     Some global constant basic paratemers of the model are:
     
-    ..  tabularcolumns:: |p{4cm}|p{6.5cm}| p{5cm}|
+    ..  tabularcolumns:: |p{4.5cm}|p{6.5cm}| p{5cm}|
     
-    =========================  =========================  ==========================================================
-    Variables (pu/pr)          Descriptions               Queries
-    =========================  =========================  ==========================================================
-    ``solver_`` (pr)           CP Solver.                 ``Solver* solver() const``
-    ``nodes_`` (pr)            Total number of nodes.     ``int nodes() const``
-    ``vehicles_`` (pr)         Total number of vehicles.  ``int vehicles() const``
-    ``start_end_count_`` (pr)  Total number of different  None but can be obtained by ``nodes_`` + ``vehicles_`` 
-                               (starting and ending)      - ``Size()``
-                               depots.
-    ``kUnassigned`` (pu)       ``static const int`` = -1  ``kUnassigned``
-    ``Size()`` (pu)            Number of ``IntVar``       ``Size()``
-                               variables.
-    =========================  =========================  ==========================================================
+    ==================================================  ====================================  ==========================================================
+    Variables (pu/pr)                                   Descriptions                          Queries
+    ==================================================  ====================================  ==========================================================
+    ``solver_`` (pr)                                    CP Solver.                            ``Solver* solver() const``
+    ``nodes_`` (pr)                                     Total number of nodes.                ``int nodes() const``
+    ``vehicles_`` (pr)                                  Total number of vehicles.             ``int vehicles() const``
+    ``start_end_count_`` (pr)                           Total number of different             None
+                                                        (starting and ending) depots.         
+    ``kUnassigned`` (pu)                                ``static const int`` = -1             ``kUnassigned``
+    ``kNoPenalty`` (pu)                                 ``static const int`` = -1             ``kNoPenalty``
+    ``RoutingModel:: kFirstNode``  (pu)                 RoutingModel:: NodeIndex(0)           ``RoutingModel:: kFirstNode``
+    ``RoutingModel:: kInvalidNodeIndex`` (pu)           RoutingModel:: NodeIndex(-1)          ``RoutingModel:: kInvalidNodeIndex``
+    ``Size()`` (pu)                                     Number of ``IntVar`` variables.       ``Size()``
+    ==================================================  ====================================  ==========================================================
     
     (pu) stands for ``public`` and (pr) for ``private``.
     The ``int64 Size() const`` method returns  ``nodes_`` + ``vehicles_`` - ``start_end_count_``, which is 
@@ -246,7 +247,21 @@ The auxiliary graph
         4 -> 8 -> 7
         4 -> 7 -> 12
     
-    [PUT HERE TEXT WRITTEN IN NOTEBOOK ABOUT THE ``int64`` indices (list of properties)]
+    ..  rubric:: Some remarks
+    
+    - ``NodeIndex`` and ``int64`` indices don't necessarly match for transit nodes;
+    - For each route, the starting ``int64`` index is smaller than the ending ``int64`` index;
+    - All ending indices are equal or greater than ``Size()``. Because there are ``vehicles_`` ending 
+      ``int64`` indices, this means that all ``int64`` indices equal or greater than ``Size()`` must correspond 
+      to end depots. The method ``IsEnd(int64)`` is thus simply:
+          
+      ..  code-block:: c++
+      
+          bool IsEnd(int64 index) {
+            return index >= Size();
+          }
+          
+  
     
 Variables
 ^^^^^^^^^^

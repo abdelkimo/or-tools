@@ -135,7 +135,7 @@ Main decision variables
     
         IntVar* var = routing.NextVar(42);
         
-    ``var`` is a pointer to the ``IntVar`` corresponding to the node with thes ``int64`` 42 index.
+    ``var`` is a pointer to the ``IntVar`` corresponding to the node with the ``int64`` 42 index.
     In a solution ``solution``, the value of this variable gives the ``int64`` index of the next node visited after this node:
     
     ..  code-block:: c++
