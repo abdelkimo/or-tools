@@ -58,7 +58,7 @@ has to be visited inside a given time interval.
         
         Worse, if you want to avoid certain connections between two nodes :math:`i` and :math:`j` in a complete graph, 
         the classical way to achieve this is to set a very high cost/weight to the edge :math:`(i,j)`. In the RL, you just
-        remove :math:`i` from the domain of the variable ``Next(j)`` of :math:`j` and vice-versa. See the subection 
+        remove :math:`i` from the domain of the variable ``NextVar(j)`` of :math:`j` and vice-versa. See the subection 
         :ref:`tsp_avoid_some_edges` for a detailed
         example.
 
@@ -66,7 +66,7 @@ has to be visited inside a given time interval.
         
         Worse, if you want to avoid certain connections between two nodes $i$ and $j$ in a complete graph, 
         the classical way to achieve this is to set a very high cost/weight to the edge $(i,j)$. In the RL, you just
-        remove $i$ from the domain of the variable $\text{Next}(j)$ of $j$ and vice-versa. 
+        remove $i$ from the domain of the variable $\text{NextVar}(j)$ of $j$ and vice-versa. 
         See subection~\ref{manual/tsp/first_tsp_implementation:tsp-avoid-some-edges} for a detailed
         example.
 
@@ -255,7 +255,7 @@ If during the parse phase an unknown keyword is encountered, the method exists a
    
     Unknown keyword: UNKNOWN
         
-This method has been tested with all the files of the ``TSPLIB`` and should thus read any correct ``TSPLIB`` format
+This method has been tested with all the files of the ``TSPLIB`` and should hopefully read any correct ``TSPLIB`` format
 for the TSP.
 
 

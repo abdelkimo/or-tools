@@ -31,7 +31,7 @@ The main idea: the node decision variables
 
 ..  only:: draft
 
-    The model is node based: routes are paths linking nodes. For each node [#nodes_that_lead_somwhere]_ 
+    The model is node based: routes are paths linking nodes. For each node [#nodes_that_lead_somwhere]_, 
     we keep an ``IntVar*`` variable 
     (stored internally in a ``private`` ``std::vector<IntVar*> nexts_``) that
     tells us where to go next (i.e. to which node). To access these variables, use the ``NextVar()`` method
