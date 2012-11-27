@@ -241,7 +241,7 @@ No cycle constraint
     One of the most difficult constraint to model is to 
     avoid cycles in the solutions. For one tour, we don't want to revisit some nodes
     and we want to visit each node. Often, we get partial solutions like the one depicted on the next 
-    Figure (a):
+    figure (a):
     
     ..  image:: images/cycles.*
         :width: 400px 
