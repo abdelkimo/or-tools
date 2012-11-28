@@ -108,7 +108,8 @@ Path variables
 
 ..  only:: draft
 
-    Path variables describe the different routes. There are three types of path variables:
+    Path variables describe the different routes. There are three types of path variables that can be reached with 
+    the following methods:
     
       * ``NextVar(i)``: the main decision variables.
       * ``VehicleVar(i)``: represents the vehicle/route index to which node ``i`` belongs in the solution.
