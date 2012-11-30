@@ -109,13 +109,14 @@ Parameters
         =========================  =================================  =======================================================  ==============
         File                       Parameter                          Description                                              Default value 
         =========================  =================================  =======================================================  ==============
-        :file:`tsp.h`              ``deterministic_random_seed``      Use deterministic random seeds or not?                   ``true``
-        :math:`~\\`                ``use_symmetric_distances``        Generate a symmetric TSP instance or not?                ``true``
-        :math:`~\\`                ``min_distance``                   Minimum allowed distance between two nodes.              ``10``
-        :math:`~\\`                ``max_distance``                   Maximum allowed distance between two nodes.              ``100`` 
-        :file:`tsplib.h`           ``start_counting_at_1``            TSPLIB convention: first node is 1 (not 0).              ``true``
-        :file:`tsp_epix.h`         ``epix_width``                     Width of the pictures in cm.                             ``10``
-        :math:`~\\`                ``epix_height``                    Height  of the pictures in cm.                           ``10``
+        :file:`tsp.h`              ``tsp_deterministic_random_seed``  Use deterministic random seeds or not?                   ``true``
+        :math:`~\\`                ``tsp_use_symmetric_distances``    Generate a symmetric TSP instance or not?                ``true``
+        :math:`~\\`                ``tsp_min_distance``               Minimum allowed distance between two nodes.              ``10``
+        :math:`~\\`                ``tsp_max_distance``               Maximum allowed distance between two nodes.              ``100`` 
+        :file:`tsplib.h`           ``tsp_start_counting_at_1``        TSPLIB convention: first node is 1 (not 0).              ``true``
+        :file:`tsp_epix.h`         ``tsp_epix_width``                 Width of the pictures in cm.                             ``10``
+        :math:`~\\`                ``tsp_epix_height``                Height  of the pictures in cm.                           ``10``
+        :math:`~\\`                ``tsp_epix_labels``                Print labels or not?                                     ``false``
         :file:`tsp.cc`             ``tsp_size``                       Size of TSP instance. If ``0``, must be read from        ``0``
                                                                       a ``TSPLIB`` file.  
         :math:`~\\`                ``tsp_depot``                      The starting node of the tour.                           ``0``
@@ -125,6 +126,8 @@ Parameters
         :math:`~\\`                ``tsp_solution_file``              Output file with generated solution in TSPLIB format.    empty string
         :math:`~\\`                ``tsp_epix_file``                  ePiX solution file.                                      empty string
         :math:`~\\`                ``tsp_time_limit_in_ms`` [#ee]_    Time limit in ms, 0 means no limit.                      ``0``
+        :math:`~\\`                ``tsp_print_timing``               Print timing information?                                ``false``
+        :math:`~\\`                ``tsp_check_solution``             Check the solution for feasibility?                      ``true``
         =========================  =================================  =======================================================  ==============
     
     ..  [#ee] This flag is redundant with the ``routing_time_limit`` flag provided in :file:`routing.cc` but we wanted to 
