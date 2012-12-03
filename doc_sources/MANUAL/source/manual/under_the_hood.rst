@@ -28,6 +28,7 @@ Under the hood
     under_the_hood/files
     under_the_hood/trail
     under_the_hood/search
+    under_the_hood/assignment
     under_the_hood/queue
     under_the_hood/search_monitors
     under_the_hood/rl
