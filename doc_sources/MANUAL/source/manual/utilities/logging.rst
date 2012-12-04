@@ -6,6 +6,8 @@ Logging
 We provide very basic logging tools: macros replaced by some basic logging objects. They are defined 
 in the header :file:`base/logging.h`.
 
+..  index:: LG, LOG(INFO)
+
 ``LG`` or ``LOG(INFO)`` is always working. You can print messages to ``std:cerr`` like this
 
 ..  code-block:: c++
@@ -26,6 +28,8 @@ If you didn't change the value of the gflags flag ``log_prefix`` to ``false``, y
 Your message is prefixed by the hour, the file name and the line number of the code source where your message was defined.
 You can disable this *prefix* by setting ``log_prefix`` to ``false``.
 
+..  index:: LOG(WARNING), LOG(ERROR), LOG(FATAL), INFO, WARNING, ERROR, FATAL
+
 We provide different levels of logging:
 
 * First, depending on the severity: 
@@ -45,13 +49,15 @@ We provide different levels of logging:
   ``INFO``, ``ERROR`` and 
   ``WARNING`` are treated the same way. ``FATAL`` works as expected and the program aborts (calls ``abort()``) after printing the message.
 
+..  index:: DLOG
+
 * Second, depending on the debug or release mode. When debugging, you can use ``DLOG(severity)`` with the same 
   levels (and the same results). If ``NDEBUG`` is defined, you are in release mode and ``DLOG(severity)`` doesn't 
   do anything except for ``FATAL`` where it becomes a ``LOG(ERROR)``.
 
 
 
-..  index:: gflags; log levels
+..  index:: gflags; log levels, VLOG
 
 * Finally, you can also use ``VLOG(level)`` with different levels. The higher the level, the more detailed 
   the information.
@@ -68,10 +74,12 @@ We provide different levels of logging:
     
   ..  code-block:: c++
     
-      VLOG(2) << "This information is too detailed for you to see with you 
-                                                             log level...";
+      VLOG(2) << "This information is too detailed for you to see with 
+                                                        your log level...";
     
   We rarely (understand never) go over level 4.
+
+..  index:: LOG_IF, DLOG_IF
 
 There is also a conditional logging: ``LOG_IF(severity, condition)`` and for debugging ``DLOG_IF(severity, condition)``
 that vanishes when ``NDEBUG`` is defined.

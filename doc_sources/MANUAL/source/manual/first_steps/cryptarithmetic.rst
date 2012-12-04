@@ -1,6 +1,9 @@
 ..  index:: 
     pair: cryptarithmetic; puzzles
 
+..  index:: Problem; Cryptarithmetic puzzles
+    
+    
 .. highlight:: cpp
 
 ..  raw:: latex

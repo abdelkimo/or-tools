@@ -1,6 +1,6 @@
 ..  _hood_assignment:
 
-Solutions: ``Assignment``\s and variables
+Variables and ``Assignment``\s
 ---------------------------------------------
 
 ..  only:: draft 
@@ -81,6 +81,13 @@ Variables
     * ``SequenceVar``\s are replaced by ``SequenceVarElement``\s and 
     * ``OptimizeVar`` is replaced by an ``IntVarElement``.
      
+
+    Explain:
+    
+    * Store <-> Restore mechanism. 
+    * Activated or not 
+    * Load, Save
+    * 
 
 ..  raw:: html
     
