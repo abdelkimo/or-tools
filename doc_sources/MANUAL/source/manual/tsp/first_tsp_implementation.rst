@@ -6,10 +6,21 @@ The TSP in or-tools
 Minimal implementation
 ^^^^^^^^^^^^^^^^^^^^^^^
 
+..  only:: draft 
+
+    ..  raw:: latex
+
+        You can find the code in the file \code{tutorials/C++/chap9/tsp_minimal.cc}.\\~\\
+
+    ..  only:: html
+
+        **C++ code**: `tutorials/C++/chap9/tsp_minimal.cc <../../../tutorials/C++/chap9/tsp_minimal.cc>`_
+
+
 ..  only:: draft
 
     We have implemented a basic program to solve the TSP but before we discuss it, let's have a look at a 
-    minimalist implementation (see :file:`tsp_minimal.cc`). 
+    minimalist implementation. 
     You can solve the TSP in a few lines of code with the help of the RL:
     
     ..  code-block:: c++
@@ -49,10 +60,19 @@ Minimal implementation
 Basic implementation
 ^^^^^^^^^^^^^^^^^^^^^
 
+..  only:: draft 
+
+    ..  raw:: latex
+
+        You can find the code in the file \code{tutorials/C++/chap9/tsp.cc}.\\~\\
+
+    ..  only:: html
+
+        **C++ code**: `tutorials/C++/chap9/tsp.cc <../../../tutorials/C++/chap9/tsp.cc>`_
+
+
 ..  only:: draft
 
-    You can find the code in the file :file:`tsp.cc`. 
-    
     ..  only:: html 
     
         This time we use the ``TSPData`` (see :ref:`tspdata_class`) and ``TSPEpixData``
