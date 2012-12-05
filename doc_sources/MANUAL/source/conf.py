@@ -54,7 +54,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'User\'s Manual'
-copyright = u'2012, Google'
+copyright = u'2012-2013, Google'
 
 #**************************************************************************************
 #ADDED FUNCTIONNALITIES

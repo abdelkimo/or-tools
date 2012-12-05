@@ -85,6 +85,8 @@ The files inside this directory are:
 - :file:`nqueen2.cc`: The same implementation as in :file:`nqueen1.cc` but this time to find only one solution.
 - :file:`nqueen3.cc`: The same implementation as in :file:`nqueen2.cc` but this time we use a ``TreeMonitor`` to visualize the 
   search with cpviz.
+- :file:`nqueen4.cc`: The same implementation as in :file:`nqueen3.cc` but with some added statistics.
+- :file:`cpviz_nqueens4_basic.txt`: cleaned output of ``./nqueens4 --size=4 --cp_trace_search --cp_trace_propagation``.
 - :file:`nqueen4.cc`: 
 - :file:`nqueen5.cc`: 
 - :file:`nqueen6.cc`: 

@@ -1,3 +1,4 @@
+
 ..  index:: cpviz
     
 
@@ -8,22 +9,11 @@
 :program:`cpviz`: how to visualize the search 
 ----------------------------------------------
 
-..  only:: draft 
-
-    ..  raw:: latex
-
-        You can find the code in the file \code{tutorials/C++/chap5/nqueens3.cc}.
-
-    ..  only:: html
-
-        You can find the code in the file `tutorials/C++/chap5/nqueens3.cc <../../../tutorials/C++/chap5/nqueens3.cc>`_
-
-
 ..  only:: draft
 
     To get a better feeling of the way the CP solver explores the search tree,
-    we will use a wonderful *open-source visualization toolkit for finite 
-    domain constraint programming*: :program:`cpviz`. 
+    we will use the wonderful *open-source visualization toolkit for finite 
+    domain constraint programming* :program:`cpviz`. 
     Here is a description from their website of what this toolkit provides:
     
     ..  code-block:: text
@@ -41,12 +31,23 @@
 ``TreeMonitor``\s to provide the :program:`cpviz` input
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+..  only:: draft 
+
+    ..  raw:: latex
+
+        You can find the code in the file \code{tutorials/C++/chap5/nqueens3.cc}.\\~\\
+
+    ..  only:: html
+
+        **C++ code**: `tutorials/C++/chap5/nqueens3.cc <../../../tutorials/C++/chap5/nqueens3.cc>`_
+
 ..  only:: draft
 
-    To monitor the search, we use ``SearchMonitor``\s. The ``TreeMonitor`` class inherits from ``SearchMonitor`` and 
-    creates the files needed by cpviz to visualize the search: :file:`tree.xml` and :file:`visualization.xml`.
+    To monitor the search, we use ``SearchMonitor``\s. To produce the files needed by cpviz to visualize the search, 
+    we use a specialized ``SearchMonitor``: the ``TreeMonitor`` class. The input :program:`cpviz` needs consist in two files:
+    :file:`tree.xml` and :file:`visualization.xml`.
     
-    To produce the :program:`cpviz` output for your search, add the following ``SearchMonitor`` to your code:
+    To produce these two files for your search, add a ``TreeMonitor`` among your ``SearchMonitor``\s in your code:
 
     ..  code-block:: c++
     
@@ -78,11 +79,11 @@
         width="700" height="700" fileroot="viz"/>
         </configuration>
             
-    Basically, it tells :program:`cpviz` to produces  the graphic files for the 
+    Basically, it tells :program:`cpviz` to produce the graphic files for the 
     search tree (``show="tree"``) and the variables (``show="viz"``) 
-    in the directory :file:`/tmp/`.
+    in the directory :file:`/tmp`.
     
-    If you are really lazy, we even have provided a factory method which 
+    If you are really lazy, we even provide a factory method which 
     generates automatically a default configuration file:
     
     ..  code-block:: c++
@@ -94,8 +95,9 @@
 
         
     After your search is finished AND you have called (implicitley or explicitly)
-    ``EndSearch()`` (files are created in the ``ExitSearch()`` callback),
-    you can run :program:`cpviz` to digest the XML output of your search by going to :file:`viz/bin` and
+    ``EndSearch()`` [#cpviz_xml_files_generated_exitsearch_callback]_,
+    you can run :program:`cpviz` to digest the XML files representing your search by entering the :file:`viz/bin`
+    directory and
     typing:
     
     ..  code-block:: bash
@@ -107,9 +109,8 @@
     ..  only:: html
     
         ..  image:: images/cpviz/tree8.*
-            :width: 400px
+            :width: 350px
             :align: center
-            :height: 400px
             :alt: alternate text
 
     ..  only:: latex
@@ -121,25 +122,45 @@
             :alt: alternate text
 
     
+    :program:`cpviz` produces the construction of the search tree, step by step. In our case we try to solve the 
+    n-queens problem with :math:`n = 4` and :program:`cpviz` 
+    generates 8 files.
+
     ..  only:: html
-    
-        :program:`cpviz` produces the construction of the search tree, step by step. In our case, 8 files were generated.
         
         You can find an animated version of the search tree produced by :program:`cpviz` :download:`here <images/cpviz/animated_tree.gif>`.
+        
+    ..  [#cpviz_xml_files_generated_exitsearch_callback] :file:`tree.xml` and :file:`visualization.xml` are generated 
+                                                         in the ``ExitSearch()`` callback of the ``TreeMonitor`` class.
         
     This is probably not what you expected. First of all, this is not a binary tree and there seems to be an extra dummy root node.
     A binary tree --- which is what is exactly constructed during the search --- is not really suited for a graphical representation as it can 
     quickly become very big (compare the tree above with the actual search tree that is represented below). To avoid huge trees, we have reduced their 
-    sizes by contracting several nodes. Except for the dummy root node, each node is denoted by a variable name. Also, we only 
-    give the left branches explicitly. The numbers along the branches denote the *applied decisions* (like :math:`x[1] = 2`)
+    sizes by contracting several nodes. Except for the dummy root node, each node corresponds to a variable during the search
+    and only left branches are given explicitly. The numbers along the branches denote the *applied decisions* (like :math:`x[1] = 2`)
     and the numbers in the right 
-    corner above the names of the nodes are the number of values left in the domain of the corresponding variable just before the decision was
-    taken. Nodes in green denote feasible solutions, nodes in red sub-trees without any feasible solutions and nodes in blue, intermediate
-    try nodes  (these only exist during the search).
+    corner above the variable names of the nodes are the number of values left in the domain of the corresponding variable 
+    just before the decision was
+    taken. Nodes coloured in 
+    
+    * **green** denote feasible solutions;
+    * **red** denote sub-trees without any feasible solutions;
+    * **blue** denote intermediate try nodes  (these only exist during the search).
     
 
-Interpreting the graphic results
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Interpreting the graphical results
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft 
+
+    ..  raw:: latex
+
+        You can find the code in the file \code{tutorials/C++/chap5/nqueens4.cc}.\\~\\
+
+    ..  only:: html
+
+        **C++ code**: `tutorials/C++/chap5/nqueens4.cc <../../../tutorials/C++/chap5/nqueens4.cc>`_
+
 
 ..  only:: draft
 
@@ -196,8 +217,8 @@ The search tree
         
     As you can see, at each node, the solver took a ``Decision``: the left branch to *apply* the ``Decision`` and the right branch 
     to *refute* this ``Decision``. The leaf nodes in red denote sub-trees that are not worth exploring explicitly: 
-    we cannot find any solution 
-    along this branch of the tree. The leaf nodes in green denote on the contrary feasible solutions. The nodes are numbered in the order
+    we cannot find any feasible solution 
+    along these branches of the tree. The leaf nodes in green denote on the contrary feasible solutions. The nodes are numbered in the order
     of creation and we can see that the search tree is traversed in pre-order by the solver.
     
     In the file :file:`nqeens4.cc`, we have printed some statistics about the search:
@@ -210,7 +231,7 @@ The search tree
         std::cout << "Backtracks: " << s.fail_stamp() << std::endl;
         std::cout << "Stamps: " << s.stamp() << std::endl;
     
-    and when the ``size`` is :math:`4`, we get as output:
+    and with ``size = 4``, we get as output:
     
     ..  code-block:: bash
     
@@ -276,7 +297,7 @@ Our :program:`cpviz`'s output of the search tree
     ..  only:: html 
     
         ..  image:: images/cpviz/tree0.*
-            :width: 100 pt
+            :width: 70 pt
             :align: center
 
     ..  raw:: latex
@@ -458,7 +479,7 @@ Our :program:`cpviz`'s output of the search tree
         \caption{Construction of the real search tree from the cpviz tree: step 4}\label{fig:tree4}
         \end{figure}
 
-        Our \textbf{cpviz} output now clearly warns that taking $x_0 = 0$ is not compatible with a feasible solution. This can 
+        Our \textbf{cpviz} output now clearly warns that taking $x_0 = 0$ does not lead to a feasible solution. This can 
         only mean that the solver tried also to refute the \code{Decision} $x_1 = 2$. So we know that the branch $x_1 \neq 2$
         after the branch $x_0 = 0$ is leading nowhere. We have to backtrack and to refute the \code{Decision} $x_0 = 0$.
         We have thus a new branch $x_0 \neq 0$ in the real search tree.\\[0.01cm]
@@ -486,7 +507,7 @@ Our :program:`cpviz`'s output of the search tree
         
             </div>   
             
-        Our :program:`cpviz` output now clearly warns that taking :math:`x_0 = 0` is not compatible with a feasible solution. This can 
+        Our :program:`cpviz` output now clearly warns that taking :math:`x_0 = 0` does not lead to a feasible solution. This can 
         only mean that the solver tried also to refute the ``Decision`` :math:`x_1 = 2`. So we know that the branch :math:`x_1 \neq 2`
         after the branch :math:`x_0 = 0` is leading nowhere. We have to backtrack and to refute the ``Decision`` :math:`x_0 = 0`.
         We have thus a new branch :math:`x_0 \neq 0` in the real search tree.

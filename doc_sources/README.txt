@@ -22,3 +22,5 @@ http://or-tools.googlecode.com/svn/trunk/documentation/documentation_hub.html
 See doc/howto.pdf to generate the documentation of the or-tools library.
 
 Have a nice day!
+
+You can reach us at ortools dot doc at gmail dot com

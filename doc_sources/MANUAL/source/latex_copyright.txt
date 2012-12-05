@@ -4,7 +4,7 @@
 
 \vspace{\stretch{1}}
 
-\copyright\ Copyright 2012, Google\\
+\copyright\ Copyright 2012-2013, Google\\
 
 
 \vspace{\stretch{1}}
@@ -23,7 +23,8 @@ We kindly ask you not to make this document available on the Internet. This docu
 \end{center}
 This is the address of our documentation hub where you can find other useful sources of documentation about the \code{or-tools} library.\\
 
-All the cliparts used in this manual are public domain.
+All the cliparts used in this manual are public domain except the oxygen-style mimetypes icons from the \emph{open icon library}
+licensed under the \emph{GNU Lesser General Public License version 3}.
 
 \section*{Trademarks}
 GOOGLE is a trademark of Google Inc.\\

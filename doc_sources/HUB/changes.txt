@@ -3,5 +3,8 @@
 * Minor enhancements to the manual:
   - Minor corrections.
   - 12.3 added.
+  - 12.3 corrected.
   - chapter 5 "re-written".
+  - Copyrights updated.
+  - mime-types icons.
 
