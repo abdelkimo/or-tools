@@ -3,6 +3,8 @@
 Breaking symmetries with ``SymmetryBreaker``\s
 ------------------------------------------------------------
 
+[TO BE RE-WRITTEN]
+
 ..  only:: draft
 
     Now that we have seen the ``Decision`` and ``DecisionVisitor`` classes in details 
@@ -221,6 +223,8 @@ Breaking symmetries with ``SymmetryBreaker``\s
     within a ``VisitSplitVariableDomain()``
     call for instance that would be called by ``Decision``\s that divides the search tree in two parts following that an ``IntVar``
     is greater or equal to a certain value or less than this value.
+
+    ..  _rev_alloc:
 
     ``RevAlloc``
     """""""""""""

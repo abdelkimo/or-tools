@@ -211,7 +211,7 @@ search space quickly [#search_space_too_big]_.
 ..  [#determining_search_space_size] Determining the exact (or even approximate) search space size is very often a (very) difficult
     problem by itself.
 
-..  [#search_algorithm_details] See the section :ref:`basic_workingI` for more details.
+..  [#search_algorithm_details] See the section :ref:`basic_working_search_algorithm` for more details.
 
 ..  [#search_space_details] See next section for more.
 

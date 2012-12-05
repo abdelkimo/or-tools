@@ -12,7 +12,9 @@ Local Search ``PathOperator``\s
 ``TwoOpt``
 """""""""""
 
-   // Operator which reverves a sub-chain of a path. It is called TwoOpt
+..  only:: draft
+
+    // Operator which reverves a sub-chain of a path. It is called TwoOpt
     // because it breaks two arcs on the path; resulting paths are called
     // two-optimal.
     // Possible neighbors for the path 1 -> 2 -> 3 -> 4 -> 5
@@ -27,6 +29,7 @@ Local Search ``PathOperator``\s
 ``Relocate``
 """"""""""""""
 
+..  only:: draft
 
     // Relocate: OROPT and RELOCATE.
     // Operator which moves a sub-chain of a path to another position; the
@@ -42,6 +45,8 @@ Local Search ``PathOperator``\s
 ``OrOpt``
 """"""""""""
 
+..  only:: draft
+
     // Using Relocate with chain lengths of 1, 2 and 3 together is equivalent to
     // the OrOpt operator on a path. The OrOpt operator is a limited version of
     // 3Opt (breaks 3 arcs on a path).
@@ -52,6 +57,8 @@ Local Search ``PathOperator``\s
 
 ``Exchange``
 """""""""""""""
+
+..  only:: draft
 
     // Operator which exchanges the positions of two nodes.
     // Possible neighbors for the path 1 -> 2 -> 3 -> 4 -> 5
@@ -64,6 +71,8 @@ Local Search ``PathOperator``\s
 
 ``Cross``
 """""""""""
+
+..  only:: draft
 
     // Operator which cross exchanges the starting chains of 2 paths, including
     // exchanging the whole paths.
@@ -78,6 +87,8 @@ Local Search ``PathOperator``\s
 
 ``Inactive``
 """""""""""""
+
+..  only:: draft
 
     // Operator which inserts an inactive node into a path.
     // Possible neighbors for the path 1 -> 2 -> 3 -> 4 with 5 inactive
@@ -97,6 +108,8 @@ Local Search ``PathOperator``\s
 ``SwapActive``
 """""""""""""""""""
 
+..  only:: draft
+
     // Operator which replaces an active node by an inactive one.
     // Possible neighbors for the path 1 -> 2 -> 3 -> 4 with 5 inactive
     // (where 1 and 4 are first and last nodes of the path) are:
@@ -107,6 +120,7 @@ Local Search ``PathOperator``\s
 ``ExtendedSwapActive``
 """"""""""""""""""""""""""
 
+..  only:: draft
 
     // Operator which makes an inactive node active and an active one inactive.
     // It is similar to SwapActiveOperator excepts that it tries to insert the
@@ -124,6 +138,8 @@ Local Search ``PathOperator``\s
 ``PathLNS``
 """"""""""""""""""""
 
+..  only:: draft
+
     // Operator which relaxes two sub-chains of three consecutive arcs each.
     // Each sub-chain is defined by a start node and the next three arcs. Those
     // six arcs are relaxed to build a new neighbor.
@@ -137,15 +153,17 @@ Local Search ``PathOperator``\s
 ``UnActiveLNS``
 """""""""""""""
 
+..  only:: draft
+
     // Operator which relaxes all inactive nodes and one sub-chain of six
     // consecutive arcs. That way the path can be improve by inserting inactive
     // nodes or swaping arcs.
     UNACTIVELNS,
 
 
-  // This enum is used in Solver::MakeOperator associated with an evaluator
-  // to specify the neighborhood to create.
-  enum EvaluatorLocalSearchOperators {
+    // This enum is used in Solver::MakeOperator associated with an evaluator
+    // to specify the neighborhood to create.
+    enum EvaluatorLocalSearchOperators {
     // Lin–Kernighan local search.
     // While the accumulated local gain is positive, perform a 2opt or a 3opt
     // move followed by a series of 2opt moves. Return a neighbor for which the
@@ -167,7 +185,7 @@ Local Search ``PathOperator``\s
     // limits. To force diversification, the operator iteratively forces each
     // node to serve as base of a meta-node.
     TSPLNS
-  };
+    };
 
 ..  raw:: html
     

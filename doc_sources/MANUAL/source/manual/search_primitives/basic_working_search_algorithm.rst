@@ -58,7 +58,7 @@ and a valid index :math:`i`.
 
     At one node in the search tree, we divide the search space in two exclusive search subspaces by imposing 
     $x[i] = 2$ at one branch and $x[i] \neq 2$ at another branch like in 
-    Figure~\ref{manual/search_primitives/basic_working1:search-space-divided-in-two}.
+    Figure~\ref{manual/search_primitives/basic_working_search_algorithm:search-space-divided-in-two}.
 
 
 ..  _search_space_divided_in_two:
@@ -126,10 +126,19 @@ You then pass this ``SearchMonitor`` to the solver:
     solver.NewSearch(db, sm);
     delete sm;
 
-At the beginning of a search, the solver calls the virtual method ``EnterSearch()`` i.e. 
-*your* ``EnterSearch()`` method. Don't forget to delete your ``SearchMonitor`` after use.
-You can also use a smart pointer or even better, let the solver take ownership of the object with 
-the ``RevAlloc()`` method (see section XXX).
+..  only:: html
+
+    At the beginning of a search, the solver calls the virtual method ``EnterSearch()`` i.e. 
+    *your* ``EnterSearch()`` method. Don't forget to delete your ``SearchMonitor`` after use.
+    You can also use a smart pointer or even better, let the solver take ownership of the object with 
+    the ``RevAlloc()`` method (see the subsection :ref:`rev_alloc`).
+
+..  raw:: latex
+
+    At the beginning of a search, the solver calls the virtual method \code{EnterSearch()} i.e. 
+    \emph{your} \code{EnterSearch()} method. Don't forget to delete your \code{SearchMonitor} after use.
+    You can also use a smart pointer or even better, let the solver take ownership of the object with 
+    the \code{RevAlloc()} method (see subsection~\ref{manual/search_primitives/breaking_symmetry:rev-alloc}).
 
 Phases 
 """""""

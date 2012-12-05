@@ -31,6 +31,9 @@
         It provides visualization for search trees, variables and global 
         constraints through a post-mortem analysis of trace logs.
     
+    The important trick to understand is that the visualization is only 
+    available **after** the search is done.
+    
     Please find all necessary information and tools at
     
     http://sourceforge.net/projects/cpviz/
@@ -43,7 +46,7 @@
     To monitor the search, we use ``SearchMonitor``\s. The ``TreeMonitor`` class inherits from ``SearchMonitor`` and 
     creates the files needed by cpviz to visualize the search: :file:`tree.xml` and :file:`visualization.xml`.
     
-    To produce :program:`cpviz` output for your search, add the following to your code:
+    To produce the :program:`cpviz` output for your search, add the following ``SearchMonitor`` to your code:
 
     ..  code-block:: c++
     
@@ -80,7 +83,7 @@
     in the directory :file:`/tmp/`.
     
     If you are really lazy, we even have provided a factory method which 
-    generates automatically a configuration file:
+    generates automatically a default configuration file:
     
     ..  code-block:: c++
     
@@ -99,7 +102,7 @@
     
         java ie.ucc.cccc.viz.Viz configuration.xml tree.xml visualization.xml 
     
-    on a command line into a terminal near you to produce the following picture of the search tree:
+    on a command line into a terminal near you. This will produce the following picture of the search tree:
     
     ..  only:: html
     
@@ -124,12 +127,13 @@
         
         You can find an animated version of the search tree produced by :program:`cpviz` :download:`here <images/cpviz/animated_tree.gif>`.
         
-    This is probably not what you expected. First of all, this is not a binary tree. There seems to be an extra dummy root node.
+    This is probably not what you expected. First of all, this is not a binary tree and there seems to be an extra dummy root node.
     A binary tree --- which is what is exactly constructed during the search --- is not really suited for a graphical representation as it can 
-    quickly become very big (compare with the actual search tree that is represented below). To avoid huge trees, we have reduced their 
+    quickly become very big (compare the tree above with the actual search tree that is represented below). To avoid huge trees, we have reduced their 
     sizes by contracting several nodes. Except for the dummy root node, each node is denoted by a variable name. Also, we only 
-    give the left branches explicitly. The numbers along the branches denote the *applied decisions* and the numbers in the right 
-    corner above the names of the nodes are the number of values in the domain of the corresponding variable just before the decision was
+    give the left branches explicitly. The numbers along the branches denote the *applied decisions* (like :math:`x[1] = 2`)
+    and the numbers in the right 
+    corner above the names of the nodes are the number of values left in the domain of the corresponding variable just before the decision was
     taken. Nodes in green denote feasible solutions, nodes in red sub-trees without any feasible solutions and nodes in blue, intermediate
     try nodes  (these only exist during the search).
     
