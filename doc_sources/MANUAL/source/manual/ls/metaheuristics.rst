@@ -19,6 +19,8 @@ The ``Metaheuristic`` class
 
 ..  only:: draft
 
+    The ``Metaheuristic`` class is declared and defined in the file :file:`constraint_solver/search.cc`.
+
     Some procedures are so common when implementing a meta-heuristic that we defined a common base class ``Metaheuristic``.
     By itself, it only updates the objective function. 
     

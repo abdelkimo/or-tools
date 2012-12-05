@@ -146,8 +146,10 @@ The basic idea
 
 
 The basic idea [#basic_idea_search_algo_without_details]_ is very simple yet effective.
-A ``DecisionBuilder`` is responsible to return a ``Decision`` at a node. For instance, :math:`x[4] = 3`. We divide the sub search 
-tree at this node by applying this decision (left branch) and by refuting this decision (right branch).
+A ``DecisionBuilder`` is responsible to return a ``Decision`` at a node. A decision would be for instance, :math:`x[4] = 3`. 
+We divide the sub search 
+tree at this node by applying this decision (left branch: :math:`x[4] = 3`) and by refuting this decision (right branch: 
+:math:`x[4] \neq 3`).
 
 At the current node, the ``DecisionBuilder`` of the current search returns
 a ``Decision``. The ``Decision`` class basically tells the solver what to do 
@@ -236,6 +238,8 @@ a ``NextSolution()`` call. If the search was initiated by a ``Solve()`` call, yo
 with ``SearchMonitor``\s. By default, the solver stops after the first solution found (if any). You can overwrite this 
 behaviour by implementing the ``AtSolution()`` callback of the ``SearchMonitor`` class. If this method returns ``true``, the 
 search continues, otherwise the solver ends it.
+
+..  index:: SearchMonitor; callbacks
 
 The basic search algorithm and the callback hooks for the ``SearchMonitor``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

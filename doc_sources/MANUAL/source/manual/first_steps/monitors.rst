@@ -1,10 +1,12 @@
 
 
-..  index:: ! SolutionCollector, Assignment, SearchMonitors, MakeFirstSolutionCollector(), MakeLastSolutionCollector(), MakeBestValueSolutionCollector(), MakeAllSolutionCollector()
+..  index:: ! SolutionCollector, Assignment, MakeFirstSolutionCollector(), MakeLastSolutionCollector(), MakeBestValueSolutionCollector(), MakeAllSolutionCollector()
     single: SolutionCollector; FirstSolutionCollector
     single: SolutionCollector; LastSolutionCollector
     single: SolutionCollector; BestValueSolutionCollector
     single: SolutionCollector; AllSolutionCollector
+
+..  index:: SearchMonitor; as SolutionCollector
 
 ..  _monitors_solutions:
 

@@ -21,9 +21,9 @@ Local search: the job-shop problem
 
 ..  only:: draft
 
-    We start by describing what Local Search is and how it is implemented in the or-tools library. The choosen example 
+    We start by describing what Local Search is and how it is implemented in the or-tools library. The chosen problem  
     we will try so solve in this chapter is a scheduling problem: the job-shop problem. Don't worry if you don't know 
-    anything about scheduling or the job-shop problem, we explain it in details. The model we will use is called the 
+    anything about scheduling or the job-shop problem, we explain this problem in details. The model we will use is called the 
     *disjunctive model*. Constraint Programming specialized variables and global constraints were developed to solve
     scheduling problems. Instead of using ``IntVar`` variables, we'll use the dedicated ``IntervalVar``\s and ``SequenceVar``\s.
     Finally, we'll see some well-known Local Search meta-heuristics that are already implemented and can be used out of the box: 

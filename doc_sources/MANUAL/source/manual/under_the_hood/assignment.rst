@@ -5,7 +5,7 @@ Variables and ``Assignment``\s
 
 ..  only:: draft 
 
-    toto
+    TO BE WRITTEN.
 
 Variables
 ^^^^^^^^^^^
@@ -15,6 +15,7 @@ Variables
     There are **four** (3 + 1) types of variables:
     
     * ``IntVar``:
+    
     * ``IntervalVar``: Inherits ``PropagationBaseObject``.
         An interval var is often used in scheduling. Its main
         characteristics are its start position, its duration and its end
@@ -41,7 +42,8 @@ Variables
         
     ..  topic:: What is ``SetVar``?
     
-        ``SetVar`` inherits ``PropagationBaseObject`` and ...
+        You might have seen a ``SetVar`` that inherits from ``PropagationBaseObject``. The purpose of this "variable"
+        is to ... 
 
 ``IntExpr``
 """""""""""""""
@@ -68,7 +70,9 @@ Variables
 ..  only:: draft 
 
     The ``Assignment`` class is declared in the header :file:`constraint_solver/constraint_solver.h` 
-    and defined in the file :file:`constraint_solver/assignment.cc`.
+    and additional definitions can be found in the file :file:`constraint_solver/assignment.cc`.
+    
+    ..  index:: ! Assignment
     
     An ``Assignment`` is basically a mapping between some variables and their domains. It is used 
     to report solutions to the user and let the user store solutions (and eventually pass them back to the solver). 
@@ -82,11 +86,24 @@ Variables
     * ``OptimizeVar`` is replaced by an ``IntVarElement``.
      
 
+``Store()`` versus ``Restore()``
+""""""""""""""""""""""""""""""""""
+
+..  only:: draft 
+
+    To bridge the gap between the real variables and the simplified versions used in the ``Assignment`` class, use 
+    the ``Store()`` and ``Restore()`` methods:
+    
+    * ``Store()`` takes the values stored in the ``xxxElement``\s and transfer them (if the variables are *activated*)
+      to the real variables;
+    * ``ReStore()`` does the opposite and put the values hold in the real variables in the simplified variables. 
+    
+
     Explain:
     
     * Store <-> Restore mechanism. 
     * Activated or not 
-    * Load, Save
+    * Load, Save -> in utilities, Serializing.
     * 
 
 ..  raw:: html

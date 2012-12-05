@@ -89,7 +89,7 @@ For other features and to learn more about this library, we refer you to the
 ..  index:: 
     single: Solver; parameters
 
-..  index:: SolverParameters, SolverParameters(), SearchMonitor, MakeTimeLimit(), SearchLimit
+..  index:: SolverParameters, SolverParameters(), MakeTimeLimit(), SearchLimit
     single: Solver; parameters
 
 CP ``Solver``'s parameters
@@ -143,6 +143,8 @@ We can now ask for a detailed report after the search is done:
 
 
 The ``SolverParameters`` struct mainly deals with the internal usage of memory and is for advanced users.
+
+..  index:: SearchMonitor; as Solver's parameters
 
 ``SearchMonitor``\s
 ^^^^^^^^^^^^^^^^^^^

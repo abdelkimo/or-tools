@@ -15,14 +15,14 @@ The basic ingredients
       
       2. they improve locally this solution;
       
-      3. they finish the search when reaching a stopping criterium but usually without
-         garantee on the quality of the found solution.
+      3. they finish the search when reaching a stopping criterion but usually without
+         guarantee on the quality of the found solution.
          
          
     ..  [#meta_explanation] If the (subtle) difference between *meta*-heuristics and heuristics
         escapes you, read the box.
         
-    We will discuss these three ingredients in details in a moment but before that we give some examples of
+    We will discuss these three ingredients in details in a moment but before we give some examples of
     local search (meta-)heuristics [#google_scholar_meta_heur_results]_:
     
       - **Tabu Search** (implemented in or-tools) | (62 100)
@@ -82,9 +82,9 @@ The basic ingredients
         you need to define a *neighborhood* (explicitly or implicitly) for a given solution and a way to explore this
         neighborhood.
         
-        In or-tools, you define a neighborhood by implementing a ``MakeOneNeighbor`` callback method: every time 
+        In or-tools, you define a neighborhood by implementing a ``MakeOneNeighbor()`` callback method: every time 
         this method is called internally by the solver, it constructs one solution of the neighborhood defined around a given 
-        solution. If you have constructed a successful candidate, make ``MakeOneNeighbor`` returns ``true``. When the whole neighborhood
+        solution. If you have constructed a successful candidate, make ``MakeOneNeighbor()`` returns ``true``. When the whole neighborhood
         has been visited, make it returns ``false``.
 
  
