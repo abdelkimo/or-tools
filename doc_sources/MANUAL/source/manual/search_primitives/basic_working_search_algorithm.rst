@@ -1,9 +1,9 @@
 .. highlight:: cpp
 
-..  _basic_workingI:
+..  _basic_working_search_algorithm:
 
-Basic working of the solver: part I
-------------------------------------
+Basic working of the solver: the search algorithm
+-----------------------------------------------------
 
 
 Basically, the CP solver consists of three main components:
@@ -672,13 +672,5 @@ algorithm.
       }
     }
 
-.. _decision_toto:
-
-The ``DecisionBuilder`` and ``Decision``\s
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-Nested searches
-^^^^^^^^^^^^^^^
 
 

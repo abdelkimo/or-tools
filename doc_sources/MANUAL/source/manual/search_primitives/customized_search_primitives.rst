@@ -13,17 +13,7 @@ Customized search primitives
 
     customization
     
-The ``MakePhase()`` method more in details
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Composing ``DecisionBuilder``\s
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Nested searches
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-MakeSolveOnce
-
-MakeNestedOptimize
 
 ..  raw:: html
     

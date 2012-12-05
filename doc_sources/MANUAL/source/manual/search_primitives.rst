@@ -6,9 +6,6 @@
 
 Defining search primitives: the n-queens problem
 ==================================================
-
-
-
     
 This chapter is about the customization of the search. What stategy(ies) to
 use to branch, i.e. what variables to select and what value(s) to assign to them? 
@@ -41,11 +38,13 @@ being drowned in the often tedious details of the implementation
     in chapter~\ref{manual/introduction:chapter-introduction}.
 
 
-..  rubric:: Overview:
+..  only:: draft
 
-We start immediately with a basic model for the n-queen problem.
-To understand search strategies better, we need to know a little bit more about
-how the solver works internally and specifically how it traverses/constructs the search tree. 
+    ..  rubric:: Overview:
+
+    We first discuss the n-queen problem and present a first basic model to solve it. To go one step further and 
+    devise a search algorithm to solve the n-queen problem, we present a little bit the inner working of the solver.
+    Specifically, we show how it traverses/constructs the search tree. 
     
 ..  rubric:: Prerequisites:
 
@@ -67,7 +66,7 @@ how the solver works internally and specifically how it traverses/constructs the
 
 ..  rubric:: Classes under scrutiny:
 
-``Decision``, ``DecisionBuilder``, ``DecisionVisitor``, ``SearchMonitor``.
+``Decision``, ``DecisionBuilder``, ``DecisionVisitor``, ``SearchMonitor``, ``TreeMonitor``.
 
 ..  rubric:: Files:
 
@@ -98,7 +97,8 @@ The files inside this directory are:
     
     search_primitives/nqueens
     search_primitives/basic_model_implementation
-    search_primitives/basic_working1
+    search_primitives/basic_working_search_algorithm
+    search_primitives/basic_working_phases
     search_primitives/cpviz
     search_primitives/out_of_the_box_search_primitives
     search_primitives/customized_search_primitives

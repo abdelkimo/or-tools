@@ -3,4 +3,5 @@
 * Minor enhancements to the manual:
   - Minor corrections.
   - 12.3 added.
+  - chapter 5 "re-written".
 

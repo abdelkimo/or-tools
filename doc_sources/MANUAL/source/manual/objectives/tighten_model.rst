@@ -24,8 +24,8 @@ visiting (preferably implicitly) the whole search tree to be able to prove optim
 
 ..  _objectives_breaking_symmetries:
 
-Breaking symmetries (part I)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Breaking symmetries with constraints
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  raw:: latex
 
@@ -121,10 +121,20 @@ Golomb ruler :math:`\{0,1,4,6\}` has :math:`\{0,2,5,6\}` as mirror Golomb ruler.
     s.AddConstraint(s.MakeLess(s.MakeDifference(X[2],X[1])->Var(),
                                s.MakeDifference(X[n],X[n-1])->Var()));
 
-..  only:: draft
+..  only:: html
 
-    Later, in section XXX, we will see how to give some rules (by implementing ``SymmetryBreaker``\s) to the solver so that
-    it is the solver itself that will generate the constraints to break symmetries *on the fly* during the search!
+    Later on, in the section :ref:`search_primitives_breaking_symmetry`, we will see how to provide some rules to the solver 
+    (by implementing ``SymmetryBreaker``\s)
+    so that it generates itself the constraints to break symmetries. 
+    These constraints are generated *on the fly* during the search!
+    
+..  raw:: latex
+
+    Later on, in section~\ref{manual/search_primitives/breaking_symmetry:search-primitives-breaking-symmetry}, 
+    we will see how to provide some rules to the solver 
+    (by implementing \code{SymmetryBreaker}s)
+    so that it generates itself the constraints to break symmetries. 
+    These constraints are generated \emph{on the fly} during the search!
 
 Better bounds helps
 ^^^^^^^^^^^^^^^^^^^

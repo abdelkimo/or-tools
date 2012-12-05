@@ -38,7 +38,7 @@ Local search: the job-shop problem
     - Basic knowledge of Constraint Programming (see chapter :ref:`chapter_introduction`).
     - Basic knowledge of the Constraint Programming Solver (see chapter :ref:`chapter_first_steps`).
     - Basic knowledge about how to define an objective function (see section :ref:`golomb_ruler_first_implementation`).
-    - Section :ref:`basic_workingI` helps but is not mandatory.
+    - Section :ref:`basic_working_search_algorithm` helps but is not mandatory.
 
 ..  raw:: latex
 
@@ -48,7 +48,7 @@ Local search: the job-shop problem
       \item Basic knowledge of the Constraint Programming Solver (see chapter~\ref{manual/first_steps:chapter-first-steps}).
       \item Basic knowledge about how to define an objective 
             function (see section~\ref{manual/objectives/first_implementation:golomb-ruler-first-implementation}).
-      \item Section~\ref{manual/search_primitives/basic_working1:basic-workingi} on the inner working of the solver helps but
+      \item Section~\ref{manual/search_primitives/basic_working_search_algorithm:basic-working-search-algorithm} on the inner working of the solver helps but
             is not mandatory.
     \end{itemize}
 

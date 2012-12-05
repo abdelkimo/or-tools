@@ -1,21 +1,20 @@
 ..  index:: n-queens problem
 
-
-.. highlight:: cpp
-
 ..  _nqueen_problem:
 
 The n-queens problem
 --------------------
 
-
 ..  only:: html 
     
-    We have discussed the n-queens problem (and defined what a solution is) in chapter :ref:`chapter_introduction`.
+    We have discussed the n-queens problem (and defined what a solution is) in the chapter :ref:`chapter_introduction`.
     
 ..  raw:: latex 
 
     We have discussed the n-queens problem (and defined what a solution is) in chapter~\ref{manual/introduction:chapter-introduction}.
+
+The n-queen problem in more details
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     
 In the general *n-queens problem*, a set of n queens is to be placed on an n x n chessboard so that no two queens attack each other.
     
