@@ -5,17 +5,14 @@ Basic working of the solver: the phases
 
 ..  _decision_builders_and_phases:
 
-``DecisionBuilder`` and phases
+``DecisionBuilder``\s and phases
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-..  _decisions:
-
-``Decision``\s
-^^^^^^^^^^^^^^^^^^^^
 
 
 The ``MakePhase()`` method more in details
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 
 Composing ``DecisionBuilder``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -32,3 +29,7 @@ Nested searches
     MakeNestedOptimize
 
 
+..  _decisions:
+
+``Decision``\s and ``DecisionVisitor``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
