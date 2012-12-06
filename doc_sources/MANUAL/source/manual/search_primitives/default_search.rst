@@ -7,6 +7,9 @@ Default search
 
 ..  only:: draft
 
+Impact based search strategies
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 Luby
 ^^^^^^

@@ -87,7 +87,6 @@ The files inside this directory are:
   search with cpviz.
 - :file:`nqueen4.cc`: The same implementation as in :file:`nqueen3.cc` but with some added statistics.
 - :file:`cpviz_nqueens4_basic.txt`: cleaned output of ``./nqueens4 --size=4 --cp_trace_search --cp_trace_propagation``.
-- :file:`nqueen4.cc`: 
 - :file:`nqueen5.cc`: 
 - :file:`nqueen6.cc`: 
 - :file:`nqueen7.cc`: 
@@ -105,8 +104,8 @@ The files inside this directory are:
     search_primitives/nqueens
     search_primitives/basic_model_implementation
     search_primitives/basic_working_search_algorithm
-    search_primitives/basic_working_phases
     search_primitives/cpviz
+    search_primitives/basic_working_phases
     search_primitives/out_of_the_box_search_primitives
     search_primitives/customized_search_primitives
     search_primitives/default_search
