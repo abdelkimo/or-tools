@@ -3,14 +3,23 @@
 The TSP in or-tools
 ------------------------------------
 
-Minimal implementation
-^^^^^^^^^^^^^^^^^^^^^^^
+..  only:: draft 
+
+    The RL is particularly well-suited to model a TSP. We start with a minimalistic implementation to show that a basic TSP 
+    can be coded in a few lines. Next, we develop a more realistic approach to solve the TSP. Our instances can be randomly 
+    generated or read from TSPLIB format files. Finally, we show how to avoid the use of a complete graph if the input 
+    graph is not complete and compare the classical big ``M`` approach with a more appropriate CP-based approach where 
+    the variables domains take the input graph into account.
+    
+
+Minimalistic implementation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft 
 
     ..  raw:: latex
 
-        You can find the code in the file \code{tutorials/C++/chap9/tsp_minimal.cc}.\\~\\
+        You can find the code in the file \code{tutorials/C++/chap9/tsp\_minimal.cc}.\\~\\
 
     ..  only:: html
 
@@ -19,8 +28,7 @@ Minimal implementation
 
 ..  only:: draft
 
-    We have implemented a basic program to solve the TSP but before we discuss it, let's have a look at a 
-    minimalist implementation. 
+    
     You can solve the TSP in a few lines of code with the help of the RL:
     
     ..  code-block:: c++
@@ -56,6 +64,17 @@ Minimal implementation
           return 0;
         }
 
+    Given an appropriate cost function, a TSP can be modelled and solved in 3 lines:
+    
+    ..  code-block:: c++
+    
+        RoutingModel TSP(42, 1);// 42 nodes, 1 vehicle
+        TSP.SetCost(NewPermanentCallback(MyCost));
+
+        const Assignment * solution = TSP.Solve();
+
+    The cost function is given as a callback to the routing solver through its ``SetCost()`` method.
+    Other possibilities are available and will be detailed in the next sections.
 
 Basic implementation
 ^^^^^^^^^^^^^^^^^^^^^
