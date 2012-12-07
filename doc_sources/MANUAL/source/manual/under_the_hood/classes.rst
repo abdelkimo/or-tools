@@ -14,7 +14,7 @@ Main classes, structures and typedefs
     A ``virtual`` ``DebugString()`` method and the associated ``<<`` operator are implemented
     as a convenience.
 
-``PropagationBaseObject``
+``PropagationBaseObject``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft

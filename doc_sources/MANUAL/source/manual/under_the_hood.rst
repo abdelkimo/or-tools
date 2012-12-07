@@ -27,6 +27,7 @@ Under the hood
     :maxdepth: 2
 
     under_the_hood/files
+    under_the_hood/conventions
     under_the_hood/classes
     under_the_hood/trail
     under_the_hood/search
