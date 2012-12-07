@@ -80,6 +80,7 @@ You can find the code in the directory ``documentation/tutorials/C++/chap5``.
 
 The files inside this directory are:
 
+- :file:`Makefile`.
 - :file:`nqueens_utilities.h`: Contains two helper functions to test the number of solutions found and to print a solution.
 - :file:`nqueen1.cc`: A first implementation of our basic model to find all solutions.
 - :file:`nqueen2.cc`: The same implementation as in :file:`nqueen1.cc` but this time to find only one solution.

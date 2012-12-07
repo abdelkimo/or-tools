@@ -47,12 +47,21 @@ adding better bounds and breaking symmetries. Finally, we say a few words about 
   In fact, you can completely skip them if you wish. The basic ideas behind these sums are simple and are easy to follow.
 * We introduce two kinds of variables in our modelizations: the **marks** of the ruler and the **differences** between the marks.
 
+
+..  rubric:: Classes under scrutiny:
+
+..  only:: draft::
+
+    ``Decision``, ``DecisionBuilder``, ``DecisionVisitor``, ``SearchMonitor``, ``TreeMonitor``.
+
+
 ..  rubric:: Files:
 
 You can find the code in the directory ``documentation/tutorials/C++/chap3``.
 
 The files inside this directory are:
 
+- :file:`Makefile`.
 - :file:`golomb1.cc`: A first implementation. We show how to tell the solver to optimize an objective function. We use the :math:`\frac{n(n-1)}{2}` differences as variables.
 - :file:`golomb2.cc`: Same file as :file:`golomb1.cc` but with some global statistics about the search added so we can see how well or bad
   a model behave. 
