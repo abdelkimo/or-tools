@@ -5,7 +5,7 @@ Basic working of the solver: the phases
 
 ..  only:: draft
 
-
+    To better understand how phases and ``DecisionBuilder``\s work, we will implement our own ``DecisionBuilder``.
 
 ..  _decision_builders_and_phases:
 
@@ -13,8 +13,100 @@ Basic working of the solver: the phases
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
+..  _decisions:
+
+``Decision``\s and ``DecisionVisitor``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+``Decision``\s
+"""""""""""""""""""
 
 ..  only:: draft
+
+    The ``Decision`` class is responsible to tell the solver what to do on left branches (thought the ``Apply()``
+    method)
+    and the right branch (through the ``Refute()`` method). A ``Decision`` object is returned by a ``DecisionBuilder``.
+    
+    Several ``Decision`` classes have already been implemented an can serve as a model. You can specialize a 
+    ``Decision`` for ``IntVar``\s, ``IntervalVar``\s or ``SequenceVar``\s [#decision_specialized]_.
+    
+    ..  [#decision_specialized] If you want to try more esoteric combinations (like mixing variables types) it's up to
+        you but we strongly advise you to keep different types of variables separated and to combine different phases.
+
+
+
+``AssignOneVariableValue`` as an example
+"""""""""""""""""""""""""""""""""""""""""""
+
+..  only:: draft
+        
+    The most obvious ``Decision`` class for ``IntVar``\s is probably ``AssignOneVariableValue`` which assigns 
+    a value to a variable in the left branch and forbids this assignment in the right branch.
+    
+    The constructor takes the variable to branch on and the value to assign to it:
+    
+    ..  code-block:: c++
+    
+        AssignOneVariableValue(IntVar* const v, int64 val)
+          : var_(v), value_(val) {
+        }
+    
+    ``var_`` and ``value_`` are local ``private`` copies of the variable and the value.
+    
+    The ``Apply()`` and ``Refute()`` methods are straithforward:
+    
+    ..  code-block:: c++
+    
+        void Apply(Solver* const s) {
+          var_->SetValue(value_);
+        }
+    
+        void Refute(Solver* const s) {
+          var_->RemoveValue(value_);
+        }    
+
+``DecisionVisitor``\s
+"""""""""""""""""""""""""""
+
+..  only:: draft
+
+    ..  code-block:: c++
+    
+        class DecisionVisitor : public BaseObject {
+         public:
+          DecisionVisitor() {}
+          virtual ~DecisionVisitor() {}
+          virtual void VisitSetVariableValue(IntVar* const var, int64 value);
+          virtual void VisitSplitVariableDomain(IntVar* const var,
+                                                int64 value,
+                                                bool start_with_lower_half);
+          virtual void VisitScheduleOrPostpone(IntervalVar* const var, int64 est);
+          virtual void VisitRankFirstInterval(SequenceVar* const sequence, int index);
+          virtual void VisitRankLastInterval(SequenceVar* const sequence, int index);
+          virtual void VisitUnknownDecision();
+
+         private:
+          DISALLOW_COPY_AND_ASSIGN(DecisionVisitor);
+        };
+
+
+
+
+
+``DecisionBuilder``\s more in details
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+
+``BaseAssignVariables`` as an example
+""""""""""""""""""""""""""""""""""""""""""
+
+..  only:: draft
+
+    An example of a basic ``DecisionBuilder`` is the ``BaseAssignVariables`` class who assigns variables one by one.
+    Actually, it is flexible enough to also split one variable's domain in two.
+
 
 Composing ``DecisionBuilder``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -33,10 +125,8 @@ Nested searches
     MakeNestedOptimize
 
 
-..  _decisions:
 
-``Decision``\s and ``DecisionVisitor``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 The ``MakePhase()`` method more in details
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -47,6 +137,7 @@ The ``MakePhase()`` method more in details
 """"""""""""""""""""""""""""""""""""""
 
 ..  only:: draft
+
 ``MakePhase()`` for ``IntervalVar``\s
 """"""""""""""""""""""""""""""""""""""
 
@@ -54,6 +145,9 @@ The ``MakePhase()`` method more in details
 ``MakePhase()`` for ``SequenceVar``\s
 """"""""""""""""""""""""""""""""""""""
 
+..  only:: draft
+
+    Something
  
 ..  only:: final 
 

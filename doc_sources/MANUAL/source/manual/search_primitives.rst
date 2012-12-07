@@ -87,6 +87,7 @@ The files inside this directory are:
   search with cpviz.
 - :file:`nqueen4.cc`: The same implementation as in :file:`nqueen3.cc` but with some added statistics.
 - :file:`cpviz_nqueens4_basic.txt`: cleaned output of ``./nqueens4 --size=4 --cp_trace_search --cp_trace_propagation``.
+- :file:`phases1.cc`:
 - :file:`nqueen5.cc`: 
 - :file:`nqueen6.cc`: 
 - :file:`nqueen7.cc`: 
