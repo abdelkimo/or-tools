@@ -1,7 +1,7 @@
 ..  _hood_files:
 
-Main files
---------------------
+Main files and directories
+-------------------------------
 
 ..  raw:: html
     

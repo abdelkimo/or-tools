@@ -107,6 +107,7 @@ else:
 try:
     retcode = check_call("svn propset svn:mime-type text/html `find . -name \"*.html\" -print | grep -v .svn`", shell=True)
     retcode = check_call("svn propset svn:mime-type text/css `find . -name \"*.css\" -print | grep -v .svn`", shell=True)
+    retcode = check_call("svn propset svn:mime-type image/svg+xml `find . -name \"*.svg\" -print | grep -v .svn`", shell=True)
     retcode = check_call("svn commit -m \"Doc automatic update \"",
                                                                shell=True)
 except OSError, e:

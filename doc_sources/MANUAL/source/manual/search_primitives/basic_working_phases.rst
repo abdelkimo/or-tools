@@ -5,10 +5,14 @@ Basic working of the solver: the phases
 
 ..  only:: draft
 
+
+
 ..  _decision_builders_and_phases:
 
 ``DecisionBuilder``\s and phases
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 
 ..  only:: draft
 
@@ -57,6 +61,9 @@ The ``MakePhase()`` method more in details
     
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    
+    
+
 
 
 
