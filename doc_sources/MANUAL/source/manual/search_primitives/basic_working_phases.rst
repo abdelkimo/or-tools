@@ -3,19 +3,19 @@
 Basic working of the solver: the phases
 -----------------------------------------------------
 
+..  only:: draft
+
 ..  _decision_builders_and_phases:
 
 ``DecisionBuilder``\s and phases
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
-The ``MakePhase()`` method more in details
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
+..  only:: draft
 
 Composing ``DecisionBuilder``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
 
 ..  _nested_searches:
 
@@ -33,3 +33,31 @@ Nested searches
 
 ``Decision``\s and ``DecisionVisitor``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The ``MakePhase()`` method more in details
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+``MakePhase()`` for ``IntVar``\s
+""""""""""""""""""""""""""""""""""""""
+
+..  only:: draft
+``MakePhase()`` for ``IntervalVar``\s
+""""""""""""""""""""""""""""""""""""""
+
+
+``MakePhase()`` for ``SequenceVar``\s
+""""""""""""""""""""""""""""""""""""""
+
+ 
+..  only:: final 
+
+    ..  raw:: html
+    
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+
