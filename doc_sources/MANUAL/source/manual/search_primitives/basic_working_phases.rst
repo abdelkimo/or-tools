@@ -5,6 +5,9 @@ Basic working of the solver: the phases
 
 ..  only:: draft
 
+    A **phase** corresponds to a type of search in the search tree. You can have several phases/searches in your quest
+    to find a feasible or optimal solution. In *or-tools*, a phase is constructed by a ``DecisionBuilder``.
+
     To better understand how phases and ``DecisionBuilder``\s work, we will implement our own ``DecisionBuilder``.
 
 ..  _decision_builders_and_phases:
@@ -108,10 +111,33 @@ Basic working of the solver: the phases
     Actually, it is flexible enough to also split one variable's domain in two.
 
 
-Composing ``DecisionBuilder``\s
+Combining ``DecisionBuilder``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
+
+    We propose two ways to combine ``DecisionBuilder``\s:
+    
+      * ``Compose()``: sequential searches, i.e. we use the ``DecisionBuilder``\s one after the other;
+      * ``Try()``: parallel searches, i.e. we use the ``DecisionBuilder``\s in parallel.
+    
+    You can of course combine these two combinations.
+
+
+``Compose()``
+"""""""""""""""""
+
+..  only:: draft
+
+
+    Example: scheduling chapter 6 job shop problem.
+
+
+``Try()``
+""""""""""""
+
+..  only:: draft
+
 
 ..  _nested_searches:
 
@@ -120,7 +146,27 @@ Nested searches
 
 ..  only:: draft
 
-    MakeSolveOnce
+
+``SolveOnce``
+"""""""""""""""""
+
+..  only:: draft
+
+``NestedSolve``
+"""""""""""""""""""
+
+..  only:: draft
+
+    For instances, ``NestedSolve()`` is used for:
+    
+      * Testing
+      * ``DefaultSearch``
+      * Local search
+      * To control the backtracking
+
+
+
+..  only:: draft
 
     MakeNestedOptimize
 
