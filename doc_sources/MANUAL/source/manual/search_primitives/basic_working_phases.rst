@@ -8,13 +8,38 @@ Basic working of the solver: the phases
     A **phase** corresponds to a type of search in the search tree. You can have several phases/searches in your quest
     to find a feasible or optimal solution. In *or-tools*, a phase is constructed by a ``DecisionBuilder``.
 
-    To better understand how phases and ``DecisionBuilder``\s work, we will implement our own ``DecisionBuilder``.
+    To better understand how phases and ``DecisionBuilder``\s work, we will implement our own ``DecisionBuilder``
+    and ``Decision`` classes.
 
 ..  _decision_builders_and_phases:
 
 ``DecisionBuilder``\s and phases
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+..  only:: draft
+
+    ``DecisionBuilder``\s are responsible to return ``Decision``\s that tell the solver what to do on the left branch 
+    (``Apply()`` method of the ``Decision``) and the right branch (``Refute()`` method of the ``Decision``).
+    
+    The method to return a ``Decision`` is the main method of the ``DecisionBuilder`` class:
+    
+    ..  code-block:: c++
+    
+        virtual Decision* Next(Solver* const s) = 0;
+        
+    It is a pure virtual method, so it **must** be implemented in all derived ``DecisionBuilder``\s classes.
+    
+    To tell the solver that the ``DecisionBuilder`` has done its work, let ``Next()`` return ``NULL``. The solver will then
+    pass the control to the next available ``DecisionBuilder`` or stop the search if no other ``DecisionBuilder`` is left.
+    
+    There are three more methods:
+      
+    * ``void AppendMonitors(Solver* const solver, std::vector<SearchMonitor*>* const extras)``: to 
+      add some extra ``SearchMonitors`` at the beginning of the search. Please note there are no
+      checks at this point for duplication.
+    * ``string DebugString() const``: the usual ``DebugString()`` method to give a name to your object.
+    * ``Accept(ModelVisitor* const visitor) const``: the usual ``Accept()`` method to let you visit the model and take  
+      appropriate actions.
 
 ..  _decisions:
 
