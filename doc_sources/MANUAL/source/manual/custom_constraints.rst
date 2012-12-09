@@ -3,9 +3,6 @@
 Custom constraints: the *alldifferent_except_0* constraint 
 ============================================================
 
-
-
-
 ..  rubric:: Classes under scrutiny:
 
 ..  only:: draft::

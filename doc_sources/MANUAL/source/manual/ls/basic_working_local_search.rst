@@ -1,4 +1,4 @@
-..  _basic_workingII:
+..  _basic_working_local_search:
 
 Basic working of the solver: local search
 -----------------------------------------------

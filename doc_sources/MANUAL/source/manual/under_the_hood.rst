@@ -14,12 +14,12 @@ Under the hood
 
         If you haven't read the 
         sections~\ref{manual/search_primitives/basic_working_search_algorithm:basic-working-search-algorithm}  
-        and~\ref{manual/ls/basic_working2:basic-workingii}  yet, 
+        and~\ref{manual/ls/basic_working2:basic-working_local_search}  yet, 
         we strongly encourage you to do so. These two sections explain the basics of the CP solver.
         
     ..  only:: html
 
-        If you haven't read the sections :ref:`basic_working_search_algorithm` and :ref:`basic_workingII` yet, we strongly 
+        If you haven't read the sections :ref:`basic_working_search_algorithm` and :ref:`basic_working_local_search` yet, we strongly 
         encourage you to do so.
         These two sections explain the basics of the CP solver.
     

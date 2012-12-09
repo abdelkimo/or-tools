@@ -82,7 +82,7 @@ The files of this chapter are NOT the same as the ones in the :file:`example` di
     :maxdepth: 2
 
     ls/local_search
-    ls/basic_working2
+    ls/basic_working_local_search
     ls/ls_operators
     ls/scheduling_or_tools
     ls/jobshop_def_data
