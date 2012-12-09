@@ -5,11 +5,13 @@ Basic working of the solver: the phases
 
 ..  only:: draft
 
-    A **phase** corresponds to a type of search in the search tree. You can have several phases/searches in your quest
-    to find a feasible or optimal solution. In *or-tools*, a phase is constructed by a ``DecisionBuilder``.
+    A **phase** corresponds to a type of (sub)search in the search tree [#phase_not_really_search]_. You can have several phases/searches in your quest
+    to find a feasible or optimal solution. In *or-tools*, a phase is constructed by and correspond to a ``DecisionBuilder``.
 
     To better understand how phases and ``DecisionBuilder``\s work, we will implement our own ``DecisionBuilder``
     and ``Decision`` classes.
+
+    ..  [#phase_not_really_search] Well, sort of. Read on!
 
 ..  _decision_builders_and_phases:
 
@@ -18,19 +20,79 @@ Basic working of the solver: the phases
 
 ..  only:: draft
 
-    ``DecisionBuilder``\s are responsible to return ``Decision``\s that tell the solver what to do on the left branch 
-    (``Apply()`` method of the ``Decision``) and the right branch (``Refute()`` method of the ``Decision``).
-    
-    The method to return a ``Decision`` is the main method of the ``DecisionBuilder`` class:
+    ``DecisionBuilder``\s are responsible to direct the search at a given node in the search tree. It does so through its
+    main ``Next()`` method:
     
     ..  code-block:: c++
     
         virtual Decision* Next(Solver* const s) = 0;
-        
-    It is a pure virtual method, so it **must** be implemented in all derived ``DecisionBuilder``\s classes.
     
-    To tell the solver that the ``DecisionBuilder`` has done its work, let ``Next()`` return ``NULL``. The solver will then
-    pass the control to the next available ``DecisionBuilder`` or stop the search if no other ``DecisionBuilder`` is left.
+    It is a pure virtual method, so it **must** be implemented in all derived ``DecisionBuilder`` classes.
+    
+    To notify the solver that the ``DecisionBuilder`` has finished its job at the current node, let ``Next()`` return 
+    ``NULL``. The solver will then
+    pass the control to the next available ``DecisionBuilder`` or stop the search at this node if there are no more  
+    ``DecisionBuilder``\s left to deal with it.
+    
+    We use them 
+    in two scenarios [#decision_builders_two_scenarios]_: 
+    
+    ..  [#decision_builders_two_scenarios] One could argue that these two scenarios are not really mutually exclusive.
+        Indeed, we divide the scenarios in two cases following the fact that the ``DecisionBuilder`` returns a ``Decision``
+        or not. Some ``DecisionBuilder``\s delegate to other ``DecisionBuilder``\s the creation process of ``Decision``\s.
+    
+    1.  The basic scenario is to
+        divide the search sub-tree in two (preferably non overlapping) search sub-trees. To do so, the ``DecisionBuilder``
+        returns a (pointer to a) ``Decision`` through its ``Next()`` method.
+        
+        The ``Decision`` class tells the solver what to do on the left branch 
+        (through its ``Apply()`` method) and the right branch (through its ``Refute()`` method).
+
+    
+        Some available ``DecisionBuilder``\s that divide the search sub-tree in two are:
+        
+        * ``BaseAssignVariables``: the main ``DecisionBuilder`` for ``IntVar``\s. It's the basic ``DecisionBuilder`` 
+          we use to assign values to ``IntVar`` variables. When you invoke:
+          
+          ..  code-block:: c++
+          
+              DecisionBuilder * const db = MakePhase(vars,
+                                              Solver::CHOOSE_FIRST_UNBOUND,
+                                              Solver::ASSIGN_MIN_VALUE);
+          
+          the returned (pointer to a) ``DecisionBuilder`` object is a (pointer to a) 
+          ``BaseAssignVariables`` object.
+          
+        * ``AssignVariablesFromAssignment``: assigns values to variables from an ``Assignment`` and if needed passes the hand 
+          to another ``DecisionBuilder`` to continue the search.
+        * ``RankFirstIntervalVars``: the equivalent ``DecisionBuilder`` ``BaseAssignVariables`` but for ``IntervalVar``\s.
+        
+    
+    
+
+
+    2.  A ``DecisionBuilder``
+        doesn't have to split the search sub-tree in two: it can collect data about the search, modify the model, etc.
+        or... solve the sub-tree with the help of other ``DecisionBuilder``\s and allow for *nested searches*.
+        
+        In this case, take the appropriate action in the ``Next()`` method and return ``NULL`` to notify the solver that 
+        the ``DecisionBuilder`` has done its work at the current node.
+    
+        Some examples of available ``DecisionBuilder``\s that do some stuff at a node without splitting the search sub-tree 
+        in two:
+        
+        * ``StoreAssignment`` and ``RestoreAssignment``: respectively stores and restores ``Assignment``\s during the search.
+        * ``AddConstraintDecisionBuilder``: adds a ``Constraint`` during the search.
+        * ``ApplyBranchSelector``: changes the way the branches are selected. For instance, the left branch can become the right
+          branch and vice-versa. Have a look at the ``Solver::DecisionModification`` ``enum`` for more.
+        * ``LocalSearch``: apply local search operators to find a solution.
+        * ``SolveOnce``: stops the search as soon as it finds a solution with the help of another ``DecisionBuilder``.
+        * ``NestedOptimize``: optimizes the search sub-tree with the help of another ``DecisionBuilder``.
+        
+    
+    Some examples of available ``DecisionBuilder``\s that combine with other ``DecisionBuilder``\s:
+    
+    * ``AssignVariablesFromAssignment``
     
     There are three more methods:
       
