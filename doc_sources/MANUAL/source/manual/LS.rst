@@ -84,14 +84,13 @@ The files of this chapter are NOT the same as the ones in the :file:`example` di
     ls/local_search
     ls/basic_working2
     ls/ls_operators
+    ls/scheduling_or_tools
     ls/jobshop_def_data
     ls/jobshop_implementation
     ls/jobshop_ls
     ls/ls_filtering
     ls/metaheuristics
-    ls/tabu_search
-    ls/simulated_annealing
-    ls/guided_ls
+    ls/metaheuristics_examples
     ls/ls_summary
     
 ..  raw:: html

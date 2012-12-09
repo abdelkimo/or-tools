@@ -8,8 +8,11 @@ Basic working of the solver: the phases
     A **phase** corresponds to a type of (sub)search in the search tree [#phase_not_really_search]_. You can have several phases/searches in your quest
     to find a feasible or optimal solution. In *or-tools*, a phase is constructed by and correspond to a ``DecisionBuilder``.
 
+    We postpone a discussion on the ``DecisionBuilder``\s and ``Decision``\s for scheduling untill the section 
+    :ref:`scheduling_decisionbuilders_decision`.
+
     To better understand how phases and ``DecisionBuilder``\s work, we will implement our own ``DecisionBuilder``
-    and ``Decision`` classes.
+    and ``Decision`` classes in the section .
 
     ..  [#phase_not_really_search] Well, sort of. Read on!
 
@@ -39,7 +42,7 @@ Basic working of the solver: the phases
     
     ..  [#decision_builders_two_scenarios] One could argue that these two scenarios are not really mutually exclusive.
         Indeed, we divide the scenarios in two cases following the fact that the ``DecisionBuilder`` returns a ``Decision``
-        or not. Some ``DecisionBuilder``\s delegate to other ``DecisionBuilder``\s the creation process of ``Decision``\s.
+        or not. Some ``DecisionBuilder``\s delegate the creation process of ``Decision``\s to other ``DecisionBuilder``\s.
     
     1.  The basic scenario is to
         divide the search sub-tree in two (preferably non overlapping) search sub-trees. To do so, the ``DecisionBuilder``
@@ -61,11 +64,18 @@ Basic working of the solver: the phases
                                               Solver::ASSIGN_MIN_VALUE);
           
           the returned (pointer to a) ``DecisionBuilder`` object is a (pointer to a) 
-          ``BaseAssignVariables`` object.
+          ``BaseAssignVariables`` object. See the subsection :ref:`makephase_int_vars` below in this section.
           
         * ``AssignVariablesFromAssignment``: assigns values to variables from an ``Assignment`` and if needed passes the hand 
-          to another ``DecisionBuilder`` to continue the search.
-        * ``RankFirstIntervalVars``: the equivalent ``DecisionBuilder`` ``BaseAssignVariables`` but for ``IntervalVar``\s.
+          to another ``DecisionBuilder`` to continue the search. The factory method to create this ``DecisionBuilder`` is
+          ``MakeDecisionBuilderFromAssignment()``.
+          
+        * ``RankFirstIntervalVars``: equivalent to the ``DecisionBuilder`` ``BaseAssignVariables`` but for ``SequenceVar``\s.
+          See the subsection :ref:`makephase_sequence_vars` below in this section.
+              
+        ..  raw:: html
+        
+            <br><br>
         
     
     
@@ -233,11 +243,43 @@ Nested searches
 
 ..  only:: draft
 
+    *Nested searches* are searches in sub-trees that are initiated from a particular node in the global search tree.
+    Another way of looking at things is to say that nested searches collapse a search tree described by one or more 
+    ``DecisionBuilder``\s
+    and sets of ``SearchMonitor``\s and wrap it into a single node in the main search tree.
+    
+    Local search (``LocalSearch``) is implemented as a nested search but we delay its description until next chapter.
+    
+
 
 ``SolveOnce``
 """""""""""""""""
 
 ..  only:: draft
+
+    // SolveOnce will collapse a search tree described by a decision
+    // builder 'db' and a set of monitors and wrap it into a single point.
+    // If there are no solutions to this nested tree, then SolveOnce will
+    // fail. If there is a solution, it will find it and returns NULL.
+    DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db);
+    DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db,
+                                   SearchMonitor* const monitor1);
+    DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db,
+                                   SearchMonitor* const monitor1,
+                                   SearchMonitor* const monitor2);
+    DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db,
+                                   SearchMonitor* const monitor1,
+                                   SearchMonitor* const monitor2,
+                                   SearchMonitor* const monitor3);
+    DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db,
+                                   SearchMonitor* const monitor1,
+                                   SearchMonitor* const monitor2,
+                                   SearchMonitor* const monitor3,
+                                   SearchMonitor* const monitor4);
+    DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db,
+                                   const std::vector<SearchMonitor*>& monitors);
+
+
 
 ``NestedSolve``
 """""""""""""""""""
@@ -257,6 +299,48 @@ Nested searches
 
     MakeNestedOptimize
 
+// NestedOptimize will collapse a search tree described by a
+  // decision builder 'db' and a set of monitors and wrap it into a
+  // single point. If there are no solutions to this nested tree, then
+  // NestedOptimize will fail. If there are solutions, it will find
+  // the best as described by the mandatory objective in the solution,
+  // as well as the optimization direction, instantiate all variables
+  // to this solution, and returns NULL.
+  DecisionBuilder* MakeNestedOptimize(DecisionBuilder* const db,
+                                      Assignment* const solution,
+                                      bool maximize,
+                                      int64 step);
+  DecisionBuilder* MakeNestedOptimize(DecisionBuilder* const db,
+                                      Assignment* const solution,
+                                      bool maximize,
+                                      int64 step,
+                                      SearchMonitor* const monitor1);
+  DecisionBuilder* MakeNestedOptimize(DecisionBuilder* const db,
+                                      Assignment* const solution,
+                                      bool maximize,
+                                      int64 step,
+                                      SearchMonitor* const monitor1,
+                                      SearchMonitor* const monitor2);
+  DecisionBuilder* MakeNestedOptimize(DecisionBuilder* const db,
+                                      Assignment* const solution,
+                                      bool maximize,
+                                      int64 step,
+                                      SearchMonitor* const monitor1,
+                                      SearchMonitor* const monitor2,
+                                      SearchMonitor* const monitor3);
+  DecisionBuilder* MakeNestedOptimize(DecisionBuilder* const db,
+                                      Assignment* const solution,
+                                      bool maximize,
+                                      int64 step,
+                                      SearchMonitor* const monitor1,
+                                      SearchMonitor* const monitor2,
+                                      SearchMonitor* const monitor3,
+                                      SearchMonitor* const monitor4);
+  DecisionBuilder* MakeNestedOptimize(DecisionBuilder* const db,
+                                      Assignment* const solution,
+                                      bool maximize,
+                                      int64 step,
+                                      const std::vector<SearchMonitor*>& monitors);
 
 
 
@@ -266,21 +350,36 @@ The ``MakePhase()`` method more in details
 
 ..  only:: draft
 
+
+..  _makephase_int_vars:
+
 ``MakePhase()`` for ``IntVar``\s
 """"""""""""""""""""""""""""""""""""""
 
 ..  only:: draft
 
+..  _makephase_interval_vars:
+
 ``MakePhase()`` for ``IntervalVar``\s
 """"""""""""""""""""""""""""""""""""""
 
+..  only:: draft
+
+    DecisionBuilder* MakePhase(const std::vector<IntervalVar*>& intervals,
+                             IntervalStrategy str);
+
+
+..  _makephase_sequence_vars:
 
 ``MakePhase()`` for ``SequenceVar``\s
 """"""""""""""""""""""""""""""""""""""
 
 ..  only:: draft
 
-    Something
+
+    DecisionBuilder* MakePhase(const std::vector<SequenceVar*>& sequences,
+                             SequenceStrategy str);
+
  
 ..  only:: final 
 

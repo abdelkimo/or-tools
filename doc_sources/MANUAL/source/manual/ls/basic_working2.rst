@@ -1,7 +1,7 @@
 ..  _basic_workingII:
 
-Basic working of the solver: part II
-------------------------------------
+Basic working of the solver: local search
+-----------------------------------------------
 
 ..  only:: draft
 
