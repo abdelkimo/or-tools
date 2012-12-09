@@ -5,4 +5,5 @@
   - chapter 6 rewritten.
   - chapter 5 rewritten.
   - 5.5 added.
+  - 5.6 added.
 

@@ -10,20 +10,29 @@ Out of the box variables and values selection primitives
 
 ..  only:: draft
 
-    To choose among the variables and the values when branching, several variables and values selection primitives have 
-    been defined. 
 
-    To select the next variable to branch on and the next value to give to this variable,
-    several selection primitives are available.
+    To choose among the ``IntVar`` variables and the ``int64`` values when branching, 
+    several variables and values selection primitives are available. As stated before 
+    (see the subsection :ref:`make_phase_two_steps` in the previous section), the selection is done in two steps:
+    
+    - First, select the variable;
+    - Second, select an available value for this variable.
 
+    To construct the corresponding ``DecisionBuilder``, use one of the ``MakePhase()`` factory methods. For instance:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder* MakePhase(const std::vector<IntVar*>& vars,
+                                                  IntVarStrategy var_str,
+                                                  IntValueStrategy val_str);
 
-``VariableSelector``\s to select the next variable
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``IntVarStrategy`` ``enum``\s to select the next variable
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
-    To select next variable in the search tree, several selection primitives are already defined. The ``enum``
-    ``IntVarStrategy`` describes the strategies used to select the next branching variable at each node during a phase search:
+    The ``IntVarStrategy`` ``enum`` 
+    describes the available strategies to select the next branching variable at each node during a phase search:
 
     ``INT_VAR_DEFAULT`` 
       The default behaviour is ``CHOOSE_FIRST_UNBOUND``.
@@ -125,15 +134,15 @@ Out of the box variables and values selection primitives
       3. If everything else fails, pick the first unbound variable.
       
 
-    We will encounter paths again in third part of this manual, when we'll be speaking about routing.
+    We will encounter paths again in third part of this manual, when we'll discuss routing.
       
       
-``ValueSelector``\s to select the next value
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``IntValueStrategy`` ``enum``\s to select the next value
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
-    The ``enum`` ``IntValueStrategy`` describes the strategies used to select the next value for the choosen 
+    The ``IntValueStrategy`` ``enum`` describes the strategies available to select the next value(s) for the already chosen 
     variable at each node during the search:
 
     ``INT_VALUE_DEFAULT``
@@ -161,39 +170,7 @@ Out of the box variables and values selection primitives
     The funniest part is to define our own selection strategies. This is the subject of the next subsection.
     
 
-Use of ``IndexEvaluator2``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    
-..  only:: draft
 
-    What if you want to define your own selection strategy?
-    
-    This enum is used by Solver::MakePhase to specify how to select variables
-    and values during the search.
-    In Solver::MakePhase(const std::vector<IntVar*>&, IntVarStrategy,
-    IntValueStrategy), variables are selected first, and then the associated
-    value.
-    In Solver::MakePhase(const std::vector<IntVar*>& vars, IndexEvaluator2*,
-    EvaluatorStrategy), the selection is done scanning every pair
-    <variable, possible value>. The next selected pair is then the best among
-    all possibilities, i.e. the pair with the smallest evaluation.
-    As this is costly, two options are offered: static or dynamic evaluation.
-    
-    enum EvaluatorStrategy {
-    
-    Pairs are compared at the first call of the selector, and results are
-    cached. Next calls to the selector use the previous computation, and so
-    are not up-to-date, e.g. some <variable, value> pairs may not be possible
-    anymore due to propagation since the first to call.
-    
-    CHOOSE_STATIC_GLOBAL_BEST,
-
-    // Pairs are compared each time a variable is selected. That way all pairs
-    // are relevant and evaluation is accurate.
-    // This strategy runs in O(number-of-pairs) at each variable selection,
-    // versus O(1) in the static version.
-    CHOOSE_DYNAMIC_GLOBAL_BEST,
-    };
     
 ..  only:: final
 

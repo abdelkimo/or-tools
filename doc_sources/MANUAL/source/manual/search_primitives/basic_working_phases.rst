@@ -454,6 +454,8 @@ The ``MakePhase()`` method more in details
 
     The ``MakePhase()`` method is overloaded with different arguments and we discuss most of them in this subsection.
 
+..  _make_phase_two_steps:
+
 The 2-steps approach
 """""""""""""""""""""""""
 
