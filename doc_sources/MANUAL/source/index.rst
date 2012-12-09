@@ -184,6 +184,8 @@ Foreword
     questions about the non-CP part of the library, don’t hesitate to ask them on the mailing list. See
     the section `How to reach us?`_ below.
     
+    We don't discuss the ``flatzinc`` implementation nor the parallel solving process.
+    
     This document will not describe how to use the library (and the syntactic sugar introduced when
     possible) with ``Python``, ``Java`` nor ``C#``. This could possibly change in the future. The tutorial examples 
     (see below) exist also in ``Python``, ``Java`` and ``C#`` though.

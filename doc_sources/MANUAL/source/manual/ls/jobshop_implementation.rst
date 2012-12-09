@@ -168,6 +168,8 @@ You can also query the start time and duration:
   * ``StartExpr()``;
   * ``DurationExpr()``.
 
+..  _jobshop_decision_builders_compose:
+
 The ``DecisionBuilder``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

@@ -12,23 +12,24 @@ Basic working of the solver: the phases
 
         We postpone a discussion on the ``DecisionBuilder``\s and ``Decision``\s for scheduling until the 
         dedicated subsection 
-        :ref:`scheduling_decisionbuilders_decision`.
+        :ref:`scheduling_decisionbuilders_decision` in the next chapter.
 
         To better understand how phases and ``DecisionBuilder``\s work, we will implement our own ``DecisionBuilder``
         and ``Decision`` classes in the section :ref:`customized_search_primitives`.
-        In this section, we show you how to use these primitives.
+        In this section, we show you how to use these primitives and some very basic examples.
 
 
 
     ..  raw:: latex
 
         We postpone a discussion on the \code{DecisionBuilder}s and \code{Decision}s for scheduling until the 
-        dedicated section~\ref{manual/ls/scheduling_or_tools:scheduling-decisionbuilders-decision}.\\
+        dedicated section~\ref{manual/ls/scheduling_or_tools:scheduling-decisionbuilders-decision} in the 
+        next chapter.\\
 
         To better understand how phases and \code{DecisionBuilder}s work, we will implement our own \code{DecisionBuilder}
         and \code{Decision} classes in the 
         section~\ref{manual/search_primitives/customized_search_primitives:customized-search-primitives}.
-        In this section, we show you how to use these primitives.
+        In this section, we show you how to use these primitives and some very basic examples.
 
     
 
@@ -177,8 +178,12 @@ Basic working of the solver: the phases
 
 ..  only:: draft
         
-    The most obvious ``Decision`` class for ``IntVar``\s is probably ``AssignOneVariableValue`` which assigns 
+    The most obvious ``Decision`` class for ``IntVar``\s is probably ``AssignOneVariableValue`` 
+    [#assign_one_variable_value_not_accessible]_ which assigns 
     a value to a variable in the left branch and forbids this assignment in the right branch.
+    
+    ..  [#assign_one_variable_value_not_accessible] The ``AssignOneVariableValue`` class is used internally and 
+        you don't have a direct access to it. We use it to illustrate a basic ``Decision`` class.
     
     The constructor takes the variable to branch on and the value to assign to it:
     
@@ -255,24 +260,16 @@ Basic working of the solver: the phases
     
         virtual void VisitUnknownDecision();
 
-
-``DecisionBuilder``\s more in details
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-..  only:: draft
-
-
-``BaseAssignVariables`` as an example
-""""""""""""""""""""""""""""""""""""""""""
-
-..  only:: draft
-
-    An example of a basic ``DecisionBuilder`` is the ``BaseAssignVariables`` class who assigns 
-    variables one by one [#base_assign_variables_more_flexible]_.
+    ..  only:: html
     
+        In the section :ref:`search_primitives_breaking_symmetry`, we present a concept that uses ``DecisionVisitor``\s.
+
+    ..  raw:: latex
     
-    ..  [#base_assign_variables_more_flexible] Actually, it is flexible enough to also be able to split 
-        one variable's domain in two but let's keep things simple.
+        In section~\ref{manual/search_primitives/breaking_symmetry:search-primitives-breaking-symmetry}, 
+        we present a concept that uses \code{DecisionVisitor}s.
+
+
 
 
 Combining ``DecisionBuilder``\s
@@ -293,15 +290,81 @@ Combining ``DecisionBuilder``\s
 
 ..  only:: draft
 
+    Creates a ``DecisionBuilder`` which sequentially composes ``DecisionBuilder``\s.
+    
+    ..  code-block:: c++
+    
+        Solver s(...);
+        ...
+        DecisionBuilder * const db1 = ...;
+        DecisionBuilder * const db2 = ...;
+        DecisionBuilder * const db = s.Compose(db1, db2);
+    
+    At each leaf of the search tree corresponding to the ``DecisionBuilder`` ``db1``, the second ``DecisionBuilder``
+    ``db2`` is called. 
+    
+    The ``DecisionBuilder`` ``db`` search tree will be the following tree:
+    
+    ..  image:: images/compose.*
+        :width: 250 pt
+        :align: center
 
-    Example: scheduling chapter 6 job shop problem.
+    This composition of ``DecisionBuilder``\s frequently happens in scheduling. For instance, in 
+    the section :ref:`jobshop_decision_builders_compose` where we try to solve a Job-Shop Problem, 
+    the solving process is done in two consecutive phases: 
+    first we rank the tasks for each machine, then we schedule each task at its earliest start time.
+    To do so, we ``Compose()`` two ``DecisionBuilder``\s.
+    
+    You can ``Compose()`` more than two ``DecisionBuilder``\s. There are two more specific methods to 
+    ``Compose()`` three and even four ``DecisionBuilder``\s. And if that is not enough, use 
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder* Compose(const std::vector<DecisionBuilder*>& dbs);
 
-
+    where you can ``Compose()`` as many ``DecisionBuilder``\s as you like!
+    
 ``Try()``
 """"""""""""
 
 ..  only:: draft
 
+    Creates a ``DecisionBuilder`` which tries ``DecisionBuilder``\s one after the other in parallel. 
+    
+    ..  code-block:: c++
+    
+        Solver s(...);
+        ...
+        DecisionBuilder * const db1 = ...;
+        DecisionBuilder * const db2 = ...;
+        DecisionBuilder * const db = s.Try(db1, db2);
+    
+    The ``DecisionBuilder`` ``db1`` and the ``DecisionBuilder`` ``db2`` are each called from the top of the search tree
+    one after the other.
+    
+    The ``DecisionBuilder`` ``db`` search tree will be the following tree:
+    
+    ..  image:: images/try.*
+        :width: 200 pt
+        :align: center
+
+
+    This combination is handy to try a ``DecisionBuilder`` which partially explores the
+    search space and if it fails to try another ``DecisionBuilder``.
+
+    As with ``Compose()``, you can ``Try()`` up to four ``DecisionBuilder``\s and use 
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder* Try(const std::vector<DecisionBuilder*>& dbs);
+    
+    for more. 
+    
+    ..  warning:: 
+
+        Beware that ``Try(db1, db2, db3, db4)`` will give an unbalanced tree to the right, 
+        whereas ``Try(Try(db1, db2), Try(db3, db4))`` will give a balanced tree.
+    
 
 ..  _nested_searches:
 
@@ -324,91 +387,46 @@ Nested searches
 
 ..  only:: draft
 
-    // SolveOnce will collapse a search tree described by a decision
-    // builder 'db' and a set of monitors and wrap it into a single point.
-    // If there are no solutions to this nested tree, then SolveOnce will
-    // fail. If there is a solution, it will find it and returns NULL.
-    DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db);
-    DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db,
-                                   SearchMonitor* const monitor1);
-    DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db,
-                                   SearchMonitor* const monitor1,
-                                   SearchMonitor* const monitor2);
-    DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db,
-                                   SearchMonitor* const monitor1,
-                                   SearchMonitor* const monitor2,
-                                   SearchMonitor* const monitor3);
-    DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db,
-                                   SearchMonitor* const monitor1,
-                                   SearchMonitor* const monitor2,
-                                   SearchMonitor* const monitor3,
-                                   SearchMonitor* const monitor4);
-    DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db,
-                                   const std::vector<SearchMonitor*>& monitors);
-
-
-
-``NestedSolve``
+    ``SolveOnce`` is a ``DecisionBuilder`` that searches a sub-tree with a given ``DecisionBuilder`` and a set of ``SearchMonitor``\s 
+    and returns the first solution encountered. If there are no solutions in this nested sub-tree, then ``SolveOnce`` will
+    fail.
+    
+    The factory method is ``MakeSolveOnce()``. You have to invoke it with another ``DecisionBuilder`` and none or up to 
+    four ``SearchMonitor``\s. If you want to use more than four ``SearchMonitor``\s, use 
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder* MakeSolveOnce(DecisionBuilder* const db,
+                               const std::vector<SearchMonitor*>& monitors);
+        
+``NestedOptimize``
 """""""""""""""""""
 
 ..  only:: draft
 
-    For instances, ``NestedSolve()`` is used for:
+    ``NestedOptimize`` is similar to ``SolveOnce`` except it seeks for an optimal solution instead of just a feasible solution.
+    If there are no solutions in this nested tree, it fails. If there are solutions, it will find
+    the best as described by the mandatory objective in the solution,
+    as well as the optimization direction and instantiate all variables
+    to this solution.
     
-      * Testing
-      * ``DefaultSearch``
-      * Local search
-      * To control the backtracking
-
-
-
-..  only:: draft
-
-    MakeNestedOptimize
-
-// NestedOptimize will collapse a search tree described by a
-  // decision builder 'db' and a set of monitors and wrap it into a
-  // single point. If there are no solutions to this nested tree, then
-  // NestedOptimize will fail. If there are solutions, it will find
-  // the best as described by the mandatory objective in the solution,
-  // as well as the optimization direction, instantiate all variables
-  // to this solution, and returns NULL.
-  DecisionBuilder* MakeNestedOptimize(DecisionBuilder* const db,
-                                      Assignment* const solution,
-                                      bool maximize,
-                                      int64 step);
-  DecisionBuilder* MakeNestedOptimize(DecisionBuilder* const db,
-                                      Assignment* const solution,
-                                      bool maximize,
-                                      int64 step,
-                                      SearchMonitor* const monitor1);
-  DecisionBuilder* MakeNestedOptimize(DecisionBuilder* const db,
-                                      Assignment* const solution,
-                                      bool maximize,
-                                      int64 step,
-                                      SearchMonitor* const monitor1,
-                                      SearchMonitor* const monitor2);
-  DecisionBuilder* MakeNestedOptimize(DecisionBuilder* const db,
-                                      Assignment* const solution,
-                                      bool maximize,
-                                      int64 step,
-                                      SearchMonitor* const monitor1,
-                                      SearchMonitor* const monitor2,
-                                      SearchMonitor* const monitor3);
-  DecisionBuilder* MakeNestedOptimize(DecisionBuilder* const db,
-                                      Assignment* const solution,
-                                      bool maximize,
-                                      int64 step,
-                                      SearchMonitor* const monitor1,
-                                      SearchMonitor* const monitor2,
-                                      SearchMonitor* const monitor3,
-                                      SearchMonitor* const monitor4);
-  DecisionBuilder* MakeNestedOptimize(DecisionBuilder* const db,
-                                      Assignment* const solution,
-                                      bool maximize,
-                                      int64 step,
-                                      const std::vector<SearchMonitor*>& monitors);
-
+    The factory method is ``MakeNestedOptimize()``. Again, you can use none or up to four ``SearchMonitor``\s
+    and use the version with a ``std::vector<SearchMonitor*>``:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder* MakeNestedOptimize(DecisionBuilder* const db,
+                               Assignment* const solution,
+                               bool maximize,
+                               int64 step,
+                               const std::vector<SearchMonitor*>& monitors);
+    
+    ``NestedOptimize`` is used for:
+    
+      * Testing.
+      * Local search: see next chapter.
+      * To control the backtracking.
+      * ...
 
 ..  _makephase_int_vars:
 
