@@ -34,6 +34,12 @@ Caches
 
 ..  only:: draft
 
+..  _idiom_callbacks:
+
+Callbacks
+"""""""""""""""""""""
+
+..  only:: draft
 
 ..  _idiom_visitors:
 

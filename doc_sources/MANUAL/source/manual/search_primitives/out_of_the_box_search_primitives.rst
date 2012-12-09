@@ -125,7 +125,7 @@ Out of the box variables and values selection primitives
       3. If everything else fails, pick the first unbound variable.
       
 
-    We will speak about paths again in third part of this manual, when we'll be speaking about routing.
+    We will encounter paths again in third part of this manual, when we'll be speaking about routing.
       
       
 ``ValueSelector``\s to select the next value

@@ -8,6 +8,8 @@ Basic working of the solver: the phases
     A **phase** corresponds to a type of (sub)search in the search tree [#phase_not_really_search]_. You can have several phases/searches in your quest
     to find a feasible or optimal solution. In *or-tools*, a phase is constructed by and correspond to a ``DecisionBuilder``.
 
+    ..  [#phase_not_really_search] Well, sort of. Read on!
+    
     ..  only:: html
 
         We postpone a discussion on the ``DecisionBuilder``\s and ``Decision``\s for scheduling until the 
@@ -16,9 +18,10 @@ Basic working of the solver: the phases
 
         To better understand how phases and ``DecisionBuilder``\s work, we will implement our own ``DecisionBuilder``
         and ``Decision`` classes in the section :ref:`customized_search_primitives`.
-        In this section, we show you how to use these primitives and some very basic examples.
+        In this section, we show you how to use these primitives and some very basic examples [#all_decision_builders_hidden]_.
 
-
+        ..  [#all_decision_builders_hidden]  ``DecisionBuilder``\s and ``Decision``\s are used internally and 
+            you cannot access them directly. To use them, invoke the corresponding factory methods.
 
     ..  raw:: latex
 
@@ -29,11 +32,13 @@ Basic working of the solver: the phases
         To better understand how phases and \code{DecisionBuilder}s work, we will implement our own \code{DecisionBuilder}
         and \code{Decision} classes in the 
         section~\ref{manual/search_primitives/customized_search_primitives:customized-search-primitives}.
-        In this section, we show you how to use these primitives and some very basic examples.
+        In this section, we show you how to use these primitives and some very basic 
+        examples\footnote{\code{DecisionBuilder}s and \code{Decision}s are used internally and 
+        you cannot access them directly. To use them, invoke the corresponding factory methods.}.
 
     
 
-    ..  [#phase_not_really_search] Well, sort of. Read on!
+
 
 ..  _decision_builders_and_phases:
 
@@ -42,7 +47,8 @@ Basic working of the solver: the phases
 
 ..  only:: draft
 
-    ``DecisionBuilder``\s (combined with ``SearchMonitor``\s) are responsible to direct the search at the current node 
+    ``DecisionBuilder``\s 
+    (combined with ``SearchMonitor``\s) are responsible to direct the search at the current node 
     in the search tree. The ``DecisionBuilder`` class control the search through its
     main ``Next()`` method:
 
@@ -52,6 +58,7 @@ Basic working of the solver: the phases
     
     It is a pure virtual method, so it **must** be implemented in all derived ``DecisionBuilder`` classes.
     
+   
     To notify the solver that the ``DecisionBuilder`` has finished its job at the current node, let ``Next()`` return 
     ``NULL``. The solver will then
     pass the control to the next available ``DecisionBuilder`` or stop the search at this node if there are no more  
@@ -131,7 +138,7 @@ Basic working of the solver: the phases
 
 ..  only:: draft
 
-    The ``Decision`` class implements the *branching rules* of the search, i.e. how to branch (or divide the search sub-tree)
+    The ``Decision`` class together with the ``DecisionBuilder`` class implement the *branching rules* of the search, i.e. how to branch (or divide the search sub-tree)
     at a given node in the 
     search tree. Although a ``DecisionBuilder`` could return several types of ``Decision``\s during a search, 
     we recommend to stick to 
@@ -170,7 +177,8 @@ Basic working of the solver: the phases
     * ``virtual void Accept(DecisionVisitor* const visitor) const``: accepts the given visitor.
     
     
-    Several ``Decision`` classes are available. We details the ``Decision`` classes dealing with 
+    Several ``Decision`` classes are available. We enumerate the different strategies 
+    implemented by the available ``Decision`` classes dealing with 
     ``IntVar``\s in the next section. In the next subsection, we detail a basic example.
     
 ``AssignOneVariableValue`` as an example
@@ -179,11 +187,9 @@ Basic working of the solver: the phases
 ..  only:: draft
         
     The most obvious ``Decision`` class for ``IntVar``\s is probably ``AssignOneVariableValue`` 
-    [#assign_one_variable_value_not_accessible]_ which assigns 
+    which assigns 
     a value to a variable in the left branch and forbids this assignment in the right branch.
     
-    ..  [#assign_one_variable_value_not_accessible] The ``AssignOneVariableValue`` class is used internally and 
-        you don't have a direct access to it. We use it to illustrate a basic ``Decision`` class.
     
     The constructor takes the variable to branch on and the value to assign to it:
     
@@ -435,9 +441,159 @@ The ``MakePhase()`` method more in details
 
 ..  only:: draft
 
+    ..  only:: html
+    
+        We only discuss the ``MakePhase()`` methods for ``std::vector<IntVar*>``. For ``std::vector<IntervalVar*>`` 
+        and ``std::vector<SequenceVar*>`` see the section :ref:`scheduling_or_tools` in the next chapter.
+    
+    ..  raw:: latex
+    
+        We only discuss the \code{MakePhase()} methods for \code{std::vector<IntVar*>}. For \code{std::vector<IntervalVar*>} 
+        and \code{std::vector<SequenceVar*>} see section~\ref{manual/ls/scheduling_or_tools:scheduling-or-tools} 
+        in the next chapter.\\
 
+    The ``MakePhase()`` method is overloaded with different arguments and we discuss most of them in this subsection.
 
- 
+The 2-steps approach
+"""""""""""""""""""""""""
+
+..  only:: draft
+
+    Variables and values are chosen in two steps: first a variable is chosen and only then is a value chosen to be assigned 
+    to this variable. 
+    
+    The basic version is of the ``MakePhase()`` method is:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder* MakePhase(const std::vector<IntVar*>& vars,
+                                                  IntVarStrategy var_str,
+                                                  IntValueStrategy val_str);
+
+    where ``IntVarStrategy`` is an ``enum`` with different strategies to find 
+    the next variable to branch on and ``IntValueStrategy`` an ``enum`` with different strategies 
+    to find the next value to assign to this variable. We detail the different available strategies in the next section.
+    
+
+Callbacks to the rescue
+""""""""""""""""""""""""""
+    
+..  only:: draft
+
+    What if you want to use your own strategies? One way to do this is to develop your own ``Decision``\s and 
+    ``DecisionBuilder``\s. Another way is to provide callbacks to the ``MakePhase()`` method. These callbacks evaluate 
+    different variables and values you can assign to a chosen variable. The best choice is each time the one that 
+    minimizes the values returned (through the ``Run()`` method) by the callbacks.
+
+    ..  only:: html
+    
+        We will explore both ways in the section :ref:`customized_search_primitives`.
+
+    ..  raw:: latex
+    
+        We will explore both ways in the 
+        section~\ref{manual/search_primitives/customized_search_primitives:customized-search-primitives}.
+
+    There are two types of callbacks [#callbacks_want_to_know_more]_ that ``MakePhase()`` accepts: 
+    
+    ..  code-block:: c++
+    
+        typedef ResultCallback1<int64, int64> IndexEvaluator1;
+        typedef ResultCallback2<int64, int64, int64> IndexEvaluator2;
+  
+    ..  [#callbacks_want_to_know_more] If you want to know more about callbacks, see the section
+        :ref:`idiom_callbacks` in the chapter :ref:`chapter_under_the_hood`.
+  
+    ``IndexEvaluator1`` allows to evaluate the next variable to branch on by giving the index of this variable in the 
+    ``std::vector<IntVar*>`` for unbounded variables. ``IndexEvaluator2`` allows to evaluate the available values 
+    (second index) for the chosen variable (first index). In each case, the variable and the value chosen will 
+    correspond to the smallest value returned by the evaluators. In case of a tie for the values, 
+    the **last** value with the 
+    minimum score will be chosen. You can also provide an ``IndexEvaluator1`` to break the tie between several 
+    values. Last but not least, you can combine callbacks with the available ``IntVarStrategy`` or ``IntValueStrategy``
+    strategies.
+
+    ..  warning::
+    
+        Ownership of the callbacks is always passed to the ``DecisionBuilder``.
+
+    
+    We detail some combinations:
+    
+    ..  code-block:: c++  
+    
+        DecisionBuilder* MakePhase(const std::vector<IntVar*>& vars,
+                                   IndexEvaluator1* var_evaluator,
+                                   IndexEvaluator2* val_eval);
+    
+    You provide both evaluators.
+    
+    ..  code-block:: c++
+    
+         DecisionBuilder* MakePhase(const std::vector<IntVar*>& vars,
+                                    IntVarStrategy var_str,
+                                    IndexEvaluator2* val_eval,
+                                    IndexEvaluator1* tie_breaker);
+    
+    You use a predefined ``IntVarStrategy`` strategy to find the next variable to branch on, provide your own 
+    callback ``IndexEvaluator2`` to find the next value to give to this variable and an evaluator ``IndexEvaluator1`` 
+    to break any 
+    tie between different values.
+    
+    ..  code-block:: c++
+    
+         DecisionBuilder* MakePhase(const std::vector<IntVar*>& vars,
+                                    IndexEvaluator1* var_evaluator,
+                                    IntValueStrategy val_str);
+
+    This time, you provide an evaluator ``IndexEvaluator1`` to find the next variable but rely 
+    on a predefined ``IntValueStrategy`` strategy to find the next value.
+    
+    Several other combinations are provided.
+    
+When the 2-steps approach isn't enough
+"""""""""""""""""""""""""""""""""""""""""""""
+
+..  only:: draft
+
+    Sometimes this 2-step approach isn't satisfactory. You may want to test all combinations of variables/values.
+    We provide two versions of the ``MakePhase()`` method just to do that:
+
+    ..  code-block:: c++
+    
+        DecisionBuilder* MakePhase(const std::vector<IntVar*>& vars,
+                                   IndexEvaluator2* evaluator,
+                                   EvaluatorStrategy str);
+    
+    and 
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder* MakePhase(const std::vector<IntVar*>& vars,
+                                   IndexEvaluator2* evaluator,
+                                   IndexEvaluator1* tie_breaker,
+                                   EvaluatorStrategy str);
+
+     
+    You might wonder what the ``EvaluatorStrategy`` strategy is. 
+    The selection is done scanning every pair <variable, possible value>. The next selected pair is the best among
+    all possibilities, i.e. the pair with the smallest evaluation given by the ``IndexEvaluator2``.
+    This approach is costly and therefor we offer two options given by the ``EvaluatorStrategy`` ``enum``: 
+    
+    * ``CHOOSE_STATIC_GLOBAL_BEST``: 
+      **Static evaluation**: Pairs are compared at the first call of the selector, and results are
+      cached. Next calls to the selector use the previous computation, and so
+      are not up-to-date, e.g. some <variable, value> pairs may not be possible
+      anymore due to propagation since the first call.
+    
+    * ``CHOOSE_DYNAMIC_GLOBAL_BEST``: 
+      **Dynamic evaluation**: Pairs are compared each time a variable is selected. That way all pairs
+      are relevant and evaluation is accurate.
+      This strategy runs in :math:`O(\text{number-of-pairs})` at each variable selection,
+      versus :math:`O(1)` in the static version.
+      
+
+  
 ..  only:: final 
 
     ..  raw:: html
