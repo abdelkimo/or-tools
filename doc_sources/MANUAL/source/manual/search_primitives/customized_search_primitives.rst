@@ -1,8 +1,3 @@
-
-    
-
-.. highlight:: cpp
-
 ..  _customized_search_primitives:
 
 Customized search primitives

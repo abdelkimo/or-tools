@@ -8,11 +8,29 @@ Basic working of the solver: the phases
     A **phase** corresponds to a type of (sub)search in the search tree [#phase_not_really_search]_. You can have several phases/searches in your quest
     to find a feasible or optimal solution. In *or-tools*, a phase is constructed by and correspond to a ``DecisionBuilder``.
 
-    We postpone a discussion on the ``DecisionBuilder``\s and ``Decision``\s for scheduling untill the section 
-    :ref:`scheduling_decisionbuilders_decision`.
+    ..  only:: html
 
-    To better understand how phases and ``DecisionBuilder``\s work, we will implement our own ``DecisionBuilder``
-    and ``Decision`` classes in the section .
+        We postpone a discussion on the ``DecisionBuilder``\s and ``Decision``\s for scheduling until the 
+        dedicated subsection 
+        :ref:`scheduling_decisionbuilders_decision`.
+
+        To better understand how phases and ``DecisionBuilder``\s work, we will implement our own ``DecisionBuilder``
+        and ``Decision`` classes in the section :ref:`customized_search_primitives`.
+        In this section, we show you how to use these primitives.
+
+
+
+    ..  raw:: latex
+
+        We postpone a discussion on the \code{DecisionBuilder}s and \code{Decision}s for scheduling until the 
+        dedicated section~\ref{manual/ls/scheduling_or_tools:scheduling-decisionbuilders-decision}.\\
+
+        To better understand how phases and \code{DecisionBuilder}s work, we will implement our own \code{DecisionBuilder}
+        and \code{Decision} classes in the 
+        section~\ref{manual/search_primitives/customized_search_primitives:customized-search-primitives}.
+        In this section, we show you how to use these primitives.
+
+    
 
     ..  [#phase_not_really_search] Well, sort of. Read on!
 
@@ -23,9 +41,10 @@ Basic working of the solver: the phases
 
 ..  only:: draft
 
-    ``DecisionBuilder``\s are responsible to direct the search at a given node in the search tree. It does so through its
+    ``DecisionBuilder``\s (combined with ``SearchMonitor``\s) are responsible to direct the search at the current node 
+    in the search tree. The ``DecisionBuilder`` class control the search through its
     main ``Next()`` method:
-    
+
     ..  code-block:: c++
     
         virtual Decision* Next(Solver* const s) = 0;
@@ -37,7 +56,7 @@ Basic working of the solver: the phases
     pass the control to the next available ``DecisionBuilder`` or stop the search at this node if there are no more  
     ``DecisionBuilder``\s left to deal with it.
     
-    We use them 
+    We use ``DecisionBuilder``\s  
     in two scenarios [#decision_builders_two_scenarios]_: 
     
     ..  [#decision_builders_two_scenarios] One could argue that these two scenarios are not really mutually exclusive.
@@ -65,25 +84,19 @@ Basic working of the solver: the phases
           
           the returned (pointer to a) ``DecisionBuilder`` object is a (pointer to a) 
           ``BaseAssignVariables`` object. See the subsection :ref:`makephase_int_vars` below in this section.
-          
         * ``AssignVariablesFromAssignment``: assigns values to variables from an ``Assignment`` and if needed passes the hand 
           to another ``DecisionBuilder`` to continue the search. The factory method to create this ``DecisionBuilder`` is
           ``MakeDecisionBuilderFromAssignment()``.
+        * ...
           
-        * ``RankFirstIntervalVars``: equivalent to the ``DecisionBuilder`` ``BaseAssignVariables`` but for ``SequenceVar``\s.
-          See the subsection :ref:`makephase_sequence_vars` below in this section.
-              
         ..  raw:: html
         
             <br><br>
         
-    
-    
-
 
     2.  A ``DecisionBuilder``
         doesn't have to split the search sub-tree in two: it can collect data about the search, modify the model, etc.
-        or... solve the sub-tree with the help of other ``DecisionBuilder``\s and allow for *nested searches*.
+        It also can solve the sub-tree with the help of other ``DecisionBuilder``\s and allow for *nested searches*.
         
         In this case, take the appropriate action in the ``Next()`` method and return ``NULL`` to notify the solver that 
         the ``DecisionBuilder`` has done its work at the current node.
@@ -98,43 +111,67 @@ Basic working of the solver: the phases
         * ``LocalSearch``: apply local search operators to find a solution.
         * ``SolveOnce``: stops the search as soon as it finds a solution with the help of another ``DecisionBuilder``.
         * ``NestedOptimize``: optimizes the search sub-tree with the help of another ``DecisionBuilder``.
+        * ...
         
     
-    Some examples of available ``DecisionBuilder``\s that combine with other ``DecisionBuilder``\s:
-    
-    * ``AssignVariablesFromAssignment``
-    
-    There are three more methods:
+    There are three more methods for your (and our) convenience that can be implemented:
       
-    * ``void AppendMonitors(Solver* const solver, std::vector<SearchMonitor*>* const extras)``: to 
+    * ``virtual void AppendMonitors(Solver* const solver, std::vector<SearchMonitor*>* const extras)``: to 
       add some extra ``SearchMonitors`` at the beginning of the search. Please note there are no
       checks at this point for duplication.
-    * ``string DebugString() const``: the usual ``DebugString()`` method to give a name to your object.
-    * ``Accept(ModelVisitor* const visitor) const``: the usual ``Accept()`` method to let you visit the model and take  
+    * ``virtual string DebugString() const``: the usual ``DebugString()`` method to give a name to your object.
+    * ``virtual void Accept(ModelVisitor* const visitor) const``: the usual ``Accept()`` method to let you visit the model and take  
       appropriate actions.
 
 ..  _decisions:
 
-``Decision``\s and ``DecisionVisitor``
+``Decision``\s and ``DecisionVisitor``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    The ``Decision`` class implements the *branching rules* of the search, i.e. how to branch (or divide the search sub-tree)
+    at a given node in the 
+    search tree. Although a ``DecisionBuilder`` could return several types of ``Decision``\s during a search, 
+    we recommend to stick to 
+    one ``Decision`` for a ``DecisionBuilder`` per phase.
+    
+    ``DecisionVisitor``\s is a class whose methods are triggered just before a ``Decision`` is applied. Your are thus 
+    notified of the concrete decision that will be applied and be able to take action.
 
 ``Decision``\s
 """""""""""""""""""
 
 ..  only:: draft
 
-    The ``Decision`` class is responsible to tell the solver what to do on left branches (thought the ``Apply()``
-    method)
-    and the right branch (through the ``Refute()`` method). A ``Decision`` object is returned by a ``DecisionBuilder``.
+    The ``Decision`` class is responsible to tell the solver what to do on left branches thought its ``Apply()``
+    method:
+
+    ..  code-block:: c++
     
-    Several ``Decision`` classes have already been implemented an can serve as a model. You can specialize a 
-    ``Decision`` for ``IntVar``\s, ``IntervalVar``\s or ``SequenceVar``\s [#decision_specialized]_.
+        virtual void Apply(Solver* const s) = 0;
+
+    and the right branch through its ``Refute()`` method:
     
-    ..  [#decision_specialized] If you want to try more esoteric combinations (like mixing variables types) it's up to
-        you but we strongly advise you to keep different types of variables separated and to combine different phases.
+    ..  code-block:: c++
+    
+        virtual void Refute(Solver* const s) = 0;
 
+    These two pure virtual  methods **must** be implemented in every ``Decision`` class.
+    
 
-
+    A ``Decision`` object is returned by a ``DecisionBuilder``
+    through its ``Next()`` method.
+    
+    Two more more methods can be implemented:
+    
+    * ``virtual string DebugString() const``: the usual ``DebugString()`` method.
+    * ``virtual void Accept(DecisionVisitor* const visitor) const``: accepts the given visitor.
+    
+    
+    Several ``Decision`` classes are available. We details the ``Decision`` classes dealing with 
+    ``IntVar``\s in the next section. In the next subsection, we detail a basic example.
+    
 ``AssignOneVariableValue`` as an example
 """""""""""""""""""""""""""""""""""""""""""
 
@@ -165,32 +202,58 @@ Basic working of the solver: the phases
           var_->RemoveValue(value_);
         }    
 
+
+
+
+
 ``DecisionVisitor``\s
 """""""""""""""""""""""""""
 
 ..  only:: draft
 
-    ..  code-block:: c++
+    ``DecisionVisitor``\s are attached to ``Decision``\s. The corresponding methods of the ``DecisionVisitor`` 
+    are triggered just before a ``Decision`` is applied [#decision_visitor_triggered]_
     
-        class DecisionVisitor : public BaseObject {
-         public:
-          DecisionVisitor() {}
-          virtual ~DecisionVisitor() {}
+    .. [#decision_visitor_triggered] In this case, the methods are triggered when ``Decision`` objects 
+       are created and these objects are only created just before their ``Apply()`` method is called. 
+       See the subsection :ref:`idiom_visitors` for more.
+
+    When dealing with ``IntVar``\s, two possibilities can be audited:
+    
+    * when a variable will be assigned a value: in this case, implement the 
+      
+      ..  code-block:: c++
+      
           virtual void VisitSetVariableValue(IntVar* const var, int64 value);
+
+      method.
+    
+    * when a variable domain will be splitted in two by a given value: in this case, implement 
+      the 
+      
+      ..  code-block:: c++
+      
           virtual void VisitSplitVariableDomain(IntVar* const var,
                                                 int64 value,
                                                 bool start_with_lower_half);
-          virtual void VisitScheduleOrPostpone(IntervalVar* const var, int64 est);
-          virtual void VisitRankFirstInterval(SequenceVar* const sequence, int index);
-          virtual void VisitRankLastInterval(SequenceVar* const sequence, int index);
-          virtual void VisitUnknownDecision();
 
-         private:
-          DISALLOW_COPY_AND_ASSIGN(DecisionVisitor);
-        };
+      method. If ``start_with_lower_half`` is ``true``, the decision to be applied will be 
+      
+      ..  math::
+      
+          \text{var} \leqslant value 
+          
+      otherwise it will be 
+      
+      ..  math::
+      
+          \text{var} > value 
 
-
-
+    There is also a default option:
+    
+    ..  code-block:: c++
+    
+        virtual void VisitUnknownDecision();
 
 
 ``DecisionBuilder``\s more in details
@@ -204,8 +267,12 @@ Basic working of the solver: the phases
 
 ..  only:: draft
 
-    An example of a basic ``DecisionBuilder`` is the ``BaseAssignVariables`` class who assigns variables one by one.
-    Actually, it is flexible enough to also split one variable's domain in two.
+    An example of a basic ``DecisionBuilder`` is the ``BaseAssignVariables`` class who assigns 
+    variables one by one [#base_assign_variables_more_flexible]_.
+    
+    
+    ..  [#base_assign_variables_more_flexible] Actually, it is flexible enough to also be able to split 
+        one variable's domain in two but let's keep things simple.
 
 
 Combining ``DecisionBuilder``\s
@@ -343,7 +410,7 @@ Nested searches
                                       const std::vector<SearchMonitor*>& monitors);
 
 
-
+..  _makephase_int_vars:
 
 The ``MakePhase()`` method more in details
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -351,34 +418,6 @@ The ``MakePhase()`` method more in details
 ..  only:: draft
 
 
-..  _makephase_int_vars:
-
-``MakePhase()`` for ``IntVar``\s
-""""""""""""""""""""""""""""""""""""""
-
-..  only:: draft
-
-..  _makephase_interval_vars:
-
-``MakePhase()`` for ``IntervalVar``\s
-""""""""""""""""""""""""""""""""""""""
-
-..  only:: draft
-
-    DecisionBuilder* MakePhase(const std::vector<IntervalVar*>& intervals,
-                             IntervalStrategy str);
-
-
-..  _makephase_sequence_vars:
-
-``MakePhase()`` for ``SequenceVar``\s
-""""""""""""""""""""""""""""""""""""""
-
-..  only:: draft
-
-
-    DecisionBuilder* MakePhase(const std::vector<SequenceVar*>& sequences,
-                             SequenceStrategy str);
 
  
 ..  only:: final 
