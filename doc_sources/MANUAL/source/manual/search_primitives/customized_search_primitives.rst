@@ -8,8 +8,8 @@ Customized search primitives
 
     customization
     
-``DecisionBuilder``\s more in details
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``DecisionBuilder``\s and ``Decision``\s more in details
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 

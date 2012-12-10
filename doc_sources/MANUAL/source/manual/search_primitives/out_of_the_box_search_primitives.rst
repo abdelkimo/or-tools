@@ -167,6 +167,14 @@ Out of the box variables and values selection primitives
       Split the domain in two around the center, and choose the lower
       part first.
       
+      
+
+Results
+^^^^^^^^^^^^
+
+..  only:: draft
+
+
     The funniest part is to define our own selection strategies. This is the subject of the next subsection.
     
 
