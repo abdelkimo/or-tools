@@ -2,8 +2,8 @@
 # Current changes.
 * Minor enhancements to the manual:
   - Minor corrections.
-  - chapter 6 rewritten.
-  - chapter 5 rewritten.
+  - chapter 6 redesigned.
+  - chapter 5 redesigned.
   - 5.5 added.
   - 5.6 added.
 

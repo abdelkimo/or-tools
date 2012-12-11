@@ -1,8 +1,3 @@
-
-    
-
-.. highlight:: cpp
-
 ..  _out_of_the_box_search_primitives:
 
 Out of the box variables and values selection primitives
