@@ -8,7 +8,7 @@ Out of the box variables and values selection primitives
 
     To choose among the ``IntVar`` variables and the ``int64`` values when branching, 
     several variables and values selection primitives are available. As stated before 
-    (see the subsection :ref:`make_phase_two_steps` in the previous section), the selection is done in two steps:
+    (see the subsection :ref:`make_phase_two_steps` in the previous section for more), the selection is done in two steps:
     
     - First, select the variable;
     - Second, select an available value for this variable.
@@ -183,7 +183,7 @@ Results
     are recorded thanks to ``SolverBenchmarkStats``. You can find both classes in the :file:`solver_benchmark.h` header.
     
     In :file:`phases1.cc`, we test different combinations of the above strategies to find the variables and the values
-    to branch on. You can try it for yourself and see that basically no strategy outperforms any other.
+    to branch on. You can try it for yourself and see that basically no predefined strategy outperforms any other.
 
     The funniest (and most efficient) way to use *or-tools* is to define your own selection strategies
     and search primitives. This is the subject of the next section.
