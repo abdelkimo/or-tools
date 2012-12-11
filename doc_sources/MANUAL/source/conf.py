@@ -345,6 +345,8 @@ latex_additional_files = ['images/logo.pdf',
                           'images/viz6.pdf',
                           'images/viz7.pdf',
                           'images/viz8.pdf',
+                          'images/output_nqueens1_8.pdf',
+                          'images/Eight-queens-animation.pdf'
                           ]
 # -- Options for manual page output --------------------------------------------
 

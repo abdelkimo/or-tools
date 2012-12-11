@@ -337,5 +337,61 @@ rest of this chapter, we will try other search strategies and compare them.
 We will also customize our strategies, i.e. define strategies of our own but before 
 we do so, we need to learn a little bit about the basic working of the solver.
 
+..  only:: draft
+
+    ``Wikipedia`` presents a very nice animation of our search strategy (``CHOOSE_FIRST_UNBOUND`` and 
+    ``ASSIGN_MIN_VALUE``) to find the first feasible solution:
+    
+    ..  raw:: html
+    
+        <div align="center">
+        <a href="https://en.wikipedia.org/wiki/Eight_queens_puzzle#Animation_of_the_recursive_solution" >
+        <img src="../../_static/Eight-queens-animation.gif"  alt="Beautiful animation of a backtracking for the 8-queens problem"/></a>
+        </div>
+
+    ..  only:: latex
+    
+        https://en.wikipedia.org/wiki/Eight_queens_puzzle#Animation_of_the_recursive_solution
+
+    Compare with the output of:
+    
+    ..  code-block:: bash
+    
+        ./nqueens1 -size=8 -print
+        
+    ..  raw:: latex
+    
+        with the solution of the animation in figure~\ref{fig:first_sol_default_str_8_queens}.
+            
+        \begin{figure}[ht]
+        \centering
+        \subfigure[Output of nqueens1]{
+        \includegraphics[height=150pt]{output_nqueens1_8.pdf}
+        \label{fig:output_nqueens1_8}
+        }
+        \subfigure[Wikipedia animation]{
+        \includegraphics[height=150pt]{Eight-queens-animation.pdf}
+        \label{fig:Eight-queens-animation}
+        }
+        \caption{The first solution obtained with our default search strategy.}\label{fig:first_sol_default_str_8_queens}
+        \end{figure}
+        
+    ..  only:: html 
+
+        ..  raw:: html 
+        
+            with the solution of the animation:
+        
+            <div align="center">    
+            
+        ..  image:: images/output_nqueens1_8.*
+            :height: 159 pt
+        
+        ..  image:: images/Eight-queens-animation.*
+            :height: 159 pt
+
+        ..  raw:: html 
+        
+            </div>    
 
 

@@ -88,12 +88,24 @@ What about the last three known values? Here there are:
 Quite impressive, isn't it? It's even more impressive when you know that these numbers were obtained by explicitly
 finding all these solutions!
 
+..  only:: draft
+
+    You can learn much more about this problem and the best available techniques [#nqueens_best_techniques]_ from the 
+    current world record (:math:`n = 26`) holder: the ``Queens@TUD`` team from the 
+    *Technische Universität Dresden*: http://queens.inf.tu-dresden.de/?l=en&n=0.
+
 ..  topic:: Is the n-queens problem only a "toy" problem?
 
     While the n-queens problem is a wonderful problem to study backtracking systems and is intensively used in benchmarks to test
     these systems, there are real problems that can be modelled and solved as n-queens problems. For instance, it has been 
     used for parallel memory storage schemes, VLSI testing, traffic control and deadlock prevention (see [Jordan2009]_).
 
+..  only:: draft
+
+    ..  [#nqueens_best_techniques] This time, backtracking and thus *Constraint Programming* are among the most 
+        efficient techniques. However, to compute all the solutions for :math:`n = 26`, there is no way a general purpose 
+        CP solver can compete with specialized bitwise representations of the problem and massively parallel specialized 
+        hardware!
 
 How to solve the problem?
 ^^^^^^^^^^^^^^^^^^^^^^^^^
