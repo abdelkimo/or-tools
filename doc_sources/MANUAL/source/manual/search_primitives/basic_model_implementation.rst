@@ -353,7 +353,7 @@ we do so, we need to learn a little bit about the basic working of the solver.
     
         https://en.wikipedia.org/wiki/Eight_queens_puzzle#Animation_of_the_recursive_solution
 
-    Compare with the output of:
+    Compare the output of:
     
     ..  code-block:: bash
     

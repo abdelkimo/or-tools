@@ -1,9 +1,6 @@
 
 ..  index:: cpviz
     
-
-.. highlight:: cpp
-
 ..  _cpviz:
 
 :program:`cpviz`: how to visualize the search 
