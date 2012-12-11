@@ -6,6 +6,14 @@
 Implementation of the basic model
 -----------------------------------
 
+..  raw:: latex
+
+    You can find the code in the file \code{tutorials/C++/chap5/nqueens1.cc}.\\~\\
+
+..  only:: html
+
+    **C++ code**: `tutorials/C++/chap5/nqueens1.cc <../../../tutorials/C++/chap5/nqueens1.cc>`_
+
 
 After the needed headers from the or-tools library:
 
@@ -22,11 +30,9 @@ we add our header:
 
     #include "./nqueens_utilities.h"
 
-The header ``./nqueens_utilities.h`` contains two helper functions:
-``CheckNumberOfSolutions()`` to check the known number of solutions 
-(unique or distinct) of the n-queens problem and ``PrintFirstSolution()``
-that prints the first solution of a given ``SolutionCollector`` if 
-the boolean gflag ``FLAGS_print`` is set to ``true``. 
+The header ``nqueens_utilities.h`` contains some helper functions (see the subsection :ref:`nqueens_helper_functions` below):
+among other ``CheckNumberOfSolutions()`` to check the known number of solutions 
+(unique or distinct) of the n-queens problem and several functions to print the solutions recorded by a ``SolutionCollector``.
 
 ..  only:: html
 
@@ -67,6 +73,12 @@ in the ``main`` function if ``FLAGS_use_symmetry`` is set to ``true``:
       }
       return 0;
     }
+
+We offer the possibility to print the first solution (flag ``print`` set to ``true``) or 
+all solutions (flag ``print_all`` set to ``true``) [#print_all_code_not_shown]_. By default, the program 
+doesn't output any solution.
+
+..  [#print_all_code_not_shown] The code to print all the solutions is not shown here.
 
 The model
 ^^^^^^^^^
@@ -159,7 +171,7 @@ and more generally :math:`x_i \neq x_j + j - i` becomes simply :math:`x_i + i \n
 
 ..  [#univeral_quantificator] :math:`\forall \, j : j > i` simply means that we consider all :math:`j` greater than :math:`i`.
 
-This means that we can restrict ourselves to inequalities involving only :math:`x_i + i` terms. Each of these
+This means that we can restrict ourselves to inequalities only involving :math:`x_i + i` terms. Each of these
 terms must be different from all others. Doesn't this ring a bell? Yep, this is the ``AllDifferent``
 constraint:
 
@@ -217,6 +229,7 @@ We keeps our basic search strategy:
     
 In the next sections, we will test different ``DecisionBuilder``\s.
 
+..  _nqueens_helper_functions:
 
 The helper functions
 ^^^^^^^^^^^^^^^^^^^^
@@ -249,35 +262,33 @@ to check the number of known solutions, unique up to a symmetry when we use
 with the right number of solutions. We restrict ourselves to testing the number of all distinct solutions
 up to ``kKnownSolutions = 15`` and unique solutions up to ``kKnownUniqueSolutions = 19``.
 
-The second helper function ``PrintFirstSolution``, as its name implies, prints the first 
-solution stored in a given ``SolutionCollector``:
+The print helper functions are all based on ``PrintSolution()``:
 
 ..  code-block:: c++
 
-    void PrintFirstSolution(const int size,
-                            const std::vector<IntVar*>& queens,
-                            SolutionCollector* const collector,
-                            const int num_solutions) {
-      if (FLAGS_print) {
-        if (num_solutions > 0 && size < 10) {
-          //  go through lines
-          for (int j = 0; j < size; ++j) {
-            //  go through queens
-            for (int i = 0; i < size; ++i) {
-              const int pos = 
-                       static_cast<int>(collector->Value(0, queens[i]));
-              std::cout << std::setw(2);
-              if (pos == j) {
-                std::cout << i;
-              } else {
-                std::cout << ".";
-              }
-              std::cout << " ";
+    void PrintSolution(const int size,
+                       const std::vector<IntVar*>& queens,
+                       SolutionCollector* const collector,
+                       const int solution_number) {
+      if (collector->solution_count() > solution_number && size < 100) {
+        //  go through lines
+        for (int j = 0; j < size; ++j) {
+          //  go through queens
+          for (int i = 0; i < size; ++i) {
+            const int pos = 
+            static_cast<int>(collector->Value(solution_number, queens[i]));
+            std::cout << std::setw(2);
+            if (pos == j) {
+              std::cout << i;
+            } else {
+              std::cout << ".";
             }
-          std::cout << std::endl;
+            std::cout << " ";
           }
+          std::cout << std::endl;
         }
       }
+      
       return;
     }
 

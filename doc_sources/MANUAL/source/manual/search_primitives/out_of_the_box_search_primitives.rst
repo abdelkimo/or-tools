@@ -150,13 +150,13 @@ Out of the box variables and values selection primitives
     ``INT_VALUE_SIMPLE``
       The simple selection is ``ASSIGN_MIN_VALUE``.
     ``ASSIGN_MIN_VALUE``
-      Selects the min value of the selected variable.
+      Selects the minimum available value of the selected variable.
     ``ASSIGN_MAX_VALUE``
-      Selects the max value of the selected variable.
+      Selects the maximum available value of the selected variable.
     ``ASSIGN_RANDOM_VALUE``
-      Selects randomly one of the possible values of the selected variable.
+      Selects randomly one of the available values of the selected variable.
     ``ASSIGN_CENTER_VALUE``
-      Selects the first possible value which is the closest to the center of the domain of the selected variable.
+      Selects the first available value that is the closest to the center of the domain of the selected variable.
       The center is defined as ``(min + max) / 2``. 
     
     ``SPLIT_LOWER_HALF``
@@ -174,8 +174,24 @@ Results
 
 ..  only:: draft
 
+    ..  raw:: latex
 
-    The funniest part is to define our own selection strategies. This is the subject of the next subsection.
+        You can find the code in the files~\code{tutorials/C++/chap5/phases1.cc}
+        and~\code{tutorials/C++/chap5/solver\_benchmark.h}.\\~\\
+
+    ..  only:: html
+
+        **C++ code**: `tutorials/C++/chap5/phases1.cc <../../../tutorials/C++/chap5/phases1.cc>`_
+        and `tutorials/C++/chap5/solver_benchmark.h <../../../tutorials/C++/chap5/solver_benchmark.h>`_
+
+    Just for fun, we have developed a ``SolverBenchmark`` class to test different search strategies. Statistics 
+    are recorded thanks to ``SolverBenchmarkStats``. You can find both classes in the :file:`solver_benchmark.h` header.
+    
+    In :file:`phases1.cc`, we test different combinations of the above strategies to find the variables and the values
+    to branch on. You can try it for yourself and see that basically no strategy outperforms any other.
+
+    The funniest (and most efficient) way to use *or-tools* is to define your own selection strategies
+    and search primitives. This is the subject of the next section.
     
 
 

@@ -88,7 +88,9 @@ The files inside this directory are:
   search with cpviz.
 - :file:`nqueen4.cc`: The same implementation as in :file:`nqueen3.cc` but with some added statistics.
 - :file:`cpviz_nqueens4_basic.txt`: cleaned output of ``./nqueens4 --size=4 --cp_trace_search --cp_trace_propagation``.
-- :file:`phases1.cc`:
+- :file:`solver_benchmark.h`: a basic ``SolverBenchmark`` class to benchmark different search strategies. 
+- :file:`phases1.cc`: we use the ``SolverBenchmark`` class to test different search strategies to find the next variables and 
+  values to branch on among the predefined choices in the ``IntVarStrategy`` and  ``IntValueStrategy`` ``enum``\s.
 - :file:`nqueen5.cc`: 
 - :file:`nqueen6.cc`: 
 - :file:`nqueen7.cc`: 
