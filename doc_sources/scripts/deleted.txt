@@ -1,0 +1,4 @@
+user_manual/manual/ls/simulated_annealing.html
+user_manual/manual/ls/basic_working2.html
+user_manual/manual/ls/guided_ls.html
+user_manual/manual/ls/tabu_search.html
