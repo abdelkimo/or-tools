@@ -78,7 +78,7 @@ There are way too many methods, parameters, functions, etc. to explain them all 
 We don't document the non Constraint Programming (CP) part of the library. If you have any questions about the non-CP part of the library, don't hesitate to ask
 them on the mailing list. See the section~\emph{How to reach us?} below.
 
-We don't discuss the ``flatzinc`` implementation nor the parallel solving process.
+We don't discuss the \code{flatzinc} implementation nor the parallel solving process.
 
 This document will not describe how to use the library (and the syntactic sugar introduced when possible) with \code{Python}, \code{Java} nor~\code{C\#}. This could possibly change in the future. The tutorial examples (see below) exist also in \code{Python}, \code{Java} and~\code{C\#} though. 
 

@@ -9,8 +9,9 @@ Custom constraints: the *alldifferent_except_0* constraint
 
     ``Decision``, ``DecisionBuilder``, ``DecisionVisitor``, ``SearchMonitor``, ``TreeMonitor``.
 
-..  rubric:: Files:
+    tata
 
+..  rubric:: Files:
 
 You can find the code in the directory ``documentation/tutorials/C++/chap4``.
 
@@ -40,7 +41,7 @@ The files inside this directory are:
 ..  toctree::
     :maxdepth: 2
     
-    custom_constraints/basic_working3
+    custom_constraints/basic_working_constraints
     custom_constraints/consistency
     custom_constraints/alldifferent
     custom_constraints/dynamic_improvements

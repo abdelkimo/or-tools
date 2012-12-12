@@ -259,8 +259,9 @@ to check the number of known solutions, unique up to a symmetry when we use
     }
 
 ``kNumUniqueSolutions[]`` and ``kNumSolutions[]`` are static arrays
-with the right number of solutions. We restrict ourselves to testing the number of all distinct solutions
-up to ``kKnownSolutions = 15`` and unique solutions up to ``kKnownUniqueSolutions = 19``.
+with the proven number of solutions. We restrict ourselves to testing the number of all distinct solutions
+up to ``kKnownSolutions = 18`` and unique solutions up to ``kKnownUniqueSolutions = 19``. By *unique solution* we mean 
+a unique solution up to a symmetry (see the section :ref:`search_primitives_breaking_symmetry` for more).
 
 The print helper functions are all based on ``PrintSolution()``:
 

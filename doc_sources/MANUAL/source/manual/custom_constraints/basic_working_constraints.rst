@@ -1,10 +1,10 @@
 
 .. highlight:: cpp
 
-..  _basic_workingIII:
+..  _basic_working_constraints:
 
-Basic working of the solver: part III
--------------------------------------
+Basic working of the solver: Constraints
+---------------------------------------------
 
 ..  only:: draft
 
