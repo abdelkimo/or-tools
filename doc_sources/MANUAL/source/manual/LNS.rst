@@ -88,6 +88,10 @@ The files inside this directory are:
     - :file:`nqueen6.cc`: 
     - :file:`nqueen7.cc`: 
 
+
+..  only:: html
+
+    ..  rubric:: Content:
     
 ..  toctree::
     :maxdepth: 2
