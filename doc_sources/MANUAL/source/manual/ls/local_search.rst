@@ -227,6 +227,11 @@ Is Local Search efficient?
 A certain blindness
 """""""""""""""""""""
 
+..  only:: draft
+
+    Very often the initial solution plays a crucial role in the search. Blabla... 
+    
+
 What about the quality of the solutions found by local search?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -246,6 +251,13 @@ What about the quality of the solutions found by local search?
 Global optimization methods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+..  only:: draft
+
+    Meta-heuristics and heuristics are not only confined to work locally. First, there exist global heuristic. XXX is an example.
+    Second, local search heuristic can be use with multiple restart from different initial solutions. The idea is to... blablabal.
+
+
+    or-tools Luby restart, etc... 
 
 ..  raw:: html
     

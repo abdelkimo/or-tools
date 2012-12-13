@@ -100,6 +100,7 @@ The files of this chapter are NOT the same as the ones in the :file:`example` di
     ls/jobshop_ls
     ls/ls_filtering
     ls/metaheuristics_examples
+    ls/restart
     ls/ls_summary
     
 ..  raw:: html

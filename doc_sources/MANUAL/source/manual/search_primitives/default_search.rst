@@ -11,11 +11,4 @@ Impact based search strategies
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-Luby
-^^^^^^
-
-..  raw:: html
-    
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
