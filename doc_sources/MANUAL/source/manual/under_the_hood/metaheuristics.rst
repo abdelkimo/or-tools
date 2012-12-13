@@ -1,17 +1,11 @@
-..  _metaheuristics:
+..  _hood_metaheuristics:
 
 Meta-heuristics and ``SearchMonitor``\s
 ----------------------------------------
 
 ..  only:: draft
   
-    A lots of 
-    meta-heuristics are based on local search: they start with an initial solution and improve it
-    little by little. One way to implement meta-heuristics in *or-tools* is to use ``SearchMonitor``\s
-    and a ``LocalSearch`` decision builder.
-    This is how we implemented basic versions of *Tabu Search*,
-    *Simulated Annealing* and *Guided Local Search*. We devote the next three sections to each of these meta-heuristics and our 
-    basic implementation.
+
     
 
 The ``Metaheuristic`` class
@@ -57,8 +51,7 @@ The ``Metaheuristic`` class
         This implementation takes into account that no initial solution was provided, so the current 
         best value is :math:`\pm \infty` (i.e. ``kint64min`` or ``kint64max``) depending 
         if we maximize or minimize the objective function.
-        See the box :ref:`What about an initial solution?<topic_what_about_an_initial_solution_local_search>` 
-        if you have an initial solution at hand.
+
         
       ``AtSolution()``:
         Remember that this callback is triggered when a solution has been accepted (by the ``AcceptSolution()`` callback).
@@ -92,11 +85,7 @@ The ``Metaheuristic`` class
               }
             }
 
-..  _topic_what_about_an_initial_solution_local_search:
-    
-..  topic:: What about an initial solution?
-    
-    And here I write...
+
         
 Callbacks to implement
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -130,9 +119,10 @@ Callbacks to implement
       ``AcceptDelta()``:
         Blabla
 
+..  only:: final
 
-..  raw:: html
-    
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    ..  raw:: html
+        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 

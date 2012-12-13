@@ -9,7 +9,7 @@ Reification
     
 ..  rubric:: Overview:
 
-..  only:: draft
+Overview...
 
 ..  rubric:: Prerequisites:
 
@@ -40,17 +40,20 @@ Reification
 
 ..  only:: draft::
 
+    Maybe here... exception?
+
     ``Decision``, ``DecisionBuilder``, ``DecisionVisitor``, ``SearchMonitor``, ``TreeMonitor``.
 
 
 ..  rubric:: Files:
-
 
 You can find the code in the directory ``documentation/tutorials/C++/chap4``.
 
 The files inside this directory are:
 
 ..  only:: draft
+
+    And here?
 
     - :file:`Makefile`.
     - :file:`nqueens_utilities.h`: Contains two helper functions to test the number of solutions found and to print a solution.

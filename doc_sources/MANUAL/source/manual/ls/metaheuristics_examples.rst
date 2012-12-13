@@ -1,12 +1,33 @@
 
 ..  _metaheuristics_examples:
 
-Three implemented meta-heuristics
+Three efficient meta-heuristics
 ----------------------------------------
 
 ..  only:: draft
   
+    A lots of 
+    meta-heuristics are based on local search: they start with an initial solution and improve it
+    little by little. 
+    
+    
+    One way to implement meta-heuristics in *or-tools* is to use ``SearchMonitor``\s 
+    (see the section :ref:`hood_metaheuristics`)
+    and a ``LocalSearch`` decision builder.
+    This is how we implemented basic versions of *Tabu Search*,
+    *Simulated Annealing* and *Guided Local Search*. We devote the next three sections to each of these meta-heuristics and our 
+    basic implementation.
 
+    See the box :ref:`What about an initial solution?<topic_what_about_an_initial_solution_local_search>` 
+    if you have an initial solution at hand.
+
+    ..  _topic_what_about_an_initial_solution_local_search:
+        
+    ..  topic:: What about an initial solution?
+        
+        And here I write...
+
+..  _tabu:
 
 Tabu search 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -34,6 +34,7 @@ Under the hood
     under_the_hood/queue
     under_the_hood/assignment
     under_the_hood/search_monitors
+    under_the_hood/metaheuristics
     under_the_hood/rl
     under_the_hood/summary
     
