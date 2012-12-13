@@ -3,6 +3,12 @@
 What is local search?
 ------------------------------------
 
+..  only:: draft
+
+    In the toolbox of Operations Research practitioners, *local search* is very important as it is often 
+    the best (and sometimes only) method to solve difficult problems. We start this section by describing what local search 
+    is and what these methods have in common. Then we discuss their efficiency and compare them with *global* methods.
+
 The basic ingredients
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -20,7 +26,7 @@ The basic ingredients
          
          
     ..  [#meta_explanation] If the (subtle) difference between *meta*-heuristics and heuristics
-        escapes you, read the box.
+        escapes you, read the box :ref:`What is it with the word meta? <topic_word_meta>`.
         
     We will discuss these three ingredients in details in a moment but before we give some examples of
     local search (meta-)heuristics [#google_scholar_meta_heur_results]_:
@@ -38,7 +44,6 @@ The basic ingredients
       - Genetic Algorithms | (530 000)
       - Ant Colony Optimization | (31 100)
       - Greedy Adaptive Search Procedure (GRASP)
-
       - ...
       
     and there are a lot more! Most of these methods are quite recent in optimization theory (from the eighties and later).
@@ -46,7 +51,7 @@ The basic ingredients
     ..  [#google_scholar_meta_heur_results] The numbers are the number of results obtained on Google Scholar on August 5, 2012. There
         isn't much we can say about those numbers but we though it would be fun to show them. The search for "GRASP" or 
         "Greedy Adaptive Search Procedure" didn't return any meaningful results.
-      
+
     Most successful methods take into account their search history to guide the search. Even better - when well implemented - 
     *reactive* methods [#reactive_search_links]_ learn and adapt themselves during the search. 
     As you might have guessed from the long list of different
@@ -61,35 +66,138 @@ The basic ingredients
     
     Let's discuss the three common ingredients and their implementation in or-tools.
     
-      1. they start with a solution (feasible or not);
+      1.  **they start with a solution** (feasible or not):
             
-        To improve locally a solution, you need to start with a solution. In or-tools this solution **has to be** *feasible*.
-        You can produce this initial solution by another heuristic or let the CP solver find one for you with a ``DecisionBuilder``
-        you give to the local search algorithm.
-        
-        What if your problem *is* to find a feasible solution? You relax the constraints [#relaxing_constraints]_ until you can 
-        construct a starting solution for that relaxed model. From there, you enforced the relaxed constraints by adding 
-        corresponding terms in the objective function (like in *Lagrangian relaxation* for instance). 
-        You'll find a detailed example of this kind of relaxation and the use of local search in the lab exercises  XXX where we will try
-        to find a solution to the n-queens problem.
-        
+          To improve locally a solution, you need to start with a solution. In *or-tools* this solution **has to be** 
+          *feasible*.
+          You can produce an initial solution and give it to the solver or let the solver find one for you 
+          with a ``DecisionBuilder`` you give to the local search algorithm.
+          
+          What if your problem *is* to find a feasible solution? You relax the constraints [#relaxing_constraints]_ until 
+          you can 
+          construct a starting solution for that relaxed model. From there, you enforce the relaxed constraints by adding 
+          corresponding terms in the objective function (like in a *Lagrangian relaxation* for instance). 
+          You'll find a detailed example of this kind of relaxation and the use of local search in the lab exercises XXX 
+          where we will try
+          to find a solution to the n-queens problem with local search. It might sound complicated but it really isn't.
+          
 
         ..  [#relaxing_constraints] Relaxing a constraint in a model means that you remove this constraint or weaken it.
 
-      2. they improve locally this solution;
-      
-        This is the tricky part to understand. Improvements to the initial solution are done *locally*. This means that
-        you need to define a *neighborhood* (explicitly or implicitly) for a given solution and a way to explore this
-        neighborhood.
+      2.  **they improve locally this solution**:
+
+          This is the tricky part to understand. Improvements to the initial solution are done *locally*. This means that
+          you need to define a *neighborhood* (explicitly or implicitly) for a given solution and a way to explore this
+          neighborhood. Two solutions can be *close* (i.e. they belong to the same neighborhood) or very *far* apart 
+          depending on the definition of a neighborhood.
+          
+          The idea is to (partly or completely) explore a neighborhood around an initial solution, 
+          find a good (or the best) solution in this neighborhood and start all over again until a stopping criterion is met.
+          
+          In its very basic form, we could formulate local search like this:
+          
+          ..  image:: algorithms/local_search_basic_pseudo_code.*
+              :height: 100pt
+              :align: center
+          
+          Often, steps 1. and 2. are done simultaneously. This is the case in *or-tools*.
+          
+          The following figure illustrates this process:
+          
+          ..  only:: html
+          
+              ..  image:: images/local_search_basic.*
+                  :height: 350pt
+                  :align: center
+
+          ..  only:: latex
+          
+              ..  image:: images/local_search_basic.*
+                  :height: 250pt
+                  :align: center
+
+          This figure depicts a function :math:`f` to minimize. Don't let you fool by its 2-dimensionality. The :math:`x`-axis
+          represent solutions in a multi-dimensional space. The :math:`z`-axis represent a 1-dimensional space with the value 
+          of the objective function :math:`f`.
+          
+          Let's zoom in on the neighborhoods and found variables:
+          
+
+          ..  only:: html
+          
+              ..  image:: images/local_search_basic_zoom.*
+                  :height: 150pt
+                  :align: center
+
+          ..  only:: latex
+          
+              ..  image:: images/local_search_basic_zoom.*
+                  :height: 95pt
+                  :align: center
+
+
+          The local search procedure starts from an initial feasible solution :math:`x_0` and searches the neighborhood 
+          :math:`\mathcal{N}_{x_0}` of this solution. The "best" solution found is :math:`x_1`. The local search procedure 
+          starts over again but with :math:`x_1`. In the neighborhood :math:`\mathcal{N}_{x_1}`, the best solution found is 
+          :math:`x_2`. This procedure continues on and on until stopping criteria are met. Let's say, one of these criteria is 
+          met and the search ends with :math:`x_3`. You can see that while the method moves towards the local optima, it 
+          misses it and completely misses the global optimum! This is why the method is called *local* search: it probably 
+          will find a local optimum (or come close to) but it is unable to find a global optimum. Some LS methods - like 
+          Tabu Search - were developed to escape such local optimum but again there is no guarantee whatsoever that it 
+          can succeed.
+          
+          The figure above is very instructive. For instance, you can see that neighborhoods don't have to be of equal size or 
+          centred around a variable :math:`x_i`. You can also see that the relationship "being in the neighborhood of" is 
+          not reflexive: :math:`x_1 \in \mathcal{N}_{x_0}` but :math:`x_0 \not \in \mathcal{N}_{x_1}` !
+
+          In or-tools, you define a neighborhood by implementing the ``MakeNextNeighbor()`` callback method 
+          [#make_one_neighbor_callback]_ from a ``LocalSearchOperator``: every time 
+          this method is called internally by the solver, it constructs one solution of the neighborhood defined 
+          around a given 
+          solution. If you have constructed a successful candidate, make ``MakeNextNeighbor()`` returns ``true``. 
+          When the whole neighborhood
+          has been visited, make it returns ``false``.
+
+          ..  [#make_one_neighbor_callback] Well almost. The ``MakeNextNeighbor()`` callback is really low level 
+              and we have alleviate the task by offering other higher level callbacks. See the section 
+              :ref:`local_search_neighborhood_operators` for more details.
+
+      3.  **they finish the search when reaching a stopping criterion but usually without
+          guarantee on the quality of the found solution**:
+          
+          Common stopping criteria include:
+          
+            - time limits:
+              
+              * for the whole solving process or 
+              * for some parts of the solving process.
         
-        In or-tools, you define a neighborhood by implementing a ``MakeOneNeighbor()`` callback method: every time 
-        this method is called internally by the solver, it constructs one solution of the neighborhood defined around a given 
-        solution. If you have constructed a successful candidate, make ``MakeOneNeighbor()`` returns ``true``. When the whole neighborhood
-        has been visited, make it returns ``false``.
-
- 
-
+            - maximum number of steps/iterations:
+            
+              * maximum number of branches;
+              * maximum number of failures;
+              * maximum number of solutions;
+              * ...
+              
+            - improvements criteria:
+            
+              * stop if no improvement for n number of steps/x time;
+              * stop if gap between estimate of optimal solution and best solution obtained so far is smaller than x;
+              * ...
+          
+          These stopping criteria can be further divided in:
+          
+              * *absolute*: for instance, a global maximal number of iterations;
+              
+              * *relative*: for instance, the improvements are too small with respect to time, number of iterations, number of 
+                            solutions, ... .
+          
+          Most of the time, you combine some of these criteria together. You can also update these criteria during the search.
+          In *or-tools*, stopping criteria are implemented using specialized ``SearchMonitor``\s: ``SearchLimit``\s.
+              
 ..  only:: draft
+
+    ..  _topic_word_meta:
 
     ..  topic:: What is it with the word *meta* [#meta_meaning_wiki]_?
     
@@ -107,8 +215,6 @@ The basic ingredients
         ..  [#meta_meaning_wiki] See `Wikipedia meta <http://en.wikipedia.org/wiki/Meta>`_ for the meaning of the word *meta*.
 
 
-
-
 ..  _local_search_efficiency:
 
 Is Local Search efficient?
@@ -116,7 +222,7 @@ Is Local Search efficient?
 
 ..  only:: draft
 
-    LS is a trade off efficiency/no global optimum.
+    LS is a tradeoff  efficiency/no global optimum.
 
 A certain blindness
 """""""""""""""""""""

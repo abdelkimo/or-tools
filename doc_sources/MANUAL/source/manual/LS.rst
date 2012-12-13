@@ -6,7 +6,7 @@ Local search: the job-shop problem
 ..  only:: draft
 
     We enter here in a new world where we don't try to solve a problem to optimality but
-    seek for a good solution. Remember from section :ref:`complexity_in_a_few_lines` that some problems
+    seek for a good solution. Remember from the section :ref:`complexity_in_a_few_lines` that some problems
     [#actually_most_problems_are_hard]_ are hard to solve. No matter how powerful our computers are
     [#watch_out_for_quantic_computers]_, we quickly hit a wall if we try to solve these problems to optimality.
     Do we give up? Of course not! If it is not possible to extract the best solutions, 
@@ -15,15 +15,24 @@ Local search: the job-shop problem
     ..  [#actually_most_problems_are_hard] Actually, *most* problems!
     
     ..  [#watch_out_for_quantic_computers] But watch out for the next generation
-        of computers: computers based on quantum mechanics!
+        of computers: computers based on quantum mechanics! See Wikipedia: http://en.wikipedia.org/wiki/Quantum_computer
        
 ..  rubric:: Overview:
 
 ..  only:: draft
 
-    We start by describing what Local Search is and how it is implemented in the or-tools library. The chosen problem  
-    we will try so solve in this chapter is a scheduling problem: the job-shop problem. Don't worry if you don't know 
-    anything about scheduling or the job-shop problem, we explain this problem in details. The model we will use is called the 
+    We start by describing what Local Search is and how it is implemented in the or-tools library. We have chosen 
+    two problems to illustrate local search:
+      
+      * one **dummy problem** (files :file:`basic_ls*`): we minimize :math:`x_0 + x_1 + \ldots + x_{n-1}` where each 
+        variable has the same domain :math:`[0, n-1]`. To complicate things a little bit, we add the constraint 
+        :math:`x_0 \geqslant 1`. Yes, a real dummy problem but particularly useful to *watch* the inner mechanisms 
+        of local search in *or-tools* in action.
+        
+      * the **job-shop problem** (files :file:`jobshop*`): a *scheduling problem*. Don't worry if you don't know 
+        anything about scheduling or the job-shop problem, we explain this problem in details. 
+        
+    The model we use to solve the job-shop problem is called the 
     *disjunctive model*. Constraint Programming specialized variables and global constraints were developed to solve
     scheduling problems. Instead of using ``IntVar`` variables, we'll use the dedicated ``IntervalVar``\s and ``SequenceVar``\s.
     Finally, we'll see some well-known Local Search meta-heuristics that are already implemented and can be used out of the box: 
@@ -60,6 +69,7 @@ You can find the code in the directory ``documentation/tutorials/C++/chap6``.
 
 The files inside this directory are:
 
+- :file:`Makefile`.
 - :file:`basic_ls.cc`: A very basic example to understand the API of Local Search in or-tools.
 - :file:`jobshop.h`: This file contents the ``JobShopData`` class that records the data for job-shop problems. This file is used
   throughout all the examples.

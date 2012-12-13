@@ -1,3 +1,6 @@
+
+..  _local_search_neighborhood_operators:
+
 Local Search Neighborhood (LSN) Operators
 -----------------------------------------------
 
