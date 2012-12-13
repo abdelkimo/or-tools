@@ -27,7 +27,8 @@ Three efficient meta-heuristics
     - are often based on very simple ideas.
     
     One could write books on meta-heuristics and indeed lots of books, articles, reports have been written. There are 
-    even scientific communities that only sware by this or this meta-heuristic. In this manual, we only can 
+    even scientific communities that only sware by this or this meta-heuristic and each meta-heuristic comes with its 
+    own vocabulary. In this manual, we only can 
     scratch the surface of this fascinating subject.
     
     In *or-tools*, we implement meta-heuristics with ``SearchMonitor``\s 
@@ -38,13 +39,20 @@ Three efficient meta-heuristics
     Basic versions of *Tabu Search*, *Simulated Annealing* and *Guided Local Search*
     are implemented by specialized ``SearchMonitor``\s: ``Metaheuristic``\s.
     
+    ..  warning:: 
+
+        The ``Metaheuristic`` class only deals with ``IntVar``\s!
+    
+
+..  only:: draft
+
     We devote the next three sections to each of three these meta-heuristics and our 
     basic implementation.
 
 
 ..  _tabu:
 
-Tabu search 
+Tabu search (TS)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
@@ -64,6 +72,14 @@ The basic idea
     This period of time is called a **tenure**. If we choose these features well, not only do we have the guarantee 
     that we will not produce the best local optimum again but we might get out of the vicinity of this best local 
     optimum and explore more promising neighborhoods. Figure XXX illustrates this.
+
+
+..  only:: draft
+
+    If you want to know more about TS, the classical book by Glover and Laguna [Glover1997]_ is still a good reference. To have 
+    a more updated account on this topic, search the internet: there are plenty of documents about TS. 
+
+    ..  [Glover1997] Glover, Fred and Laguna, Manuel. *Tabu Search*, Kluwer Academic Publishers, 1997.
 
 The implementation
 """"""""""""""""""""
