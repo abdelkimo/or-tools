@@ -196,10 +196,10 @@ The basic ingredients
           
           These stopping criteria can be further divided in:
           
-              * *absolute*: for instance, a global maximal number of iterations;
+              - *absolute*: for instance, a global maximal number of iterations;
               
-              * *relative*: for instance, the improvements are too small with respect to time, number of iterations, number of 
-                            solutions, ... .
+              - *relative*: for instance, the improvements are too small with respect to time, 
+                number of iterations, number of solutions, ... .
           
           Most of the time, you combine some of these criteria together. You can also update these criteria during the search.
           In *or-tools*, stopping criteria are implemented using specialized ``SearchMonitor``\s: ``SearchLimit``\s.
@@ -255,7 +255,8 @@ Is Local Search efficient?
 
     
     LS is a tradeoff between efficiency and the fact that LS doesn't try to find a global optimum, i.e. in other words you are 
-    willing to give up the idea of ​​finding a global optimum for the satisfaction to quickly find a local optimum.
+    willing to give up the 
+    idea of finding a global optimum for the satisfaction to quickly find a local optimum.
 
 
     ..  topic::  A certain blindness
@@ -291,9 +292,22 @@ What about the quality of the solutions found by local search?
     
     ..  topic:: What do we mean by a *guarantee* on the solution?
     
-        Several concepts of *guarantee* have been developed. 
-        
+        Several concepts of *guarantee* have been developed. We will not go into details about the concept of 
+        *guarantee* but let's give an example. In a now famous report [Christofides1976]_, Christofides proposed and analyzed a
+        heuristic that is guaranteed to solve the metric Travelling Salesman Problem [#metricTSP]_ within a 3/2 factor, i.e. 
+        no matter the instance, this heuristic will always return a solution whose cost is at most 3/2 times 
+        the cost of the optimal solution. This means that in the worst case, the returned solution costs 
+        3/2 times the cost of the optimal solution. This **is** guaranteed!
+
         See `Wikipedia Approximation Algorithm <http://en.wikipedia.org/wiki/Approximation_algorithm>`_.
+
+        ..  [#metricTSP] The **metric** TSP is the classical TSP but on graphs that respect the triangle inequality, 
+            i.e. :math:`d(a,c) \leqslant d(a,b) + d(b,c)`. The TSP cannot be approximated within any constant 
+            factor (unless :math:`\text{P} = \text{NP}`).
+
+    ..  [Christofides1976] Christofides, Nicos. *Worst-case analysis of a new heuristic for the travelling 
+        salesman problem*, Technical Report, Carnegie Mellon University, 388, 1976.
+
  
     ..  [#not_every_problem_has_a_guarantee] Not to mention that some classes of problems are mathematically 
         proven to have no possible guarantee on their solution at all!
