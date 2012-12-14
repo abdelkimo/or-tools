@@ -8,6 +8,9 @@ What is local search?
     In the toolbox of Operations Research practitioners, *local search* is very important as it is often 
     the best (and sometimes only) method to solve difficult problems. We start this section by describing what local search 
     is and what these methods have in common. Then we discuss their efficiency and compare them with *global* methods.
+    
+    Some paragraphs are quite dense, so don't be scared if you don't "get it all" after the first reading. With time and 
+    practice, the use of local search methods will become a second nature.
 
 The basic ingredients
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -148,7 +151,13 @@ The basic ingredients
           
           The figure above is very instructive. For instance, you can see that neighborhoods don't have to be of equal size or 
           centred around a variable :math:`x_i`. You can also see that the relationship "being in the neighborhood of" is 
-          not reflexive: :math:`x_1 \in \mathcal{N}_{x_0}` but :math:`x_0 \not \in \mathcal{N}_{x_1}` !
+          not necessarily symmetric: :math:`x_1 \in \mathcal{N}_{x_0}` but :math:`x_0 \not \in \mathcal{N}_{x_1}` 
+          [#being_in_the_neighborhood_not_symmetric]_!
+
+          ..  [#being_in_the_neighborhood_not_symmetric] Although being fair we have to mention that most LS methods require
+              this relation to be symmetric as a desirable feature would be to be able to retrace our steps in case of 
+              false start or to explore other possibilities. On the figure, you think about going left to explore was is 
+              past the :math:`y-axis`.
 
           In or-tools, you define a neighborhood by implementing the ``MakeNextNeighbor()`` callback method 
           [#make_one_neighbor_callback]_ from a ``LocalSearchOperator``: every time 
@@ -222,15 +231,44 @@ Is Local Search efficient?
 
 ..  only:: draft
 
-    LS is a tradeoff  efficiency/no global optimum.
-
-A certain blindness
-"""""""""""""""""""""
-
-..  only:: draft
-
-    Very often the initial solution plays a crucial role in the search. Blabla... 
+    In two words: **yes** but... [#and_three_more_dots]_ 
     
+    Let's dissect this terse answer:
+    
+      * **yes**: 
+        
+        To really answer this question, you need to know what exactly you mean by "efficient". 
+        If you're 
+        looking for a global optimum then local search - at least in its basic form but read the subsection 
+        :ref:`global_optimization_methods` below - is probably not for you. If you are looking for a guarantee on the quality 
+        of the solution(s) found, then again you might want to look for another tool.
+
+      * but...: 
+        
+        Local search methods are strongly dependent on your knowledge of the problem and your ability to use this 
+        knowledge during the search. For instance, very often the initial solution plays a crucial role in the 
+        efficiency of the local search. You might start from a solution 
+        that is too far from a global (or local) optimum or worse you start from a solution from which it is impossible to reach a global 
+        (or even local) optimum with your neighborhood definition. Several techniques have been proposed to tackle these annoyances.
+        One of them is to restart the search with different initial solutions. Another is to change the definition of 
+        a neighborhood during the search like in *Variable Neighbourhood Search (VNS)*.
+
+    
+    LS is a tradeoff between efficiency and the fact that LS doesn't try to find a global optimum, i.e. in other words you are 
+    willing to give up the idea of ​​finding a global optimum for the satisfaction to quickly find a local optimum.
+
+
+    ..  topic::  A certain blindness
+
+        LS methods are most of the time really blind when they search. Often you hear the analogy between LS methods and 
+        descending a hill [#LS_descending_a_hill_metaphor]_ to find the lowest point in a valley (when we minimize a function). It would be more appropriate 
+        to compare LS methods with descending a valley flooded by mist: you don't see very far in what direction to go to 
+        continue downhill. Sometimes you don't see anything at all and you don't even know if you are allowed to set a foot in 
+        front of you!
+        
+        ..  [#LS_descending_a_hill_metaphor] If you've never hear this metaphor, skip this paragraph and don't bother.
+        
+    ..  [#and_three_more_dots] Okay, okay and three more lower dots.
 
 What about the quality of the solutions found by local search?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -241,12 +279,27 @@ What about the quality of the solutions found by local search?
     about *approximations*, sometimes we don't have a clue of what we are doing and we just hope 
     for the best.
 
+    Most of the time, we face two non satisfactory situations:
+    
+      * a good guarantee is expensive to compute (sometimes as expensive as finding a good solution or even more!);
+      * a guarantee isn't very expensive to compute but is close to being useless.
+      
+    In either cases, it is not worth computing this guarantee [#not_every_problem_has_a_guarantee]_
 
+    Not having a theoretical guarantee on the quality of a solution doesn't mean that the solution found is not a good solution 
+    (it might even be the best solution), just than we don't know how good this solution is!
     
     ..  topic:: What do we mean by a *guarantee* on the solution?
     
-        Blibli
+        Several concepts of *guarantee* have been developed. 
+        
+        See `Wikipedia Approximation Algorithm <http://en.wikipedia.org/wiki/Approximation_algorithm>`_.
  
+    ..  [#not_every_problem_has_a_guarantee] Not to mention that some classes of problems are mathematically 
+        proven to have no possible guarantee on their solution at all!
+ 
+ 
+..  _global_optimization_methods:
 
 Global optimization methods
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -259,8 +312,10 @@ Global optimization methods
 
     or-tools Luby restart, etc... 
 
-..  raw:: html
-    
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+..  only:: final
+
+    ..  raw:: html
+        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
