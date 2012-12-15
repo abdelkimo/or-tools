@@ -5,14 +5,25 @@ Basic working of the solver: local search
 
 ..  only:: draft
 
-    We will use a fictive example throughout this section so
-    we can solely focus on the basic ingredients provided by the or-tools 
+    We will use a dummy example throughout this and the next sections so
+    we can solely focus on the basic ingredients provided by the *or-tools* 
     library to do the local search.
-    Our fictive example concists in minimizing the sum of :math:`n` ``IntVar``\s
+    Our fictive example consists in minimizing the sum of :math:`n` ``IntVar``\s
     :math:`\{x_0, \ldots, x_{n - 1}\}` each with domain :math:`[0, n - 1]`.
-    We add the fictive constraint :math:`x_0 \geqslant 1` (and thus ask for :math:`n \geqslant 2`).
+    We add the fictive constraint :math:`x_0 \geqslant 1` (and thus ask for :math:`n \geqslant 2`):
     
-    We provide two real yet simple examples in the next section.
+    ..  math::
+    
+        \begin{aligned}
+        & \underset{x_0, ..., x_{n-1}}{\text{min}}
+        & & x_0 + x_1 + ... + x_{n-1} \\
+        & \text{subject to:}
+        & & x_0 \geqslant 1.\\
+        & & & x_i \in \{0,\ldots, n-1\} \, \text{for} \,  i = 0 \ldots n-1.
+        \end{aligned}
+
+    Of course, we already know the optimal solution. Can we find it by local search?
+    
 
 ..  _local_search_mechanism:
 
@@ -24,7 +35,7 @@ The basic idea
 
 ..  only:: draft
 
-    The next Figure illustrates the basic mechanism of Local Search in or-tools.
+    The next figure illustrates the basic mechanism of Local Search in *or-tools*:
         
     ..  only:: html 
     
@@ -47,6 +58,8 @@ The basic idea
     
 First solution
 """""""""""""""
+
+
 
 ..  only:: draft
 

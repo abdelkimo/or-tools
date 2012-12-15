@@ -24,7 +24,7 @@ Local search: the job-shop problem
     We start by describing what Local Search is and how it is implemented in the or-tools library. We have chosen 
     two problems to illustrate local search:
       
-      * one **dummy problem** (files :file:`basic_ls*`): we minimize :math:`x_0 + x_1 + \ldots + x_{n-1}` where each 
+      * one **dummy problem** (files :file:`dummy_ls*`): we minimize :math:`x_0 + x_1 + \ldots + x_{n-1}` where each 
         variable has the same domain :math:`[0, n-1]`. To complicate things a little bit, we add the constraint 
         :math:`x_0 \geqslant 1`. Yes, a real dummy problem but particularly useful to *watch* the inner mechanisms 
         of local search in *or-tools* in action.
@@ -36,7 +36,7 @@ Local search: the job-shop problem
     *disjunctive model*. Constraint Programming specialized variables and global constraints were developed to solve
     scheduling problems. Instead of using ``IntVar`` variables, we'll use the dedicated ``IntervalVar``\s and ``SequenceVar``\s.
     Finally, we'll see some well-known Local Search meta-heuristics that are already implemented and can be used out of the box: 
-    Tabu Search, Simulated Annealing and Guided Local Search.
+    *Tabu Search*, *Simulated Annealing* and *Guided Local Search*.
     
 
 ..  rubric:: Prerequisites:
@@ -70,12 +70,12 @@ You can find the code in the directory ``documentation/tutorials/C++/chap6``.
 The files inside this directory are:
 
 - :file:`Makefile`.
-- :file:`basic_ls.cc`: A very basic example to understand the API of Local Search in or-tools.
+- :file:`dummy_ls.cc`: A very basic example to understand the API of Local Search in or-tools.
 - :file:`jobshop.h`: This file contents the ``JobShopData`` class that records the data for job-shop problems. This file is used
   throughout all the examples.
 - :file:`jobshop.cc`: A basic implementation of the disjunctive model with ``IntervalVar`` and ``SequenceVar`` variables.
 - :file:`jobshop_ls.cc`: A basic implementation of Local Search with an 2-opt operator.
-- :file:`basic_ls_filtering.cc`: The example :file:`basic_ls.cc` extended with filtering.
+- :file:`dummy_ls_filtering.cc`: The example :file:`basic_ls.cc` extended with filtering.
 - :file:`jobshop_ls_filtering.cc`: The example :file:`jobshop_ls.cc` extended with filtering.
 - :file:`jobshop_tabu.cc`: The job-shop problem solved by Tabu Search.
 - :file:`jobshop_SA.cc`: The job-shop problem solved by Simulated Annealing.

@@ -180,7 +180,7 @@ Defining a custom LSN operator
     
     ..  math:: 
     
-        [n-1, n-2, \ldots, n-(1 + (n+1) \, \textrm{mod} \, 2)].
+        [n-1, n-2, n -1, n - 2,  \ldots, n-\left\{1 + (n+1) \, \textrm{mod} \, 2\right\}]
         
     where the value for :math:`x_{n-1}` is :math:`n-2` if :math:`n` is even and
     :math:`n-1` otherwise.
