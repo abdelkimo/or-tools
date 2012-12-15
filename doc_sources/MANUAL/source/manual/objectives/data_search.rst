@@ -99,6 +99,10 @@ Branches
         Solver s("I count my branches");
         LOG(INFO) << "Branches: " << s.branches() << std::endl;
 
+..  index:: !SearchLimit
+
+..  _search_limits:
+
 ``SearchLimit``\s
 ^^^^^^^^^^^^^^^^^^
 
@@ -142,7 +146,7 @@ Branches
         ...
         s.Solve(db, fail_limit, ...);
 
-    If you want to limit some statistics for the whole search, you have to use the following method:
+    If you want to limit some statistics for the whole search, you can use the following method:
     
     ..  code-block:: c++
     
@@ -170,11 +174,13 @@ Branches
     ..  [#where_are_limits_tested_really] To be precise, some limits are tested at some other places of the search algorithm depending on
         the type of search.
     
+    [NEED TO BE REREAD]
+    
     These are the logical places to test for the number of branches, failures and solutions but it is good to know if you want
     to implement you own custom limit. We delay the use of custom limits until the second part (Customization) section 5.3.1.2. Callbacks
-    were we will use custom ``SearchLimit``\s to illustrate one of the callback mechanism used to customize the search.
+    where we will use custom ``SearchLimit``\s to illustrate one of the callback mechanism used to customize the search.
     
-    ``SearchLimit``\s can be combined in a ``ORLimit`` class (which is a ``SearchLimit`` class). Use its constructor:
+    ``SearchLimit``\s can be combined:
     
     ..  code-block:: c++
     
@@ -182,7 +188,10 @@ Branches
         ...
         SearchLimit * const limit1 = s.MakeLimit(...);
         SearchLimit * const limit2 = s.MakeLimit(...);
-        ORLimit * const ORlimits = s.RevAlloc(new ORLimit(limit1, limit2));
+        SearchLimit * const ORLimit = s.MakeLimit(limit1, limit2);
+        
+    The ``ORLimit`` is reached when either of the underlying ``SearchLimit``
+    ``limit1`` or ``limit2``  is reached. 
     
     ``SearchLimit``\s can also be updated during the search using the following method:
     

@@ -71,7 +71,7 @@ Overview of the Local Search Mechanism in *or-tools*
         * a ``DecisionBuilder`` to instantiate unbound variables once a neighbor solution has
           been defined; 
             
-        * a **Searchlimit** specifying stopping criteria;
+        * a **Searchlimit** specifying stopping criteria each time we start looking at a new neighbourhood;
           
         * an ``std::vector`` of **LocalSearchFilter**\s used to speed up the search by pruning
           unfeasible neighbors: instead of letting the solver find out if a neighbor solution is feasible or not, you 
@@ -115,6 +115,11 @@ Initial solution
     
     In the file :file:`dummy_lns.cc`, we use a :program:`gflags` flag ``FLAG_initial_phase``
     to switch between these two possibilities.
+    
+    ..  topic::  What are the variables involved in the local search procedure? 
+    
+        The local search applies to the variables contained either in the ``Assignment``
+        or the ``std::vector<IntVar*>`` of variables passed.
 
 ..  _local_search_parameters:
 
@@ -124,19 +129,90 @@ Initial solution
 ..  only:: draft
 
     As explained above, the ``LocalSearchPhaseParameters`` parameter holds the actual definition 
-    of the local search phase:
+    of the local search phase.
+    
+    Several factory methods are available to create a ``LocalSearchPhaseParameters`` parameter. 
+    At least you need to declare a ``LocalSearchOperator`` and a ``DecisionBuilder``:
+    
+    ..  code-block:: c++
+    
+        LocalSearchPhaseParameters * Solver::MakeLocalSearchPhaseParameters(
+                            LocalSearchOperator *const ls_operator,
+                            DecisionBuilder *const assist_decision_builder);
+
+    The ``LocalSearchOperator`` will find neighbor solutions while the ``DecisionBuilder`` will complete 
+    the neighbor solutions if not all variables are assigned. 
+    
+    ..  warning:: By default, the solver takes the first improving solution from one neighbourhood and 
+        reinitializes the local search with this improved solution. You can change this behaviour with 
+        a ``SearchLimit``.
+    
+    A handy way to create the ``DecisionBuilder`` to assist the local search operator(s) is to create one
+    with ``MakeSolveOnce()`` and another ``DecisionBuilder`` ``db``:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder * const assist_local_search_operator_db = 
+                                                    solver.MakeSolveOnce(db);
+    
+    The new ``DecisionBuilder`` ``assist_local_search_operator_db`` will return as soon 
+    as a first solution is encountered in the search with the ``DecisionBuilder`` ``db``.
+    
+    If you know for sure that your ``LocalSearchOperator`` will return feasible 
+    solutions, you don'.t have to provide a ``DecisionBuilder`` to assist: just give ``NULL`` as argument 
+    for the ``DecisionBuilder`` pointer.
+
+    The most complete factory method to create a ``LocalSearchPhaseParameters`` parameter is 
+    
+    ..  code-block:: c++
+    
+        LocalSearchPhaseParameters* Solver::MakeLocalSearchPhaseParameters(
+                            SolutionPool* const pool,
+                            LocalSearchOperator* const ls_operator,
+                            DecisionBuilder* const sub_decision_builder,
+                            SearchLimit* const limit,
+                            const std::vector<LocalSearchFilter*>& filters);
+
+    We have already seen the ``LocalSearchOperator`` and ``DecisionBuilder`` arguments when we discussed 
+    the minimalist ``MakeLocalSearchPhaseParameters()`` factory method just a few lines above. The ``SearchLimit`` allows 
+    to limit the local search and is discussed in the next subsection below.
+
+    ..  only:: html
+    
+        We remind you that ``LocalSearchOperator``\s are detailed in the next section and ``LocalSearchFilter``\s in 
+        the section :ref:`local_search_filtering`.
+
+    ..  raw:: latex
+    
+        We remind you that \code{LocalSearchOperator}s are detailed in the next section and \code{LocalSearchFilter}s in 
+        section~\ref{manual/ls/ls_filtering:local-search-filtering}.
+
+    This brings us to the last undiscussed parameter: ``SolutionPool``. 
 
 
+    [STUDY:]
+    
+    .. SolutionPool* solution_pool() const { return solution_pool_; }
+    
+    
+..  index:: SearchLimit; in Local Search
 
-..  _search_limits:
+..  _search_limits_in_local_search:
 
-``SearchLimit``\s
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``SearchLimit``\s in Local Search
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
-    TO DO
+    ``SearchLimit``\s were first described in the subsection :ref:`search_limits`.
 
+
+    [WHERE TO PUT NEXT???]
+    
+    Callback-based search limit. Search stops when limiter returns true; if
+    this happens at a leaf the corresponding solution will be rejected.
+    
+    SearchLimit* MakeCustomLimit(ResultCallback<bool>* limiter);
 
 ..  only:: final
 

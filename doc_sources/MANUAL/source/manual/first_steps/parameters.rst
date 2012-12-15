@@ -89,7 +89,7 @@ For other features and to learn more about this library, we refer you to the
 ..  index:: 
     single: Solver; parameters
 
-..  index:: SolverParameters, SolverParameters(), MakeTimeLimit(), SearchLimit
+..  index:: SolverParameters, SolverParameters(), MakeTimeLimit()
     single: Solver; parameters
 
 CP ``Solver``'s parameters
@@ -159,6 +159,8 @@ The ``SolverParameters`` struct mainly deals with the internal usage of memory a
 
     Second, you can use ``SearchMonitor``\s. We have already seen how to use them 
     to collect solutions in :ref:`SolutionCollectors and Assignments to collect solutions <monitors_solutions>`.
+
+..  index:: SearchLimit; specialized for time
 
 Suppose we want to limit the available time to solve a problem. To pass this parameter on the command line,
 we define a ``time_limit`` variable:
