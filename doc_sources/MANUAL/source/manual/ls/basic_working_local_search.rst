@@ -66,7 +66,9 @@ First solution
     
     In file :file:`simple_lns1.cc`, we use a :program:`gflags` flag ``FLAG_initial_phase``
     to switch between these two possibilities.
-    
+
+..  _local_search_parameters:
+
 ``LocalSearchPhaseParameters``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -74,6 +76,7 @@ First solution
 
     TO DO
 
+..  _search_limits:
 
 ``SearchLimit``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

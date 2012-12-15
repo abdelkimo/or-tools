@@ -28,9 +28,16 @@ Three efficient meta-heuristics
     
     One could write books on meta-heuristics and indeed lots of books, articles, reports have been written. There are 
     even scientific communities that only sware by this or this meta-heuristic and each meta-heuristic comes with its 
-    own vocabulary. In this manual, we only can 
+    own vocabulary [#funny_metaheuristic_names]_. In this manual, we only can 
     scratch the surface of this fascinating subject.
     
+    ..  [#funny_metaheuristic_names]  In order to "sell" your (meta-)heuristic to the scientific community, 
+                                      it is also good to give it a *snappy* name.
+                                      We don't resist to name a few: *artificial bee colony algorithm*, *honey-bee mating optimization*, 
+                                      *intelligent water drops*, *firefly algorithm*, *monkey search*, 
+                                      *league championship algorithm*, *cuckoo search*, *virus optimization algorithm*, 
+                                      *galaxy-based search algorithm*, ... and our favorite: the *imperialist competitive algorithm*.
+                                  
     In *or-tools*, we implement meta-heuristics with ``SearchMonitor``\s 
     (see the section :ref:`hood_metaheuristics`)
     and ``LocalSearch`` ``DecisionBuilder``\s. This is quite "natural" as ``SearchMonitor``\s allow to... *monitor* the

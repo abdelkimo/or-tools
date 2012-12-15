@@ -5,6 +5,10 @@ What is local search?
 
 ..  only:: draft
 
+    [TO BE REREAD]
+
+..  only:: draft
+
     In the toolbox of Operations Research practitioners, *local search* is very important as it is often 
     the best (and sometimes only) method to solve difficult problems. We start this section by describing what local search 
     is and what these methods have in common. Then we discuss their efficiency and compare them with *global* methods.
@@ -25,7 +29,7 @@ The basic ingredients
       2. they improve locally this solution;
       
       3. they finish the search when reaching a stopping criterion but usually without
-         guarantee on the quality of the found solution.
+         guarantee on the quality of the found solution(s).
          
          
     ..  [#meta_explanation] If the (subtle) difference between *meta*-heuristics and heuristics
@@ -120,10 +124,10 @@ The basic ingredients
                   :align: center
 
           This figure depicts a function :math:`f` to minimize. Don't let you fool by its 2-dimensionality. The :math:`x`-axis
-          represent solutions in a multi-dimensional space. The :math:`z`-axis represent a 1-dimensional space with the value 
+          represent solutions in a multi-dimensional space. The :math:`z`-axis represent a 1-dimensional space with the values 
           of the objective function :math:`f`.
           
-          Let's zoom in on the neighborhoods and found variables:
+          Let's zoom in on the neighborhoods and found solutions:
           
 
           ..  only:: html
@@ -142,10 +146,14 @@ The basic ingredients
           The local search procedure starts from an initial feasible solution :math:`x_0` and searches the neighborhood 
           :math:`\mathcal{N}_{x_0}` of this solution. The "best" solution found is :math:`x_1`. The local search procedure 
           starts over again but with :math:`x_1`. In the neighborhood :math:`\mathcal{N}_{x_1}`, the best solution found is 
-          :math:`x_2`. This procedure continues on and on until stopping criteria are met. Let's say, one of these criteria is 
+          :math:`x_2`. The procedure continues on and on until stopping criteria are met. Let's say that one of these criteria is 
           met and the search ends with :math:`x_3`. You can see that while the method moves towards the local optima, it 
           misses it and completely misses the global optimum! This is why the method is called *local* search: it probably 
-          will find a local optimum (or come close to) but it is unable to find a global optimum. Some LS methods - like 
+          will find a local optimum (or come close to) but it is unable to find a global optimum (except by chance). 
+          
+          If we had continued the search, chances are that our procedure would have iterated around the local optimum.
+          In this case, we say that the local search algorithm is *trapped by a local optimum*.
+          Some LS methods - like 
           Tabu Search - were developed to escape such local optimum but again there is no guarantee whatsoever that it 
           can succeed.
           
@@ -156,23 +164,39 @@ The basic ingredients
 
           ..  [#being_in_the_neighborhood_not_symmetric] Although being fair we have to mention that most LS methods require
               this relation to be symmetric as a desirable feature would be to be able to retrace our steps in case of 
-              false start or to explore other possibilities. On the figure, you think about going left to explore was is 
+              false start or to explore other possibilities. On the figure, you might think about going left to explore was is 
               past the :math:`y-axis`.
 
-          In or-tools, you define a neighborhood by implementing the ``MakeNextNeighbor()`` callback method 
-          [#make_one_neighbor_callback]_ from a ``LocalSearchOperator``: every time 
-          this method is called internally by the solver, it constructs one solution of the neighborhood defined 
-          around a given 
-          solution. If you have constructed a successful candidate, make ``MakeNextNeighbor()`` returns ``true``. 
-          When the whole neighborhood
-          has been visited, make it returns ``false``.
+          ..  only:: html
 
-          ..  [#make_one_neighbor_callback] Well almost. The ``MakeNextNeighbor()`` callback is really low level 
-              and we have alleviate the task by offering other higher level callbacks. See the section 
-              :ref:`local_search_neighborhood_operators` for more details.
+              In or-tools, you define a neighborhood by implementing the ``MakeNextNeighbor()`` callback method 
+              [#make_one_neighbor_callback]_ from a ``LocalSearchOperator``: every time 
+              this method is called internally by the solver, it constructs one solution of the neighborhood defined 
+              around a given 
+              solution. If you have constructed a successful candidate, make ``MakeNextNeighbor()`` returns ``true``. 
+              When the whole neighborhood
+              has been visited, make it returns ``false``.
 
+              ..  [#make_one_neighbor_callback] Well almost. The ``MakeNextNeighbor()`` callback is really low level 
+                  and we have alleviate the task by offering other higher level callbacks. See the section 
+                  :ref:`local_search_neighborhood_operators` for more details.
+
+          ..  raw:: latex
+
+              In or-tools, you define a neighborhood by implementing the \code{MakeNextNeighbor()} callback 
+              method~\footnote{Well almost. The \code{MakeNextNeighbor()} callback is really low level 
+              and we have alleviate the task by offering other higher level callbacks. See 
+              section~\ref{manual/ls/ls_operators:local-search-neighborhood-operators} for more details.} 
+              from a \code{LocalSearchOperator}: every time 
+              this method is called internally by the solver, it constructs one solution of the neighborhood defined 
+              around a given 
+              solution. If you have constructed a successful candidate, make \code{MakeNextNeighbor()} returns \code{true}. 
+              When the whole neighborhood
+              has been visited, make it returns \code{false}.
+
+ 
       3.  **they finish the search when reaching a stopping criterion but usually without
-          guarantee on the quality of the found solution**:
+          guarantee on the quality of the found solution(s)**:
           
           Common stopping criteria include:
           
@@ -201,8 +225,19 @@ The basic ingredients
               - *relative*: for instance, the improvements are too small with respect to time, 
                 number of iterations, number of solutions, ... .
           
-          Most of the time, you combine some of these criteria together. You can also update these criteria during the search.
-          In *or-tools*, stopping criteria are implemented using specialized ``SearchMonitor``\s: ``SearchLimit``\s.
+          ..  only:: html
+          
+              Most of the time, you combine some of these criteria together. You can also update these criteria during the search.
+              In *or-tools*, stopping criteria are implemented using specialized ``SearchMonitor``\s: ``SearchLimit``\s 
+              (see the subsection :ref:`search_limits`).
+
+          ..  raw:: latex
+          
+              Most of the time, you combine some of these criteria together. You can also update these 
+              criteria during the search.
+              In~\emph{or-tools}, stopping criteria are implemented using specialized \code{SearchMonitor}s: \code{SearchLimit}s 
+              (see subsection~\ref{manual/ls/basic_working_local_search:search-limits}).
+
               
 ..  only:: draft
 
@@ -212,7 +247,7 @@ The basic ingredients
     
         An heuristic is an algorithm that provides a (hopefully) good solution 
         for a given problem. A *meta*-heuristic is more like a theoretical framework to solve 
-        problems: you have to adapt the meta-heuristic to your needs. For instance, Genetic Algorithms
+        problems: you have to adapt the meta-heuristic to your needs. For instance, *Genetic Algorithms*
         use a recombination of parts of solutions (the genes) but for a specific problem, you have to find
         out what parts of solution you can combine and how you can combine them. A meta-heuristic gives you 
         guidelines to construct your algorithm.
@@ -276,19 +311,19 @@ What about the quality of the solutions found by local search?
 
 ..  only:: draft
 
-    Sometimes, we can have some kind of guarantee on the quality of the solutions found and we speak 
+    Sometimes, we can have some kind of guarantees on the quality of the solutions found and we speak 
     about *approximations*, sometimes we don't have a clue of what we are doing and we just hope 
     for the best.
 
     Most of the time, we face two non satisfactory situations:
     
       * a good guarantee is expensive to compute (sometimes as expensive as finding a good solution or even more!);
-      * a guarantee isn't very expensive to compute but is close to being useless.
+      * a guarantee that isn't very expensive to compute but that is close to being useless.
       
     In either cases, it is not worth computing this guarantee [#not_every_problem_has_a_guarantee]_
 
     Not having a theoretical guarantee on the quality of a solution doesn't mean that the solution found is not a good solution 
-    (it might even be the best solution), just than we don't know how good this solution is!
+    (it might even be the best solution), just that we don't know how good (or bad) this solution is!
     
     ..  topic:: What do we mean by a *guarantee* on the solution?
     
@@ -302,30 +337,45 @@ What about the quality of the solutions found by local search?
         See `Wikipedia Approximation Algorithm <http://en.wikipedia.org/wiki/Approximation_algorithm>`_.
 
         ..  [#metricTSP] The **metric** TSP is the classical TSP but on graphs that respect the triangle inequality, 
-            i.e. :math:`d(a,c) \leqslant d(a,b) + d(b,c)`. The TSP cannot be approximated within any constant 
+            i.e. :math:`d(a,c) \leqslant d(a,b) + d(b,c)` where :math:`a, b` and :math:`c` are nodes of the graph
+            and :math:`d()` a distance function.
+            The classical TSP itself cannot be approximated within any constant 
             factor (unless :math:`\text{P} = \text{NP}`).
 
     ..  [Christofides1976] Christofides, Nicos. *Worst-case analysis of a new heuristic for the travelling 
         salesman problem*, Technical Report, Carnegie Mellon University, 388, 1976.
-
  
     ..  [#not_every_problem_has_a_guarantee] Not to mention that some classes of problems are mathematically 
-        proven to have no possible guarantee on their solution at all!
+        proven to have no possible guarantee on their solution at all! (or only if :math:`\text{P} = \text{NP}`).
  
  
 ..  _global_optimization_methods:
 
-Global optimization methods
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Global optimization methods and local search 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
-    Meta-heuristics and heuristics are not only confined to work locally. First, there exist global heuristic. XXX is an example.
-    Second, local search heuristic can be use with multiple restart from different initial solutions. The idea is to... blablabal.
-
-
-    or-tools Luby restart, etc... 
-
+    Meta-heuristics and heuristics can also work globally. 
+    The challenge with global methods is that very often the global search space for real industrial instances 
+    is huge and contains lots of dimensions 
+    (sometimes millions or even more!). More often than not, global exact optimization algorithms take prohibitive times
+    to solve such instances. Global (meta-)heuristics cannot dredge the search space too much in details for the same reason.
+    
+    So, on one hand we can skim the whole space search but not too much in details and on the other hand we have 
+    (very) efficient local methods that (hopefully) lead to local optima. Could we have the best of these two worlds?
+    
+    You've guessed it: we use global methods to find portions of the search space that might contain good or even optimal 
+    solutions and we try to find those with local search methods. As always, there is a tradeoff between the two.
+    
+    To take again an analogy [#analogy_limits]_, looking for a good solution this way is a bit like trying to find 
+    crude oil (or nowadays tar sands and the like): you send engineers, geologists, etc to some places on earth to prospect
+    (global method).
+    If they find a promising spot, you send a team to drill and find out (local method).
+    
+    
+    ..  [#analogy_limits] As all analogies, this one has certainly its limits!
+    
 ..  only:: final
 
     ..  raw:: html
