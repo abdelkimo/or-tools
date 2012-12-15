@@ -7,7 +7,9 @@ Basic working of the solver: local search
 
     We will use a dummy example throughout this and the next sections so
     we can solely focus on the basic ingredients provided by the *or-tools* 
-    library to do the local search.
+    library to do the local search. The code provided in this section is only generic and we'll have to 
+    wait until next section to use real code from the file :file:`dummy_ls.cc`.
+    
     Our fictive example consists in minimizing the sum of :math:`n` ``IntVar``\s
     :math:`\{x_0, \ldots, x_{n - 1}\}` each with domain :math:`[0, n - 1]`.
     We add the fictive constraint :math:`x_0 \geqslant 1` (and thus ask for :math:`n \geqslant 2`):
@@ -55,6 +57,7 @@ The basic idea
     is chosen and the process is repeated starting with this new improved solution (by default, as soon as an improved solution
     is found, it is taken by the solver and the process is repeated anew). The whole process stops
     whenever a stopping criterion is reached or the CP solver cannot improve anymore the current best solution.
+    [what does the last part of the last sentence mean exactly?]
     
 First solution
 """""""""""""""
@@ -64,7 +67,14 @@ First solution
 ..  only:: draft
 
     To start the local search, we need a first *feasible* solution. You can either give a starting 
-    solution or you can ask the CP solver to find one for you. Corresponding to these two options,
+    solution or you can ask the CP solver to find one for you. 
+    
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    
+    the initial solution being the first solution
+    found by the DecisionBuilder
+    
+    Corresponding to these two options,
     there are two factories methods:
 
     ..  code-block:: c++
@@ -93,6 +103,13 @@ First solution
 
 ``SearchLimit``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    TO DO
+
+``LocalSearchFilter``\s
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
