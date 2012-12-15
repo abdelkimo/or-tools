@@ -20,7 +20,7 @@ What is the difference between ``Solve()`` and ``NewSearch()``?
 
 ..  _faq:CPsolver:basic_functionnality:
 
-Could you explain the basic functionality of the CP solver?
+Could you explain the basic functionalities of the CP solver?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ..  _faq:CPsolver:main_methods:
@@ -54,6 +54,9 @@ Why would I need to restart my search?
 
 What are the implemented heuristics to find a global solution?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+What are the search primitives I can customize?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  
 ..  raw:: html 

@@ -22,6 +22,10 @@ Customized search primitives
         \code{Decision}s\footnote{And other primitives like \code{SymmetryBreaker}s, 
         subject of section~\ref{manual/search_primitives/breaking_symmetry:search-primitives-breaking-symmetry}.}.
         
+    ..  warning:: Some *search primitives* you can customize are declared in the header 
+        :file:`constraint_solver/constraint_solveri.h` (notice the *i* at the end).
+
+
         
 The basic search strategy visualized
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -30,11 +30,15 @@ Local Search Neighborhood (LSN) Operators
             :width: 300pt
             :align: center
     
+    These classes are declared in the header :file:`constraint_solver/constraint_solveri.h`. 
+    
+    
     The ``PathOperator`` class is itself the base class of several other path specialized 
     LSN Operators. We will review them in section XXX.
     
     ``IntVarLocalSearchOperator`` is a specialization of ``LocalSearchOperator`` built for an array of ``IntVar``\s while
     ``SequenceVarLocalSearchOperator`` is a specialization of ``LocalSearchOperator`` built for an array of ``SequenceVar``\s.
+    
     
 Defining a custom LSN operator 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

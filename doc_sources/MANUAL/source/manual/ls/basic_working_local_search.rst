@@ -29,11 +29,8 @@ Basic working of the solver: local search
 
 ..  _local_search_mechanism:
 
-Local Search Mechanism in *or-tools*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The basic idea
-"""""""""""""""
+Overview of the Local Search Mechanism in *or-tools*
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
@@ -52,27 +49,56 @@ The basic idea
             :align: center
 
     We start with an initial feasible solution. The ``MakeOneNeighbor()`` callback method 
-    from the Local Search Operator (or from the Local Search Operator\ **s** if there are more than one)
-    constructs one by one neighboring solutions. These solutions are checked by the CP solver. The best solution
-    is chosen and the process is repeated starting with this new improved solution (by default, as soon as an improved solution
-    is found, it is taken by the solver and the process is repeated anew). The whole process stops
+    from the Local Search Operator 
+    constructs one by one neighbor solutions. These solutions are checked by the CP solver and completed if needed. 
+    The "best" solution
+    is chosen and the process is repeated starting with this new improved solution (by default, the solver accepts the 
+    first solution that beats the current best solution and repeats the search starting with 
+    this new improved solution). The whole process stops
     whenever a stopping criterion is reached or the CP solver cannot improve anymore the current best solution.
-    [what does the last part of the last sentence mean exactly?]
+
     
-First solution
-"""""""""""""""
+    Let's describe some pieces of the *or-tools* mechanism for local search:
+    
+      - **initial solution**: we need a **feasible** solution to start with. You can either pass an ``Assignment`` or 
+        a ``DecisionBuilder`` to the ``LocalSearch``\'s constructor.
+      - **LocalSearchPhaseParameters**: the ``LocalSearchPhaseParameters`` parameter holds the actual definition 
+        of the local search phase:
+        
+        * a **LocalSearchOperator** used to explore the neighborhood of the current solution. You can combine
+          several ``LocalSearchOperator``\s;
+            
+        * a ``DecisionBuilder`` to instantiate unbound variables once a neighbor solution has
+          been defined; 
+            
+        * a **Searchlimit** specifying stopping criteria;
+          
+        * an ``std::vector`` of **LocalSearchFilter**\s used to speed up the search by pruning
+          unfeasible neighbors: instead of letting the solver find out if a neighbor solution is feasible or not, you 
+          can help it by bypassing its checking mechanism and tell it right away if a neighbor solution is feasible or not.
+    
+    ..  only:: html
+    
+        ``LocalSearchOperator``\s are detailed in the next section and ``LocalSearchFilter``\s in 
+        the section :ref:`local_search_filtering`.
 
-
+    ..  raw:: latex
+    
+        \code{LocalSearchOperator}s are detailed in the next section and \code{LocalSearchFilter}s in 
+        section~\ref{manual/ls/ls_filtering:local-search-filtering}.
+    
+    Let's quickly go over the other ingredients: the initial solution, the ``LocalSearchPhaseParameters`` parameter and the 
+    ``Searchlimit``\s.
+    
+Initial solution
+^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
     To start the local search, we need a first *feasible* solution. You can either give a starting 
-    solution or you can ask the CP solver to find one for you. 
-    
-    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    
-    the initial solution being the first solution
-    found by the DecisionBuilder
+    solution or you can ask the CP solver to find one for you. To let the solver find a solution for you, 
+    you pass it a ``DecisionBuilder``. The **first** solution discovered with this ``DecisionBuilder`` will be considered 
+    as the initial solution.
     
     Corresponding to these two options,
     there are two factories methods:
@@ -87,7 +113,7 @@ First solution
                                       DecisionBuilder* first_solution,
                                       LocalSearchPhaseParameters* parameters)
     
-    In file :file:`simple_lns1.cc`, we use a :program:`gflags` flag ``FLAG_initial_phase``
+    In the file :file:`dummy_lns.cc`, we use a :program:`gflags` flag ``FLAG_initial_phase``
     to switch between these two possibilities.
 
 ..  _local_search_parameters:
@@ -97,7 +123,10 @@ First solution
 
 ..  only:: draft
 
-    TO DO
+    As explained above, the ``LocalSearchPhaseParameters`` parameter holds the actual definition 
+    of the local search phase:
+
+
 
 ..  _search_limits:
 
@@ -108,12 +137,6 @@ First solution
 
     TO DO
 
-``LocalSearchFilter``\s
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-..  only:: draft
-
-    TO DO
 
 ..  only:: final
 
