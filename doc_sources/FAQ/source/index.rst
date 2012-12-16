@@ -30,12 +30,12 @@ General questions about:
   :ref:`the CP Solver <faq:CPsolver:qestions>`:
     We try to answer general questions about the CP Solver engine. 
     
-    This section is broken down into several sub-sections:
-    
   :ref:`the CP Routing Solver <faq:routing:questions>`
     We try to answer general questions about the CP Routing Solver engine.
     
-    This section is broken down into several sub-sections:
+  :ref:`the Local Search algorithm <faq:localsearch:questions>`
+    We try to answer general questions about the way Local Search is implemented in *or-tools*.
+
 
 .. toctree::
    :maxdepth: 1
@@ -46,22 +46,6 @@ General questions about:
    the library <faq/library>
    the CP Solver <faq/CPsolver>
    the CP Routing Solver <faq/routing>
+   the Local Search algorithm <faq/LS>   
    
-..  raw:: html 
-
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 

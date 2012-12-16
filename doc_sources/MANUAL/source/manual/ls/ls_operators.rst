@@ -6,6 +6,21 @@ Local Search Neighborhood (LSN) Operators
 
 ..  only:: draft
 
+    ..  raw:: latex
+
+        You can find the code in the file~\code{tutorials/C++/chap6/dummy_lns.cc}.\\~\\
+
+    ..  only:: html
+
+        **C++ code**: `tutorials/C++/chap6/dummy_lns.cc <../../../tutorials/C++/chap6/dummt_lns.cc>`_.
+
+
+``LocalSearchOperator``\s
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+
     The base class for all local search operators is ``LocalSearchOperator``.
     The behaviour of this class is similar to the one of an iterator. 
     The operator is synchronized with a feasible solution (an ``Assignment`` that gives the
