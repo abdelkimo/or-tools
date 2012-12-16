@@ -1,0 +1,4 @@
+* Simplify subsection on the basic working of the solver:
+  simplify algorithm (use pseudo code) and put current code into Under the hood.
+  
+* Do the same with local search.

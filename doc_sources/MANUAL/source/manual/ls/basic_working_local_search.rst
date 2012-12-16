@@ -206,6 +206,12 @@ Initial solution
 
     ``SearchLimit``\s were first described in the subsection :ref:`search_limits`.
 
+    Explain how ``SearchLimit``\s affect search:
+      * limited number of neighbors;
+      * time allowed for local search;
+      * etc.
+
+    [STUDY EFFECTS OF SEARCHLIMITS IN NEXT SECTION]
 
     [WHERE TO PUT NEXT???]
     
