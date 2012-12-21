@@ -3,7 +3,7 @@
 
 ..  _basic_working_constraints:
 
-Basic working of the solver: Constraints
+Basic working of the solver: constraints
 ---------------------------------------------
 
 ..  only:: draft

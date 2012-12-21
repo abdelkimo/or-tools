@@ -24,11 +24,11 @@ The basic ingredients
     *Local Search* is a whole bunch of families of (meta-)heuristics [#meta_explanation]_ that
     roughly share the following ingredients:
     
-      1. they start with a solution (feasible or not);
+      1. They start with a solution (feasible or not);
       
-      2. they improve locally this solution;
+      2. They improve locally this solution;
       
-      3. they finish the search when reaching a stopping criterion but usually without
+      3. They finish the search when reaching a stopping criterion but usually without
          guarantee on the quality of the found solution(s).
          
          
@@ -67,15 +67,15 @@ The basic ingredients
     local search (meta-) heuristics, there is no universal solving method [#no_free_lunch]_. The more insight/knowledge of the 
     structure of your specific problem you gather, the better you can shape your algorithm to solve efficiently your problem.
 
-    ..  [#no_free_lunch] Google for the *No Free Lunch Theorem* in optimization to learn more about this.
-    
     ..  [#reactive_search_links] See `Wikipedia Reactive search optimization <http://en.wikipedia.org/wiki/Reactive_search_optimization>`_  or 
         `reactive-search.org <http://www.reactive-search.org/>`_.
+
+    ..  [#no_free_lunch] Google for the *No Free Lunch Theorem* in optimization to learn more about this.
     
     
     Let's discuss the three common ingredients and their implementation in or-tools.
     
-    1.  **they start with a solution** (feasible or not):
+    1.  **They start with a solution** (feasible or not):
             
         To improve locally a solution, you need to start with a solution. In *or-tools* this solution **has to be** 
         *feasible*.
@@ -91,9 +91,12 @@ The basic ingredients
         to find a solution to the n-queens problem with local search. It might sound complicated but it really isn't.
           
 
-        ..  [#relaxing_constraints] Relaxing a constraint in a model means that you remove this constraint or weaken it.
+        ..  [#relaxing_constraints] Relaxing a constraint means that you remove this constraint or weaken it. For instance, 
+            you can replace :math:`x_1 \leqslant 1` by :math:`x_1 \leqslant 2`. This last constraint is weaker than the first  
+            one because it allows more solutions to the problem. Of course, you preferably weaken constraints in a meaningful
+            way!
 
-    2.  **they improve locally this solution**:
+    2.  **They improve locally this solution**:
 
         This is the tricky part to understand. Improvements to the initial solution are done *locally*. This means that
         you need to define a *neighborhood* (explicitly or implicitly) for a given solution and a way to explore this
@@ -103,6 +106,8 @@ The basic ingredients
         The idea is to (partly or completely) explore a neighborhood around an initial solution, 
         find a good (or the best) solution in this neighborhood and start all over again until a stopping criterion is met.
           
+        Let's denote by  :math:`\mathcal{N}_x` the neighborhood of a solution :math:`x`.
+        
         In its very basic form, we could formulate local search like this:
           
         ..  image:: algorithms/local_search_basic_pseudo_code.*
@@ -147,7 +152,7 @@ The basic ingredients
 
         The local search procedure starts from an initial feasible solution :math:`x_0` and searches the neighborhood 
         :math:`\mathcal{N}_{x_0}` of this solution. The "best" solution found is :math:`x_1`. The local search procedure 
-        starts over again but with :math:`x_1`. In the neighborhood :math:`\mathcal{N}_{x_1}`, the best solution found is 
+        starts over again but with :math:`x_1` as starting solution. In the neighborhood :math:`\mathcal{N}_{x_1}`, the best solution found is 
         :math:`x_2`. The procedure continues on and on until stopping criteria are met. Let's say that one of these criteria is 
         met and the search ends with :math:`x_3`. You can see that while the method moves towards the local optima, it 
         misses it and completely misses the global optimum! This is why the method is called *local* search: it probably 
@@ -167,7 +172,7 @@ The basic ingredients
         ..  [#being_in_the_neighborhood_not_symmetric] Although being fair we have to mention that most LS methods require
             this relation to be symmetric as a desirable feature would be to be able to retrace our steps in case of 
             false start or to explore other possibilities. On the figure, you might think about going left to explore was is 
-            past the :math:`y-axis`.
+            past the :math:`z-axis`.
 
         ..  only:: html
 
@@ -196,7 +201,7 @@ The basic ingredients
             When the whole neighborhood
             has been visited, make it returns \code{false}.
  
-    3.  **they finish the search when reaching a stopping criterion but usually without
+    3.  **They finish the search when reaching a stopping criterion but usually without
         guarantee on the quality of the found solution(s)**:
           
         Common stopping criteria include:
@@ -223,8 +228,8 @@ The basic ingredients
           
             - *absolute*: for instance, a global maximal number of iterations;
             
-            - *relative*: for instance, the improvements are too small with respect to time, 
-              number of iterations, number of solutions, ... .
+            - *relative*: for instance, the improvements are too small with respect to the time, 
+              the number of iterations, the number of solutions, ... .
           
         ..  only:: html
           
@@ -270,24 +275,25 @@ Is Local Search efficient?
     
     Let's dissect this terse answer:
     
-      * **yes**: 
+    * **yes**: 
         
-        To really answer this question, you need to know what exactly you mean by "efficient". 
-        If you're 
-        looking for a global optimum then local search - at least in its basic form but read the subsection 
-        :ref:`global_optimization_methods` below - is probably not for you. If you are looking for a guarantee on the quality 
-        of the solution(s) found, then again you might want to look for another tool.
+      To really answer this question, you need to know what exactly you mean by "efficient". 
+      If you're 
+      looking for a global optimum then local search - at least in its basic form but read the subsection 
+      :ref:`global_optimization_methods` below - is probably not for you. If you are looking for a guarantee on the quality 
+      of the solution(s) found, then again you might want to look for another tool.
 
-      * but...: 
+    * but...: 
         
-        Local search methods are strongly dependent on your knowledge of the problem and your ability to use this 
-        knowledge during the search. For instance, very often the initial solution plays a crucial role in the 
-        efficiency of the local search. You might start from a solution 
-        that is too far from a global (or local) optimum or worse you start from a solution from which it is impossible to reach a global 
-        (or even local) optimum with your neighborhood definition. Several techniques have been proposed to tackle these annoyances.
-        One of them is to restart the search with different initial solutions. Another is to change the definition of 
-        a neighborhood during the search like in *Variable Neighbourhood Search (VNS)*.
+      Local search methods are strongly dependent on your knowledge of the problem and your ability to use this 
+      knowledge during the search. For instance, very often the initial solution plays a crucial role in the 
+      efficiency of the local search. You might start from a solution 
+      that is too far from a global (or local) optimum or worse you start from a solution from which it is impossible to reach a global 
+      (or even local) optimum with your neighborhood definition. Several techniques have been proposed to tackle these annoyances.
+      One of them is to restart the search with different initial solutions. Another is to change the definition of 
+      a neighborhood during the search like in *Variable Neighbourhood Search (VNS)*.
 
+    ..  [#and_three_more_dots] Okay, okay and three more lower dots.
     
     LS is a tradeoff between efficiency and the fact that LS doesn't try to find a global optimum, i.e. in other words you are 
     willing to give up the 
@@ -304,7 +310,6 @@ Is Local Search efficient?
         
         ..  [#LS_descending_a_hill_metaphor] If you've never hear this metaphor, skip this paragraph and don't bother.
         
-    ..  [#and_three_more_dots] Okay, okay and three more lower dots.
 
 What about the quality of the solutions found by local search?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -339,7 +344,7 @@ What about the quality of the solutions found by local search?
 
         ..  [#details_guarantee_sol_quality] If theory doesn't scare you, have a look at 
             the subsection :ref:`approximation_complexity` for more 
-            about approximation theory and quality guarantee.
+            about approximation theory and quality guarantees.
 
         ..  [#metricTSP] The **metric** TSP is the classical TSP but on graphs that respect the triangle inequality, 
             i.e. :math:`d(a,c) \leqslant d(a,b) + d(b,c)` where :math:`a, b` and :math:`c` are nodes of the graph
