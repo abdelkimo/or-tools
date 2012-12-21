@@ -1,14 +1,1 @@
-user_manual/manual/under_the_hood/classes.html
-user_manual/manual/under_the_hood/conventions.html
-user_manual/manual/ls/basic_working_local_search.html
-user_manual/manual/ls/metaheuristics_examples.html
-user_manual/manual/ls/scheduling_or_tools.html
-user_manual/_static/Eight-queens-animation.gif
-user_manual/_images/path_selector.png
-user_manual/_images/math/b3ab70878fbd7bcd64f2999d824b51f60d2f175d.png
-user_manual/_images/math/0b581916cf07e751e48e7fc165d20ebf6454c2e1.png
-user_manual/_images/math/92f9b8ed59b675bbff655f971baf3e24a212e52f.png
-user_manual/_images/math/ffc4c8c292f8a8063659b9b7c6e392f25925ef1f.png
-user_manual/_images/math/422459e2589a24cda157448d3208736a56399e36.png
-user_manual/_images/math/ea61ff2b3d23b1417a30c4a7aa0498658d9eeb36.png
-user_manual/_images/math/54e7b5c78a7149828cc020b270a9c3a64f824368.png
+faq/faq/LS.html

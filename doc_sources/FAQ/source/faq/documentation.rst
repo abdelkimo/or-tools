@@ -127,7 +127,11 @@ When do you expect to finish?
 
 - :strike:`June 1` :superscript:`st`, :strike:`2012`
 - :strike:`September 1` :superscript:`st`, :strike:`2012`
-- December 1 :superscript:`st`, 2012
+- :strike:`December 1` :superscript:`st`, :strike:`2012`
+
+Do we dare to fix another deadline? 
+
+- February 1 :superscript:`st`, :strike:`2015`, 2013
 
 for the first draft. 
 

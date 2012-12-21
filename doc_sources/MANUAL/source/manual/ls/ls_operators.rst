@@ -8,7 +8,7 @@ Local Search Neighborhood (LSN) Operators
 
     ..  raw:: latex
 
-        You can find the code in the file~\code{tutorials/C++/chap6/dummy_lns.cc}.\\~\\
+        You can find the code in the file~\code{tutorials/C++/chap6/dummy\_lns.cc}.\\~\\
 
     ..  only:: html
 
@@ -202,8 +202,15 @@ Defining a custom LSN operator
         [n-1, n-2, n -1, n - 2,  \ldots, n-\left\{1 + (n+1) \, \textrm{mod} \, 2\right\}]
         
     where the value for :math:`x_{n-1}` is :math:`n-2` if :math:`n` is even and
-    :math:`n-1` otherwise.
+    :math:`n-1` otherwise [#mod_operator]_.
         
+    ..  [#mod_operator] The modulo operator (:math:`\textrm{mod}`) finds the remainder of the division of one (integer) 
+        number by another:
+        For instance, :math:`11 \textrm{mod} \, 5 = 1` because :math:`11 = 2 \times 5 + 1`. When you want to test a 
+        **positive** number :math:`n` for parity, you can test :math:`n \textrm{mod} \, 2`. 
+        If  :math:`n \textrm{mod} \, 2 = 0`
+        then :math:`n` is even, otherwise it is odd. In ``C++``, the :math:`\textrm{mod}` operator is ``%``.
+    
     The search phase using the LNS Operator is given by a... ``DecisionBuilder`` 
     which shouldn't surprise you by now:
     
@@ -254,7 +261,7 @@ Defining a custom LSN operator
     
     ..  code-block:: bash
     
-        ./simple_lns1 -n=4 -initial_phase=false
+        ./dummy_lns -n=4 -initial_phase=false
         
     we obtain the following partial output:
     

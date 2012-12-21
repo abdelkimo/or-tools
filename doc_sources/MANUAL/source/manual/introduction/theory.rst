@@ -459,6 +459,8 @@ the hope that such approximate solution isn't that different from an exact or op
 ..  [#different_solution_optimization] In the case of optimization, a solution that *isn't that different* means a 
     solution that has a good objective value, preferably close to the optimum.
 
+..  _approximation_complexity:
+
 Approximation complexity
 """""""""""""""""""""""""""
 
