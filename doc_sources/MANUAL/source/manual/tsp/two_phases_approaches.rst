@@ -6,6 +6,8 @@ The two phases approach
 The initial solution
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
+..  _local_search_pathoperators:
+
 Local Search ``PathOperator``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

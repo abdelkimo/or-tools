@@ -99,7 +99,9 @@ Callbacks to implement
       ``EnterSearch()``:
         This is the method to initialize your meta-heuristic. You can call ``Metaheuristic::EnterSearch()`` to update the 
         objective function. If you have an initial solution at hand, see the 
-        box :ref:`What about an initial solution?<topic_what_about_an_initial_solution_local_search>`
+        box *What about an initial solution?* (to be done).
+        
+        ..  :ref:`What about an initial solution? <topic_what_about_an_initial_solution_local_search>`
         
       ``RefuteDecision()``:
         Blabla

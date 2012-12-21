@@ -18,7 +18,7 @@ Overview of the Local Search Mechanism in *or-tools*
 
 ..  only:: draft
 
-    The next figure illustrates the basic mechanism of Local Search in *or-tools*:
+    The next figure illustrates the basic mechanism of Local Search in *or-tools* [#local_search_algo_not_detailed_here]_:
         
     ..  only:: html 
     
@@ -61,6 +61,16 @@ Overview of the Local Search Mechanism in *or-tools*
           unfeasible neighbors: instead of letting the solver find out if a neighbor solution is feasible or not, you 
           can help it by bypassing its checking mechanism and tell it right away if a neighbor solution is feasible or not.
     
+    
+    ..  [#local_search_algo_not_detailed_here] We don't present a simplified version of the code of the local search 
+        algorithm as we did for the general search algorithm because no new specific hook methods of a ``SearchMonitor`` is 
+        involved. The local search algorithm is made by the ``LocalSearch`` ``DecisionBuilder`` who 
+        returns ``NestedSolveDecision``\s (in its ``Next()`` method). ``NestedSolveDecision``\s call a ``FindOneNeighbor``
+        ``DecisionBuilder`` in their left branches (and don't do anything in their right branches). As its name implies, the 
+        ``FindOneNeighbor`` ``DecisionBuilder`` tries to find one neighbor solution. Let's say that the ``LocalSearch`` 
+        ``DecisionBuilder`` acts like a multi-restart ``DecisionBuilder``. If you want to know more, have a look at the section 
+        :ref:`hood_ls` in the chapter :ref:`chapter_under_the_hood`.
+
     ..  only:: html
     
         ``LocalSearchOperator``\s are detailed in the next section and ``LocalSearchFilter``\s in 
@@ -70,6 +80,7 @@ Overview of the Local Search Mechanism in *or-tools*
     
         \code{LocalSearchOperator}s are detailed in the next section and \code{LocalSearchFilter}s in 
         section~\ref{manual/ls/ls_filtering:local-search-filtering}.
+
     
     Let's quickly go over the other ingredients: the initial solution, the ``LocalSearchPhaseParameters`` parameter and the 
     ``Searchlimit``\s.

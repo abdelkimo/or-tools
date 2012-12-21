@@ -49,7 +49,7 @@ Local Search Neighborhood (LSN) Operators
     to define a second ``Assignment`` representing the changes to the 
     last solution defined by the neighborhood operator (an ``Assignment`` called ``deltadelta``).
     
-    The or-tools takes care of these *delta* and other hassles for the most common cases. The next Figure shows the 
+    The CP solver takes care of these *delta*\s and other hassles for the most common cases. The next figure shows the 
     LSN Operators hierarchy.
     
     ..  only:: html 
@@ -66,9 +66,16 @@ Local Search Neighborhood (LSN) Operators
     
     These classes are declared in the header :file:`constraint_solver/constraint_solveri.h`. 
     
+    ..  only:: html
     
-    The ``PathOperator`` class is itself the base class of several other path specialized 
-    LSN Operators. We will review them in section XXX.
+        The ``PathOperator`` class is itself the base class of several other path specialized 
+        LSN Operators. We will review them in subsection :ref:`local_search_pathoperators`.
+    
+    ..  raw:: latex 
+    
+        The \code{PathOperator} class is itself the base class of several other path specialized 
+        LSN Operators. We will review them in subsection~\ref{manual/tsp/two_phases_approaches:local-search-pathoperators}.\\~\\
+
     
     ``IntVarLocalSearchOperator`` is a specialization of ``LocalSearchOperator`` built for an array of ``IntVar``\s while
     ``SequenceVarLocalSearchOperator`` is a specialization of ``LocalSearchOperator`` built for an array of ``SequenceVar``\s.
@@ -225,9 +232,9 @@ Defining a custom LSN operator
         
     ..  [#mod_operator] The modulo operator (:math:`\textrm{mod}`) finds the remainder of the division of one (integer) 
         number by another:
-        For instance, :math:`11 \textrm{mod} \, 5 = 1` because :math:`11 = 2 \times 5 + 1`. When you want to test a 
-        **positive** number :math:`n` for parity, you can test :math:`n \textrm{mod} \, 2`. 
-        If  :math:`n \textrm{mod} \, 2 = 0`
+        For instance, :math:`11 \, \textrm{mod} \, 5 = 1` because :math:`11 = 2 \times 5 + 1`. When you want to test a 
+        **positive** number :math:`n` for parity, you can test :math:`n \, \textrm{mod} \, 2`. 
+        If  :math:`n \, \textrm{mod} \, 2 = 0`
         then :math:`n` is even, otherwise it is odd. In ``C++``, the :math:`\textrm{mod}` operator is ``%``.
     
     The search phase using the LNS Operator is given by a... ``DecisionBuilder`` 
