@@ -69,7 +69,7 @@ Local Search Neighborhood (LSN) Operators
     ..  only:: html
     
         The ``PathOperator`` class is itself the base class of several other path specialized 
-        LSN Operators. We will review them in subsection :ref:`local_search_pathoperators`.
+        LSN Operators. We will review them in the subsection :ref:`local_search_pathoperators`.
     
     ..  raw:: latex 
     
@@ -436,7 +436,17 @@ Interesting LSN operators
 
 ..  only:: draft
 
-    Several ``LocalSearchOperator``\s can be of great help.
+    Several existing ``LocalSearchOperator``\s can be of great help. Combine these operators with your own customized 
+    operators.
+    
+    ..  only:: html
+    
+        ``PathOperator``\s will be reviewed in the subsection :ref:`local_search_pathoperators`.
+    
+    ..  raw:: latex 
+    
+        \code{PathOperator}s will be reviewed in subsection~\ref{manual/tsp/two_phases_approaches:local-search-pathoperators}.
+
     
 ``NeighborhoodLimit``
 """"""""""""""""""""""""""""
@@ -463,37 +473,57 @@ Interesting LSN operators
 ..  only:: draft
 
     Creates a local search operator that tries to move the assignment of some
-    variables toward a target. The target is given as an Assignment. This
+    variables toward a target. The target is given as an ``Assignment``. This
     operator generates neighbors in which the only difference compared to the
     current state is that one variable that belongs to the target assignment is
     set to its target value.
+    
+    There are two factory methods to create a ``MoveTowardTargetLS`` operator:
     
     ..  code-block:: c++
     
         LocalSearchOperator* Solver::MakeMoveTowardTargetOperator(
                                                   const Assignment& target);
 
-    Creates a local search operator that tries to move the assignment of some
-    variables toward a target. The target is given either as two vectors: a
-    vector of variables and a vector of associated target values. The two
-    vectors should be of the same length. This operator generates neighbors in
-    which the only difference compared to the current state is that one
-    variable that belongs to the given vector is set to its target value.
-  
+    and
+      
     ..  code-block:: c++ 
     
         LocalSearchOperator* Solver::MakeMoveTowardTargetOperator(
                                     const std::vector<IntVar*>& variables,
                                     const std::vector<int64>& target_values);
 
+    The target is here given by two ``std::vector``\s: a
+    vector of variables and a vector of associated target values. The two
+    vectors should be of the same length and the variables and values are ordered in the same way.
+    
+    The variables are changed one after the other in the order given by the ``Assignment`` or the vector of
+    variables. When we restart from a new feasible solution, we don't start all over again from the first variable but 
+    keep changing variables from the last change.
+    
 
 ``DecrementValue`` and ``IncrementValue``
 """"""""""""""""""""""""""""""""""""""""""""""
     
 ..  only:: draft
-    
-    
 
+    These operators do exactly what their name says: they decrement and increment by 1 the value of each
+    variable one after the other. 
+    
+    The create them, use the generic factory method 
+    
+    ..  code-block:: c++
+    
+        LocalSearchOperator* Solver::MakeOperator(
+                                          const std::vector<IntVar*>& vars,
+                                          Solver::LocalSearchOperators op); 
+    
+    where ``op`` is an ``LocalSearchOperators`` ``enum``. The values for ``DecrementValue`` and ``IncrementValue``
+    are respectively ``Solver::DECREMENT`` and ``Solver::INCREMENT``.
+    
+    The variables are changed in the order given by the ``std::vector``. Whenever we start a to explore a new neighborhood, 
+    the variables are changed from the beginning of the vector.
+    
 
 Large Neighborhood Search
 """""""""""""""""""""""""""""""
