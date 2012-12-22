@@ -78,8 +78,11 @@ Local Search Neighborhood (LSN) Operators
 
     
     ``IntVarLocalSearchOperator`` is a specialization of ``LocalSearchOperator`` built for an array of ``IntVar``\s while
-    ``SequenceVarLocalSearchOperator`` is a specialization of ``LocalSearchOperator`` built for an array of ``SequenceVar``\s.
+    ``SequenceVarLocalSearchOperator`` is a specialization of ``LocalSearchOperator`` built for an array 
+    of ``SequenceVar``\s [#no_ls_operators_for_interval_vars]_. 
     
+    ..  [#no_ls_operators_for_interval_vars] At this time of writing, there are no ``LocalSearchOperator``\s defined for 
+        ``IntervalVar``\s. See subsection XXX for a workaround.
     
 Defining a custom LSN operator 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -356,7 +359,7 @@ Defining a custom LSN operator
     if it was really necessary to construct "solutions" :math:`[0,0,0,1]`, :math:`[1,-1,0,1]` and :math:`[1,0,-1,1]` and let the solver
     decide if they were interesting or not. The answer is no. We could have filtered those solutions and tell the solver
     to disregard them. We didn't filter any solution (and this is the reason why the number of constructed neighbors is equal
-    to the number of filtered neighbors). You can learn more about filtering in section XXX.
+    to the number of filtered neighbors). You can learn more about filtering in the section :ref:`local_search_filtering`.
     
     If you want, you can try to start with the solution provided by the ``DecisionBuilder`` (:math:`[3,3,3,3]` when :math:`n=4`) 
     and see if you can figure out 
@@ -367,12 +370,146 @@ Combining LSN operators
 
 ..  only:: draft
 
-    TO BE DONE.
-
-..  raw:: html
+    Often, you want to combine several ``LocalSearchOperator``\s. This can be done with the ``ConcatenateOperators()`` method:
     
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    ..  code-block:: c++
+    
+        LocalSearchOperator* ConcatenateOperators(
+                              const std::vector<LocalSearchOperator*>& ops);
+    
+    This creates a ``LocalSearchOperator`` which concatenates a vector of operators.
+    Each operator from the vector is called sequentially. By default, when a
+    neighbor is found the neighborhood exploration restarts from the **last**
+    active operator (the one which produced the neighbor).
+    
+    This can be overriden by setting ``restart`` to ``true`` to force the exploration
+    to start from the first operator in the vector:
+    
+    ..  code-block:: c++
+    
+         LocalSearchOperator* Solver::ConcatenateOperators(
+                const std::vector<LocalSearchOperator*>& ops, bool restart);
+
+    You can also use an evaluation callback to set the order in which the operators are explored 
+    (the callback is called in ``LocalSearchOperator::Start()``). The first argument of the callback is
+    the index of the operator which produced the last move, the second
+    argument is the index of the operator to be evaluated.
+    Ownership of the callback is taken by the solver.
+  
+    Here is an example:
+
+    ..  code-block:: c++
+    
+        const int kPriorities = {10, 100, 10, 0};
+        int64 Evaluate(int active_operator, int current_operator) {
+          return kPriorities[current_operator];
+        }
+      
+        LocalSearchOperator* concat =
+                                    solver.ConcatenateOperators(operators,
+                                    NewPermanentCallback(&Evaluate));
+
+    The elements of the vector operators will be sorted by increasing priority
+    and explored in that order (tie-breaks are handled by keeping the relative
+    operator order in the vector). This would result in the following order:
+    
+    ``operators[3], operators[0], operators[2], operators[1]``.
+
+    Sometimes you don't know in what order to proceed. Then the next method might help you:
+    
+    ..  code-block:: c++
+    
+        LocalSearchOperator* Solver::RandomConcatenateOperators(
+                              const std::vector<LocalSearchOperator*>& ops);
+
+
+    This ``LocalSearchOperator`` calls a random operator at each call to ``MakeNextNeighbor()``.
+    You can provide the seed that is used to initialize the random number generator:
+    
+    ..  code-block:: c++
+    
+        LocalSearchOperator* Solver::RandomConcatenateOperators(
+                  const std::vector<LocalSearchOperator*>& ops, int32 seed);
+
+Interesting LSN operators 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    Several ``LocalSearchOperator``\s can be of great help.
+    
+``NeighborhoodLimit``
+""""""""""""""""""""""""""""
+
+..  only:: draft
+
+    This ``LocalSearchOperator`` creates a ``LocalSearchOperator`` that wraps another ``LocalSearchOperator``
+    and limits the number of neighbors explored (i.e. calls
+    to ``MakeNextNeighbor()`` from the current solution (between two calls
+    to ``Start()``). When this limit is reached, ``MakeNextNeighbor()``
+    returns ``false``. The counter is cleared when ``Start()`` is called.
+    
+    Here is the factory method:
+    
+    ..  code-block:: c++
+    
+        LocalSearchOperator* Solver::MakeNeighborhoodLimit(
+                                             LocalSearchOperator* const op,
+                                             int64 limit);
+
+``MoveTowardTargetLS``
+"""""""""""""""""""""""""""""""
+
+..  only:: draft
+
+    Creates a local search operator that tries to move the assignment of some
+    variables toward a target. The target is given as an Assignment. This
+    operator generates neighbors in which the only difference compared to the
+    current state is that one variable that belongs to the target assignment is
+    set to its target value.
+    
+    ..  code-block:: c++
+    
+        LocalSearchOperator* Solver::MakeMoveTowardTargetOperator(
+                                                  const Assignment& target);
+
+    Creates a local search operator that tries to move the assignment of some
+    variables toward a target. The target is given either as two vectors: a
+    vector of variables and a vector of associated target values. The two
+    vectors should be of the same length. This operator generates neighbors in
+    which the only difference compared to the current state is that one
+    variable that belongs to the given vector is set to its target value.
+  
+    ..  code-block:: c++ 
+    
+        LocalSearchOperator* Solver::MakeMoveTowardTargetOperator(
+                                    const std::vector<IntVar*>& variables,
+                                    const std::vector<int64>& target_values);
+
+
+``DecrementValue`` and ``IncrementValue``
+""""""""""""""""""""""""""""""""""""""""""""""
+    
+..  only:: draft
+    
+    
+
+
+Large Neighborhood Search
+"""""""""""""""""""""""""""""""
+
+..  only:: draft
+
+    And last but not least, in *or-tools*, Large Neighborhood Search is implemented with ``LocalSearchOperator``\s but 
+    this is the subject of the next chapter.
+
+
+..  only:: final
+
+    ..  raw:: html
+        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 

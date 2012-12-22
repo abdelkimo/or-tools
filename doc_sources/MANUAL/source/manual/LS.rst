@@ -21,6 +21,8 @@ Local search: the job-shop problem
 
 ..  only:: draft
 
+    [TO BE REWRITTEN]
+
     We start by describing what Local Search is and how it is implemented in the or-tools library. We have chosen 
     two problems to illustrate local search:
       
@@ -91,16 +93,15 @@ The files of this chapter are NOT the same as the ones in the :file:`example` di
 ..  toctree::
     :maxdepth: 2
 
+    ls/jobshop_def_data
+    ls/jobshop_implementation
+    ls/scheduling_or_tools
     ls/local_search
     ls/basic_working_local_search
     ls/ls_operators
-    ls/scheduling_or_tools
-    ls/jobshop_def_data
-    ls/jobshop_implementation
     ls/jobshop_ls
     ls/ls_filtering
     ls/metaheuristics_examples
-    ls/restart
     ls/ls_summary
     
 ..  only:: final
