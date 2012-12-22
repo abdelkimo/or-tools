@@ -193,6 +193,19 @@ Branches
     The ``ORLimit`` is reached when either of the underlying ``SearchLimit``
     ``limit1`` or ``limit2``  is reached. 
     
+    You also can implement your own ``SearchLimit`` with a callback:
+    
+    ..  code-block:: c++
+    
+        SearchLimit* MakeCustomLimit(ResultCallback<bool>* limiter);
+        
+    The ``ResultCallback<bool>`` is a *functor* that implements the ``Run()`` method returning a ``bool``. See XXX for more 
+    on callbacks and functors.
+    
+    ..  warning:: If the ``Run()`` method returns ``true`` at a leaf of the search tree, the corresponding 
+        solution will be rejected!
+  
+    
     ``SearchLimit``\s can also be updated during the search using the following method:
     
     ..  code-block:: c++

@@ -126,6 +126,31 @@ Initial solution
     As explained above, the ``LocalSearchPhaseParameters`` parameter holds the actual definition 
     of the local search phase.
     
+    It basically consists in:
+    
+    * a ``SolutionPool``: A ``DefaultSolutionPool`` should do. You even don't have to provide it as it is 
+      constructed by default.
+      [WAITING]
+    * a ``LocalSearchOperator``: a ``LocalSearchOperator`` or a combination of ``LocalSearchOperator``\s explore the 
+      neighborhood of the current solution. We detail them in the next section.
+    * a ``DecisionBuilder``: this *sub* ``DecisionBuilder`` helps creating feasible solutions if your ``LocalSearchOperator``\s 
+      only return partial solutions. 
+    * a ``SearchLimit``: The ``SearchLimit`` allows to limit the local search and is discussed in the next subsection below.
+    * ``LocalSearchFilter``\s: these filters speed up the search by bypassing the solver checking mechanism, i.e. these filters 
+      tell the solver if a neighbor solution should be kept or not. [TO BE VERIFIED: you can skip a solution but can you force 
+      a solution to the solver?]
+
+      ..  only:: html
+        
+          ``LocalSearchFilter``\s are discussed in 
+          the section :ref:`local_search_filtering`.
+
+      ..  raw:: latex
+        
+          \code{LocalSearchFilter}s are discussed in 
+          section~\ref{manual/ls/ls_filtering:local-search-filtering}.
+
+      
     Several factory methods are available to create a ``LocalSearchPhaseParameters`` parameter. 
     At least you need to declare a ``LocalSearchOperator`` and a ``DecisionBuilder``:
     
@@ -135,6 +160,17 @@ Initial solution
                             LocalSearchOperator *const ls_operator,
                             DecisionBuilder *const assist_decision_builder);
 
+    You can also give all the parameters enumerated above:
+    
+    ..  code-block:: c++
+    
+        LocalSearchPhaseParameters* Solver::MakeLocalSearchPhaseParameters(
+                            SolutionPool* const pool,
+                            LocalSearchOperator* const ls_operator,
+                            DecisionBuilder* const sub_decision_builder,
+                            SearchLimit* const limit,
+                            const std::vector<LocalSearchFilter*>& filters);
+    
     The ``LocalSearchOperator`` will find neighbor solutions while the ``DecisionBuilder`` will complete 
     the neighbor solutions if not all variables are assigned. 
     
@@ -157,39 +193,7 @@ Initial solution
     solutions, you don'.t have to provide a ``DecisionBuilder`` to assist: just give ``NULL`` as argument 
     for the ``DecisionBuilder`` pointer.
 
-    The most complete factory method to create a ``LocalSearchPhaseParameters`` parameter is 
-    
-    ..  code-block:: c++
-    
-        LocalSearchPhaseParameters* Solver::MakeLocalSearchPhaseParameters(
-                            SolutionPool* const pool,
-                            LocalSearchOperator* const ls_operator,
-                            DecisionBuilder* const sub_decision_builder,
-                            SearchLimit* const limit,
-                            const std::vector<LocalSearchFilter*>& filters);
 
-    We have already seen the ``LocalSearchOperator`` and ``DecisionBuilder`` arguments when we discussed 
-    the minimalist ``MakeLocalSearchPhaseParameters()`` factory method just a few lines above. The ``SearchLimit`` allows 
-    to limit the local search and is discussed in the next subsection below.
-
-    ..  only:: html
-    
-        We remind you that ``LocalSearchOperator``\s are detailed in the next section and ``LocalSearchFilter``\s in 
-        the section :ref:`local_search_filtering`.
-
-    ..  raw:: latex
-    
-        We remind you that \code{LocalSearchOperator}s are detailed in the next section and \code{LocalSearchFilter}s in 
-        section~\ref{manual/ls/ls_filtering:local-search-filtering}.
-
-    This brings us to the last undiscussed parameter: ``SolutionPool``. 
-
-
-    [STUDY:]
-    
-    .. SolutionPool* solution_pool() const { return solution_pool_; }
-    
-    
 ..  index:: SearchLimit; in Local Search
 
 ..  _search_limits_in_local_search:
@@ -201,20 +205,33 @@ Initial solution
 
     ``SearchLimit``\s were first described in the subsection :ref:`search_limits`.
 
-    Explain how ``SearchLimit``\s affect search:
-      * limited number of neighbors;
-      * time allowed for local search;
-      * etc.
-
-    [STUDY EFFECTS OF SEARCHLIMITS IN NEXT SECTION]
-
-    [WHERE TO PUT NEXT???]
+    This time we apply ``SearchLimit``\s in local search, i.e. these limits are only valid within the search a **one** 
+    neighborhood. Probably the most interesting statistics to limit is the number of found solutions in one neighborhood:
     
-    Callback-based search limit. Search stops when limiter returns true; if
-    this happens at a leaf the corresponding solution will be rejected.
+    ..  code-block:: c++
     
-    SearchLimit* MakeCustomLimit(ResultCallback<bool>* limiter);
+        SearchLimit * const limit = s.MakeSolutionsLimit(2);
 
+    ..  only:: html 
+    
+        This would limit the search to maximum two neighbors in the same neighborhood. Don't forget that neighbors are feasible 
+        solutions, so in case of minimization once the solver finds a neighbor (i.e. a feasible solution), it changes the model 
+        to exclude solutions with the same objective value. See the section :ref:`golomb_ruler_optimization_how` 
+        to refresh your memory if needed. Thus, the second solution found can only be better than the first one. When the solver 
+        finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution, in this 
+        case the second solution found.
+
+    ..  raw:: latex 
+    
+        This would limit the search to maximum two neighbors in the same neighborhood. Don't forget that neighbors are feasible 
+        solutions, so in case of minimization once the solver finds a neighbor (i.e. a feasible solution), it changes the model 
+        to exclude solutions with the same objective value. See the 
+        section~\ref{manual/objectives/optimization_how:golomb-ruler-optimization-how} 
+        to refresh your memory if needed. Thus, the second solution found can only be better than the first one. When the solver 
+        finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution, in this 
+        case the second solution found.
+
+    
 ..  only:: final
 
     ..  raw:: html
