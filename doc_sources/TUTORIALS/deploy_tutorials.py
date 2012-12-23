@@ -13,7 +13,7 @@ from shutil import rmtree, copytree, ignore_patterns
 sys.path.append("../scripts")
 from config_parser import LoadConfig, _ConfigDefault
 from versions import verify_version
-from file_module import find_files_in_dirs
+from file_module import find_files_in_dirs, append_files
 
 # Little check: is old version really older than new version?
 verify_version()
@@ -21,17 +21,17 @@ verify_version()
 config = LoadConfig('../../config.ini', _ConfigDefault)
 
 # Local source dirs
-cplusplus_dir = 'c++/'
-python_dir = 'python/'
-java_dir = 'java/'
-csharp_dir = 'csharp/'
+cplusplus_dir = config['sources.subdir_cplusplus']
+python_dir = config['sources.subdir_python']
+java_dir = config['sources.subdir_java']
+csharp_dir = config['sources.subdir_csharp']
 
 # Local source zip filenames
-cplusplus_zip_filename = 'tutorials_c++_examples.zip'
-python_zip_filename = 'tutorials_python_examples.zip'
-java_zip_filename = 'tutorials_java_examples.zip'
-csharp_zip_filename = 'tutorials_csharp_examples.zip'
-all_zip_filename = 'tutorials_all_examples.zip'
+cplusplus_zip_filename = config['files.tutorials_cplusplus_filename'] + '.zip'
+python_zip_filename = config['files.tutorials_python_filename'] + '.zip'
+java_zip_filename = config['files.tutorials_java_filename'] + '.zip'
+csharp_zip_filename = config['files.tutorials_csharp_filename'] + '.zip'
+all_zip_filename = config['files.tutorials_all_filename'] + '.zip'
 
 # Local target (deploy) dir
 deploy_dir = join(config['root.dir'],
@@ -57,6 +57,7 @@ print "Collecting files..."
 # C++
 cplusplus_file_list = []
 find_files_in_dirs(cplusplus_dir, cplusplus_file_list, 'cc')
+find_files_in_dirs(cplusplus_dir, cplusplus_file_list, 'h')
 
 # Python
 python_file_list = []
@@ -69,6 +70,11 @@ find_files_in_dirs(java_dir, java_file_list, 'java')
 # Csharp
 csharp_file_list = []
 find_files_in_dirs(csharp_dir, csharp_file_list, 'cs')
+
+
+
+append_files(file1, file2)
+
 
 # ------------------------------
 # ------ Make zip files   ------

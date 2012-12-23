@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright 2012 Google Inc. All Rights Reserved.
+# Copyright 2012 - 2013 Google Inc. All Rights Reserved.
 # Author: ortools.doc@gmail.com (Nikolaj van Omme).
 # Generate manual.
 # See documentation manual.
@@ -97,8 +97,8 @@ rename(join(target_latex, latex_filename) + '.pdf',
 print "Building epub version..."
 try:
     retcode = check_call("make epub RELEASE=final EPUB=epub", shell=True)
-except:
-    exit("Execution failed")
+except OSError, e:
+    exit("Execution failed: " + e)
 
 # Rename file
 epub_new_filename = user_manual_epub_filename + '.v.' + current_version

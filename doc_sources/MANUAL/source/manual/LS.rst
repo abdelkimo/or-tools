@@ -83,7 +83,7 @@ The files inside this directory are:
 - :file:`jobshop_SA.cc`: The job-shop problem solved by Simulated Annealing.
 - :file:`jobshop_GLS.cc`: The job-shop problem solved by Guided Local Search.
 
-The files of this chapter are NOT the same as the ones in the :file:`example` directory even if there were inspired by them.
+The files of this chapter are **NOT** the same as the ones in the :file:`example` directory even if there were inspired by them.
 
 
 ..  only:: html
