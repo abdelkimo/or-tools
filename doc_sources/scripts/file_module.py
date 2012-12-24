@@ -7,6 +7,7 @@ import glob
 import filecmp
 from os.path import join
 from subprocess import check_call
+import itertools
 
 def flush_content_in_list(f, list_of_strings):
     try:
@@ -23,8 +24,44 @@ def is_cplusplus_file(f):
     return False
 
 def insert_front_file(file1, list_of_strings):
-    print "Hello"
-    return True
+    """ Insert list of strings at the beginning of text file. There is a backup copy,
+        just in case...
+    """
+    backup_filename = file1 + ".bak"
+    #inserted_content = list_of_strings[:]
+    # read file and copy 
+    try:
+        file1_handle = open(file1, 'r')
+    except:
+        exit("Cannot read file: " + file1)
+    
+    file_content = []
+    for line in file1_handle:
+        file_content.append(line)
+    
+    file1_handle.close()
+    
+    # write backup file 
+    try:
+        backup_file_handle = open(backup_filename, 'w')
+    except:
+        exit("Not able to create backup file: " + backup_filename)
+    
+    backup_file_handle.write(''.join(file_content))
+    backup_file_handle.close()
+    
+    # overwrite file 
+    try:
+        file1_handle = open(file1, 'w')
+    except:
+        exit("Cannot read file: " + file1)
+    
+    file1_handle.write(''.join(itertools.chain(list_of_strings, file_content)))
+    file1_handle.close()
+    
+    os.remove(backup_filename)
+    
+
 
 def append_file(file1, file2):
     """ Appends file2 to file1, i.e. the new file1 will file1 followed by file2.
@@ -146,11 +183,17 @@ def find_files_in_dirs(path, file_list, ext = '', recursive = True, additional_f
                             file_list.append(os.path.join(current_file,line))
                 find_files_in_dirs(current_file, file_list, ext, recursive)
             else:
-                if current_file[-ext_length:] == ext:
+                if (ext_length):
+                    if current_file[-ext_length:] == ext:
+                        file_list.append(current_file)
+                else:
                     file_list.append(current_file)
         else:
             if not os.path.isdir(current_file):
-                if current_file[-ext_length:] == ext:
+                if (ext_length):
+                    if current_file[-ext_length:] == ext:
+                        file_list.append(current_file)
+                else:
                     file_list.append(current_file)
             else:
                 # test the presence of files in additional_files in the current directory

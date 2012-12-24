@@ -14,7 +14,7 @@ from shutil import rmtree, copytree, ignore_patterns
 sys.path.append("../scripts")
 from config_parser import LoadConfig, _ConfigDefault
 from versions import verify_version
-from file_module import find_files_in_dirs, append_file, is_cplusplus_file, \
+from file_module import find_files_in_dirs, is_cplusplus_file, \
                         find_files_and_apply_method, insert_front_file, \
                         flush_content_in_list
 
@@ -98,7 +98,7 @@ print "Copying C++..."
 try:
     copytree(cplusplus_dir, join(deploy_dir, cplusplus_dir),
                             ignore=ignore_patterns(*tabu))
-except OSError, e :
+except OSError, e:
     exit("Couldn't deploy dir " + cplusplus_dir + ": " + str(e))
 
 # Python
@@ -133,35 +133,35 @@ working_dir = getcwd()
 # C++
 
 def append_cplusplus_copyright(f):
-  print "append copyright in file: " + f
-  insert_front_file(f, copyright_cpluscplus_list)
+    insert_front_file(f, copyright_cpluscplus_list)
 
-find_files_and_apply_method(deploy_cplus_plus, append_cplusplus_copyright, is_cplusplus_file, tabu)
+find_files_and_apply_method(deploy_cplus_plus, append_cplusplus_copyright, \
+                                                   is_cplusplus_file, tabu)
 
 chdir(working_dir)
 
-exit(0)
+# ------------------------------
+# ------ Collect Files    ------
+# ------------------------------
+print "Collect files..."
+
+chdir(deploy_dir)
 
 # C++
 cplusplus_file_list = []
-find_files_in_dirs(cplusplus_dir, cplusplus_file_list, 'cc')
-find_files_in_dirs(cplusplus_dir, cplusplus_file_list, 'h')
-find_files_in_dirs(cplusplus_dir, cplusplus_file_list, 'Makefile')
+find_files_in_dirs(cplusplus_dir, cplusplus_file_list)
 
 # Python
 python_file_list = []
-find_files_in_dirs(python_dir, python_file_list, 'py')
+find_files_in_dirs(python_dir, python_file_list)
 
 # Java
 java_file_list = []
-find_files_in_dirs(java_dir, java_file_list, 'java')
+find_files_in_dirs(java_dir, java_file_list)
 
 # Csharp
 csharp_file_list = []
-find_files_in_dirs(csharp_dir, csharp_file_list, 'cs')
-
-
-
+find_files_in_dirs(csharp_dir, csharp_file_list)
 
 # ------------------------------
 # ------ Make zip files   ------
@@ -208,9 +208,7 @@ csharp_zout.close()
 all_zout.close()
 
 
-
-
-print "Deploying zip versions of user  manuals..."
+print "Deploying zip versions of tutorials..."
 
 # Test if target upload directory exists
 if isdir(deploy_zip_dir):
@@ -239,5 +237,7 @@ rename(csharp_zip_filename,
 # All
 rename(all_zip_filename,
        join(deploy_zip_dir, all_zip_filename))
+
+chdir(working_dir)
 
 print "Tutorials deployed!"

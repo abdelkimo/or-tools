@@ -12,8 +12,9 @@ Clean all subdirectories of all undesirable files.
 
 deploy_tutorials.py:
 --------------------
+Clean first the subdirectories with the script above.
 Copy files from TUTORIAL TO DEPLOY
-and Copyright statements are added to each source file.
+and add Copyright statements to each source file in DEPLOY.
   
 Files are also zipped and added to DEPLOY/UPLOAD/tutorials.
 
