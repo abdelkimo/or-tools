@@ -6,4 +6,5 @@
   - correction of non recursive case in find_files_in_dirs (file_module.py).
   - minor changes in deploy_tutorial.py
   - include_licence.py added.
+  - clean_tutorials.py, make_tutorials.py added.
 

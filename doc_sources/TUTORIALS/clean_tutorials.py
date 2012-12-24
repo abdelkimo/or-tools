@@ -9,37 +9,45 @@ import sys
 import os
 import glob
 from os.path import join, exists
-
+from os import chdir, getcwd
 
 sys.path.append("../scripts")
 from config_parser import LoadConfig, _ConfigDefault
 from versions import verify_version
 from file_module import find_dirs_and_apply_command
 
-# Little check: is old version really older than new version?
-verify_version()
+def clean_tutorials():
+  """ Clean tutorial directories by calling "make local_clean" recursively.
+  """
+  config = LoadConfig('../../config.ini', _ConfigDefault)
 
-config = LoadConfig('../../config.ini', _ConfigDefault)
-
-# Local source dirs
-cplusplus_dir = config['sources.subdir_cplusplus']
-python_dir = config['sources.subdir_python']
-java_dir = config['sources.subdir_java']
-csharp_dir = config['sources.subdir_csharp']
-
-def isMakefilePresent(directory):
-  if exists(join(directory, "Makefile")):
-    print "Cleaning directory: '" , directory , "'"
-    return True
-  return False
+  # current working directory
+  working_dir = getcwd()
   
-command = "make local_clean OR_TOOLS_TOP=" + config['ortools.dir']
+  # Local source dirs
+  cplusplus_dir = config['sources.subdir_cplusplus']
+  python_dir = config['sources.subdir_python']
+  java_dir = config['sources.subdir_java']
+  csharp_dir = config['sources.subdir_csharp']
 
-# Make all examples in all subdirectories
-abs_path = join(config['root.dir'], config['sources.dir'], config['sources.subdir_tutorial'], cplusplus_dir)
-                           
-tabu_dirs = [".svn"]
+  def isMakefilePresent(directory):
+    if exists(join(directory, "Makefile")):
+      print "Cleaning directory: '" , directory , "'"
+      return True
+    return False
+    
+  command = "make local_clean OR_TOOLS_TOP=" + config['ortools.dir']
 
-find_dirs_and_apply_command(abs_path, command, isMakefilePresent, tabu_dirs, False)
+  abs_path = join(config['root.dir'], config['sources.dir'], config['sources.subdir_tutorial'], cplusplus_dir)
+                             
+  tabu_dirs = [".svn"]
 
+  find_dirs_and_apply_command(abs_path, command, isMakefilePresent, tabu_dirs, False)
 
+  chdir(working_dir)
+
+if __name__ == '__main__':
+  # Little check: is old version really older than new version?
+  verify_version()
+
+  clean_tutorials()

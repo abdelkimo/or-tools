@@ -12,10 +12,8 @@ Clean all subdirectories of all undesirable files.
 
 deploy_tutorials.py:
 --------------------
-Copy files from TUTORIAL TO DEPLOY.
-It also "cleans" the code:
-  * OR_TOOLS_TOP is cleaned in each Makefile;
-  * Copyright statements are added to each source file.
+Copy files from TUTORIAL TO DEPLOY
+and Copyright statements are added to each source file.
   
 Files are also zipped and added to DEPLOY/UPLOAD/tutorials.
 

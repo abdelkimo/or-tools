@@ -8,7 +8,25 @@ import filecmp
 from os.path import join
 from subprocess import check_call
 
-def append_files(file1, file2):
+def flush_content_in_list(f, list_of_strings):
+    try:
+        file_handle = open(f, 'r')
+        for line in file_handle:
+            list_of_strings.append(line)
+        file_handle.close()
+    except:
+        exit("Could not load file:\n" + f)  
+
+def is_cplusplus_file(f):
+    if f.endswith((".cc", ".h")):
+        return True
+    return False
+
+def insert_front_file(file1, list_of_strings):
+    print "Hello"
+    return True
+
+def append_file(file1, file2):
     """ Appends file2 to file1, i.e. the new file1 will file1 followed by file2.
     """
     content = []
@@ -20,14 +38,15 @@ def append_files(file1, file2):
         exit("no file " + file2)
     for line in content_file2:  
         content.append(line)
-    constent_file2.close()
+    content_file2.close()
 
     #prepare file1 to append file2
     try:
-        content_file1 = open(file1, 'a')
+        file1 = open(file1, 'a')
     except IOError:
         exit("no file " + file1)
     file1.write(''.join(content))
+    file1.close()
 
 def file_starts_with(file_name, text_list):
     """ Finds if file file_name starts with the exact content of text_files, line by line.
@@ -41,6 +60,7 @@ def file_starts_with(file_name, text_list):
     for line1, line2 in zip(content_file, text_list):
         if (line1 != line2):
             return False
+    content_file.close()
 
     return True
 
@@ -48,6 +68,8 @@ def find_dirs_and_apply_command(path, command, condition, tabu_dirs = [], halt_i
     """ Traverse recursively directories except the ones given in tabu_dirs 
         and apply command "command" to each directory if condition(directory)
         returns True.
+        
+        WARNING: this method changes the working directory!
     """
     for d in glob.glob(os.path.join(path, '*')):
         if os.path.isdir(d):
@@ -56,9 +78,55 @@ def find_dirs_and_apply_command(path, command, condition, tabu_dirs = [], halt_i
                     try:
                         os.chdir(d)
                         check_call(command, shell=True)
+                        find_dirs_and_apply_command(d, command, condition, tabu_dirs, halt_if_problem)
                     except:
                         if (halt_if_problem):
                             exit("Execution of: '" + command + "' failed in directory:\n" + d)
+    os.chdir(path)
+
+
+def find_dirs_and_apply_method(path, method, condition, tabu_dirs = [], halt_if_problem = True):
+    """ Traverse recursively directories except the ones given in tabu_dirs 
+        and apply method "method" to each directory if condition(directory)
+        returns True.
+        
+        WARNING: this method changes the working directory!
+    """
+    for d in glob.glob(os.path.join(path, '*')):
+        if os.path.isdir(d):
+            if d not in tabu_dirs:
+                if(condition(d)):
+                    try:
+                        os.chdir(d)
+                        method(d)
+                        find_dirs_and_apply_method(d, method, condition, tabu_dirs, halt_if_problem)
+                    except:
+                        if (halt_if_problem):
+                            exit("Execution of: '" + method + "' failed in directory:\n" + d)
+    os.chdir(path)
+
+def find_files_and_apply_method(path, method, condition, tabu_dirs = [], halt_if_problem = True):
+    """ Traverse recursively directories except the ones given in tabu_dirs 
+        and apply method "method" to each file if condition(file)
+        returns True.
+        
+        WARNING: this method changes the working directory!
+    """
+    os.chdir(path)
+    for f in glob.glob(os.path.join(path, '*')):
+        if os.path.isfile(f):
+            if(condition(f)):
+                try:
+                    method(f)
+                except IOError, e:
+                    if (halt_if_problem):
+                        exit("Execution of: '" + str(method) + "' failed on file:\n " + str(f) + "\nReason: " + str(e))
+        if os.path.isdir(f):
+            if f not in tabu_dirs:
+                find_files_and_apply_method(f, method, condition, tabu_dirs, halt_if_problem)
+    os.chdir(path)
+
+
 
 def find_files_in_dirs(path, file_list, ext = '', recursive = True, additional_files = []):
     """ Populates the list "file_list" with the names of all the files:
