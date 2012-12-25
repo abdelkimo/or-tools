@@ -1,3 +1,0 @@
-tutorials/c++
-user_manual/manual/ls/metaheuristics.html
-user_manual/manual/custom_constraints/basic_working3.html
