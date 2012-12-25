@@ -551,7 +551,7 @@ gflag:</p>
 See <a href="http://code.google.com/p/or-tools/wiki/AGettingStarted#Compiling_libraries_and_running_examples" >Compiling libraries and running the examples</a> on how
 to use these makefiles.</p>
 
-<p>Last but not least, you might wonder why we don't use (or rather minimize the use of) <code>streams</code> in our examples. This is an internal requirement.</p>
+<p>Last but not least, you might wonder why we don't use (or rather minimize the use of) <code>streams</code> in our examples. This is a requirement inside our company.</p>
 
 <h5>Coding styles we follow:</h5> 
 <p>

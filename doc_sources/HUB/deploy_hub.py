@@ -32,7 +32,7 @@ source = join(config['root.dir'],
 target = join(config['root.dir'], config['deploy.dir'])
 
 # List of files and directories to be copied to DEPLOY
-to_deploy = ['static', hub_html_page, changes_list_filename]
+to_deploy = ['static', hub_html_page, changes_list_filename, 'happy-holidays-from-google.jpg']
 
 # List of files and directories not to be copied to DEPLOY
 not_to_deploy = ['changes']
