@@ -5,6 +5,11 @@ Automatization:
 - Check spelling;
 - Check ALL links;
 
+Tutorials:
+----------
+
+- Remove streams.
+
 Customization:
 ---------------
 
@@ -36,4 +41,4 @@ EXEOUT = /Fe$(OR_ROOT)bin\\
 Scripts
 ---------
 
-- double check if reference_manual, doxygen are out of sync.
+- Add automatically copyright statements to Python, C# and Java tutorials.

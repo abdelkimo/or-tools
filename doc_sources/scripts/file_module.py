@@ -202,8 +202,6 @@ def find_files_in_dirs(path, file_list, ext = '', recursive = True, additional_f
                         if (os.path.isfile(os.path.join(current_file,line))):
                             file_list.append(os.path.join(current_file,line))
 
-
-
 def compare_recursive_directories(main_dir,
                                   cmp_object,
                                   added, changed,

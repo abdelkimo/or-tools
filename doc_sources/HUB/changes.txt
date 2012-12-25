@@ -3,8 +3,17 @@
 * Minor enhancements to the manual:
   - Minor corrections.
 * scripts:
-  - correction of non recursive case in find_files_in_dirs (file_module.py).
-  - minor changes in deploy_tutorial.py
+  - in file_module.py:
+    * find_files_in_dirs modified and corrected.
+    * flush_content_in_list added.
+    * is_cplusplus_file added.
+    * insert_front_file added.
+    * append_file added.
+    * file_starts_with added.
+    * find_dirs_and_apply_command added.
+    * find_dirs_and_apply_method added.
+    * find_files_and_apply_method added.
+  - deploy_tutorial.py changed.
   - include_licence.py added.
   - clean_tutorials.py, make_tutorials.py added.
 
