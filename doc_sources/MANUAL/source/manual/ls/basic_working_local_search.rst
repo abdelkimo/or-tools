@@ -128,17 +128,40 @@ Initial solution
     
     It basically consists in:
     
-    * a ``SolutionPool``: A ``DefaultSolutionPool`` should do. You even don't have to provide it as it is 
-      constructed by default.
-      [WAITING]
+    * a ``SolutionPool``: as its name implies, this class is a pool of solutions. As usual, ``SolutionPool`` is a pure virtual 
+      class that must be implemented. One such implementation is the ``DefaultSolutionPool`` that only keeps the current 
+      starting solution. You even don't have to provide it as it is constructed by default if you use the right factory method. 
+      If you want to keep intermediate solutions 
+      of want to modify these solutions during the search, you might have to implement your own version. Four methods have to 
+      be implemented:
+      
+        * ``void Initialize(Assignment* const assignment)``: This method is called to initialize the 
+          ``SolutionPool`` with the initial ``Assignment`` from the local search.
+
+        * ``void RegisterNewSolution(Assignment* const assignment)``: This method is called when a new 
+          (improved) solution has been accepted by the local search algorithm.
+  
+        * ``void GetNextSolution(Assignment* const assignment)``: This method is called when the local search algorithm 
+          starts a new neighborhood. The ``Assigment`` passed as parameter is the new solution to start the search.
+
+        * ``bool SyncNeeded(Assignment* const local_assignment)``: This method checks if the local solution needs to 
+          be updated with an external one, i.e. the pool can tell the solver to start a new neighborhood search with the next
+          solution given by the pool (with its ``GetNextSolution()`` method).
+          
+      A ``SolutionPool`` gives you complete control on the starting solution(s). One thing to be aware of is that the ``SolutionPool``
+      must take ownership of the ``Assignment``\s it keeps [#solution_pool_takes_ownership_of_solutions_or_else]_.
+
+      ..  [#solution_pool_takes_ownership_of_solutions_or_else] Well, you could devise another way to keep track of the solutions 
+          and take care of their existence but anyhow, you are responsible for these solutions.
+
     * a ``LocalSearchOperator``: a ``LocalSearchOperator`` or a combination of ``LocalSearchOperator``\s explore the 
       neighborhood of the current solution. We detail them in the next section.
     * a ``DecisionBuilder``: this *sub* ``DecisionBuilder`` helps creating feasible solutions if your ``LocalSearchOperator``\s 
       only return partial solutions. 
     * a ``SearchLimit``: The ``SearchLimit`` allows to limit the local search and is discussed in the next subsection below.
-    * ``LocalSearchFilter``\s: these filters speed up the search by bypassing the solver checking mechanism, i.e. these filters 
-      tell the solver if a neighbor solution should be kept or not. [TO BE VERIFIED: you can skip a solution but can you force 
-      a solution to the solver?]
+    * ``LocalSearchFilter``\s: these filters speed up the search by bypassing the solver checking mechanism if you know that the 
+      solution must be rejected (because it is not feasible, because it is not good enough, ...). If the filters accept a
+      solution, the solver still tests the feasibility of this solution.
 
       ..  only:: html
         
@@ -218,8 +241,7 @@ Initial solution
         solutions, so in case of minimization once the solver finds a neighbor (i.e. a feasible solution), it changes the model 
         to exclude solutions with the same objective value. See the section :ref:`golomb_ruler_optimization_how` 
         to refresh your memory if needed. Thus, the second solution found can only be better than the first one. When the solver 
-        finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution, in this 
-        case the second solution found.
+        finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution.
 
     ..  raw:: latex 
     
@@ -228,8 +250,7 @@ Initial solution
         to exclude solutions with the same objective value. See the 
         section~\ref{manual/objectives/optimization_how:golomb-ruler-optimization-how} 
         to refresh your memory if needed. Thus, the second solution found can only be better than the first one. When the solver 
-        finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution, in this 
-        case the second solution found.
+        finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution.
 
     
 ..  only:: final

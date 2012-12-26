@@ -43,7 +43,22 @@ Only the modified part of the solution (an ``Assignment`` called ``delta``) is b
 to define a second ``Assignment`` representing the changes to the 
 last solution defined by the neighborhood operator (an ``Assignment`` called ``deltadelta``).
 
-The CP solver takes care of these *delta*\s and other hassles for the most common cases. The next figure shows the 
+The CP solver takes care of these *delta*\s and other hassles for the most common cases [#deltadelta_more_in_depth]_. 
+
+..  [#deltadelta_more_in_depth] 
+
+    ..  only:: html
+    
+        ``delta``\s and ``deltadelta``\s are explained in more details in the section :ref:`local_search_filtering`.
+        
+    ..  raw:: latex
+    
+        \code{delta}s and \code{deltadelta}s are explained in more details in 
+        section~\ref{manual/ls/ls_filtering:local-search-filtering}.
+        
+
+        
+The next figure shows the 
 LSN Operators hierarchy.
 
 ..  only:: html 
@@ -514,5 +529,5 @@ And last but not least, in *or-tools*, Large Neighborhood Search is implemented 
 this is the topic of the next chapter.
 
 
-
+d
 
