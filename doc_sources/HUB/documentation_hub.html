@@ -530,11 +530,44 @@ gflag:</p>
 
 <p>We'll find a similar mechanism for the other languages soon.</p>
 
-<p>Makefiles are (finally) provided. We favour the use of dynamic libraries. 
+<p>Makefiles are (finally) provided. We favor the use of dynamic libraries. 
 See <a href="http://code.google.com/p/or-tools/wiki/AGettingStarted#Compiling_libraries_and_running_examples" >Compiling libraries and running the examples</a> on how
-to use these makefiles. You have to redefine the <code>OR_TOOLS_TOP</code> variable with the root directory of the or-tools libary:</p>
+to use these makefiles.</p> 
 
+<h6>In short:</h6>
+
+<ol> 
+<li>You have to redefine the <code>OR_TOOLS_TOP</code> variable with the root directory of the or-tools libary:
 <div align="center"> <code>OR_TOOLS_TOP=/home/username/or-tools-read-only</code></div>
+You can also overwrite this variable when invoking make:
+<div align="center"> <code>make OR_TOOLS_TOP=/home/username/or-tools-read-only</code></div>
+</li>
+<li>If you want to complie all examples:
+<div align="center"> <code>make all</code></div>
+</li>
+<li>If you want to compile a specific example:
+<ul>
+<li>Windows:
+<div align="center"> <code>make my_example.exe</code></div>
+</li>
+<li>MacOS and Unix:
+<div align="center"> <code>make my_example</code></div>
+</li>
+</ul>
+</li>
+<li>To delete the created files:
+<div align="center"> <code>make local_clean</code></div>
+Don't use
+<div align="center"> <code>make clean</code></div>
+as you will erase the generated files for the whole library!
+</li>
+</ol>
+
+
+<p>
+</p>
+
+
 
 
 <p>Last but not least, you might wonder why we don't use (or rather minimize the use of) <code>streams</code> in our examples. This is an internal requirement.</p>
