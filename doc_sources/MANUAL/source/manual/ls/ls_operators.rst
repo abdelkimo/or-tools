@@ -5,11 +5,11 @@ Local Search Neighborhood (LSN) Operators
 
 ..  raw:: latex
 
-    You can find the code in the file~\code{tutorials/C++/chap6/dummy\_lns.cc}.\\~\\
+    You can find the code in the file~\code{tutorials/cplusplus/chap6/dummy\_ls.cc}.\\~\\
 
 ..  only:: html
 
-    **C++ code**: `tutorials/C++/chap6/dummy_lns.cc <../../../tutorials/C++/chap6/dummt_lns.cc>`_.
+    **C++ code**: `tutorials/cplusplus/chap6/dummy_ls.cc <../../../tutorials/cplusplus/chap6/dummy_lns.cc>`_.
 
 We will use a dummy example throughout this section so
 we can solely focus on the basic ingredients provided by the *or-tools* 
@@ -528,6 +528,4 @@ Large Neighborhood Search
 And last but not least, in *or-tools*, Large Neighborhood Search is implemented with ``LocalSearchOperator``\s but 
 this is the topic of the next chapter.
 
-
-d
 

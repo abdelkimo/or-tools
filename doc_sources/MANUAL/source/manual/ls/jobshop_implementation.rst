@@ -3,6 +3,14 @@
 An implementation of the disjunctive model
 -------------------------------------------------
 
+..  raw:: latex
+
+    You can find the code in the files~\code{tutorials/cplusplus/chap6/jobshop.h} 
+    and~\code{tutorials/cplusplus/chap6/jobshop.cc}.\\~\\
+
+..  only:: html
+
+    **C++ code**: `tutorials/cplusplus/chap6/jobshop.h <../../../tutorials/cplusplus/chap6/jobshop.h>`_ and `tutorials/cplusplus/chap6/jobshop.cc <../../../tutorials/cplusplus/chap6/jobshop.cc>`_.
 
 Scheduling is one of the field where Constraint Programming is heavily used, 
 therefore specialized constraints and variables have been developed. In this section, 
@@ -11,8 +19,6 @@ we will implement the disjunctive model with dedicated variables (``IntervalVar`
 
 Last but not least, we will see our first real example of combining two ``DecisionBuilder``\s
 in a top-down fashion.
-
-You can find the code in the file :file:`jobshop.cc`. 
 
 The ``IntervalVar`` variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

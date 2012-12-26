@@ -3,6 +3,14 @@
 The job-shop problem, the disjunctive model and benchmark data
 -------------------------------------------------------------------
 
+..  raw:: latex
+
+    You can find the code in the file~\code{tutorials/cplusplus/chap6/jobshop.h}.\\~\\
+
+..  only:: html
+
+    **C++ code**: `tutorials/cplusplus/chap6/jobshop.h <../../../tutorials/cplusplus/chap6/jobshop.h>`_.
+
 We describe the job-shop problem, a first model and the benchmark data. The job-shop problem belongs to the 
 intractable problems (:math:`\in` NP). Only few very special cases can be solved in 
 polynomial time (see [Garey1976]_ and [Kis2002]_).
@@ -472,4 +480,3 @@ The public methods are
     
   * ``const std::vector<Task>& TasksOfJob(int job_id) const``: returns a reference to the corresponding ``std::vector<Task>`` of tasks.
     
-
