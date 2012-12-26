@@ -30,11 +30,11 @@ http://sourceforge.net/projects/cpviz/
 
 ..  raw:: latex
 
-    You can find the code in the file \code{tutorials/C++/chap5/nqueens3.cc}.\\~\\
+    You can find the code in the file \code{tutorials/cplusplus/chap5/nqueens3.cc}.\\~\\
 
 ..  only:: html
 
-    **C++ code**: `tutorials/C++/chap5/nqueens3.cc <../../../tutorials/C++/chap5/nqueens3.cc>`_
+    **C++ code**: `tutorials/cplusplus/chap5/nqueens3.cc <../../../tutorials/cplusplus/chap5/nqueens3.cc>`_
 
 
 To monitor the search, we use ``SearchMonitor``\s. To produce the files needed by :program:`cpviz` to visualize the search, 
@@ -148,11 +148,11 @@ Interpreting the graphical results
 
 ..  raw:: latex
 
-    You can find the code in the file \code{tutorials/C++/chap5/nqueens4.cc}.\\~\\
+    You can find the code in the file \code{tutorials/cplusplus/chap5/nqueens4.cc}.\\~\\
 
 ..  only:: html
 
-    **C++ code**: `tutorials/C++/chap5/nqueens4.cc <../../../tutorials/C++/chap5/nqueens4.cc>`_
+    **C++ code**: `tutorials/cplusplus/chap5/nqueens4.cc <../../../tutorials/cplusplus/chap5/nqueens4.cc>`_
 
 
 

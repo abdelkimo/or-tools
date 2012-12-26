@@ -30,11 +30,11 @@ a help string.
 
 ..  raw:: latex
 
-    In file \code{tutorials/C++/chap2/cp\_is\_fun3.cc}, we parse the base value on the command line. We first include the corresponding header and define the flag ``base`` in the global namespace:
+    In file \code{tutorials/cplusplus/chap2/cp\_is\_fun3.cc}, we parse the base value on the command line. We first include the corresponding header and define the flag ``base`` in the global namespace:
     
 ..  only:: html
 
-    In file `tutorials/C++/chap2/cp_is_fun3.cc <../../../tutorials/C++/chap2/cp_is_fun3.cc>`_, we parse the base value on the command line. We first include the corresponding header and define the flag ``base`` in the global namespace:
+    In file `tutorials/cplusplus/chap2/cp_is_fun3.cc <../../../tutorials/cplusplus/chap2/cp_is_fun3.cc>`_, we parse the base value on the command line. We first include the corresponding header and define the flag ``base`` in the global namespace:
 
 ..  code-block:: c++
 
@@ -97,11 +97,11 @@ CP ``Solver``'s parameters
 
 ..  only:: latex
 
-    You'll find the code in the file :file:`tutorials/chap2/C++/cp_is_fun4.cc`.
+    You'll find the code in the file :file:`tutorials/chap2/cplusplus/cp_is_fun4.cc`.
 
 ..  only:: html 
 
-    You'll find the code in the file `tutorials/C++/chap2/cp_is_fun4.cc <../../../tutorials/C++/chap2/cp_is_fun4.cc>`_.
+    You'll find the code in the file `tutorials/cplusplus/chap2/cp_is_fun4.cc <../../../tutorials/cplusplus/chap2/cp_is_fun4.cc>`_.
 
 Parameters can be transferred to the solver in several ways. 
 

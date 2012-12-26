@@ -13,7 +13,7 @@ Custom constraints: the *alldifferent_except_0* constraint
 
 ..  rubric:: Files:
 
-You can find the code in the directory ``documentation/tutorials/C++/chap4``.
+You can find the code in the directory ``documentation/tutorials/cplusplus/chap4``.
 
 The files inside this directory are:
 

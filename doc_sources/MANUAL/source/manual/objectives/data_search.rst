@@ -8,14 +8,14 @@ Some global statistics about the search and how to limit the search
     In section~\ref{manual/objectives/objective_functions:objective-functions}, we talked about some global statistics about the search.
     In this section we review them one by one.\\ 
     
-    You can find the code in the file \code{tutorials/C++/chap3/golomb2.cc}.
+    You can find the code in the file \code{tutorials/cplusplus/chap3/golomb2.cc}.
 
 ..  only:: html
 
     In the section :ref:`objective_functions`, we talked about some global statistics about the search.
     In this section we review them one by one.
     
-    You can find the code in the file `tutorials/C++/chap3/golomb2.cc <../../../tutorials/C++/chap3/golomb2.cc>`_
+    You can find the code in the file `tutorials/cplusplus/chap3/golomb2.cc <../../../tutorials/cplusplus/chap3/golomb2.cc>`_
 
 ..  only:: draft
 

@@ -57,7 +57,7 @@ adding better bounds and breaking symmetries. Finally, we say a few words about 
 
 ..  rubric:: Files:
 
-You can find the code in the directory ``documentation/tutorials/C++/chap3``.
+You can find the code in the directory ``documentation/tutorials/cplusplus/chap3``.
 
 The files inside this directory are:
 

@@ -69,7 +69,7 @@ Large neighbourhood search: the car sequencing problem
 ..  rubric:: Files:
 
 
-You can find the code in the directory ``documentation/tutorials/C++/chap7``.
+You can find the code in the directory ``documentation/tutorials/cplusplus/chap7``.
 
 The files inside this directory are:
 

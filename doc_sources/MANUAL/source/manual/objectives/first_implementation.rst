@@ -8,14 +8,14 @@ An implementation of the first model
 ..  raw:: latex
 
     In this section, we code the first model developed in section~\ref{manual/objectives/golomb_first_model:golomb-ruler-problem}.
-    You can find the code in the file \code{tutorials/C++/chap3/golomb1.cc}.
+    You can find the code in the file \code{tutorials/cplusplus/chap3/golomb1.cc}.
 
 
 ..  only:: html
 
     In this section, we code the first model developed in :ref:`golomb_ruler_problem`.
     
-    You can find the code in the file `tutorials/C++/chap3/golomb1.cc <../../../tutorials/C++/chap3/golomb1.cc>`_
+    You can find the code in the file `tutorials/cplusplus/chap3/golomb1.cc <../../../tutorials/cplusplus/chap3/golomb1.cc>`_
 
 
 We take the order (the number of marks) from the command line:

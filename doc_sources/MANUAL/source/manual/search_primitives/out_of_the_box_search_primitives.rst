@@ -155,13 +155,13 @@ Results
 
 ..  raw:: latex
 
-    You can find the code in the files~\code{tutorials/C++/chap5/phases1.cc}
-    and~\code{tutorials/C++/chap5/solver\_benchmark.h}.\\~\\
+    You can find the code in the files~\code{tutorials/cplusplus/chap5/phases1.cc}
+    and~\code{tutorials/cplusplus/chap5/solver\_benchmark.h}.\\~\\
 
 ..  only:: html
 
-    **C++ code**: `tutorials/C++/chap5/phases1.cc <../../../tutorials/C++/chap5/phases1.cc>`_
-    and `tutorials/C++/chap5/solver_benchmark.h <../../../tutorials/C++/chap5/solver_benchmark.h>`_
+    **C++ code**: `tutorials/cplusplus/chap5/phases1.cc <../../../tutorials/cplusplus/chap5/phases1.cc>`_
+    and `tutorials/cplusplus/chap5/solver_benchmark.h <../../../tutorials/cplusplus/chap5/solver_benchmark.h>`_
 
 Just for fun, we have developed a ``SolverBenchmark`` class to test different search strategies. Statistics 
 are recorded thanks to ``SolverBenchmarkStats``. You can find both classes in the :file:`solver_benchmark.h` header.

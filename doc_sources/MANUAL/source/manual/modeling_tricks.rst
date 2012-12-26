@@ -40,7 +40,7 @@ Modeling tricks
 ..  rubric:: Files:
 
 
-You can find the code in the directory ``documentation/tutorials/C++/chap13``.
+You can find the code in the directory ``documentation/tutorials/cplusplus/chap13``.
 
 The files inside this directory are:
 

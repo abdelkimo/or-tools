@@ -76,7 +76,7 @@ being drowned in the often tedious details of the implementation
 ..  rubric:: Files:
 
 
-You can find the code in the directory ``documentation/tutorials/C++/chap5``.
+You can find the code in the directory ``documentation/tutorials/cplusplus/chap5``.
 
 The files inside this directory are:
 

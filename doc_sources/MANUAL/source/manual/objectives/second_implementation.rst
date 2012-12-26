@@ -11,12 +11,12 @@ Variables
 
 ..  raw:: latex
 
-    You can find the code in the file \code{tutorials/C++/chap3/golomb3.cc}.
+    You can find the code in the file \code{tutorials/cplusplus/chap3/golomb3.cc}.
 
 
 ..  only:: html
 
-    You can find the code in the file `tutorials/C++/chap3/golomb3.cc <../../../tutorials/C++/chap3/golomb3.cc>`_
+    You can find the code in the file `tutorials/cplusplus/chap3/golomb3.cc <../../../tutorials/cplusplus/chap3/golomb3.cc>`_
 
 Before we dive into the code, let's be practical and ease our life a bit. One of the difficulties of the code in :file:`golomb1.cc`
 is that we use the first element of the array ``Y``. There is no need to do so. In :file:`golomb3.cc`, we use ``X[1]`` as the first mark (and not ``X[0]``).
@@ -206,12 +206,12 @@ An improved version
 
 ..  raw:: latex
 
-    You can find the code in the file \code{tutorials/C++/chap3/golomb4.cc}.
+    You can find the code in the file \code{tutorials/cplusplus/chap3/golomb4.cc}.
 
 
 ..  only:: html
 
-    You can find the code in the file `tutorials/C++/chap3/golomb4.cc <../../../tutorials/C++/chap3/golomb4.cc>`_
+    You can find the code in the file `tutorials/cplusplus/chap3/golomb4.cc <../../../tutorials/cplusplus/chap3/golomb4.cc>`_
 
 Let's improve our second model by using variables to denote the differences and define variables ``Y[i][j] = X[j] - X[i]``:
 

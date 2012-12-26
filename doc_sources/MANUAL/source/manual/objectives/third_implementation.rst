@@ -8,12 +8,12 @@ propagations of the "quaternary constraints". But these constraints lack a globa
 
 ..  raw:: latex
 
-    \\ \\ You can find the code in the file \code{tutorials/C++/chap3/golomb5.cc}.
+    \\ \\ You can find the code in the file \code{tutorials/cplusplus/chap3/golomb5.cc}.
 
 
 ..  only:: html
 
-    You can find the code in the file `tutorials/C++/chap3/golomb5.cc <../../../tutorials/C++/chap3/golomb5.cc>`_
+    You can find the code in the file `tutorials/cplusplus/chap3/golomb5.cc <../../../tutorials/cplusplus/chap3/golomb5.cc>`_
 
 Let's replace the quaternary constraints by the ``AllDifferent`` constraint on the ``Y`` variables:
 

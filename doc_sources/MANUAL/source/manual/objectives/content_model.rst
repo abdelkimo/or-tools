@@ -25,12 +25,12 @@ Inspect objects with ``DebugString()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 ..  raw:: latex
 
-    You can find the code in the file \code{tutorials/C++/chap3/golomb2.cc}.
+    You can find the code in the file \code{tutorials/cplusplus/chap3/golomb2.cc}.
 
 
 ..  only:: html
 
-    You can find the code in the file `tutorials/C++/chap3/golomb2.cc <../../../tutorials/C++/chap3/golomb2.cc>`_
+    You can find the code in the file `tutorials/cplusplus/chap3/golomb2.cc <../../../tutorials/cplusplus/chap3/golomb2.cc>`_
 
 
 Most of the mathematical classes in or-tools inherit from the ``BaseObject`` class. Its only

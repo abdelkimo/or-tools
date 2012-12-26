@@ -19,11 +19,11 @@ Minimalistic implementation
 
     ..  raw:: latex
 
-        You can find the code in the file \code{tutorials/C++/chap9/tsp\_minimal.cc}.\\~\\
+        You can find the code in the file \code{tutorials/cplusplus/chap9/tsp\_minimal.cc}.\\~\\
 
     ..  only:: html
 
-        **C++ code**: `tutorials/C++/chap9/tsp_minimal.cc <../../../tutorials/C++/chap9/tsp_minimal.cc>`_
+        **C++ code**: `tutorials/cplusplus/chap9/tsp_minimal.cc <../../../tutorials/cplusplus/chap9/tsp_minimal.cc>`_
 
 
 ..  only:: draft
@@ -83,11 +83,11 @@ Basic implementation
 
     ..  raw:: latex
 
-        You can find the code in the file \code{tutorials/C++/chap9/tsp.cc}.\\~\\
+        You can find the code in the file \code{tutorials/cplusplus/chap9/tsp.cc}.\\~\\
 
     ..  only:: html
 
-        **C++ code**: `tutorials/C++/chap9/tsp.cc <../../../tutorials/C++/chap9/tsp.cc>`_
+        **C++ code**: `tutorials/cplusplus/chap9/tsp.cc <../../../tutorials/cplusplus/chap9/tsp.cc>`_
 
 
 ..  only:: draft

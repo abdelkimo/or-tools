@@ -18,11 +18,11 @@ The or-tools library let you collect and store the solutions of your searches wi
 
 ..  raw:: latex
     
-    \newline \newline You can find the code in the file \code{tutorials/chap2/C++/cp\_is\_fun2.cc}.
+    \newline \newline You can find the code in the file \code{tutorials/chap2/cplusplus/cp\_is\_fun2.cc}.
     
 ..  only:: html
 
-    You can find the code in the file `tutorials/C++/chap2/cp_is_fun2.cc <../../../tutorials/C++/chap2/cp_is_fun2.cc>`_.
+    You can find the code in the file `tutorials/cplusplus/chap2/cp_is_fun2.cc <../../../tutorials/cplusplus/chap2/cp_is_fun2.cc>`_.
 
 ``SolutionCollector``\s
 """""""""""""""""""""""

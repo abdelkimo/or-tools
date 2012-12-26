@@ -6,14 +6,14 @@ Anatomy of a basic C++ code
 ..  raw:: latex
 
     In this section, we code the model developed in section~\ref{manual/first_steps/cryptarithmetic:cryptarithmetic-problem}.
-    You can find the code in the file \code{tutorials/C++/chap2/cp\_is\_fun1.cc}.
+    You can find the code in the file \code{tutorials/cplusplus/chap2/cp\_is\_fun1.cc}.
 
 
 ..  only:: html
 
     In this section, we code the model developed in :ref:`The problem and a first model <cryptarithmetic_problem>`.
     
-    You can find the code in the file `tutorials/C++/chap2/cp_is_fun1.cc <../../../tutorials/C++/chap2/cp_is_fun1.cc>`_
+    You can find the code in the file `tutorials/cplusplus/chap2/cp_is_fun1.cc <../../../tutorials/cplusplus/chap2/cp_is_fun1.cc>`_
 
 We quickly scan through the code and describe the basic constituents needed to solve
 the cryptarithmetic puzzle in C++. In the next chapters, we will cover some of them 

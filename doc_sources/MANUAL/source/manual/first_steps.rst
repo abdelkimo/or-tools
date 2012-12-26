@@ -48,7 +48,7 @@ about the other supported languages (Python, Java and C#).
 
 ..  rubric:: Files:
 
-You can find the code in the directory ``documentation/tutorials/C++/chap2``.
+You can find the code in the directory ``documentation/tutorials/cplusplus/chap2``.
 
 The files inside this directory are:
 

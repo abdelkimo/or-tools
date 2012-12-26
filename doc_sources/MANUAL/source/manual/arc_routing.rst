@@ -30,7 +30,7 @@ Arc Routing  Problems with constraints: the cumulative chinese postman problem
 ..  rubric:: Files:
 
 
-You can find the code in the directory ``documentation/tutorials/C++/chap11``.
+You can find the code in the directory ``documentation/tutorials/cplusplus/chap11``.
 
 The files inside this directory are:
 

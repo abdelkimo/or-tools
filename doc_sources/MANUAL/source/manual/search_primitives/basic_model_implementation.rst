@@ -8,11 +8,11 @@ Implementation of the basic model
 
 ..  raw:: latex
 
-    You can find the code in the file \code{tutorials/C++/chap5/nqueens1.cc}.\\~\\
+    You can find the code in the file \code{tutorials/cplusplus/chap5/nqueens1.cc}.\\~\\
 
 ..  only:: html
 
-    **C++ code**: `tutorials/C++/chap5/nqueens1.cc <../../../tutorials/C++/chap5/nqueens1.cc>`_
+    **C++ code**: `tutorials/cplusplus/chap5/nqueens1.cc <../../../tutorials/cplusplus/chap5/nqueens1.cc>`_
 
 
 After the needed headers from the or-tools library:

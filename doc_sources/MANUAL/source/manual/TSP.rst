@@ -100,7 +100,7 @@ solve the TSP with Time Windows.
 ..  rubric:: Files:
 
 
-You can find the code in the directory ``documentation/tutorials/C++/chap9``.
+You can find the code in the directory ``documentation/tutorials/cplusplus/chap9``.
 
 
 The files inside this directory are:

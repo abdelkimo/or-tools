@@ -67,7 +67,7 @@ Local search: the job-shop problem
 
 ..  rubric:: Files:
 
-You can find the code in the directory ``documentation/tutorials/C++/chap6``.
+You can find the code in the directory ``documentation/tutorials/cplusplus/chap6``.
 
 The files inside this directory are:
 

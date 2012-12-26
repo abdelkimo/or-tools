@@ -45,7 +45,7 @@ Vehicule Routing Problems with constraints: the capacitated vehicle routing prob
 
 ..  rubric:: Files:
 
-You can find the code in the directory ``documentation/tutorials/C++/chap10``.
+You can find the code in the directory ``documentation/tutorials/cplusplus/chap10``.
 
 The files inside this directory are:
 
