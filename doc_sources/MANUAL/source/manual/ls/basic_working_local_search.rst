@@ -22,13 +22,13 @@ Overview of the Local Search Mechanism in *or-tools*
         
     ..  only:: html 
     
-        .. image:: images/lns_mechanism.*
+        .. image:: images/lsn_mechanism.*
             :width: 500pt
             :align: center
 
     ..  only:: latex
     
-        .. image:: images/lns_mechanism.*
+        .. image:: images/lsn_mechanism.*
             :width: 400pt
             :align: center
 
@@ -108,7 +108,7 @@ Initial solution
                                       DecisionBuilder* first_solution,
                                       LocalSearchPhaseParameters* parameters)
     
-    In the file :file:`dummy_lns.cc`, we use a :program:`gflags` flag ``FLAG_initial_phase``
+    In the file :file:`dummy_ls.cc`, we use a :program:`gflags` flag ``FLAG_initial_phase``
     to switch between these two possibilities.
     
     ..  topic::  What are the variables involved in the local search procedure? 

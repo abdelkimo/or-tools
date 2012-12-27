@@ -77,7 +77,7 @@ The files inside this directory are:
   throughout all the examples.
 - :file:`jobshop.cc`: A basic implementation of the disjunctive model with ``IntervalVar`` and ``SequenceVar`` variables.
 - :file:`jobshop_ls.cc`: A basic implementation of Local Search with an 2-opt operator.
-- :file:`dummy_ls_filtering.cc`: The example :file:`basic_ls.cc` extended with filtering.
+- :file:`dummy_ls_filtering.cc`: The example :file:`dummy_ls.cc` extended with filtering.
 - :file:`jobshop_ls_filtering.cc`: The example :file:`jobshop_ls.cc` extended with filtering.
 - :file:`jobshop_tabu.cc`: The job-shop problem solved by Tabu Search.
 - :file:`jobshop_SA.cc`: The job-shop problem solved by Simulated Annealing.

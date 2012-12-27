@@ -9,7 +9,7 @@ Local Search Neighborhood (LSN) Operators
 
 ..  only:: html
 
-    **C++ code**: `tutorials/cplusplus/chap6/dummy_ls.cc <../../../tutorials/cplusplus/chap6/dummy_lns.cc>`_.
+    **C++ code**: `tutorials/cplusplus/chap6/dummy_ls.cc <../../../tutorials/cplusplus/chap6/dummy_ls.cc>`_.
 
 We will use a dummy example throughout this section so
 we can solely focus on the basic ingredients provided by the *or-tools* 
@@ -63,13 +63,13 @@ LSN Operators hierarchy.
 
 ..  only:: html 
 
-    .. image:: images/lns_hierarchy.*
+    .. image:: images/lsn_hierarchy.*
         :width: 400pt
         :align: center
 
 ..  only:: latex
 
-    .. image:: images/lns_hierarchy.*
+    .. image:: images/lsn_hierarchy.*
         :width: 300pt
         :align: center
 
@@ -248,7 +248,7 @@ where the value for :math:`x_{n-1}` is :math:`n-2` if :math:`n` is even and
     If  :math:`n \, \textrm{mod} \, 2 = 0`
     then :math:`n` is even, otherwise it is odd. In ``C++``, the :math:`\textrm{mod}` operator is ``%``.
 
-The search phase using the LNS Operator is given by a... ``DecisionBuilder`` 
+The search phase using the LSN Operator is given by a... ``DecisionBuilder`` 
 which shouldn't surprise you by now:
 
 ..  code-block:: c++
@@ -298,7 +298,7 @@ If we limit ourselves to 4 variables and construct an initial solution by hand:
 
 ..  code-block:: bash
 
-    ./dummy_lns -n=4 -initial_phase=false
+    ./dummy_ls -n=4 -initial_phase=false
     
 we obtain the following partial output:
 
