@@ -351,6 +351,13 @@ We find this so important that we reuse our warning box:
 We use exceptions in our simplified version while the actual implementation uses
 the more efficient (and cryptic) ``setjmp - longjmp`` mechanism.
 
+We describe briefly what *nested searches* are in the section :ref:`nested_searches` but you will have to wait until 
+the chapter :ref:`chapter_under_the_hood` and the section :ref:`under_the_hood_nested_search` to learn the juicy details [#wait_to_read_under_the_hood_nested_search]_.
+
+..  [#wait_to_read_under_the_hood_nested_search] Of course, you can have a peak right now but some more background 
+    will probably help you understand this mechanism better. Beside, you don't need to understand the inner mechanism to 
+    be able to use nested search!
+
 To follow the main search algorithm, it is best to know in what states the solver
 can be. The ``enum`` ``SolverState`` enumerates the possibilities in the following table:
 
@@ -377,9 +384,7 @@ version of the main search algorithm. The ``Search`` class is used
 internally to monitor the search. Because the CP solver allows nested
 searches, we take a pointer to the current search object each time we 
 call the ``NewSearch()``, ``NextSolution()`` and ``EndSearch()`` methods.
-We do not show this nested search mechanism here [#more_about_nested_searches]_.
 
-..  [#more_about_nested_searches] More about the nested mechanism in section XXX.
 
 ..  code-block:: c++
     :linenos:
@@ -655,6 +660,19 @@ Whenever a backtrack is necessary, a ``FailException`` is caught and the solver 
 Finally, the current state of the solver is set and the method ``NextSolution()`` returns if a solution has been found
 and accepted by **all** ``SearchMonitor``\s or there is no solution anymore. It then returns ``true`` if the ``test`` above
 is ``true``, ``false`` otherwise.
+
+
+..  warning::
+
+    A solution is defined as a leaf of the search tree with respect to the given ``DecisionBuilder`` 
+    for which there is no failure. What this means is that, contrary to
+    intuition, a solution may not have all variables of the model bound. It is
+    the responsibility of the ``DecisionBuilder`` to keep returning decisions
+    until all variables are indeed bound. The most extreme counterexample is
+    calling ``Solve()`` with a trivial ``DecisionBuilder`` whose ``Next()`` method always
+    returns ``NULL``. In this case, ``Solve()`` immediately returns ``true``, since not
+    assigning any variable to any value is a solution, unless the root node
+    propagation discovers that the model is infeasible.
 
 ``EndSearch()``
 """"""""""""""""""

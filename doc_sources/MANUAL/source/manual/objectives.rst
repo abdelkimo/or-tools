@@ -50,7 +50,7 @@ adding better bounds and breaking symmetries. Finally, we say a few words about 
 
 ..  rubric:: Classes under scrutiny:
 
-..  only:: draft::
+..  only:: draft
 
     ``Decision``, ``DecisionBuilder``, ``DecisionVisitor``, ``SearchMonitor``, ``TreeMonitor``.
 

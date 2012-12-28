@@ -18,7 +18,7 @@ Overview of the Local Search Mechanism in *or-tools*
 
 ..  only:: draft
 
-    The next figure illustrates the basic mechanism of Local Search in *or-tools* [#local_search_algo_not_detailed_here]_:
+    The next figure illustrates the basic mechanism of Local Search in *or-tools* [#detail_local_search_mechanism]_:
         
     ..  only:: html 
     
@@ -41,6 +41,7 @@ Overview of the Local Search Mechanism in *or-tools*
     this new improved solution). The whole process stops
     whenever a stopping criterion is reached or the CP solver cannot improve anymore the current best solution.
 
+    ..  [#detail_local_search_mechanism] We detail this mechanism in the last subsection of this section.
     
     Let's describe some pieces of the *or-tools* mechanism for local search:
     
@@ -59,18 +60,9 @@ Overview of the Local Search Mechanism in *or-tools*
           
         * an ``std::vector`` of **LocalSearchFilter**\s used to speed up the search by pruning
           unfeasible neighbors: instead of letting the solver find out if a neighbor solution is feasible or not, you 
-          can help it by bypassing its checking mechanism and tell it right away if a neighbor solution is feasible or not.
+          can help it by bypassing its checking mechanism and tell it right away if a neighbor solution not feasible.
     
     
-    ..  [#local_search_algo_not_detailed_here] We don't present a simplified version of the code of the local search 
-        algorithm as we did for the general search algorithm because no new specific hook methods of a ``SearchMonitor`` is 
-        involved. The local search algorithm is made by the ``LocalSearch`` ``DecisionBuilder`` who 
-        returns ``NestedSolveDecision``\s (in its ``Next()`` method). ``NestedSolveDecision``\s call a ``FindOneNeighbor``
-        ``DecisionBuilder`` in their left branches (and don't do anything in their right branches). As its name implies, the 
-        ``FindOneNeighbor`` ``DecisionBuilder`` tries to find one neighbor solution. Let's say that the ``LocalSearch`` 
-        ``DecisionBuilder`` acts like a multi-restart ``DecisionBuilder``. If you want to know more, have a look at the section 
-        :ref:`hood_ls` in the chapter :ref:`chapter_under_the_hood`.
-
     ..  only:: html
     
         ``LocalSearchOperator``\s are detailed in the next section and ``LocalSearchFilter``\s in 
@@ -252,6 +244,22 @@ Initial solution
         to refresh your memory if needed. Thus, the second solution found can only be better than the first one. When the solver 
         finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution.
 
+
+The basic local search algorithm and the callback hooks for the ``SearchMonitor``\s
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    [TO BE DONE]
+    
+    We don't present a simplified version of the code of the local search 
+    algorithm as we did for the general search algorithm because no new specific hook methods of a ``SearchMonitor`` is 
+    involved. The local search algorithm is made by the ``LocalSearch`` ``DecisionBuilder`` who 
+    returns ``NestedSolveDecision``\s (in its ``Next()`` method). ``NestedSolveDecision``\s call a ``FindOneNeighbor``
+    ``DecisionBuilder`` in their left branches (and don't do anything in their right branches). As its name implies, the 
+    ``FindOneNeighbor`` ``DecisionBuilder`` tries to find one neighbor solution. Let's say that the ``LocalSearch`` 
+    ``DecisionBuilder`` acts like a multi-restart ``DecisionBuilder``. If you want to know more, have a look at the section 
+    :ref:`hood_ls` in the chapter :ref:`chapter_under_the_hood`.
     
 ..  only:: final
 

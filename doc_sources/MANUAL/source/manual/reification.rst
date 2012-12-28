@@ -38,7 +38,7 @@ Overview...
 
 ..  rubric:: Classes under scrutiny:
 
-..  only:: draft::
+..  only:: draft
 
     Maybe here... exception?
 

@@ -32,7 +32,7 @@ Modeling tricks
 
 ..  rubric:: Classes under scrutiny:
 
-..  only:: draft::
+..  only:: draft
 
     ``Decision``, ``DecisionBuilder``, ``DecisionVisitor``, ``SearchMonitor``, ``TreeMonitor``.
 
@@ -59,6 +59,14 @@ The files inside this directory are:
     - :file:`nqueen6.cc`: 
     - :file:`nqueen7.cc`: 
 
+..  only:: html
+
+    ..  rubric:: Content:
+
+..  toctree::
+    :maxdepth: 2
+
+    modeling_tricks/efficiency
 
 ..  raw:: html
     

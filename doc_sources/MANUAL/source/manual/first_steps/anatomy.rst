@@ -421,7 +421,7 @@ a solution was found and ``false`` otherwise:
       // The search is finished
     }
 
-We print out the found solution and check if it is valid:
+We print out the found solution and check if it is valid [#solution_not_necessarily_feasible]_:
 
 ..  code-block:: c++
 
@@ -453,6 +453,12 @@ The output is::
 
 We check the validity of the solution *after* printing: if the solution is not valid, we can see what 
 was found by the solver.
+
+..  [#solution_not_necessarily_feasible] Actually and contrary to the intuition, ``NextSolution()``
+    doesn't return a feasible solution per se. It all depends of the involved ``DecisionBuilder``. The solver 
+    considers any leaf of the search tree as a solution if it doesn't fail (i.e. 
+    if it is accepted by several control mechanisms). See the section :ref:`basic_working_search_algorithm` for more 
+    details.
 
 To obtain all the solutions, ``NextSolution()`` can be called repeatedly:
 
