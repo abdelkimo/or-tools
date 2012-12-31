@@ -3,9 +3,13 @@
 .. role:: strike
     :class: strike
     
-.. |difficulty|  image:: ../../images/android.png
+..  |difficulty|  image:: ../../images/android.png
                   :height: 15pt
-                  :alt: Difficulty1
+                  :alt: *
     
+..  |smiley_nerd| image:: ../../images/smiley_nerd.png 
+                  :height: 11pt
+                  :alt: ;-)
+
 
 

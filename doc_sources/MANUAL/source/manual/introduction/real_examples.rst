@@ -1,3 +1,5 @@
+..  include:: ../../../../global.rst
+
 ..  _cp_real_examples:
 
 Real examples
@@ -112,7 +114,7 @@ Until now, all these attempts have been vain. That said, CP - because of its par
 
 ..  centered:: Constraint Programming represents one of the closest approaches computer science has yet made to the Holy Grail of programming: the user states the problem, the computer solves it.
 
-..  [#out_of_job] Luckily, otherwise we would be jobless! |emoticon_nerdy|
+..  [#out_of_job] Luckily, otherwise we would be jobless! |smiley_nerd|
 
 ..  [#related_to_p_np] Actually, this search for the *holy grail* is closely related to the famous 
     :math:`\text{P} \stackrel{?}{=} \text{NP}` question. If such algoritm exists, then most probably :math:`\text{P} = \text{NP}`.
@@ -120,9 +122,7 @@ Until now, all these attempts have been vain. That said, CP - because of its par
 
 ..  [#cp_locality_constraint] See the subsection :ref:`cp_ease_to_model_problem`.
 
-.. |emoticon_nerdy| image:: images/glasses-nerdy.png
-   :alt: ;-)
- 
+
 
 
 

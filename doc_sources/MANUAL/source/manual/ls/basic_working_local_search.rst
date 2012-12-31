@@ -7,10 +7,13 @@ Basic working of the solver: local search
 
 ..  only:: draft
 
-    The code provided in this section is only generic and we'll have to 
-    wait until next section to use real code from the file :file:`dummy_ls.cc`.
+    In this section we present how local search is implemented in *or-tools*. First, we give the basic ideas
+    and it is only in the last subsection that we detail the inner working of the local search algorithm and 
+    indicate where the callbacks of the ``SearchMonitor``\s are called.
     
 
+    The code provided in this section is only generic and we'll have to 
+    wait until next section to use real code from the file :file:`dummy_ls.cc`.
     
 
 ..  _local_search_mechanism:
@@ -175,7 +178,7 @@ Initial solution
     
         LocalSearchPhaseParameters * Solver::MakeLocalSearchPhaseParameters(
                             LocalSearchOperator *const ls_operator,
-                            DecisionBuilder *const assist_decision_builder);
+                            DecisionBuilder *const complementary_decision_builder);
 
     You can also give all the parameters enumerated above:
     
@@ -200,10 +203,10 @@ Initial solution
     
     ..  code-block:: c++
     
-        DecisionBuilder * const assist_local_search_operator_db = 
+        DecisionBuilder * const complementary_decision_builder = 
                                                     solver.MakeSolveOnce(db);
     
-    The new ``DecisionBuilder`` ``assist_local_search_operator_db`` will return as soon 
+    The new ``DecisionBuilder`` ``complementary_decision_builder`` will return as soon 
     as a first solution is encountered in the search with the ``DecisionBuilder`` ``db``.
     
     If you know for sure that your ``LocalSearchOperator`` will return feasible 
@@ -252,6 +255,15 @@ The basic local search algorithm and the callback hooks for the ``SearchMonitor`
 
 ..  only:: draft
 
+
+    The involved callbacks are:
+    
+    * ``LocalOptimum``: When a local optimum is reached. If ``true`` is returned, the last solution
+                        is discarded and the search proceeds with the next one.
+    * ``AcceptDelta``:
+    * ``AcceptNeighbor``: After accepting a neighbor during local search.
+    * ``PeriodicCheck``: Periodic call to check limits in long running methods.
+
     [TO BE DONE]
     
     We don't present a simplified version of the code of the local search 
@@ -263,6 +275,160 @@ The basic local search algorithm and the callback hooks for the ``SearchMonitor`
     ``DecisionBuilder`` acts like a multi-restart ``DecisionBuilder``. If you want to know more, have a look at the section 
     :ref:`hood_ls` in the chapter :ref:`chapter_under_the_hood`.
     
+    
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+    We are now ready to have a look at the local search algorithm in more details. Remember that 
+    the version shown here is a **simplified** version of the real implementation.
+    
+    There are three outcomes for a ``NestedSolveDecision``:
+    
+    * ``DECISION_FAILED``: the nested search phase failed.
+    * ``DECISION_PENDING``: the ``Decision`` didn't try to solve its nested search phase.
+    * ``DECISION_FOUND``: the nested search phase succeeded.
+    
+    The ``Next()`` method of the ``LocalSearch`` class is in charge to control the local search:
+    
+    ..  code-block:: c++
+    
+        Decision * Next(Solver * solver) {
+          //  Initialization, if needed Fail()
+          ...
+          //  Main DecisionBuilder to find one locally optimal 
+          //  neighbor solution
+          DecisionBuilder* find_neighbors =
+            solver->RevAlloc(new FindOneNeighbor(assignment_,
+                                                 pool_,
+                                                 ls_operator_,
+                                                 sub_decision_builder_,
+                                                 limit_,
+                                                 filters_));
+          NestedSolveDecision* decision = solver->RevAlloc(
+                                    new NestedSolveDecision(find_neighbors, 
+                                                            false)));
+          const int state = decision->state();
+          switch (state) {
+            case NestedSolveDecision::DECISION_FAILED: {
+                                                  // SEARCHMONITOR CALLBACK
+              if (!LocalOptimumReached(solver->ActiveSearch())) {
+                // Stop the search
+                ...
+              }
+              solver->Fail();
+              return NULL;
+            }
+            case NestedSolveDecision::DECISION_PENDING: {
+              //  Stabilize search tree by balancing the current search tree.
+              //  Statistics are updated even if this is not relevant to the 
+              //  global search
+                ...
+                return decision;
+            }
+            case NestedSolveDecision::DECISION_FOUND: {
+              // Nothing important for us in this simplified version
+              ...
+              return NULL;
+            }
+            default: {
+              LOG(ERROR) << "Unknown local search state";
+              return NULL;
+            }
+          }
+          return NULL;
+        }
+        
+
+    ``LocalOptimumReached()`` is a global function that connects the local and global searches
+    and returns ``true`` if a local optimum has been reached and cannot be improved.
+    To do so, it calls the 
+    ``LocalOptimum()`` callback of **all** the ``SearchMonitor``\s for the current search.
+    
+    The *real* local search algorithm is provided in the ``Next()`` method of the ``FindOneNeighbor`` class:
+    
+    ..  code-block:: c++
+    
+        Decision* FindOneNeighbor::Next(Solver* const solver) {
+          CHECK(NULL != solver);
+
+          if (original_limit_ != NULL) {
+            limit_->Copy(original_limit_);
+          }
+
+          if (!neighbor_found_) {
+            // Only called on the first call to Next(), reference_assignment_ has not
+            // been synced with assignment_ yet
+
+            // Keeping the code in case a performance problem forces us to
+            // use the old code with a zero test on pool_.
+            // reference_assignment_->Copy(assignment_);
+            pool_->Initialize(assignment_);
+            SynchronizeAll();
+          }
+
+          {
+            // Another assignment is needed to apply the delta
+            Assignment* assignment_copy =
+                solver->MakeAssignment(reference_assignment_.get());
+            int counter = 0;
+
+            DecisionBuilder* restore =
+                solver->MakeRestoreAssignment(assignment_copy);
+            if (sub_decision_builder_) {
+              restore = solver->Compose(restore, sub_decision_builder_);
+            }
+            Assignment* delta = solver->MakeAssignment();
+            Assignment* deltadelta = solver->MakeAssignment();
+            while (true) {
+              delta->Clear();
+              deltadelta->Clear();
+              solver->TopPeriodicCheck();
+              if (++counter >= FLAGS_cp_local_search_sync_frequency &&
+                  pool_->SyncNeeded(reference_assignment_.get())) {
+                // TODO(user) : SyncNeed(assignment_) ?
+                counter = 0;
+                SynchronizeAll();
+              }
+
+              if (!limit_->Check()
+                  && ls_operator_->MakeNextNeighbor(delta, deltadelta)) {
+                solver->neighbors_ += 1;
+                // All filters must be called for incrementality reasons.
+                // Empty deltas must also be sent to incremental filters; can be needed
+                // to resync filters on non-incremental (empty) moves.
+                // TODO(user): Don't call both if no filter is incremental and one
+                // of them returned false.
+                const bool mh_filter =
+                    AcceptDelta(solver->ParentSearch(), delta, deltadelta);
+                const bool move_filter = FilterAccept(delta, deltadelta);
+                if (mh_filter && move_filter) {
+                  solver->filtered_neighbors_ += 1;
+                  assignment_copy->Copy(reference_assignment_.get());
+                  assignment_copy->Copy(delta);
+                  if (solver->SolveAndCommit(restore)) {
+                    solver->accepted_neighbors_ += 1;
+                    assignment_->Store();
+                    neighbor_found_ = true;
+                    return NULL;
+                  }
+                }
+              } else {
+                if (neighbor_found_) {
+                  AcceptNeighbor(solver->ParentSearch());
+                  // Keeping the code in case a performance problem forces us to
+                  // use the old code with a zero test on pool_.
+                  //          reference_assignment_->Copy(assignment_);
+                  pool_->RegisterNewSolution(assignment_);
+                  SynchronizeAll();
+                } else {
+                  break;
+                }
+              }
+            }
+          }
+          solver->Fail();
+          return NULL;
+        }
+         
 ..  only:: final
 
     ..  raw:: html
