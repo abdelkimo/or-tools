@@ -1,3 +1,5 @@
+..  include:: ../../../../global.rst
+
 ..  _basic_working_local_search:
 
 Basic working of the solver: local search
@@ -148,7 +150,7 @@ Initial solution
 
     * a ``LocalSearchOperator``: a ``LocalSearchOperator`` or a combination of ``LocalSearchOperator``\s explore the 
       neighborhood of the current solution. We detail them in the next section.
-    * a ``DecisionBuilder``: this *sub* ``DecisionBuilder`` helps creating feasible solutions if your ``LocalSearchOperator``\s 
+    * a ``DecisionBuilder``: this *complementary* ``DecisionBuilder`` helps creating feasible solutions if your ``LocalSearchOperator``\s 
       only return partial solutions. 
     * a ``SearchLimit``: The ``SearchLimit`` allows to limit the local search and is discussed in the next subsection below.
     * ``LocalSearchFilter``\s: these filters speed up the search by bypassing the solver checking mechanism if you know that the 
@@ -182,7 +184,7 @@ Initial solution
         LocalSearchPhaseParameters* Solver::MakeLocalSearchPhaseParameters(
                             SolutionPool* const pool,
                             LocalSearchOperator* const ls_operator,
-                            DecisionBuilder* const sub_decision_builder,
+                            DecisionBuilder* const complementary_decision_builder,
                             SearchLimit* const limit,
                             const std::vector<LocalSearchFilter*>& filters);
     
@@ -245,8 +247,8 @@ Initial solution
         finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution.
 
 
-The basic local search algorithm and the callback hooks for the ``SearchMonitor``\s
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The basic local search algorithm and the callback hooks for the ``SearchMonitor``\s |difficulty| |difficulty|
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 

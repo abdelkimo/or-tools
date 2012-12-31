@@ -79,7 +79,7 @@ feed_base_url = 'http://or-tools.googlecode.com/svn/trunk/documentation/user_man
 feed_author = 'Google'
 
 
-rst_prolog = open('../../global.rst', 'r').read()
+#rst_prolog = open('../../global.rst', 'r').read()
 
 # The setting for draft or final display. Uncomment the relevant line:
 # The tags are automatically added within the makefile.

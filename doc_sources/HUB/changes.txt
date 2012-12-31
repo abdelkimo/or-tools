@@ -2,4 +2,4 @@
 # Current changes.
 * Minor enhancements to the manual:
   - no more warnings when compiling.
-
+  - difficulty level with icons added.

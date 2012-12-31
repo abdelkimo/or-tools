@@ -48,7 +48,7 @@ Filtering
     
     * ``DeltaDelta``: the difference between the current neighbor solution and the previous neighbor solution.
     
-    (an Assignment called delta)  You need also to define a second Assignment representing the changes to the last solution defined by the neighborhood operator (an Assignment called deltadelta).
+    ``Delta`` and ``DeltaDelta`` are just ``Assignment``\s only containing the changes.
 
 Incrementality
 """""""""""""""""""
