@@ -1,0 +1,6 @@
+# Milestone:
+# Current changes.
+* Minor enhancements to the manual:
+  - no more warnings when compiling.
+  - difficulty levels indicated with icons.
+  - 5.5 corrected.

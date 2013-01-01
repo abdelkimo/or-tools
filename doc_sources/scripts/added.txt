@@ -1,0 +1,12 @@
+user_manual/manual/modeling_tricks
+user_manual/_images/lsn_hierarchy.png
+user_manual/_images/android.png
+user_manual/_images/try.png
+user_manual/_images/android1.png
+user_manual/_images/smiley_nerd1.png
+user_manual/_images/smiley_nerd.png
+user_manual/_images/compose.png
+user_manual/_images/math/d2f2ed9f962cc2b1d3198d2e2a1df1f23a26f752.png
+user_manual/_images/math/8723ff4aa2be2ed47d9df95372afa7fe94b5cc1b.png
+user_manual/_images/math/62d0effd6477f4244d585fc25f46a645378a4ceb.png
+user_manual/_images/math/30fc22790b234e7ab97c2311cc9282a0efcf4ade.png
