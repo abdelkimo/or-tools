@@ -7,6 +7,10 @@ Basic working of the solver: local search
 
 ..  only:: draft
 
+    [TO BE REWRITTEN]
+
+..  only:: draft
+
     In this section we present how local search is implemented in *or-tools*. First, we give and overview of the implementation
     and describe some of its main components. We then detail the inner working of the local search algorithm and 
     indicate where the callbacks of the ``SearchMonitor``\s are called in the last subsection.
@@ -272,8 +276,37 @@ The basic idea
     can be restarted again around a new initial solution. The ``LocalSearch`` 
     ``DecisionBuilder`` acts like a multi-restart ``DecisionBuilder``. 
   
+The actors
+"""""""""""""""
+
+..  only:: draft
+
+    The main classes involved in the local search algorithm are:
+    
+    * ``LocalSearch``: This ``DecisionBuilder`` controls the local search algorithm.
+    * ``LocalSearchPhaseParameters``: This class gathers the components to define the local search.
+    * ``FindOneNeighbor``: This ``DecisionBuilder`` is responsible to find the next neighbor solution, i.e. a local optimum and
+      actually defines the *main loop* of the local search algorithm.
+    * ``NestedSolveDecision``: This ``Decision`` invokes a nested search with another ``DecisionBuilder`` in its left branch 
+      (``Apply()`` method) and does nothing in its right branch (``Refute()`` method).
+    * ``LocalSearchFilter``: A filter that allows to immediately  skip (discard) a neighbor solution.
+    
+    We will not discuss the filtering mechanism here (see the dedicated section :ref:`local_search_filtering`).
+    
+Initialization
+"""""""""""""""""""
+
+..  only:: draft
+
+    The ``LocalSearchPhaseParameters`` is setup with 
+    
+      1. a ``SolutionPool``;
+      2. a ``SearchLimit`` ;
+      3. a ``LocalSearchOperator`` ();
 
 
+    If you use the ``Solver``\'s ``MakePhase()`` factory, you only need to provide ...
+    
 The callbacks of the ``SearchMonitor``\s in the local search 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
