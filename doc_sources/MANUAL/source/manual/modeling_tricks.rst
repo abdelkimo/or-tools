@@ -67,6 +67,7 @@ The files inside this directory are:
     :maxdepth: 2
 
     modeling_tricks/efficiency
+    modeling_tricks/false_friends
 
 ..  raw:: html
     

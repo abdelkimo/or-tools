@@ -378,7 +378,7 @@ The callbacks of the ``SearchMonitor``\s in the local search
             case NestedSolveDecision::DECISION_FAILED: {
                                                   // SEARCHMONITOR CALLBACK
               if (!LocalOptimumReached(solver->ActiveSearch())) {
-                // Stop the search
+                // Stop the current search
                 ...
               }
               solver->Fail();
