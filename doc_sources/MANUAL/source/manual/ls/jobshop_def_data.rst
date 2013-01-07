@@ -37,7 +37,9 @@ The job-shop problem, the disjunctive model and benchmark data
 
 We describe the job-shop problem, a first model and the benchmark data. The job-shop problem belongs to the 
 intractable problems (:math:`\in` NP). Only few very special cases can be solved in 
-polynomial time (see [Garey1976]_ and [Kis2002]_).
+polynomial time (see [Garey1976]_ and [Kis2002]_). The definition of this problem is not that complicated but you 
+probably will need some extra attention if this is your first encounter with this fascinating problem. Once you grasp its 
+definition, the next subsections should flow easily.
     
 ..  [Garey1976] Garey, M. R., Johnson, D. S. and Sethi, R., *The complexity of flowshop and jobshop scheduling*,
     Mathematics of Operations Research, volume 1, pp 117-129, 1976.

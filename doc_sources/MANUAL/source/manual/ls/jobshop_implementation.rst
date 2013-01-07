@@ -5,30 +5,56 @@ An implementation of the disjunctive model
 
 ..  raw:: latex
 
-    You can find the code in the files~\code{tutorials/cplusplus/chap6/jobshop.h} 
-    and~\code{tutorials/cplusplus/chap6/jobshop.cc}.\\~\\
+    You can find the code in the file~\code{tutorials/cplusplus/chap6/jobshop.cc}.\\~\\
 
 ..  only:: html
 
-    **C++ code**: `tutorials/cplusplus/chap6/jobshop.h <../../../tutorials/cplusplus/chap6/jobshop.h>`_ and `tutorials/cplusplus/chap6/jobshop.cc <../../../tutorials/cplusplus/chap6/jobshop.cc>`_.
+    ..  container:: files-sidebar
+
+        ..  raw:: html 
+        
+            <ol>
+              <li>C++ code:
+                <ol>
+                  <li><a href="../../../tutorials/cplusplus/chap6/jobshop.cc">jobshop.cc</a></li>
+                </ol>
+              </li>
+            </ol>
+
+
 
 Scheduling is one of the field where Constraint Programming is heavily used, 
-therefore specialized constraints and variables have been developed. In this section, 
+therefore specialized constraints and variables have been developed [#scheduling_or_tools_explained_in_details_next_section]_. 
+In this section, 
 we will implement the disjunctive model with dedicated variables (``IntervalVar`` and
 ``SequenceVar``) and constraints (``IntervalBinaryRelation`` and ``DisjunctiveConstraint``).
 
 Last but not least, we will see our first real example of combining two ``DecisionBuilder``\s
 in a top-down fashion.
 
+..  [#scheduling_or_tools_explained_in_details_next_section] The next section is entirely devoted to scheduling in *or-tools*.
+
 The ``IntervalVar`` variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+We create one ``IntervalVar`` for each task. 
+Remember the ``Task`` ``struct`` we use in the ``JobShopData`` ``class``:
 
-We create one ``IntervalVar`` for each task. An ``IntervalVar`` represents one
+..  code-block:: c++
+
+    struct Task {
+      Task(int j, int m, int d) : job_id(j), machine_id(m), duration(d) {}
+      int job_id;
+      int machine_id;
+      int duration;
+    };
+
+
+An ``IntervalVar`` represents one
 integer interval and is often used in scheduling. Its main characteristics are its starting time, 
 its duration and its ending time. 
 
-The CP solver has a factory method for fixed duration intervals:
+The CP solver has the factory method ``MakeFixedDurationIntervalVar()`` for fixed duration intervals:
 
 ..  code-block:: c++
 
@@ -44,7 +70,7 @@ The CP solver has a factory method for fixed duration intervals:
                                                           false,
                                                           name);
 
-The first two arguments of ``MakeFixedDurationIntervalVar`` are 
+The first two arguments of ``MakeFixedDurationIntervalVar()`` are 
 a lower and an upper bound on the starting time of the ``IntervalVar``.
 The fourth argument is a ``bool`` that indicates if the ``IntervalVar`` can be unperformed or not.
 Unperformed ``IntervalVar``\s simply don't exist anymore. This can happen when the 
@@ -57,6 +83,23 @@ To be able to easily retrieve the tasks corresponding to a job or a machine, we 
     std::vector<std::vector<IntervalVar*> > jobs_to_tasks(job_count);
     std::vector<std::vector<IntervalVar*> > 
                                        machines_to_tasks(machine_count);
+
+and populate them:
+
+..  code-block:: c++
+
+    // Creates all individual interval variables.
+    for (int job_id = 0; job_id < job_count; ++job_id) {
+      const std::vector<JobShopData::Task>& tasks = data.TasksOfJob(job_id);
+      for (int task_index = 0; task_index < tasks.size(); ++task_index) {
+        const JobShopData::Task& task = tasks[task_index];
+        CHECK_EQ(job_id, task.job_id);
+        const string name = ...
+        IntervalVar* const one_task = ...
+        jobs_to_tasks[task.job_id].push_back(one_task);
+        machines_to_tasks[task.machine_id].push_back(one_task);
+      }
+    }
 
 We will create the ``SequenceVar`` variables later when we will add the disjunctive constraints.
 
@@ -74,44 +117,14 @@ in a job, we can add an ``IntervalBinaryRelation`` constraint with the right rel
     Constraint* const prec =
        solver.MakeIntervalVarRelation(t2, Solver::STARTS_AFTER_END, t1);
 
-Other possibilities include:
-
-  * ``ENDS_AFTER_END``: ``t1`` ends after ``t2`` ends, i.e. ``End(t1) >= End(t2)``;
-  * ``ENDS_AFTER_START``: ``t1`` ends after t2 starts, i.e. ``End(t1) >= Start(t2)``;
-  * ``ENDS_AT_END``: ``t1`` ends at the end of ``t2``, i.e. ``End(t1) == End(t2)``;
-  * ``ENDS_AT_START``: ``t1`` ends at ``t2``\'s start, i.e. ``End(t1) == Start(t2)``;
-  * ``STARTS_AFTER_START``: ``t1`` starts after ``t2`` starts, i.e. ``Start(t1) >= Start(t2)``;
-  * ``STARTS_AT_END``: ``t1`` starts at ``t2``\'s end, i.e. ``Start(t1) == End(t2)``;
-  * ``STARTS_AT_START``: ``t1`` starts when ``t2`` starts, i.e. ``Start(t1) == Start(t2)``;
-  * ``STAYS_IN_SYNC``: ``STARTS_AT_START`` and ``ENDS_AT_END`` at the same time.
-
-These possibilities are enclosed in the ``BinaryIntervalRelation`` ``enum``.
-
-While we are at it, you can also specify a temporal relation between an ``IntervalVar`` ``t`` and an integer ``d``:
-
-  * ``ENDS_AFTER``: ``t`` ends after ``d``, i.e. ``End(t) >= d``;
-  * ``ENDS_AT``: ``t`` ends at ``d``, i.e. ``End(t) == d``;
-  * ``ENDS_BEFORE``: ``t`` ends before ``d``, i.e. ``End(t) <= d``;
-  * ``STARTS_AFTER``: ``t`` starts after ``d``, i.e. ``Start(t) >= d``;
-  * ``STARTS_AT``: ``t`` starts at ``d``, i.e. ``Start(t) == d``;
-  * ``STARTS_BEFORE``: ``t`` starts before ``d``, i.e. ``Start(t) <= d``;
-  * ``CROSS_DATE``: ``STARTS_BEFORE`` and ``ENDS_AFTER`` at the same time, i.e. ``d`` is in ``t``;
-  * ``AVOID_DATE``: ``STARTS_AFTER`` or ``ENDS_BEFORE``, i.e. ``d`` is not in ``t``.
-
-The possibilities are enclosed in the ``UnaryIntervalRelation`` ``enum``. The corresponding constraints are 
-``IntervalUnaryRelation`` constraints and the factory method is:
-
-..  code-block:: c++
-
-     Constraint* Solver::MakeIntervalVarRelation(IntervalVar* const t,
-                                         Solver::UnaryIntervalRelation r,
-                                         int64 d)
+In the next section, we will other possibilities and also temporal relations 
+between an ``IntervalVar`` ``t`` and a time integer ``d``.
 
 The disjunctive constraints and ``SequenceVar``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-The constraints ensure that the tasks are correctly processed on each machine, i.e.
+The disjunctive constraints ensure that the tasks are correctly processed on each machine, i.e.
 a task is processed entirely before or after another task on a single machine. The CP solver provides
 ``DisjunctiveConstraint``\s and a corresponding factory method:
 
@@ -147,7 +160,6 @@ but creating ``SequenceVar``\s with ``DisjunctiveConstraint``\s is so common tha
 
 The objective function
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-
 
 To create the makespan variable, we simply collect the last tasks of all the jobs 
 and store the maximum of their end times:

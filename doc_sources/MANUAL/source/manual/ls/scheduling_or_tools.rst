@@ -22,6 +22,63 @@ Variables
 ..  only:: draft
 
 
+Variables that perform
+""""""""""""""""""""""""""""
+
+..  only:: draft
+
+    performed and unperformed variables...
+
+..  _scheduling_constraints:
+
+Constraints
+^^^^^^^^^^^^^^
+
+..  only:: draft
+
+``IntervalUnaryRelation`` constraints
+""""""""""""""""""""""""""""""""""""""""""
+
+..  only:: draft
+
+    While we are at it, you can also specify a temporal relation between an ``IntervalVar`` ``t`` and an integer ``d``:
+
+      * ``ENDS_AFTER``: ``t`` ends after ``d``, i.e. ``End(t) >= d``;
+      * ``ENDS_AT``: ``t`` ends at ``d``, i.e. ``End(t) == d``;
+      * ``ENDS_BEFORE``: ``t`` ends before ``d``, i.e. ``End(t) <= d``;
+      * ``STARTS_AFTER``: ``t`` starts after ``d``, i.e. ``Start(t) >= d``;
+      * ``STARTS_AT``: ``t`` starts at ``d``, i.e. ``Start(t) == d``;
+      * ``STARTS_BEFORE``: ``t`` starts before ``d``, i.e. ``Start(t) <= d``;
+      * ``CROSS_DATE``: ``STARTS_BEFORE`` and ``ENDS_AFTER`` at the same time, i.e. ``d`` is in ``t``;
+      * ``AVOID_DATE``: ``STARTS_AFTER`` or ``ENDS_BEFORE``, i.e. ``d`` is not in ``t``.
+
+    The possibilities are enclosed in the ``UnaryIntervalRelation`` ``enum``. The corresponding constraints are 
+    ``IntervalUnaryRelation`` constraints and the factory method is:
+
+    ..  code-block:: c++
+
+         Constraint* Solver::MakeIntervalVarRelation(IntervalVar* const t,
+                                             Solver::UnaryIntervalRelation r,
+                                             int64 d)
+
+``BinaryIntervalRelation`` constraints
+""""""""""""""""""""""""""""""""""""""""""
+
+..  only:: draft
+
+    Other possibilities include:
+
+      * ``ENDS_AFTER_END``: ``t1`` ends after ``t2`` ends, i.e. ``End(t1) >= End(t2)``;
+      * ``ENDS_AFTER_START``: ``t1`` ends after t2 starts, i.e. ``End(t1) >= Start(t2)``;
+      * ``ENDS_AT_END``: ``t1`` ends at the end of ``t2``, i.e. ``End(t1) == End(t2)``;
+      * ``ENDS_AT_START``: ``t1`` ends at ``t2``\'s start, i.e. ``End(t1) == Start(t2)``;
+      * ``STARTS_AFTER_START``: ``t1`` starts after ``t2`` starts, i.e. ``Start(t1) >= Start(t2)``;
+      * ``STARTS_AT_END``: ``t1`` starts at ``t2``\'s end, i.e. ``Start(t1) == End(t2)``;
+      * ``STARTS_AT_START``: ``t1`` starts when ``t2`` starts, i.e. ``Start(t1) == Start(t2)``;
+      * ``STAYS_IN_SYNC``: ``STARTS_AT_START`` and ``ENDS_AT_END`` at the same time.
+
+    These possibilities are enclosed in the ``BinaryIntervalRelation`` ``enum``.
+
 ..  _scheduling_decisionbuilders_decision:
 
 ``DecisionBuilder``\s and ``Decision``\s

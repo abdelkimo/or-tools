@@ -74,7 +74,7 @@ The files inside this directory are:
 ..  only:: draft
 
     - :file:`Makefile`.
-    - :file:`jobshop.h`: This file contents the ``JobShopData`` class that records the data for job-shop problems. This file is used
+    - :file:`jobshop.h`: This file contents the ``JobShopData`` class that records the data for job-shop problem instances. This file is used
       throughout all the examples.
     - :file:`report_jobshopdata.cc`: a simple program to report the content of job-shop problem instances in JSSP or Taillard's formats.
     - :file:`abz9`: a job-shop problem instance in JSSP format.
