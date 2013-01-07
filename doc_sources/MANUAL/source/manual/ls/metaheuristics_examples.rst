@@ -1,7 +1,7 @@
 
 ..  _metaheuristics_examples:
 
-Three efficient meta-heuristics
+Meta-heuristics
 ----------------------------------------
 
 ..  only:: draft
@@ -101,7 +101,7 @@ First results
 
 ..  _simulated_annealing:
 
-Simulated annealing
+Simulated annealing (SA)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The basic idea
@@ -122,7 +122,7 @@ First results
 
 ..  _guided_local_search:
 
-Guided local search
+Guided local search (GLS)
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The basic idea

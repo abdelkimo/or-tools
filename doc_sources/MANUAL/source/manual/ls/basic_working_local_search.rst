@@ -20,10 +20,45 @@ Basic working of the solver: local search
     
     ..  warning:: We describe a simplified version of the local search algorithm.
     
+Basic definitions
+^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+The basic idea
+^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+
+    The local search algorithm is implemented with the ``LocalSearch`` ``DecisionBuilder`` who 
+    returns ``NestedSolveDecision``\s (in its ``Next()`` method). ``NestedSolveDecision``\s call the ``FindOneNeighbor``
+    ``DecisionBuilder`` in their left branches (and don't do anything in their right branches). As its name implies, the 
+    ``FindOneNeighbor`` ``DecisionBuilder`` tries to find one neighbor solution: the local optimum. If needed, the search 
+    can be restarted again around a new initial solution. The ``LocalSearch`` 
+    ``DecisionBuilder`` acts like a multi-restart ``DecisionBuilder``. 
+  
+The actors
+"""""""""""""""
+
+..  only:: draft
+
+    The main classes involved in the local search algorithm are:
+    
+    * ``LocalSearch``: This ``DecisionBuilder`` controls the local search algorithm.
+    * ``LocalSearchPhaseParameters``: This class gathers the components to define the local search.
+    * ``FindOneNeighbor``: This ``DecisionBuilder`` is responsible to find the next neighbor solution, i.e. a local optimum and
+      actually defines the *main loop* of the local search algorithm.
+    * ``NestedSolveDecision``: This ``Decision`` invokes a nested search with another ``DecisionBuilder`` in its left branch 
+      (``Apply()`` method) and does nothing in its right branch (``Refute()`` method).
+    * ``LocalSearchFilter``: A filter that allows to immediately  skip (discard) a neighbor solution.
+    
+    We will not discuss the filtering mechanism here (see the dedicated section :ref:`local_search_filtering`).
+
 ..  _local_search_mechanism:
 
 Overview of the Local Search Mechanism in *or-tools*
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 ..  only:: draft
 
@@ -85,7 +120,7 @@ Overview of the Local Search Mechanism in *or-tools*
     ``Searchlimit``\s.
     
 Initial solution
-^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""
 
 ..  only:: draft
 
@@ -118,7 +153,7 @@ Initial solution
 ..  _local_search_parameters:
 
 ``LocalSearchPhaseParameters``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""
 
 ..  only:: draft
 
@@ -221,7 +256,7 @@ Initial solution
 ..  _search_limits_in_local_search:
 
 ``SearchLimit``\s in Local Search
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""
 
 ..  only:: draft
 
@@ -252,6 +287,9 @@ Initial solution
         finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution.
 
 
+
+
+
 The basic local search algorithm and the callback hooks for the ``SearchMonitor``\s |difficulty| |difficulty|
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -264,34 +302,7 @@ The basic local search algorithm and the callback hooks for the ``SearchMonitor`
     If you want to know more, have a look at the section 
     :ref:`hood_ls` in the chapter :ref:`chapter_under_the_hood`.
 
-The basic idea 
-"""""""""""""""""""
 
-..  only:: draft
-
-    The local search algorithm is implemented with the ``LocalSearch`` ``DecisionBuilder`` who 
-    returns ``NestedSolveDecision``\s (in its ``Next()`` method). ``NestedSolveDecision``\s call the ``FindOneNeighbor``
-    ``DecisionBuilder`` in their left branches (and don't do anything in their right branches). As its name implies, the 
-    ``FindOneNeighbor`` ``DecisionBuilder`` tries to find one neighbor solution: the local optimum. If needed, the search 
-    can be restarted again around a new initial solution. The ``LocalSearch`` 
-    ``DecisionBuilder`` acts like a multi-restart ``DecisionBuilder``. 
-  
-The actors
-"""""""""""""""
-
-..  only:: draft
-
-    The main classes involved in the local search algorithm are:
-    
-    * ``LocalSearch``: This ``DecisionBuilder`` controls the local search algorithm.
-    * ``LocalSearchPhaseParameters``: This class gathers the components to define the local search.
-    * ``FindOneNeighbor``: This ``DecisionBuilder`` is responsible to find the next neighbor solution, i.e. a local optimum and
-      actually defines the *main loop* of the local search algorithm.
-    * ``NestedSolveDecision``: This ``Decision`` invokes a nested search with another ``DecisionBuilder`` in its left branch 
-      (``Apply()`` method) and does nothing in its right branch (``Refute()`` method).
-    * ``LocalSearchFilter``: A filter that allows to immediately  skip (discard) a neighbor solution.
-    
-    We will not discuss the filtering mechanism here (see the dedicated section :ref:`local_search_filtering`).
     
 Initialization
 """""""""""""""""""
@@ -300,12 +311,72 @@ Initialization
 
     The ``LocalSearchPhaseParameters`` is setup with 
     
-      1. a ``SolutionPool``;
-      2. a ``SearchLimit`` ;
-      3. a ``LocalSearchOperator`` ();
+      - a ``SolutionPool``;
+      - a ``SearchLimit`` ;
+      - a ``LocalSearchOperator``;
 
+    and passed to the ``LocalSearch`` class. If you use the ``Solver``\'s ``MakePhase()`` factory, 
+    you only need to provide ...
+    
+    In the ``LocalSearch`` class constructor, an initial solution 
+    is constructed/tested.
+    
+    It's interesting to see how it is done. We show here the case where an initial ``DecisionBuilder`` 
+    is given to construct the initial solution [#initial_assignment_instead]_:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder * store = solver->MakeStoreAssignment(assignment);
+        DecisionBuilder * first_solution_and_store = solver->Compose(
+                                             first_solution, 
+                                             complementary_decision_builder, 
+                                             store);
+    
+    where:
+    
+      * ``assignment`` is the initial ``Assignment`` constructed/tested;
+      * ``first_solution`` is the initial ``DecisionBuilder`` given to the local search algorithm;
+      * ``complementary_decision_builder`` is the complementary ``DecisionBuilder`` to complete a neighbor solution 
+        if needed.
+        
+    Basically, ``first_solution_and_store`` constructs the first initial solution. This ``DecisionBuilder``
+    is used in a nested search:
+    
+    ..  code-block:: c++
+    
+        std::vector<SearchMonitor *> monitors;
+        monitors.push_back(limit);
+        NestedSolveDecision * initial_solution_decision = 
+                          new NestedSolveDecision(first_solution_and_store,
+                                                  false,
+                                                  monitors);
+    
+    where:
+    
+      * ``limit`` is the ``SearchLimit`` given to the local search algorithm;
+      * the ``NestedSolveDecision`` constructor's arguments are respectively:
 
-    If you use the ``Solver``\'s ``MakePhase()`` factory, you only need to provide ...
+        * a ``DecisionBuilder`` to construct the next neighbor solution;
+        * a ``bool`` to indicate if we restore the last solution in case we cannot 
+          find a new neighbor solution;
+        * an ``std::vector<SearchMonitor *>``.
+    
+    The ``Apply()`` method of a ``NestedSolveDecision`` calls ``NestedSolve()``:
+    
+    ..  code-block:: c++
+    
+        solver->NestedSolve(first_solution_and_store, false, monitors);
+    
+    where the arguments respectively are:
+    
+      * a ``DecisionBuilder``;
+      * a ``bool`` that tells if we restore the current solution or not;
+      * an ``std::vector<SearchMonitor *>``.
+      
+    Remember that the ``NestedSolve()`` method tries to find the first solution accepted.
+    
+    ..  [#initial_assignment_instead] If you have an ``Assignment`` instead, the solver simply replaces
+        the ``first_solution`` ``DecisionBuilder`` with a ``RestoreAssignment`` taking your initial ``Assignment``.
     
 The callbacks of the ``SearchMonitor``\s in the local search 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -360,9 +431,6 @@ The callbacks of the ``SearchMonitor``\s in the local search
     ..  raw:: html
         
         <br>
-
-    
-    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
     We are now ready to have a look at the local search algorithm in more details. Remember that 
     the version shown here is a **simplified** version of the real implementation.
@@ -524,7 +592,8 @@ The callbacks of the ``SearchMonitor``\s in the local search
     ``SolveAndCommit`` will not backtrack all modifications at the end of the search.
     Use this method **only** in the ``Next()`` method of a ``DecisionBuilder``.
     
-    
+    DEFINE_int32(cp_local_search_sync_frequency, 16,
+    "Frequency of checks for better solutions in the solution pool.");
     
 ..  only:: final
 

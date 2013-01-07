@@ -71,19 +71,26 @@ You can find the code in the directory ``documentation/tutorials/cplusplus/chap6
 
 The files inside this directory are:
 
-- :file:`Makefile`.
-- :file:`dummy_ls.cc`: A very basic example to understand the API of Local Search in or-tools.
-- :file:`jobshop.h`: This file contents the ``JobShopData`` class that records the data for job-shop problems. This file is used
-  throughout all the examples.
-- :file:`jobshop.cc`: A basic implementation of the disjunctive model with ``IntervalVar`` and ``SequenceVar`` variables.
-- :file:`jobshop_ls.cc`: A basic implementation of Local Search with an 2-opt operator.
-- :file:`dummy_ls_filtering.cc`: The example :file:`dummy_ls.cc` extended with filtering.
-- :file:`jobshop_ls_filtering.cc`: The example :file:`jobshop_ls.cc` extended with filtering.
-- :file:`jobshop_tabu.cc`: The job-shop problem solved by Tabu Search.
-- :file:`jobshop_SA.cc`: The job-shop problem solved by Simulated Annealing.
-- :file:`jobshop_GLS.cc`: The job-shop problem solved by Guided Local Search.
+..  only:: draft
 
-The files of this chapter are **NOT** the same as the ones in the :file:`example` directory even if there were inspired by them.
+    - :file:`Makefile`.
+    - :file:`jobshop.h`: This file contents the ``JobShopData`` class that records the data for job-shop problems. This file is used
+      throughout all the examples.
+    - :file:`report_jobshopdata.cc`: a simple program to report the content of job-shop problem instances in JSSP or Taillard's formats.
+    - :file:`abz9`: a job-shop problem instance in JSSP format.
+    - :file:`20_5_01_ta001.txt`: a job-shop problem instance in Taillard's format.
+    - :file:`first_example_jssp.txt`: our first example in JSSP format.
+    - :file:`jobshop.cc`: A basic implementation of the disjunctive model with ``IntervalVar`` and ``SequenceVar`` variables.
+    - :file:`dummy_ls.cc`: A very basic example to understand the API of Local Search in or-tools.
+    - :file:`jobshop_ls.cc`: A basic implementation of Local Search with an 2-opt operator.
+    - :file:`dummy_ls_filtering.cc`: The example :file:`dummy_ls.cc` extended with filtering.
+    - :file:`jobshop_ls_filtering.cc`: The example :file:`jobshop_ls.cc` extended with filtering.
+    - :file:`jobshop_tabu.cc`: The job-shop problem solved by Tabu Search.
+    - :file:`jobshop_SA.cc`: The job-shop problem solved by Simulated Annealing.
+    - :file:`jobshop_GLS.cc`: The job-shop problem solved by Guided Local Search.
+
+    The files of this chapter are **NOT** the same as the ones in the :file:`example` directory even if there were inspired 
+    by them. In particular, job-shop instances with only one task per job are accepted (not that this is extremely useful but...).
 
 
 ..  only:: html

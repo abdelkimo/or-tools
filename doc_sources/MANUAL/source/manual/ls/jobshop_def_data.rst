@@ -1,3 +1,5 @@
+..  include:: ../../../../global.rst
+
 ..  _jobshop_def:
 
 The job-shop problem, the disjunctive model and benchmark data
@@ -5,11 +7,33 @@ The job-shop problem, the disjunctive model and benchmark data
 
 ..  raw:: latex
 
-    You can find the code in the file~\code{tutorials/cplusplus/chap6/jobshop.h}.\\~\\
+    You can find the code in the files~\code{jobshop.h} and~\code{report\_jobshopdata.cc}
+    and the data in the files~\code{abz9}, \code{20\_5\_01\_ta001.txt} and~\code{first\_example\_jssp.txt}.\\~\\
 
 ..  only:: html
 
-    **C++ code**: `tutorials/cplusplus/chap6/jobshop.h <../../../tutorials/cplusplus/chap6/jobshop.h>`_.
+    ..  container:: files-sidebar
+
+        ..  raw:: html 
+        
+            <ol>
+              <li>C++ code:
+                <ol>
+                  <li><a href="../../../tutorials/cplusplus/chap6/jobshop.h">jobshop.h</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap6/report_jobshopdata.cc">report_jobshopdata.cc</a></li>
+                </ol>
+              </li>
+                <li>Data files:
+                    <ol>
+                       <li><a href="../../../tutorials/cplusplus/chap6/abz9">abz9</a></li>
+                       <li><a href="../../../tutorials/cplusplus/chap6/20_5_01_ta001.txt">20_5_01_ta001.txt</a></li>
+                       <li><a href="../../../tutorials/cplusplus/chap6/first_example_jssp.txt">first_example_jssp.txt</a></li>
+                    </ol>
+                 </li>
+            </ol>
+        
+        
+        
 
 We describe the job-shop problem, a first model and the benchmark data. The job-shop problem belongs to the 
 intractable problems (:math:`\in` NP). Only few very special cases can be solved in 
@@ -21,8 +45,8 @@ polynomial time (see [Garey1976]_ and [Kis2002]_).
 ..  [Kis2002] Kis, T., *On the complexity of non-preemptive shop scheduling with two jobs*, Computing, volume 69, nbr 1, pp 37-49, 
     2002.
 
-Description of the problem 
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Description of the problem |difficulty|
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the classical job-shop problem there are :math:`n` jobs that must be processed on :math:`m` machines. 
 Each job consists of a sequence of different tasks [#tasks_operations]_. Each task needs to be processed during an 
@@ -46,7 +70,7 @@ Here is an example with :math:`m=3` machines and :math:`n=3` jobs. We count jobs
       - job 1 = :math:`[(0,2), (2,1), (1,4)]`
       - job 2 = :math:`[(1,4), (2,3)]`
 
-For instance, job 2 consists of  :math:`\tau_2 = 2` tasks: task :math:`a_{02}` which must be processed on machine :math:`m_{02} = 1` 
+In this example, job 2 consists of  :math:`\tau_2 = 2` tasks: task :math:`a_{02}` which must be processed on machine :math:`m_{02} = 1` 
 during :math:`p_{02} = 4` units of time and task :math:`a_{12}` which must be processed on machine :math:`m_{02} = 2` 
 during :math:`p_{02} = 3` units of time.
 
@@ -83,42 +107,45 @@ schedule:
 ..  only:: html 
     
     .. image:: images/schedule1.*
-       :width: 400pt
+       :width: 500pt
        :align: center
 
 ..  only:: latex
     
     .. image:: images/schedule1.*
-       :width: 300pt
+       :width: 400pt
        :align: center
     
-This is a feasible schedule since tasks within every job are processed one after the other in the right sequence. The makespan
+This is a feasible schedule since tasks within every job are processed one after the other in the right sequence and 
+each task is processed on the right machine. The makespan
 is 12 units of time. Can we do better? Focusing on one job is probably not the best strategy. Here is an optimal solution:
     
 ..  only:: html 
     
     .. image:: images/schedule2.*
-       :width: 400pt
+       :width: 500pt
        :align: center
 
 ..  only:: latex
     
     .. image:: images/schedule2.*
-       :width: 300pt
+       :width: 400pt
        :align: center
     
 Its makespan is 11 units of time.
     
 How can we simply describe a schedule? Let us define :math:`t_{ij}` as the starting time of task :math:`a_{ij}`. A feasible 
-*schedule* will then be a set [#set_and_a_correspondence_rule]_ of non negative integers :math:`\{t_{ij}\}` 
+*schedule* can then be defined as a set [#set_and_a_correspondence_rule]_ of non negative integers :math:`\{t_{ij}\}` 
 such that the definition of a job-shop problem is respected.
 If we only consider schedules where all tasks are completely left shifted on the Gantt chart [#left_shifted_schedules]_, we can define 
 a feasible schedule by giving the sequence of jobs processed on each machine.
-    
+
+..  [#set_and_a_correspondence_rule] And a correspondence rule between those integers and the tasks.
+
 ..  [#left_shifted_schedules] A rigorous definition of *schedules where all tasks are completely left shifted on the Gantt chart*
     is beyond the scope of this manual. In scheduling jargon, such schedules are called *semi-active* schedules.
 
-..  [#set_and_a_correspondence_rule] And a correspondence rule between those integers and the tasks.
+
 
 The first schedule can be described by:
     
@@ -146,13 +173,13 @@ The disjunctive graph
 
 ..  raw:: latex
 
-    Figure~\ref{manual/ls/jobshop_def_data:disjunctive-graph1} represents the \emph{disjunctive graph} of 
+    Figure~\ref{manual/ls/jobshop_def_data:disjunctive-graph1} represents the \emph{disjunctive graph} of
     our example.
 
 
 ..  only:: html
 
-    The Figure :ref:`disjunctive_graph1` 
+    The figure :ref:`disjunctive_graph1` 
     represents the *disjunctive graph* of 
     our example.
 
@@ -167,7 +194,7 @@ The disjunctive graph
 
 ..  only:: html
 
-    The graph is :math:`G = (V, C \cup D)` where
+    The disjunctive graph is :math:`G = (V, C \cup D)` where
     
       :math:`V` is the set of vertices corresponding to the tasks. Two fictive vertices :math:`s` and :math:`t` are added to
         represent the start and end times. Each vertex has a weight corresponding to the processing time of the task it represents.
@@ -175,10 +202,10 @@ The disjunctive graph
   
       :math:`C` is a set of *conjunctive arcs* between the :math:`i^{\textrm{th}}` and :math:`(i+1)^{\textrm{th}}` tasks of a job.
         We also add conjunctive arcs from :math:`s` to the first task of every job and from the last task of every job to :math:`t`.
-        These arcs are plain in the Figure :ref:`disjunctive_graph1`.
+        These arcs are plain in the figure.
 
       :math:`D` is a set of *disjunctive arcs* between tasks to be processed on the same machine.
-        These arcs are dotted or dashed in the Figure :ref:`disjunctive_graph1`.
+        These arcs are dotted or dashed in the figure.
 
 
 ..  raw:: latex
@@ -193,10 +220,10 @@ The disjunctive graph
     
         \item $C$ are the \emph{conjunctive arcs} between the $i^{\textrm{th}}$ and $(i+1)^{\textrm{th}}$ tasks of a job.
           We also add conjunctive arcs from $s$ to the first task of every job and from the last task of every job to $t$.
-          These arcs are plain in Figure~\ref{manual/ls/jobshop_def_data:disjunctive-graph1}.
+          These arcs are plain in figure~\ref{manual/ls/jobshop_def_data:disjunctive-graph1}.
           
         \item $D$ are the \emph{disjunctive arcs} between task to be processed on the same machine.
-            These arcs are dotted or dashed in Figure~\ref{manual/ls/jobshop_def_data:disjunctive-graph1}.
+            These arcs are dotted or dashed in figure~\ref{manual/ls/jobshop_def_data:disjunctive-graph1}.
     \end{itemize}
 
 To determine a schedule we have to define an ordering of all tasks processed on each machine. This can be done by orienting 
@@ -206,7 +233,7 @@ all dotted or dashed edges such that each clique corresponding to a machine beco
 ..  [#acyclic_machine_clique] An acyclic graph is a graph without cycle. It can be shown that a complete directed acyclic graph induces 
     a total order on its vertices, i.e. a complete directed acyclic graph lets you order all its vertices unequivocally.
           
-Our first schedule is represented in the next Figure.
+Our first schedule is represented in the next figure.
     
 ..  only:: html 
     
@@ -224,7 +251,7 @@ We also want to avoid cycles between disjunctive and conjunctive arcs because th
 A feasible schedule is represented by a directed acyclic disjunctive graph. In fact, the opposite is also true. A complete orientation 
 of the edges in :math:`D` defines a feasible schedule if and only if the resulting directed disjunctive graph is acyclic.
     
-The makespan is given by the longest weighted path from :math:`s` to :math:`t`. This path - thickened in the next Figure -
+The makespan is given by the longest weighted path from :math:`s` to :math:`t`. This path - thickened in the next figure -
 is called the *critical path*.
     
 ..  only:: html 
@@ -266,7 +293,7 @@ What are the **constraints**? In the disjunctive graph, we have two kind of edge
     
     ..  math:: 
     
-        \forall (k,j) \in C (k \neq s, l \neq t):\\
+        \forall (k,l) \in C \text{ such that } k \neq s \text{ and } l \neq t:\\
         
         t_k + p_k \leqslant t_l
         
@@ -276,14 +303,14 @@ What are the **constraints**? In the disjunctive graph, we have two kind of edge
   
     ..  math::
     
-        \forall (k,l) \in D: m_k = m_l\\
+        \forall (k,l) \in D \text{ such that } m_k = m_l\\
         
-        t_k + p_k \leqslant t_l \vee t_l + p_l \leqslant t_k
+        t_k + p_k \leqslant t_l \text{ or } t_l + p_l \leqslant t_k
         
     These constraints are called *disjunctive constraints*. They forbid 
     cycles in a clique corresponding to a machine [#cycle_and_disjunctive_constraint]_.
     
-    ..  [#cycle_and_disjunctive_constraint] Consider the following situation
+    ..  [#cycle_and_disjunctive_constraint] Here is why. Consider the following situation
     
         ..  only:: html 
     
@@ -295,10 +322,11 @@ What are the **constraints**? In the disjunctive graph, we have two kind of edge
             
             .. image:: images/no_cycle.*
                :width: 70pt
+               :align: center
                 
         We have :math:`t_1 + p_1 \leqslant t_2`, :math:`t_2 + p_2 \leqslant t_3` and :math:`t_3 + p_3 \leqslant t_1`. Add 
         these three inequalities and you obtain :math:`p_1 + p_2 + p_3 \leqslant 0`. This is impossible if one of the 
-        :math:`p_i` is greater than 0.
+        :math:`p_i` is greater than 0 as every :math:`p_i \geqslant 0`.
         
 What is the **objective function**? The objective function (the makespan) :math:`C_{\textrm{max}}` doesn't 
 correspond to a variable of the model. We 
@@ -309,7 +337,7 @@ tasks:
     
 ..  math::
     
-    \forall k \in S:\\
+    \forall \, k\in S:\\
         
     C_{\textrm{max}} \geqslant t_k + p_k.
     
@@ -322,7 +350,7 @@ Here is the model [#jobshop_model_exact]_:
     \textrm{s.t.:} &  & \\
     & C_{\textrm{max}} \geqslant t_k + p_k & \forall \, k \in S\\
     & t_k + p_k \leqslant t_l & \forall \, (k,l) \in C\\
-    & t_k + p_k \leqslant t_l \vee t_l + p_l \leqslant t_k & \forall \, (k,l) \in D: m_k = m_l\\
+    & t_k + p_k \leqslant t_l \text{ or } t_l + p_l \leqslant t_k & \forall \, (k,l) \in D: m_k = m_l\\
     & t_k \geqslant 0 & \forall \, k \in V \setminus \{s,t\}
     \end{array}
     
@@ -335,11 +363,13 @@ instances of job-shop problems.
 The data and file formats
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To collect the data, we use two different file formats: **JSSP** and professor **Taillard's instances format**.
-In the directory :file:`data/jobshop`, you can find data files for the job-shop problem.
+To collect the data, we use two different file formats: **JSSP** and professor **Taillard's instances** formats.
+In the directory :file:`data/jobshop`, you can find data files for the job-shop problem [#jobshop_data_files_copied]_. 
 The file :file:`jobshop.h` lets you read both formats and store the data into a ``JobshopData`` class we will use 
 throughout this chapter.
 
+..  [#jobshop_data_files_copied] We copied the files :file:`abz9` 
+    and :file:`20_5_01_ta001.txt` in the directory :file:`manual/tutorials/cplusplus/chap6` for your convenience.
 
 JSSP format 
 """""""""""""
@@ -426,6 +456,10 @@ actually
 
     [(0,54), (1,79), (2,16), (3,66), (4,58)]
 
+..  only:: draft
+
+    Because of this trick, one can not easily define our problem instance above and we don't try to.
+
 You can find all you ever wanted to know and more about this format in [Taillard1993]_.
 
 ..  [Taillard1993] Taillard, E., 1993. *Benchmarks for basic scheduling problems*, 
@@ -434,15 +468,13 @@ You can find all you ever wanted to know and more about this format in [Taillard
 ``JobshopData``
 """"""""""""""""""
 
-
-The ``JobshopData`` class is a simple container for job-shop instances. It is defined in the file :file:`jobshop.h`.
+The ``JobshopData`` class is a simple container for job-shop problem instances. It is defined in the file :file:`jobshop.h`.
 Basically, it wraps an ``std::vector<std::vector<Task> >`` container where ``Task`` is a ``struct`` defined as follows:
 
 ..  code-block:: c++
 
     struct Task {
-      Task(int j, int m, int d) : job_id(j), machine_id(m), duration(d) 
-      {}
+      Task(int j, int m, int d) : job_id(j), machine_id(m), duration(d) {}
       int job_id;
       int machine_id;
       int duration;
@@ -450,33 +482,77 @@ Basically, it wraps an ``std::vector<std::vector<Task> >`` container where ``Tas
 
 Most part of the ``JobshopData`` class is devoted to the reading of both file formats.
 
-The public methods are
+..  only:: draft
 
-  * ``void Load(const std::string& filename)``: parses and loads the tasks for each job. We use a ``FileLineReader`` (declared in 
-    :file:`base/filelinereader.h`) to parse a text file:
+    The data file is processed at the creation of a ``JobShopData`` object:
     
     ..  code-block:: c++
     
-        void Load(const string& filename) {
-          FileLineReader reader(filename.c_str());
-          reader.set_line_callback(NewPermanentCallback(
-              this,
-              &JobShopData::ProcessNewLine));
-          reader.Reload();
-          if (!reader.loaded_successfully()) {
-            LOG(ERROR) << "Could not open jobshop file";
+        explicit JobShopData(const string& filename) :
+          ...
+          {
+            FileLineReader reader(filename_.c_str());
+            reader.set_line_callback(NewPermanentCallback(
+                                     this,
+                                     &JobShopData::ProcessNewLine));
+            reader.Reload();
+            if (!reader.loaded_successfully()) {
+              LOG(FATAL) << "Could not open job-shop file " << filename_;
           }
-        } 
-        
-    ``void ProcessNewLine(char* const line)`` is a callback that parses one line at a time.
-    It is triggered by the ``Reload()`` method of the ``FileLineReader``.
+
+    To parse the data file and load the tasks for each job, 
+    we use a ``FileLineReader`` (declared in :file:`base/filelinereader.h`). In its 
+    ``Reload()`` method, it calls the callback ``void ProcessNewLine(char* const line)`` to read one line at a time 
+
+The public methods of the ``JobShopData`` class are
     
-  * the *getters*:
+* the *getters*:
   
-    - ``machine_count()``: number of machines;
-    - ``job_count()``: number of jobs;
-    - ``name()``: instance name;
-    - ``horizon()``: the sum of all durations (and a trivial upper bound on the makespan).
-    
-  * ``const std::vector<Task>& TasksOfJob(int job_id) const``: returns a reference to the corresponding ``std::vector<Task>`` of tasks.
-    
+  - ``machine_count()``: number of machines;
+  - ``job_count()``: number of jobs;
+  - ``name()``: instance name;
+  - ``horizon()``: the sum of all durations (and a trivial upper bound on the makespan).
+  - ``const std::vector<Task>& TasksOfJob(int job_id) const``: returns a reference to the corresponding ``std::vector<Task>`` of tasks.
+  and
+  
+* two methods to report the content of the data file parsed:
+
+  ..  code-block:: c++
+
+      void Report(std::ostream & out);
+      void ReportAll(std::ostream & out);
+
+Just for fun, we have written the data file corresponding to our example above in JSSP format in 
+the file :file:`first_example_jssp.txt`:
+
+..  code-block:: text 
+
+    +++++++++++++++++++++++++++++
+
+    instance tutorial_first_jobshop_example
+
+    +++++++++++++++++++++++++++++
+    Simple instance of a job-shop problem in JSSP format 
+    to illustrate the working of the or-tools library
+    3 3
+     0 3  1 2  2 2
+     0 2  2 1  1 4
+     1 4  2 3
+
+The ``ReportAll()`` method outputs:
+
+..  code-block:: text 
+
+    Job-shop problem instance in JSSP format read from file first_example_jssp.txt
+    Name: tutorial_first_jobshop_example
+    Jobs: 3
+    Machines: 3
+    ==========================================
+    Job: 0
+    (0,3) (1,2) (2,2) 
+    Job: 1
+    (0,2) (2,1) (1,4) 
+    Job: 2
+    (1,4) (2,3) 
+
+The file :file:`report_jobshopdata.cc` contains a simple program to test the content of data files for the job-shop problem.
