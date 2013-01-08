@@ -545,7 +545,8 @@ The ``ReportAll()`` method outputs:
 
 ..  code-block:: text 
 
-    Job-shop problem instance in JSSP format read from file first_example_jssp.txt
+    Job-shop problem instance in JSSP format read from file 
+                                                    first_example_jssp.txt
     Name: tutorial_first_jobshop_example
     Jobs: 3
     Machines: 3

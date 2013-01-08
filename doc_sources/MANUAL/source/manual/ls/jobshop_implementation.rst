@@ -5,7 +5,8 @@ An implementation of the disjunctive model
 
 ..  raw:: latex
 
-    You can find the code in the file~\code{tutorials/cplusplus/chap6/jobshop.cc}.\\~\\
+    You can find the code in the file~\code{jobshop.cc} and the data
+    in the files~\code{first\_example\_jssp.txt} and~\code{abz9}.\\~\\
 
 ..  only:: html
 
@@ -22,6 +23,7 @@ An implementation of the disjunctive model
               <li>Data file:
                 <ol>
                   <li><a href="../../../tutorials/cplusplus/chap6/first_example_jssp.txt">first_example_jssp.txt</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap6/abz9">abz9</a></li>
                 </ol>
               </li>
 
@@ -340,15 +342,39 @@ The result for our instance is:
     ...: Machine_1: Job 2 (0,4)  Job 0 (4,6)  Job 1 (6,10)  
     ...: Machine_2: Job 1 (5,6)  Job 0 (6,8)  Job 2 (8,11)  
 
-RESULTS HERE
+..  only:: draft
 
-This is why we use local search to find a good solution in the 
-next section.
+    This was a piece of cake. Let's try the :file:`abz9` instance:
+    
+    ..  tabularcolumns:: |c|r|r|r|
 
-J. AJ. Adams, E. Balas, D. Zawack, The shifting bottleneck
-procedure for job shop scheduling, Management Science
-34 (1988) 391±401.
-dams, E. Balas, D. Zawack, The shifting bottleneck
-procedure for job shop scheduling, Management Science
-34 (1988) 391±401.
+    ..  table::
+    
+        ========== ========== =========== ============
+        Sol. nbr.  Obj. val.  Branches    Time (s)
+        ========== ========== =========== ============
+        87         1015         131 733     26,756
+        107         986       6 242 194   1088,487
+        ========== ========== =========== ============
+
+    After a little bit more than 18 minutes (1088,487 seconds), the CP solver 
+    finds its 107 :superscript:`th` solution with an objective value of 986. This is quite far from the optimal 
+    value of... 679 [Adams1988]_.
+    An exact procedure to solve the job-shop problem is possible but only for small instances and with specialized algorithms.
+    
+    ..  only:: html 
+    
+        We prefer to find quickly hopefully good solutions. We do this in the section :ref:`jobshop_ls`.
+    
+    ..  raw:: latex 
+    
+        We prefer to find quickly hopefully good solutions. We do this in section~\ref{manual/ls/jobshop_ls:jobshop-ls}.
+
+    We next will discover what specialized tools are available in our library to handle scheduling problems.
+    
+    ..  [Adams1988] J. Adams, E. Balas, D. Zawack, *The shifting bottleneck
+                    procedure for job shop scheduling*. Management Science, 34, pp 391-401, 1988.
+
+    
+
 
