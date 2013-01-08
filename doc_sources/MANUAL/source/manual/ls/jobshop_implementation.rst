@@ -19,6 +19,12 @@ An implementation of the disjunctive model
                   <li><a href="../../../tutorials/cplusplus/chap6/jobshop.cc">jobshop.cc</a></li>
                 </ol>
               </li>
+              <li>Data file:
+                <ol>
+                  <li><a href="../../../tutorials/cplusplus/chap6/first_example_jssp.txt">first_example_jssp.txt</a></li>
+                </ol>
+              </li>
+
             </ol>
 
 
@@ -145,7 +151,7 @@ for each machine with the factory method ``MakeSequenceVar``:
                     const string & name)
 
 but creating ``SequenceVar``\s with ``DisjunctiveConstraint``\s is so common that the CP solver offers the 
-``MakeSequenceVar()`` shortcut: 
+``MakeSequenceVar()`` shortcut from the ``DisjunctiveConstraint`` constraint: 
 
 ..  code-block:: c++
 
@@ -157,6 +163,8 @@ but creating ``SequenceVar``\s with ``DisjunctiveConstraint``\s is so common tha
       solver.AddConstraint(ct);
       all_sequences.push_back(ct->MakeSequenceVar());
     }
+
+
 
 The objective function
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -192,10 +200,10 @@ The ``DecisionBuilder``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-The solving process is done in two phases: first we rank the tasks for each machine, then 
+The solving process is done in two sequential phases: first we rank the tasks for each machine, then 
 we schedule each task at its earliest start time. This is done with *two* ``DecisionBuilder``\s
 that are combined in a top-down fashion, i.e. one ``DecisionBuilder`` is applied and then when we reach
-a leaf in the search tree, the second ``DecisionBuilder`` kicks in. Since this chapter is about Local Search, 
+a leaf in the search tree, the second ``DecisionBuilder`` kicks in. Since this chapter is about local search, 
 we will use default search strategies for both phases.
 
 First, we define the phase to rank the tasks on all machines:
@@ -214,7 +222,7 @@ by fixing the objective variable to its minimum value:
                                        Solver::CHOOSE_FIRST_UNBOUND,
                                        Solver::ASSIGN_MIN_VALUE);
 
-Third, we combine both phases one after the other in the search tree:
+Third, we combine both phases one after the other in the search tree with the ``Compose()`` method:
 
 ..  code-block:: c++
 
@@ -265,7 +273,8 @@ and launch the search:
     }
 
 ``collector->ForwardSequence(0, seq)`` is a shortcut to return the ``std::vector<int>``
-containing the order in which the tasks are processed on each machine for solution 0.
+containing the order in which the tasks are processed on each machine for solution 0 (which is the last and thus optimal 
+solution).
 
 This order corresponds exactly to the job ids because the way the tasks are ordered on each machine (by job ids).
 The result for our instance is:
@@ -336,4 +345,10 @@ RESULTS HERE
 This is why we use local search to find a good solution in the 
 next section.
 
+J. AJ. Adams, E. Balas, D. Zawack, The shifting bottleneck
+procedure for job shop scheduling, Management Science
+34 (1988) 391±401.
+dams, E. Balas, D. Zawack, The shifting bottleneck
+procedure for job shop scheduling, Management Science
+34 (1988) 391±401.
 
