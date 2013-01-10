@@ -16,6 +16,13 @@ Variables
 
 ..  only:: draft
 
+    TO BE REWRITTEN
+
+    IntervalVar::kMaxValidValue = kint64max >> 2;
+    const int64 IntervalVar::kMinValidValue 
+
+    FOLLOWING TEXT IS CLEAN IN THIS SUBSUBSECTION
+
     An ``IntervalVar`` variable represents an *integer interval variable*. It is often used in scheduling to 
     represent a *task* because it has:
     
@@ -102,7 +109,7 @@ Variables that perform... or not
     An important aspect of ``IntervalVar``\s is optionality. An ``IntervalVar`` can be *performed* or not. If
     *unperformed*, then it simply does not exist and its characteristics
     cannot be accessed anymore. An ``IntervalVar`` is automatically marked
-    as unperformed when it is not consistent anymore (starting time greater
+    as *unperformed* when it is not consistent anymore (starting time greater
     than ending time, duration < 0...). You can get and set if an ``IntervalVar`` must or may be performed with the following 
     methods:
 
@@ -132,7 +139,7 @@ Variables that perform... or not
     
     The use of an ``IntExpr`` allows expressiveness and the use of sophisticated constraints.
     
-    As we have seen, if the ``IntervalVar`` is not performed, we cannot use ``StartExpr()``, ``DurationExpr()``
+    As we have seen, if the ``IntervalVar`` is *unperformed*, we cannot use ``StartExpr()``, ``DurationExpr()``
     and ``EndExpr()``. You can however call their *safe* versions:
     
     * ``IntExpr* SafeStartExpr(int64 unperformed_value);``
@@ -194,14 +201,13 @@ Public methods
     
 
     * ``void DurationRange(int64* const dmin, int64* const dmax) const``:
-        Returns the minimum and maximum duration of the combined ``IntervalVar`` variables in the ``SequenceVar`` variable.
+        Returns the minimum and maximum duration of the combined ``IntervalVar`` variables.
     
     * ``void HorizonRange(int64* const hmin, int64* const hmax) const``:
-        Returns the minimum starting time ``hmin`` and the maximum ending time ``hmax`` of all unranked ``IntervalVar`` variables 
-        in the ``SequenceVar`` variable.
+        Returns the minimum starting time ``hmin`` and the maximum ending time ``hmax`` of all unranked ``IntervalVar`` variables.
     
     * ``void ActiveHorizonRange(int64* const hmin, int64* const hmax) const``:
-        Same as above but for all *unranked* ``IntervalVar`` variables in the ``SequenceVar``.
+        Same as above but for all *unranked* ``IntervalVar`` variables.
     
     * ``int Ranked() const``:
         Returns the number of ``IntervalVar`` variables already ranked.
@@ -209,15 +215,28 @@ Public methods
     * ``int NotRanked() const``:
         Returns the number of not-unperformed ``IntervalVar`` variables that may be
         performed and that are not ranked yet.
+
+    * ``void ComputeStatistics(...)``:
+        Computes the following statistics:
+        
+        ..  code-block:: c++
+        
+                void ComputeStatistics(int* const ranked,
+                                       int* const not_ranked,
+                                       int* const unperformed) const;
+                                       
+        ``ranked + not_ranked + unperformed`` is equal to ``size()``.
         
     * ``IntervalVar* Interval(int index) const``:
-        Returns the index :superscript:`th` ``IntervalVar`` of the ``SequenceVar`` variable.
+        Returns the index :superscript:`th` ``IntervalVar``.
     
     * ``IntVar* Next(int index) const``:
         Returns the index :superscript:`th` next of the sequence.
         
+        NOT CLEAR!
+        
     * ``int size() const``:
-        Returns the number of ``IntervalVar`` variables in the ``SequenceVar`` variable.
+        Returns the number of ``IntervalVar`` variables.
 
     * ``void FillSequence(...)``:
         a getter acting on the three ``std::vector<int>`` of first, last and unperformed variables:

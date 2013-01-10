@@ -144,16 +144,11 @@ a task is processed entirely before or after another task on a single machine. T
                                                                   name);
 
 A ``SequenceVar`` variable is a variable whose domain is a set of possible
-orderings of the ``IntervalVar``\s. It allows ordering tasks. We could create one ``SequenceVar``
-for each machine with the factory method ``MakeSequenceVar``:
+orderings of the ``IntervalVar``\s. It allows ordering tasks. 
 
-..  code-block:: c++
 
-    MakeSequenceVar(const std::vector< IntervalVar *> & intervals,
-                    const string & name)
-
-but creating ``SequenceVar``\s with ``DisjunctiveConstraint``\s is so common that the CP solver offers the 
-``MakeSequenceVar()`` shortcut from the ``DisjunctiveConstraint`` constraint: 
+You can only create [#one_way_to_create_sequence_vars]_ ``SequenceVar``\s with the ``MakeSequenceVar()`` method of the ``DisjunctiveConstraint``
+class:
 
 ..  code-block:: c++
 
@@ -167,6 +162,16 @@ but creating ``SequenceVar``\s with ``DisjunctiveConstraint``\s is so common tha
     }
 
 
+..  [#one_way_to_create_sequence_vars] The factory method 
+
+    ..  code-block:: c++
+    
+        MakeSequenceVar(const std::vector< IntervalVar *> & intervals,
+                        const string & name);
+
+    has been removed from the API.
+    
+    
 
 The objective function
 ^^^^^^^^^^^^^^^^^^^^^^^^^
