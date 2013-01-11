@@ -162,13 +162,7 @@ class:
     }
 
 
-..  [#one_way_to_create_sequence_vars] The factory method 
-
-    ..  code-block:: c++
-    
-        MakeSequenceVar(const std::vector< IntervalVar *> & intervals,
-                        const string & name);
-
+..  [#one_way_to_create_sequence_vars] The factory method ``Solver::MakeSequenceVar(...)``
     has been removed from the API.
     
     

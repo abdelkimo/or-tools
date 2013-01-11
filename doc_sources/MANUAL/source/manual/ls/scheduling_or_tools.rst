@@ -6,6 +6,8 @@ Scheduling in *or-tools*
 ..  only:: draft
 
 
+    ..  warning:: This part of the CP Solver is not quite settled yet. Check the code in case of doubt.
+
 Variables
 ^^^^^^^^^^^^^^
 
@@ -179,6 +181,8 @@ Variables that perform... or not
     
     where the precedence matrix ``mat`` is such that ``mat(i,j) = 1`` if ``i`` is ranked before ``j``.
     
+    The ``IntervalVar`` are often given by their indices in the array of ``IntervalVar``\s.
+    
     ..  [#sequencevar_virtually_conceptualized] This looks very much like the actual implementation. The array is a
         ``scoped_array<IntervalVar*>`` and the precedence matrix is given by a ``scoped_ptr<RevBitMatrix>``. The actual class 
         contains some more data structures to facilitate and optimize the propagation.
@@ -190,21 +194,35 @@ Ranked ``IntervalVar``\s
 ..  only:: draft
 
 
-    Unranked ``IntervalVar``\s are called ``active`` variables.
+    *Ranked* ``IntervalVar``\s are exactly that: already ranked variables in the sequence. ``IntervalVar``\s can be ranked 
+    at the beginning or at the end of the sequence in the ``SequenceVar`` variable. *unperformed* ``IntervalVar`` can not 
+    be ranked. The next figure illustrates the situation:
+    
+    ..  image:: ./images/sequencevar_ranked.*
+        :align: center 
+        :width: 700px
+
 
 Public methods
 """""""""""""""""
 
 ..  only:: draft
 
-    You have the following **getters**:
+    All the following methods are updated with the current values of the ``SequenceVar``. *unperformed* variables - unless
+    explicitly stated in one of the arguments - are never considered.
+
+    First, you have the following **getters**:
     
 
     * ``void DurationRange(int64* const dmin, int64* const dmax) const``:
-        Returns the minimum and maximum duration of the combined ``IntervalVar`` variables.
+        Returns the minimum and maximum duration of the ``IntervalVar`` variables: 
+        
+        * ``dmin`` is the total (minimum) duration of mandatory variables (those that **must** be performed) and
+        * ``dmax`` is the total (maximum) duration of variables that **may** be performed.
     
     * ``void HorizonRange(int64* const hmin, int64* const hmax) const``:
-        Returns the minimum starting time ``hmin`` and the maximum ending time ``hmax`` of all unranked ``IntervalVar`` variables.
+        Returns the minimum starting time ``hmin`` and the maximum ending time ``hmax`` of **all** 
+        ``IntervalVar`` variables that **may** be performed.
     
     * ``void ActiveHorizonRange(int64* const hmin, int64* const hmax) const``:
         Same as above but for all *unranked* ``IntervalVar`` variables.
@@ -228,18 +246,34 @@ Public methods
         ``ranked + not_ranked + unperformed`` is equal to ``size()``.
         
     * ``IntervalVar* Interval(int index) const``:
-        Returns the index :superscript:`th` ``IntervalVar``.
+        Returns the index :superscript:`th` ``IntervalVar`` from the array of ``IntervalVar``\s.
     
     * ``IntVar* Next(int index) const``:
-        Returns the index :superscript:`th` next of the sequence.
+        To each ``IntervalVar`` is a ``IntVar`` variable associated that represents the "ranking" of the ``IntervalVar`` in 
+        the ranked sequence. The ``Next()`` method returns this ``IntVar`` variable for the index :superscript:`th` ``IntervalVar``
+        in the array of ``IntervalVar``\s.
+
+        For instance, if you want to know what is the next ``IntervalVar`` after the 3 :superscript:`rd` ranked ``IntervalVar``
+        in the sequence, use the following code:
         
-        NOT CLEAR!
+        ..  code-block:: c++
+        
+            SequenceVar * seq = ...;
+            ...
+            IntVar * next_var = seq->Next(3);
+            if (next_var->Bound()) {  //  OK, ranked
+              LG << "The next IntervalVar after the 3rd IntervalVar in " <<
+                                "the sequence is " << next_var->Value() - 1;
+            }
+        
+        As you can see, there is a difference of one between the value returned and the actual index of the ``IntervalVar`` 
+        in the array of ``IntervalVar``\s variables.
         
     * ``int size() const``:
         Returns the number of ``IntervalVar`` variables.
 
     * ``void FillSequence(...)``:
-        a getter acting on the three ``std::vector<int>`` of first, last and unperformed variables:
+        a getter acting on three ``std::vector<int>`` of first, last and unperformed variables:
     
         ..  code-block:: c++
       
@@ -247,21 +281,34 @@ Public methods
                                std::vector<int>* const rank_lasts,
                                std::vector<int>* const unperformed) const;
 
-        Clears 'rank_first' and 'rank_last', and fills them with the
-        intervals in the order of the ranks. If all variables are ranked,
-        'rank_first' will contain all variables, and 'rank_last' will
-        contain none.
-        'unperformed' will contains all such interval variables.
-        rank_first and rank_last represents different directions.
-        rank_first[0] corresponds to the first interval of the sequence.
-        rank_last[0] corresponds to the last interval of the sequence.
+        The method first clears the three ``std::vector``\s and fills them with the
+        ``IntervalVar`` number in the sequence order of ranked variables. If all variables are ranked,
+        ``rank_first`` will contain all variables and ``rank_last`` will contain none.
+        ``unperformed`` will contain all the *unperformed* ``IntervalVar`` variables.
+        ``rank_first[0]`` corresponds to the first ``IntervalVar`` of the sequence while
+        ``rank_last[0]`` corresponds to the last ``IntervalVar`` variable of the sequence, i.e. the ``IntervalVar`` variables
+        ranked last are given in the opposite order.
     
+
+    * ``ComputePossibleFirstsAndLasts(...)``:
+        a getter giving the possibilities among *unranked* ``IntervalVar`` variables:
     
-    You have the following **setters**:
+        ..  code-block:: c++
+    
+            void ComputePossibleFirstsAndLasts(
+                                   std::vector<int>* const possible_firsts,
+                                   std::vector<int>* const possible_lasts);
+    
+        This method computes the set of indices of ``IntervalVar`` variables that can be
+        ranked first or last in the set of unranked activities.
+
+
+    
+    Second, you have the following **setters**:
     
     * ``void RankFirst(int index)``:
         Ranks the index :superscript:`th` ``IntervalVar`` variable in front of all unranked ``IntervalVar`` variables.
-        After that, it will no longer be considered ranked.
+        After that, it will no longer be considered *unranked*.
     
     * ``void RankNotFirst(int index)``:
         Indicates that the index :superscript:th ``IntervalVar`` variable will not be ranked first
@@ -269,17 +316,14 @@ Public methods
     
     * ``void RankLast(int index)``:
         Ranks the index :superscript:`th` ``IntervalVar`` variable first among all unranked ``IntervalVar``
-        variables. After that, it will no longer be considered ranked.
+        variables. After that, it will no longer be considered *unranked*.
         
     * ``void RankNotLast(int index)``:
         Indicates that the index :superscript:`th` ``IntervalVar`` variable will not be ranked first
         among all currently unranked ``IntervalVar`` variables.
 
-    * ``void AddPrecedence(int before, int after)``:
-        Adds a precedence relation between the activities of the two corresponding ``IntervalVar``\s.
-        
     * ``void RankSequence(...)``:
-        a setter acting on the three ``std::vector<int>`` of first, last and unperformed variables:
+        a setter acting on three ``std::vector<int>`` of first, last and unperformed variables:
     
         ..  code-block:: c++
       
@@ -287,41 +331,16 @@ Public methods
                               const std::vector<int>& rank_lasts,
                               const std::vector<int>& unperformed);
     
-        Applies the following sequence of ranks, ranks first, then rank
-        last.  rank_first and rank_last represents different directions.
-        rank_first[0] corresponds to the first interval of the sequence.
-        rank_last[0] corresponds to the last interval of the sequence.
-        All intervals in the unperformed vector will be marked as such.
-  
-
- 
-    
-    
-    
-    
-    You have also the following method 
-    
-    ..  code-block:: c++
-    
-        void ComputePossibleFirstsAndLasts(
-                                   std::vector<int>* const possible_firsts,
-                                   std::vector<int>* const possible_lasts);
-    
-    This method computes the set of indices of interval variables that can be
-    ranked first in the set of unranked activities.
-
-
-    It
-    has two sets of methods: ComputePossibleFirstsAndLasts() which
-    returns the list of interval variables thant can be ranked first or
-    lasts, and RankFirst/RankNotFirst/RankLast/RankNotLast which can be
-    used to create the search decision.
-
+        Ranks the ``IntervalVar``\s in the given order. 
+        Again, the ``rank_firsts`` ``std::vector<int>`` gives the ``IntervalVar``\s in order (``rank_firsts[0]``
+        if the first ranked ``IntervalVar`` and so on) and the ``rank_lasts`` ``std::vector<int>`` give the 
+        ``IntervalVar`` in the opposite direction (``rank_lasts[0]`` is the last ``IntervalVar`` and so on).
+        All intervals in the ``unperformed`` ``std::vector<>`` will be marked as such.
 
 ..  _scheduling_constraints:
 
-Constraints
-^^^^^^^^^^^^^^
+Constraints on ``IntervalVar``\s
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
@@ -330,7 +349,7 @@ Constraints
 
 ..  only:: draft
 
-    While we are at it, you can also specify a temporal relation between an ``IntervalVar`` ``t`` and an integer ``d``:
+    You can specify a temporal relation between an ``IntervalVar`` ``t`` and an integer ``d``:
 
       * ``ENDS_AFTER``: ``t`` ends after ``d``, i.e. ``End(t) >= d``;
       * ``ENDS_AT``: ``t`` ends at ``d``, i.e. ``End(t) == d``;
@@ -346,32 +365,96 @@ Constraints
 
     ..  code-block:: c++
 
-         Constraint* Solver::MakeIntervalVarRelation(IntervalVar* const t,
+        Constraint* Solver::MakeIntervalVarRelation(IntervalVar* const t,
                                              Solver::UnaryIntervalRelation r,
-                                             int64 d)
+                                             int64 d);
 
 ``BinaryIntervalRelation`` constraints
 """"""""""""""""""""""""""""""""""""""""""
 
 ..  only:: draft
 
-    Other possibilities include:
+    You can specify a temporal relation between two ``IntervalVar``\s ``t1`` and ``t2``:
 
       * ``ENDS_AFTER_END``: ``t1`` ends after ``t2`` ends, i.e. ``End(t1) >= End(t2)``;
       * ``ENDS_AFTER_START``: ``t1`` ends after t2 starts, i.e. ``End(t1) >= Start(t2)``;
       * ``ENDS_AT_END``: ``t1`` ends at the end of ``t2``, i.e. ``End(t1) == End(t2)``;
       * ``ENDS_AT_START``: ``t1`` ends at ``t2``\'s start, i.e. ``End(t1) == Start(t2)``;
       * ``STARTS_AFTER_START``: ``t1`` starts after ``t2`` starts, i.e. ``Start(t1) >= Start(t2)``;
+      * ``STARTS_AFTER_END``: ``t1`` starts after ``t2`` ends, i.e. ``Start(t1) >= End(t2)``;
       * ``STARTS_AT_END``: ``t1`` starts at ``t2``\'s end, i.e. ``Start(t1) == End(t2)``;
       * ``STARTS_AT_START``: ``t1`` starts when ``t2`` starts, i.e. ``Start(t1) == Start(t2)``;
       * ``STAYS_IN_SYNC``: ``STARTS_AT_START`` and ``ENDS_AT_END`` at the same time.
 
-    These possibilities are enclosed in the ``BinaryIntervalRelation`` ``enum``.
+    These possibilities are enclosed in the ``BinaryIntervalRelation`` ``enum`` and the factory method is:
+    
+    ..  code-block:: c++
+    
+        Constraint* Solver::MakeIntervalVarRelation(IntervalVar* const t1,
+                                             Solver::BinaryIntervalRelation r,
+                                             IntervalVar* const t2)
+
+``TemporalDisjunction`` constraints
+""""""""""""""""""""""""""""""""""""""""""""""
+
+
+``DisjunctiveConstraint`` constraints
+"""""""""""""""""""""""""""""""""""""""""""""
+
+..  only:: draft
+
+    ..  warning:: The use of ``DisjunctiveConstraint``\s is the only way to create 
+        ``SequenceVar`` variables. Invoke its ``MakeSequenceVar()`` method to create a one.
+        
+
+
+``MakeCumulative`` constraints
+""""""""""""""""""""""""""""""""""""""
+
+
+Constraints on ``SequenceVar``\s
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    There are none for the time being. Nobody prevents you from implementing one... 
 
 ..  _scheduling_decisionbuilders_decision:
 
-``DecisionBuilder``\s and ``Decision``\s
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+``DecisionBuilder``\s and ``Decision``\s for ``IntervalVar``\s
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+
+``IntervalVar`` search strategies
+"""""""""""""""""""""""""""""""""""""
+
+..  only:: draft
+
+    DecisionBuilder * 	MakePhase (const std::vector< IntervalVar * > &intervals, IntervalStrategy str)
+
+
+
+The ``ScheduleOrPostpone`` ``Decision``
+"""""""""""""""""""""""""""""""""""""""""
+
+``DecisionBuilder``\s and ``Decision``\s for ``SequenceVar``\s
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+``SequenceVar`` search strategies
+"""""""""""""""""""""""""""""""""""
+
+..  only:: draft
+
+    DecisionBuilder * 	MakePhase (const std::vector< SequenceVar * > &sequences, SequenceStrategy str)
+
+The ``RankFirstInterval`` and ``RankLastInterval`` ``Decision``\s
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 
 ..  only:: draft
@@ -439,7 +522,50 @@ Constraints
 ``DependencyGraph``
 ^^^^^^^^^^^^^^^^^^^^
 
+..  only:: draft
 
+    If you want to add more specific temporal constraints, you can use a special data structure specialized for scheduling:
+    the ``DependencyGraph``. It is meant to store simple temporal constraints and to propagate
+    efficiently on the nodes of this temporal graph. One node in this graph corresponds to an ``IntervalVar`` variable.
+    You can build constraints on the start or the ending time of the ``IntervalVar`` nodes.
+    
+    Take again our first example (:file:`first_example_jssp.txt`) and let's say that for whatever reason we want to impose 
+    that the first task of job 2 must start at least after one unit of time after the first task of job 1. We could add this 
+    constraint in different ways but let's use the ``DependencyGraph``:
+    
+    ..  code-block:: c++
+    
+        solver = ...
+        ...
+        DependencyGraph * graph = solver.Graph();
+        graph->AddStartsAfterEndWithDelay(jobs_to_tasks[2][0], 
+                                          jobs_to_tasks[1][0], 1);
+
+    and that's it!
+    
+    Here is the output of an optimal solution found by the solver:
+    
+    ..  code-block:: text
+    
+        Objective value: 13
+        Machine_0: Job 1 (0,2)  Job 0 (2,5)  
+        Machine_1: Job 2 (3,7)  Job 0 (7,9)  Job 1 (9,13)  
+        Machine_2: Job 1 (2,3)  Job 2 (7,10)  Job 0 (10,12)  
+        
+    As you can see, the first task of job 2 starts at 3 and the first task of job 1 ends at 2.
+    
+    Other methods include:
+    
+    * ``AddStartsAfterEndWithDelay()``
+    * ``AddStartsAtEndWithDelay()``
+    * ``AddStartsAfterStartWithDelay()``
+    * ``AddStartsAtStartWithDelay()``
+    
+    
+    
+    The ``DependencyGraph`` and the ``DependencyGraphNode`` classes are declared in the 
+    :file:`constraint_solver/constraint_solveri.h` header.
+    
 ..  only:: final
 
     ..  raw:: html
