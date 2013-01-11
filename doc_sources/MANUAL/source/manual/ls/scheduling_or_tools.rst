@@ -18,13 +18,6 @@ Variables
 
 ..  only:: draft
 
-    TO BE REWRITTEN
-
-    IntervalVar::kMaxValidValue = kint64max >> 2;
-    const int64 IntervalVar::kMinValidValue 
-
-    FOLLOWING TEXT IS CLEAN IN THIS SUBSUBSECTION
-
     An ``IntervalVar`` variable represents an *integer interval variable*. It is often used in scheduling to 
     represent a *task* because it has:
     
@@ -472,10 +465,43 @@ Constraints on ``IntervalVar``\s
         
     ..  [#what_rankable] You remember that *unperformed* ``IntervalVar``\s are non existing, don't you?
 
-``MakeCumulative`` constraints
+``CumulativeConstraint`` constraints
 """"""""""""""""""""""""""""""""""""""
 
+..  only:: draft
 
+    This constraint forces that, for any integer t, the sum of the demands
+    corresponding to an interval containing t does not exceed the given
+    capacity.
+    
+    Intervals and demands should be vectors of equal size.
+    
+    Demands should only contain non-negative values. Zero values are supported,
+    and the corresponding intervals are filtered out, as they neither impact
+    nor are impacted by this constraint.
+    
+    Here is one factory method with a limited static capacity:
+    
+    ..  code-block:: c++
+    
+        Constraint* MakeCumulative(const std::vector<IntervalVar*>& intervals,
+                                   const std::vector<int64>& demands,
+                                   int64 capacity,
+                                   const string& name);
+    
+    If you need more flexibility, use the following factory method:
+    
+    ..  code-block:: c++
+    
+        Constraint* MakeCumulative(const std::vector<IntervalVar*>& intervals,
+                                   const std::vector<int64>& demands,
+                                   IntVar* const capacity,
+                                   const string& name);
+        
+    Here the capacity is modelled by an ``IntVar``. This variable is really a *capacity*
+    in the sense that it is this variable that determines the capacity and it will not be adjusted
+    to satisfy the ``CumulativeConstraint`` constraint.
+    
 Constraints on ``SequenceVar``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -524,7 +550,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ..  only:: draft
 
     * ``RankFirstIntervalVars``: equivalent to the ``DecisionBuilder`` ``BaseAssignVariables`` but for ``SequenceVar``\s.
-      See the subsection :ref:`makephase_sequence_vars` below in this section.
+      See the subsection ...
 
     You can specialize a 
     ``Decision`` for ``IntVar``\s, ``IntervalVar``\s or ``SequenceVar``\s [#decision_specialized]_.
@@ -557,31 +583,6 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
          private:
           DISALLOW_COPY_AND_ASSIGN(DecisionVisitor);
         };
-
-
-
-..  _makephase_interval_vars:
-
-``MakePhase()`` for ``IntervalVar``\s
-""""""""""""""""""""""""""""""""""""""
-
-..  only:: draft
-
-    DecisionBuilder* MakePhase(const std::vector<IntervalVar*>& intervals,
-                             IntervalStrategy str);
-
-
-..  _makephase_sequence_vars:
-
-``MakePhase()`` for ``SequenceVar``\s
-""""""""""""""""""""""""""""""""""""""
-
-..  only:: draft
-
-
-    DecisionBuilder* MakePhase(const std::vector<SequenceVar*>& sequences,
-                             SequenceStrategy str);
-
 
 ``DependencyGraph``
 ^^^^^^^^^^^^^^^^^^^^
