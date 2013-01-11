@@ -39,8 +39,17 @@ Variables
     * ``IntExpr* DurationExpr();``
     * ``IntExpr* EndExpr();``
     
-    ..  warning:: These methods must not be used if the corresponding ``IntervalVar`` variable is *unperformed* (see next 
-        sub-section)!
+    If the corresponding ``IntervalVar`` variable is *unperformed* (see next
+    sub-section), you cannot use these methods. Well, if you do, nothing bad if going to happen but you will get gibberish
+    as the ``IntervalVar`` is no longer updated. These methods have corresponding "safe" versions if you need them.
+    
+    ..  warning:: Dont use 
+    
+        * ``IntExpr* StartExpr();``
+        * ``IntExpr* DurationExpr();``
+        * ``IntExpr* EndExpr();``
+        
+        if the corresponding ``IntervalVar`` variable is *unperformed*!
     
     The ``IntervalVar`` can be virtually conceptualized
     [#intervalvar_virtually_conceptualized]_ as 
