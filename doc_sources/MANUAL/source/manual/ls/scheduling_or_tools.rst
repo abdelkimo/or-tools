@@ -397,16 +397,71 @@ Constraints on ``IntervalVar``\s
 ``TemporalDisjunction`` constraints
 """"""""""""""""""""""""""""""""""""""""""""""
 
+..  only:: draft
+
+    The idea here is to make one ``IntervalVar`` happen before another ``IntervalVar`` but you don't know exactly 
+    which comes first. The only thing you know if that they cannot happen at the same time. 
+    
+    To create such a constraint, use:
+    
+    ..  code-block:: c++
+    
+        solver = ...
+        ...
+        IntervalVar * const t1 = ...
+        IntervalVar * const t2 = ...
+        ...
+        Constraint * ct = solver.MakeTemporalDisjunction(t1, t2);
+        
+    Maybe you can relate the decision on what has to happen first to the value an ``IntVar`` takes:
+    
+    ..  code-block:: c++
+        
+        ...
+        IntVar * const decider = ...
+        Constraint * ct = solver.MakeTemporalDisjunction(t1, t2, decider)
+
+    If ``decider`` takes the value ``0``, then ``t1`` has to happen before ``t2``, otherwise it is the contrary.
+    Remember though that the constraint works the other way around too: if ``t1`` happens before ``t2``, the ``IntVar``
+    ``decider``  
+    is bound to ``0`` and else to a positive value (understand ``1`` in this case).
 
 ``DisjunctiveConstraint`` constraints
 """""""""""""""""""""""""""""""""""""""""""""
 
 ..  only:: draft
 
-    ..  warning:: The use of ``DisjunctiveConstraint``\s is the only way to create 
-        ``SequenceVar`` variables. Invoke its ``MakeSequenceVar()`` method to create a one.
-        
+    ``DisjunctiveConstraint`` constraints are like ``TemporalDisjunction`` constraints but for an unlimited number of ``IntervalVar``
+    variables (and because of this these constraints are implemented differently). Think of ``DisjunctiveConstraint`` as 
+    a kind of ``AllDifferent`` constraints but on ``IntervalVar``\s.
+    
+    The factory method is:
+    
+    ..  code-block:: c++
+    
+        Constraint * 	MakeDisjunctiveConstraint (
+                            const std::vector< IntervalVar * > &intervals);
 
+    In the current implementation, the created 
+    constraint is a ``FullDisjunctiveConstraint`` which means that the ``IntervalVar``\s will be disjoint.
+    
+    The ``DisjunctiveConstraint`` class itself is a pure abstract class. Subclasses must implemented the following method:
+    
+    ..  code-block:: c++
+    
+        virtual SequenceVar* MakeSequenceVar() = 0;
+
+    This method creates a ``SequenceVar`` containing the "rankable" [#what_rankable]_ ``IntervalVar``\s given in 
+    the ``intervals`` ``std::vector<IntervalVar *>``.
+    
+    ``SequenceVar`` variables are so closely tied to a sequence of ``IntervalVar``\s that obey a ``DisjunctiveConstraint``
+    constraint that it is quite natural to find such method. In the current implementation, it is the **only** method to create 
+    a ``SequenceVar`` method!
+
+    ..  warning:: The use of the ``MakeSequenceVar()`` method of a ``DisjunctiveConstraint``  constraint is the only 
+        way to create a ``SequenceVar`` variable in the current implementation. This might change in the future.
+        
+    ..  [#what_rankable] You remember that *unperformed* ``IntervalVar``\s are non existing, don't you?
 
 ``MakeCumulative`` constraints
 """"""""""""""""""""""""""""""""""""""
@@ -417,7 +472,7 @@ Constraints on ``SequenceVar``\s
 
 ..  only:: draft
 
-    There are none for the time being. Nobody prevents you from implementing one... 
+    There are none for the time being. Nobody prevents you from implementing one though. 
 
 ..  _scheduling_decisionbuilders_decision:
 
@@ -524,7 +579,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ..  only:: draft
 
-    If you want to add more specific temporal constraints, you can use a special data structure specialized for scheduling:
+    If you want to add more specific temporal constraints, you can use a data structure specialized for scheduling:
     the ``DependencyGraph``. It is meant to store simple temporal constraints and to propagate
     efficiently on the nodes of this temporal graph. One node in this graph corresponds to an ``IntervalVar`` variable.
     You can build constraints on the start or the ending time of the ``IntervalVar`` nodes.
@@ -552,11 +607,10 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
         Machine_1: Job 2 (3,7)  Job 0 (7,9)  Job 1 (9,13)  
         Machine_2: Job 1 (2,3)  Job 2 (7,10)  Job 0 (10,12)  
         
-    As you can see, the first task of job 2 starts at 3 and the first task of job 1 ends at 2.
+    As you can see, the first task of job 2 starts at 3 units of time and the first task of job 1 ends at 2 units of time.
     
     Other methods include:
     
-    * ``AddStartsAfterEndWithDelay()``
     * ``AddStartsAtEndWithDelay()``
     * ``AddStartsAfterStartWithDelay()``
     * ``AddStartsAtStartWithDelay()``
