@@ -516,13 +516,29 @@ Constraints on ``SequenceVar``\s
 
 ..  only:: draft
 
-    At the moment of writing (revision r2502 `<http://code.google.com/p/or-tools/source/detail?r=2502>`_, 
-    January 11 :superscript: 2013) there is only 
+    This sub-section is going to be very brief. Indeed, even if room has been made 
+    in the code to welcome several alternative strategies, at the moment of writing 
+    (`revision r2502 <http://code.google.com/p/or-tools/source/detail?r=2502>`_, 
+    January 11 :superscript:`th` 2013) there is "only one real" strategy implemented to deal with 
+    ``IntervalVar``\s and ``SequenceVar``\s. The ``RankFirstIntervalVars`` ``DecisionBuilder`` for ``SequenceVar``\s
+    and the ``SetTimesForward`` ``DecisionBuilder`` for ``IntervalVar``\s both 
+    tries to rank the ``IntervalVar``\s 
+    one after the other starting with the first ones. 
+    
+    When we'll implement different strategies, we will update the manual at the same time. If you're curious about the implementation 
+    details, we refer you to the code (mainly to the file :file:`constraint_solver/sched_search.cc`).
+    
+    If you need specialized ``DecisionBuilder``\s and ``Decision``\s, you now know the inner working of the CP solver
+    well enough to construct those to suit your needs. Although nothing prevents you to create tools that mix ``IntVar``\s,
+    ``IntervalVar``\s and ``SequenceVar``\s, we strongly advice you to keep 
+    different types of variables separated and combine different phases together instead.
+    
+``IntervalVar``\s
+"""""""""""""""""""
 
+..  only:: draft
 
-
-``IntervalVar`` search strategies
-"""""""""""""""""""""""""""""""""""""
+    TO BE WRITTEN
 
 ..  only:: draft
 
@@ -550,26 +566,78 @@ Constraints on ``SequenceVar``\s
 
 
 
-The ``ScheduleOrPostpone`` ``Decision``
-"""""""""""""""""""""""""""""""""""""""""
 
 ..  only:: draft
 
     ScheduleOrPostpone
 
-``DecisionBuilder``\s and ``Decision``\s for ``SequenceVar``\s
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-``SequenceVar`` search strategies
-"""""""""""""""""""""""""""""""""""
 
 ..  only:: draft
 
-    DecisionBuilder * 	MakePhase (const std::vector< SequenceVar * > &sequences, SequenceStrategy str)
 
-The ``RankFirstInterval`` and ``RankLastInterval`` ``Decision``\s
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+    ..  code-block:: c++
+    
+        DecisionBuilder* Solver::MakePhase(const std::vector<IntervalVar*>& intervals,
+                                       IntervalStrategy str) {
+        return RevAlloc(new SetTimesForward(intervals.data(), intervals.size()));
+        }
+
+    
+``SequenceVar``\s
+"""""""""""""""""""
+    
+..  only:: draft
+    
+    For ``SequenceVar`` variables, there are basically two ways of choosing the next ``SequenceVar`` to rank its 
+    ``IntervalVar``\s:
+
+    
+    ``SEQUENCE_DEFAULT`` `=` ``SEQUENCE_SIMPLE`` ``=`` ``CHOOSE_MIN_SLACK_RANK_FORWARD``:
+      The CP solver chooses the ``SequenceVar`` which has the fewest opportunities of manoeuvre, i.e. 
+      the ``SequenceVar`` for which the *horizon range* (``hmax - hmin``, see the ``HorizonRange()`` method above)
+      is the closest to the total maximum duration of the ``IntervalVar``\s that may be performed (``dmax`` in the 
+      ``DurationRange()`` method above). In other words, we define the *slack* to be 
+      
+      ..  math::
+      
+          \text{slack} = (\text{hmax} - \text{hmin}) - \text{dmax}
+      
+      and we choose the ``SequenceVar`` with the minimum slack.
+      
+    ``CHOOSE_RANDOM_RANK_FORWARD``:
+      Among the ``SequenceVar``\s for which there are still ``IntervalVar``\s to rank, choose one randomly.
+    
+    
+    ``SEQUENCE_DEFAULT``, ``SEQUENCE_SIMPLE``, ``CHOOSE_MIN_SLACK_RANK_FORWARD`` and ``CHOOSE_RANDOM_RANK_FORWARD``
+    are given in the ``SequenceStrategy`` ``enum``.
+    
+    To create the search strategies just mentioned, use the following factory method:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder* Solver::MakePhase(
+                                const std::vector<SequenceVar*>& sequences,
+                                SequenceStrategy str);
+        
+
+..  only:: draft
+
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+    The ``DecisionBuilder`` used is 
+
+    ..  code-block:: c++
+    
+        RankFirstIntervalVars(sequences.data(),
+                                            sequences.size(),
+                                            str));
+
+    DOCUMENT HOW the ``IntervalVar``\s are ranked with this decision builder...
+
+        
+    The ``RankFirstInterval`` and ``RankLastInterval`` ``Decision``\s
+
 
 
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
