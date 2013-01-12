@@ -511,10 +511,14 @@ Constraints on ``SequenceVar``\s
 
 ..  _scheduling_decisionbuilders_decision:
 
-``DecisionBuilder``\s and ``Decision``\s for ``IntervalVar``\s
+``DecisionBuilder``\s and ``Decision``\s for scheduling
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
+
+    At the moment of writing (revision r2502 `<http://code.google.com/p/or-tools/source/detail?r=2502>`_, 
+    January 11 :superscript: 2013) there is only 
+
 
 
 ``IntervalVar`` search strategies
@@ -522,12 +526,36 @@ Constraints on ``SequenceVar``\s
 
 ..  only:: draft
 
-    DecisionBuilder * 	MakePhase (const std::vector< IntervalVar * > &intervals, IntervalStrategy str)
+    The ``IntervalStrategy`` ``enum`` depicting the available strategies that deal with ``IntervalVar`` 
+    has only three entries:
+    
+    ``INTERVAL_DEFAULT``
+    
+    ``INTERVAL_SIMPLE``
+    
+    ``INTERVAL_SET_TIMES_FORWARD``
+    
+    All three are equal to the last ``INTERVAL_SET_TIMES_FORWARD`` entry. The corresponding ``SetTimesForward`` 
+    ``DecisionBuilder`` 
+    
+    Uses the ``ScheduleOrPostpone`` ``Decision``.
+    
+    You create a phase with the good old ``MakePhase`` factory method:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder * MakePhase (
+                            const std::vector< IntervalVar * > &intervals, 
+                            IntervalStrategy str);
 
 
 
 The ``ScheduleOrPostpone`` ``Decision``
 """""""""""""""""""""""""""""""""""""""""
+
+..  only:: draft
+
+    ScheduleOrPostpone
 
 ``DecisionBuilder``\s and ``Decision``\s for ``SequenceVar``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
