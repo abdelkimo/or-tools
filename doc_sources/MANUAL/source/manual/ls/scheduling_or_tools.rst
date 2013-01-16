@@ -5,6 +5,16 @@ Scheduling in *or-tools*
 
 ..  only:: draft
 
+    Scheduling is a research operations field dealing with the allocation of resources and the sequencing of 
+    tasks to produce goods and services. The job-shop problem is a good example of such problems.
+    
+    Constraint programming has been proved successful to solve some problems in 
+    scheduling with dedicated variables and strategies [ref]. In *or-tools*, the CP solver offers some 
+    variable types (``IntervalVar``\s
+    and ``SequenceVar``\s) and roughly one specialized search strategy with some variants.
+    This part of the CP solver is not quite as developed as the rest of the library though and 
+    expect more to come. We summarize most of the 
+    *or-tools* features dealing with scheduling in this section.
 
     ..  warning:: This part of the CP Solver is not quite settled yet. Check the code in case of doubt.
 
@@ -13,6 +23,10 @@ Variables
 
 ..  only:: draft
 
+    Two new types of variables are added to our arsenal: ``IntervalVar``\s model tasks and ``SequenceVar``\s 
+    model sequences of tasks on one machine. Once you master these variables, you can use them in a variety of 
+    different contexts.
+    
 ``IntervalVar``\s
 """""""""""""""""""""""
 
@@ -48,7 +62,8 @@ Variables
     [#intervalvar_virtually_conceptualized]_ as 
     in the next figure:
     
-    ..  [#intervalvar_virtually_conceptualized] The implementation optimizes different cases and thus doesn't necessarly corresponds to the figure. Read on.
+    ..  [#intervalvar_virtually_conceptualized] The implementation optimizes different cases and 
+        thus doesn't necessarily corresponds to the figure. Read on.
     
     ..  image:: ./images/intervalvar.*
         :align: center 
@@ -73,7 +88,7 @@ Variables
     * ``virtual void SetEndRange (int64 mi, int64 ma) = 0;``
     
     As usual, the ``IntervalVar`` class is an abstract base class and several specialized sub-classes exist. For instance, we saw
-    the ``FixedDurationPerformedIntervalVar`` ``IntervalVar`` class in the previous section (created with 
+    the ``FixedDurationPerformedIntervalVar`` class in the previous section (created with 
     ``MakeFixedDurationIntervalVar()``) for which the duration is fixed and that must be performed.
     
     To create ``IntervalVar`` variables, use the factory methods provided by the solver. For instance:
@@ -83,11 +98,13 @@ Variables
         IntervalVar* Solver:MakeFixedInterval(int64 start,
                                               int64 duration,
                                               const string& name);
+                                              
         IntervalVar* Solver::MakeFixedDurationIntervalVar(int64 start_min,
                                                   int64 start_max,
                                                   int64 duration,
                                                   bool optional,
                                                   const string& name);
+                                                  
         void Solver::MakeFixedDurationIntervalVarArray(int count,
                                           int64 start_min,
                                           int64 start_max,
@@ -111,11 +128,11 @@ Variables that perform... or not
 ..  only:: draft
 
     An important aspect of ``IntervalVar``\s is optionality. An ``IntervalVar`` can be *performed* or not. If
-    *unperformed*, then it simply does not exist and its characteristics
-    cannot be accessed anymore. An ``IntervalVar`` is automatically marked
+    *unperformed*, then it simply does not exist (and its characteristics are meaningless). 
+    An ``IntervalVar`` is automatically marked
     as *unperformed* when it is not consistent anymore (starting time greater
-    than ending time, duration < 0...). You can get and set if an ``IntervalVar`` must or may be performed with the following 
-    methods:
+    than ending time, duration < 0...). You can get and set if an ``IntervalVar`` must, may or cannot be performed 
+    with the following methods:
 
     ..  code-block:: c++
     
@@ -198,12 +215,40 @@ Ranked ``IntervalVar``\s
 
     *Ranked* ``IntervalVar``\s are exactly that: already ranked variables in the sequence. ``IntervalVar``\s can be ranked 
     at the beginning or at the end of the sequence in the ``SequenceVar`` variable. *unperformed* ``IntervalVar`` can not 
-    be ranked. The next figure illustrates the situation:
+    be ranked [#unranked_and_three_state]_. The next figure illustrates the situation:
     
     ..  image:: ./images/sequencevar_ranked.*
         :align: center 
         :width: 700px
 
+    ``IntervalVar`` variables ``1`` and ``2`` are ranked (and *performed*) while ``IntervalVar`` variable ``0`` 
+    may be *performed* but 
+    is not *performed* yet and ``IntervalVar`` variable ``3`` is *unperformed* and thus doesn't exist anymore.
+    
+    To rank the ``IntervalVar`` variables, we say that we *rank* them *first* or *last*. *First* and *last* 
+    ``IntervalVar`` variables must be understood with respect to the unranked variables:
+    
+    ..  only:: html 
+    
+        ..  image:: ./images/sequencevar_ranked_first_last.*
+            :align: center 
+            :width: 1100px
+
+    ..  only:: latex 
+    
+        ..  image:: ./images/sequencevar_ranked_first_last.*
+            :align: center 
+            :width: 700px
+
+
+    * to *rank first* an ``IntervalVar`` variable means that this variable will be ranked before **all unranked**
+      variables and 
+      
+    * to *rank last* an ``IntervalVar`` variable means that this variable will be ranked after **all unranked**
+      variables.
+
+    ..  [#unranked_and_three_state] Thus, *unranked* variables are variables that *may* be *performed*. Yeah, three-states 
+        situations that evolves with time are nastier than a good old Manichean one.
 
 Public methods
 """""""""""""""""
@@ -268,7 +313,7 @@ Public methods
                                 "the sequence is " << next_var->Value() - 1;
             }
         
-        As you can see, there is a difference of one between the value returned and the actual index of the ``IntervalVar`` 
+        As you can see, there is a difference of one between the returned value and the actual index of the ``IntervalVar`` 
         in the array of ``IntervalVar``\s variables.
         
     * ``int size() const``:
@@ -310,7 +355,7 @@ Public methods
     
     * ``void RankFirst(int index)``:
         Ranks the index :superscript:`th` ``IntervalVar`` variable in front of all unranked ``IntervalVar`` variables.
-        After that, it will no longer be considered *unranked*.
+        After that, it will be considered *performed*.
     
     * ``void RankNotFirst(int index)``:
         Indicates that the index :superscript:th ``IntervalVar`` variable will not be ranked first
@@ -318,7 +363,7 @@ Public methods
     
     * ``void RankLast(int index)``:
         Ranks the index :superscript:`th` ``IntervalVar`` variable first among all unranked ``IntervalVar``
-        variables. After that, it will no longer be considered *unranked*.
+        variables. After that, it will be considered *performed*.
         
     * ``void RankNotLast(int index)``:
         Indicates that the index :superscript:`th` ``IntervalVar`` variable will not be ranked first
@@ -337,7 +382,9 @@ Public methods
         Again, the ``rank_firsts`` ``std::vector<int>`` gives the ``IntervalVar``\s in order (``rank_firsts[0]``
         if the first ranked ``IntervalVar`` and so on) and the ``rank_lasts`` ``std::vector<int>`` give the 
         ``IntervalVar`` in the opposite direction (``rank_lasts[0]`` is the last ``IntervalVar`` and so on).
-        All intervals in the ``unperformed`` ``std::vector<>`` will be marked as such.
+        All ``IntervalVar`` variables in the ``unperformed`` ``std::vector<int>`` will be marked as such and all
+        ``IntervalVar`` variables in the ``rank_firsts`` and ``rank_lasts`` ``std::vector<int>`` will be marked 
+        as *performed*.
 
 ..  _scheduling_constraints:
 
@@ -345,6 +392,8 @@ Constraints on ``IntervalVar``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
+
+    Most common constraints on ``IntervalVar``\s have been implemented.
 
 ``IntervalUnaryRelation`` constraints
 """"""""""""""""""""""""""""""""""""""""""
@@ -424,7 +473,7 @@ Constraints on ``IntervalVar``\s
         Constraint * ct = solver.MakeTemporalDisjunction(t1, t2, decider)
 
     If ``decider`` takes the value ``0``, then ``t1`` has to happen before ``t2``, otherwise it is the contrary.
-    Remember though that the constraint works the other way around too: if ``t1`` happens before ``t2``, the ``IntVar``
+    This constraint works the other way around too: if ``t1`` happens before ``t2``, the ``IntVar``
     ``decider``  
     is bound to ``0`` and else to a positive value (understand ``1`` in this case).
 
@@ -457,8 +506,9 @@ Constraints on ``IntervalVar``\s
     the ``intervals`` ``std::vector<IntervalVar *>``.
     
     ``SequenceVar`` variables are so closely tied to a sequence of ``IntervalVar``\s that obey a ``DisjunctiveConstraint``
-    constraint that it is quite natural to find such method. In the current implementation, it is the **only** method to create 
-    a ``SequenceVar`` method!
+    constraint that it is quite natural to find such method. In the current implementation, it is the **only** 
+    available method to create 
+    a ``SequenceVar`` variable!
 
     ..  warning:: The use of the ``MakeSequenceVar()`` method of a ``DisjunctiveConstraint``  constraint is the only 
         way to create a ``SequenceVar`` variable in the current implementation. This might change in the future.
@@ -522,7 +572,7 @@ Constraints on ``SequenceVar``\s
     January 11 :superscript:`th` 2013) there is "only one real" strategy implemented to deal with 
     ``IntervalVar``\s and ``SequenceVar``\s. The ``RankFirstIntervalVars`` ``DecisionBuilder`` for ``SequenceVar``\s
     and the ``SetTimesForward`` ``DecisionBuilder`` for ``IntervalVar``\s both 
-    tries to rank the ``IntervalVar``\s 
+    tries to rank the available ``IntervalVar``\s 
     one after the other starting with the first ones. 
     
     When we'll implement different strategies, we will update the manual at the same time. If you're curious about the implementation 
@@ -602,10 +652,15 @@ Constraints on ``SequenceVar``\s
       
           \text{slack} = (\text{hmax} - \text{hmin}) - \text{dmax}
       
-      and we choose the ``SequenceVar`` with the minimum slack.
+      and we choose the ``SequenceVar`` with the minimum slack. In case of a tie, we choose the ``IntervalVar`` 
+      with the smallest active horizon range (see ``ahmin`` in the ``ActiveHorizonRange()`` method above).
+      
+      Once the best ``SequenceVar`` variable is choosen, take the rankable ``IntervalVar`` with the 
+      minimum starting time (``StartMin()``) and rank it first.
       
     ``CHOOSE_RANDOM_RANK_FORWARD``:
-      Among the ``SequenceVar``\s for which there are still ``IntervalVar``\s to rank, choose one randomly.
+      Among the ``SequenceVar``\s for which there are still ``IntervalVar``\s to rank, choose one randomly. Then
+      choose randomly a rankable ``IntervalVar`` and rank it first.
     
     
     ``SEQUENCE_DEFAULT``, ``SEQUENCE_SIMPLE``, ``CHOOSE_MIN_SLACK_RANK_FORWARD`` and ``CHOOSE_RANDOM_RANK_FORWARD``
@@ -619,43 +674,6 @@ Constraints on ``SequenceVar``\s
                                 const std::vector<SequenceVar*>& sequences,
                                 SequenceStrategy str);
         
-
-..  only:: draft
-
-    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-    XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-    The ``DecisionBuilder`` used is 
-
-    ..  code-block:: c++
-    
-        RankFirstIntervalVars(sequences.data(),
-                                            sequences.size(),
-                                            str));
-
-    DOCUMENT HOW the ``IntervalVar``\s are ranked with this decision builder...
-
-        
-    The ``RankFirstInterval`` and ``RankLastInterval`` ``Decision``\s
-
-
-
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-
-
-..  only:: draft
-
-    * ``RankFirstIntervalVars``: equivalent to the ``DecisionBuilder`` ``BaseAssignVariables`` but for ``SequenceVar``\s.
-      See the subsection ...
-
-    You can specialize a 
-    ``Decision`` for ``IntVar``\s, ``IntervalVar``\s or ``SequenceVar``\s [#decision_specialized]_.
-    
-    ..  [#decision_specialized] If you want to try more esoteric combinations (like mixing variables types) it's up to
-        you but we strongly advise you to keep different types of variables separated and to combine different phases.
-
-
-
 ``DecisionVisitor``\s
 """""""""""""""""""""""""""
 

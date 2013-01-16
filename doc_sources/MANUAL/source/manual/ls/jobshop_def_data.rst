@@ -515,7 +515,6 @@ The public methods of the ``JobShopData`` class are
   - ``name()``: instance name;
   - ``horizon()``: the sum of all durations (and a trivial upper bound on the makespan).
   - ``const std::vector<Task>& TasksOfJob(int job_id) const``: returns a reference to the corresponding ``std::vector<Task>`` of tasks.
-  and
   
 * two methods to report the content of the data file parsed:
 
@@ -524,6 +523,7 @@ The public methods of the ``JobShopData`` class are
       void Report(std::ostream & out);
       void ReportAll(std::ostream & out);
 
+  
 Just for fun, we have written the data file corresponding to our example above in JSSP format in 
 the file :file:`first_example_jssp.txt`:
 

@@ -71,7 +71,7 @@ ortools_basedirname = '/home/nikolaj/Documents/RESEARCH/google/new_tech_writer/S
 html_add_permalinks = None
 
 doxylink = {
-        'solver' : ('/home/nikolaj/Documents/RESEARCH/google/tech_writer/SOURCES/MANUAL/source/constraint_solver.tag', '/home/nikolaj/Documents/RESEARCH/google/tech_writer/SOURCES/DEPLOY/reference_manual/or-tools/constraint_solver'),
+        'solver' : ('/home/nikolaj/Documents/RESEARCH/google/new_tech_writer/SOURCES/MANUAL/source/constraint_solver.tag', '/home/nikolaj/Documents/RESEARCH/google/tech_writer/SOURCES/DEPLOY/reference_manual/or-tools/constraint_solver'),
 }
 
 # sphinxfeed
@@ -82,7 +82,7 @@ feed_author = 'Google'
 #rst_prolog = open('../../global.rst', 'r').read()
 
 # The setting for draft or final display. Uncomment the relevant line:
-# The tags are automatically added within the makefile.
+# The tcags are automatically added within the makefile.
 #tags.add('draft')
 #tags.add('final') 
 #tags.add('no_epub')

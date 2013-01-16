@@ -12,6 +12,9 @@ Local search: the job-shop problem
     Do we give up? Of course not! If it is not possible to extract the best solutions, 
     we can try to find very good solutions. Enter the fascinating world of (meta-)heuristics and local search.
     
+    If you have no idea what scheduling is, the job-shop problem we discuss
+    in this chapter is a good example of the kind of problems solved in this field.
+    
     ..  [#actually_most_problems_are_hard] Actually, *most* problems!
     
     ..  [#watch_out_for_quantic_computers] But watch out for the next generation

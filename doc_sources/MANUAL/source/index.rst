@@ -339,7 +339,7 @@ Foreword
     
     Refer to the written document like this:
     
-    N. van Omme, L. Perron and V. Furnon, *or-tools user's manual*\ , Google, 2012. 
+    N. van Omme, L. Perron and V. Furnon, *or-tools user's manual*\ , Google, 2013. 
     
     Here is a bibtex entry:
     
@@ -349,7 +349,7 @@ Foreword
           author = {Nikolaj van Omme and Laurent Perron and Vincent Furnon},
           title = {or-tools user's manual},
           institution = {Google},
-          year = {2012}
+          year = {2013}
         }
 
 
