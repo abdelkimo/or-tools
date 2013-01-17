@@ -5,6 +5,8 @@ Scheduling in *or-tools*
 
 ..  only:: draft
 
+    [TO BE REREAD]
+
     Scheduling is a research operations field dealing with the allocation of resources and the sequencing of 
     tasks to produce goods and services. The job-shop problem is a good example of such problems.
     
@@ -25,7 +27,7 @@ Variables
 
     Two new types of variables are added to our arsenal: ``IntervalVar``\s model tasks and ``SequenceVar``\s 
     model sequences of tasks on one machine. Once you master these variables, you can use them in a variety of 
-    different contexts.
+    different contexts but for the moment keep in mind this modelling association.
     
 ``IntervalVar``\s
 """""""""""""""""""""""
@@ -513,7 +515,8 @@ Constraints on ``IntervalVar``\s
     ..  warning:: The use of the ``MakeSequenceVar()`` method of a ``DisjunctiveConstraint``  constraint is the only 
         way to create a ``SequenceVar`` variable in the current implementation. This might change in the future.
         
-    ..  [#what_rankable] You remember that *unperformed* ``IntervalVar``\s are non existing, don't you?
+    ..  [#what_rankable] You remember that *unperformed* ``IntervalVar``\s are non existing, don't you? And yes, we know 
+        that "rankable" doesn't exist... 
 
 ``CumulativeConstraint`` constraints
 """"""""""""""""""""""""""""""""""""""
@@ -572,8 +575,8 @@ Constraints on ``SequenceVar``\s
     January 11 :superscript:`th` 2013) there is "only one real" strategy implemented to deal with 
     ``IntervalVar``\s and ``SequenceVar``\s. The ``RankFirstIntervalVars`` ``DecisionBuilder`` for ``SequenceVar``\s
     and the ``SetTimesForward`` ``DecisionBuilder`` for ``IntervalVar``\s both 
-    tries to rank the available ``IntervalVar``\s 
-    one after the other starting with the first ones. 
+    tries to rank the ``IntervalVar``\s 
+    one after the other starting with the first "available" ones. 
     
     When we'll implement different strategies, we will update the manual at the same time. If you're curious about the implementation 
     details, we refer you to the code (mainly to the file :file:`constraint_solver/sched_search.cc`).
@@ -588,25 +591,20 @@ Constraints on ``SequenceVar``\s
 
 ..  only:: draft
 
-    TO BE WRITTEN
+    For ``IntervalVar`` variables, there is only one strategy implemented even if there are three entries
+    in the ``IntervalStrategy`` ``enum``:
+    
+    ``INTERVAL_DEFAULT`` ``=`` ``INTERVAL_SIMPLE`` ``=`` ``INTERVAL_SET_TIMES_FORWARD``:
+      The CP solver simply schedules the ``IntervalVar`` with the lowest starting time (``StartMin()``) and 
+      in case of a tie, the ``IntervalVar`` with the lowest ending time (``StartMax()``).
+    
+    The ``DecisionBuilder`` class is the ``SetTimesForward`` class. It returns a ``ScheduleOrPostpone`` ``Decision`` in its 
+    ``Next()`` method. This ``Decision`` fixes the starting time of the ``IntervalVar`` to its minimum starting 
+    time (``StartMin()``)
+    in its ``Apply()`` method and, in its ``Refute()`` method, delays the execution of the corresponding task by ``1`` unit 
+    of time, i.e. the ``IntervalVar`` cannot be scheduled before ``StartMin() + 1``.
 
-..  only:: draft
-
-    The ``IntervalStrategy`` ``enum`` depicting the available strategies that deal with ``IntervalVar`` 
-    has only three entries:
-    
-    ``INTERVAL_DEFAULT``
-    
-    ``INTERVAL_SIMPLE``
-    
-    ``INTERVAL_SET_TIMES_FORWARD``
-    
-    All three are equal to the last ``INTERVAL_SET_TIMES_FORWARD`` entry. The corresponding ``SetTimesForward`` 
-    ``DecisionBuilder`` 
-    
-    Uses the ``ScheduleOrPostpone`` ``Decision``.
-    
-    You create a phase with the good old ``MakePhase`` factory method:
+    You create the corresponding phase with the good old ``MakePhase`` factory method:
     
     ..  code-block:: c++
     
@@ -614,25 +612,6 @@ Constraints on ``SequenceVar``\s
                             const std::vector< IntervalVar * > &intervals, 
                             IntervalStrategy str);
 
-
-
-
-..  only:: draft
-
-    ScheduleOrPostpone
-
-
-..  only:: draft
-
-
-    ..  code-block:: c++
-    
-        DecisionBuilder* Solver::MakePhase(const std::vector<IntervalVar*>& intervals,
-                                       IntervalStrategy str) {
-        return RevAlloc(new SetTimesForward(intervals.data(), intervals.size()));
-        }
-
-    
 ``SequenceVar``\s
 """""""""""""""""""
     
@@ -642,7 +621,7 @@ Constraints on ``SequenceVar``\s
     ``IntervalVar``\s:
 
     
-    ``SEQUENCE_DEFAULT`` `=` ``SEQUENCE_SIMPLE`` ``=`` ``CHOOSE_MIN_SLACK_RANK_FORWARD``:
+    ``SEQUENCE_DEFAULT`` ``=`` ``SEQUENCE_SIMPLE`` ``=`` ``CHOOSE_MIN_SLACK_RANK_FORWARD``:
       The CP solver chooses the ``SequenceVar`` which has the fewest opportunities of manoeuvre, i.e. 
       the ``SequenceVar`` for which the *horizon range* (``hmax - hmin``, see the ``HorizonRange()`` method above)
       is the closest to the total maximum duration of the ``IntervalVar``\s that may be performed (``dmax`` in the 
@@ -652,52 +631,65 @@ Constraints on ``SequenceVar``\s
       
           \text{slack} = (\text{hmax} - \text{hmin}) - \text{dmax}
       
-      and we choose the ``SequenceVar`` with the minimum slack. In case of a tie, we choose the ``IntervalVar`` 
+      and we choose the ``SequenceVar`` with the minimum slack. In case of a tie, we choose the ``SequenceVar`` 
       with the smallest active horizon range (see ``ahmin`` in the ``ActiveHorizonRange()`` method above).
       
-      Once the best ``SequenceVar`` variable is choosen, take the rankable ``IntervalVar`` with the 
-      minimum starting time (``StartMin()``) and rank it first.
+      Once the best ``SequenceVar`` variable is chosen, the CP solver takes the rankable ``IntervalVar`` with the 
+      minimum starting time (``StartMin()``) and ranks it first.
       
     ``CHOOSE_RANDOM_RANK_FORWARD``:
-      Among the ``SequenceVar``\s for which there are still ``IntervalVar``\s to rank, choose one randomly. Then
-      choose randomly a rankable ``IntervalVar`` and rank it first.
+      Among the ``SequenceVar``\s for which there are still ``IntervalVar``\s to rank, the CP solver chooses 
+      one randomly. Then it randomly
+      chooses  a rankable ``IntervalVar`` and ranks it first.
     
     
     ``SEQUENCE_DEFAULT``, ``SEQUENCE_SIMPLE``, ``CHOOSE_MIN_SLACK_RANK_FORWARD`` and ``CHOOSE_RANDOM_RANK_FORWARD``
     are given in the ``SequenceStrategy`` ``enum``.
-    
-    To create the search strategies just mentioned, use the following factory method:
+
+    To create these search strategies, use the following factory method:
     
     ..  code-block:: c++
     
         DecisionBuilder* Solver::MakePhase(
                                 const std::vector<SequenceVar*>& sequences,
                                 SequenceStrategy str);
-        
-``DecisionVisitor``\s
-"""""""""""""""""""""""""""
-
-..  only:: draft
-
+    
+    In both cases, we use the ``RankFirstIntervalVars`` class as ``DecisionBuilder``. Its ``Next()`` method returns 
+    a ``RankFirst`` ``Decision`` that ranks first the selected ``IntervalVar`` in its ``Apply()`` method and 
+    doesn't rank it first in its ``Refute()`` method. We are thus assured to skim the complete search tree... 
+    of solutions of ranked ``IntervalVar``\s if needed. After the ranking of ``IntervalVar``\s, the schedule is 
+    still loose and any ``IntervalVar`` may have been unnecessarily postponed. This is so important that we use our warning 
+    box:
+    
+    ..  warning:: After the ranking of ``IntervalVar``\s, the schedule is still loose and any ``IntervalVar`` may have been unnecessarily postponed
+    
+    If for instance, you are interested in the *makespan*, you might want to 
+    schedule each ``IntervalVar`` at its earliest start time. As we have seen in the previous section, this can 
+    be accomplished by minimizing the objective function corresponding to the ending times of all ``IntervalVar``\s:
+    
     ..  code-block:: c++
     
-        class DecisionVisitor : public BaseObject {
-         public:
-          DecisionVisitor() {}
-          virtual ~DecisionVisitor() {}
-          virtual void VisitSetVariableValue(IntVar* const var, int64 value);
-          virtual void VisitSplitVariableDomain(IntVar* const var,
-                                                int64 value,
-                                                bool start_with_lower_half);
-          virtual void VisitScheduleOrPostpone(IntervalVar* const var, int64 est);
-          virtual void VisitRankFirstInterval(SequenceVar* const sequence, int index);
-          virtual void VisitRankLastInterval(SequenceVar* const sequence, int index);
-          virtual void VisitUnknownDecision();
+        IntVar * objective_var = ...
+        ...
+        DecisionBuilder* const sequence_phase = solver.MakePhase(
+                                                 all_sequences, 
+                                                 Solver::SEQUENCE_DEFAULT);
+        ...
+        DecisionBuilder* const obj_phase = solver.MakePhase(objective_var,
+                                           Solver::CHOOSE_FIRST_UNBOUND,
+                                           Solver::ASSIGN_MIN_VALUE);
+  
+    and then compose the two ``DecisionBuilder``\s sequentially:
+    
+    ..  code-block:: c++
+    
+         DecisionBuilder* const main_phase = solver.Compose(sequence_phase, 
+                                                            obj_phase);
+    
 
-         private:
-          DISALLOW_COPY_AND_ASSIGN(DecisionVisitor);
-        };
-
+    By the way, the ``MakePhase()`` method has been optimized when the phase only handles one or a few variables (up to 4), 
+    like in the above example for the ``obj_phase``.
+    
 ``DependencyGraph``
 ^^^^^^^^^^^^^^^^^^^^
 
