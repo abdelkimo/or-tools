@@ -37,8 +37,8 @@ The job-shop problem, the disjunctive model and benchmark data
 
 We describe the job-shop problem, a first model and the benchmark data. The job-shop problem belongs to the 
 intractable problems (:math:`\in` NP). Only few very special cases can be solved in 
-polynomial time (see [Garey1976]_ and [Kis2002]_). The definition of this problem is not that complicated but you 
-probably will need some extra attention if this is your first encounter with this fascinating problem. Once you grasp its 
+polynomial time (see [Garey1976]_ and [Kis2002]_). The definition of this fascinating problem is not that complicated but you 
+probably will need some extra attention if this is your first encounter with it. Once you grasp its 
 definition, the next subsections should flow easily.
     
 ..  [Garey1976] Garey, M. R., Johnson, D. S. and Sethi, R., *The complexity of flowshop and jobshop scheduling*,
@@ -356,7 +356,7 @@ Here is the model [#jobshop_model_exact]_:
     & t_k \geqslant 0 & \forall \, k \in V \setminus \{s,t\}
     \end{array}
     
-..  [#jobshop_model_exact] It is not obvious that this model produces optimal solution that are feasible schedules but it can 
+..  [#jobshop_model_exact] It is not obvious that this model produces optimal solutions that are feasible schedules but it can 
     be shown that it does.
     
 We will implement and solve this model in the next section but first we need to read and process the data representing 
@@ -365,10 +365,10 @@ instances of job-shop problems.
 The data and file formats
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To collect the data, we use two different file formats: **JSSP** and professor **Taillard's instances** formats.
+To collect the data, we use two different file formats: **JSSP** and professor **Taillard's** format.
 In the directory :file:`data/jobshop`, you can find data files for the job-shop problem [#jobshop_data_files_copied]_. 
-The file :file:`jobshop.h` lets you read both formats and store the data into a ``JobshopData`` class we will use 
-throughout this chapter.
+The file :file:`jobshop.h` lets you read both formats and store the data into a ``JobshopData`` class.
+We will use this class throughout this chapter.
 
 ..  [#jobshop_data_files_copied] We copied the files :file:`abz9` 
     and :file:`20_5_01_ta001.txt` in the directory :file:`manual/tutorials/cplusplus/chap6` for your convenience.
@@ -415,7 +415,7 @@ As is often the case,
 there is a one to one correspondence between the tasks and the machines.
 
 
-Taillard's instances format
+Taillard's format
 """"""""""""""""""""""""""""
 
 
@@ -450,19 +450,18 @@ has 20 jobs to be processed on 5 machines. The next line (873654221) is a random
     468
     54 79 16 66 58 
 
-0 is the number of the first job. The next number is not important for the job-shop problem. The last line contains 
-numbers corresponding to processing times. We use the trick to assign these times to machines 0, 1, 2 and so on. So job 0 is 
+0 is the id or index of the first job. The next number is not important for the job-shop problem. 
+The numbers in the last line correspond to processing times. 
+We use the trick to assign these times to machines 0, 1, 2 and so on. So job 0 is 
 actually
 
 ..  math::
 
     [(0,54), (1,79), (2,16), (3,66), (4,58)]
 
-..  only:: draft
+Because of this trick, one can not easily define our problem instance above in this format and we don't attempt to do it.
 
-    Because of this trick, one can not easily define our problem instance above and we don't try to.
-
-You can find all you ever wanted to know and more about this format in [Taillard1993]_.
+You can find anything you ever wanted to know and more about this format in [Taillard1993]_.
 
 ..  [Taillard1993] Taillard, E., 1993. *Benchmarks for basic scheduling problems*, 
     European Journal of Operational Research, Elsevier, vol. 64(2), pages 278-285, January.
@@ -484,27 +483,26 @@ Basically, it wraps an ``std::vector<std::vector<Task> >`` container where ``Tas
 
 Most part of the ``JobshopData`` class is devoted to the reading of both file formats.
 
-..  only:: draft
-
-    The data file is processed at the creation of a ``JobShopData`` object:
+The data file is processed at the creation of a ``JobShopData`` object:
     
-    ..  code-block:: c++
+..  code-block:: c++
     
-        explicit JobShopData(const string& filename) :
-          ...
-          {
-            FileLineReader reader(filename_.c_str());
-            reader.set_line_callback(NewPermanentCallback(
-                                     this,
-                                     &JobShopData::ProcessNewLine));
-            reader.Reload();
-            if (!reader.loaded_successfully()) {
-              LOG(FATAL) << "Could not open job-shop file " << filename_;
-          }
+    explicit JobShopData(const string& filename) :
+    ...
+    {
+      FileLineReader reader(filename_.c_str());
+      reader.set_line_callback(NewPermanentCallback(
+                                             this,
+                                             &JobShopData::ProcessNewLine));
+      reader.Reload();
+      if (!reader.loaded_successfully()) {
+        LOG(FATAL) << "Could not open job-shop file " << filename_;
+    }
 
-    To parse the data file and load the tasks for each job, 
-    we use a ``FileLineReader`` (declared in :file:`base/filelinereader.h`). In its 
-    ``Reload()`` method, it calls the callback ``void ProcessNewLine(char* const line)`` to read one line at a time 
+To parse the data file and load the tasks for each job, 
+we use a ``FileLineReader`` (declared in :file:`base/filelinereader.h`). In its 
+``Reload()`` method, it triggers the callback ``void ProcessNewLine(char* const line)`` to read
+the file one line at a time 
 
 The public methods of the ``JobShopData`` class are
     

@@ -31,8 +31,8 @@ An implementation of the disjunctive model
 
 
 
-Scheduling is one of the field where Constraint Programming is heavily used, 
-therefore specialized constraints and variables have been developed [#scheduling_or_tools_explained_in_details_next_section]_. 
+Scheduling is one of the fields where Constraint Programming is heavily used and where 
+specialized constraints and variables have been developed [#scheduling_or_tools_explained_in_details_next_section]_. 
 In this section, 
 we will implement the disjunctive model with dedicated variables (``IntervalVar`` and
 ``SequenceVar``) and constraints (``IntervalBinaryRelation`` and ``DisjunctiveConstraint``).
@@ -40,7 +40,7 @@ we will implement the disjunctive model with dedicated variables (``IntervalVar`
 Last but not least, we will see our first real example of combining two ``DecisionBuilder``\s
 in a top-down fashion.
 
-..  [#scheduling_or_tools_explained_in_details_next_section] The next section is entirely devoted to scheduling in *or-tools*.
+..  [#scheduling_or_tools_explained_in_details_next_section] The next section is entirely dedicated to scheduling in *or-tools*.
 
 The ``IntervalVar`` variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -125,8 +125,8 @@ in a job, we can add an ``IntervalBinaryRelation`` constraint with the right rel
     Constraint* const prec =
        solver.MakeIntervalVarRelation(t2, Solver::STARTS_AFTER_END, t1);
 
-In the next section, we will other possibilities and also temporal relations 
-between an ``IntervalVar`` ``t`` and a time integer ``d``.
+In the next section, we will examine other possibilities and also temporal relations 
+between an ``IntervalVar`` ``t`` and an integer ``d`` representing time.
 
 The disjunctive constraints and ``SequenceVar``\s
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -277,7 +277,7 @@ and launch the search:
 containing the order in which the tasks are processed on each machine for solution 0 (which is the last and thus optimal 
 solution).
 
-This order corresponds exactly to the job ids because the way the tasks are ordered on each machine (by job ids).
+This order corresponds exactly to the job ids because the tasks are sorted by job id on each machine.
 The result for our instance is:
 
 ..  code-block:: text
@@ -290,8 +290,7 @@ which is exactly the optimal solution depicted in the previous section.
 
 What about getting the start and end times for all tasks?
 
-You have to declare what variables you want to collect in the 
-``SolutionCollector``:
+Declare the corresponding variables in the ``SolutionCollector``:
 
 ..  code-block:: c++
 
@@ -341,39 +340,36 @@ The result for our instance is:
     ...: Machine_1: Job 2 (0,4)  Job 0 (4,6)  Job 1 (6,10)  
     ...: Machine_2: Job 1 (5,6)  Job 0 (6,8)  Job 2 (8,11)  
 
-..  only:: draft
+Let's try the :file:`abz9` instance:
+    
+..  tabularcolumns:: |c|r|r|r|
 
-    This was a piece of cake. Let's try the :file:`abz9` instance:
+..  table::
     
-    ..  tabularcolumns:: |c|r|r|r|
+    ========== ========== =========== ============
+    Sol. nbr.  Obj. val.  Branches    Time (s)
+    ========== ========== =========== ============
+    87         1015         131 733     26,756
+    107         986       6 242 194   1088,487
+    ========== ========== =========== ============
 
-    ..  table::
-    
-        ========== ========== =========== ============
-        Sol. nbr.  Obj. val.  Branches    Time (s)
-        ========== ========== =========== ============
-        87         1015         131 733     26,756
-        107         986       6 242 194   1088,487
-        ========== ========== =========== ============
+After a little bit more than 18 minutes (1088,487 seconds), the CP solver 
+finds its 107 :superscript:`th` solution with an objective value of 986. This is quite far from the optimal 
+value of... 679 [Adams1988]_.
+An exact procedure to solve the job-shop problem is possible but only for small instances and with specialized algorithms.
 
-    After a little bit more than 18 minutes (1088,487 seconds), the CP solver 
-    finds its 107 :superscript:`th` solution with an objective value of 986. This is quite far from the optimal 
-    value of... 679 [Adams1988]_.
-    An exact procedure to solve the job-shop problem is possible but only for small instances and with specialized algorithms.
+..  only:: html 
     
-    ..  only:: html 
+    We prefer to quickly find (hopefully) good solutions (see the section :ref:`jobshop_ls`). 
     
-        We prefer to find quickly hopefully good solutions. We do this in the section :ref:`jobshop_ls`.
+..  raw:: latex 
     
-    ..  raw:: latex 
-    
-        We prefer to find quickly hopefully good solutions. We do this in section~\ref{manual/ls/jobshop_ls:jobshop-ls}.
+    We prefer to quickly find (hopefully) good solutions (see section~\ref{manual/ls/jobshop_ls:jobshop-ls}). 
 
-    We next will discover what specialized tools are available in our library to handle scheduling problems.
+We will discover next what specialized tools are available in our library to handle scheduling problems.
     
-    ..  [Adams1988] J. Adams, E. Balas, D. Zawack, *The shifting bottleneck
-                    procedure for job shop scheduling*. Management Science, 34, pp 391-401, 1988.
+..  [Adams1988] J. Adams, E. Balas, D. Zawack, *The shifting bottleneck
+                procedure for job shop scheduling*. Management Science, 34, pp 391-401, 1988.
 
-    
 
 
