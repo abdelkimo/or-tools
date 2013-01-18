@@ -77,11 +77,15 @@ Overview of the Local Search Mechanism in *or-tools*
 
     We start with an initial feasible solution. The ``MakeOneNeighbor()`` callback method 
     from the local search operator 
-    constructs one by one neighbor solutions. These solutions are checked by the CP solver and completed if needed. 
+    constructs one by one neighbor solutions [#makeoneneighbor_convenience_fct]_. These solutions are checked by the CP solver and completed if needed. 
     The "best" solution
     is chosen and the process is repeated starting with this new improved 
     solution [#local_search_default_best_solution_update]_.
     
+    ..  [#makeoneneighbor_convenience_fct] ``MakeOneNeighbor()`` is a convenient method. The real method to create a new 
+        neighbor is ``MakeNextNeighbor(Assignment* delta, Assignment* deltadelta)`` but you have to deal with the low 
+        level ``delta`` and ``deltadelta``. We discuss these details in the 
+        section :ref:`local_search_operators_the_real_thing`.
     
     ..  [#local_search_default_best_solution_update] By default, the solver accepts the
         first solution that beats the current best solution and repeats the search starting with 
@@ -263,7 +267,6 @@ The ``LocalSearchPhaseParameters`` parameter
     solutions, you don't have to provide a ``DecisionBuilder`` to assist: just give ``NULL`` as argument 
     for the ``DecisionBuilder`` pointer.
 
-
 ..  index:: SearchLimit; in Local Search
 
 ..  _search_limits_in_local_search:
@@ -300,7 +303,9 @@ The ``SearchLimit`` in Local Search
         finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution.
 
 
+..  only:: draft
 
+    XXXXXXXXXXXXXXXXXXXXXXX TO BE REWRITTEN XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 
 The basic local search algorithm and the callback hooks for the ``SearchMonitor``\s |difficulty| |difficulty|
@@ -315,7 +320,11 @@ The basic local search algorithm and the callback hooks for the ``SearchMonitor`
     If you want to know more, have a look at the section 
     :ref:`hood_ls` in the chapter :ref:`chapter_under_the_hood`.
 
-
+    We first we'll have a look at the initialization and how the CP solver takes or finds the initial solution.
+    Then we'll discuss the inner working of the ``FindOneNeighbor`` ``DecisionBuilder`` who's job is to find 
+    the next neighbor solution. This ``DecisionBuilder`` is used inside a ``NestedSolveDecision``
+    that is returned in the main loop by the ``Next()`` method of the ``LocalSearch`` ``DecisionBuilder`` that we will study
+    last.
     
 Initialization
 """""""""""""""""""
@@ -613,6 +622,11 @@ The callbacks of the ``SearchMonitor``\s in the local search
     
     DEFINE_int32(cp_local_search_sync_frequency, 16,
     "Frequency of checks for better solutions in the solution pool.");
+    
+    
+    ..  topic:: ``Solve()``, ``SolveAndCommit()``, ``SolveOnce()``, ``NestedSolve()``: what's the difference?
+    
+        Well...
     
 ..  only:: final
 

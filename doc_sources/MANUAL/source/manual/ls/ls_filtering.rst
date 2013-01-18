@@ -36,19 +36,6 @@ Filtering
 ..  only:: draft
 
 
-``Delta``\s and ``DeltaDelta``\s
-"""""""""""""""""""""""""""""""""""""""
-
-..  only:: draft
-
-    The idea behind the ``Delta``\s and ``DeltaDelta``\s is really simple: efficiency. Only the modified part of 
-    the solution is broadcast:
-    
-    * ``Delta``: the difference between the initial solution that defines the neighborhood and the current neighbor solution.
-    
-    * ``DeltaDelta``: the difference between the current neighbor solution and the previous neighbor solution.
-    
-    ``Delta`` and ``DeltaDelta`` are just ``Assignment``\s only containing the changes.
 
 Incrementality
 """""""""""""""""""
