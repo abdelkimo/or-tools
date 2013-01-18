@@ -1,9 +1,4 @@
 # Milestone:
-* Milestone: 300 pages!
 # Current changes.
 * Minor enhancements to the manual:
-  - minor corrections in chapters 5, 6 and 9.
-  - html: new presentation of the code files.
-  - 6.1, 6.2 partly rewritten and corrected.
-  - 6.3 added.
 

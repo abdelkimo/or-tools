@@ -352,7 +352,7 @@ Not having a theoretical guarantee on the quality of a solution doesn't mean tha
 Global optimization methods and local search 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Meta-heuristics and heuristics can also work globally. 
+Meta-heuristics and heuristics can also work globally [#local_global_heuristics]_.     
 The challenge with global methods is that very often the global search space for real industrial instances 
 is huge and contains lots of dimensions 
 (sometimes millions or even more!). More often than not, global exact optimization algorithms take prohibitive times
@@ -368,6 +368,10 @@ To take again an analogy [#analogy_limits]_, looking for a good solution this wa
 crude oil (or nowadays tar sands and the like): you send engineers, geologists, etc. to some places on earth to prospect
 (global method).
 If they find a promising spot, you send a team to drill and find out (local method).
+
+..  [#local_global_heuristics] Tabu search, simulated annealing, guided local search and the like  
+    were designed to overcome some shortcomings of local search methods. Depending on the problem and how they are 
+    implemented, these methods can also be seen as global search methods.
 
 ..  [#analogy_limits] As all analogies, this one has certainly its limits!
     
