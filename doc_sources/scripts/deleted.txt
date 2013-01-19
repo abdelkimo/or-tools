@@ -1,4 +1,0 @@
-user_manual/_images/math/483b8c0c562edd00dcb1baacbb9d83cab99d43aa.png
-user_manual/_images/math/e7fb0d1afb099054ff5eab0ece0ceadc21ba3d7e.png
-user_manual/_images/math/b3a8d123185a02cb02d6c7f4b247490e86ddeebf.png
-user_manual/_images/math/13b90fc6bfed5c85d3f19a9e39b58169a8c94207.png
