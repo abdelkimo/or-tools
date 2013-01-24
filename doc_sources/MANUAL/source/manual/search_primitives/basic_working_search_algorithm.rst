@@ -274,7 +274,7 @@ as entering/exiting search, applying/refuting decisions, failing, accepting solu
         "``EndNextDecision(DecisionBuilder* const b, Decision* const d)``", "After calling ``DecisionBuilder::Next()``, along with the returned decision."
         "``ApplyDecision(Decision* const d)``", "Before applying the ``Decision``."
         "``RefuteDecision(Decision* const d)``", "Before refuting the ``Decision``."
-        "``AfterDecision(Decision* const d, bool apply)``", "Just after refuting or applying the ``Decision``, ``apply`` is true after ``Apply()``. This is called only if the ``Apply()`` or ``Refute()`` methods have not failed."
+        "``AfterDecision(Decision* const d, bool apply)``", "Just after refuting or applying the ``Decision``, ``apply`` is true after ``Apply()``. This is called only if the ``Apply()`` or ``Refute()`` methods have **not** failed."
         "``BeginFail()``", "Just when the failure occurs."
         "``EndFail()``", "After completing the backtrack."
         "``BeginInitialPropagation()``", "Before the initial propagation."
