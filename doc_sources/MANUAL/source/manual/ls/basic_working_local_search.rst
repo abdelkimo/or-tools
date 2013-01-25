@@ -100,10 +100,12 @@ Overview of the Local Search Mechanism in *or-tools*
       - **LocalSearchPhaseParameters**: the ``LocalSearchPhaseParameters`` parameter holds the actual definition 
         of the local search phase:
         
+        * a **SolutionPool** that keep intermediate neighbor solution(s);
+        
         * a **LocalSearchOperator** used to explore the neighborhood of the current solution. You can combine
           several ``LocalSearchOperator``\s into one ``LocalSearchOperator``;
             
-        * a ``DecisionBuilder`` to instantiate unbound variables once an (incomplete) neighbor solution has
+        * a **DecisionBuilder** to instantiate unbound variables once an (incomplete) neighbor solution has
           been defined by the ``LocalSearchOperator``; 
             
         * a **Searchlimit** specifying stopping criteria each time we start looking for a new neighbor;
@@ -124,9 +126,7 @@ Overview of the Local Search Mechanism in *or-tools*
         section~\ref{manual/ls/ls_filtering:local-search-filtering}.
 
     
-    We quickly go over the other ingredients in this list in the next subsections: 
-    the initial solution, the ``LocalSearchPhaseParameters`` parameter and the 
-    ``Searchlimit``.
+    We now detail these two basics ingredients.
     
 The initial solution
 """"""""""""""""""""""
@@ -202,7 +202,34 @@ The ``LocalSearchPhaseParameters`` parameter
       neighborhood of the current solution. We detail them in the next section.
     * a ``DecisionBuilder``: this *complementary* ``DecisionBuilder`` helps creating feasible solutions if your ``LocalSearchOperator``\s 
       only return partial solutions, i.e. solutions with unbounded variables. 
-    * a ``SearchLimit``: The ``SearchLimit`` allows to limit the local search and is discussed in the next subsection below.
+
+    ..  index:: SearchLimit; in Local Search
+
+    * a ``SearchLimit``: The ``SearchLimit`` allows to limit the local search, i.e. these limits are only valid within 
+      the search of **one** neighborhood. The most interesting statistics to limit is probably the number of found 
+      solutions:
+    
+      ..  code-block:: c++
+    
+          SearchLimit * const limit = s.MakeSolutionsLimit(2);
+
+      ..  only:: html 
+      
+          This would limit the search to maximum two neighbor solutions in the same neighborhood. Don't forget that neighbors are feasible 
+          solutions, so once the solver finds a neighbor, it changes the model 
+          to exclude solutions with the same objective value. See the section :ref:`golomb_ruler_optimization_how` 
+          to refresh your memory if needed. Thus, the second solution found can only be better than the first one. When the solver 
+          finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution.
+
+      ..  raw:: latex 
+      
+          This would limit the search to maximum two neighbor solutions in the same neighborhood. Don't forget that neighbors are feasible 
+          solutions, so once the solver finds a neighbor, it changes the model 
+          to exclude solutions with the same objective value. See the 
+          section~\ref{manual/objectives/optimization_how:golomb-ruler-optimization-how} 
+          to refresh your memory if needed. Thus, the second solution found can only be better than the first one. When the solver 
+          finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution.
+
     * ``LocalSearchFilter``\s: these filters speed up the search by bypassing the solver checking mechanism if you know that the 
       solution must be rejected (because it is not feasible, because it is not good enough, ...). If the filters accept a
       solution, the solver still tests the feasibility of this solution.
@@ -266,40 +293,6 @@ The ``LocalSearchPhaseParameters`` parameter
     solutions, you don't have to provide a ``DecisionBuilder`` to assist: just give ``NULL`` as argument 
     for the ``DecisionBuilder`` pointer.
 
-..  index:: SearchLimit; in Local Search
-
-..  _search_limits_in_local_search:
-
-The ``SearchLimit`` in Local Search
-"""""""""""""""""""""""""""""""""""""""""
-
-..  only:: draft
-
-    ``SearchLimit``\s were first described in the subsection :ref:`search_limits`.
-
-    This time we apply ``SearchLimit``\s in local search, i.e. these limits are only valid within the search of **one** 
-    neighborhood. Probably the most interesting statistics to limit is the number of found solutions in one neighborhood:
-    
-    ..  code-block:: c++
-    
-        SearchLimit * const limit = s.MakeSolutionsLimit(2);
-
-    ..  only:: html 
-    
-        This would limit the search to maximum two neighbors in the same neighborhood. Don't forget that neighbors are feasible 
-        solutions, so once the solver finds a neighbor, it changes the model 
-        to exclude solutions with the same objective value. See the section :ref:`golomb_ruler_optimization_how` 
-        to refresh your memory if needed. Thus, the second solution found can only be better than the first one. When the solver 
-        finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution.
-
-    ..  raw:: latex 
-    
-        This would limit the search to maximum two neighbors in the same neighborhood. Don't forget that neighbors are feasible 
-        solutions, so once the solver finds a neighbor, it changes the model 
-        to exclude solutions with the same objective value. See the 
-        section~\ref{manual/objectives/optimization_how:golomb-ruler-optimization-how} 
-        to refresh your memory if needed. Thus, the second solution found can only be better than the first one. When the solver 
-        finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution.
 
 
 
@@ -321,6 +314,13 @@ The basic local search algorithm and the callback hooks for the ``SearchMonitor`
     that is returned in the main loop by the ``Next()`` method of the ``LocalSearch`` ``DecisionBuilder`` that we will study
     last. We consider the case where an initial ``DecisionBuilder`` is given to construct the initial solution.
     
+    
+    SearchMonitor‘s callbacks are indicated in the code by the comment:
+    
+    ..  code-block:: c++
+    
+        // SEARCHMONITOR CALLBACK
+        
 Initialization
 """""""""""""""""""
 
@@ -440,154 +440,18 @@ Initialization
     ..  [#initial_assignment_instead] If you have an ``Assignment`` instead, the solver simply replaces
         the ``initial_solution`` ``DecisionBuilder`` with a ``RestoreAssignment`` taking your initial ``Assignment``.
     
-The callbacks of the ``SearchMonitor``\s in the local search 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+The ``FindOneNeighbor`` ``DecisionBuilder``
+"""""""""""""""""""""""""""""""""""""""""""""""""
 
 ..  only:: draft
 
-    ..  only:: html
-
-        In this subsection, we present the following callbacks of the ``SearchMonitor`` class and show you 
-        exactly when they are called in the local search algorithm:
-
-
-        ..  tabularcolumns:: |p{8.5cm}|p{9cm}|
-        
-        ..  csv-table:: Basic search algorithm callbacks from the ``SearchMonitor`` class. 
-            :header: "Methods", "Descriptions"
-            :widths: 20, 80
-                
-            ``LocalOptimum()``, "When a local optimum is reached. If ``true`` is returned, the last solution is discarded and the search proceeds to find the next local optimum. Handy when you implement a meta-heuristic with a ``SearchMonitor``."
-            "``AcceptDelta(Assignment *delta, Assignment *deltadelta)``", "When the local search operators have produced the next neighbor solution given in the form of ``delta`` and ``deltadelta``. You can accept or reject this new neighbor solution."
-            "``AcceptNeighbor()``", "After accepting a neighbor solution during local search."
-            "``PeriodicCheck()``", "Periodic call to check limits in long running methods."
-        
-    ..  raw:: latex
-
-        In this subsection, we present the callbacks of the \code{SearchMonitor} listed in 
-        Table~\ref{tab:search-monitor-local-search-callbacks} and show you 
-        exactly when they are called in the search algorithm.
-        
-        \begin{table}[ht]
-        \caption{Local search algorithm callbacks from the \code{SearchMonitor} class.}
-        \centering
-        \scalebox{0.85}{
-          \begin{tabular}{|p{8.5cm}|p{9cm}|}
-            \hline
-            \textbf{Methods} & \textbf{Descriptions}\\
-            \hline
-              \code{LocalOptimum()} & When a local optimum is reached. If \code{true} is returned, the last solution is discarded and the search proceeds to find the next local optimum. Handy when you implement a meta-heuristic with a \code{SearchMonitor}.\\
-            \hline
-              \code{AcceptDelta(Assignment *delta, Assignment *deltadelta)} & When the local search operators have produced the next neighbor solution given in the form of \code{delta} and \code{deltadelta}. You can accept or reject this new neighbor solution.\\
-            \hline
-              \code{AcceptNeighbor()} &  After accepting a neighbor solution during local search.\\
-            \hline
-              \code{PeriodicCheck()} &  Periodic call to check limits in long running methods.\\
-            \hline
-          \end{tabular}
-        }
-        \label{tab:search-monitor-local-search-callbacks}
-        \end{table}
-
-    ..  raw:: html
-        
-        <br>
-
-    To ensure the communication between the local search and the global search, three utility functions are defined:
-    
-    * ``bool LocalOptimumReached()``:
-      Returns true if a local optimum has been reached and cannot be improved.
-    * ``bool AcceptDelta()``:
-      Returns true if the search accepts the deltas.
-    * ``void AcceptNeighbor()``:
-      Notifies the search that a neighbor has been accepted by local search.
-      
-    These functions simply call their ``SearchMonitor``\'s counterparts, i.e. they call the corresponding methods of the 
-    involved ``SearchMonitor``\s.
-
-
-    We are now ready to have a look at the local search algorithm in more details. Remember that 
-    the version shown here is a **simplified** version of the real implementation.
-    
-    The local search can be in three states defined by the ``NestedSolveDecision`` ``StateType`` ``enum``
-    when trying to find the next neighbor solution:
+    This ``DecisionBuilder`` tries to find the next neighbor solution. 
     
     
-    ..  table::
-
-        ======================  ==========================================================================
-        Value                   Meaning
-        ======================  ==========================================================================
-        ``DECISION_FAILED``     The nested search phase failed.
-        ``DECISION_PENDING``    The ``Decision`` didn't find a solution yet in its nested search phase.
-        ``DECISION_FOUND``      The nested search phase succeeded and found a solution.
-        ======================  ==========================================================================
     
     
-    We present and discuss this algorithm below. SearchMonitor‘s callbacks are indicated by the comment:
-    
-    ..  code-block:: c++
-    
-        // SEARCHMONITOR CALLBACK
-    
-    The ``Next()`` method of the ``LocalSearch`` class is in charge to control the local search:
-    
-    ..  code-block:: c++
-        :linenos:
-    
-        Decision * Next(Solver * solver) {
-          //  Initialization, if needed Fail()
-          ...
-          //  Main DecisionBuilder to find one locally optimal 
-          //  neighbor solution
-          DecisionBuilder* find_neighbors =
-            solver->RevAlloc(new FindOneNeighbor(assignment_,
-                                                 pool_,
-                                                 ls_operator_,
-                                                 sub_decision_builder_,
-                                                 limit_,
-                                                 filters_));
-          NestedSolveDecision* decision = solver->RevAlloc(
-                                    new NestedSolveDecision(find_neighbors, 
-                                                            false)));
-          const int state = decision->state();
-          switch (state) {
-            case NestedSolveDecision::DECISION_FAILED: {
-                                                  // SEARCHMONITOR CALLBACK
-              if (!LocalOptimumReached(solver->ActiveSearch())) {
-                // Stop the current search
-                ...
-              }
-              solver->Fail();
-              return NULL;
-            }
-            case NestedSolveDecision::DECISION_PENDING: {
-              //  Stabilize search tree by balancing the current search tree.
-              //  Statistics are updated even if this is not relevant to the 
-              //  global search
-                ...
-                return decision;
-            }
-            case NestedSolveDecision::DECISION_FOUND: {
-              // Nothing important for us in this simplified version
-              ...
-              return NULL;
-            }
-            default: {
-              LOG(ERROR) << "Unknown local search state";
-              return NULL;
-            }
-          }
-          return NULL;
-        }
-        
-
-    ``LocalOptimumReached()`` is a global function that connects the local and global searches
-    and returns ``true`` if a local optimum has been reached and cannot be improved.
-    To do so, it calls the 
-    ``LocalOptimum()`` callback of **all** the ``SearchMonitor``\s for the current search.
-    
-    The *real* local search algorithm is provided in the ``Next()`` method of the ``FindOneNeighbor`` class:
+    We present its ``Next()`` method and discuss it after:
     
     ..  code-block:: c++
         :linenos:
@@ -671,6 +535,150 @@ The callbacks of the ``SearchMonitor``\s in the local search
     
     DEFINE_int32(cp_local_search_sync_frequency, 16,
     "Frequency of checks for better solutions in the solution pool.");
+
+
+The callbacks of the ``SearchMonitor``\s and the local search algorithm 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+..  only:: draft
+
+    ..  only:: html
+
+        In this subsection, we present the following callbacks of the ``SearchMonitor`` class and show you 
+        exactly when they are called in the local search algorithm:
+
+
+        ..  tabularcolumns:: |p{8.5cm}|p{9cm}|
+        
+        ..  csv-table:: Basic search algorithm callbacks from the ``SearchMonitor`` class. 
+            :header: "Methods", "Descriptions"
+            :widths: 20, 80
+                
+            ``LocalOptimum()``, "When a local optimum is reached. If ``true`` is returned, the last solution is discarded and the search proceeds to find the next local optimum. Handy when you implement a meta-heuristic with a ``SearchMonitor``."
+            "``AcceptDelta(Assignment *delta, Assignment *deltadelta)``", "When the local search operators have produced the next neighbor solution given in the form of ``delta`` and ``deltadelta``. You can accept or reject this new neighbor solution."
+            "``AcceptNeighbor()``", "After accepting a neighbor solution during local search."
+            "``PeriodicCheck()``", "Periodic call to check limits in long running methods."
+        
+    ..  raw:: latex
+
+        In this subsection, we present the callbacks of the \code{SearchMonitor} listed in 
+        Table~\ref{tab:search-monitor-local-search-callbacks} and show you 
+        exactly when they are called in the search algorithm.
+        
+        \begin{table}[ht]
+        \caption{Local search algorithm callbacks from the \code{SearchMonitor} class.}
+        \centering
+        \scalebox{0.85}{
+          \begin{tabular}{|p{8.5cm}|p{9cm}|}
+            \hline
+            \textbf{Methods} & \textbf{Descriptions}\\
+            \hline
+              \code{LocalOptimum()} & When a local optimum is reached. If \code{true} is returned, the last solution is discarded and the search proceeds to find the next local optimum. Handy when you implement a meta-heuristic with a \code{SearchMonitor}.\\
+            \hline
+              \code{AcceptDelta(Assignment *delta, Assignment *deltadelta)} & When the local search operators have produced the next neighbor solution given in the form of \code{delta} and \code{deltadelta}. You can accept or reject this new neighbor solution.\\
+            \hline
+              \code{AcceptNeighbor()} &  After accepting a neighbor solution during local search.\\
+            \hline
+              \code{PeriodicCheck()} &  Periodic call to check limits in long running methods.\\
+            \hline
+          \end{tabular}
+        }
+        \label{tab:search-monitor-local-search-callbacks}
+        \end{table}
+
+    ..  raw:: html
+        
+        <br>
+
+    To ensure the communication between the local search and the global search, three utility functions are defined:
+    
+    * ``bool LocalOptimumReached()``:
+      Returns true if a local optimum has been reached and cannot be improved.
+    * ``bool AcceptDelta()``:
+      Returns true if the search accepts the deltas.
+    * ``void AcceptNeighbor()``:
+      Notifies the search that a neighbor has been accepted by local search.
+      
+    These functions simply call their ``SearchMonitor``\'s counterparts, i.e. they call the corresponding methods of the 
+    involved ``SearchMonitor``\s.
+
+
+
+    We are now ready to have a look at the (simplified) local search algorithm in more details.
+    
+    The local search can be in three states defined by the ``NestedSolveDecision`` ``StateType`` ``enum``
+    when trying to find the next neighbor solution:
+    
+    
+    ..  table::
+
+        ======================  ==========================================================================
+        Value                   Meaning
+        ======================  ==========================================================================
+        ``DECISION_FAILED``     The nested search phase failed.
+        ``DECISION_PENDING``    The ``Decision`` didn't find a solution yet in its nested search phase.
+        ``DECISION_FOUND``      The nested search phase succeeded and found a solution.
+        ======================  ==========================================================================
+    
+    
+    We present and discuss this algorithm below. 
+    
+    The ``Next()`` method of the ``LocalSearch`` class is in charge to control the local search:
+    
+    ..  code-block:: c++
+        :linenos:
+    
+        Decision * Next(Solver * solver) {
+          //  Initialization, if needed Fail()
+          ...
+          //  Main DecisionBuilder to find neighbor solutions one by one
+          DecisionBuilder* find_neighbors =
+            solver->RevAlloc(new FindOneNeighbor(assignment_,
+                                                 pool_,
+                                                 ls_operator_,
+                                                 sub_decision_builder_,
+                                                 limit_,
+                                                 filters_));
+          NestedSolveDecision* decision = solver->RevAlloc(
+                                    new NestedSolveDecision(find_neighbors, 
+                                                            false)));
+          const int state = decision->state();
+          switch (state) {
+            case NestedSolveDecision::DECISION_FAILED: {
+                                                  // SEARCHMONITOR CALLBACK
+              if (!LocalOptimumReached(solver->ActiveSearch())) {
+                // Stop the current search
+                ...
+              }
+              solver->Fail();
+              return NULL;
+            }
+            case NestedSolveDecision::DECISION_PENDING: {
+              //  Stabilize search tree by balancing the current search tree.
+              //  Statistics are updated even if this is not relevant to the 
+              //  global search
+                ...
+                return decision;
+            }
+            case NestedSolveDecision::DECISION_FOUND: {
+              // Nothing important for us in this simplified version
+              ...
+              return NULL;
+            }
+            default: {
+              LOG(ERROR) << "Unknown local search state";
+              return NULL;
+            }
+          }
+          return NULL;
+        }
+        
+
+    ``LocalOptimumReached()`` is a global function that connects the local and global searches
+    and returns ``true`` if a local optimum has been reached and cannot be improved.
+    To do so, it calls the 
+    ``LocalOptimum()`` callback of **all** the ``SearchMonitor``\s for the current search.
+    
     
     
     ..  topic:: ``Solve()``, ``SolveAndCommit()``, ``SolveOnce()``, ``NestedSolve()``: what's the difference?
