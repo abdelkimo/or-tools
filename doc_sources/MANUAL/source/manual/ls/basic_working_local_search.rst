@@ -432,7 +432,7 @@ Initialization
         ...
         DecisionBuilder * current_sol = s.MakeRestoreAssignment(solution);
         ...
-        //  do something fancy starting from current_sol
+        //  do something fancy starting with current_sol
         DecisionBuilder * fancy_db = s.Compose(current_sol, ...);
         ...
         s.Solve(fancy_db,...);
@@ -457,16 +457,11 @@ The callbacks of the ``SearchMonitor``\s in the local search
             :header: "Methods", "Descriptions"
             :widths: 20, 80
                 
-            ``LocalOptimum()``, "When a local optimum is reached. If ``true`` is returned, the last solution is discarded and the search proceeds to find the next local optimum."
-            "``AcceptDelta(Assignment *delta, Assignment *deltadelta)``", "When the local search operators have produced the next neighbor solution given in the form of ``delta`` and ``deltadelta``."
+            ``LocalOptimum()``, "When a local optimum is reached. If ``true`` is returned, the last solution is discarded and the search proceeds to find the next local optimum. Handy when you implement a meta-heuristic with a ``SearchMonitor``."
+            "``AcceptDelta(Assignment *delta, Assignment *deltadelta)``", "When the local search operators have produced the next neighbor solution given in the form of ``delta`` and ``deltadelta``. You can accept or reject this new neighbor solution."
             "``AcceptNeighbor()``", "After accepting a neighbor solution during local search."
             "``PeriodicCheck()``", "Periodic call to check limits in long running methods."
         
-     To make the link between the global search and the local search, three global functions exist:
-     
-     LocalOptimum, AcceptDelta and AcceptNeighbor. TO DETAIL.
-     
-     
     ..  raw:: latex
 
         In this subsection, we present the callbacks of the \code{SearchMonitor} listed in 
@@ -481,9 +476,9 @@ The callbacks of the ``SearchMonitor``\s in the local search
             \hline
             \textbf{Methods} & \textbf{Descriptions}\\
             \hline
-              \code{LocalOptimum()} & When a local optimum is reached. If \code{true} is returned, the last solution is discarded and the search proceeds to find the next local optimum.\\
+              \code{LocalOptimum()} & When a local optimum is reached. If \code{true} is returned, the last solution is discarded and the search proceeds to find the next local optimum. Handy when you implement a meta-heuristic with a \code{SearchMonitor}.\\
             \hline
-              \code{AcceptDelta(Assignment *delta, Assignment *deltadelta)} & When the local search operators have produced the next neighbor solution given in the form of \code{delta} and \code{deltadelta}.\\
+              \code{AcceptDelta(Assignment *delta, Assignment *deltadelta)} & When the local search operators have produced the next neighbor solution given in the form of \code{delta} and \code{deltadelta}. You can accept or reject this new neighbor solution.\\
             \hline
               \code{AcceptNeighbor()} &  After accepting a neighbor solution during local search.\\
             \hline
@@ -498,21 +493,35 @@ The callbacks of the ``SearchMonitor``\s in the local search
         
         <br>
 
+    To ensure the communication between the local search and the global search, three utility functions are defined:
+    
+    * ``bool LocalOptimumReached()``:
+      Returns true if a local optimum has been reached and cannot be improved.
+    * ``bool AcceptDelta()``:
+      Returns true if the search accepts the deltas.
+    * ``void AcceptNeighbor()``:
+      Notifies the search that a neighbor has been accepted by local search.
+      
+    These functions simply call their ``SearchMonitor``\'s counterparts, i.e. they call the corresponding methods of the 
+    involved ``SearchMonitor``\s.
+
+
     We are now ready to have a look at the local search algorithm in more details. Remember that 
     the version shown here is a **simplified** version of the real implementation.
     
-    The local search can be in three states defined by the ``NestedSolveDecision`` ``StateType`` ``enum``:
+    The local search can be in three states defined by the ``NestedSolveDecision`` ``StateType`` ``enum``
+    when trying to find the next neighbor solution:
     
     
     ..  table::
 
-        ======================  ================================================================
+        ======================  ==========================================================================
         Value                   Meaning
-        ======================  ================================================================
+        ======================  ==========================================================================
         ``DECISION_FAILED``     The nested search phase failed.
-        ``DECISION_PENDING``    The ``Decision`` didn't try to solve its nested search phase.
-        ``DECISION_FOUND``      The nested search phase succeeded.
-        ======================  ================================================================
+        ``DECISION_PENDING``    The ``Decision`` didn't find a solution yet in its nested search phase.
+        ``DECISION_FOUND``      The nested search phase succeeded and found a solution.
+        ======================  ==========================================================================
     
     
     We present and discuss this algorithm below. SearchMonitor‘s callbacks are indicated by the comment:
