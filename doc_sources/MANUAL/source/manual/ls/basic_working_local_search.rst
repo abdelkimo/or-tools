@@ -13,8 +13,7 @@ Basic working of the solver: local search
     and describe some of its main components. Finally, we detail the inner working of the local search algorithm and 
     indicate where the callbacks of the ``SearchMonitor``\s are called in the last subsection.
     
-    We present a simplified version of the local search algorithm. We will not miss much though and use the real  
-    code as an example of the way we can combine the search primitives we have already seen in the previous chapter.
+    We present a simplified version of the local search algorithm.
     
     ..  warning:: We describe a simplified version of the local search algorithm.
     
@@ -303,10 +302,6 @@ The ``SearchLimit`` in Local Search
         finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution.
 
 
-..  only:: draft
-
-    XXXXXXXXXXXXXXXXXXXXXXX TO BE REWRITTEN XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
 
 The basic local search algorithm and the callback hooks for the ``SearchMonitor``\s |difficulty| |difficulty|
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -324,44 +319,77 @@ The basic local search algorithm and the callback hooks for the ``SearchMonitor`
     Then we'll discuss the inner working of the ``FindOneNeighbor`` ``DecisionBuilder`` who's job is to find 
     the next neighbor solution. This ``DecisionBuilder`` is used inside a ``NestedSolveDecision``
     that is returned in the main loop by the ``Next()`` method of the ``LocalSearch`` ``DecisionBuilder`` that we will study
-    last.
+    last. We consider the case where an initial ``DecisionBuilder`` is given to construct the initial solution.
     
 Initialization
 """""""""""""""""""
 
 ..  only:: draft
 
-    The ``LocalSearchPhaseParameters`` is setup with 
-    
-      - a ``SolutionPool``;
-      - a ``SearchLimit`` ;
-      - a ``LocalSearchOperator``;
-
-    and passed to the ``LocalSearch`` class. If you use the ``Solver``\'s ``MakePhase()`` factory, 
-    you only need to provide ...
-    
-    In the ``LocalSearch`` class constructor, an initial solution 
-    is constructed/tested.
-    
-    It's interesting to see how it is done. We show here the case where an initial ``DecisionBuilder`` 
-    is given to construct the initial solution [#initial_assignment_instead]_:
+    Consider the situation where we already have a ``LocalSearchPhaseParameters`` parameter set up: 
     
     ..  code-block:: c++
     
-        DecisionBuilder * store = solver->MakeStoreAssignment(assignment);
-        DecisionBuilder * first_solution_and_store = solver->Compose(
-                                             first_solution, 
+        Solver s("Dummy LS");
+        ...
+        std::vector<IntVar*> vars = ...
+        ...
+        LocalSearchOperator * const ls_operator = ...
+        DecisionBuilder * const complementary_decision_builder = ...
+        ...
+        LocalSearchPhaseParameters params = 
+           s.MakeLocalSearchPhaseParameters(ls_operator, 
+                                            complementary_decision_builder);
+        
+    The ``complementary_decision_builder`` ``DecisionBuilder`` will help us complete 
+    the solution found by the local search operator ``ls_operator``. Our initial solution will be constructed 
+    by the ``initial_solution`` ``DecisionBuilder`` (and completed by the ``complementary_decision_builder`` ``DecisionBuilder``
+    if needed). Remember, that the solution taken by the CP solver is the **first** 
+    solution found by this ``DecisionBuilder``. We are now ready to create the ``DecisionBuilder`` for the local search:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder * const initial_solution = ...
+        ...
+        DecisionBuilder * const ls = s.MakeLocalSearchPhase(vars, 
+                                                            initial_solution,
+                                                            params);
+    
+    
+    We can now add as many monitors as we want and launch the solving process:
+    
+    ..  code-block:: c++
+    
+        std::vector<SearchMonitor *> monitors;
+        ...
+        s.Solve(ls, monitors);
+
+    
+    It's interesting to see how this initial solution is constructed [#initial_assignment_instead]_.
+    Here is how it is done in the ``LocalSearch`` class. First, we create an ``Assignment`` to store this 
+    initial solution:
+    
+    ..  code-block:: c++
+    
+        Assignment * const initial_sol = s.MakeAssignment();
+        ...
+    
+    To store an ``Assignment`` found by the CP solver, we can use the ``StoreAssignment`` ``DecisionBuilder``:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder * store = solver->MakeStoreAssignment(initial_sol);
+        
+    This ``DecisionBuilder`` simply store the current solution in the ``initial_sol`` ``Assignment``:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder * initial_solution_and_store = solver->Compose(
+                                             initial_solution, 
                                              complementary_decision_builder, 
                                              store);
     
-    where:
-    
-      * ``assignment`` is the initial ``Assignment`` constructed/tested;
-      * ``first_solution`` is the initial ``DecisionBuilder`` given to the local search algorithm;
-      * ``complementary_decision_builder`` is the complementary ``DecisionBuilder`` to complete a neighbor solution 
-        if needed.
-        
-    Basically, ``first_solution_and_store`` constructs the first initial solution. This ``DecisionBuilder``
+    ``initial_solution_and_store`` constructs this initial solution. This ``DecisionBuilder``
     is used in a nested search:
     
     ..  code-block:: c++
@@ -369,7 +397,7 @@ Initialization
         std::vector<SearchMonitor *> monitors;
         monitors.push_back(limit);
         NestedSolveDecision * initial_solution_decision = 
-                          new NestedSolveDecision(first_solution_and_store,
+                          new NestedSolveDecision(initial_solution_and_store,
                                                   false,
                                                   monitors);
     
@@ -387,7 +415,7 @@ Initialization
     
     ..  code-block:: c++
     
-        solver->NestedSolve(first_solution_and_store, false, monitors);
+        solver->NestedSolve(initial_solution_and_store, false, monitors);
     
     where the arguments respectively are:
     
@@ -395,10 +423,22 @@ Initialization
       * a ``bool`` that tells if we restore the current solution or not;
       * an ``std::vector<SearchMonitor *>``.
       
-    Remember that the ``NestedSolve()`` method tries to find the first solution accepted.
+    The ``DecisionBuilder`` companion to ``StoreAssignment`` is ``RestoreAssignment`` that 
+    reinstall an ``Assignment`` as the current solution:
+    
+    ..  code-block:: c++
+    
+        Assignment * solution = ...
+        ...
+        DecisionBuilder * current_sol = s.MakeRestoreAssignment(solution);
+        ...
+        //  do something fancy starting from current_sol
+        DecisionBuilder * fancy_db = s.Compose(current_sol, ...);
+        ...
+        s.Solve(fancy_db,...);
     
     ..  [#initial_assignment_instead] If you have an ``Assignment`` instead, the solver simply replaces
-        the ``first_solution`` ``DecisionBuilder`` with a ``RestoreAssignment`` taking your initial ``Assignment``.
+        the ``initial_solution`` ``DecisionBuilder`` with a ``RestoreAssignment`` taking your initial ``Assignment``.
     
 The callbacks of the ``SearchMonitor``\s in the local search 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
