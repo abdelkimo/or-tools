@@ -96,7 +96,8 @@ of ``SequenceVar``\s [#no_ls_operators_for_interval_vars]_.
 Defining a custom LSN operator 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We will construct an LSN Operator for an array of ``IntVar``\s but the API for an array of ``SequenceVar``\s is similar.
+We will construct an LSN Operator for an array of ``IntVar``\s but the API for an array of ``SequenceVar``\s is similar 
+[#similar_api_intvar_localsearch_operator]_.
 
 There are two methods to overwrite:
 
@@ -107,9 +108,10 @@ There are two methods to overwrite:
 
 Some helper methods are provided:
 
-  * ``int64 Value(int64 index)``: returns the value in the current assignment of the variable of given index;
+  * ``int64 Value(int64 index)``: returns the value in the current ``Assignment`` of the variable of given index;
   
-  * ``int64 OldValue(int64 index)``: returns the value in the last assignment of the variable of given index;
+  * ``int64 OldValue(int64 index)``: returns the value in the last ``Assignment`` (the initial solution or the last
+    neighbor solution) of the variable of given index;
   
   * ``SetValue(int64 i, int64 value)``: sets the value of the ``i`` :superscript:`th` variable to ``value`` in the current assignment
     and allows to construct a new feasible solution;
@@ -128,6 +130,9 @@ to be sure the variables you want to change do exist (i.e. beware of going out o
 Now the good news is that you don't have to test for feasibility: it's the job of the solver. 
 You are even allowed to assign out of domain values to the variables.
 Again, the solver will discard such solutions.
+
+..  [#similar_api_intvar_localsearch_operator] For instance, the ``SetValue()`` method is replaced by the ``SetForwardSequence()``
+    and ``SetBackwardSequence()`` methods.
 
 Without further delay, here is the code for our custom LSNO:
 

@@ -308,9 +308,71 @@ The basic local search algorithm and the callback hooks for the ``SearchMonitor`
     If you want to know more, have a look at the section 
     :ref:`hood_ls` in the chapter :ref:`chapter_under_the_hood`.
 
+    ..  only:: html
+
+        In this subsection, we present the following callbacks of the ``SearchMonitor`` class and show you 
+        exactly when they are called in the local search algorithm:
+
+
+        ..  tabularcolumns:: |p{8.5cm}|p{9cm}|
+        
+        ..  csv-table:: Local search algorithm callbacks from the ``SearchMonitor`` class. 
+            :header: "Methods", "Descriptions"
+            :widths: 20, 80
+                
+            ``LocalOptimum()``, "When a local optimum is reached. If ``true`` is returned, the last solution is discarded and the search proceeds to find the next local optimum. Handy when you implement a meta-heuristic with a ``SearchMonitor``."
+            "``AcceptDelta(Assignment *delta, Assignment *deltadelta)``", "When the local search operators have produced the next neighbor solution given in the form of ``delta`` and ``deltadelta``. You can accept or reject this new neighbor solution."
+            "``AcceptNeighbor()``", "After accepting a neighbor solution during local search."
+            "``PeriodicCheck()``", "Periodic call to check limits in long running methods."
+        
+    ..  raw:: latex
+
+        In this subsection, we present the callbacks of the \code{SearchMonitor} listed in 
+        Table~\ref{tab:search-monitor-local-search-callbacks} and show you 
+        exactly when they are called in the search algorithm.
+        
+        \begin{table}[ht]
+        \caption{Local search algorithm callbacks from the \code{SearchMonitor} class.}
+        \centering
+        \scalebox{0.85}{
+          \begin{tabular}{|p{8.5cm}|p{9cm}|}
+            \hline
+            \textbf{Methods} & \textbf{Descriptions}\\
+            \hline
+              \code{LocalOptimum()} & When a local optimum is reached. If \code{true} is returned, the last solution is discarded and the search proceeds to find the next local optimum. Handy when you implement a meta-heuristic with a \code{SearchMonitor}.\\
+            \hline
+              \code{AcceptDelta(Assignment *delta, Assignment *deltadelta)} & When the local search operators have produced the next neighbor solution given in the form of \code{delta} and \code{deltadelta}. You can accept or reject this new neighbor solution.\\
+            \hline
+              \code{AcceptNeighbor()} &  After accepting a neighbor solution during local search.\\
+            \hline
+              \code{PeriodicCheck()} &  Periodic call to check limits in long running methods.\\
+            \hline
+          \end{tabular}
+        }
+        \label{tab:search-monitor-local-search-callbacks}
+        \end{table}
+
+    ..  raw:: html
+        
+        <br>
+
+    To ensure the communication between the local search and the global search, three utility functions are defined:
+    
+    * ``bool LocalOptimumReached()``:
+      Returns true if a local optimum has been reached and cannot be improved.
+    * ``bool AcceptDelta()``:
+      Returns true if the search accepts the deltas.
+    * ``void AcceptNeighbor()``:
+      Notifies the search that a neighbor has been accepted by local search because a ``SearchLimit`` has been reached or the neighborhood has been exhausted.
+      
+    These functions simply call their ``SearchMonitor``\'s counterparts, i.e. they call the corresponding methods of the 
+    involved ``SearchMonitor``\s.
+
+
     We first we'll have a look at the initialization and how the CP solver takes or finds the initial solution.
     Then we'll discuss the inner working of the ``FindOneNeighbor`` ``DecisionBuilder`` who's job is to find 
-    the next neighbor solution. This ``DecisionBuilder`` is used inside a ``NestedSolveDecision``
+    the next neighbor solution. You might wonder why the implementation consists in so many lines of code but there 
+    are a lot of cases to consider. This ``DecisionBuilder`` is used inside a ``NestedSolveDecision``
     that is returned in the main loop by the ``Next()`` method of the ``LocalSearch`` ``DecisionBuilder`` that we will study
     last. We consider the case where an initial ``DecisionBuilder`` is given to construct the initial solution.
     
@@ -326,7 +388,8 @@ Initialization
 
 ..  only:: draft
 
-    Consider the situation where we already have a ``LocalSearchPhaseParameters`` parameter set up: 
+    Consider the situation where we already have a ``LocalSearchPhaseParameters`` parameter set up and we let the CP solver
+    construct the initial solution: 
     
     ..  code-block:: c++
     
@@ -365,7 +428,7 @@ Initialization
         s.Solve(ls, monitors);
 
     
-    It's interesting to see how this initial solution is constructed [#initial_assignment_instead]_.
+    It's interesting to see how this initial solution is constructed.
     Here is how it is done in the ``LocalSearch`` class. First, we create an ``Assignment`` to store this 
     initial solution:
     
@@ -374,13 +437,13 @@ Initialization
         Assignment * const initial_sol = s.MakeAssignment();
         ...
     
-    To store an ``Assignment`` found by the CP solver, we can use the ``StoreAssignment`` ``DecisionBuilder``:
+    To store an ``Assignment`` found by the CP solver, we use the ``StoreAssignment`` ``DecisionBuilder``:
     
     ..  code-block:: c++
     
         DecisionBuilder * store = solver->MakeStoreAssignment(initial_sol);
         
-    This ``DecisionBuilder`` simply store the current solution in the ``initial_sol`` ``Assignment``:
+    This ``DecisionBuilder`` simply stores the current solution in the ``initial_sol`` ``Assignment``:
     
     ..  code-block:: c++
     
@@ -424,7 +487,7 @@ Initialization
       * an ``std::vector<SearchMonitor *>``.
       
     The ``DecisionBuilder`` companion to ``StoreAssignment`` is ``RestoreAssignment`` that 
-    reinstall an ``Assignment`` as the current solution:
+    *install* an ``Assignment`` as the current solution:
     
     ..  code-block:: c++
     
@@ -437,13 +500,10 @@ Initialization
         ...
         s.Solve(fancy_db,...);
     
-    ..  [#initial_assignment_instead] If you have an ``Assignment`` instead, the solver simply replaces
-        the ``initial_solution`` ``DecisionBuilder`` with a ``RestoreAssignment`` taking your initial ``Assignment``.
+    This is exactly the ``DecisionBuilder`` used when you give an initial solution to the CP solver. 
+    The ``initial_solution`` ``DecisionBuilder`` is simply replaced with a ``RestoreAssignment`` ``DecisionBuilder`` 
+    taking your initial ``Assignment``.
     
-
-..  only:: draft
-
-    xXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
 
 
 The ``FindOneNeighbor`` ``DecisionBuilder``
@@ -451,10 +511,8 @@ The ``FindOneNeighbor`` ``DecisionBuilder``
 
 ..  only:: draft
 
-    This ``DecisionBuilder`` tries to find the next neighbor solution. 
-    
-    
-    
+    This ``DecisionBuilder`` tries to find the next neighbor solution. We need this ``DecisionBuilder`` because we need to 
+    test (and sometimes complete) the neighbor solutions given by the ``LocalSearchOperator``. 
     
     We present its ``Next()`` method and discuss it after:
     
@@ -549,94 +607,83 @@ The ``FindOneNeighbor`` ``DecisionBuilder``
     On lines 24 and 25 we clear our ``delta``\s and line 27 we allow for a periodic check: for searches that last long, 
     we permit the ``SearchMonitor``\s to interfere and test if the search needs to continue or not and/or must be adapted.
     
-    Lines 29-33 allow to change the initial solution and ask the solution pool ``pool_`` a new initial solution via its 
-    ``GetNextSolution()``.
+    Lines 28-33 allow to change the initial solution and ask the solution pool ``pool_`` a new initial solution via its 
+    ``GetNextSolution()``. The ``FLAGS_cp_local_search_sync_frequency`` is a :program:`gflags` flag that tells the CP solver
+    after how much attempts we should try to synchronize the local search with a new initial solution.
     
     On line 35 and 36, we test the ``SearchLimit``\s applied to the search of one neighborhood (the ``SearchLimit`` given to 
     the constructor of the ``LocalSearchPhaseParameters`` parameter) and make the 
     ``LocalSearchOperator`` try to construct a new neighbor solution. If the limits are not reached and if the 
     ``LocalSearchOperator`` succeeds to find a new neighbor, we enter the ``if`` statement. ``MakeNextNeighbor()`` is the *real*
-    method of the ``LocalSearchOperator`` called to create the next neighbor solution. This method deals with the ``delta``\s. 
-    If you don't need (or don't want to produce them) these ``delta``\s, you can overwrite the ``MakeOneNeighbor()`` method. 
-    This callback is called last in the ``MakeNextNeighbor()`` method after it took care of the ``delta``\s.
+    method of the ``LocalSearchOperator`` called to create the next neighbor solution. It deals with the ``delta``\s. 
+    If you don't need these ``delta``\s, overwrite the ``MakeOneNeighbor()`` method instead. 
+    This method is called by ``MakeNextNeighbor()``.
     
-    If you overwrite the ``MakeNextNeighbor()`` method, you don't need to construct the ``deltadelta`` but you **must**
-    provide the ``delta``.
+    If you overwrite the ``MakeNextNeighbor()`` method, you need to manage the ``delta``\s: 
+    you must take care of *applying* and *reverting* the ``delta``\s yourself. You can use the 
+    ``ApplyChanges()`` and ``RevertChanges()`` helper functions to do so. For instance, here is the implementation of the 
+    ``MakeNextNeighbor()`` method of the ``IntVarLocalSearchOperator``:
     
-    TO BE REWRITTEN!!! XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    ..  code-block:: c++
+    
+        bool IntVarLocalSearchOperator::MakeNextNeighbor(Assignment* delta,
+                                                 Assignment* deltadelta) {
+          CHECK_NOTNULL(delta);
+          while (true) {
+            RevertChanges(true);
+
+            if (!MakeOneNeighbor()) {
+              return false;
+            }
+
+            if (ApplyChanges(delta, deltadelta)) {
+              return true;
+            }
+          }
+          return false;
+        } 
+    
+    ``ApplyChanges()`` actually constructs the ``delta``\s after you use the helper methods
+    ``SetValue()``, ``Activate()``, ``Deactivate()`` to change the current neighbor solution
+    or the initial solution if you start to scour the neighborhood.
+    
+    Once we enter the ``if`` statement on line 37, we have a new neighbor solution and we update the solution counter accordingly.
+    It is now time to test this new solution candidate. The first test comes from the ``SearchMonitor``\s in their 
+    ``AcceptDelta()`` methods. If only one ``SearchMonitor`` rejects this solution, it is rejected. In *or-tools*, we 
+    implement (meta-)heuristics with ``SearchMonitor``\s. See XXX.
+    
+    The ``AcceptDelta()`` function is the global utility function we talked above. 
+    We'll meet ``LocalOptimumReached()`` and ``AcceptNeighbor()`` in a few lines below.
+    
+    The second test is the *filtering* test on line 41. We only need one ``LocalSearchFilter`` to reject this candidate 
+    solution. If both tests are successful, we enter the ``if`` statement on line 42. If not, we simply generate another 
+    candidate. On lines 43-45, we store the candidate solution in the ``assignment_copy`` ``Assignment`` and update the 
+    counter of ``filtered_neighbors_``.
+   
+    On line 46, we try (and if needed, we complete) the candidate. If we succeed, the current solution is updated with the candidate, 
+    the counter ``accepted_neighbors_`` is updated and the ``Next()`` method returns ``NULL`` because the ``FindOneNeighbor``
+    ``DecisionBuilder`` has finished its job at this node of the search tree. If we don't succeed, the previous neighbor solution 
+    is restored.
     
     The ``SolveAndCommit()`` method is like the ``Solve()`` method **except** that 
-    ``SolveAndCommit`` will not backtrack all modifications at the end of the search.
-    Use this method **only** in the ``Next()`` method of a ``DecisionBuilder``.
+    ``SolveAndCommit`` will not backtrack all modifications at the end of the search. If if doesn't succeed, it 
+    calls its ``DecisionBuilder`` argument to restore a solution given by this ``DecisionBuilder``.
     
-    DEFINE_int32(cp_local_search_sync_frequency, 16,
-    "Frequency of checks for better solutions in the solution pool.");
+    ..  warning:: Use the ``SolveAndCommit()`` method **only** in the ``Next()`` method of a ``DecisionBuilder``!
+    
+    If the ``if`` test on line 35 and 36 failed, we enter the ``else`` part of the statement on line 53. This means that 
+    either one ``SearchLimit`` was reached or the neighborhood is exhausted. If a neighbor solution (stored in ``assignment_``)
+    was found during the local search, we rely on it to synchronize the ``LocalSearchOperator``\s and ``LocalSearchFilter``\s
+    with a new solution provided by the solution pool ``pool_`` on lines 57-59. We also allow the ``SearchMonitor``\s to 
+    interfere in their ``AcceptNeighbor()`` method. If no candidate solution was found, we simply ``break`` out of the 
+    ``while()`` loop on line 61 and make the CP solver fail on lines 65 and 66.
+    
 
-
-The callbacks of the ``SearchMonitor``\s and the local search algorithm 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+The ``NestedSolveDecision`` ``Decision``
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 ..  only:: draft
 
-    ..  only:: html
-
-        In this subsection, we present the following callbacks of the ``SearchMonitor`` class and show you 
-        exactly when they are called in the local search algorithm:
-
-
-        ..  tabularcolumns:: |p{8.5cm}|p{9cm}|
-        
-        ..  csv-table:: Basic search algorithm callbacks from the ``SearchMonitor`` class. 
-            :header: "Methods", "Descriptions"
-            :widths: 20, 80
-                
-            ``LocalOptimum()``, "When a local optimum is reached. If ``true`` is returned, the last solution is discarded and the search proceeds to find the next local optimum. Handy when you implement a meta-heuristic with a ``SearchMonitor``."
-            "``AcceptDelta(Assignment *delta, Assignment *deltadelta)``", "When the local search operators have produced the next neighbor solution given in the form of ``delta`` and ``deltadelta``. You can accept or reject this new neighbor solution."
-            "``AcceptNeighbor()``", "After accepting a neighbor solution during local search."
-            "``PeriodicCheck()``", "Periodic call to check limits in long running methods."
-        
-    ..  raw:: latex
-
-        In this subsection, we present the callbacks of the \code{SearchMonitor} listed in 
-        Table~\ref{tab:search-monitor-local-search-callbacks} and show you 
-        exactly when they are called in the search algorithm.
-        
-        \begin{table}[ht]
-        \caption{Local search algorithm callbacks from the \code{SearchMonitor} class.}
-        \centering
-        \scalebox{0.85}{
-          \begin{tabular}{|p{8.5cm}|p{9cm}|}
-            \hline
-            \textbf{Methods} & \textbf{Descriptions}\\
-            \hline
-              \code{LocalOptimum()} & When a local optimum is reached. If \code{true} is returned, the last solution is discarded and the search proceeds to find the next local optimum. Handy when you implement a meta-heuristic with a \code{SearchMonitor}.\\
-            \hline
-              \code{AcceptDelta(Assignment *delta, Assignment *deltadelta)} & When the local search operators have produced the next neighbor solution given in the form of \code{delta} and \code{deltadelta}. You can accept or reject this new neighbor solution.\\
-            \hline
-              \code{AcceptNeighbor()} &  After accepting a neighbor solution during local search.\\
-            \hline
-              \code{PeriodicCheck()} &  Periodic call to check limits in long running methods.\\
-            \hline
-          \end{tabular}
-        }
-        \label{tab:search-monitor-local-search-callbacks}
-        \end{table}
-
-    ..  raw:: html
-        
-        <br>
-
-    To ensure the communication between the local search and the global search, three utility functions are defined:
-    
-    * ``bool LocalOptimumReached()``:
-      Returns true if a local optimum has been reached and cannot be improved.
-    * ``bool AcceptDelta()``:
-      Returns true if the search accepts the deltas.
-    * ``void AcceptNeighbor()``:
-      Notifies the search that a neighbor has been accepted by local search.
-      
-    These functions simply call their ``SearchMonitor``\'s counterparts, i.e. they call the corresponding methods of the 
-    involved ``SearchMonitor``\s.
 
 
 
@@ -656,6 +703,14 @@ The callbacks of the ``SearchMonitor``\s and the local search algorithm
         ``DECISION_FOUND``      The nested search phase succeeded and found a solution.
         ======================  ==========================================================================
     
+
+
+The ``LocalSearch`` ``DecisionBuilder``
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+..  only:: draft
+
+
     
     We present and discuss this algorithm below. 
     
