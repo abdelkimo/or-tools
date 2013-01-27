@@ -441,6 +441,11 @@ Initialization
         the ``initial_solution`` ``DecisionBuilder`` with a ``RestoreAssignment`` taking your initial ``Assignment``.
     
 
+..  only:: draft
+
+    xXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx
+
+
 The ``FindOneNeighbor`` ``DecisionBuilder``
 """""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -464,61 +469,59 @@ The ``FindOneNeighbor`` ``DecisionBuilder``
             ...
           }
 
-          {
-            // Another assignment is needed to apply the delta
-            Assignment* assignment_copy =
-                solver->MakeAssignment(reference_assignment_.get());
-            int counter = 0;
+          // Another assignment is needed to apply the delta
+          Assignment* assignment_copy =
+                       solver->MakeAssignment(reference_assignment_.get());
+          int counter = 0;
 
-            DecisionBuilder* restore =
-                solver->MakeRestoreAssignment(assignment_copy);
-            if (sub_decision_builder_) {
-              restore = solver->Compose(restore, sub_decision_builder_);
-            }
-            Assignment* delta = solver->MakeAssignment();
-            Assignment* deltadelta = solver->MakeAssignment();
+          DecisionBuilder* restore =
+                            solver->MakeRestoreAssignment(assignment_copy);
+          if (sub_decision_builder_) {
+            restore = solver->Compose(restore, sub_decision_builder_);
+          }
+          Assignment* delta = solver->MakeAssignment();
+          Assignment* deltadelta = solver->MakeAssignment();
 
-            //  MAIN LOOP
-            while (true) {
-              delta->Clear();
-              deltadelta->Clear();
+          //  MAIN LOOP
+          while (true) {
+            delta->Clear();
+            deltadelta->Clear();
                                                   //  SEARCHMONITOR CALLBACK
-              solver->TopPeriodicCheck();
-              if (++counter >= FLAGS_cp_local_search_sync_frequency &&
-                  pool_->SyncNeeded(reference_assignment_.get())) {
+            solver->TopPeriodicCheck();
+            if (++counter >= FLAGS_cp_local_search_sync_frequency &&
+              pool_->SyncNeeded(reference_assignment_.get())) {
+              //  SYNCHRONIZE ALL
+              ...
+              counter = 0;
+            }
+
+            if (!limit_->Check()
+              && ls_operator_->MakeNextNeighbor(delta, deltadelta)) {
+              solver->neighbors_ += 1;
+                                                  //  SEARCHMONITOR CALLBACK
+              const bool meta_heuristics_filter =
+                     AcceptDelta(solver->ParentSearch(), delta, deltadelta);
+              const bool move_filter = FilterAccept(delta, deltadelta);
+              if (meta_heuristics_filter && move_filter) {
+                solver->filtered_neighbors_ += 1;
+                assignment_copy->Copy(reference_assignment_.get());
+                assignment_copy->Copy(delta);
+                if (solver->SolveAndCommit(restore)) {
+                  solver->accepted_neighbors_ += 1;
+                  assignment_->Store();
+                  neighbor_found_ = true;
+                  return NULL;
+                }
+              }
+            } else {
+              if (neighbor_found_) {
+                                                  //  SEARCHMONITOR CALLBACK
+                AcceptNeighbor(solver->ParentSearch());
+                pool_->RegisterNewSolution(assignment_);
                 //  SYNCHRONIZE ALL
                 ...
-                counter = 0;
-              }
-
-              if (!limit_->Check()
-                  && ls_operator_->MakeNextNeighbor(delta, deltadelta)) {
-                solver->neighbors_ += 1;
-                                                  //  SEARCHMONITOR CALLBACK
-                const bool meta_heuristics_filter =
-                    AcceptDelta(solver->ParentSearch(), delta, deltadelta);
-                const bool move_filter = FilterAccept(delta, deltadelta);
-                if (meta_heuristics_filter && move_filter) {
-                  solver->filtered_neighbors_ += 1;
-                  assignment_copy->Copy(reference_assignment_.get());
-                  assignment_copy->Copy(delta);
-                  if (solver->SolveAndCommit(restore)) {
-                    solver->accepted_neighbors_ += 1;
-                    assignment_->Store();
-                    neighbor_found_ = true;
-                    return NULL;
-                  }
-                }
               } else {
-                if (neighbor_found_) {
-                                                  //  SEARCHMONITOR CALLBACK
-                  AcceptNeighbor(solver->ParentSearch());
-                  pool_->RegisterNewSolution(assignment_);
-                  //  SYNCHRONIZE ALL
-                  ...
-                } else {
-                  break;
-                }
+                break;
               }
             }
           }
@@ -526,8 +529,41 @@ The ``FindOneNeighbor`` ``DecisionBuilder``
           return NULL;
         }
          
-    ``SYNCHRONIZE ALL`` in the comments means that we synchronize local search operators and filters with 
+    Lines 3 to 7 are only called the first time the ``Next()`` method is invoked 
+    and permit to synchronize the local search machinery with the initial solution. In general, 
+    the words ``SYNCHRONIZE ALL`` in the comments mean that we synchronize the *local search operators* **and** the 
+    *local search filters* with 
     an initial solution.
+    
+    ``reference_assignment_`` is an ``Assignment`` with the initial solution while ``assignment_`` is an 
+    ``Assignment`` with the current neighbor solution. 
+    On line 10, we copy ``reference_assignment_`` to the local ``assignment_copy`` ``Assignment``
+    to be able to define the ``delta``\s. ``counter`` counts the number of times we try to find the next neighbor solutions.
+    This counter is used on line 28 to test if we shouldn't try to find the next neighbor starting from another solution.
+    
+    On lines 14-18, we define the ``restore`` ``DecisionBuilder`` that will allow us to keep the new neighbor solution found.
+    
+    Finally, we define ``delta`` and ``deltadelta`` on lines 19 and 20. We are now ready to dissect the main loop to find the 
+    next neighbor solution.
+    
+    On lines 24 and 25 we clear our ``delta``\s and line 27 we allow for a periodic check: for searches that last long, 
+    we permit the ``SearchMonitor``\s to interfere and test if the search needs to continue or not and/or must be adapted.
+    
+    Lines 29-33 allow to change the initial solution and ask the solution pool ``pool_`` a new initial solution via its 
+    ``GetNextSolution()``.
+    
+    On line 35 and 36, we test the ``SearchLimit``\s applied to the search of one neighborhood (the ``SearchLimit`` given to 
+    the constructor of the ``LocalSearchPhaseParameters`` parameter) and make the 
+    ``LocalSearchOperator`` try to construct a new neighbor solution. If the limits are not reached and if the 
+    ``LocalSearchOperator`` succeeds to find a new neighbor, we enter the ``if`` statement. ``MakeNextNeighbor()`` is the *real*
+    method of the ``LocalSearchOperator`` called to create the next neighbor solution. This method deals with the ``delta``\s. 
+    If you don't need (or don't want to produce them) these ``delta``\s, you can overwrite the ``MakeOneNeighbor()`` method. 
+    This callback is called last in the ``MakeNextNeighbor()`` method after it took care of the ``delta``\s.
+    
+    If you overwrite the ``MakeNextNeighbor()`` method, you don't need to construct the ``deltadelta`` but you **must**
+    provide the ``delta``.
+    
+    TO BE REWRITTEN!!! XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     
     The ``SolveAndCommit()`` method is like the ``Solve()`` method **except** that 
     ``SolveAndCommit`` will not backtrack all modifications at the end of the search.
