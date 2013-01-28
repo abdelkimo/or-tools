@@ -662,12 +662,11 @@ The ``FindOneNeighbor`` ``DecisionBuilder``
    
     On line 46, we try (and if needed, we complete) the candidate. If we succeed, the current solution is updated with the candidate, 
     the counter ``accepted_neighbors_`` is updated and the ``Next()`` method returns ``NULL`` because the ``FindOneNeighbor``
-    ``DecisionBuilder`` has finished its job at this node of the search tree. If we don't succeed, the previous neighbor solution 
-    is restored.
+    ``DecisionBuilder`` has finished its job at this node of the search tree. If we don't succeed, the solver fails at 
+    lines 65 and 66.
     
     The ``SolveAndCommit()`` method is like the ``Solve()`` method **except** that 
-    ``SolveAndCommit`` will not backtrack all modifications at the end of the search. If if doesn't succeed, it 
-    calls its ``DecisionBuilder`` argument to restore a solution given by this ``DecisionBuilder``.
+    ``SolveAndCommit`` will not backtrack all modifications at the end of the search.
     
     ..  warning:: Use the ``SolveAndCommit()`` method **only** in the ``Next()`` method of a ``DecisionBuilder``!
     
@@ -684,26 +683,31 @@ The ``NestedSolveDecision`` ``Decision``
 
 ..  only:: draft
 
+    The ``NestedSolveDecision`` is the ``Decision`` that the ``LocalSearch``\'s ``Next()`` method returns. 
+    This ``Decision`` is basically a ``Decision`` wrapper around a nested solve with a given ``DecisionBuilder`` 
+    and ``SearchMonitor``\s. It doesn't do anything in its right 
+    branch (in its ``Refute()`` method) and calls ``Solve()`` or ``SolveAndCommit()`` depending on a ``restore`` ``boolean``
+    in its left branch (in its ``Apply()`` method).
 
-
-
-    We are now ready to have a look at the (simplified) local search algorithm in more details.
-    
-    The local search can be in three states defined by the ``NestedSolveDecision`` ``StateType`` ``enum``
-    when trying to find the next neighbor solution:
-    
+    The ``NestedSolveDecision`` ``Decision`` can be in three states that are also the three states in which the 
+    local search can be:
     
     ..  table::
 
         ======================  ==========================================================================
         Value                   Meaning
         ======================  ==========================================================================
-        ``DECISION_FAILED``     The nested search phase failed.
-        ``DECISION_PENDING``    The ``Decision`` didn't find a solution yet in its nested search phase.
-        ``DECISION_FOUND``      The nested search phase succeeded and found a solution.
+        ``DECISION_FAILED``     The nested search phase failed, i.e. ``Solve()`` or ``SolveAndCommit()``
+                                failed.
+        ``DECISION_PENDING``    The nested search hasn't been called yet.
+        ``DECISION_FOUND``      The nested search phase succeeded and found a solution, i.e. ``Solve()``
+                                or ``SolveAndCommit()`` succeeded and returned ``true``.
         ======================  ==========================================================================
-    
 
+    The three states are defined in the ``NestedSolveDecision`` ``StateType`` ``enum``.
+    
+    We are now ready to put the all the pieces of the puzzle together to understand the (simplified) 
+    local search algorithm in *or-tools*.
 
 The ``LocalSearch`` ``DecisionBuilder``
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -711,10 +715,11 @@ The ``LocalSearch`` ``DecisionBuilder``
 ..  only:: draft
 
 
-    
-    We present and discuss this algorithm below. 
-    
-    The ``Next()`` method of the ``LocalSearch`` class is in charge to control the local search:
+    ..  rubric:: Initialization
+
+
+    The ``Next()`` method of the ``LocalSearch`` ``DecisionBuilder`` is in charge to control the local search. We present it 
+    and discuss it next:
     
     ..  code-block:: c++
         :linenos:
