@@ -294,7 +294,7 @@ The ``LocalSearchPhaseParameters`` parameter
     for the ``DecisionBuilder`` pointer.
 
 
-
+..  _basic_local_search_algorithm_and_the_callback_hooks:
 
 The basic local search algorithm and the callback hooks for the ``SearchMonitor``\s |difficulty| |difficulty|
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -745,6 +745,10 @@ The ``LocalSearch`` ``DecisionBuilder``
 
     The ``Next()`` method of the ``LocalSearch`` ``DecisionBuilder`` is in charge to control the local search. We present it 
     first and discuss it next:
+
+    [PENDING]
+
+..  only:: fault
     
     ..  code-block:: c++
         :linenos:
@@ -792,11 +796,11 @@ The ``LocalSearch`` ``DecisionBuilder``
     To do so, it calls the 
     ``LocalOptimum()`` callback of **all** the ``SearchMonitor``\s for the current search.
     
-    
+..  only::  draft
     
     ..  topic:: ``Solve()``, ``SolveAndCommit()``, ``SolveOnce()``, ``NestedSolve()``: what's the difference?
     
-        Well...
+        [PENDING]
     
 ..  only:: final
 
