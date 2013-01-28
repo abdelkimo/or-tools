@@ -21,7 +21,7 @@ The jobshop problem: and now with local search!
         in the sub-section :ref:`basic_local_search_algorithm_and_the_callback_hooks` , the *real* method 
         called by the ``MakeOneNeighbor`` ``DecisionBuilder`` is ``MakeNextNeighbor()``.
 
-    ..  only:: latex
+    ..  raw:: latex
     
         Until now, we only have overloaded the~\code{MakeOneNeighbor()} method of a~\code{LocalSearchOperator} 
         but as we have seen 
@@ -145,13 +145,97 @@ Incrementality
 
     Yo!
 
+
+The initial solution 
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+
+    ..  only:: html
+    
+        We let the CP solver construct the initial solution for us. What about reusing the ``DecisionBuilder``
+        we defined in the section :ref:`jobshop_implementation_disjunctive_model` and take its first feasible solution?
+
+    ..  raw:: latex
+    
+        We let the CP solver construct the initial solution for us. What about reusing the~\code{DecisionBuilder}
+        we defined in section~\ref{manual/ls/jobshop_implementation:jobshop-implementation-disjunctive-model} 
+        and take its first feasible solution?
+
+
+    ..  code-block:: c++
+    
+          // This decision builder will rank all tasks on all machines.
+          DecisionBuilder* const sequence_phase =
+              solver.MakePhase(all_sequences, Solver::SEQUENCE_DEFAULT);
+
+          // After the ranking of tasks, the schedule is still loose and any
+          // task can be postponed at will. Fix the objective variable to its
+          // minimum value.
+          DecisionBuilder* const obj_phase =
+              solver.MakePhase(objective_var,
+                               Solver::CHOOSE_FIRST_UNBOUND,
+                               Solver::ASSIGN_MIN_VALUE);
+
+          // Initial solution for the Local Search.
+          Assignment* const first_solution = solver.MakeAssignment();
+          first_solution->Add(all_sequences);
+          first_solution->AddObjective(objective_var);
+          
+          // Store the first solution.
+          DecisionBuilder* const store_db = 
+                                 solver.MakeStoreAssignment(first_solution);
+
+          // The main decision builder (ranks all tasks, then fixes the
+          // objective_variable).
+          DecisionBuilder* const first_solution_phase =
+              solver.Compose(sequence_phase, obj_phase, store_db);
+
+          LOG(INFO) << "Looking for the first solution";
+          const bool first_solution_found = solver.Solve(first_solution_phase);
+          if (first_solution_found) {
+            LOG(INFO) << "Solution found with makespan = "
+                      << first_solution->ObjectiveValue();
+          } else {
+            LOG(INFO) << "No initial solution found!";
+            return;
+          }
+          
+    ..  only:: html
+
+        If you have some troubles to follow, go back to the section :ref:`jobshop_implementation_disjunctive_model`
+        to understand the ``sequence_phase`` and ``obj_phase`` ``DecisionBuilder``\s. Here, we simply add a
+        ``StoreAssignment`` ``DecisionBuilder`` at the leaf of the search tree to collect the solutions with the 
+        ``first_solution_phase`` ``DecisionBuilder``. Our initial solution will be stored in the ``first_solution`` ``Assignment``.
+
+    ..  raw:: latex
+
+        If you have some troubles to follow, go back to section~\ref{manual/ls/jobshop_implementation:jobshop-implementation-disjunctive-model}
+        to understand the~\code{sequence\_phase} and~\code{obj\_phase} \code{DecisionBuilder}s. Here, we simply add a
+        \code{StoreAssignment} \code{DecisionBuilder} at the leaf of the search tree to collect the solutions with the 
+        \code{first\_solution\_phase} \code{DecisionBuilder}. 
+        Our initial solution will be stored in the~\code{first\_solution} \code{Assignment}.
+
+    
+    Next, we define a first ``LocalSearchOperator``.
+
 Exchanging two ``IntervalVar``\s on a ``SequenceVar``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
 
-    sdfs
+Exchanging an unlimited number of ``IntervalVar``\s on a ``SequenceVar``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+Results
+^^^^^^^^^^
+
+..  only:: draft
+
 
 ..  only:: final 
 
