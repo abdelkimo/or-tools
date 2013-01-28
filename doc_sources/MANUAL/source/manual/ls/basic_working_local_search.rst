@@ -369,13 +369,13 @@ The basic local search algorithm and the callback hooks for the ``SearchMonitor`
     involved ``SearchMonitor``\s.
 
 
-    We first we'll have a look at the initialization and how the CP solver takes or finds the initial solution.
-    Then we'll discuss the inner working of the ``FindOneNeighbor`` ``DecisionBuilder`` who's job is to find 
-    the next neighbor solution. You might wonder why the implementation consists in so many lines of code but there 
-    are a lot of cases to consider. This ``DecisionBuilder`` is used inside a ``NestedSolveDecision``
-    that is returned in the main loop by the ``Next()`` method of the ``LocalSearch`` ``DecisionBuilder`` that we will study
-    last. We consider the case where an initial ``DecisionBuilder`` is given to construct the initial solution.
-    
+    Before we delve into the core of the local search algorithm and the implementation of the ``LocalSearch`` ``DecisionBuilder``\'s
+    ``Next()`` method, we first discuss the inner working of the ``FindOneNeighbor`` ``DecisionBuilder`` who's job is to find 
+    the next neighbor solution. This ``DecisionBuilder`` is used inside a ``NestedSolveDecision`` that we study next.
+    This ``Decision`` is returned by the ``Next()`` method of 
+    the ``LocalSearch`` ``DecisionBuilder`` in the main loop of the local search algorithm. Finally, we address the 
+    ``LocalSearch`` ``DecisionBuilder`` class. In particular, we study its initializing phase and its ``Next()`` method.
+    We consider the case where an initial ``DecisionBuilder`` is given to construct the initial solution.
     
     SearchMonitor‘s callbacks are indicated in the code by the comment:
     
@@ -383,127 +383,7 @@ The basic local search algorithm and the callback hooks for the ``SearchMonitor`
     
         // SEARCHMONITOR CALLBACK
         
-Initialization
-"""""""""""""""""""
 
-..  only:: draft
-
-    Consider the situation where we already have a ``LocalSearchPhaseParameters`` parameter set up and we let the CP solver
-    construct the initial solution: 
-    
-    ..  code-block:: c++
-    
-        Solver s("Dummy LS");
-        ...
-        std::vector<IntVar*> vars = ...
-        ...
-        LocalSearchOperator * const ls_operator = ...
-        DecisionBuilder * const complementary_decision_builder = ...
-        ...
-        LocalSearchPhaseParameters params = 
-           s.MakeLocalSearchPhaseParameters(ls_operator, 
-                                            complementary_decision_builder);
-        
-    The ``complementary_decision_builder`` ``DecisionBuilder`` will help us complete 
-    the solution found by the local search operator ``ls_operator``. Our initial solution will be constructed 
-    by the ``initial_solution`` ``DecisionBuilder`` (and completed by the ``complementary_decision_builder`` ``DecisionBuilder``
-    if needed). Remember, that the solution taken by the CP solver is the **first** 
-    solution found by this ``DecisionBuilder``. We are now ready to create the ``DecisionBuilder`` for the local search:
-    
-    ..  code-block:: c++
-    
-        DecisionBuilder * const initial_solution = ...
-        ...
-        DecisionBuilder * const ls = s.MakeLocalSearchPhase(vars, 
-                                                            initial_solution,
-                                                            params);
-    
-    
-    We can now add as many monitors as we want and launch the solving process:
-    
-    ..  code-block:: c++
-    
-        std::vector<SearchMonitor *> monitors;
-        ...
-        s.Solve(ls, monitors);
-
-    
-    It's interesting to see how this initial solution is constructed.
-    Here is how it is done in the ``LocalSearch`` class. First, we create an ``Assignment`` to store this 
-    initial solution:
-    
-    ..  code-block:: c++
-    
-        Assignment * const initial_sol = s.MakeAssignment();
-        ...
-    
-    To store an ``Assignment`` found by the CP solver, we use the ``StoreAssignment`` ``DecisionBuilder``:
-    
-    ..  code-block:: c++
-    
-        DecisionBuilder * store = solver->MakeStoreAssignment(initial_sol);
-        
-    This ``DecisionBuilder`` simply stores the current solution in the ``initial_sol`` ``Assignment``:
-    
-    ..  code-block:: c++
-    
-        DecisionBuilder * initial_solution_and_store = solver->Compose(
-                                             initial_solution, 
-                                             complementary_decision_builder, 
-                                             store);
-    
-    ``initial_solution_and_store`` constructs this initial solution. This ``DecisionBuilder``
-    is used in a nested search:
-    
-    ..  code-block:: c++
-    
-        std::vector<SearchMonitor *> monitors;
-        monitors.push_back(limit);
-        NestedSolveDecision * initial_solution_decision = 
-                          new NestedSolveDecision(initial_solution_and_store,
-                                                  false,
-                                                  monitors);
-    
-    where:
-    
-      * ``limit`` is the ``SearchLimit`` given to the local search algorithm;
-      * the ``NestedSolveDecision`` constructor's arguments are respectively:
-
-        * a ``DecisionBuilder`` to construct the next neighbor solution;
-        * a ``bool`` to indicate if we restore the last solution in case we cannot 
-          find a new neighbor solution;
-        * an ``std::vector<SearchMonitor *>``.
-    
-    The ``Apply()`` method of a ``NestedSolveDecision`` calls ``NestedSolve()``:
-    
-    ..  code-block:: c++
-    
-        solver->NestedSolve(initial_solution_and_store, false, monitors);
-    
-    where the arguments respectively are:
-    
-      * a ``DecisionBuilder``;
-      * a ``bool`` that tells if we restore the current solution or not;
-      * an ``std::vector<SearchMonitor *>``.
-      
-    The ``DecisionBuilder`` companion to ``StoreAssignment`` is ``RestoreAssignment`` that 
-    *install* an ``Assignment`` as the current solution:
-    
-    ..  code-block:: c++
-    
-        Assignment * solution = ...
-        ...
-        DecisionBuilder * current_sol = s.MakeRestoreAssignment(solution);
-        ...
-        //  do something fancy starting with current_sol
-        DecisionBuilder * fancy_db = s.Compose(current_sol, ...);
-        ...
-        s.Solve(fancy_db,...);
-    
-    This is exactly the ``DecisionBuilder`` used when you give an initial solution to the CP solver. 
-    The ``initial_solution`` ``DecisionBuilder`` is simply replaced with a ``RestoreAssignment`` ``DecisionBuilder`` 
-    taking your initial ``Assignment``.
-    
 
 
 The ``FindOneNeighbor`` ``DecisionBuilder``
@@ -514,7 +394,7 @@ The ``FindOneNeighbor`` ``DecisionBuilder``
     This ``DecisionBuilder`` tries to find the next neighbor solution. We need this ``DecisionBuilder`` because we need to 
     test (and sometimes complete) the neighbor solutions given by the ``LocalSearchOperator``. 
     
-    We present its ``Next()`` method and discuss it after:
+    We present its ``Next()`` method and discuss it after: 
     
     ..  code-block:: c++
         :linenos:
@@ -587,6 +467,9 @@ The ``FindOneNeighbor`` ``DecisionBuilder``
           return NULL;
         }
          
+    You might wonder why its implementation consists in so many lines of code but there 
+    are a lot of cases to consider.
+    
     Lines 3 to 7 are only called the first time the ``Next()`` method is invoked 
     and permit to synchronize the local search machinery with the initial solution. In general, 
     the words ``SYNCHRONIZE ALL`` in the comments mean that we synchronize the *local search operators* **and** the 
@@ -714,30 +597,160 @@ The ``LocalSearch`` ``DecisionBuilder``
 
 ..  only:: draft
 
-
+    We first consider the initialization phase and then we discuss in details its ``Next()`` method.
+    
     ..  rubric:: Initialization
 
 
+..  only:: draft
+
+    Consider the situation where we already have a ``LocalSearchPhaseParameters`` parameter set up and we let the CP solver
+    construct the initial solution: 
+    
+    ..  code-block:: c++
+    
+        Solver s("Dummy LS");
+        ...
+        std::vector<IntVar*> vars = ...
+        ...
+        LocalSearchOperator * const ls_operator = ...
+        DecisionBuilder * const complementary_decision_builder = ...
+        ...
+        LocalSearchPhaseParameters params = 
+           s.MakeLocalSearchPhaseParameters(ls_operator, 
+                                            complementary_decision_builder);
+        
+    The ``complementary_decision_builder`` ``DecisionBuilder`` will help us complete 
+    the solution found by the local search operator ``ls_operator``. Our initial solution will be constructed 
+    by the ``initial_solution`` ``DecisionBuilder`` (and completed by the ``complementary_decision_builder`` ``DecisionBuilder``
+    if needed). Remember, that the solution taken by the CP solver is the **first** 
+    solution found by this ``DecisionBuilder``. We are now ready to create the ``DecisionBuilder`` for the local search:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder * const initial_solution = ...
+        ...
+        DecisionBuilder * const ls = s.MakeLocalSearchPhase(vars, 
+                                                            initial_solution,
+                                                            params);
+    
+    
+    We can now add as many monitors as we want and launch the solving process:
+    
+    ..  code-block:: c++
+    
+        std::vector<SearchMonitor *> monitors;
+        ...
+        s.Solve(ls, monitors);
+
+    
+    It's interesting to see how this initial solution is constructed.
+    Here is how it is done in the ``LocalSearch`` class. First, we create an ``Assignment`` to store this 
+    initial solution:
+    
+    ..  code-block:: c++
+    
+        Assignment * const initial_sol = s.MakeAssignment();
+        ...
+    
+    To store an ``Assignment`` found by the CP solver, we use the ``StoreAssignment`` ``DecisionBuilder``:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder * store = solver->MakeStoreAssignment(initial_sol);
+        
+    This ``DecisionBuilder`` simply stores the current solution in the ``initial_sol`` ``Assignment``:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder * initial_solution_and_store = solver->Compose(
+                                             initial_solution, 
+                                             complementary_decision_builder, 
+                                             store);
+    
+    ``initial_solution_and_store`` constructs this initial solution. This ``DecisionBuilder``
+    is used in a nested search:
+    
+    ..  code-block:: c++
+    
+        std::vector<SearchMonitor *> monitors;
+        monitors.push_back(limit);
+        NestedSolveDecision * initial_solution_decision = 
+                          new NestedSolveDecision(initial_solution_and_store,
+                                                  false,
+                                                  monitors);
+    
+    where:
+    
+      * ``limit`` is the ``SearchLimit`` given to the local search algorithm;
+      * the ``NestedSolveDecision`` constructor's arguments are respectively:
+
+        * a ``DecisionBuilder`` to construct the next neighbor solution;
+        * a ``bool`` to indicate if we restore the last solution in case we cannot 
+          find a new neighbor solution;
+        * an ``std::vector<SearchMonitor *>``.
+    
+    The ``Apply()`` method of a ``NestedSolveDecision`` calls ``NestedSolve()``:
+    
+    ..  code-block:: c++
+    
+        solver->NestedSolve(initial_solution_and_store, false, monitors);
+    
+    where the arguments respectively are:
+    
+      * a ``DecisionBuilder``;
+      * a ``bool`` that tells if we restore the current solution or not;
+      * an ``std::vector<SearchMonitor *>``.
+      
+    The ``DecisionBuilder`` companion to ``StoreAssignment`` is ``RestoreAssignment`` that 
+    *install* an ``Assignment`` as the current solution:
+    
+    ..  code-block:: c++
+    
+        Assignment * solution = ...
+        ...
+        DecisionBuilder * current_sol = s.MakeRestoreAssignment(solution);
+        ...
+        //  do something fancy starting with current_sol
+        DecisionBuilder * fancy_db = s.Compose(current_sol, ...);
+        ...
+        s.Solve(fancy_db,...);
+    
+    This is exactly the ``DecisionBuilder`` used when you give an initial solution to the CP solver. 
+    The ``initial_solution`` ``DecisionBuilder`` is simply replaced with a ``RestoreAssignment`` ``DecisionBuilder`` 
+    taking your initial ``Assignment``.
+    
+
+    Now that we have developed the machinery to find and test the initial solution, we are ready to wrap the nested solve process 
+    into a ``NestedSolveDecision``:
+    
+    ..  code-block:: c++
+    
+        //  Main DecisionBuilder to find neighbor solutions one by one
+        DecisionBuilder* find_neighbors =
+          solver->RevAlloc(new FindOneNeighbor(assignment_,
+                                               pool_,
+                                               ls_operator_,
+                                               sub_decision_builder_,
+                                               limit_,
+                                               filters_));
+        NestedSolveDecision* decision = solver->RevAlloc(
+                                    new NestedSolveDecision(find_neighbors, 
+                                                            false)));
+
+    The ``boolean`` argument in the ``NestedSolveDecision``\'s constructor indicates that we don't want to backtrack. 
+    The ``decision`` ``Decision`` will thus call ``SolveAndCommit()`` in its left branch.
+
+    ..  rubric:: The ``Next()`` method
+
     The ``Next()`` method of the ``LocalSearch`` ``DecisionBuilder`` is in charge to control the local search. We present it 
-    and discuss it next:
+    first and discuss it next:
     
     ..  code-block:: c++
         :linenos:
     
         Decision * Next(Solver * solver) {
-          //  Initialization, if needed Fail()
           ...
-          //  Main DecisionBuilder to find neighbor solutions one by one
-          DecisionBuilder* find_neighbors =
-            solver->RevAlloc(new FindOneNeighbor(assignment_,
-                                                 pool_,
-                                                 ls_operator_,
-                                                 sub_decision_builder_,
-                                                 limit_,
-                                                 filters_));
-          NestedSolveDecision* decision = solver->RevAlloc(
-                                    new NestedSolveDecision(find_neighbors, 
-                                                            false)));
           const int state = decision->state();
           switch (state) {
             case NestedSolveDecision::DECISION_FAILED: {
@@ -770,6 +783,10 @@ The ``LocalSearch`` ``DecisionBuilder``
         }
         
 
+
+    The ``decision`` ``Decision`` on line 3 is the ``NestedSolveDecision`` created with 
+    the ``FindOneNeighbor`` ``DecisionBuilder``.
+    
     ``LocalOptimumReached()`` is a global function that connects the local and global searches
     and returns ``true`` if a local optimum has been reached and cannot be improved.
     To do so, it calls the 
