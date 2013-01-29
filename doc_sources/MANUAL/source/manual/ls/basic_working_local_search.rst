@@ -7,6 +7,8 @@ Basic working of the solver: local search
 
 ..  only:: draft
 
+    [TO BE REREAD]
+
     In this section we present how local search is implemented in *or-tools*. First, we give the main basic idea 
     and present the main actors (aka classes) that participate in the local search. It's good to keep them in memory
     for the rest of this section. Then we overview the implementation
@@ -275,17 +277,20 @@ The ``LocalSearchPhaseParameters`` parameter
         reinitializes the local search with this improved solution. You can change this behaviour with 
         a ``SearchLimit``.
     
-    A handy way to create the ``DecisionBuilder`` to assist the local search operator(s) is to create one
-    with ``MakeSolveOnce()`` and another ``DecisionBuilder`` ``db``:
+    A handy way to create a ``DecisionBuilder`` to assist the local search operator(s) is to limit one 
+    with ``MakeSolveOnce()``. ``MakeSolveOnce`` is a ``DecisionBuilder`` that takes another ``DecisionBuilder`` ``db``
+    and ``SearchMonitor``\s:
     
     ..  code-block:: c++
     
+        DecisionBuilder * const db = ...
+        SearchLimit* const limit = solver.MakeLimit(...);
         DecisionBuilder * const complementary_decision_builder = 
-                                                    solver.MakeSolveOnce(db);
+                                           solver.MakeSolveOnce(db, limit);
     
     The ``SolveOnce`` ``DecisionBuilder`` created by ``MakeSolveOnce()`` will collapse the search tree described by the 
-    ``DecisionBuilder`` ``db`` (and a set of ``SearchMonitor``\s if needed) and wrap it into a single point.
-    Like this, you can use the best solution provided by ``db`` (and not the first solution ``db`` finds).
+    ``DecisionBuilder`` ``db`` and a set of ``SearchMonitor``\s and wrap it into a single point. The nested search stops after 
+    the first solution is found.
     If there are no solutions in this nested tree, then (the ``Next()`` method of) ``SolveOnce`` will
     fail.
     
@@ -530,11 +535,20 @@ The ``FindOneNeighbor`` ``DecisionBuilder``
     ``SetValue()``, ``Activate()``, ``Deactivate()`` to change the current neighbor solution
     or the initial solution if you start to scour the neighborhood.
     
-    Once we enter the ``if`` statement on line 37, we have a new neighbor solution and we update the solution counter accordingly.
-    It is now time to test this new solution candidate. The first test comes from the ``SearchMonitor``\s in their 
-    ``AcceptDelta()`` methods. If only one ``SearchMonitor`` rejects this solution, it is rejected. In *or-tools*, we 
-    implement (meta-)heuristics with ``SearchMonitor``\s. See XXX.
+    ..  only:: html
     
+        Once we enter the ``if`` statement on line 37, we have a new neighbor solution and we update the solution counter accordingly.
+        It is now time to test this new solution candidate. The first test comes from the ``SearchMonitor``\s in their 
+        ``AcceptDelta()`` methods. If only one ``SearchMonitor`` rejects this solution, it is rejected. In *or-tools*, we 
+        implement (meta-)heuristics with ``SearchMonitor``\s. See the section :ref:`metaheuristics_examples`.
+    
+    ..  raw:: latex
+    
+        Once we enter the~\code{if} statement on line 37, we have a new neighbor solution and we update the solution counter accordingly.
+        It is now time to test this new solution candidate. The first test comes from the~\code{SearchMonitor}s in 
+        their~\code{AcceptDelta()} methods. If only one~\code{SearchMonitor} rejects this solution, it is rejected. In~\emph{or-tools}, we 
+        implement (meta-)heuristics with~\code{SearchMonitor}s. See section~\ref{manual/ls/metaheuristics_examples:metaheuristics-examples}.
+
     The ``AcceptDelta()`` function is the global utility function we talked above. 
     We'll meet ``LocalOptimumReached()`` and ``AcceptNeighbor()`` in a few lines below.
     
@@ -575,17 +589,21 @@ The ``NestedSolveDecision`` ``Decision``
     The ``NestedSolveDecision`` ``Decision`` can be in three states that are also the three states in which the 
     local search can be:
     
+    ..  only:: latex
+    
+        ..  tabularcolumns:: |p{4.5cm}|p{10cm}|
+    
     ..  table::
 
-        ======================  ==========================================================================
-        Value                   Meaning
-        ======================  ==========================================================================
-        ``DECISION_FAILED``     The nested search phase failed, i.e. ``Solve()`` or ``SolveAndCommit()``
-                                failed.
-        ``DECISION_PENDING``    The nested search hasn't been called yet.
-        ``DECISION_FOUND``      The nested search phase succeeded and found a solution, i.e. ``Solve()``
-                                or ``SolveAndCommit()`` succeeded and returned ``true``.
-        ======================  ==========================================================================
+        ==============================  ==========================================================================
+        Value                           Meaning
+        ==============================  ==========================================================================
+        ``DECISION_FAILED``             The nested search phase failed, i.e. ``Solve()`` or ``SolveAndCommit()``
+                                        failed.
+        ``DECISION_PENDING``            The nested search hasn't been called yet.
+        ``DECISION_FOUND``              The nested search phase succeeded and found a solution, i.e. ``Solve()``
+                                        or ``SolveAndCommit()`` succeeded and returned ``true``.
+        ==============================  ==========================================================================
 
     The three states are defined in the ``NestedSolveDecision`` ``StateType`` ``enum``.
     
@@ -746,9 +764,6 @@ The ``LocalSearch`` ``DecisionBuilder``
     The ``Next()`` method of the ``LocalSearch`` ``DecisionBuilder`` is in charge to control the local search. We present it 
     first and discuss it next:
 
-    [PENDING]
-
-..  only:: fault
     
     ..  code-block:: c++
         :linenos:
@@ -770,8 +785,15 @@ The ``LocalSearch`` ``DecisionBuilder``
               //  Stabilize search tree by balancing the current search tree.
               //  Statistics are updated even if this is not relevant to the 
               //  global search
-                ...
-                return decision;
+              ...
+              const int depth = solver->SearchDepth();
+              if (depth < kLocalSearchBalancedTreeDepth) {
+                return solver->balancing_decision();
+              } else if (depth > kLocalSearchBalancedTreeDepth) {
+                solver->Fail();
+              }
+              ...
+              return decision;
             }
             case NestedSolveDecision::DECISION_FOUND: {
               // Nothing important for us in this simplified version
@@ -798,9 +820,19 @@ The ``LocalSearch`` ``DecisionBuilder``
     
 ..  only::  draft
     
-    ..  topic:: ``Solve()``, ``SolveAndCommit()``, ``SolveOnce()``, ``NestedSolve()``: what's the difference?
+    ..  topic:: ``Solve()``, ``SolveAndCommit()``, ``SolveOnce()``, etc...: what are the differences?
     
-        [PENDING]
+        ..  only:: html
+        
+            This topic is so important that we devote the whole section :ref:`solving_options` to it. 
+            You already can jump and read this section if you're curious.
+        
+        ..  raw:: latex
+
+            This topic is so important that we devote the whole section~\ref{manual/lns/solving_options:solving-options} to it. 
+            You already can jump and read this section if you're curious.
+
+        
     
 ..  only:: final
 
