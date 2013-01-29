@@ -5,7 +5,33 @@ The jobshop problem: and now with local search!
 
 ..  only:: draft
 
-    Until
+    ..  raw:: latex
+
+        You can find the code in the files~\code{jobshop\_ls.h} and~\code{jobshop\_ls.h}.\\~\\
+
+    ..  only:: html
+
+        ..  container:: files-sidebar
+
+            ..  raw:: html 
+            
+                <ol>
+                  <li>C++ code:
+                    <ol>
+                      <li><a href="../../../tutorials/cplusplus/chap6/jobshop_ls.h">jobshop_ls.h</a></li>
+                      <li><a href="../../../tutorials/cplusplus/chap6/jobshop_ls.cc">jobshop_ls1.cc</a></li>
+                      <li><a href="../../../tutorials/cplusplus/chap6/jobshop_ls.cc">jobshop_ls2.cc</a></li>
+                    </ol>
+                  </li>
+                  <li>Data file:
+                    <ol>
+                      <li><a href="../../../tutorials/cplusplus/chap6/abz9">abz9</a></li>
+                    </ol>
+                  </li>
+
+                </ol>
+
+
 
 
 ..  _local_search_operators_the_real_thing:
@@ -225,7 +251,106 @@ Exchanging two ``IntervalVar``\s on a ``SequenceVar``
 
 ..  only:: draft
 
+    The idea of exchanging two ``IntervalVar``\s on a ``SequenceVar`` is very common and the corresponding 
+    operator is often referred to as the ``2-opt-``, ``2-exchange-`` or ``swap-`` operator.
+    
+    We implement a basic version that systematically exchanges all ``IntervalVar``\s for all ``SequenceVar``\s one after the 
+    other in the order given by the ``std::vector``\s. We use three indices:
+    
+    * ``int current_var_``: the index of the processed ``SequenceVar``;
+    * ``int current_first_``: the index of the first ``IntervalVar`` variable to swap;
+    * ``int current_second_``: the index of the second ``IntervalVar`` variable to swap.
+    
+    We proceed sequentially with the first ``SequenceVar`` (``current_var_ = 0``) and exchange the first and second ``IntervalVar``\s,
+    then the first and the third ``IntervalVar``\s and so on until exhaustion of all possibilities. Here is the code to 
+    increment these indices to create each neighbor solution candidate:
+    
+    ..  code-block:: c++
+    
+        bool Increment() {
+          const SequenceVar* const var = Var(current_var_);
+          if (++current_second_ >= var->size()) {
+            if (++current_first_ >= var->size() - 1) {
+              current_var_++;
+              current_first_ = 0;
+            }
+            current_second_ = current_first_ + 1;
+          }
+          return current_var_ < Size();
+        }
+    
+    This ``Increment()`` method returns a ``bool`` to specify when the neighborhood is exhausted, i.e. it returns ``false`` 
+    when there are no more candidate to construct. ``Size()`` and ``Var()`` are helper methods defined in the
+    ``SequenceVarLocalSearchOperator`` class. We start with ``current_var_``, ``current_first_`` and ``current_second_``
+    all set to ``0``. Pay attention to 
+    the fact that ``current_first_``
+    and ``current_second_`` are also updated inside the ``if`` conditions.
+    
+    We are now ready to define the ``OnStart()`` and ``MakeNextNeighbor()`` methods.
+    
+    The ``OnStart()`` method is straightforward:
+    
+    ..  code-block:: c++
+    
+        virtual void OnStart() {
+          current_var_ = 0;
+          current_first_ = 0;
+          current_second_ = 0;
+        }
 
+    For the ``MakeNextNeighbor()`` method, we use our template:
+    
+    ..  code-block:: c++
+    
+        virtual bool MakeNextNeighbor(Assignment* delta, 
+                                      Assignment* deltadelta) {
+          CHECK_NOTNULL(delta);
+          while (true) {
+            RevertChanges(true);
+            if (!Increment()) {
+              return false;
+            }
+
+            std::vector<int> sequence = Sequence(current_var_);
+            const int tmp = sequence[current_first_];
+            sequence[current_first_] = sequence[current_second_];
+            sequence[current_second_] = tmp;
+            SetForwardSequence(current_var_, sequence);
+
+            if (ApplyChanges(delta, deltadelta)) {
+              return true;
+            }
+          }
+          return false;
+        }
+
+    If ``Increment()`` returns ``false``, we have exhausted the neighborhood and ``MakeNextNeighbor()`` must return 
+    ``false``. ``Sequence()`` and ``SetForwardSequence()`` are two helper methods from the ``SequenceVarLocalSearchOperator``
+    class that allow us to use the ``ApplyChanges()`` method to construct the ``delta``\s.
+    
+    And that's it! Our ``LocalSearchOperator`` operator is completed. Let's test it!
+    
+    First, we need our ``LocalSearchOperator``:
+    
+    ..  code-block:: c++
+    
+        LocalSearchOperator* const swap_operator =
+        solver.RevAlloc(new SwapIntervals(all_sequences.data(),
+                                          all_sequences.size()));
+
+    Then we need a complementary ``DecisionBuilder`` to construct *feasible* neighbor solutions. We don't want to 
+    spent too much time on the completion of our solutions. We will use the ``CHOOSE_RANDOM_RANK_FORWARD`` strategy:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder* const random_sequence_phase =
+                       solver.MakePhase(all_sequences, 
+                                        Solver::CHOOSE_RANDOM_RANK_FORWARD);
+        
+        DecisionBuilder* const complementary_ls_db =
+                  solver.MakeSolveOnce(solver.Compose(random_sequence_phase, 
+                                                      obj_phase));
+    
 Exchanging an unlimited number of ``IntervalVar``\s on a ``SequenceVar``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
