@@ -7,15 +7,13 @@ Basic working of the solver: local search
 
 ..  only:: draft
 
-    [TO BE REREAD]
-
-    In this section we present how local search is implemented in *or-tools*. First, we give the main basic idea 
+    In this section, we present how local search is implemented in *or-tools*. First, we give the main basic idea 
     and present the main actors (aka classes) that participate in the local search. It's good to keep them in memory
     for the rest of this section. Then we overview the implementation
     and describe some of its main components. Finally, we detail the inner working of the local search algorithm and 
     indicate where the callbacks of the ``SearchMonitor``\s are called in the last subsection.
     
-    We present a simplified version of the local search algorithm.
+    We present a simplified version of the local search algorithm. Yes, this is worth a warning box!
     
     ..  warning:: We describe a simplified version of the local search algorithm.
     
@@ -28,16 +26,61 @@ The basic idea
 
     The local search algorithm is implemented with the ``LocalSearch`` ``DecisionBuilder`` who 
     returns ``NestedSolveDecision``\s (by its ``Next()`` method). These ``NestedSolveDecision``\s in turn 
-    call the ``FindOneNeighbor``
+    collect the solutions returned by the ``FindOneNeighbor``
     ``DecisionBuilder`` in their left branches (and don't do anything in their right branches). As its name implies, the 
-    ``FindOneNeighbor`` ``DecisionBuilder`` tries to find one neighbor solution. The ``LocalSearch`` ``DecisionBuilder``
-    stops the search when stopping criteria are met or if it can not improve anymore the neighbor solution found. This 
-    solution is thus a local optimum. 
+    ``FindOneNeighbor`` ``DecisionBuilder`` tries to find one solution. The ``LocalSearch`` ``DecisionBuilder``
+    stops the search when stopping criteria are met or if it can not improve anymore the last solution found. This 
+    solution is thus a local optimum w.r.t. the chosen neighborhood. 
     
     If needed, the search 
     can be restarted again around a new initial solution. The ``LocalSearch`` 
     ``DecisionBuilder`` then acts like a multi-restart ``DecisionBuilder``. 
   
+    Wow, this went fast! Let's summarize all this in the next picture:
+    
+    ..  only:: html 
+    
+        .. image:: images/ls_basic_idea1.*
+            :width: 500pt
+            :align: center
+
+    ..  only:: latex
+    
+        .. image:: images/ls_basic_idea1.*
+            :width: 400pt
+            :align: center
+
+    ``ls`` is the ``LocalSearchOperator`` that constructs the candidate solutions. You can immediately spot that the search 
+    tree very quickly becomes completely unbalanced if we only keep finding solutions in the left branches. We'll see a balacing
+    mechanism that involves one ``BalancingDecision`` at the end of this section.
+    
+    Speaking about *candidate* solutions, let's agree on some wordings. The next picture presents the beginning of a local search.
+    :math:`x_0` is the initial solution. In *or-tools*, this solution is given by an ``Assignment`` or a ``DecisionBuilder`` that 
+    the ``LocalSearch`` class uses to construct this initial solution. :math:`x_0, x_1, x_2, \ldots` are *solutions*. As we have seen, 
+    the local search algorithm moves from one solution to another. It takes a starting solution :math:`x_i` and visit the 
+    neighborhood defined around :math:`x_i` to find the next solution :math:`x_{i+1}`. By *visiting* the neighborhood, we mean 
+    construct feasible solutions :math:`y_0 = x_i, y_1, y_2, \ldots` in this neighborhood and test them. We call these solutions 
+    *candidate* solutions. In the code, they are called *neighbors*. The ``LocalSearchOperator`` produces these candidates and 
+    the ``FindOneNeighbor`` ``DecisionBuilder`` filter these out to keep the interesting candidate solutions only. When a 
+    stopping criteria is met or the neighborhood has been exhausted, the 
+    
+    
+    
+    
+    ..  only:: html 
+    
+        .. image:: images/ls_basic_idea2.*
+            :width: 500pt
+            :align: center
+
+    ..  only:: latex
+    
+        .. image:: images/ls_basic_idea2.*
+            :width: 400pt
+            :align: center
+
+
+    
 The main actors
 """""""""""""""
 
@@ -473,7 +516,7 @@ The ``FindOneNeighbor`` ``DecisionBuilder``
         }
          
     You might wonder why its implementation consists in so many lines of code but there 
-    are a lot of cases to consider.
+    are a some subtleties to consider.
     
     Lines 3 to 7 are only called the first time the ``Next()`` method is invoked 
     and permit to synchronize the local search machinery with the initial solution. In general, 
@@ -532,7 +575,7 @@ The ``FindOneNeighbor`` ``DecisionBuilder``
         } 
     
     ``ApplyChanges()`` actually constructs the ``delta``\s after you use the helper methods
-    ``SetValue()``, ``Activate()``, ``Deactivate()`` to change the current neighbor solution
+    ``SetValue()``, ``Activate()`` and the like to change the current neighbor solution
     or the initial solution if you start to scour the neighborhood.
     
     ..  only:: html
@@ -810,13 +853,28 @@ The ``LocalSearch`` ``DecisionBuilder``
         
 
 
-    The ``decision`` ``Decision`` on line 3 is the ``NestedSolveDecision`` created with 
+    The ``decision`` variable on line 3 is the ``NestedSolveDecision`` created with 
     the ``FindOneNeighbor`` ``DecisionBuilder``.
+    We ``switch`` between 3 cases depending on the state of the nested search initiated by this ``Decision``.
     
-    ``LocalOptimumReached()`` is a global function that connects the local and global searches
-    and returns ``true`` if a local optimum has been reached and cannot be improved.
-    To do so, it calls the 
-    ``LocalOptimum()`` callback of **all** the ``SearchMonitor``\s for the current search.
+    * Line 5: case **DECISION_FAILED**:
+      The nested solving process failed, meaning that there are no solution left. We let the ``SearchMonitor``\s
+      decide if a local optimum has been reached and cannot be improved. If only one ``SearchMonitor`` makes its 
+      ``LocalOptimum()`` method returns ``true``, then ``LocalOptimumReached()`` also returns ``true``. Otherwise, they 
+      all agree that the search didn't find a local optimum and the search is stopped.
+    
+    * Line 14: case **DECISION_PENDING**:
+      This is the most interesting case: we try to keep the search tree balanced and force its height to be bounded.
+      ``kLocalSearchBalancedTreeDepth`` is set to 32. So as long as the tree height is smaller than 32, the ``LocalSearch``
+      ``DecisionBuilder`` returns the **same** ``BalancingDecision`` on line 21. ``BalancingDecision``\s don't do anything
+      by default. Once over 32, the ``NestedSolveDecision``
+      ``Decision`` enters in action and when the height of the three gets higher than 32, we make the CP solver ``Fail()``
+      to backtrack on line 23.
+      
+    * Line 28: case **DECISION_FOUND**:
+      The nested search found a neighbor solution that is the current solution. The ``LocalSearch``\'s ``Next()`` method has done its job 
+      at the current node and nothing needs to be done.
+    
     
 ..  only::  draft
     
@@ -830,7 +888,7 @@ The ``LocalSearch`` ``DecisionBuilder``
         ..  raw:: latex
 
             This topic is so important that we devote the whole section~\ref{manual/lns/solving_options:solving-options} to it. 
-            You already can jump and read this section if you're curious.
+            You already can jump ahead and read this section if you're curious.
 
         
     
