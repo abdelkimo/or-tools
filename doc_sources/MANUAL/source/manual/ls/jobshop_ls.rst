@@ -251,6 +251,9 @@ Exchanging two ``IntervalVar``\s on a ``SequenceVar``
 
 ..  only:: draft
 
+    You'll find the code in the file :file:`jobshop_ls1.cc` and the ``SwapIntervals`` operator in the file 
+    :file:`jobshop_ls`.
+
     The idea of exchanging two ``IntervalVar``\s on a ``SequenceVar`` is very common and the corresponding 
     operator is often referred to as the ``2-opt-``, ``2-exchange-`` or ``swap-`` operator.
     
@@ -350,12 +353,140 @@ Exchanging two ``IntervalVar``\s on a ``SequenceVar``
         DecisionBuilder* const complementary_ls_db =
                   solver.MakeSolveOnce(solver.Compose(random_sequence_phase, 
                                                       obj_phase));
+
+    If we run the program :file:`jobshop_ls1` with our instance problem (file :file:`first_example_jssp.txt`),
+    we get the optimal solution. Always a good sign. With the instance in :file:`abz9` however, we only get a 
+    solution of cost xxx in xxx seconds. Not very satisfactory. Let's try to generalize our operator. Instead of 
+    just swapping two ``IntervalVar``\s, we'll shuffle an arbitrary number of ``IntervalVar``\s per ``SequenceVar``
+    in the next subsection.
     
-Exchanging an unlimited number of ``IntervalVar``\s on a ``SequenceVar``
+Exchanging an arbitrary number of ``IntervalVar``\s on a ``SequenceVar``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
+    You'll find the code in the file :file:`jobshop_ls2.cc` and the ``ShuffleIntervals`` operator in the file 
+    :file:`jobshop_ls`.
+    
+    After having implemented the ``SwapIntervals`` operator, the only real difficulty that remains is to implement 
+    a permutation. This is not an easy task but we'll elude this difficulty and use the ``std::next_permutation()`` function.
+    You can find the declaration of this function in the header :file:`algorithm`. It customizable version reads like:
+    
+    ..  code-block:: c++
+    
+        template <class BidirectionalIterator, class Compare>
+        bool next_permutation (BidirectionalIterator first,
+                               BidirectionalIterator last, Compare comp);
+    
+    We take the default values for the ``BidirectionalIterator`` and the ``Compare`` classes. 
+    It will rearrange the elements in the range ``[first,last)`` into the next *lexicographically greater* permutation.
+    As usual with the ``std``, the ``last`` element is not involved in the permutation. There is only one more detail
+    we have to pay attention too. We ask the user to provide the length of the permutation with the :program:`gflags`
+    flag ``FLAGS_shuffle_length``. First, we have to test if this length makes sense but we also have to adapt it to 
+    the each ``SequenceVar`` variable.
+    
+    Without delay, we present the constructor of the ``ShuffleIntervals`` ``LocalSearchOperator``:
+    
+    ..  code-block:: c++
+    
+        ShuffleIntervals(const SequenceVar* const* vars, 
+                         int size, 
+                         int max_length) :
+          SequenceVarLocalSearchOperator(vars, size),
+          max_length_(max_length),
+          current_var_(-1),
+          current_first_(-1),
+          current_index_(-1),
+          current_length_(-1) {}
+
+    ``vars`` and ``size`` are just the array of ``SequenceVar``\s and its size. ``max_length`` is the length of the 
+    sequence of ``IntervalVar``\s to shuffle. Because you can have less ``IntervalVar``\s for a given ``SequenceVar``, 
+    we have named it ``max_length``.
+    
+    The indices are very similar to the ones of the ``SwapIntervals`` operator:
+    
+    * ``current_var_``: the index of the processed ``SequenceVar``;
+    * ``current_first_``:  the index of the first ``IntervalVar`` variable to shuffle;
+    * ``current_length_``: the length of the current sub-array of indices to shuffle. It must be smaller or equal to 
+      the number of ``IntervalVar``\s in the ``SequenceVar``.
+    
+    Here is the code to increment the next permutation:
+    
+    ..  code-block:: c++
+    
+          bool Increment() {
+            if (!std::next_permutation(current_permutation_.begin(),
+                                       current_permutation_.end())) {
+              if (++current_first_ >= 
+                              Var(current_var_)->size() - current_length_) {
+                if (++current_var_ >= Size()) {
+                  return false;
+                }
+                current_first_ = 0;
+                current_length_ = 
+                           std::min(Var(current_var_)->size(), max_length_);
+                current_permutation_.resize(current_length_);
+              }
+              //current_index_ = 0;
+            }
+            return true;
+          }
+
+    Thanks to the ``std::next_permutation()`` function, this is a breeze!
+    The ``OnStart()`` method is again straightforward:
+    
+    ..  code-block:: c++
+    
+        virtual void OnStart() {
+          current_var_ = 0;
+          current_first_ = 0;
+          current_length_ = std::min(Var(current_var_)->size(), max_length_);
+          current_permutation_.resize(current_length_);
+          for (int i = 0; i < current_length_; ++i) {
+            current_permutation_[i] = i;
+          }
+        }
+
+    We just have to pay attention to ``resize()`` the ``std::vector`` ``current_permutation_`` of indices
+    and we start with the same permutation: ``[0, 1, 2, 3, ...]``.
+    
+    We again use our template for the ``MakeNextNeighbor()`` method:
+    
+    ..  code-block:: c++
+    
+        virtual bool MakeNextNeighbor(Assignment* delta, Assignment* deltadelta) {
+          CHECK_NOTNULL(delta);
+          while (true) {
+            RevertChanges(true);
+            if (!Increment()) {
+              return false;
+            }
+
+            std::vector<int> sequence = Sequence(current_var_);
+            std::vector<int> sequence_backup(current_length_);
+            for (int i = 0; i < current_length_; ++i) {
+              sequence_backup[i] = sequence[i + current_first_];
+            }
+            for (int i = 0; i < current_length_; ++i) {
+              sequence[i + current_first_] =
+                  sequence_backup[current_permutation_[i]];
+            }
+            SetForwardSequence(current_var_, sequence);
+            if (ApplyChanges(delta, deltadelta)) {
+              return true;
+            }
+          }
+          return false;
+        }
+
+    If ``Increment()`` returns ``false``, we have exhausted the neighborhood and ``MakeNextNeighbor()`` must return 
+    ``false``. After the call to ``Increment()``, we simply copy the indices according to the new generated permutation
+    and call the helper method ``SetForwardSequence()`` to update the current ``SequenceVar`` variable. ``ApplyChanges()``
+    constructs the ``delta``\s for us.
+    
+    File :file:`jobshop_ls2.cc` is exactly the same as file :file:`jobshop_ls1.cc` except that we use the ``ShuffleIntervals``
+    operator instead of the ``SwapIntervals`` operator.
+    
 Results
 ^^^^^^^^^^
 
