@@ -356,7 +356,7 @@ Exchanging two ``IntervalVar``\s on a ``SequenceVar``
 
     If we run the program :file:`jobshop_ls1` with our instance problem (file :file:`first_example_jssp.txt`),
     we get the optimal solution. Always a good sign. With the instance in :file:`abz9` however, we only get a 
-    solution of cost xxx in xxx seconds. Not very satisfactory. Let's try to generalize our operator. Instead of 
+    solution of cost 1051 in 51,295 seconds. Not very satisfactory. Let's try to generalize our operator. Instead of 
     just swapping two ``IntervalVar``\s, we'll shuffle an arbitrary number of ``IntervalVar``\s per ``SequenceVar``
     in the next subsection.
     
