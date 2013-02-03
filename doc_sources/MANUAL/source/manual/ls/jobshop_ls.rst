@@ -7,7 +7,8 @@ The jobshop problem: and now with local search!
 
     ..  raw:: latex
 
-        You can find the code in the files~\code{jobshop\_ls.h} and~\code{jobshop\_ls.h}.\\~\\
+        You can find the code in the files~\code{jobshop\_ls.h}, \code{jobshop\_ls1.cc}, \code{jobshop\_ls2.cc} 
+        and~\code{jobshop\_ls3.cc}.\\~\\
 
     ..  only:: html
 
@@ -19,8 +20,9 @@ The jobshop problem: and now with local search!
                   <li>C++ code:
                     <ol>
                       <li><a href="../../../tutorials/cplusplus/chap6/jobshop_ls.h">jobshop_ls.h</a></li>
-                      <li><a href="../../../tutorials/cplusplus/chap6/jobshop_ls.cc">jobshop_ls1.cc</a></li>
-                      <li><a href="../../../tutorials/cplusplus/chap6/jobshop_ls.cc">jobshop_ls2.cc</a></li>
+                      <li><a href="../../../tutorials/cplusplus/chap6/jobshop_ls1.cc">jobshop_ls1.cc</a></li>
+                      <li><a href="../../../tutorials/cplusplus/chap6/jobshop_ls2.cc">jobshop_ls2.cc</a></li>
+                      <li><a href="../../../tutorials/cplusplus/chap6/jobshop_ls3.cc">jobshop_ls3.cc</a></li>
                     </ol>
                   </li>
                   <li>Data file:
@@ -356,7 +358,17 @@ Exchanging two ``IntervalVar``\s on a ``SequenceVar``
 
     If we run the program :file:`jobshop_ls1` with our instance problem (file :file:`first_example_jssp.txt`),
     we get the optimal solution. Always a good sign. With the instance in :file:`abz9` however, we only get a 
-    solution of cost 1051 in 51,295 seconds. Not very satisfactory. Let's try to generalize our operator. Instead of 
+    solution of cost 1051 in 51,295 seconds:
+    
+    ..  table::
+    
+        =================== =================== =================== ===================
+        Time (in s.)        Value               Candidates          Solutions
+        =================== =================== =================== ===================
+        51,295              1051                31172               26
+        =================== =================== =================== ===================
+        
+    Not very satisfactory: ``1051`` is really far from the optimal value of ``679``. Let's try to generalize our operator. Instead of 
     just swapping two ``IntervalVar``\s, we'll shuffle an arbitrary number of ``IntervalVar``\s per ``SequenceVar``
     in the next subsection.
     
@@ -498,7 +510,6 @@ Exchanging an arbitrary number of contiguous ``IntervalVar``\s on a ``SequenceVa
             if (!Increment()) {
               return false;
             }
-
             std::vector<int> sequence = Sequence(current_var_);
             std::vector<int> sequence_backup(current_length_);
             for (int i = 0; i < current_length_; ++i) {
@@ -539,10 +550,27 @@ Exchanging an arbitrary number of contiguous ``IntervalVar``\s on a ``SequenceVa
         5                   584,173             1055                268478              27
         =================== =================== =================== =================== ===================
     
-Results
-^^^^^^^^^^
+    These results are typical for a local search operator. There certainly are several lessons to be drawn from these results, 
+    but let's focus the most basic and important one. You can see that the path taken to find the 
+    local optimum is important.  Even if the neighborhoods (theoretically) constructed with ``suffle_length`` set
+    to ``2`` are all contained in the neighborhoods constructed with ``suffle_length`` set to ``3``, we don't get the 
+    same local optimum. This is very important to understand. The path taken in both cases is different. The (practical) 
+    construction of the neighbourhoods is **dynamic** and **path-dependent**. Good (meta-)heuristics are path-dependent: these
+    heuristics take the path (and thus the history of the search) into account. Moreover, bigger neighbourhoods 
+    (``shuffle_length = 3``) aren't necessarily better than smaller ones (``shuffle_length = 2``). We obtain a better 
+    solution quicker with ``shuffle_length=2`` than with ``suffle_length=3``.
+    
+    The best solution obtained so far has a value of ``1016``. Can we do better? That's the subject of next sub-section!
+    
+Can we do better?
+^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
+
+    initial solution...
+    
+    still too many candidates...
+
 
 
 ..  only:: final 
