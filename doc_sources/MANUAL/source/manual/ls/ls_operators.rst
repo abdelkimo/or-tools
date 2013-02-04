@@ -204,6 +204,9 @@ We use the LSN Operator ``DecreaseOneVar`` in the function ``SimpleLS()`` that s
       
 :math:`n` must be greater or equal to 2 as we ask for :math:`x_0 \geqslant 1`.
 
+The ``OptimizeVar`` ``SearchMonitor`` is very important as it will give the direction to follow for the local search algorithm.
+Without it, the local search would walk randomly wihout knowing where to go.
+
 Next, based on the Boolean variable ``FLAG_initial_phase``, we create a
 ``DecisionBuilder`` to find an initial solution or we construct an initial ``Assignment``:
 

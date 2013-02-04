@@ -8,7 +8,7 @@ The jobshop problem: and now with local search!
     ..  raw:: latex
 
         You can find the code in the files~\code{jobshop\_ls.h}, \code{jobshop\_ls1.cc}, \code{jobshop\_ls2.cc} 
-        and~\code{jobshop\_ls3.cc}.\\~\\
+        and~\code{jobshop\_ls3.cc} and the data files in~\code{first_example_jssp.txt} and~\code{abz9}.\\~\\
 
     ..  only:: html
 
@@ -25,8 +25,9 @@ The jobshop problem: and now with local search!
                       <li><a href="../../../tutorials/cplusplus/chap6/jobshop_ls3.cc">jobshop_ls3.cc</a></li>
                     </ol>
                   </li>
-                  <li>Data file:
+                  <li>Data files:
                     <ol>
+                      <li><a href="../../../tutorials/cplusplus/chap6/first_example_jssp.txt">first_example_jssp.txt</a></li>
                       <li><a href="../../../tutorials/cplusplus/chap6/abz9">abz9</a></li>
                     </ol>
                   </li>
@@ -34,7 +35,13 @@ The jobshop problem: and now with local search!
                 </ol>
 
 
-
+    We have seen in the previous section how to implement local search on our dummy example. This time, we apply 
+    local search on a real problem and present the real thing: the ``MakeOneNeighbor()`` method, the 
+    ``delta`` and ``deltadelta`` ``Assignment``\s and how to implement *incremental* ``LocalSearchOperator``\s.
+    
+    To solve the job-shop problem, we'll define two basic ``LocalSearchOperator``\s. First, we'll apply them separately
+    and then we'll combine them together to get better results. In doing so, we will discover that local search 
+    is very sensitive to the initial solution used to start it and that the search is path-dependent.
 
 ..  _local_search_operators_the_real_thing:
 
@@ -68,9 +75,9 @@ The jobshop problem: and now with local search!
     The idea behind the ``Delta``\s and ``DeltaDelta``\s is really simple: efficiency. Only the modified part of 
     the solution is broadcast:
     
-    * ``Delta``: the difference between the initial solution that defines the neighborhood and the current neighbor solution.
+    * ``Delta``: the difference between the initial solution that defines the neighborhood and the current candidate solution.
     
-    * ``DeltaDelta``: the difference between the current neighbor solution and the previous neighbor solution.
+    * ``DeltaDelta``: the difference between the current candidate solution and the previous candidate solution.
     
     ``Delta`` and ``DeltaDelta`` are just ``Assignment``\s only containing the changes.
 
@@ -86,9 +93,9 @@ The jobshop problem: and now with local search!
     
         bool MakeNextNeighbor(Assignment* delta, Assignment* deltadelta)
 
-    This method constructs the ``delta`` and ``deltadelta`` corresponding to the new neighbor solution candidate 
+    This method constructs the ``delta`` and ``deltadelta`` corresponding to the new candidate solution  
     and returns ``true``. If the neighborhood has been exhausted, i.e. the ``LocalSearchOperator`` cannot find another 
-    neighbor solution candidate, this method returns ``false``.
+    candidate solution, this method returns ``false``.
 
     When you write your own ``MakeNextNeighbor()`` method, you **have** to provide the new ``delta`` but you can 
     skip the ``deltadelta`` if you prefer. This ``deltadelta`` can be convenient when you define your filters and 
@@ -127,7 +134,7 @@ The jobshop problem: and now with local search!
                 return false;
               }
 
-              // CONSTRUCT NEW NEIGHBOR SOLUTION CANDIDATE
+              // CONSTRUCT NEW CANDIDATE SOLUTION
               ...
               if (ApplyChanges(delta, deltadelta)) {
                 return true;
@@ -162,7 +169,7 @@ The jobshop problem: and now with local search!
     ..  topic:: Why would I want to use ``MakeNextNeighbor()`` instead of ``MakeOneNeighbor()``\?
     
         One reason is efficiency: you skip one callback. But the real reason is that you might need 
-        other methods than the ones that are provided to construct your neighbor solution candidates.
+        other methods than the ones that are provided to construct your candidate solution.
         In this case, you have no other choice than to reimplement the ``MakeNextNeighbor()`` method.
         
 
@@ -171,7 +178,7 @@ Incrementality
 
 ..  only:: draft
 
-    Yo!
+    [TO BE WRITTEN]
 
 
 The initial solution 
@@ -268,7 +275,7 @@ Exchanging two ``IntervalVar``\s on a ``SequenceVar``
     
     We proceed sequentially with the first ``SequenceVar`` (``current_var_ = 0``) and exchange the first and second ``IntervalVar``\s,
     then the first and the third ``IntervalVar``\s and so on until exhaustion of all possibilities. Here is the code to 
-    increment these indices to create each neighbor solution candidate:
+    increment these indices to create each candidate solution:
     
     ..  code-block:: c++
     
@@ -343,7 +350,7 @@ Exchanging two ``IntervalVar``\s on a ``SequenceVar``
         solver.RevAlloc(new SwapIntervals(all_sequences.data(),
                                           all_sequences.size()));
 
-    Then we need a complementary ``DecisionBuilder`` to construct *feasible* neighbor solutions. We don't want to 
+    Then we need a complementary ``DecisionBuilder`` to construct *feasible* candidate solutions. We don't want to 
     spent too much time on the completion of our solutions. We will use the ``CHOOSE_RANDOM_RANK_FORWARD`` strategy:
     
     ..  code-block:: c++
@@ -395,7 +402,7 @@ Exchanging an arbitrary number of contiguous ``IntervalVar``\s on a ``SequenceVa
     It will rearrange the elements in the range ``[first,last)`` into the next *lexicographically greater* permutation.
     An example will clarify this jargon:
     
-    ..  tabularcolumns:: |c|r|
+    ..  tabularcolumns:: |c|c|
     
     ..  table::
     
@@ -503,7 +510,8 @@ Exchanging an arbitrary number of contiguous ``IntervalVar``\s on a ``SequenceVa
     
     ..  code-block:: c++
     
-        virtual bool MakeNextNeighbor(Assignment* delta, Assignment* deltadelta) {
+        virtual bool MakeNextNeighbor(Assignment* delta, 
+                                      Assignment* deltadelta) {
           CHECK_NOTNULL(delta);
           while (true) {
             RevertChanges(true);
@@ -539,6 +547,8 @@ Exchanging an arbitrary number of contiguous ``IntervalVar``\s on a ``SequenceVa
     or ``shuffle_length=3``). What about the :file:`abz9` instance? The next table summarize some tests with different values 
     for the ``suffle_length`` parameter:
     
+    ..  tabularcolumns:: |c|r|c|r|c|
+    
     ..  table::
     
         =================== =================== =================== =================== ===================
@@ -562,14 +572,199 @@ Exchanging an arbitrary number of contiguous ``IntervalVar``\s on a ``SequenceVa
     
     The best solution obtained so far has a value of ``1016``. Can we do better? That's the subject of next sub-section!
     
+..  _jobshop_ls_can_we_do_better:    
+    
 Can we do better?
 ^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
-    initial solution...
+    You'll find the code in the file :file:`jobshop_ls3.cc`.
     
-    still too many candidates...
+    You should know by now that whenever we ask this question, the answer is *yes*. To find a better solution, we'll first 
+    investigate how important the initial solution is and then we'll enlarge our definition of a neighborhood by combining
+    our two ``LocalSearchOperator``\s.
+
+The initial solution
+"""""""""""""""""""""""""
+    
+..  only:: draft
+
+    Local search is strongly dependent on the initial solution. Investing time in finding a good solution is a good idea.
+    We'll use... local search to find an initial solution to start local search from. The idea is that maybe we can 
+    find an even better 
+    solution in the vicinity of this initial solution. We don't want to spend too much time to find it though and we'll limit
+    ourselves with a custom made ``SearchLimit``. To define this ``SearchLimit``, we construct a callback:
+    
+    ..  code-block:: c++
+    
+        class LSInitialSolLimit : public ResultCallback<bool> {
+          public:
+            LSInitialSolLimit(Solver * solver, int64 global_time_limit, 
+                              int solution_nbr_tolerance) :
+              solver_(solver), global_time_limit_(global_time_limit), 
+              solution_nbr_tolerance_(solution_nbr_tolerance),
+              time_at_beginning_(solver_->wall_time()), 
+              solutions_at_beginning_(solver_->solutions()),
+              solutions_since_last_check_(0) {}
+
+            //  Returns true if limit is reached, false otherwise.
+            virtual bool Run() {
+              bool limit_reached = false;
+              
+              //  Test if time limit is reached.
+              if ((solver_->wall_time() - time_at_beginning_) 
+                                                     > global_time_limit_) {
+                limit_reached = true;
+                //  Test if we continue despite time limit reached.
+                if (solver_->solutions() - solutions_since_last_check_ 
+                                               >= solution_nbr_tolerance_) {
+                  //  We continue because we produce enough new solutions.
+                  limit_reached = false;
+                }
+              }
+              solutions_since_last_check_ = solver_->solutions();
+
+              return limit_reached;
+            }
+            
+          private:
+            Solver * solver_;
+            int64 global_time_limit_;
+            int solution_nbr_tolerance_;
+
+            int64 time_at_beginning_;
+            int solutions_at_beginning_;
+            int solutions_since_last_check_;
+          };
+
+    The main method in this callback is the ``virtual bool Run()`` method. This method returns ``true``
+    if our limit has been reached and ``false`` otherwise. Here, our limit is a time limit given in ms but
+    we allow to exceed this time limit **if** the ``Search`` is still producing a certain amount of solutions.
+    The time limit is given by ``global_time_limit`` and the number of solutions to produce to exceed this 
+    time limit is given by ``solution_nbr_tolerance``. To initialize our first local search that finds our initial 
+    solution, we use the same code as in the file :file:`jobshop_ls2.cc`, only we call this first solution ``first_solution``.
+    
+    
+    To find an initial solution, we use local search and start form the ``first_solution`` found.
+    We only use a ``ShuffleIntervals`` operator with a shuffle length of ``2``. This time, we limit this local 
+    search with our custom limit:
+    
+    ..  code-block:: c++
+    
+        SearchLimit * initial_search_limit = solver.MakeCustomLimit(
+                      new LSInitialSolLimit(&solver, 
+                                            FLAGS_initial_time_limit_in_ms, 
+                                            FLAGS_solutions_nbr_tolerance));
+
+    ``FLAGS_initial_time_limit_in_ms`` and ``FLAGS_solutions_nbr_tolerance`` are the two :program:`gflags` flags
+    we use in the constructor of the callback ``LSInitialSolLimit`` described above to limit the search.
+    
+    The initial solution is stored in an ``Assigment`` ``initial_solution`` like we did for the first solution.
+    
+    Now, we are ready to prepare the local search with our two ``LocalSearchOperator``\s combined.
+     
+Combining the two ``LocalSearchOperator``\s
+""""""""""""""""""""""""""""""""""""""""""""""
+
+..  only:: draft
+
+    Often, one ``LocalSearchOperator`` isn't enough to define a good neighborhood. Finding a good definition
+    of a neighborhood is an art and is really difficult. One way to diversify a neighborhood is to combine several 
+    basic ``LocalSearchOperator``\s. Here, we combine ``SwapIntervals`` and ``ShuffleIntervals``:
+    
+    ..  code-block:: c++
+    
+        std::vector<LocalSearchOperator*> operators;
+        LocalSearchOperator* const swap_operator =
+                  solver.RevAlloc(new SwapIntervals(all_sequences.data(),
+                                                    all_sequences.size()));
+        operators.push_back(swap_operator);
+
+        LocalSearchOperator* const shuffle_operator =
+                solver.RevAlloc(new ShuffleIntervals(all_sequences.data(),
+                                                     all_sequences.size(),
+                                                     FLAGS_shuffle_length));
+        operators.push_back(shuffle_operator);
+    
+        LocalSearchOperator* const ls_concat =
+                               solver.ConcatenateOperators(operators, true);
+    
+    The ``ConcatenateOperators()`` method takes an ``std::vector`` of ``LocalSearchOperator`` and a ``bool`` that 
+    indicates if we want to restart the operators one after the other in the order given by this vector once a 
+    solution has been found.
+    
+    The rest of the code is similar to that in the file :file:`jobshop_ls2.cc`.
+    
+Results
+"""""""""""
+
+..  only:: draft
+
+    If we solve our problem instance (file :file:`first_example_jssp.txt`), we still get 
+    the optimal solution. No surprise here. What about the :file:`abz9` instance?
+    
+    With our default value of 
+    
+    * ``time_limit_in_ms = 0``, thus no time limit;
+    * ``shuffle_length = 4``;
+    * ``initial_time_limit_in_ms = 20000``, thus a time of ``20`` seconds to find an initial solution with local search 
+      and the ``ShuffleIntervals`` operator with a shuffle length of ``2`` and;
+    * ``solutions_nbr_tolerance = 1``,
+    
+    we are not able to improve our best solution so far!
+    
+    As we said, local search is very sensitive to the initial solution chosen. In the next table, we start with different
+    initial solutions:
+    
+    ..  tabularcolumns:: |c|c||r|c|c|c|
+    
+    ..  table::
+    
+        =================== =================== =================== =================== =================== ===================
+        Initial time limit  Initial sol. obj.   Time                Value               Candidates          Solutions
+        =================== =================== =================== =================== =================== ===================
+        1,000               1114                81,603              983                 49745               35
+        2,000               1103                103,139             936                 70944               59
+        3,000               1093                104,572             931                 70035               60
+        4,000               1089                102,860             931                 68359               60
+        5,000               1073                84,555              931                 63949               60
+        6,000               1057                42,235              1012                29957               32
+        7,000               1042                36,935              1012                26515               32
+        ...                 ...                 ...                 ...                 ...                 ...
+        >= 13,000           1016                19,229              1016                13017               32
+        =================== =================== =================== =================== =================== ===================
+    
+    The first column gives the time allowed to find the initial solution with the ``ShuffleIntervals`` operator ( with its 
+    shuffle length set to ``2``) and the second column gives the objective value of this initial solution. The more time given to 
+    the first local search, the better the objective values. The next four columns are the same as before.
+    
+    You might think that starting from a better solution would give better results but it is no necessarily the case. Our best 
+    result, ``931`` is obtained when we start from solutions with an average objective value. When we start with better solutions,
+    like the one with an objective value of ``1016``, we completely miss the ``931`` solution! 
+    
+    ..  only:: html
+    
+        This ``931`` solution seems to be a local optimum for our local search and it seems we can not escape it. In the section
+        :ref:`metaheuristics_examples`, we'll see how some meta-heuristics escape this local minimum. For now, we turn our attention
+        to another preoccupation: if you read the *Candidates* column and compare it with the *Solutions* column, you can see 
+        that our algorithm produces lots of candidates and very few solutions. This is normal. Remember that every time 
+        a candidate (a neighbor) is produced, the CP solver takes the time to verify if this candidate is a feasible solution. 
+        This is costly. In the next section, we'll see a mechanism to shortcut this verification and tell the solver to 
+        disregard some candidates without the need for the solver to test them explicitly.
+    
+    ..  raw:: latex
+    
+        This~\code{931} solution seems to be a local optimum for our local search and it seems we can not escape it. 
+        In section~\ref{manual/ls/metaheuristics_examples:metaheuristics-examples}, we'll see how some meta-heuristics escape 
+        this local minimum. For now, we turn our attention
+        to another preoccupation: if you read the \emph{Candidates} column and compare it with the \emph{Solutions} column, 
+        you can see 
+        that our algorithm produces lots of candidates and very few solutions. This is normal. Remember that every time 
+        a candidate (a neighbor) is produced, the CP solver takes the time to verify if this candidate is a feasible solution. 
+        This is costly. In the next section, we'll see a mechanism to shortcut this verification and tell the solver to 
+        disregard some candidates without the need for the solver to test them explicitly.
+
 
 
 

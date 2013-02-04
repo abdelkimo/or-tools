@@ -205,6 +205,17 @@ Branches
     ..  warning:: If the ``Run()`` method returns ``true`` at a leaf of the search tree, the corresponding 
         solution will be rejected!
   
+    ..  only:: html
+    
+        In the subsection :ref:`jobshop_ls_can_we_do_better` about solving the job-shop problem with local search, 
+        we will construct our own ``SearchLimit``.
+
+    ..  raw:: latex
+    
+        In subsection~\ref{manual/ls/jobshop_ls:jobshop-ls-can-we-do-better} about solving the 
+        job-shop problem with local search, we will construct our own~\code{SearchLimit}.
+
+    
     
     ``SearchLimit``\s can also be updated during the search using the following method:
     
