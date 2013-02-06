@@ -137,11 +137,14 @@ Overview of the Local Search Mechanism in *or-tools*
             :align: center
 
     We start with an initial feasible solution. The ``MakeOneNeighbor()`` callback method 
-    from the local search operator 
+    from the local search operator(s) [#local_search_operator_singular]_ 
     constructs one by one candidate solutions [#makeoneneighbor_convenience_fct]_. These solutions are checked by the CP solver and completed if needed. 
     The "best" solution
     is chosen and the process is repeated starting with this new improved 
     solution [#local_search_default_best_solution_update]_.
+    
+    ..  [#local_search_operator_singular] In the code, you are only allowed to use **one** ``LocalSearchOperator`` but 
+        you can combine several ``LocalSearchOperator``\s in one ``LocalSearchOperator``. This is a common pattern in the code.
     
     ..  [#makeoneneighbor_convenience_fct] ``MakeOneNeighbor()`` is a convenient method. The real method to create a new 
         candidate is ``MakeNextNeighbor(Assignment* delta, Assignment* deltadelta)`` but you have to deal with the low 

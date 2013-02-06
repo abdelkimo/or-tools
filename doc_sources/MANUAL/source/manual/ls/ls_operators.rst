@@ -368,7 +368,7 @@ by the ``SearchLog`` summarize the local search:
     End search (time = 1 ms, branches = 67, failures = 64, memory used = 
                                      15.13 MB, speed = 67000 branches/s)
 
-There were indeed 23 constructed candidates among which 23 (filtered neighbors)
+There were indeed 23 constructed candidate solutions among which 23 (filtered neighbors)
 were accepted after filtering and 9 (accepted neighbors) were improving solutions.
 
 If you take the last visited neighborhood (neighborhood 9), you might wonder 
@@ -379,7 +379,7 @@ to the number of filtered neighbors). You can learn more about filtering in the 
 
 If you want, you can try to start with the solution provided by the ``DecisionBuilder`` (:math:`[3,3,3,3]` when :math:`n=4`) 
 and see if you can figure out 
-what the 29 constructed neighbors and 11 accepted solutions are. 
+what the 29 constructed candidate solutions (neighbors)  and 11 accepted solutions are. 
 
 Combining LSN operators 
 ^^^^^^^^^^^^^^^^^^^^^^^^
