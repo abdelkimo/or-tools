@@ -8,7 +8,7 @@ The jobshop problem: and now with local search!
     ..  raw:: latex
 
         You can find the code in the files~\code{jobshop\_ls.h}, \code{jobshop\_ls1.cc}, \code{jobshop\_ls2.cc} 
-        and~\code{jobshop\_ls3.cc} and the data files in~\code{first_example_jssp.txt} and~\code{abz9}.\\~\\
+        and~\code{jobshop\_ls3.cc} and the data files in~\code{first\_example\_jssp.txt} and~\code{abz9}.\\~\\
 
     ..  only:: html
 
@@ -367,6 +367,8 @@ Exchanging two ``IntervalVar``\s on a ``SequenceVar``
     we get the optimal solution. Always a good sign. With the instance in :file:`abz9` however, we only get a 
     solution of cost 1051 in 51,295 seconds:
     
+    ..  tabularcolumns |c|c|c|c|
+    
     ..  table::
     
         =================== =================== =================== ===================
@@ -470,7 +472,8 @@ Exchanging an arbitrary number of contiguous ``IntervalVar``\s on a ``SequenceVa
                 return false;
               }
               current_first_ = 0;
-              current_length_ = std::min(Var(current_var_)->size(), max_length_);
+              current_length_ = std::min(Var(current_var_)->size(), 
+                                         max_length_);
               current_permutation_.resize(current_length_);
             }
             // Reset first permutation in case we have to increase 

@@ -97,7 +97,6 @@ The files inside this directory are:
     :maxdepth: 2
 
     lns/large_neighborhood_search
-    lns/solving_options
     lns/restart
     
 ..  only:: final

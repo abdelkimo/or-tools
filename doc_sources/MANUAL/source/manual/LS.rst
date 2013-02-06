@@ -12,35 +12,45 @@ Local search: the job-shop problem
     Do we give up? Of course not! If it is not possible to extract the best solutions, 
     we can try to find very good solutions. Enter the fascinating world of (meta-)heuristics and local search.
     
-    If you have no idea what scheduling is, the job-shop problem we discuss
-    in this chapter is a good example of the kind of problems solved in this field.
+    To illustrate this chapter, we try to solve the *job-shop* problem. This hard problem is a typical *scheduling* problem.
+    Don't worry if you don't know anything about scheduling or the job-shop problem, we explain this problem in details. 
+    Scheduling is one of the field where
+    Constraint Programming has been applied with great success. It is thus not surprising that the CP community has 
+    developed specific tools to solve scheduling problems. We introduce the ones that have been implemented in *or-tools*
+    in this chapter.
     
-    ..  [#actually_most_problems_are_hard] Actually, *most* problems!
+    ..  [#actually_most_problems_are_hard] Actually, *most interesting* problems!
     
-    ..  [#watch_out_for_quantic_computers] But watch out for the next generation
-        of computers: computers based on quantum mechanics! See Wikipedia: http://en.wikipedia.org/wiki/Quantum_computer
+    ..  [#watch_out_for_quantic_computers] But watch out the next generations
+        of computers: molecular computers (http://en.wikipedia.org/wiki/Molecular_computer) 
+        and computers based on quantum mechanics (http://en.wikipedia.org/wiki/Quantum_computer)!
        
 ..  rubric:: Overview:
 
 ..  only:: draft
 
-    [TO BE REWRITTEN]
-
-    We start by describing what Local Search is and how it is implemented in the or-tools library. We have chosen 
-    two problems to illustrate local search:
-      
-      * one **dummy problem** (files :file:`dummy_ls*`): we minimize :math:`x_0 + x_1 + \ldots + x_{n-1}` where each 
+    We start by describing 
+    
+    * the job-problem;
+    * the *disjunctive model* to represent it;
+    * 2 formats to encode instances (JSSP and Taillard) and
+    * our first exact results
+    
+    We then next make a short stop to describe the specific primitives implemented in *or-tools* to solve scheduling problems.
+    For instance, instead of using ``IntVar`` variables, we use the dedicated ``IntervalVar``\s and ``SequenceVar``\s.
+    
+    After these preliminaries, we present local search and how it is implemented in the *or-tools* library. 
+    Beside the job-shop problem, we use a dummy problem to *watch* the inner mechanisms 
+    of local search in *or-tools* in action:
+    
+        We minimize :math:`x_0 + x_1 + \ldots + x_{n-1}` where each 
         variable has the same domain :math:`[0, n-1]`. To complicate things a little bit, we add the constraint 
-        :math:`x_0 \geqslant 1`. Yes, a real dummy problem but particularly useful to *watch* the inner mechanisms 
-        of local search in *or-tools* in action.
+        :math:`x_0 \geqslant 1`.
         
-      * the **job-shop problem** (files :file:`jobshop*`): a *scheduling problem*. Don't worry if you don't know 
-        anything about scheduling or the job-shop problem, we explain this problem in details. 
-        
-    The model we use to solve the job-shop problem is called the 
-    *disjunctive model*. Constraint Programming specialized variables and global constraints were developed to solve
-    scheduling problems. Instead of using ``IntVar`` variables, we'll use the dedicated ``IntervalVar``\s and ``SequenceVar``\s.
-    Finally, we'll see some well-known Local Search meta-heuristics that are already implemented and can be used out of the box: 
+    Once we understand how to use local search in *or-tools*, we use ``LocalSearchOperator``\s to solve the job-shop problem 
+    and compare the results. To speed up the local search algorithm, we use ``LocalSearchFilter``\s for the dummy problem.
+    
+    Finally, we'll see some well-known local search meta-heuristics that are already implemented and can be used out of the box: 
     *Tabu Search*, *Simulated Annealing* and *Guided Local Search*.
     
 

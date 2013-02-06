@@ -68,7 +68,8 @@ The files inside this directory are:
 
     modeling_tricks/efficiency
     modeling_tricks/false_friends
-
+    modeling_tricks/solving_options
+    
 ..  raw:: html
     
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
