@@ -66,9 +66,9 @@ Filtering
     CP solver and ``false`` if you know you can skip this candidate solution. The candidate solution is given 
     in terms of ``delta`` and ``deltadelta``. These are provided by the ``MakeNextNeighbor()`` of the 
     ``LocalSearchOperator``. The ``Synchronize()`` method, lets  you synchronize the ``LocalSearchFilter`` with 
-    the current solution, which allows you to reconstruct the candidate solutions given by the ``detla`` ``Assignment``.
+    the current solution, which allows you to reconstruct the candidate solutions given by the ``delta`` ``Assignment``.
     
-    If your ``LocalSearchOperator`` is *incremental*, you should tell the CP solver by implementing the ``IsIncremental()``
+    If your ``LocalSearchOperator`` is *incremental*, you **must** tell the CP solver by implementing the ``IsIncremental()``
     method:
     
     ..  code-block:: c++
@@ -85,15 +85,15 @@ Defining a custom ``LocalSearchFilter``
 
 ..  only:: draft
 
-    We will filter the dummy example from file :file:`dummy_ls.cc`. You can find the code in 
+    We will filter the dummy example from the file :file:`dummy_ls.cc`. You can find the code in 
     the file :file:`dummy_ls_filtering.cc`.
     
-    Because, we use an ``OptimizeVar`` ``SearchMonitor``, we know that each time a feasible solution is found, the 
+    Because we use an ``OptimizeVar`` ``SearchMonitor``, we know that each time a feasible solution is found, the 
     CP solver gladly add a new constraint to prevent other solutions with the same objective value to be feasible.
     Thus, candidate solutions with the same or higher objective value will be rejected by the CP solver. Let's help 
     the poor solver and tell him right away to discard such candidate solutions.
     
-    Because, we are working on ``IntVar``\s, we'll inherit from ``IntVarLocalSearchFilter``
+    We are working on ``IntVar``\s and thus we'll inherit from ``IntVarLocalSearchFilter``
     and instead of implementing the ``Synchronize()`` method, we'll implement the specialized ``OnSynchronize()``
     method. 
     
@@ -118,14 +118,15 @@ Defining a custom ``LocalSearchFilter``
           }
         } 
     
-    Several helper methods are defined in the ``IntVarLocalSearchFilter``:
+    Several helper methods are defined in the ``IntVarLocalSearchFilter`` class:
     
     * ``int64 Value(int index) const``: returns the value of the :math:`i^{\text{th}}` variable of the current 
       solution. These values are automatically updated when ``Synchronize()`` is called;
     * ``IntVar* Var(int index) const``: returns the :math:`i^{\text{th}}` variable given in the ``std::vector``;
     * ``bool FindIndex(const IntVar* const var, int64* index) const``: returns a ``bool`` to indicate if the 
-      :math:`i^{\text{th}}` variable was found. If yes, you can use the ``var`` variable;
-    * ``int Size() const``: returns the size of the ``std::vector`` of ``IntVar``\s;
+      :math:`i^{\text{th}}` variable was found. If yes, you can use the ``index`` variable;
+    * ``int Size() const``: returns the size of the ``std::vector`` of ``IntVar``\s given to the constructor of 
+      the ``IntVarLocalSearchFilter`` class.
     
    
     To test a candidate solution, we use the ``delta``, and sum the changed value of the objective function:
@@ -152,10 +153,10 @@ Defining a custom ``LocalSearchFilter``
     First, we take the ``IntContainer`` and the size of this container. Each ``Assignment``
     has containers to keep its ``IntVar``\s, ``IntervalVar``\s and ``SequenceVar``\s (more precisely pointers to).
     To access those containers, use the corresponding ``Container()`` methods if you don't want to change their content, 
-    use the corresponding ``Mutable...Container()``. For instance, to retrieve the container containing the 
+    use the corresponding ``Mutable...Container()`` if you want to change their content. For instance, to retrieve the container containing the 
     ``SequenceVar``\s and the possibility to change its content, use the ``MutableSequenceVarContainer()`` method.
     
-    Actually, for efficiency reasons, ``Assignment`` contains a light version of the variables. For instance, an 
+    For efficiency reasons, ``Assignment`` contains a light version of the variables. For instance, an 
     ``ÌntVarContainer`` contains ``IntVarElement``\s and the call to 
     
     ..  code-block:: c++
@@ -165,14 +166,19 @@ Defining a custom ``LocalSearchFilter``
     simply returns the ``LocalSearchFilter``\'s index in ``touched_var`` of the corresponding variable 
     element with index ``index`` in the ``Assignment``.
     
-    We only accept a candidate solution if its objective value is better that the one of the current solution.
+    We only accept a candidate solution if its objective value is better that the one of the current solution:
+    
+    ..  code-block:: c++
+    
+        return new_obj < obj_;
     
     In the ``DummyLS()`` method, we add the filter like this:
     
     ..  code-block:: c++
     
         ...
-        LocalSearchFilter * const filter = s.RevAlloc(new ObjectiveValueFilter(vars));
+        LocalSearchFilter * const filter = s.RevAlloc(
+                                            new ObjectiveValueFilter(vars));
         std::vector<LocalSearchFilter*> filters;
         filters.push_back(filter);
         ...
@@ -217,13 +223,13 @@ Defining a custom ``LocalSearchFilter``
               return false;
             }
           }
-        return true;
-      }
+          return true;
+        }
     
-    Aha, you probably were more expecting an *ad hoc* solution than the general solution 
-    just given [#InfeasibleNeighborFilter_really_general]_. 
+    Aha, you probably did more expect an *ad hoc* solution than the general solution 
+    just given, didn't you? [#InfeasibleNeighborFilter_really_general]_. 
     
-    Now we obtain:
+    We now obtain:
     
     ..  code-block:: bash
     
@@ -241,8 +247,9 @@ Interesting ``LocalSearchFilter``\s
 
 ..  only:: draft
 
-    Several ``LocalSearchFilter``\s are already implemented in *or-tools*. There exist a general version of the 
-    two ``LocalSearchFilter``\s we made by hand in the previous sub-section: ``ObjectiveFilter`` and ``VariableDomainFilter``.
+    Two ``LocalSearchFilter``\s have already been implemented in *or-tools*. There exist a general version of the 
+    two ``LocalSearchFilter``\s we made by hand in the previous sub-section: ``ObjectiveFilter`` (and some sub-classes) 
+    and ``VariableDomainFilter``.
     
     It is easy to add a ``VariableDomainFilter``, simply use
     
@@ -270,7 +277,13 @@ Interesting ``LocalSearchFilter``\s
       * ``MAX``: The objective is the max of the variables;
       * ``MIN``: The objective is the min of the variables.
 
-    * the callback used...
+    * the callbacks used: we refer the curious reader to the code in the file :file:`constraint_programming/local_search.cc`
+      for more details about different available callbacks. Essentially, these callbacks return how the objective function 
+      has been changed w.r.t. the current solution.
+      
+    For all these versions, the factory method is ``MakeLocalSearchObjectiveFilter()``.
+      
+      
     
 ..  only:: final
 

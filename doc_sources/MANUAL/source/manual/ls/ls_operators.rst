@@ -38,10 +38,10 @@ The base class for all local search operators is ``LocalSearchOperator``.
 The behaviour of this class is similar to that of an iterator. 
 The operator is synchronized with a feasible solution (an ``Assignment`` that gives the
 current values of the variables). This is done in the ``Start()`` method.
-Then one can iterate over the neighbors using the ``MakeNextNeighbor()`` method.
-Only the modified part of the solution (an ``Assignment`` called ``delta``) is broadcast. You need also
-to define a second ``Assignment`` representing the changes to the 
-last solution defined by the neighborhood operator (an ``Assignment`` called ``deltadelta``).
+Then one can iterate over the candidate solutions (the neighbors) using the ``MakeNextNeighbor()`` method.
+Only the modified part of the solution (an ``Assignment`` called ``delta``) is broadcast. You can also
+define a second ``Assignment`` representing the changes to the 
+last candidate solution defined by the local search operator (an ``Assignment`` called ``deltadelta``).
 
 The CP solver takes care of these *delta*\s and other hassles for the most common cases [#deltadelta_more_in_depth]_. 
 
@@ -111,9 +111,9 @@ Some helper methods are provided:
   * ``int64 Value(int64 index)``: returns the value in the current ``Assignment`` of the variable of given index;
   
   * ``int64 OldValue(int64 index)``: returns the value in the last ``Assignment`` (the initial solution or the last
-    neighbor solution) of the variable of given index;
+    accepted solution) of the variable of given index;
   
-  * ``SetValue(int64 i, int64 value)``: sets the value of the ``i`` :superscript:`th` variable to ``value`` in the current assignment
+  * ``SetValue(int64 i, int64 value)``: sets the value of the ``i`` :superscript:`th` variable to ``value`` in the current ``Assignment``
     and allows to construct a new feasible solution;
   
   * ``Size()``: returns the size of the array of ``IntVar``\s;
@@ -122,19 +122,19 @@ Some helper methods are provided:
   
 
 To construct a new feasible solution, just redefine ``MakeOneNeighbor()``. What are the issues you need to pay attention to?
-First, you have to be sure to visit the neighborhood, i.e. to iterate among the feasible solutions of this neighborhood. If you 
+First, you have to be sure to visit the neighborhood, i.e. to iterate among the (feasible) candidate solutions of this neighborhood. If you 
 return the same solution(s) again and again or if you don't provide any solution, the solver will not detect it (in the second 
 case, the solver will enter an infinite loop). You are responsible to scour correctly the neighborhood. Second, you have
 to be sure the variables you want to change do exist (i.e. beware of going out of bounds on arrays).
 
 Now the good news is that you don't have to test for feasibility: it's the job of the solver. 
 You are even allowed to assign out of domain values to the variables.
-Again, the solver will discard such solutions.
+Again, the solver will discard such solutions (you can also *filter* these solutions *out*, see the section :ref:`local_search_filtering`).
 
 ..  [#similar_api_intvar_localsearch_operator] For instance, the ``SetValue()`` method is replaced by the ``SetForwardSequence()``
     and ``SetBackwardSequence()`` methods.
 
-Without further delay, here is the code for our custom LSNO:
+Without further delay, here is the code for our custom LSO:
 
 ..  code-block:: c++
 
@@ -164,7 +164,7 @@ Without further delay, here is the code for our custom LSNO:
       int64 variable_index_; 
     };
 
-Our custom LSN Operator simply takes one variable at a time and decrease its value by :math:`1`.
+Our custom LS Operator simply takes one variable at a time and decrease its value by :math:`1`.
 The neighborhood visited from a given solution :math:`[x_0, x_1, \ldots, x_{n-1}]`
 is made of the following solutions (when feasible):
 
@@ -373,15 +373,15 @@ were accepted after filtering and 9 (accepted neighbors) were improving solution
 
 If you take the last visited neighborhood (neighborhood 9), you might wonder 
 if it was really necessary to construct "solutions" :math:`[0,0,0,1]`, :math:`[1,-1,0,1]` and :math:`[1,0,-1,1]` and let the solver
-decide if they were interesting or not. The answer is no. We could have filtered those solutions and told the solver
-to disregard them. We didn't filter any solution (and this is the reason why the number of constructed neighbors is equal
+decide if they were interesting or not. The answer is no. We could have filtered those solutions out and told the solver
+to disregard them. We didn't filter out any solution (and this is the reason why the number of constructed neighbors is equal
 to the number of filtered neighbors). You can learn more about filtering in the section :ref:`local_search_filtering`.
 
 If you want, you can try to start with the solution provided by the ``DecisionBuilder`` (:math:`[3,3,3,3]` when :math:`n=4`) 
 and see if you can figure out 
 what the 29 constructed candidate solutions (neighbors)  and 11 accepted solutions are. 
 
-Combining LSN operators 
+Combining LS operators 
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Often, you want to combine several ``LocalSearchOperator``\s. This can be done with the ``ConcatenateOperators()`` method:
@@ -393,8 +393,8 @@ Often, you want to combine several ``LocalSearchOperator``\s. This can be done w
 
 This creates a ``LocalSearchOperator`` which concatenates a vector of operators.
 Each operator from the vector is called sequentially. By default, when a
-neighbor is found the neighborhood exploration restarts from the **last**
-active operator (the one which produced the neighbor).
+candidate solution is accepted, the neighborhood exploration restarts from the **last**
+active operator (the one which produced this candidate solution).
 
 This can be overriden by setting ``restart`` to ``true`` to force the exploration
 to start from the first operator in the vector:
@@ -464,7 +464,7 @@ operators.
 """"""""""""""""""""""""""""
 
 This ``LocalSearchOperator`` creates a ``LocalSearchOperator`` that wraps another ``LocalSearchOperator``
-and limits the number of neighbors explored (i.e. calls
+and limits the number of candidate solutions explored (i.e. calls
 to ``MakeNextNeighbor()`` from the current solution (between two calls
 to ``Start()``). When this limit is reached, ``MakeNextNeighbor()``
 returns ``false``. The counter is cleared when ``Start()`` is called.
@@ -482,7 +482,7 @@ Here is the factory method:
 
 Creates a local search operator that tries to move the assignment of some
 variables toward a target. The target is given as an ``Assignment``. This
-operator generates neighbors which only have one variable that belongs to the target ``Assignment``
+operator generates candidate solutions which only have one variable that belongs to the target ``Assignment``
 set to its target value.
 
 There are two factory methods to create a ``MoveTowardTargetLS`` operator:
