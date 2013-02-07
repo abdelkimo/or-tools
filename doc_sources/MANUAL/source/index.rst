@@ -56,7 +56,8 @@ Foreword
              <a class="reference internal" href="manual/search_primitives.html"><em>5. Search primitives</em></a><br>
              <a class="reference internal" href="manual/LS.html"><em>6. Local Search</em></a><br>
              <a class="reference internal" href="manual/LNS.html"><em>7. Large Neighbourhood Search</em></a><br>
-             <a class="reference internal" href="manual/custom_constraints.html"><em>8. Custom constraints</em></a>
+             <a class="reference internal" href="manual/metaheuristics.html"><em>8. Meta-heuristics</em></a><br>
+             <a class="reference internal" href="manual/custom_constraints.html"><em>9. Custom constraints</em></a>
              </p>
 
        * Part III: Routing
@@ -64,9 +65,9 @@ Foreword
          ..  raw:: html
          
              <p>
-             <a class="reference internal" href="manual/TSP.html"><em>9. TSP with constraints</em></a><br>
-             <a class="reference internal" href="manual/VRP.html"><em>10. VRP with constraints</em></a><br>
-             <a class="reference internal" href="manual/arc_routing.html"><em>11. ARP with constraints</em></a>
+             <a class="reference internal" href="manual/TSP.html"><em>10. TSP with constraints</em></a><br>
+             <a class="reference internal" href="manual/VRP.html"><em>11. VRP with constraints</em></a><br>
+             <a class="reference internal" href="manual/arc_routing.html"><em>12. ARP with constraints</em></a>
              </p>
 
        * Part IV: Technicalities
@@ -74,9 +75,9 @@ Foreword
          ..  raw:: html
          
              <p>
-             <a class="reference internal" href="manual/utilities.html"><em>12. Utilities</em></a><br>
-             <a class="reference internal" href="manual/modeling_tricks.html"><em>13. Modeling tricks</em></a><br>
-             <a class="reference internal" href="manual/under_the_hood.html"><em>14. Under the hood</em></a>
+             <a class="reference internal" href="manual/utilities.html"><em>13. Utilities</em></a><br>
+             <a class="reference internal" href="manual/modeling_tricks.html"><em>14. Modeling tricks</em></a><br>
+             <a class="reference internal" href="manual/under_the_hood.html"><em>15. Under the hood</em></a>
              </p>
              
         ..  only:: no_epub
@@ -400,6 +401,7 @@ Foreword
    Search primitives <manual/search_primitives>
    Local Search <manual/LS>
    Large Neighbourhood Search <manual/LNS>
+   Meta-heuristics <manual/metaheuristics>
    Custom constraints <manual/custom_constraints>
    TSP with constraints <manual/TSP>
    VRP with constraints <manual/VRP>

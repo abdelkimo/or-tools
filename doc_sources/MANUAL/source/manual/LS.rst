@@ -121,7 +121,6 @@ The files inside this directory are:
     ls/ls_operators
     ls/jobshop_ls
     ls/ls_filtering
-    ls/metaheuristics_examples
     ls/ls_summary
     
 ..  only:: final

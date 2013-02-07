@@ -748,8 +748,8 @@ Results
     
     ..  only:: html
     
-        This ``931`` solution seems to be a local optimum for our local search and it seems we can not escape it. In the section
-        :ref:`metaheuristics_examples`, we'll see how some meta-heuristics escape this local minimum. For now, we turn our attention
+        This ``931`` solution seems to be a local optimum for our local search and it seems we can not escape it. In the chapter
+        :ref:`chapter_metaheuristics`, we'll see how some meta-heuristics escape this local minimum. For now, we turn our attention
         to another preoccupation: if you read the *Candidates* column and compare it with the *Solutions* column, you can see 
         that our algorithm produces lots of candidates and very few solutions. This is normal. Remember that every time 
         a candidate (a neighbor) is produced, the CP solver takes the time to verify if this candidate is a feasible solution. 
@@ -759,7 +759,7 @@ Results
     ..  raw:: latex
     
         This~\code{931} solution seems to be a local optimum for our local search and it seems we can not escape it. 
-        In section~\ref{manual/ls/metaheuristics_examples:metaheuristics-examples}, we'll see how some meta-heuristics escape 
+        In chapter~\ref{manual/metaheuristics:chapter-metaheuristics}, we'll see how some meta-heuristics escape 
         this local minimum. For now, we turn our attention
         to another preoccupation: if you read the \emph{Candidates} column and compare it with the \emph{Solutions} column, 
         you can see 

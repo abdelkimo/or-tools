@@ -37,7 +37,7 @@ The basic idea
         If needed, the search 
         can be restarted again around a new initial solution. The ``LocalSearch`` 
         ``DecisionBuilder`` then acts like a multi-restart ``DecisionBuilder``. We exploit this property in the 
-        section :ref:`metaheuristics_examples` when we implement (meta-)heuristics based on local searches that restart 
+        chapter :ref:`chapter_metaheuristics` when we implement (meta-)heuristics based on local searches that restart 
         from a given solution.
   
     ..  raw:: latex
@@ -45,7 +45,7 @@ The basic idea
         If needed, the search 
         can be restarted again around a new initial solution. The~\code{LocalSearch} 
         \code{DecisionBuilder} then acts like a multi-restart~\code{DecisionBuilder}. We exploit this property in  
-        section~\ref{manual/ls/metaheuristics_examples:metaheuristics-examples} when we implement (meta-)heuristics 
+        chapter~\ref{manual/metaheuristics:chapter-metaheuristics} when we implement (meta-)heuristics 
         based on local searches that restart 
         from a given solution.~\\~\\
   
@@ -604,14 +604,15 @@ The ``FindOneNeighbor`` ``DecisionBuilder``
         Once we enter the ``if`` statement on line 37, we have a new candidate solution and we update the solution counter accordingly.
         It is now time to test this new solution candidate. The first test comes from the ``SearchMonitor``\s in their 
         ``AcceptDelta()`` methods. If only one ``SearchMonitor`` rejects this solution, it is rejected. In *or-tools*, we 
-        implement (meta-)heuristics with ``SearchMonitor``\s. See the section :ref:`metaheuristics_examples`.
+        implement (meta-)heuristics with ``SearchMonitor``\s. See the chapter :ref:`chapter_metaheuristics` for more.
     
     ..  raw:: latex
     
         Once we enter the~\code{if} statement on line 37, we have a new candidate solution and we update the solution counter accordingly.
         It is now time to test this new solution candidate. The first test comes from the~\code{SearchMonitor}s in 
         their~\code{AcceptDelta()} methods. If only one~\code{SearchMonitor} rejects this solution, it is rejected. In~\emph{or-tools}, we 
-        implement (meta-)heuristics with~\code{SearchMonitor}s. See section~\ref{manual/ls/metaheuristics_examples:metaheuristics-examples}.
+        implement (meta-)heuristics with~\code{SearchMonitor}s. See chapter~\ref{manual/metaheuristics:chapter-metaheuristics}
+        for more.
 
     The ``AcceptDelta()`` function is the global utility function we talked above. 
     We'll meet ``LocalOptimumReached()`` and ``AcceptNeighbor()`` in a few lines below.
