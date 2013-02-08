@@ -281,7 +281,8 @@ Interesting ``LocalSearchFilter``\s
       for more details about different available callbacks. Essentially, these callbacks return how the objective function 
       has been changed w.r.t. the current solution.
       
-    For all these versions, the factory method is ``MakeLocalSearchObjectiveFilter()``.
+    For all these versions, the factory method is ``MakeLocalSearchObjectiveFilter()``. Again, we refer the reader to the 
+    code to see all available refinements.
       
       
     

@@ -5,37 +5,51 @@ Local search: the job-shop problem
 
 ..  only:: draft
 
-    We enter here in a new world where we don't try to solve a problem to optimality but
-    seek for a good solution. Remember from the section :ref:`complexity_in_a_few_lines` that some problems
-    [#actually_most_problems_are_hard]_ are hard to solve. No matter how powerful our computers are
-    [#watch_out_for_quantic_computers]_, we quickly hit a wall if we try to solve these problems to optimality.
-    Do we give up? Of course not! If it is not possible to extract the best solutions, 
-    we can try to find very good solutions. Enter the fascinating world of (meta-)heuristics and local search.
+    ..  only:: html
+    
+        We enter here in a new world where we don't try to solve a problem to optimality but
+        seek for a good solution. Remember from the sub-section :ref:`complexity_in_a_few_lines` that some problems
+        [#actually_most_problems_are_hard]_ are hard to solve. No matter how powerful our computers are
+        [#watch_out_for_quantic_computers]_, we quickly hit a wall if we try to solve these problems to optimality.
+        Do we give up? Of course not! If it is not possible to compute the best solutions, 
+        we can try to find very good solutions. Enter the fascinating world of (meta-)heuristics and local search.
+
+    ..  raw:: latex 
+    
+        We enter here in a new world where we don't try to solve a problem to optimality but
+        seek for a good solution. Remember from sub-section~\ref{manual/introduction/theory:complexity-in-a-few-lines} 
+        that some problems\footnote{Actually, \emph{most interesting} problems!}
+        are hard to solve. No matter how powerful our computers are\footnote{But watch out for the next generations
+        of computers: molecular computers (\href{http://en.wikipedia.org/wiki/Molecular_computer}{http://en.wikipedia.org/wiki/Molecular\_computer}) 
+        and computers based on quantum mechanics (\href{http://en.wikipedia.org/wiki/Quantum_computer}{http://en.wikipedia.org/wiki/Quantum\_computer})!}, 
+        we quickly hit a wall if we try to solve these problems to optimality.
+        Do we give up? Of course not! If it is not possible to extract the best solutions, 
+        we can try to find very good solutions. Enter the fascinating world of (meta-)heuristics and local search.~\\~\\
+
+
     
     To illustrate this chapter, we try to solve the *job-shop* problem. This hard problem is a typical *scheduling* problem.
     Don't worry if you don't know anything about scheduling or the job-shop problem, we explain this problem in details. 
     Scheduling is one of the field where
-    Constraint Programming has been applied with great success. It is thus not surprising that the CP community has 
+    constraint programming has been applied with great success. It is thus not surprising that the CP community has 
     developed specific tools to solve scheduling problems. We introduce the ones that have been implemented in *or-tools*
     in this chapter.
     
-    ..  [#actually_most_problems_are_hard] Actually, *most interesting* problems!
+    ..  only:: html 
     
-    ..  [#watch_out_for_quantic_computers] But watch out the next generations
-        of computers: molecular computers (http://en.wikipedia.org/wiki/Molecular_computer) 
-        and computers based on quantum mechanics (http://en.wikipedia.org/wiki/Quantum_computer)!
+        ..  [#actually_most_problems_are_hard] Actually, *most interesting* problems!
+        
+        ..  [#watch_out_for_quantic_computers] But watch out for the next generations
+            of computers: molecular computers (http://en.wikipedia.org/wiki/Molecular_computer) 
+            and computers based on quantum 
+            mechanics~({http://en.wikipedia.org/wiki/Quantum_computer)!
        
 ..  rubric:: Overview:
 
 ..  only:: draft
 
-    We start by describing 
-    
-    * the job-problem;
-    * the *disjunctive model* to represent it;
-    * 2 formats to encode instances (JSSP and Taillard) and
-    * our first exact results
-    
+    We start by describing the job-problem, the *disjunctive model* to represent it, 2 formats to encode 
+    job-shop problem instances (JSSP and Taillard) and our first exact results.
     We then next make a short stop to describe the specific primitives implemented in *or-tools* to solve scheduling problems.
     For instance, instead of using ``IntVar`` variables, we use the dedicated ``IntervalVar``\s and ``SequenceVar``\s.
     
@@ -48,10 +62,7 @@ Local search: the job-shop problem
         :math:`x_0 \geqslant 1`.
         
     Once we understand how to use local search in *or-tools*, we use ``LocalSearchOperator``\s to solve the job-shop problem 
-    and compare the results. To speed up the local search algorithm, we use ``LocalSearchFilter``\s for the dummy problem.
-    
-    Finally, we'll see some well-known local search meta-heuristics that are already implemented and can be used out of the box: 
-    *Tabu Search*, *Simulated Annealing* and *Guided Local Search*.
+    and compare the exact and approximate results. Finally, to speed up the local search algorithm, we use ``LocalSearchFilter``\s for the dummy problem.
     
 
 ..  rubric:: Prerequisites:
@@ -93,14 +104,12 @@ The files inside this directory are:
     - :file:`abz9`: a job-shop problem instance in JSSP format.
     - :file:`20_5_01_ta001.txt`: a job-shop problem instance in Taillard's format.
     - :file:`first_example_jssp.txt`: our first example in JSSP format.
-    - :file:`jobshop.cc`: A basic implementation of the disjunctive model with ``IntervalVar`` and ``SequenceVar`` variables.
+    - :file:`jobshop.cc`: A basic exact implementation of the disjunctive model with ``IntervalVar`` and ``SequenceVar`` variables.
     - :file:`dummy_ls.cc`: A very basic example to understand the API of Local Search in or-tools.
-    - :file:`jobshop_ls.cc`: A basic implementation of Local Search with an 2-opt operator.
+    - :file:`jobshop_ls.h`: 2 basic ``LocalSearchOperator``\s for the job-shop problem.
+    - :file:`jobshop_ls.cc`: A basic implementation of Local Search the 2 ``LocalSearchOperator``\s defined in the corresponding header file.
     - :file:`dummy_ls_filtering.cc`: The example :file:`dummy_ls.cc` extended with filtering.
-    - :file:`jobshop_ls_filtering.cc`: The example :file:`jobshop_ls.cc` extended with filtering.
-    - :file:`jobshop_tabu.cc`: The job-shop problem solved by Tabu Search.
-    - :file:`jobshop_SA.cc`: The job-shop problem solved by Simulated Annealing.
-    - :file:`jobshop_GLS.cc`: The job-shop problem solved by Guided Local Search.
+
 
     The files of this chapter are **NOT** the same as the ones in the :file:`example` directory even if there were inspired 
     by them. In particular, job-shop instances with only one task per job are accepted (not that this is extremely useful but...).

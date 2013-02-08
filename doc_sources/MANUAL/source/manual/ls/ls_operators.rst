@@ -9,7 +9,19 @@ Local Search Neighborhood (LSN) Operators
 
 ..  only:: html
 
-    **C++ code**: `tutorials/cplusplus/chap6/dummy_ls.cc <../../../tutorials/cplusplus/chap6/dummy_ls.cc>`_.
+    ..  container:: files-sidebar
+
+        ..  raw:: html 
+        
+            <ol>
+              <li>C++ code:
+                <ol>
+                  <li><a href="../../../tutorials/cplusplus/chap6/dummy_ls.cc">dummy_ls.cc</a></li>
+                </ol>
+              </li>
+            </ol>
+
+
 
 We will use a dummy example throughout this section so
 we can solely focus on the basic ingredients provided by the *or-tools* 

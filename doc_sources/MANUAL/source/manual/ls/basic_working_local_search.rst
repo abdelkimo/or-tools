@@ -107,11 +107,14 @@ The main actors
     
     * ``LocalSearch``: This ``DecisionBuilder`` controls the local search algorithm.
     * ``LocalSearchPhaseParameters``: This class gathers the components to define the current local search.
-    * ``FindOneNeighbor``: This ``DecisionBuilder`` is responsible to find the next candidate solution (neighbor).
+    * ``LocalSearchOperator``\s: The class responsible to construct the candidate solutions.
+    * ``FindOneNeighbor``: This ``DecisionBuilder`` filters the candidate solutions given by the ``LocalSearchOperator``
+      and only constructs *filtered* and *accepted* (solutions accepted by the CP solver as feasible solution) solutions.
     * ``NestedSolveDecision``: This ``Decision`` invokes a nested search with another ``DecisionBuilder`` 
       (``FindOneNeighbor`` in this case) in its left branch 
       (``Apply()`` method) and does nothing in its right branch (``Refute()`` method).
-    * ``LocalSearchFilter``: A filter that allows to immediately  skip (discard) a candidate solution.
+    * ``LocalSearchFilter``: A filter that allows to immediately skip (discard) a candidate solution. It is used 
+      by ``FindOneNeighbor`` to filter the candidate solutions.
     
     We will not discuss the filtering mechanism here (see the dedicated section :ref:`local_search_filtering`).
 
@@ -172,13 +175,14 @@ Overview of the Local Search Mechanism in *or-tools*
         * a **LocalSearchOperator** used to explore the neighborhood of the current solution. You can combine
           several ``LocalSearchOperator``\s into one ``LocalSearchOperator``;
             
-        * a **DecisionBuilder** to instantiate unbound variables once an (incomplete) candidate solution has
-          been defined by the ``LocalSearchOperator``; 
+        * a *complementary* **DecisionBuilder** to instantiate unbound variables once an (incomplete) candidate solution has
+          been defined by the ``LocalSearchOperator``. It will also complete the initial ``Assignment`` or the solution provided 
+          by the initial ``DecisionBuilder``.; 
             
         * a **Searchlimit** specifying stopping criteria each time we start searching a new neighborhood;
           
         * an ``std::vector`` of **LocalSearchFilter**\s used to speed up the search by pruning
-          unfeasible candidate solutions: instead of letting the solver find out if a candidate solution is feasible or not, you 
+          unfeasible (or undesirable) candidate solutions: instead of letting the solver find out if a candidate solution is feasible or not, you 
           can help it by bypassing its checking mechanism and tell it right away if a candidate solution is not feasible.
     
     
@@ -193,7 +197,7 @@ Overview of the Local Search Mechanism in *or-tools*
         section~\ref{manual/ls/ls_filtering:local-search-filtering}.
 
     
-    We now detail these two basics ingredients.
+    We now detail these two basics ingredients that are the initial solution and the ``LocalSearchPhaseParameters`` parameter.
     
 The initial solution
 """"""""""""""""""""""
@@ -202,7 +206,7 @@ The initial solution
 
     To start the local search, we need an initial *feasible* solution. You can either give a starting 
     solution or you can ask the CP solver to find one for you. To let the solver find a solution for you, 
-    you pass it a ``DecisionBuilder``. The **first** solution discovered with this ``DecisionBuilder`` will be considered 
+    you pass it a ``DecisionBuilder``. The **first** solution discovered by this ``DecisionBuilder`` will be taken 
     as the initial solution.
     
     Corresponding to these two options,
@@ -224,7 +228,7 @@ The initial solution
     ..  topic::  What are the variables involved in the local search procedure? 
     
         The local search **only** applies to the variables contained either in the ``Assignment``
-        or the ``std::vector<IntVar*>`` of variables passed.
+        or the ``std::vector<IntVar*>`` of variables given to ``MakeLocalSearchPhase()``.
 
 ..  _local_search_parameters:
 
@@ -233,34 +237,34 @@ The ``LocalSearchPhaseParameters`` parameter
 
 ..  only:: draft
 
-    As explained above, the ``LocalSearchPhaseParameters`` parameter holds the actual definition 
+    The ``LocalSearchPhaseParameters`` parameter holds the actual definition 
     of the local search phase.
     
     It basically consists in:
     
     * a ``SolutionPool``: as its name implies, this class is a pool of solutions. As usual, ``SolutionPool`` is a pure virtual 
       class that must be implemented. One such implementation is the ``DefaultSolutionPool`` that only keeps the current 
-      starting solution. You don't have to provide one as it is constructed by default if you use the right factory method. 
+      solution. You don't have to provide one as it is constructed by default if you use the appropriate factory method. 
       If you want to keep intermediate solutions 
       or want to modify these solutions during the search, you might have to implement your own version. Four methods have to 
       be implemented:
       
         * ``void Initialize(Assignment* const assignment)``: This method is called to initialize the 
-          ``SolutionPool`` with the initial ``Assignment`` from the local search.
+          ``SolutionPool`` with the initial ``Assignment``.
 
         * ``void RegisterNewSolution(Assignment* const assignment)``: This method is called when a new 
-          (improved) solution has been accepted by the local search algorithm.
+          solution has been accepted by the local search algorithm.
   
         * ``void GetNextSolution(Assignment* const assignment)``: This method is called when the local search algorithm 
-          starts a new neighborhood. The ``Assigment`` passed as parameter is the new solution to start the search.
+          starts a new neighborhood. ``assigment`` is the solution to start the new neighborhood search.
 
-        * ``bool SyncNeeded(Assignment* const local_assignment)``: This method checks if the local solution needs to 
-          be updated with an external one, i.e. the pool can tell the solver to start a new neighborhood search with the next
+        * ``bool SyncNeeded(Assignment* const local_assignment)``: This method checks if the current solution needs to 
+          be updated, i.e. the pool can tell the solver to start a new neighborhood search with the next
           solution given by the pool (given by its ``GetNextSolution()`` method, see the ``Next()`` method of 
           the ``FindOneNeighbor`` ``DecisionBuilder`` class below).
           
-      A ``SolutionPool`` gives you complete control on the starting solution(s). One thing to be aware of is that the ``SolutionPool``
-      must take ownership of the ``Assignment``\s it keeps [#solution_pool_takes_ownership_of_solutions_or_else]_.
+      A ``SolutionPool`` gives you complete control on the starting solution(s). The ``SolutionPool``
+      **must** take ownership of the ``Assignment``\s it keeps [#solution_pool_takes_ownership_of_solutions_or_else]_.
 
       ..  [#solution_pool_takes_ownership_of_solutions_or_else] Well, you could devise another way to keep track of the solutions 
           and take care of their existence but anyhow, you are responsible for these solutions.
@@ -268,12 +272,14 @@ The ``LocalSearchPhaseParameters`` parameter
     * a ``LocalSearchOperator``: a ``LocalSearchOperator`` or a combination of ``LocalSearchOperator``\s explore the 
       neighborhood of the current solution. We detail them in the next section.
     * a ``DecisionBuilder``: this *complementary* ``DecisionBuilder`` helps creating feasible solutions if your ``LocalSearchOperator``\s 
-      only return partial solutions, i.e. solutions with unbounded variables. 
+      only return partial solutions, i.e. solutions with unbounded variables. It also completes the initial solution if needed.
+      If you know that your candidate and the initial solutions are already feasible, you don't have to provide this 
+      ``DecisionBuilder`` (set the corresponding pointer to ``NULL``).
 
     ..  index:: SearchLimit; in Local Search
 
-    * a ``SearchLimit``: The ``SearchLimit`` allows to limit the local search, i.e. these limits are only valid within 
-      the search of **one** neighborhood. The most interesting statistics to limit is probably the number of found 
+    * a ``SearchLimit``: This ``SearchLimit`` limits the search of **one** neighborhood. 
+      The most interesting statistic to limit is probably the number of found 
       solutions:
     
       ..  code-block:: c++
@@ -283,20 +289,20 @@ The ``LocalSearchPhaseParameters`` parameter
       ..  only:: html 
       
           This would limit the search to maximum two candidate solutions in the same neighborhood. 
-          Don't forget that candidate solutions are feasible 
-          solutions. Thus, if you add an ``OptimizeVar``, once the solver finds a candidate solution, it changes the model 
+          By default, the CP solver stops the neighborhood search as soon as it finds a filtered and feasible candidate solution. 
+          If you add an ``OptimizeVar`` to your model, once the solver finds this good candidate solution, it changes the model 
           to exclude solutions with the same objective value. See the section :ref:`golomb_ruler_optimization_how` 
-          to refresh your memory if needed. The second solution found can only be better than the first one. When the solver 
+          to refresh your memory if needed. The second solution found can thus only be better than the first one. When the solver 
           finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution.
 
       ..  raw:: latex 
       
           This would limit the search to maximum two candidate solutions in the same neighborhood. 
-          Don't forget that candidate solutions are feasible 
-          solutions. Thus, if you add an~\code{OptimizeVar}, once the solver finds a candidate, it changes the model 
-          to exclude solutions with the same objective value. See  
-          section~\ref{manual/objectives/optimization_how:golomb-ruler-optimization-how} 
-          to refresh your memory if needed. The second solution found can only be better than the first one. When the solver 
+          By default, the CP solver stops the neighborhood search as soon as it finds a filtered and feasible candidate solution. 
+          If you add an~\code{OptimizeVar} to your model, once the solver finds this good candidate solution, it changes the model 
+          to exclude solutions with the same objective value. 
+          See section ~\ref{manual/objectives/optimization_how:golomb-ruler-optimization-how} 
+          to refresh your memory if needed. The second solution found can thus only be better than the first one. When the solver 
           finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution.
 
     * ``LocalSearchFilter``\s: these filters speed up the search by bypassing the solver checking mechanism if you know that the 
@@ -315,7 +321,7 @@ The ``LocalSearchPhaseParameters`` parameter
 
       
     Several factory methods are available to create a ``LocalSearchPhaseParameters`` parameter. 
-    At least you need to declare a ``LocalSearchOperator`` and a ``DecisionBuilder``:
+    At least you need to declare a ``LocalSearchOperator`` and a complementary ``DecisionBuilder``:
     
     ..  code-block:: c++
     
@@ -324,7 +330,7 @@ The ``LocalSearchPhaseParameters`` parameter
                             DecisionBuilder *const 
                                             complementary_decision_builder);
 
-    You can also give all the parameters enumerated above:
+    You can also give all the above enumerated parameters :
     
     ..  code-block:: c++
     
@@ -389,7 +395,7 @@ The basic local search algorithm and the callback hooks for the ``SearchMonitor`
             :widths: 20, 80
                 
             ``LocalOptimum()``, "When a local optimum is reached. If ``true`` is returned, the last solution is discarded and the search proceeds to find the next local optimum. Handy when you implement a meta-heuristic with a ``SearchMonitor``."
-            "``AcceptDelta(Assignment *delta, Assignment *deltadelta)``", "When the local search operators have produced the next candidate solution given in the form of ``delta`` and ``deltadelta``. You can accept or reject this new candidate solution."
+            "``AcceptDelta(Assignment *delta, Assignment *deltadelta)``", "When the ``LocalSearchOperator`` has produced the next candidate solution given in the form of ``delta`` and ``deltadelta``. You can accept or reject this new candidate solution."
             "``AcceptNeighbor()``", "After accepting a candidate solution during local search."
             "``PeriodicCheck()``", "Periodic call to check limits in long running methods."
         
@@ -409,7 +415,7 @@ The basic local search algorithm and the callback hooks for the ``SearchMonitor`
             \hline
               \code{LocalOptimum()} & When a local optimum is reached. If \code{true} is returned, the last solution is discarded and the search proceeds to find the next local optimum. Handy when you implement a meta-heuristic with a \code{SearchMonitor}.\\
             \hline
-              \code{AcceptDelta(Assignment *delta, Assignment *deltadelta)} & When the local search operators have produced the next candidate solution given in the form of \code{delta} and \code{deltadelta}. You can accept or reject this new candidate solution.\\
+              \code{AcceptDelta(Assignment *delta, Assignment *deltadelta)} & When the~\code{LocalSearchOperator} has produced the next candidate solution given in the form of \code{delta} and \code{deltadelta}. You can accept or reject this new candidate solution.\\
             \hline
               \code{AcceptNeighbor()} &  After accepting a candidate solution during local search.\\
             \hline
@@ -424,22 +430,19 @@ The basic local search algorithm and the callback hooks for the ``SearchMonitor`
         
         <br>
 
-    To ensure the communication between the local search and the global search, three utility functions are defined:
-    
-    * ``bool LocalOptimumReached()``:
-      Returns true if a local optimum has been reached and cannot be improved.
-    * ``bool AcceptDelta()``:
-      Returns true if the search accepts the deltas.
-    * ``void AcceptNeighbor()``:
-      Notifies the search that a candidate solution has been accepted by local search because a ``SearchLimit`` has been reached or the neighborhood has been exhausted.
-      
+    To ensure the communication between the local search and the global search, three utility functions are defined.
     These functions simply call their ``SearchMonitor``\'s counterparts, i.e. they call the corresponding methods of the 
-    involved ``SearchMonitor``\s.
+    involved ``SearchMonitor``\s:
+
+    
+    * ``bool LocalOptimumReached()``: ``FalseExceptIfOneTrue``.
+    * ``bool AcceptDelta()``: ``TrueExceptIfOneFalse``.
+    * ``void AcceptNeighbor()``: Notification.
 
 
     Before we delve into the core of the local search algorithm and the implementation of the ``LocalSearch`` ``DecisionBuilder``\'s
     ``Next()`` method, we first discuss the inner working of the ``FindOneNeighbor`` ``DecisionBuilder`` who's job is to find 
-    the next candidate solution. This ``DecisionBuilder`` is used inside a ``NestedSolveDecision`` that we study next.
+    the next filtered and accepted candidate solution. This ``DecisionBuilder`` is used inside a ``NestedSolveDecision`` that we study next.
     This ``Decision`` is returned by the ``Next()`` method of 
     the ``LocalSearch`` ``DecisionBuilder`` in the main loop of the local search algorithm. Finally, we address the 
     ``LocalSearch`` ``DecisionBuilder`` class. In particular, we study its initializing phase and its ``Next()`` method.
@@ -459,8 +462,8 @@ The ``FindOneNeighbor`` ``DecisionBuilder``
 
 ..  only:: draft
 
-    This ``DecisionBuilder`` tries to find the next candidate solution. We need this ``DecisionBuilder`` because we need to 
-    test (and sometimes complete) the candidate solutions given by the ``LocalSearchOperator``. 
+    This ``DecisionBuilder`` tries to find the next filtered and accepted candidate solution. 
+    It tests (and sometimes completes) the candidate solutions given by the ``LocalSearchOperator``. 
     
     We present its ``Next()`` method and discuss it after: 
     
@@ -539,40 +542,44 @@ The ``FindOneNeighbor`` ``DecisionBuilder``
     You might wonder why its implementation consists in so many lines of code but there 
     are a some subtleties to consider.
     
-    Lines 3 to 7 are only called the first time the ``Next()`` method is invoked 
-    and permit to synchronize the local search machinery with the initial solution. In general, 
+    Lines 5 to 8 are only called the first time the ``Next()`` method is invoked 
+    and allow to synchronize the local search machinery with the initial solution. In general, 
     the words ``SYNCHRONIZE ALL`` in the comments mean that we synchronize the *local search operators* **and** the 
     *local search filters* with 
-    an initial solution.
+    a solution.
     
     ``reference_assignment_`` is an ``Assignment`` with the initial solution while ``assignment_`` is an 
-    ``Assignment`` with the current candidate solution. 
+    ``Assignment`` with the current solution. 
     On line 10, we copy ``reference_assignment_`` to the local ``assignment_copy`` ``Assignment``
-    to be able to define the ``delta``\s. ``counter`` counts the number of times we try to find the next candidate solutions.
-    This counter is used on line 28 to test if we shouldn't try to find the next candidate solution starting from another solution.
+    to be able to define the ``delta``\s. ``counter`` counts the number candidate solutions.
+    This counter is used on line 29 to test if we shouldn't try another starting solution.
     
-    On lines 14-18, we define the ``restore`` ``DecisionBuilder`` that will allow us to keep the new candidate solution found.
+    On lines 15-19, we define the ``restore`` ``DecisionBuilder`` that will allow us to 
+    keep the new candidate solution found.
     
-    Finally, we define ``delta`` and ``deltadelta`` on lines 19 and 20. We are now ready to dissect the main loop to find the 
-    next candidate solution.
+    We construct the ``delta`` and ``deltadelta`` on lines 20 and 21. 
     
-    On lines 24 and 25 we clear our ``delta``\s and line 27 we allow for a periodic check: for searches that last long, 
-    we permit the ``SearchMonitor``\s to interfere and test if the search needs to continue or not and/or must be adapted.
+    We are now ready to enter the main loop to find the 
+    next solution.
     
-    Lines 28-33 allow to change the initial solution and ask the solution pool ``pool_`` a new initial solution via its 
-    ``GetNextSolution()``. The ``FLAGS_cp_local_search_sync_frequency`` is a :program:`gflags` flag that tells the CP solver
-    after how much attempts we should try to synchronize the local search with a new initial solution.
+    On lines 25 and 26 we clear our ``delta``\s and on line 28 we allow for a periodic check: for searches that last long, 
+    we allow the ``SearchMonitor``\s to interfere and test if the search needs to continue or not and/or must be adapted.
     
-    On line 35 and 36, we test the ``SearchLimit``\s applied to the search of one neighborhood (the ``SearchLimit`` given to 
+    Lines 29-34 allow to change the starting solution and ask the solution pool ``pool_`` a new solution via its 
+    ``GetNextSolution()``. The ``FLAGS_cp_local_search_sync_frequency`` tells the CP solver
+    after how much attempts we should try to synchronize the local search with a new solution.
+    
+    On line 36 and 37, we test the ``SearchLimit``\s applied to the search of one neighborhood (the ``SearchLimit`` given to 
     the constructor of the ``LocalSearchPhaseParameters`` parameter) and make the 
     ``LocalSearchOperator`` try to construct a new candidate solution. If the limits are not reached and if the 
-    ``LocalSearchOperator`` succeeds to find a new candidate solution, we enter the ``if`` statement. ``MakeNextNeighbor()`` is the *real*
-    method of the ``LocalSearchOperator`` called to create the next candidate solution. It deals with the ``delta``\s. 
+    ``LocalSearchOperator`` succeeds to find a new candidate solution, we enter the ``if`` statement
+    on line 38. The ``LocalSearchOperator``\'s ``MakeNextNeighbor()`` method is 
+    called to create the next candidate solution. It deals with the ``delta``\s. 
     If you don't need these ``delta``\s, overwrite the ``MakeOneNeighbor()`` method instead. 
     This method is called by ``MakeNextNeighbor()``.
     
     If you overwrite the ``MakeNextNeighbor()`` method, you need to manage the ``delta``\s: 
-    you must take care of *applying* and *reverting* the ``delta``\s yourself. You can use the 
+    you must take care of *applying* and *reverting* the ``delta``\s yourself if needed. You can use the 
     ``ApplyChanges()`` and ``RevertChanges()`` helper functions to do so. For instance, here is the implementation of the 
     ``MakeNextNeighbor()`` method of the ``IntVarLocalSearchOperator``:
     
@@ -596,13 +603,13 @@ The ``FindOneNeighbor`` ``DecisionBuilder``
         } 
     
     ``ApplyChanges()`` actually constructs the ``delta``\s after you use the helper methods
-    ``SetValue()``, ``Activate()`` and the like to change the current candidate solution
-    or the initial solution if you start to scour the neighborhood.
+    ``SetValue()``, ``Activate()`` and the like to change the current candidate solution.
     
     ..  only:: html
     
-        Once we enter the ``if`` statement on line 37, we have a new candidate solution and we update the solution counter accordingly.
-        It is now time to test this new solution candidate. The first test comes from the ``SearchMonitor``\s in their 
+        Once we enter the ``if`` statement on line 38, we have a new candidate solution and we update the candidate 
+        solution counter accordingly.
+        It is now time to test this new candidate solution. The first test comes from the ``SearchMonitor``\s in their 
         ``AcceptDelta()`` methods. If only one ``SearchMonitor`` rejects this solution, it is rejected. In *or-tools*, we 
         implement (meta-)heuristics with ``SearchMonitor``\s. See the chapter :ref:`chapter_metaheuristics` for more.
     
@@ -615,29 +622,30 @@ The ``FindOneNeighbor`` ``DecisionBuilder``
         for more.
 
     The ``AcceptDelta()`` function is the global utility function we talked above. 
-    We'll meet ``LocalOptimumReached()`` and ``AcceptNeighbor()`` in a few lines below.
+    We'll meet ``LocalOptimumReached()`` and ``AcceptNeighbor()`` a few lines below.
     
-    The second test is the *filtering* test on line 41. We only need one ``LocalSearchFilter`` to reject this candidate 
-    solution. If both tests are successful, we enter the ``if`` statement on line 42. If not, we simply generate another 
-    candidate. On lines 43-45, we store the candidate solution in the ``assignment_copy`` ``Assignment`` and update the 
-    counter of ``filtered_neighbors_``.
+    The second test is the *filtering* test on line 42. ``FilterAccept()`` returns a ``TrueExceptIfOneFalse``.
+    If both tests are successful, we enter the ``if`` statement on line 44. If not, we simply generate another 
+    candidate. On lines 44 and 46, we update the 
+    counter of ``filtered_neighbors_`` and store the candidate solution in the ``assignment_copy`` ``Assignment``.
    
-    On line 46, we try (and if needed, we complete) the candidate. If we succeed, the current solution is updated with the candidate, 
-    the counter ``accepted_neighbors_`` is updated and the ``Next()`` method returns ``NULL`` because the ``FindOneNeighbor``
+    On line 47, we try (and if needed complete) the candidate. If we succeed, the current solution
+    and the counter ``accepted_neighbors_`` are updated.
+    The ``Next()`` method returns ``NULL`` because the ``FindOneNeighbor``
     ``DecisionBuilder`` has finished its job at this node of the search tree. If we don't succeed, the solver fails at 
-    lines 65 and 66.
+    line 66.
     
     The ``SolveAndCommit()`` method is like the ``Solve()`` method **except** that 
-    ``SolveAndCommit`` will not backtrack all modifications at the end of the search.
+    ``SolveAndCommit`` will not backtrack all modifications at the end of the search and this is why you should:
     
     ..  warning:: Use the ``SolveAndCommit()`` method **only** in the ``Next()`` method of a ``DecisionBuilder``!
     
-    If the ``if`` test on line 35 and 36 failed, we enter the ``else`` part of the statement on line 53. This means that 
-    either one ``SearchLimit`` was reached or the neighborhood is exhausted. If a candidate solution (stored in ``assignment_``)
-    was found during the local search, we rely on it to synchronize the ``LocalSearchOperator``\s and ``LocalSearchFilter``\s
-    with a new solution provided by the solution pool ``pool_`` on lines 57-59. We also allow the ``SearchMonitor``\s to 
-    interfere in their ``AcceptNeighbor()`` method. If no candidate solution was found, we simply ``break`` out of the 
-    ``while()`` loop on line 61 and make the CP solver fail on lines 65 and 66.
+    If the ``if`` test on line 36 and 37 failed, we enter the ``else`` part of the statement on line 55. This means that 
+    either one ``SearchLimit`` was reached or that the neighborhood is exhausted. If a solution (stored in ``assignment_``)
+    was found during the local search, we register it and synchronize the ``LocalSearchOperator``\s and ``LocalSearchFilter``\s
+    with a new solution provided by the solution pool ``pool_`` on lines 58-60. We also notice the ``SearchMonitor``\s 
+    on line 57. If no solution was found, we simply ``break`` out of the 
+    ``while()`` loop on line 62 and make the CP solver fail on line 66.
     
 
 The ``NestedSolveDecision`` ``Decision``
@@ -645,7 +653,8 @@ The ``NestedSolveDecision`` ``Decision``
 
 ..  only:: draft
 
-    The ``NestedSolveDecision`` is the ``Decision`` that the ``LocalSearch``\'s ``Next()`` method returns. 
+    The ``NestedSolveDecision`` is the ``Decision`` that the ``LocalSearch``\'s ``Next()`` method returns
+    to find the next solution. 
     This ``Decision`` is basically a ``Decision`` wrapper around a nested solve with a given ``DecisionBuilder`` 
     and ``SearchMonitor``\s. It doesn't do anything in its right 
     branch (in its ``Refute()`` method) and calls ``Solve()`` or ``SolveAndCommit()`` depending on a ``restore`` ``boolean``
@@ -665,7 +674,8 @@ The ``NestedSolveDecision`` ``Decision``
         ==============================  ==========================================================================
         ``DECISION_FAILED``             The nested search phase failed, i.e. ``Solve()`` or ``SolveAndCommit()``
                                         failed.
-        ``DECISION_PENDING``            The nested search hasn't been called yet.
+        ``DECISION_PENDING``            The nested search hasn't been called yet. The local search is in this 
+                                        state when it balances the search tree.
         ``DECISION_FOUND``              The nested search phase succeeded and found a solution, i.e. ``Solve()``
                                         or ``SolveAndCommit()`` succeeded and returned ``true``.
         ==============================  ==========================================================================
@@ -704,7 +714,7 @@ The ``LocalSearch`` ``DecisionBuilder``
                                             complementary_decision_builder);
         
     The ``complementary_decision_builder`` ``DecisionBuilder`` will help us complete 
-    the solution found by the local search operator ``ls_operator``. Our initial solution will be constructed 
+    the candidate solutions found by the ``LocalSearchOperator`` ``ls_operator``. Our initial solution will be constructed 
     by the ``initial_solution`` ``DecisionBuilder`` (and completed by the ``complementary_decision_builder`` ``DecisionBuilder``
     if needed). Remember, that the solution taken by the CP solver is the **first** 
     solution found by this ``DecisionBuilder``. We are now ready to create the ``DecisionBuilder`` for the local search:
@@ -734,7 +744,7 @@ The ``LocalSearch`` ``DecisionBuilder``
     ..  code-block:: c++
     
         Assignment * const initial_sol = s.MakeAssignment();
-        ...
+        
     
     To store an ``Assignment`` found by the CP solver, we use the ``StoreAssignment`` ``DecisionBuilder``:
     
@@ -768,21 +778,20 @@ The ``LocalSearch`` ``DecisionBuilder``
       * ``limit`` is the ``SearchLimit`` given to the local search algorithm;
       * the ``NestedSolveDecision`` constructor's arguments are respectively:
 
-        * a ``DecisionBuilder`` to construct the next candidate solution;
+        * a ``DecisionBuilder`` to construct the next solution;
         * a ``bool`` to indicate if we restore the last solution in case we cannot 
-          find a new candidate solution;
+          find a solution;
         * an ``std::vector<SearchMonitor *>``.
     
-    The ``Apply()`` method of a ``NestedSolveDecision`` calls ``NestedSolve()``:
+    The ``Apply()`` method of a ``NestedSolveDecision`` calls ``SolveAndCommit()``:
     
     ..  code-block:: c++
     
-        solver->NestedSolve(initial_solution_and_store, false, monitors);
+        solver->SolveAndCommit(initial_solution_and_store, monitors);
     
     where the arguments respectively are:
     
       * a ``DecisionBuilder``;
-      * a ``bool`` that tells if we restore the current solution or not;
       * an ``std::vector<SearchMonitor *>``.
       
     The ``DecisionBuilder`` companion to ``StoreAssignment`` is ``RestoreAssignment`` that 
@@ -881,20 +890,19 @@ The ``LocalSearch`` ``DecisionBuilder``
     
     * Line 5: case **DECISION_FAILED**:
       The nested solving process failed, meaning that there are no solution left. We let the ``SearchMonitor``\s
-      decide if a local optimum has been reached and cannot be improved. If only one ``SearchMonitor`` makes its 
-      ``LocalOptimum()`` method returns ``true``, then ``LocalOptimumReached()`` also returns ``true``. Otherwise, they 
-      all agree that the search didn't find a local optimum and the search is stopped.
+      decide if a local optimum has been reached and cannot be improved. ``LocalOptimum()`` returns 
+      a ``FalseExceptIfOneTrue``.
     
     * Line 14: case **DECISION_PENDING**:
       This is the most interesting case: we try to keep the search tree balanced and force its height to be bounded.
       ``kLocalSearchBalancedTreeDepth`` is set to 32. So as long as the tree height is smaller than 32, the ``LocalSearch``
       ``DecisionBuilder`` returns the **same** ``BalancingDecision`` on line 21. ``BalancingDecision``\s don't do anything
-      by default. Once over 32, the ``NestedSolveDecision``
+      by default. Once the search tree height is over 32, the ``NestedSolveDecision``
       ``Decision`` enters in action and when the height of the three gets higher than 32, we make the CP solver ``Fail()``
-      to backtrack on line 23.
+      to backtrack on line 23 thus keeping the height of the tree bounded.
       
     * Line 28: case **DECISION_FOUND**:
-      The nested search found a candidate solution that is the current solution. The ``LocalSearch``\'s ``Next()`` method has done its job 
+      The nested search found a solution that is the current solution. The ``LocalSearch``\'s ``Next()`` method has done its job 
       at the current node and nothing needs to be done.
     
     
