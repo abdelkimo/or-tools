@@ -35,10 +35,10 @@ try:
 except OSError, e:
     exit("Execution failed: " + e)
 
-answer = raw_input('Do you want to proceed with comparaison between ' + \
+answer = raw_input('Do you want to proceed with comparison between ' + \
                           'DEPLOY and DOCUMENTATION? Type "yes" if yes... ')
 if answer == "yes":
-    print "Proceed with comparaison!"
+    print "Proceed with comparison!"
 else:
     exit("Stop requested!")
 

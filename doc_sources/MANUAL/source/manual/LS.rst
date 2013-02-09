@@ -3,72 +3,71 @@
 Local search: the job-shop problem
 ===================================
 
-..  only:: draft
 
-    ..  only:: html
-    
-        We enter here in a new world where we don't try to solve a problem to optimality but
-        seek for a good solution. Remember from the sub-section :ref:`complexity_in_a_few_lines` that some problems
-        [#actually_most_problems_are_hard]_ are hard to solve. No matter how powerful our computers are
-        [#watch_out_for_quantic_computers]_, we quickly hit a wall if we try to solve these problems to optimality.
-        Do we give up? Of course not! If it is not possible to compute the best solutions, 
-        we can try to find very good solutions. Enter the fascinating world of (meta-)heuristics and local search.
+..  only:: html
 
-    ..  raw:: latex 
-    
-        We enter here in a new world where we don't try to solve a problem to optimality but
-        seek for a good solution. Remember from sub-section~\ref{manual/introduction/theory:complexity-in-a-few-lines} 
-        that some problems\footnote{Actually, \emph{most interesting} problems!}
-        are hard to solve. No matter how powerful our computers are\footnote{But watch out for the next generations
-        of computers: molecular computers (\href{http://en.wikipedia.org/wiki/Molecular_computer}{http://en.wikipedia.org/wiki/Molecular\_computer}) 
-        and computers based on quantum mechanics (\href{http://en.wikipedia.org/wiki/Quantum_computer}{http://en.wikipedia.org/wiki/Quantum\_computer})!}, 
-        we quickly hit a wall if we try to solve these problems to optimality.
-        Do we give up? Of course not! If it is not possible to extract the best solutions, 
-        we can try to find very good solutions. Enter the fascinating world of (meta-)heuristics and local search.~\\~\\
+    We enter here in a new world where we don't try to solve a problem to optimality but
+    seek a good solution. Remember from the sub-section :ref:`complexity_in_a_few_lines` that some problems
+    [#actually_most_problems_are_hard]_ are hard to solve. No matter how powerful our computers are
+    [#watch_out_for_quantic_computers]_, we quickly hit a wall if we try to solve these problems to optimality.
+    Do we give up? Of course not! If it is not possible to compute the best solutions, 
+    we can try to find very good solutions. Enter the fascinating world of (meta-)heuristics and local search.
+
+..  raw:: latex 
+
+    We enter here in a new world where we don't try to solve a problem to optimality but
+    seek a good solution. Remember from sub-section~\ref{manual/introduction/theory:complexity-in-a-few-lines} 
+    that some problems\footnote{Actually, \emph{most interesting} problems!}
+    are hard to solve. No matter how powerful our computers are\footnote{But watch out for the next generations
+    of computers: molecular computers (\href{http://en.wikipedia.org/wiki/Molecular_computer}{http://en.wikipedia.org/wiki/Molecular\_computer}) 
+    and computers based on quantum mechanics (\href{http://en.wikipedia.org/wiki/Quantum_computer}{http://en.wikipedia.org/wiki/Quantum\_computer})!}, 
+    we quickly hit a wall if we try to solve these problems to optimality.
+    Do we give up? Of course not! If it is not possible to compute the best solutions, 
+    we can try to find very good solutions. Enter the fascinating world of (meta-)heuristics and local search.~\\~\\
 
 
+Throughout this chapter, we will use the job-shop problem as an illustrative example. 
+The job-shop problem is a typical difficult *scheduling* problem.
+Don't worry if you don't know anything about scheduling or the job-shop problem, we explain this problem in details. 
+Scheduling is one of the fields where
+constraint programming has been applied with great success. It is thus not surprising that the CP community has 
+developed specific tools to solve scheduling problems. In this chapter, we introduce the ones that have been 
+implemented in *or-tools*
+
+
+..  only:: html 
+
+    ..  [#actually_most_problems_are_hard] Actually, *most interesting* problems!
     
-    To illustrate this chapter, we try to solve the *job-shop* problem. This hard problem is a typical *scheduling* problem.
-    Don't worry if you don't know anything about scheduling or the job-shop problem, we explain this problem in details. 
-    Scheduling is one of the field where
-    constraint programming has been applied with great success. It is thus not surprising that the CP community has 
-    developed specific tools to solve scheduling problems. We introduce the ones that have been implemented in *or-tools*
-    in this chapter.
-    
-    ..  only:: html 
-    
-        ..  [#actually_most_problems_are_hard] Actually, *most interesting* problems!
-        
-        ..  [#watch_out_for_quantic_computers] But watch out for the next generations
-            of computers: molecular computers (http://en.wikipedia.org/wiki/Molecular_computer) 
-            and computers based on quantum 
-            mechanics~({http://en.wikipedia.org/wiki/Quantum_computer)!
-       
+    ..  [#watch_out_for_quantic_computers] But watch out for the next generations
+        of computers: molecular computers (http://en.wikipedia.org/wiki/Molecular_computer) 
+        and computers based on quantum 
+        mechanics (http://en.wikipedia.org/wiki/Quantum_computer)!
+   
 ..  rubric:: Overview:
 
-..  only:: draft
 
-    We start by describing the job-problem, the *disjunctive model* to represent it, 2 formats to encode 
-    job-shop problem instances (JSSP and Taillard) and our first exact results.
-    We then next make a short stop to describe the specific primitives implemented in *or-tools* to solve scheduling problems.
-    For instance, instead of using ``IntVar`` variables, we use the dedicated ``IntervalVar``\s and ``SequenceVar``\s.
+We start by describing the job-problem, the *disjunctive model* to represent it, two formats to encode 
+job-shop problem instances (JSSP and Taillard) and our first exact results.
+We next make a short stop to describe the specific primitives implemented in *or-tools* to solve scheduling problems.
+For instance, instead of using ``IntVar`` variables, we use the dedicated ``IntervalVar``\s and ``SequenceVar``\s.
+
+After these preliminaries, we present local search and how it is implemented in the *or-tools* library. 
+Beside the job-shop problem, we use a dummy problem to *watch* the inner mechanisms 
+of local search in *or-tools* in action:
+
+    We minimize :math:`x_0 + x_1 + \ldots + x_{n-1}` where each 
+    variable has the same domain :math:`[0, n-1]`. To complicate things a little bit, we add the constraint 
+    :math:`x_0 \geqslant 1`.
     
-    After these preliminaries, we present local search and how it is implemented in the *or-tools* library. 
-    Beside the job-shop problem, we use a dummy problem to *watch* the inner mechanisms 
-    of local search in *or-tools* in action:
-    
-        We minimize :math:`x_0 + x_1 + \ldots + x_{n-1}` where each 
-        variable has the same domain :math:`[0, n-1]`. To complicate things a little bit, we add the constraint 
-        :math:`x_0 \geqslant 1`.
-        
-    Once we understand how to use local search in *or-tools*, we use ``LocalSearchOperator``\s to solve the job-shop problem 
-    and compare the exact and approximate results. Finally, to speed up the local search algorithm, we use ``LocalSearchFilter``\s for the dummy problem.
-    
+Once we understand how to use local search in *or-tools*, we use ``LocalSearchOperator``\s to solve the job-shop problem 
+and compare the exact and approximate results. Finally, to speed up the local search algorithm, we use ``LocalSearchFilter``\s for the dummy problem.
+
 
 ..  rubric:: Prerequisites:
 
 ..  only:: html
-    
+
     - Basic knowledge of C++.
     - Basic knowledge of Constraint Programming (see chapter :ref:`chapter_introduction`).
     - Basic knowledge of the Constraint Programming Solver (see chapter :ref:`chapter_first_steps`).
@@ -95,29 +94,28 @@ You can find the code in the directory ``documentation/tutorials/cplusplus/chap6
 
 The files inside this directory are:
 
-..  only:: draft
 
-    - :file:`Makefile`.
-    - :file:`jobshop.h`: This file contents the ``JobShopData`` class that records the data for job-shop problem instances. This file is used
-      throughout all the examples.
-    - :file:`report_jobshopdata.cc`: a simple program to report the content of job-shop problem instances in JSSP or Taillard's formats.
-    - :file:`abz9`: a job-shop problem instance in JSSP format.
-    - :file:`20_5_01_ta001.txt`: a job-shop problem instance in Taillard's format.
-    - :file:`first_example_jssp.txt`: our first example in JSSP format.
-    - :file:`jobshop.cc`: A basic exact implementation of the disjunctive model with ``IntervalVar`` and ``SequenceVar`` variables.
-    - :file:`dummy_ls.cc`: A very basic example to understand the API of Local Search in or-tools.
-    - :file:`jobshop_ls.h`: 2 basic ``LocalSearchOperator``\s for the job-shop problem.
-    - :file:`jobshop_ls.cc`: A basic implementation of Local Search the 2 ``LocalSearchOperator``\s defined in the corresponding header file.
-    - :file:`dummy_ls_filtering.cc`: The example :file:`dummy_ls.cc` extended with filtering.
+- :file:`Makefile`.
+- :file:`jobshop.h`: This file contains the ``JobShopData`` class that records the data for job-shop problem instances. This file is used
+  throughout all the job-shop examples.
+- :file:`report_jobshopdata.cc`: a simple program to report the content of job-shop problem instances in JSSP or Taillard's formats.
+- :file:`abz9`: a job-shop problem instance in JSSP format.
+- :file:`20_5_01_ta001.txt`: a job-shop problem instance in Taillard's format.
+- :file:`first_example_jssp.txt`: our first example in JSSP format.
+- :file:`jobshop.cc`: A basic exact implementation of the disjunctive model with ``IntervalVar`` and ``SequenceVar`` variables.
+- :file:`dummy_ls.cc`: A very basic example to understand the API of Local Search in *or-tools*.
+- :file:`jobshop_ls.h`: two basic ``LocalSearchOperator``\s for the job-shop problem.
+- :file:`jobshop_ls.cc`: A basic implementation of Local Search the two ``LocalSearchOperator``\s defined in the corresponding header file.
+- :file:`dummy_ls_filtering.cc`: The example :file:`dummy_ls.cc` extended with filtering.
 
 
-    The files of this chapter are **NOT** the same as the ones in the :file:`example` directory even if there were inspired 
-    by them. In particular, job-shop instances with only one task per job are accepted (not that this is extremely useful but...).
+The files of this chapter are **NOT** the same as the ones in the :file:`example` directory even if they were inspired 
+by them. In particular, job-shop instances with only one task per job are accepted (not that this is extremely useful but...).
 
 
 ..  only:: html
 
-    ..  rubric:: Content:
+..  rubric:: Content:
 
 ..  toctree::
     :maxdepth: 2
@@ -131,11 +129,5 @@ The files inside this directory are:
     ls/jobshop_ls
     ls/ls_filtering
     ls/ls_summary
-    
-..  only:: final
 
-    ..  raw:: html
-        
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
