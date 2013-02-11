@@ -105,7 +105,10 @@ The files inside this directory are:
 - :file:`jobshop.cc`: A basic exact implementation of the disjunctive model with ``IntervalVar`` and ``SequenceVar`` variables.
 - :file:`dummy_ls.cc`: A very basic example to understand the API of Local Search in *or-tools*.
 - :file:`jobshop_ls.h`: two basic ``LocalSearchOperator``\s for the job-shop problem.
-- :file:`jobshop_ls.cc`: A basic implementation of Local Search the two ``LocalSearchOperator``\s defined in the corresponding header file.
+- :file:`jobshop_ls1.cc`: A basic implementation of Local Search with the ``SwapIntervals`` ``LocalSearchOperator``.
+- :file:`jobshop_ls2.cc`: A basic implementation of Local Search with the ``ShuffleIntervals`` ``LocalSearchOperator``.
+- :file:`jobshop_ls3.cc`: A basic implementation of Local Search with both the ``SwapIntervals`` and ``ShuffleIntervals``
+  ``LocalSearchOperator``\s. We use also local search to find an initial solution.
 - :file:`dummy_ls_filtering.cc`: The example :file:`dummy_ls.cc` extended with filtering.
 
 

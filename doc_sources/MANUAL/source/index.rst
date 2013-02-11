@@ -162,7 +162,7 @@ Foreword
     This manual is intended to give you the necessary knowledge to use the library and explore the
     reference manual by yourself. We describe the basic concepts but also how to customize your
     search in Constraint Programming (CP). One of the strength of our library is its routing solver in
-    CP to solve arc- and vehicle routing problems with constraints. We describe how to customize your
+    CP to solve node- and vehicle routing problems with constraints. We describe how to customize your
     routing algorithms. After reading this manual, you will be able to understand our way of coding
     and how to use the full potential of our library.
     
