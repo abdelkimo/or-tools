@@ -1,3 +1,0 @@
-user_manual/manual/lns
-user_manual/manual/LNS.html
-user_manual/manual/search_primitives/default_search.html

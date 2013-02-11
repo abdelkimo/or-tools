@@ -1,5 +1,0 @@
-tutorials/cplusplus/chap6
-user_manual/manual/metaheuristics/VNS.html
-user_manual/manual/metaheuristics/restart.html
-user_manual/manual/metaheuristics/default_search.html
-user_manual/manual/ls/jobshop_lns.html
