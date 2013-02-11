@@ -1,6 +1,6 @@
 ..  _local_search_neighborhood_operators:
 
-Local Search Neighborhood (LSN) Operators
+Local Search Operators
 -----------------------------------------------
 
 ..  raw:: latex
@@ -71,7 +71,7 @@ The CP solver takes care of these *delta*\s and other hassles for the most commo
 
         
 The next figure shows the 
-LSN Operators hierarchy.
+LS Operators hierarchy.
 
 ..  only:: html 
 
@@ -90,12 +90,12 @@ These classes are declared in the header :file:`constraint_solver/constraint_sol
 ..  only:: html
 
     The ``PathOperator`` class is itself the base class of several other path specialized 
-    LSN Operators. We will review them in the subsection :ref:`local_search_pathoperators`.
+    LS Operators. We will review them in the subsection :ref:`local_search_pathoperators`.
 
 ..  raw:: latex 
 
     The \code{PathOperator} class is itself the base class of several other path specialized 
-    LSN Operators. We will review them in subsection~\ref{manual/tsp/two_phases_approaches:local-search-pathoperators}.\\~\\
+    LS Operators. We will review them in subsection~\ref{manual/tsp/two_phases_approaches:local-search-pathoperators}.\\~\\
 
 
 ``IntVarLocalSearchOperator`` is a specialization of ``LocalSearchOperator`` built for an array of ``IntVar``\s while
@@ -105,10 +105,10 @@ of ``SequenceVar``\s [#no_ls_operators_for_interval_vars]_.
 ..  [#no_ls_operators_for_interval_vars] At the time of writing, there are no ``LocalSearchOperator``\s defined for 
     ``IntervalVar``\s. See subsection XXX for a workaround.
 
-Defining a custom LSN operator 
+Defining a custom LS operator 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We will construct an LSN Operator for an array of ``IntVar``\s but the API for an array of ``SequenceVar``\s is similar 
+We will construct an LS Operator for an array of ``IntVar``\s but the API for an array of ``SequenceVar``\s is similar 
 [#similar_api_intvar_localsearch_operator]_.
 
 There are two methods to overwrite:
@@ -195,7 +195,7 @@ is then equal to ``Size()``), it returns ``false``.
 The ``private`` method ``OnStart()`` that is used whenever we start again with a new feasible solution, simply resets
 the variable index to :math:`0` to be able to decrease the first variable :math:`x_0` by :math:`1`.
 
-We use the LSN Operator ``DecreaseOneVar`` in the function ``SimpleLS()`` that starts as follow:
+We use the LS Operator ``DecreaseOneVar`` in the function ``SimpleLS()`` that starts as follow:
 
 ..  code-block:: c++
 
@@ -268,7 +268,7 @@ where the value for :math:`x_{n-1}` is :math:`n-2` if :math:`n` is even and
     If  :math:`n \, \textrm{mod} \, 2 = 0`
     then :math:`n` is even, otherwise it is odd. In ``C++``, the :math:`\textrm{mod}` operator is ``%``.
 
-The search phase using the LSN Operator is given by a... ``DecisionBuilder`` 
+The search phase using the LS Operator is given by a... ``DecisionBuilder`` 
 which shouldn't surprise you by now:
 
 ..  code-block:: c++
@@ -287,7 +287,7 @@ which shouldn't surprise you by now:
       ls = s.MakeLocalSearchPhase(initial_solution, ls_params);
     }
 
-Notice how the LSN Operator is passed to the ``DecisionBuilder`` by means of the 
+Notice how the LS Operator is passed to the ``DecisionBuilder`` by means of the 
 ``LocalSearchPhaseParameters``.
 
 We collect the best and last solution:
@@ -457,7 +457,7 @@ You can provide the seed that is used to initialize the random number generator:
     LocalSearchOperator* Solver::RandomConcatenateOperators(
               const std::vector<LocalSearchOperator*>& ops, int32 seed);
 
-Interesting LSN operators 
+Interesting LS operators 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Several existing ``LocalSearchOperator``\s can be of great help. Combine these operators with your own customized 
@@ -542,10 +542,16 @@ The variables are changed in the order given by the ``std::vector``. Whenever we
 the variables are changed from the beginning of the vector anew.
 
 
-Large Neighborhood Search
+Large Neighborhood Search (LNS)
 """""""""""""""""""""""""""""""
 
-And last but not least, in *or-tools*, Large Neighborhood Search is implemented with ``LocalSearchOperator``\s but 
-this is the topic of the next chapter.
+..  only:: html
 
+    And last but not least, in *or-tools*, Large Neighborhood Search is implemented with ``LocalSearchOperator``\s but 
+    this is the topic of the section :ref:`large_neighborhood_search`.
+
+..  raw:: latex
+
+    And last but not least, in~\emph{or-tools}, Large Neighborhood Search is implemented with \code{LocalSearchOperator}s but 
+    this is the topic of section~\ref{manual/ls/jobshop_lns:large-neighborhood-search}.
 

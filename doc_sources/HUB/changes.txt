@@ -2,4 +2,5 @@
 # Current changes.
 * Minor enhancements to the manual:
   - tutorials for chapter 6 added.
-
+* Major enhancements to the manual:
+  - chapter 7 (LNS) becomes a section of chapter 6.

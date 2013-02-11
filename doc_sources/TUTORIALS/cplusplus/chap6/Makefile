@@ -1,4 +1,4 @@
-OR_TOOLS_TOP=/home/nikolaj/Documents/RESEARCH/google/or-tools-read-only
+OR_TOOLS_TOP=XXX
 OR_TOOLS_SOURCES=$(OR_TOOLS_TOP)/src
 
 SOURCES= report_jobshopdata.cc jobshop.cc dummy_ls.cc jobshop_ls1.cc jobshop_ls2.cc \

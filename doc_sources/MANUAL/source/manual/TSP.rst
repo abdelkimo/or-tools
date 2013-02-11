@@ -56,7 +56,7 @@ own paradigms and scientific communities.
 In this chapter, we'll discover the RL with what is probably the most studied problem in Operations Research:
 the *Travelling Salesman Problem* (TSP) [#tsp_two_l]_. 
 
-..  [#tsp_two_l] We use the Canadian (and British) spelling of the verb *travelling* but you'll find much more 
+..  [#tsp_two_l] We use the Canadian (and British, and South African, and...) spelling of the verb *travelling* but you'll find much more 
     scientific articles under the American spelling: *traveling*.
 
 We use the excellent ``C++`` [#epix_latex]_ `ePiX library <http://mathcs.holycross.edu/~ahwang/current/ePiX.html>`_ 

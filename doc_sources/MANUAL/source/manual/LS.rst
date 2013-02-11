@@ -60,8 +60,10 @@ of local search in *or-tools* in action:
     variable has the same domain :math:`[0, n-1]`. To complicate things a little bit, we add the constraint 
     :math:`x_0 \geqslant 1`.
     
-Once we understand how to use local search in *or-tools*, we use ``LocalSearchOperator``\s to solve the job-shop problem 
-and compare the exact and approximate results. Finally, to speed up the local search algorithm, we use ``LocalSearchFilter``\s for the dummy problem.
+Once we understand how to use local search in *or-tools*, we use basic ``LocalSearchOperator``\s 
+(including *large neighborhood search* (LNS)) to solve the job-shop problem 
+and compare the exact and approximate results. 
+Finally, to speed up the local search algorithm, we use ``LocalSearchFilter``\s for the dummy problem.
 
 
 ..  rubric:: Prerequisites:
@@ -109,7 +111,12 @@ The files inside this directory are:
 - :file:`jobshop_ls2.cc`: A basic implementation of Local Search with the ``ShuffleIntervals`` ``LocalSearchOperator``.
 - :file:`jobshop_ls3.cc`: A basic implementation of Local Search with both the ``SwapIntervals`` and ``ShuffleIntervals``
   ``LocalSearchOperator``\s. We use also local search to find an initial solution.
-- :file:`dummy_ls_filtering.cc`: The example :file:`dummy_ls.cc` extended with filtering.
+- :file:`dummy_lns.cc`: The basic example solved with large neighborhood search.
+- :file:`jobshop_lns.h`: a basic ``SequenceLns`` ``LocalSearchOperator`` to solve the job-shop problem with local neighborhood search.
+- :file:`jobshop_lns.cc`: A basic implementation of Large Neighborhood Search with the ``SequenceLns`` ``LocalSearchOperator`` to solve the job-shop problem.
+- :file:`jobshop_heuristic.cc`: We use all the previous ingredients to solve approximately the job-shop problem.
+- :file:`dummy_ls_filtering.cc`: The basic example extended with filtering.  
+
 
 
 The files of this chapter are **NOT** the same as the ones in the :file:`example` directory even if they were inspired 
@@ -130,6 +137,7 @@ by them. In particular, job-shop instances with only one task per job are accept
     ls/basic_working_local_search
     ls/ls_operators
     ls/jobshop_ls
+    ls/jobshop_lns
     ls/ls_filtering
     ls/ls_summary
 

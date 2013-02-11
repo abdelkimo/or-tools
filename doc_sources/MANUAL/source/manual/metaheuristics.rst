@@ -120,9 +120,12 @@ The files inside this directory are:
     :maxdepth: 2
 
     metaheuristics/metaheuristics
+    metaheuristics/restart
     metaheuristics/tabu
     metaheuristics/SA
     metaheuristics/GLS
+    metaheuristics/VNS
+    metaheuristics/default_search
     metaheuristics/metaheuristics_summary
     
 ..  only:: final

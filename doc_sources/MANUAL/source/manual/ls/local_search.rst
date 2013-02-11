@@ -1,9 +1,9 @@
 ..  _local_search_def:
 
-What is local search?
+What is local search (LS)?
 ------------------------------------
 
-In the toolbox of Operations Research practitioners, *local search* is very important as it is often 
+In the toolbox of Operations Research practitioners, *local search* (LS) is very important as it is often 
 the best (and sometimes only) method to solve difficult problems. We start this section by describing what local search 
 is and what local search methods have in common. Then we discuss their efficiency and compare them with *global* methods.
 

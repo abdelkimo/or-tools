@@ -112,7 +112,6 @@ The files inside this directory are:
     search_primitives/basic_working_phases
     search_primitives/out_of_the_box_search_primitives
     search_primitives/customized_search_primitives
-    search_primitives/default_search
     search_primitives/breaking_symmetry
     search_primitives/summary
 
