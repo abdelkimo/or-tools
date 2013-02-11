@@ -64,8 +64,7 @@ Part II: Customization
     Chapter 6: :ref:`chapter_local_search`:
       balbalb
 
-    Chapter 7: :ref:`chapter_large_neighbourhood_search`:
-      balbalb
+
 
 Part III: Routing
 ^^^^^^^^^^^^^^^^^^^^

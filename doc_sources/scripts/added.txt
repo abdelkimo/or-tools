@@ -1,7 +1,5 @@
-user_manual/manual/metaheuristics.html
-user_manual/manual/metaheuristics
-user_manual/manual/modeling_tricks/solving_options.html
-user_manual/_images/smiley_nerd2.png
-user_manual/_images/android2.png
-user_manual/_images/math/e55f3a8911705d97dfdf206cf64f95525d956a53.png
-user_manual/_images/math/bf0759ecbdcc07530a9dc9a27403a4a767ef1abd.png
+tutorials/cplusplus/chap6
+user_manual/manual/metaheuristics/VNS.html
+user_manual/manual/metaheuristics/restart.html
+user_manual/manual/metaheuristics/default_search.html
+user_manual/manual/ls/jobshop_lns.html
