@@ -181,9 +181,112 @@ Large Neighborhood Search in *or-tools*
             }
           }
 
-    This time, let's repair optimally the destroyed solution.
+    This time, let's repair optimally the destroyed solution. The ``NestedOptimize`` ``DecisionBuilder`` is exactly what 
+    we need as complementary ``DecisionBuilder``. It will collapse a search tree described by a
+    DecisionBuilder`` ``db`` and a set of monitors and wrap it into a single point.
     
+    There exist several factory methods to construct such a ``NestedOptimize``
+    ``DecisionBuilder```but all need an ``Assignment`` to store the optimal solution found:
     
+    ..  code-block:: c++
+    
+        Assignment * const optimal_candidate_solution = s.MakeAssignment();
+        optimal_candidate_solution->Add(vars);
+        optimal_candidate_solution->AddObjective(sum_var);
+    
+    The factory method we will use look like this:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder* MakeNestedOptimize(DecisionBuilder* const db,
+                                            Assignment* const solution,
+                                            bool maximize,
+                                            int64 step);
+
+    where ``db`` is the ``DecisionBuilder`` used to optimize, ``solution`` stores the optimal solution found (if any),
+    ``maximize`` is a ``bool`` indicating if we maximize or minimize and ``step`` is the classical step used to optimize.
+    For our basic example, we use a basic ``DecisionBuilder`` to optimize:
+    
+    ..  code-block:: c++
+    
+        DecisionBuilder * optimal_complementary_db = s.MakeNestedOptimize(
+            s.MakePhase(vars,
+                        Solver::CHOOSE_FIRST_UNBOUND,
+                        Solver::ASSIGN_MAX_VALUE),
+            optimal_candidate_solution,
+            false,
+            1);
+    
+    We then construct our LNS operator:
+    
+    ..  code-block:: c++
+    
+        OneVarLns one_var_lns(vars.data(), vars.size());
+    
+    and wrap the Local Search:
+    
+    ..  code-block:: c++
+    
+        LocalSearchPhaseParameters* ls_params
+                = s.MakeLocalSearchPhaseParameters(&one_var_lns, 
+                                                   optimal_complementary_db, 
+                                                   limit);
+        DecisionBuilder* ls = s.MakeLocalSearchPhase(initial_solution, 
+                                                     ls_params);
+    
+    where ``limit`` is a ``SearchLimit`` and ``initial_solution`` is our initial solution. When ``n=4``, this 
+    initial solution is :math:`[3, 2, 3, 2]`.
+    
+    The simplified output of :program:`dummy_lns` is:
+    
+    ..  code-block:: bash
+    
+        Simple Large Neighborhood Search with initial solution
+
+        Start search, memory used = 15.21 MB
+        Root node processed (time = 0 ms, constraints = 2, memory used = 
+                                                                   15.21 MB)
+        Solution #0 (objective value = 10, ...)
+        Solution #1 (objective value = 8, ...)
+        Solution #2 (objective value = 6, ...)
+        Solution #3 (objective value = 3, ...)
+        Solution #4 (objective value = 1, ...)
+        Finished search tree, ..., neighbors = 10, filtered neighbors = 10, 
+                                                 accepted neigbors = 4, ...)
+        End search (time = 1 ms, branches = 58, failures = 57, memory used = 
+                                         15.21 MB, speed = 58000 branches/s)
+        Objective value = 1
+
+    5 solutions were generated with decreased objective 
+    values. ``Solution #0`` is the initial solution given:
+    :math:`[3, 2, 3, 2]`. For the next 4 solutions, the ``NestedOptimize`` ``DecisionBuilder`` did its job and optimized 
+    the partial solution:
+
+    neighborhood 1 around :math:`[3,2,3,2]`:
+      :math:`[-,2,3,2]` is immediately taken as the complementary ``DecisionBuilder`` transforms it into the optimal solution :math:`[1,2,3,2]` with an objective value of 8.
+    neighborhood 2  around :math:`[1,2,3,2]`:
+      :math:`[-,2,3,2]` is rejected as the optimal solution :math:`[1,2,3,2]` doesn't have a better objective value than 8.
+      :math:`[1,-,3,2]` is immediately accepted as the optimal solution constructed is :math:`[1,0,3,2]` with an objective value of 6.
+    neighborhood 3  around :math:`[1,0,3,2]`:
+      :math:`[-, 0, 3, 2]` and :math:`[1,-,3,2]` are rejected and :math:`[1,0,-,2]` is accepted as the optimal solution 
+      constructed is :math:`[1,0,0,2]` with an objective value of 3.
+    neighborhood 4  around :math:`[1,0,0,2]`:
+      :math:`[-, 0, 0, 2]`, :math:`[1, -, 0, 2]` and :math:`[1, 0, -, 2]` are rejected while :math:`[1, 0, 0, -]` is accepted 
+      as the optimal solution constructed :math:`[1,0,0,0]` has an objective value of 1.
+
+    The two last lines printed by the ``SearchLog`` summarize the local search:
+
+    ..  code-block:: bash
+    
+        Finished search tree, ..., neighbors = 10, filtered neighbors = 10, 
+                                                 accepted neigbors = 4, ...)
+        End search (time = 1 ms, branches = 58, failures = 57, memory used = 
+                                         15.21 MB, speed = 58000 branches/s)
+        Objective value = 1
+
+    There were indeed 10 constructed candidate solutions among which 10 (filtered neighbors) were accepted 
+    after filtering (there is none!) and 4 (accepted neighbors) were improving solutions.
+
     For this basic example, repairing optimally led to the optimal solution but this is not necessarily the case.
     
         
