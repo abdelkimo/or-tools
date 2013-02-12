@@ -69,7 +69,7 @@ What is Large Neighborhood Search?
 ..  only:: draft
 
     The Large Neighborhood Search (LNS) meta-heuristic was proposed by Shaw in 1998 [Shaw1998]_.
-    The neighborhood of a solution is defined implicitly by a *destroy* and a *repair* method. A destroy method
+    The neighborhood of a solution is defined implicitly by a *destroy* and a *repair* methods. A destroy method
     destructs part of the current solution while a repair method rebuilds the destroyed solution. Typically, the 
     destroy method contains some randomness such that different parts of the current solution are destroyed and... 
     different parts of the search tree visited! This means that the neighborhoods can be seen as *larger* than 
@@ -92,7 +92,7 @@ What is Large Neighborhood Search?
     
     It looks very much like Local Search, the only difference is the way the neighborhoods are constructed.
 
-    As always, the definition of the destroy and repair methods is a matter of trade-off: 
+    As always, the definition of the destroy and repair methods is a matter of trade-off. 
 
     An important concept is the *degree of destruction*: if only a small part of a solution is destructed, the LNS misses 
     its purpose and merely becomes a "classical" Local Search method acting on small neighborhoods. If a very large part (or the entirety) of the solution
@@ -109,15 +109,84 @@ What is Large Neighborhood Search?
     while keeping the fixed variables to their current values.
 
 
-Large neighborhood search in *or-tools*
+Large Neighborhood Search in *or-tools*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
-    dummy_lns here...
-    
-    
+    You'll find the code in the file :file:`dummy_lns.cc`.
 
+    Large Neighborhood Search is implemented with ``LocalSearchOperator``\s in *or-tools*. For ``IntVar``\s, there is 
+    a specialized ``BaseLNS`` class that inherits from ``IntVarLocalSearchOperator``. For ``IntervalVar``\s and ``SequenceVar``\s, 
+    you can inherit from the corresponding ``LocalSearchOperator``\s. We'll use the ``BaseLNS`` class in this sub-section and 
+    inherit from ``SequenceVarLocalSearchOperator`` when we'll try to solve the job-shop problem below.
+    
+    Our basic example from previous chapter is to minimize the sum of :math:`n` ``IntVar``\s
+    :math:`\{x_0, \ldots, x_{n - 1}\}` each with domain :math:`[0, n - 1]`. 
+    We add the fictive constraint :math:`x_0 \geqslant 1` (and thus ask for :math:`n \geqslant 2`):
+
+    ..  math::
+
+        \begin{aligned}
+        & \underset{x_0, ..., x_{n-1}}{\text{min}}
+        & & x_0 + x_1 + ... + x_{n-1} \\
+        & \text{subject to:}
+        & & x_0 \geqslant 1.\\
+        & & & x_i \in \{0,\ldots, n-1\} \, \text{for} \,  i = 0 \ldots n-1.
+        \end{aligned}
+    
+    For ``IntVar``\s, you can use the ``BaseLNS`` class. In this ``LocalSearchOperator``, we have redefined the 
+    ``OnStart()`` and ``MakeOneNeighbor()`` methods like this:
+    
+    ========================== ==========================
+    ``LocalSearchOperator``    ``BaseLNS``
+    ========================== ==========================
+    ``OnStart()``              ``InitFragments()``
+    ``MakeOneNeighbor()``      ``NextFragment()``
+    ========================== ==========================
+
+    A *Fragment* is just an ``std::vector<int>`` containing the indices of the ``IntVar``\s to "destroy", i.e. to free.
+    The other ``IntVar``\s keep their current values. The complementary ``DecisionBuilder`` given to the ``LocalSearchOperator``
+    will *repair* the current solution. The signature of the ``NextFragment()`` is as follow:
+    
+    ..  code-block:: c++
+    
+        virtual bool NextFragment(std::vector<int>* fragment) = 0;
+
+    This method is a pure virtual method and **must** be defined. To free some variables, you fill the ``fragment`` ``vector``
+    with the corresponding indices. This method returns ``true`` if their are still candidates solutions in the neighborhood, ``false``
+    otherwise (exactly like the ``MakeOneNeighbor()`` method).
+    
+    Let's use a basic LNS to solve our basic problem. We'll free one variable at a time in the order given by the ``std::vector``
+    of ``IntVar``\s. First, we initialize the index of the first variable in ``InitFragments()``:
+    
+    ..  code-block:: c++
+    
+        virtual void InitFragments() { index_ = 0; }
+
+    where ``index_`` is a ``private`` ``int`` indicating the current index of the variable we are about to destroy.
+    
+    The ``NextFragment()`` method is straightforward:
+    
+    ..  code-block:: c++
+    
+          virtual bool NextFragment(std::vector<int>* fragment) {
+            const int size = Size();
+            if (index_ < size) {
+              fragment->push_back(index_);
+              ++index_;
+              return true;
+            } else {
+              return false;
+            }
+          }
+
+    This time, let's repair optimally the destroyed solution.
+    
+    
+    For this basic example, repairing optimally led to the optimal solution but this is not necessarily the case.
+    
+        
 Interesting LNS operators 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
