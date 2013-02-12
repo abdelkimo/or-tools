@@ -1,7 +1,7 @@
 .. _chapter_metaheuristics:
 
-Meta-heuristics: 
-=======================================
+Meta-heuristics: several previous problems
+===============================================
 
 ..  only:: draft
 
@@ -70,6 +70,10 @@ Meta-heuristics:
     - Basic knowledge about how to define an objective function (see section :ref:`golomb_ruler_first_implementation`).
     - Section :ref:`basic_working_search_algorithm` helps but is not mandatory.
 
+    xxxxx
+
+    - For the section :ref:`large_neighborhood_search`: the chapter :ref:`chapter_local_search` about local search and the job-shop problem.
+    
 ..  raw:: latex
 
     \begin{itemize}
@@ -82,6 +86,9 @@ Meta-heuristics:
             is not mandatory.
     \end{itemize}
 
+    \begin{itemize}
+      \item For section~\ref{manual/metaheuristics/jobshop_lns:large-neighborhood-search}: chapter~\ref{manual/LS:chapter-local-search} about local search and the job-shop problem.
+    \end{itemize}
 
 
 ..  rubric:: Files:
@@ -93,17 +100,10 @@ The files inside this directory are:
 ..  only:: draft
 
     - :file:`Makefile`.
-    - :file:`jobshop.h`: This file contents the ``JobShopData`` class that records the data for job-shop problem instances. This file is used
-      throughout all the examples.
-    - :file:`report_jobshopdata.cc`: a simple program to report the content of job-shop problem instances in JSSP or Taillard's formats.
-    - :file:`abz9`: a job-shop problem instance in JSSP format.
-    - :file:`20_5_01_ta001.txt`: a job-shop problem instance in Taillard's format.
-    - :file:`first_example_jssp.txt`: our first example in JSSP format.
-    - :file:`jobshop.cc`: A basic implementation of the disjunctive model with ``IntervalVar`` and ``SequenceVar`` variables.
-    - :file:`dummy_ls.cc`: A very basic example to understand the API of Local Search in or-tools.
-    - :file:`jobshop_ls.cc`: A basic implementation of Local Search with an 2-opt operator.
-    - :file:`dummy_ls_filtering.cc`: The example :file:`dummy_ls.cc` extended with filtering.
-    - :file:`jobshop_ls_filtering.cc`: The example :file:`jobshop_ls.cc` extended with filtering.
+    - :file:`dummy_lns.cc`: The basic example solved with large neighborhood search.
+    - :file:`jobshop_lns.h`: a basic ``SequenceLns`` ``LocalSearchOperator`` to solve the job-shop problem with local neighborhood search.
+    - :file:`jobshop_lns.cc`: A basic implementation of Large Neighborhood Search with the ``SequenceLns`` ``LocalSearchOperator`` to solve the job-shop problem.
+    - :file:`jobshop_heuristic.cc`: We use all the previous ingredients to solve approximately the job-shop problem.
     - :file:`jobshop_tabu.cc`: The job-shop problem solved by Tabu Search.
     - :file:`jobshop_SA.cc`: The job-shop problem solved by Simulated Annealing.
     - :file:`jobshop_GLS.cc`: The job-shop problem solved by Guided Local Search.
@@ -120,6 +120,7 @@ The files inside this directory are:
     :maxdepth: 2
 
     metaheuristics/metaheuristics
+    metaheuristics/jobshop_lns
     metaheuristics/restart
     metaheuristics/tabu
     metaheuristics/SA

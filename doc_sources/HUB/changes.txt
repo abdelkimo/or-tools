@@ -1,7 +1,7 @@
 # Milestone:
 # Current changes.
-No need to download this new version. Only the chapter structure has been modified.
 * Minor enhancements to the manual:
-  - tutorials (except for new section 6.8) for chapter 6 added.
+
 * Major enhancements to the manual:
-  - chapter 7 (LNS) becomes a section of chapter 6.
+  - section 6.8 moved to chapter on meta-heuristics... thus the tutorials 
+    of chapter 6 are completely done.
