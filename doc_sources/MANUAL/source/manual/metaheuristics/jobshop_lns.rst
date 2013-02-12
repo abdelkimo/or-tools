@@ -293,7 +293,24 @@ Large Neighborhood Search in *or-tools*
 Interesting LNS operators 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+..  only:: draft
 
+    At the moment of writing (12 February 2013, rev 2551), there are only a few specialized LNS operators. All concern
+    ``IntVar``\s:
+    
+    * There are two basic LNS operators:
+    
+      * ``SimpleLNS``: Frees a number of contiguous variables (à la :math:`mod(m)`) in the ``std::vector<IntVar*>``;
+      * ``RandomLNS``: Frees a number :math:`m` of randomly chosen variables from the ``std::vector<IntVar*>``.
+    
+    * Some ``PathOperator``\s. We'll see ``PathOperator``\s more in details in the section :ref:`local_search_pathoperators`.
+
+``SimpleLNS``
+"""""""""""""""""""
+
+
+``RandomLNS``
+""""""""""""""""""""
 
 An heuristic to solve the job-shop problem 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
