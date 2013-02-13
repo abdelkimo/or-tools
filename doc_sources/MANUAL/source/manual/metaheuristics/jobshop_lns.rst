@@ -369,7 +369,8 @@ Interesting LNS operators
         ``number_of_variables_`` represents the number of variables to destroy. As you can see, this method always returns ``true``.
         This means that the neighborhood is never exhausted. ``rand_`` is an object of type ``ACMRandom`` which is 
         an ACM minimal standard random number generator (see the section :ref:`randomness` for more). ``rand_.Uniform(Size())``
-        returns a random number between ``0`` and ``Size() - 1``.
+        returns a random number between ``0`` and ``Size() - 1``. It might happen that 
+        the same variable is chosen more than once.
 
     ..  raw:: latex
     
@@ -377,13 +378,38 @@ Interesting LNS operators
         returns~\code{true}.
         This means that the neighborhood is never exhausted. \code{rand\_} is an object of type~\code{ACMRandom} which is 
         an ACM minimal standard random number generator (see section~\ref{manual/utilities/randomness:randomness} for more).
-        \code{rand\_.Uniform(Size())} returns a random number between~\code{0} and~\code{Size() - 1}.
+        \code{rand\_.Uniform(Size())} returns a random number between~\code{0} and~\code{Size() - 1}. It might happen that 
+        the same variable is chosen more than once.
     
     There are 2 factory methods to create ``RandomLNS`` ``LocalSearchOperator``\s:
     
+    ..  code-block:: c++
     
+        LocalSearchOperator* Solver::MakeRandomLNSOperator(
+                                           const std::vector<IntVar*>& vars,
+                                           int number_of_variables);
+        LocalSearchOperator* Solver::MakeRandomLNSOperator(
+                                           const std::vector<IntVar*>& vars,
+                                           int number_of_variables,
+                                           int32 seed);
+
 
 An heuristic to solve the job-shop problem 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+..  only:: draft
+
+    You'll find the code in the files :file:`jobshop_lns.h`, :file:`jobshop_lns.cc` and :file:`jobshop_heuristic.cc`
+    (file :file:`jobshop.ls` was defined in the previous chapter).
+    
+    We present a basic Large Neighborhood Search operator ``SequenceLns`` to solve the job-shop problem in the file :file:`jobshop_lns.cc`.
+    In the file :file:`jobshop_heuristic.cc`, we mix all ``LocalSearchOperator``\s we have seen in the previous 
+    chapter :ref:`chapter_local_search` and the ``SequenceLns`` operator.
+    
+``SequenceLns``
+""""""""""""""""
+
+
+Everything together
+"""""""""""""""""""""""
 
