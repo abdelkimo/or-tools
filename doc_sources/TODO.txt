@@ -5,6 +5,12 @@ Automatization:
 - Check spelling;
 - Check ALL links;
 
+Vocabulary:
+-----------
+
+- use proper term about overriding and overloading;
+- explain FalseExceptIfOneTrue and TrueExceptIfOneFalse;
+
 Tutorials:
 ----------
 

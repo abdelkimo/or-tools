@@ -1,7 +1,7 @@
 # Milestone:
 # Current changes.
 * Minor enhancements to the manual:
-
+  - 7.2 added.
 * Major enhancements to the manual:
   - section 6.8 moved to chapter on meta-heuristics... thus the tutorials 
     of chapter 6 are completely done.

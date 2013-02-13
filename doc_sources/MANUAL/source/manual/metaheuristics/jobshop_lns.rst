@@ -82,7 +82,7 @@ What is Large Neighborhood Search?
 
 
 
-    In its very basic form, we could formulate local search like this:
+    In its very basic form, we could formulate large neighborhood search like this:
     
     ..  image:: algorithms/LNS_basic_pseudo_code.*
         :height: 110pt
@@ -409,7 +409,142 @@ An heuristic to solve the job-shop problem
 ``SequenceLns``
 """"""""""""""""
 
+..  only:: draft
+
+    We define a basic LNS operator: ``SequenceLNS``. This operator destroys ``current_length`` ``IntervalVar``\s randomly 
+    in the middle of each ``SequenceVar`` as depicted on the next picture:
+    
+    ..  only:: html 
+    
+        .. image:: images/sequence_lns.*
+            :width: 700pt
+            :align: center
+
+    ..  only:: latex
+    
+        .. image:: images/sequence_lns.*
+            :width: 400pt
+            :align: center
+
+    To allow for some diversity, from time to time this operator destroys completely two ``SequenceVar``\s.
+    
+    For ``SequenceVar``\s, there are no specialized LNS operators. We thus inherit from ``SequenceVarLocalSearchOperator``:
+    
+    ..  code-block:: c++
+    
+        class SequenceLns : public SequenceVarLocalSearchOperator {
+         public:
+          SequenceLns(const SequenceVar* const* vars,
+                      int size,
+                      int seed,
+                      int max_length)
+              : SequenceVarLocalSearchOperator(vars, size),
+                random_(seed),
+                max_length_(max_length) {}
+
+    ``random_`` is again an object of type ``ACMRandom`` and ``max_length`` is the maximal number of ``IntervalVar``\s to
+    destroy in each ``SequenceVar``. It's a upper bound because the ``SequenceVar`` could contain less ``IntervalVar``\s.
+    
+    We use again our template for the ``MakeNextNeighbor()`` method:
+    
+    ..  code-block:: c++
+    
+        virtual bool MakeNextNeighbor(Assignment* delta, Assignment* deltadelta) {
+          CHECK_NOTNULL(delta);
+          while (true) {
+            RevertChanges(true);
+            if (random_.Uniform(2) == 0) {
+              FreeTimeWindow();
+            } else {
+              FreeTwoResources();
+            }
+            if (ApplyChanges(delta, deltadelta)) {
+              VLOG(1) << "Delta = " << delta->DebugString();
+              return true;
+            }
+          }
+          return false;
+        }
+
+    ``FreeTwoResources()`` simply destroys two random ``SequenceVar``\s:
+    
+    ..  code-block:: c++
+    
+        void FreeTwoResources() {
+          std::vector<int> free_sequence;
+          SetForwardSequence(random_.Uniform(Size()), free_sequence);
+          SetForwardSequence(random_.Uniform(Size()), free_sequence);
+        }
+
+    ``FreeTimeWindow()`` is more interesting:
+    
+    ..  code-block:: c++
+    
+        void FreeTimeWindow() {
+          for (int i = 0; i < Size(); ++i) {
+            std::vector<int> sequence = Sequence(i);
+            const int current_length =
+                std::min(static_cast<int>(sequence.size()), max_length_);
+            const int start_position =
+                random_.Uniform(sequence.size() - current_length);
+            std::vector<int> forward;
+            for (int j = 0; j < start_position; ++j) {
+              forward.push_back(sequence[j]);
+            }
+            std::vector<int> backward;
+            for (int j = sequence.size() - 1;
+                 j >= start_position + current_length;
+                 --j) {
+              backward.push_back(sequence[j]);
+            }
+            SetForwardSequence(i, forward);
+            SetBackwardSequence(i, backward);
+          }
+        }
+
+
+    We use the ``SequenceLNS`` in the file :file:`jobshop_lns.cc` to solve the job-shop problem.
+    Four parameters are defined through gflags:
+    
+    * ``time_limit_in_ms``: Time limit in ms, 0 means no limit;
+    * ``sub_sequence_length``: The sub sequence length for the ``ShuffleIntervals`` LS operator;
+    * ``lns_seed``: The seed for the LNS random search;
+    * ``lns_limit``: maximal number of candidate solutions to consider for each neighborhood search in the LNS.
+
+    When we try to solve the ``abz9`` instance with our default parameters, we quickly find this solution 
+    
+    ..  code-block:: bash
+    
+        Solution #190 (objective value = 802, ..., time = 10612 ms, ...,
+                       neighbors = 1884, ..., accepted neighbors = 190, ...)
+    
+    After only 10 seconds, we obtain a feasible solution with an objective value of 802. Much better than what we obtained 
+    in the previous chapter (the best value was 931)! Large Neighborhood Search (and its randomness) widens the scope of the 
+    neighborhood definition and allows to search a bigger portion of the search space but still it doesn't avoid the local 
+    trap. :program:`jobshop_lns` seems to get stuck with this solution. In the next sub-section, we use the Local Search 
+    operators defined in the previous chapter and the ``SequenceLNS`` operator together.
+    
 
 Everything together
 """""""""""""""""""""""
+
+..  only:: draft
+
+    In the file :file:`jobshop_heuristic.cc`, we mix the three ``LocalSearchOperator``\s we have previously defined:
+    
+    * ``SwapIntervals`` and ``ShuffleIntervals`` defined in the previous chapter and 
+    * ``SequenceLNS``.
+    
+    As in :file:`jobshop_ls3.cc`, we use Local Search to find an initial solution.
+    We let the program run for 18 minutes. The best solution found had an objective value of 745 and 717056 candidate solutions 
+    were tested! Maybe :program:`jobshop_heuristic` would have found a better solution after a while but there is no 
+    guarantee whatsoever. We didn't *tune* the algorithm, i.e. we didn't try to understand and fix its parameters (all the 
+    gflags) to their optimal values (if any) and we only used the :file:`abz9` instance to test it.
+    
+    One fundamental flaw of our algorithm is that we don't learn anything from the search history: the Local Search 
+    goes bluntly forward to find better solutions one after the other and can be trapped in a local optimum.
+    
+    In the rest of this chapter, we'll see different meta-heuristics that take the search history into account and try 
+    to avoid the local trap.
+    
 
