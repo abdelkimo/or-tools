@@ -308,9 +308,80 @@ Interesting LNS operators
 ``SimpleLNS``
 """""""""""""""""""
 
+..  only:: draft
 
+    The ``SimpleLNS`` ``LocalSearchOperator`` frees a number of contiguous variables. Its ``NextFragment()`` method reads:
+    
+    ..  code-block:: c++
+    
+        bool NextFragment(std::vector<int>* fragment) {
+          const int size = Size();
+          if (index_ < size) {
+            for (int i = index_; i < index_ + number_of_variables_; ++i) {
+              fragment->push_back(i % size);
+            }
+            ++index_;
+            return true;
+          } else {
+            return false;
+          }
+        }
+
+    The factory method to create this ``LocalSearchOperator`` is ``MakeOperator()``:
+    
+    ..  code-block:: c++
+    
+        LocalSearchOperator* Solver::MakeOperator(
+                                          const std::vector<IntVar*>& vars,
+                                          Solver::LocalSearchOperators op)
+
+    where ``LocalSearchOperators`` is an ``enum`` describing different ``LocalSearchOperator``\s.
+    To create a ``SimpleLNS``, we use ``Solver::SIMPLELNS``:
+    
+    ..  code-block:: c++
+    
+        LocalSearchOperator * simple_lns =  
+                                     solver.MakeOperator(vars, 
+                                                         Solver::SIMPLELNS);
+
+    By default, the variable ``number_of_variables_`` in ``NextFragment()`` will be set to 1
+    and thus ``SimpleLNS`` destroys one variable at a time. Unfortunately, ``SimpleLNS`` is not accessible directly. If you 
+    want to destroy more than 1 variable, you'll have to implement your own ``LocalSearchOperator``.
+    
 ``RandomLNS``
 """"""""""""""""""""
+
+..  only:: draft
+
+    The ``RandomLNS`` ``LocalSearchOperator`` destroys randomly some variables. Its ``NextFragment()`` method reads:
+    
+    ..  code-block:: c++
+    
+        bool NextFragment(std::vector<int>* fragment) {
+          for (int i = 0; i < number_of_variables_; ++i) {
+            fragment->push_back(rand_.Uniform(Size()));
+          }
+          return true;
+        }
+
+    ..  only:: html
+    
+        ``number_of_variables_`` represents the number of variables to destroy. As you can see, this method always returns ``true``.
+        This means that the neighborhood is never exhausted. ``rand_`` is an object of type ``ACMRandom`` which is 
+        an ACM minimal standard random number generator (see the section :ref:`randomness` for more). ``rand_.Uniform(Size())``
+        returns a random number between ``0`` and ``Size() - 1``.
+
+    ..  raw:: latex
+    
+        \code{number\_of\_variables\_} represents the number of variables to destroy. As you can see, this method always 
+        returns~\code{true}.
+        This means that the neighborhood is never exhausted. \code{rand\_} is an object of type~\code{ACMRandom} which is 
+        an ACM minimal standard random number generator (see section~\ref{manual/utilities/randomness:randomness} for more).
+        \code{rand\_.Uniform(Size())} returns a random number between~\code{0} and~\code{Size() - 1}.
+    
+    There are 2 factory methods to create ``RandomLNS`` ``LocalSearchOperator``\s:
+    
+    
 
 An heuristic to solve the job-shop problem 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

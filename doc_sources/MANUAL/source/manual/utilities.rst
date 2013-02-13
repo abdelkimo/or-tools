@@ -15,6 +15,7 @@ Utilities
     utilities/debugging
     utilities/serializing
     utilities/visualizing
+    utilities/randomness
 
 ..  raw:: html
     
