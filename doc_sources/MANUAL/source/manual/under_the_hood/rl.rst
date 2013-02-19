@@ -92,7 +92,7 @@ The auxiliary graph
         RoutingModel VRP(9, 4, depots);
         
     The auxiliary graph is obtained by keeping the transit nodes and 
-    adding a starting and ending depot for each vehicle/route like in the following figure:
+    adding a starting and ending depot for each vehicle/route if needed like in the following figure:
     
     ..  image:: images/rl_auxiliary_graph.*
         :align: center

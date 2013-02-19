@@ -327,6 +327,13 @@ Here is an example of a solution for the file :file:`a280.tsp`:
        :width: 170pt
        :align: center
 
+You can also print the node labels with the flag:
+
+..  code-block:: c++
+
+    DEFINE_bool(tsp_epix_labels, false, "Print labels or not?");
+
+
 For your (and our!) convenience, we wrote the small program :program:`tsplib_solution_to_epix`.
 Its implementation is in the file :file:`tsplib_solution_to_epix.cc`. To use it, invoke:
 
