@@ -132,7 +132,6 @@ The files inside this directory are:
     tsp/tsp
     tsp/model_behind_scene
     tsp/model_behind_scene_overview
-    tsp/exact_tsp_implementation
     tsp/first_tsp_implementation
     tsp/two_phases_approaches
     tsp/tsptw
