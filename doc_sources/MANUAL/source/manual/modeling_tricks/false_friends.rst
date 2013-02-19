@@ -25,6 +25,12 @@ False friends and counter-intuitive ideas
 ..  only:: draft
 
 
+``DebugString()`` doesn't give the value of a solution 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+
     to detail
     
 

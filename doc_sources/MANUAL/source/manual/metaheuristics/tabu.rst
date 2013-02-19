@@ -2,8 +2,8 @@
 
 ..  _tabu:
 
-Tabu search 
--------------
+Tabu search (TS)
+------------------
 
 ..  only:: draft
 

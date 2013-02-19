@@ -3,6 +3,7 @@
 The model behind the scene: the main decision variables
 ========================================================
 
+[INTRODUCE THE AUXILIARY GRAPH HERE]
 
 ..  only:: html
 
