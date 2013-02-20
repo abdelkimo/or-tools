@@ -228,13 +228,6 @@ To access the main decision ``IntVar`` variables, we use the ``NextVar(int64)`` 
 Not all ``int64`` indices have a corresponding ``IntVar nexts_`` variable 
 -----------------------------------------------------------------------------
 
-..  only:: draft
-
-    These nine variables correspond to all the nodes in the auxiliary graph leading somewhere, i.e. starting depots 
-    and transit node in the auxiliary graph.
-
-
-
 Only internal nodes that can lead somewhere possess a decision variable. Only the nodes that are visited and the 
 starting depots have a main decision ``IntVar`` variable. There are 9 real nodes in the next figure. They
 have a ``NodeIndex`` ranging from 0 to 8. There are 2 starting depots (1 and 7) and 2 ending depot (5 and 8).
@@ -272,15 +265,14 @@ compiles fine but triggers the feared
 ..  only:: html 
 
     As you can see, there is no internal control on the ``int64`` index you can give to methods. If you want to know more
-    about the way we internally number the indices, have a look at :ref:`uth_next_variables_details`.
+    about the way we internally number the indices, have a look at the sub-section :ref:`uth_next_variables_details`.
 
 ..  raw:: latex 
 
     As you can see, there is no internal control on the \code{int64} index you can give to methods. 
     If you want to know more
     about the way we internally number the indices, have a 
-    look at~\ref{manual/under_the_hood/rl:uth-next-variables-details}.
-
+    look at sub-section~\ref{manual/under_the_hood/rl:uth-next-variables-details}.
 
 To summarize
 -------------------------------------------------------------------------
@@ -302,7 +294,7 @@ Indices to follow routes   ``int64``            Not unique for each node. Could 
 =========================  ===================  ====================================================
 
 Internally, the RL uses ``int64`` indices and duplicates some nodes if needed (the depots). The main decision variables 
-are ``IntVar`` only attached to nodes that lead somewhere. Each variable has the whole range of ``int64`` 
+are ``IntVar`` only attached to internal nodes that lead somewhere. Each variable has the whole range of ``int64`` 
 indices as domain [#domain_main_routing_vr]_.
 
 To follow a route, use ``int64`` indices. If you need to deal with the corresponding nodes, use the 
@@ -322,9 +314,7 @@ and the last node by:
 You can also test if an ``int64`` index is the beginning or the ending of a route with the methods ``bool IsStart(int64)``
 and ``bool IsEnd(int64)``.
 
-..  [#domain_main_routing_vr] The CP solver does an initial propagation to quickly skim 
-                              these domains.
-                                                
+                                               
 In a solution, to get the next ``int64`` index ``next_node`` of a node given by an ``int64`` index ``current_node``,
 use:
 
@@ -332,4 +322,7 @@ use:
 
     int64 next_node = solution->Value(routing.NextVar(current_node));
 
+..  [#domain_main_routing_vr] The CP solver does an initial propagation to quickly skim 
+                              these domains.
+ 
 
