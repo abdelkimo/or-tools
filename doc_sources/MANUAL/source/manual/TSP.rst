@@ -74,7 +74,7 @@ We start this chapter by presenting in broad terms the different categories of R
 the Routing Library (RL) in a nutshell. Next, we introduce the Travelling Salesman Problem (TSP) and the TSPLIB instances.
 To better understand the RL, we say a few words about its inner working and the CP model we use. Because most of the 
 Routing Problems are intractable, we use Local Search. We explain our two phases approach in details and show how
-to model the TSP in a few lines. We also show how to solve the TSP to optimality with the RL. Finally, we model and
+to model the TSP in a few lines. Finally, we model and
 solve the TSP with Time Windows.
 
 ..  rubric:: Prerequisites:
@@ -82,9 +82,9 @@ solve the TSP with Time Windows.
 ..  only:: html
     
     - Basic knowledge of C++.
-    - Basic knowledge of Constraint Programming (see chapter :ref:`chapter_introduction`).
-    - Basic knowledge of the Constraint Programming Solver (see chapter :ref:`chapter_first_steps`).
-    - Basic knowledge of Local Search (see chapter :ref:`chapter_local_search`).
+    - Basic knowledge of Constraint Programming (see the chapter :ref:`chapter_introduction`).
+    - Basic knowledge of the Constraint Programming Solver (see the chapter :ref:`chapter_first_steps`).
+    - Basic knowledge of Local Search (see the chapter :ref:`chapter_local_search`).
 
 
 ..  raw:: latex
@@ -113,7 +113,6 @@ The files inside this directory are:
 - :file:`tsp_minimal.cc`: A minimalist implementation of the TSP with the RL.
 - :file:`tsp.cc`: A basic implementation of the TSP with the RL.
 - :file:`tsp_forbidden_arcs.cc`: The TSP with forbidden connexions between some nodes.
-- :file:`tsp_exact.cc`: A basic exact implementation of the TSP with the RL.
 - :file:`tsptw.h`: This file contains the ``TSPTWData`` class that records the data for the Travelling Salesman Problem with
   Time Windows. This file is used throughout the TSPTW examples.
 - :file:`tsptw_epix.h`: This file provide the helper functions to visualize TSPTW solutions with the ePiX library.

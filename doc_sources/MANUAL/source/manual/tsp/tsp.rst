@@ -3,6 +3,34 @@
 The Travelling Salesman Problem (TSP)
 ======================================
 
+..  raw:: latex
+
+    You can find the code in the file~\code{tsp.h}, \code{tsp\_epix.h} and~\code{tsplib\_solution\_to\_epix.cc} and the data
+    in the files~\code{a280.tsp} and~\code{a280.opt.tour}.\\~\\
+
+..  only:: html
+
+    ..  container:: files-sidebar
+
+        ..  raw:: html 
+        
+            <ol>
+              <li>C++ code:
+                <ol>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsp.h">tsp.h</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsp_epix.h">tsp_epix.h</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsplib_solution_to_epix.cc">tsplib_solution_to_epix.cc</a></li>
+                </ol>
+              </li>
+              <li>Data files:
+                <ol>
+                  <li><a href="../../../tutorials/cplusplus/chap9/a280.tsp">a280.tsp</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/a280.opt.tour">a280.opt.tour</a></li>
+                </ol>
+              </li>
+
+            </ol>
+
 
 The Travelling Salesman Problem (TSP) is probably the most known and studied problem in Operations Research.
 In this section, we briefly [#tsp_examples_abond]_ present this fascinating problem and the 

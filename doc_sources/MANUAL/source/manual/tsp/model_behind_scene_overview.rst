@@ -5,6 +5,8 @@ The model behind the scene: overview
 
 ..  only:: draft
 
+    [TO RE_WRITTEN]
+
     ..  only:: html
 
         In this section, we give an overview of the main basic components of our model. Most of these 
@@ -23,7 +25,7 @@ The ``RoutingModel`` class
 
 ..  only:: draft
 
-    All ingredients are defined or accessible within the ``RoutingModel class`` defined in the header 
+    All ingredients are defined or accessible within the ``RoutingModel`` ``class`` defined in the header 
     :file:`constraint_solver/routing.h` that is mandatory to use the RL.
 
     There are several constructors available.

@@ -84,10 +84,19 @@ The auxiliary graph [#simplified_version_of_auxiliary_graph_section]_
     a TSP with one vehicle. We'll use a VRP with four vehicles/routes.
 
     Let's take the original graph of the next figure:
+
+    ..  only:: html
     
-    ..  image:: images/rl_original_graph.*
-        :align: center
-        :width: 250 px
+        ..  image:: images/rl_original_graph.*
+            :align: center
+            :width: 200 pt
+
+    ..  only:: latex
+    
+        ..  image:: images/rl_original_graph.*
+            :align: center
+            :width: 150 pt
+
 
     There are nine nodes of which two are starting depots (1 and 3), one is an ending 
     depot (7) and one is a starting and ending depot (4). The ``NodeIndex``\es [#nodeindices]_ range from 0 to 8.
@@ -102,9 +111,18 @@ The auxiliary graph [#simplified_version_of_auxiliary_graph_section]_
     The auxiliary graph is obtained by keeping the transit nodes and 
     adding a starting and ending depot for each vehicle/route if needed like in the following figure:
     
-    ..  image:: images/rl_auxiliary_graph.*
-        :align: center
-        :width: 250 px
+    ..  only::  html
+    
+        ..  image:: images/rl_auxiliary_graph.*
+            :align: center
+            :width: 200 pt
+
+    ..  only::  latex
+    
+        ..  image:: images/rl_auxiliary_graph.*
+            :align: center
+            :width: 150 pt
+
     
     Node 1 is not duplicated because there is only one route (route 0) that starts from 1. Node 3
     is duplicated once because there are two routes (routes 1 and 2) that start from 3. Node 7 has been 
@@ -113,9 +131,18 @@ The auxiliary graph [#simplified_version_of_auxiliary_graph_section]_
     
     They way these nodes are numbered doesn't matter for the moment. For our example, this numbering is:
     
-    ..  image:: images/rl_auxiliary_graph_numberred.*
-        :align: center
-        :width: 250 px
+    ..  only:: html
+    
+        ..  image:: images/rl_auxiliary_graph_numberred.*
+            :align: center
+            :width: 200 pt
+
+    ..  only:: latex
+    
+        ..  image:: images/rl_auxiliary_graph_numberred.*
+            :align: center
+            :width: 150 pt
+
     
     Notice that the ``int64`` indices don't depend on a given solution but only on the given graph/network and the depots.
     

@@ -52,3 +52,17 @@ Scripts
 ---------
 
 - Add automatically copyright statements to Python, C# and Java tutorials.
+
+BUGS:
+-----
+
+Pygments:
+^^^^^^^^^
+      ..  code:: c++
+
+          std::string usage("Computes a TSP from random data (given a size) 
+                                           or TPSLIB file (given a file).\n"
+                             "See Google or-tools tutorials\n"
+                             "Sample usage:\n\n");
+                            
+      Parses code as text...

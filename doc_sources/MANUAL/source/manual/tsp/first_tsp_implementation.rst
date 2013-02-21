@@ -3,6 +3,38 @@
 The TSP in or-tools
 ------------------------------------
 
+..  raw:: latex
+
+    You can find the code in the file~\code{tsp.h}, \code{tsp\_epix.h}, \code{tsp\_minimal.cc}, \code{tsp.cc}, 
+    \code{tsplib\_solution\_to\_epix.cc} and~\code{tsp\_forbidden\_arcs.cc} and the data
+    in the files~\code{tsp\_parameters.txt}, \code{a280.tsp} and~\code{a280.opt.tour}.\\~\\
+
+..  only:: html
+
+    ..  container:: files-sidebar
+
+        ..  raw:: html 
+        
+            <ol>
+              <li>C++ code:
+                <ol>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsp.h">tsp.h</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsp_epix.h">tsp_epix.h</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsp_minimal.cc">tsp_minimal.cc</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsp.cc">tsp.cc</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsp_forbidden_arcs.cc">tsp_forbidden_arcs.cc</a></li>
+                </ol>
+              </li>
+              <li>Data files:
+                <ol>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsp_parameters.txt">tsp_parameters.txt</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/a280.tsp">a280.tsp</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/a280.opt.tour">a280.opt.tour</a></li>
+                </ol>
+              </li>
+
+            </ol>
+
 ..  only:: draft 
 
     The RL is particularly well-suited to model a TSP. We start with a minimalistic implementation to show that a basic TSP 
@@ -250,7 +282,6 @@ Command line parameters read from a file
         44
         -1
 
-
 The main function 
 """""""""""""""""""
 
@@ -261,10 +292,7 @@ The main function
     ..  code-block:: c++
     
         int main(int argc, char **argv) {
-          std::string usage("Computes a TSP from random data (given a size) 
-                                           or TPSLIB file (given a file).\n"
-                             "See Google or-tools tutorials\n"
-                             "Sample usage:\n\n");
+          std::string usage("...");
           usage += argv[0];
           usage += " -tsp_size=<size>\n\n";
           usage += argv[0];
@@ -272,7 +300,6 @@ The main function
 
           google::SetUsageMessage(usage);
           google::ParseCommandLineFlags(&argc, &argv, true);
-
 
           operations_research::TSPData tsp_data;
           
@@ -288,7 +315,7 @@ The main function
           operations_research::TSP(tsp_data);
 
           return 0;
-        }  //  main
+        }
 
 
     We start by writing the ``usage message`` the user will see if she doesn't know what to do.
