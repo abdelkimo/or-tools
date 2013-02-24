@@ -135,14 +135,11 @@ basics. Refer to the TSPLIB95 document for more. The complete TSPLIB collection 
 to optimality with the `Concorde code <http://www.tsp.gatech.edu/concorde/index.html>`_ in 2005-2006.
 
 The convention in the TSPLIB is to number the nodes starting at 1. We'll adopt this convention here 
-[#fallback_starting_at_0]_ too.
+too.
 The Routing Library (RL) on the contrary starts numbering its nodes at 0. 
 
 
-..  [#fallback_starting_at_0] We have defined the ``bool`` gflags ``start_counting_at_1``. Be default, it is ``true``.
-    When ``false``, we number the nodes starting from 0.
-
-..  warning:: Nodes are numbered from 1 to n in the TSPLIB.
+..  warning:: Nodes are numbered from 1 to n in the TSPLIB and we keep this convention in this chapter.
 
 The instance file
 """"""""""""""""""""

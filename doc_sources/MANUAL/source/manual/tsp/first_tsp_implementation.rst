@@ -184,13 +184,12 @@ Parameters
         :math:`~\\`                ``tsp_use_symmetric_distances``    Generate a symmetric TSP instance or not?                ``true``
         :math:`~\\`                ``tsp_min_distance``               Minimum allowed distance between two nodes.              ``10``
         :math:`~\\`                ``tsp_max_distance``               Maximum allowed distance between two nodes.              ``100`` 
-        :file:`tsplib.h`           ``tsp_start_counting_at_1``        TSPLIB convention: first node is 1 (not 0).              ``true``
         :file:`tsp_epix.h`         ``tsp_epix_width``                 Width of the pictures in cm.                             ``10``
         :math:`~\\`                ``tsp_epix_height``                Height  of the pictures in cm.                           ``10``
         :math:`~\\`                ``tsp_epix_labels``                Print labels or not?                                     ``false``
         :file:`tsp.cc`             ``tsp_size``                       Size of TSP instance. If ``0``, must be read from        ``0``
                                                                       a ``TSPLIB`` file.  
-        :math:`~\\`                ``tsp_depot``                      The starting node of the tour.                           ``0``
+        :math:`~\\`                ``tsp_depot``                      The starting node of the tour.                           ``1``
         :math:`~\\`                ``tsp_data_file``                  Input file with TSPLIB data.                             empty string
         :math:`~\\`                ``tsp_distance_matrix_file``       Output file with distance matrix.                        empty string
         :math:`~\\`                ``tsp_width_size``                 Width size of fields in output files.                    ``6``
@@ -216,13 +215,11 @@ Parameters
                         &  \code{min\_distance}               & Minimum allowed distance between two nodes. & \code{10}\\
                         &  \code{max\_distance}               & Maximum allowed distance between two nodes. & \code{100}\\
           \hline
-          \code{tsplib.h} & \code{start\_counting\_at\_1}     & \code{TSPLIB} convention: first node is 1 (not 0). & \code{true}\\
-          \hline
           \code{tsp\_epix.h} & \code{epix\_width}             & Width of the pictures in cm.                & \code{10}\\
                         &  \code{epix\_height}                & Height  of the pictures in cm.              & \code{10}\\
           \hline
           \code{tsp.cc} &  \code{tsp\_size}                   & Size of TSP instance. If \code{0}, must be read from a \code{TSPLIB} file.& \code{0}\\
-                        &  \code{tsp\_depot}                  & The starting node of the tour.              & \code{0}\\
+                        &  \code{tsp\_depot}                  & The starting node of the tour.              & \code{1}\\
                         &  \code{tsp\_data\_file}             & Input file with \code{TSPLIB} data.         & empty string\\
                         &  \code{tsp\_distance\_matrix\_file} & Output file with distance matrix.           & empty string\\
                         &  \code{tsp\_width\_size}            & Width size of fields in output files.       & \code{6}\\
@@ -256,7 +253,6 @@ Command line parameters read from a file
         --max_distance=748
         --tsp_initial_heuristic=PathCheapestArc
         --tsp_size=101
-        --start_counting_at_1=false
         --tsp_solution_file=tsp_sol.txt
 
     You provide this file with the ``flagfile`` flag:
@@ -416,6 +412,29 @@ The ``TSP()`` function
 
 How to avoid some edges?
 ^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    The classical way to deal with forbidden arcs between two cities when an algorithm expect a complete graph as input
+    is to give a big value :math:`M` to these arcs. Likewise, arcs with such a big distance will never be 
+    chosen [#tsp_big_m_arcs]_. :math:`M` can be considered as infinity.
+
+    In Constraint Programming, we can deal with forbidden arcs more elegantly: we simply remove the forbidden values from
+    the variable domains. We'll use both techniques and compare them. First, we have to define :math:`M`. We suppose 
+    that :math:`M >>> \operatorname{max}(d(x,y): x,y \in \, \text{cities})` [#M_definition_explanation]_ and we take 
+    the biggest allowed value ``kint64max``.
+    
+
+    ..  [#tsp_big_m_arcs] Actually, when permitted, an arc :math:`(i,j)` with a distance :math:`M` is often replaced by a 
+        shortest path :math:`i \rightarrow j` and its value is the length of the shortest path between :math:`i`
+        and :math:`j`. One back draw is that you have to keep in memory 
+        the shortest paths used (or recompute them) but it is often much better than to use the :math:`M` value.
+
+    ..  [#M_definition_explanation] Loosely speaking, the 
+        expression :math:`M >>> \operatorname{max}(d(x,y): x,y \in \, \text{cities})` means that :math:`M` is 
+        much much bigger that the biggest distance between two cities.
+
+    
 
 ..  only:: final
 
