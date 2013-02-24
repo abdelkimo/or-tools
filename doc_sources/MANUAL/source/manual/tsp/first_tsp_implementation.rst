@@ -434,6 +434,27 @@ How to avoid some edges?
         expression :math:`M >>> \operatorname{max}(d(x,y): x,y \in \, \text{cities})` means that :math:`M` is 
         much much bigger that the biggest distance between two cities.
 
+    We have implemented the ``RandomForbidArcs()`` method in the ``TSPData`` class to randomly forbid a percentage 
+    of arcs:
+    
+    ..  code-block:: c++
+    
+        void RandomForbidArcs(const double percentage_forbidden_arcs);
+        
+    This method alters the existing distance matrix and replaces the distance of forbidden arcs by the flag ``M``:
+    
+    ..  code-block:: c++
+    
+        DEFINE_int64(M, kint64max, "Big m value to represent infinity");
+        
+    We have also defined a flag to switch between the two techniques and a flag for the percentage of 
+    arcs to forbid randomly in the file :file:`tsp_forbidden_arcs.cc`:
+    
+    ..  code-block:: c++
+    
+        DEFINE_bool(use_M, false, "Use big m or not?");
+        DEFINE_double(percentage_forbidden_arcs, 0.2, 
+                                            "Percentage of forbidden arcs");
     
 
 ..  only:: final
