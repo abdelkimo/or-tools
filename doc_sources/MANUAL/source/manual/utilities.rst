@@ -2,6 +2,8 @@
     
     \part{Technicalities}
 
+..  _chapter_utilities:
+
 Utilities
 =========
 

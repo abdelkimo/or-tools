@@ -1,3 +1,5 @@
+..  _chapter_modeling_tricks:
+
 Modeling tricks
 ===============
 

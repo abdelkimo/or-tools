@@ -3,6 +3,7 @@
 * Minor enhancements to the manual:
   - 5.8 added, corrected and published except the most (?) interesting part:
     the results!
+  - 9.6 added (without the results).
 * Major enhancements to the manual:
 
   

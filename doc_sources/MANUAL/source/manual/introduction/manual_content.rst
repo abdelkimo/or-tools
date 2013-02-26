@@ -64,6 +64,11 @@ Part II: Customization
     Chapter 6: :ref:`chapter_local_search`:
       balbalb
 
+    Chapter 7: :ref:`chapter_metaheuristics`:
+      balbalb
+
+    Chapter 8: :ref:`chapter_custom_constraints`:
+      balbalb
 
 
 Part III: Routing
@@ -71,20 +76,36 @@ Part III: Routing
 
 ..  only:: draft
 
-    Chapter 8: :ref:`chapter_tsp_with_constraints`:
+    Chapter 9: :ref:`chapter_tsp_with_constraints`:
       balbalb
 
-    Chapter 9: :ref:`chapter_vrp_with_constraints`:
+    Chapter 10: :ref:`chapter_vrp_with_constraints`:
       balbalb
 
-    Chapter 10: :ref:`chapter_arc_routing_with_constraints`:
+    Chapter 11: :ref:`chapter_arc_routing_with_constraints`:
       balbalb
 
 Part IV: Technicalities
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
+..  only:: draft
+
+    Chapter 12: :ref:`chapter_utilities`:
+      balbalb
+
+    Chapter 13: :ref:`chapter_modeling_tricks`:
+      balbalb
+
+    Chapter 14: :ref:`chapter_under_the_hood`:
+      balbalb
+
+
 Appendices
 ^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    In this last part of the manual, you'll find 
 
 ..  raw:: html
     

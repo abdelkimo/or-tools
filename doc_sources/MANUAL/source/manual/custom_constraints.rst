@@ -1,4 +1,4 @@
-..  _custom_constraints:
+..  _chapter_custom_constraints:
 
 Custom constraints: the *alldifferent_except_0* constraint 
 ============================================================
