@@ -416,7 +416,7 @@ How to avoid some edges?
 ..  only:: draft
 
     The classical way to deal with forbidden arcs between two cities when an algorithm expect a complete graph as input
-    is to give a big value :math:`M` to these arcs. Likewise, arcs with such a big distance will never be 
+    is to give a big value :math:`M` on these arcs. Likewise, arcs with such a big distance will never be 
     chosen [#tsp_big_m_arcs]_. :math:`M` can be considered as infinity.
 
     In Constraint Programming, we can deal with forbidden arcs more elegantly: we simply remove the forbidden values from
@@ -434,12 +434,12 @@ How to avoid some edges?
         expression :math:`M >>> \operatorname{max}(d(x,y): x,y \in \, \text{cities})` means that :math:`M` is 
         much much bigger that the biggest distance between two cities.
 
-    We have implemented the ``RandomForbidArcs()`` method in the ``TSPData`` class to randomly forbid a percentage 
+    We have implemented a ``RandomForbidArcs()`` method in the ``TSPData`` class to randomly forbid a percentage 
     of arcs:
     
     ..  code-block:: c++
     
-        void RandomForbidArcs(const double percentage_forbidden_arcs);
+        void RandomForbidArcs(const int percentage_forbidden_arcs);
         
     This method alters the existing distance matrix and replaces the distance of forbidden arcs by the flag ``M``:
     
@@ -453,10 +453,59 @@ How to avoid some edges?
     ..  code-block:: c++
     
         DEFINE_bool(use_M, false, "Use big m or not?");
-        DEFINE_double(percentage_forbidden_arcs, 0.2, 
+        DEFINE_int32(percentage_forbidden_arcs, 20, 
                                             "Percentage of forbidden arcs");
     
+    The code in ``RandomForbidArcs()`` simply computes the number of arcs to forbid and *uniformly* tries to 
+    forbid arcs one after the other:
+    
+    ..  code-block:: c++
+    
+        void RandomForbidArcs(const int percentage_forbidden_arcs)  {
+          CHECK_GT(size_, 0) << "Instance non initialized yet!";
 
+          //  Compute number of forbidden arcs
+          CHECK_GE(percentage_forbidden_arcs, 0) 
+                             << "Percentage of forbidden arcs must be >= 0";
+          double percentage = percentage_forbidden_arcs;
+          if (percentage > FLAGS_percentage_forbidden_arcs_max) {
+            percentage = FLAGS_percentage_forbidden_arcs_max;
+            LG << "Percentage set to " 
+                           << FLAGS_percentage_forbidden_arcs_max 
+                           << " to avoid infinite loop with random numbers";
+          }
+          percentage /= 100;
+      
+          //  Don't count the principal diagonal
+          const int64 total_number_of_arcs = size_ * (size_ - 1) - size_;
+          const int64 number_of_forbidden_arcs = 
+                                  (int64) total_number_of_arcs * percentage;
+          LG << "Forbid randomly " << number_of_forbidden_arcs 
+                         << " arcs on " << total_number_of_arcs << " arcs.";
+          int64 number_forbidden_arcs_added = 0;
+        
+          while (number_forbidden_arcs_added < number_of_forbidden_arcs) {
+            const int64 from = randomizer_.Uniform(size_ - 1);
+            const int64 to = randomizer_.Uniform(size_ - 1) + 1;
+            if (from == to) {continue;}
+            if (matrix_[MatrixIndex(from, to)] > FLAGS_M) {
+              matrix_[MatrixIndex(from, to)] = FLAGS_M;
+              VLOG(1) << "Arc (" << from << "," << to 
+                                          << ") has a bigger value than M!";
+              ++number_forbidden_arcs_added;
+              continue;
+          }
+          
+          if (matrix_[MatrixIndex(from, to)] != FLAGS_M) {
+            matrix_[MatrixIndex(from, to)] = FLAGS_M;
+            ++number_forbidden_arcs_added;
+          }
+        }  //  while(number_forbidden_arcs_added < number_of_forbidden_arcs)
+      }
+      
+      
+    Because our 
+    
 ..  only:: final
 
     ..  raw:: html

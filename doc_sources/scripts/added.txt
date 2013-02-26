@@ -1,0 +1,5 @@
+user_manual/manual/metaheuristics/jobshop_lns.html
+user_manual/manual/utilities/randomness.html
+user_manual/_images/rl_auxiliary_graph.png
+user_manual/_images/rl_auxiliary_graph_numberred.png
+user_manual/_images/rl_original_graph.png

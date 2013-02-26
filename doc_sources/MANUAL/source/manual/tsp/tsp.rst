@@ -84,17 +84,19 @@ has to be visited inside a given time interval.
         
     ..  only:: html
         
-        Worse, if you want to avoid certain connections between two nodes :math:`i` and :math:`j` in a complete graph, 
-        the classical way to achieve this is to set a very high cost/weight to the edge :math:`(i,j)`. In the RL, you just
-        remove :math:`i` from the domain of the variable ``NextVar(j)`` of :math:`j` and vice-versa. See the subection 
+        Worse, if you want to avoid certain arcs between nodes in a complete graph, 
+        the classical way to achieve this is to set a very high cost/weight to the arcs to avoid. In the RL,
+        if you want to avoid arc :math:`(i,j)`,  you just
+        remove :math:`j` from the domain of the variable ``NextVar(i)`` of :math:`i`. See the subection 
         :ref:`tsp_avoid_some_edges` for a detailed
         example.
 
     ..  raw:: latex
         
-        Worse, if you want to avoid certain connections between two nodes $i$ and $j$ in a complete graph, 
-        the classical way to achieve this is to set a very high cost/weight to the edge $(i,j)$. In the RL, you just
-        remove $i$ from the domain of the variable $\text{NextVar}(j)$ of $j$ and vice-versa. 
+        Worse, if you want to avoid certain arcs between nodes in a complete graph, 
+        the classical way to achieve this is to set a very high cost/weight to the arcs to avoid. In the RL, 
+        if you want to avoid arc~$(i,j)$, you just
+        remove $j$ from the domain of the variable $\text{NextVar}(i)$ of $i$. 
         See subection~\ref{manual/tsp/first_tsp_implementation:tsp-avoid-some-edges} for a detailed
         example.
 
@@ -179,13 +181,13 @@ of three numbers:
 
   ``Node_id``   ``x``   ``y``
 
-``Node_id`` is a unique *integer* node identifier and ``(x,y)`` are Cartesian coordinates unless 
+``Node_id`` is a unique *integer* (:math:`\geqslant 1`) node identifier and ``(x,y)`` are Cartesian coordinates unless 
 otherwise stated. The coordinates don't have to be integers and can be any real numbers.
 
 Not all instances have node coordinates.
 
 There exist several other less obvious TSPLIB formats but we disregard them in this manual (graphs can be given
-by different types of explicit matrices or by edge lists for example). Not however that we take them into account in the 
+by different types of explicit matrices or by edge lists for example). Note however that we take them into account in the 
 code.
 
 You might wonder how the depot is given. It is nowhere written where to start a tour. This is normal because the 
@@ -208,7 +210,7 @@ This is what the file :file:`a280.opt.tour` containing an optimal tour looks lik
 
 ..  code-block:: text
 
-    NAME : ./TSPLIB/a280.tsp.optbc.tour
+    NAME : ./TSPLIB/a280.tsp.opt.tour
     TYPE : TOUR
     DIMENSION : 280
     TOUR_SECTION
@@ -280,7 +282,7 @@ If during the parse phase an unknown keyword is encountered, the method exists a
    
     Unknown keyword: UNKNOWN
         
-This method has been tested with all the files of the ``TSPLIB`` and should hopefully read any correct ``TSPLIB`` format
+This method has been tested with almost all the files of the ``TSPLIB`` and should hopefully read any correct ``TSPLIB`` format
 for the TSP.
 
 

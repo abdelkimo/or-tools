@@ -59,7 +59,7 @@ the *Travelling Salesman Problem* (TSP) [#tsp_two_l]_.
 ..  [#tsp_two_l] We use the Canadian (and British, and South African, and...) spelling of the verb *travelling* but you'll find much more 
     scientific articles under the American spelling: *traveling*.
 
-We use the excellent ``C++`` [#epix_latex]_ `ePiX library <http://mathcs.holycross.edu/~ahwang/current/ePiX.html>`_ 
+We use the excellent ``C++`` `ePiX library <http://mathcs.holycross.edu/~ahwang/current/ePiX.html>`_ [#epix_latex]_
 to visualize TSP solutions in *TSPLIB* format and TSPTW solutions in *López-Ibáñez-Blum* and *da Silva-Urrutia* formats.
 
 ..  [#epix_latex] The ePiX library uses the :math:`\text{\TeX/\LaTeX}` engine to create beautiful graphics.
@@ -112,7 +112,7 @@ The files inside this directory are:
 - :file:`tsplib_solution_to_epix.cc`: A simple program to visualize solutions in TSPLIB format with the ePiX library.
 - :file:`tsp_minimal.cc`: A minimalist implementation of the TSP with the RL.
 - :file:`tsp.cc`: A basic implementation of the TSP with the RL.
-- :file:`tsp_forbidden_arcs.cc`: The TSP with forbidden connexions between some nodes.
+- :file:`tsp_forbidden_arcs.cc`: The TSP with forbidden arcs between some nodes.
 - :file:`tsptw.h`: This file contains the ``TSPTWData`` class that records the data for the Travelling Salesman Problem with
   Time Windows. This file is used throughout the TSPTW examples.
 - :file:`tsptw_epix.h`: This file provide the helper functions to visualize TSPTW solutions with the ePiX library.

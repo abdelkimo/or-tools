@@ -37,7 +37,7 @@ as:
 
 
 ..  [#daunting_section_zoo_routing_problems] You can stop reading now if you want: this section involves neither 
-    Constraint Programming nor the or-tools library.
+    Constraint Programming nor the *or-tools* library.
 
 ..  [#taxonomy_RP] From time to time, an article is published to propose a good classification but none has 
     been adopted by the community so far. See [Eksioglu2009]_ for instance.
@@ -147,11 +147,11 @@ Informal definition:
 
 Vehicle Routing Problems (VRPs) are concerned 
 with a fleet of (maybe heterogeneous) vehicles. The number of vehicles can be 
-fixed in advance or be one of a variable of the problem. 
+fixed in advance or be a variable of the problem. 
 Generally, a vehicle has a certain capacity (number of people, number 
 of tons of goods, etc.) and must respect some "time"-constraints (like the total duration of a route, time windows to 
 serve clients, etc.). Clients are usually modelled by nodes and to solve a VRP, one seeks to find
-several routes (1 per vehicle) that visit all clients and respect all given constraints!
+several routes (1 per vehicle) that visit all clients and respect all given constraints.
 
 
 Some problems
@@ -199,7 +199,7 @@ Some problems
 * The Rural Postman Problem 
 * The Cumulative Chinese Postman Problem 
 * The Route Inspection Problem 
-* The Capacitated Arc Routing Problems
+* The Capacitated Arc Routing Problem
 * ...
 
 Authoritative source:

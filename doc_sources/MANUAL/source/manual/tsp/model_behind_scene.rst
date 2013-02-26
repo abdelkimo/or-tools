@@ -5,37 +5,35 @@ The model behind the scene: the main decision variables
 
 ..  only:: html
 
-    We describe the main decision variables of the model used in the RL.
+    We present the main decision variables of the model used in the RL.
     In the section :ref:`hood_rl` of the chapter :ref:`chapter_under_the_hood`, 
     we describe the inner mechanisms of the RL in details.
 
 ..  raw:: latex
 
-    We describe the main decision variables of the model used in the RL.
+    We present the main decision variables of the model used in the RL.
     In section~\ref{manual/under_the_hood/rl:hood-rl}, we describe the inner mechanisms of the RL in details.
 
-..  only:: draft
-
-    A Routing Problem is defined on a graph (or a network). This graph has nodes and these nodes have unique ``NodeIndex`` identifiers.
-    Internally, we use an auxiliary graph to model the Routing Problem. In RL jargon, the identifiers of the nodes of this 
-    auxiliary graph are called ``int64`` *indices*. Be careful not to mix them up. To distinguish one from the other, we use 
-    two non-compatible types: ``NodeIndex`` and ``int64``.
+A Routing Problem is defined on a graph (or a network). The nodes of the graph have unique ``NodeIndex`` identifiers.
+Internally, we use an auxiliary graph to model the Routing Problem. In RL jargon, the identifiers of the nodes of this 
+auxiliary graph are called ``int64`` *indices*. Be careful not to mix them up. To distinguish one from the other, we use 
+two non-compatible types: ``NodeIndex`` and ``int64``.
     
     
-An original node can be:
+A node of the original graph can be:
 
   - a transit node;
   - a starting depot;
   - an ending depot;
   - a starting and an ending depot.
   
-A depot **cannot** be an transit node and a transit node can only be visited by **one** vehicle in a solution.
+A depot **cannot** be an transit node and a transit node can only be visited by at most **one** vehicle in a solution.
 The number of vehicles can be arbitrary (within the limit of an ``int``).
 
 The main idea: the node decision variables
 --------------------------------------------------------------------
 
-The model is node based: routes are paths linking nodes. For each node [#nodes_that_lead_somwhere]_, 
+The model is node based: routes are paths linking nodes. For almost each node [#nodes_that_lead_somwhere]_, 
 we keep an ``IntVar*`` variable 
 (stored internally in a ``private`` ``std::vector<IntVar*> nexts_``) that
 tells us where to go next (i.e. to which node). To access these variables, use the ``NextVar()`` method
@@ -49,10 +47,8 @@ we deal with this situation by *duplicating* this depot and give each node its o
 in the ``std::vector<IntVar*> nexts_``.
 
 
-..  only:: draft
-
-    Internally, we use ``int64`` indices to label the nodes and their duplicates. These ``int64``  indices are the identifiers
-    of the nodes of an auxiliary graph we present in the next sub-section. 
+Internally, we use ``int64`` indices to label the nodes and their duplicates. These ``int64``  indices are the identifiers
+of the nodes of an auxiliary graph we present in the next sub-section. 
     
 The domains of the ``IntVar`` ``nexts_`` variables consist of these ``int64`` indices. 
 Let's say we have a solution ``solution`` and a ``RoutingModel`` object ``routing``. In the following code:
@@ -62,8 +58,8 @@ Let's say we have a solution ``solution`` and a ``RoutingModel`` object ``routin
     int64 current_node = ...
     int64 next_node_index = solution.Value(routing.NextVar(current_node));
 
-``next_node_index`` is the ``int64`` index of the node following immediately the node represented by the ``int64``
-index ``current_node`` in the ``Assignment`` ``solution``.
+``next_node_index`` is the ``int64`` index of the node following immediately the ``int64`` ``current_node`` 
+in the ``Assignment`` ``solution``.
 
 Before we present the main decision variables of our model,
 we need to understand the difference between ``NodeIndex`` node identifiers and ``int64`` indices representing 
@@ -78,88 +74,84 @@ nodes in solutions.
 The auxiliary graph [#simplified_version_of_auxiliary_graph_section]_ 
 ---------------------------------------------------------------------------
 
-..  only:: draft
+To understand how the auxiliary graph is constructed, we need to consider a more general Routing Problem than just 
+a TSP with one vehicle. We'll use a VRP with four vehicles/routes.
 
-    To understand how the auxiliary graph is constructed, we need to consider a more general Routing Problem than just 
-    a TSP with one vehicle. We'll use a VRP with four vehicles/routes.
+Let's take the original graph of the next figure:
 
-    Let's take the original graph of the next figure:
-
-    ..  only:: html
+..  only:: html
     
-        ..  image:: images/rl_original_graph.*
-            :align: center
-            :width: 200 pt
+    ..  image:: images/rl_original_graph.*
+        :align: center
+        :width: 200 pt
 
-    ..  only:: latex
+..  only:: latex
     
-        ..  image:: images/rl_original_graph.*
-            :align: center
-            :width: 150 pt
+    ..  image:: images/rl_original_graph.*
+        :align: center
+        :width: 150 pt
 
 
-    There are nine nodes of which two are starting depots (1 and 3), one is an ending 
-    depot (7) and one is a starting and ending depot (4). The ``NodeIndex``\es [#nodeindices]_ range from 0 to 8.
+There are nine nodes of which two are starting depots (1 and 3), one is an ending 
+depot (7) and one is a starting and ending depot (4). The ``NodeIndex``\es [#nodeindices]_ range from 0 to 8.
 
-    In this example, we take four vehicles/routes:
+In this example, we take four vehicles/routes:
     
-    * route 0: starts at 1 and ends at 4
-    * route 1: starts at 3 and ends at 4
-    * route 2: starts at 3 and ends at 7
-    * route 3: starts at 4 and ends at 7
+* route 0: starts at 1 and ends at 4
+* route 1: starts at 3 and ends at 4
+* route 2: starts at 3 and ends at 7
+* route 3: starts at 4 and ends at 7
     
-    The auxiliary graph is obtained by keeping the transit nodes and 
-    adding a starting and ending depot for each vehicle/route if needed like in the following figure:
+The auxiliary graph is obtained by keeping the transit nodes and 
+adding a starting and ending depot for each vehicle/route if needed like in the following figure:
     
-    ..  only::  html
-    
-        ..  image:: images/rl_auxiliary_graph.*
-            :align: center
-            :width: 200 pt
+..  only::  html
+   
+    ..  image:: images/rl_auxiliary_graph.*
+        :align: center
+        :width: 200 pt
 
-    ..  only::  latex
+..  only::  latex
     
-        ..  image:: images/rl_auxiliary_graph.*
-            :align: center
-            :width: 150 pt
-
-    
-    Node 1 is not duplicated because there is only one route (route 0) that starts from 1. Node 3
-    is duplicated once because there are two routes (routes 1 and 2) that start from 3. Node 7 has been 
-    duplicated once because two routes (routes 2 and 3) end at 7 and finally there are two added copies 
-    of node 4 because two routes (routes 0 and 4) end at 4 and one route (route 3) starts from 4.
-    
-    They way these nodes are numbered doesn't matter for the moment. For our example, this numbering is:
-    
-    ..  only:: html
-    
-        ..  image:: images/rl_auxiliary_graph_numberred.*
-            :align: center
-            :width: 200 pt
-
-    ..  only:: latex
-    
-        ..  image:: images/rl_auxiliary_graph_numberred.*
-            :align: center
-            :width: 150 pt
+    ..  image:: images/rl_auxiliary_graph.*
+        :align: center
+        :width: 150 pt
 
     
-    Notice that the ``int64`` indices don't depend on a given solution but only on the given graph/network and the depots.
+Node 1 is not duplicated because there is only one route (route 0) that starts from 1. Node 3
+is duplicated once because there are two routes (routes 1 and 2) that start from 3. Node 7 has been 
+duplicated once because two routes (routes 2 and 3) end at 7 and finally there are two added copies 
+of node 4 because two routes (routes 0 and 1) end at 4 and one route (route 3) starts from 4.
     
-    ..  [#simplified_version_of_auxiliary_graph_section] This sub-section is a simplified version of the section 
-        :ref:`auxiliary_graph_detailed`.
+The way these nodes are numbered doesn't matter for the moment. For our example, the next figure shows this numbering:
+    
+..  only:: html
+    
+    ..  image:: images/rl_auxiliary_graph_numberred.*
+        :align: center
+        :width: 200 pt
+
+..  only:: latex
+    
+    ..  image:: images/rl_auxiliary_graph_numberred.*
+        :align: center
+        :width: 150 pt
+
+    
+Note that the ``int64`` indices don't depend on a given solution but only on the given graph/network and the depots.
+    
+..  [#simplified_version_of_auxiliary_graph_section] This sub-section is a simplified version of the section 
+    :ref:`auxiliary_graph_detailed` from the chapter :ref:`chapter_under_the_hood`.
 
 ..  [#nodeindices] We should rather say *NodeIndices* but we pluralize the type name ``NodeIndex``. Note also
                    that the ``NodeIndex`` type lies inside the ``RoutingModel`` class, so we should rather use 
                    ``RoutingModel::NodeIndex``.
 
-..  only:: draft
+..  topic:: What is an auxiliary graph?
 
-    ..  topic:: What is an auxiliary graph?
-
-        The auxiliary graph is a graph constructed from the original graph. It helps to model a problem. In our case, 
-        the auxiliary graph allows us to model different routes. We'll meet other auxiliary graphs in the chapter 
-        :ref:`chapter_arc_routing_with_constraints`.
+    The auxiliary graph is a graph constructed from the original graph. It helps to model a problem. In our case, 
+    the auxiliary graph allows us to model different routes. We'll meet other auxiliary graphs in the chapter 
+    :ref:`chapter_arc_routing_with_constraints`.
 
 
 
@@ -203,6 +195,8 @@ They are quicker and safer than a ``static_cast`` and ... give the correct resul
 
 ..  warning:: Try to avoid ``RoutingModel::NodeIndex::value()`` unless really necessary.
 
+..  warning:: ``NodeIndex``\es and ``int64``\s don't necessarily coincide!
+
 How can you find the ``int64`` index of a depot? You shouldn't use the method ``NodeToIndex()`` to 
 determine the ``int64`` index 
 of a starting or ending node in a route. Use instead
@@ -229,7 +223,6 @@ Once you have a solution, you can query it and follow its routes using the ``int
 ..  code-block:: c++
     
     RoutingModel routing(10000, 78); // 10000 nodes, 78 vehicles/routes
-                                     // Don't do this at home!
     ...
     const Assignment* solution = routing.Solve();
     ...
@@ -256,7 +249,7 @@ Not all ``int64`` indices have a corresponding ``IntVar nexts_`` variable
 -----------------------------------------------------------------------------
 
 Only internal nodes that can lead somewhere possess a decision variable. Only the nodes that are visited and the 
-starting depots have a main decision ``IntVar`` variable. There are 9 real nodes in the next figure. They
+starting depots have a main decision ``IntVar`` variable. There are 9 original nodes in the next figure. They
 have a ``NodeIndex`` ranging from 0 to 8. There are 2 starting depots (1 and 7) and 2 ending depot (5 and 8).
 Route 0 starts at 1 and ends at 5 while route 1 starts at 7 and ends at 8.
 
@@ -301,6 +294,10 @@ compiles fine but triggers the feared
     about the way we internally number the indices, have a 
     look at sub-section~\ref{manual/under_the_hood/rl:uth-next-variables-details}.
 
+Notice also that the internal ``int64`` index of the node with ``NodeIndex`` 6 is... 5 and the ``int64`` index of the 
+node with ``NodeIndex`` 7 is...6!
+
+
 To summarize
 -------------------------------------------------------------------------
 
@@ -311,14 +308,14 @@ Here is a little summary:
 
 ..  tabularcolumns:: |p{3cm}|p{3cm}| p{8cm}|
 
-=========================  ===================  ====================================================
+=========================  ===================  ====================================================================
 What                       Types                Comments
-=========================  ===================  ====================================================
-True node *Ids*            ``NodeIndex``        Unique for each node from :math:`0` to :math:`n-1`.
-Indices to follow routes   ``int64``            Not unique for each node. Could be bigger than
+=========================  ===================  ====================================================================
+True node *Ids*            ``NodeIndex``        Unique for each original node from :math:`0` to :math:`n-1`.
+Indices to follow routes   ``int64``            Not unique for each original node. Could be bigger than
                                                 :math:`n-1` for the starting or ending node of a 
                                                 route.
-=========================  ===================  ====================================================
+=========================  ===================  ====================================================================
 
 Internally, the RL uses ``int64`` indices and duplicates some nodes if needed (the depots). The main decision variables 
 are ``IntVar`` only attached to internal nodes that lead somewhere. Each variable has the whole range of ``int64`` 

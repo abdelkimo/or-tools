@@ -72,9 +72,9 @@ Local Search
 ^^^^^^^^^^^^^^
 
 
-We are mainly using CP-based local search and large
-neighborhood search using routing-specific neighborhoods.
-Implementations of Tabu Search and Guided Local Search are available
+We are mainly using CP-based Local Search and Large
+Neighborhood Search using routing-specific neighborhoods.
+Implementations of Tabu Search (TS), Simulated Annealing (SA) and Guided Local Search (GLS) are available
 too and have proven to give good results (especially GLS).
 
 Tuning the search
@@ -88,7 +88,7 @@ and limit the allowed solving time to 3 minutes:
 
 ..  code-block:: bash
 
-    ./my_beautiful_routing_algorithm --routing_no_tsp=false 
+    ./my_beautiful_routing_algorithm --routing_tabu_search=true 
                                              --routing_time_limit=180000
     
 To get the whole list of gflags defined in the RL:
@@ -101,8 +101,7 @@ To get the whole list of gflags defined in the RL:
 
 ..  index:: SetCommandLineOption()
 
-gflags are not universally available in all programming languages. 
-This is why the RL provides the handy ``SetCommandLineOption()`` method:
+The RL provides the handy ``SetCommandLineOption()`` method:
 
 ..  code-block:: c++
 
