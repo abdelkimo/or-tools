@@ -1,9 +1,8 @@
 # Milestone:
 # Current changes.
 * Minor enhancements to the manual:
-  - 7.2 added.
-  - 9.4 rewritten and corrected.
-  - 9 Intro, 9.1, 9.2, 9.2 and 9.4 reviewed.
+  - 5.8 added, corrected and published except the most (?) interesting part:
+    the results!
 * Major enhancements to the manual:
-  - chapter structure frozen.
+
   

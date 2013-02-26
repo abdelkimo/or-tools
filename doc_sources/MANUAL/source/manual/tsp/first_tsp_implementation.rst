@@ -504,7 +504,17 @@ How to avoid some edges?
       }
       
       
-    Because our 
+    Because our random number generator (as most random number generators) is not completely random and uniform, we need
+    to be sure to exit the ``while`` loop. This is why we introduce the gflag:
+    
+    ..  code-block:: c++
+    
+        DEFINE_int32(percentage_forbidden_arcs_max, 94, 
+                                    "Maximum percentage of arcs to forbid");
+    
+    We bound the percentage of forbidden arcs to 94% by default.
+    
+    [TO BE COMPLETED]
     
 ..  only:: final
 
