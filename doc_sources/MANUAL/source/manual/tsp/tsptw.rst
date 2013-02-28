@@ -3,10 +3,34 @@
 The Travelling Salesman Problem with Time Windows (TSPTW)
 =========================================================
 
+..  only:: draft
 
+    The Travelling Salesman Problem with Time Windows is like the TSP except that cities (or clients)
+    must be visited within a given time window. This added time constraint - 
+    despite restricting the search tree [#TSPTW_tree_smaller_than_TSP_tree]_ - renders 
+    the problem even more difficult in practice! Indeed, the beautiful symmetry of the 
+    TSP [#TSPTW_depot_is_important]_ (any permutation 
+    of cities is a feasible solution) is broken and the search of feasible solutions is 
+    difficult [Savelsbergh1985]_.
+
+    We present the TSPTW and two instance formats: the López-Ibáñez-Blum and the da Silva-Urrutia formats. As for the 
+    TSP, we have implemented a class to read those instances: the ``TSPTWData`` class. We also use the *ePix* library to 
+    visualize feasible solutions through the ``TSPTWEpixData`` class.
+
+    ..  [#TSPTW_tree_smaller_than_TSP_tree] All TSP solutions are not TSPTW solutions!
+
+    ..  [#TSPTW_depot_is_important] Notice how the depot is important for the TSPTW while it is not for the TSP.
+    
+    ..  [Savelsbergh1985] M.W.P. Savelsbergh. *Local search in routing problems with time windows*, 
+                          Annals of Operations Research 4, 285–305, 1985.
+
+    
 The Travelling Salesman Problem with Time Windows
 ----------------------------------------------------
 
+..  only:: draft
+
+    
 
 
 Benchmark data
