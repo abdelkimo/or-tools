@@ -1,15 +1,36 @@
 ..  _chapter_arc_routing_with_constraints:
 
-Arc Routing  Problems with constraints: the cumulative chinese postman problem
+Arc Routing  Problems with constraints: the Cumulative Chinese Postman Problem
 ======================================================================================
 
 ..  only:: draft
 
-    Arc Routing Problems (ARP) consist in problems where you must serve/visit arcs and/or edges in a graph/network.
-    In contrast to Node Routing Problems (NRP, see XXX) and Vehicle Routing Problems (VRP, see XXX), ARP deals with 
-    non-complete graphs and solutions often require to visit an edge/arc several times.
+    ..  only:: html
+    
+        Arc Routing Problems (ARP) consist in problems where you must serve/visit arcs and/or edges in a graph/network.
+        In contrast to Node Routing Problems (NRP, see the chapter :ref:`chapter_tsp_with_constraints`) 
+        and Vehicle Routing Problems (VRP, see the chapter :ref:`chapter_vrp_with_constraints`), ARP deals with 
+        non-complete graphs and good or optimal solutions often require to visit an edge/arc several times.
 
-    ..  topic:: Why is it not always paying of to transform an ARP into a NRP?
+    ..  raw:: latex
+    
+        Arc Routing Problems (ARP) consist in problems where you must serve/visit arcs and/or edges in a graph/network.
+        In contrast to Node Routing Problems (NRP, see chapter~\ref{manual/TSP:chapter-tsp-with-constraints}) 
+        and Vehicle Routing Problems (VRP, see chapter~\ref{manual/VRP:chapter-vrp-with-constraints}), ARP deals with 
+        non-complete graphs and good or optimal solutions often require to visit an edge/arc several times.
+
+    All ARP can be modelled as NRP [#NRP_as_ARPs]_: basically, replace each edge/arc by a node and link 
+    two nodes if two edges/arcs are adjacent [Laporte1997]_. As our RL model is node based, we theoretically can solve 
+    any ARP with it but remember that no universal model exist. In this chapter, we'll model an ARP for which our model 
+    is well-suited: the *Cumulative Chinese Postman Problem* (CCPP). 
+
+
+    ..  [#NRP_as_ARPs] The contrary is not true. Do you see why?
+
+    ..  [Laporte1997] G. Laporte, *Modeling and solving several classes of arc routing problems as traveling salesman problems*,
+        Computers & Operations Research, Volume 24, Issue 11, 1997, pp 1057-1061.
+
+    ..  topic:: Why is it not always paying off to transform an ARP into a NRP?
     
         You always can transform an ARP into a NRP but it is not necessarily the best move to do.
         
@@ -17,7 +38,7 @@ Arc Routing  Problems with constraints: the cumulative chinese postman problem
         are in :math:`\text{P}` while basic versions of NRP (in particular the TSP) are in :math:`\text{NP}`.
     
         Second, specialized algorithms tackling ARP as ARP (i.e. without somehow transforming the arcs/edges into nodes) 
-        are often better.
+        are often better, i.e. outperform node-based algorithms.
 
     ..  warning::
     

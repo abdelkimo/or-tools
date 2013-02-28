@@ -30,7 +30,8 @@ The Travelling Salesman Problem with Time Windows
 
 ..  only:: draft
 
-    
+    You might be surprise to learn that there is no common definition that is widely accepted within the scientific 
+    community. The basic idea is to find a "tour" that visits each node within a time window but several variants exist. 
 
 
 Benchmark data
@@ -58,10 +59,10 @@ The López-Ibáñez-Blum format
 
 ..  only:: draft
 
-    We present the same instance proposed by Dumas et al. [Dumas1995] in both format.
+    We present the same instance proposed by Dumas et al. [Dumas1995]_ in both format.
     
-    [Dumas1995] Dumas, Y., Desrosiers, J., Gelinas, E., Solomon, M., *An optimal algorithm 
-    for the travelling salesman problem with time windows*, Operations Research 43 (2) (1995) 367-371.
+    ..  [Dumas1995] Dumas, Y., Desrosiers, J., Gelinas, E., Solomon, M., *An optimal algorithm 
+        for the travelling salesman problem with time windows*, Operations Research 43 (2) (1995) 367-371.
     
     Here is the content of the file :file:`n20w20.001.txt`:
     

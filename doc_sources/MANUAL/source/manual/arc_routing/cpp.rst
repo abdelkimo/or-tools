@@ -5,7 +5,7 @@ The chinese postman problem (CPP) [#ccp_other_name]_
 
 ..  only:: draft
 
-    ..  [#ccp_other_name] The CCP is also and more and more called the *Route Inspection Problem*.
+    ..  [#ccp_other_name] The CCP is also - and more and more - called the *Route Inspection Problem*.
 
 
     ..  topic:: Why *Chinese Postman*?
