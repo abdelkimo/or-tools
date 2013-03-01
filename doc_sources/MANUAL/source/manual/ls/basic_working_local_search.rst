@@ -5,118 +5,111 @@
 Basic working of the solver: Local Search
 -----------------------------------------------
 
-..  only:: draft
-
-    In this section, we present the implementation of Local Search in *or-tools*. First, we sketch the main basic idea 
-    and then we list the main actors (aka classes) that participate in the Local Search. It's good to keep them in memory
-    for the rest of this section. We then overview the implementation
-    and describe some of its main components. Finally, we detail the inner working of the Local Search algorithm and 
-    indicate where the callbacks of the ``SearchMonitor``\s are called.
+In this section, we present the implementation of Local Search in *or-tools*. First, we sketch the main basic idea 
+and then we list the main actors (aka classes) that participate in the Local Search. It's good to keep them in memory
+for the rest of this section. We then overview the implementation
+and describe some of its main components. Finally, we detail the inner working of the Local Search algorithm and 
+indicate where the callbacks of the ``SearchMonitor``\s are called.
     
-    We present a simplified version of the local search algorithm. Yes, this is well worth a warning box!
+We present a simplified version of the local search algorithm. Yes, this is well worth a warning box!
     
-    ..  warning:: We describe a simplified version of the local search algorithm.
+..  warning:: We describe a simplified version of the local search algorithm.
     
 
 The basic idea
 ^^^^^^^^^^^^^^^^^^^^^^
 
-..  only:: draft
-
-
-    The Local Search algorithm is implemented with the ``LocalSearch`` ``DecisionBuilder`` which 
-    returns ``NestedSolveDecision``\s (through its ``Next()`` method). These ``NestedSolveDecision``\s in turn 
-    collect the solutions returned by the ``FindOneNeighbor``
-    ``DecisionBuilder`` in their left branches (and don't do anything in their right branches). As its name implies, the 
-    ``FindOneNeighbor`` ``DecisionBuilder`` tries to find one solution. The ``LocalSearch`` ``DecisionBuilder``
-    stops the search when stopping criteria are met or when it can not improve the last solution found. This 
-    solution is thus a local optimum w.r.t. the chosen neighborhood. 
+The Local Search algorithm is implemented with the ``LocalSearch`` ``DecisionBuilder`` which 
+returns ``NestedSolveDecision``\s (through its ``Next()`` method). These ``NestedSolveDecision``\s in turn 
+collect the solutions returned by the ``FindOneNeighbor``
+``DecisionBuilder`` in their left branches (and don't do anything in their right branches). As its name implies, the 
+``FindOneNeighbor`` ``DecisionBuilder`` tries to find one solution. The ``LocalSearch`` ``DecisionBuilder``
+stops the search when stopping criteria are met or when it can not improve the last solution found. This 
+solution is thus a local optimum w.r.t. the chosen neighborhood. 
     
-    ..  only:: html
+..  only:: html
     
-        If needed, the search 
-        can be restarted again around a new initial solution. The ``LocalSearch`` 
-        ``DecisionBuilder`` then acts like a multi-restart ``DecisionBuilder``. We exploit this property in the 
-        chapter :ref:`chapter_metaheuristics` when we implement (meta-)heuristics based on local searches that restart 
-        from a given solution.
+    If needed, the search 
+    can be restarted again around a new initial solution. The ``LocalSearch`` 
+    ``DecisionBuilder`` then acts like a multi-restart ``DecisionBuilder``. We exploit this property in the 
+    chapter :ref:`chapter_metaheuristics` when we implement (meta-)heuristics based on local searches that restart 
+    from a given solution.
   
-    ..  raw:: latex
+..  raw:: latex
     
-        If needed, the search 
-        can be restarted again around a new initial solution. The~\code{LocalSearch} 
-        \code{DecisionBuilder} then acts like a multi-restart~\code{DecisionBuilder}. We exploit this property in  
-        chapter~\ref{manual/metaheuristics:chapter-metaheuristics} when we implement (meta-)heuristics 
-        based on local searches that restart 
-        from a given solution.~\\~\\
+    If needed, the search 
+    can be restarted again around a new initial solution. The~\code{LocalSearch} 
+    \code{DecisionBuilder} then acts like a multi-restart~\code{DecisionBuilder}. We exploit this property in  
+    chapter~\ref{manual/metaheuristics:chapter-metaheuristics} when we implement (meta-)heuristics 
+    based on local searches that restart 
+    from a given solution.~\\~\\
   
-    Wow, this went fast! Let's summarize all this in the next picture:
+Wow, this went fast! Let's summarize all this in the next picture:
     
-    ..  only:: html 
+..  only:: html 
     
-        .. image:: images/ls_basic_idea1.*
-            :width: 500pt
-            :align: center
+    .. image:: images/ls_basic_idea1.*
+       :width: 500pt
+       :align: center
 
-    ..  only:: latex
+..  only:: latex
     
-        .. image:: images/ls_basic_idea1.*
-            :width: 400pt
-            :align: center
+    .. image:: images/ls_basic_idea1.*
+       :width: 400pt
+       :align: center
 
-    ``ls`` is the ``LocalSearchOperator`` that constructs the candidate solutions. The search 
-    tree very quickly becomes completely unbalanced if we only keep finding solutions in the left branches. We'll see a balancing
-    mechanism that involves one ``BalancingDecision`` at the end of this section.
+``ls`` is the ``LocalSearchOperator`` that constructs the candidate solutions. The search 
+tree very quickly becomes completely unbalanced if we only keep finding solutions in the left branches. We'll see a balancing
+mechanism that involves one ``BalancingDecision`` at the end of this section.
     
-    Speaking about *candidate* solutions, let's agree on some wordings. The next figure presents the beginning of a Local Search.
-    :math:`x_0` is the initial solution. In *or-tools*, this solution is given by an ``Assignment`` or a ``DecisionBuilder`` that 
-    the ``LocalSearch`` class uses to construct this initial solution. :math:`x_0, x_1, x_2, \ldots` are *solutions*. As we have seen, 
-    the Local Search algorithm moves from one solution to another. It takes a starting solution :math:`x_i` and visit the 
-    neighborhood defined around :math:`x_i` to find the next solution :math:`x_{i+1}`. By *visiting* the neighborhood, we mean 
-    constructing and testing feasible solutions :math:`y_0 = x_i, y_1, y_2, \ldots` of this neighborhood. We call these solutions 
-    *candidate* solutions. In the code, they are called *neighbors*. The ``LocalSearchOperator`` produces these candidates and 
-    the ``FindOneNeighbor`` ``DecisionBuilder`` filter these out to keep the interesting candidate solutions only. When a 
-    stopping criteria is met or the neighborhood has been exhausted, the current solution of the CP solver is the next starting
-    solution.
+Speaking about *candidate* solutions, let's agree on some wordings. The next figure presents the beginning of a Local Search.
+:math:`x_0` is the initial solution. In *or-tools*, this solution is given by an ``Assignment`` or a ``DecisionBuilder`` that 
+the ``LocalSearch`` class uses to construct this initial solution. :math:`x_0, x_1, x_2, \ldots` are *solutions*. As we have seen, 
+the Local Search algorithm moves from one solution to another. It takes a starting solution :math:`x_i` and visit the 
+neighborhood defined around :math:`x_i` to find the next solution :math:`x_{i+1}`. By *visiting* the neighborhood, we mean 
+constructing and testing feasible solutions :math:`y_0 = x_i, y_1, y_2, \ldots` of this neighborhood. We call these solutions 
+*candidate* solutions. In the code, they are called *neighbors*. The ``LocalSearchOperator`` produces these candidates and 
+the ``FindOneNeighbor`` ``DecisionBuilder`` filter these out to keep the interesting candidate solutions only. When a 
+stopping criteria is met or the neighborhood has been exhausted, the current solution of the CP solver is the next starting
+solution.
     
-    Let's illustrate this: 
+Let's illustrate this: 
 
-    ..  only:: html 
+..  only:: html 
     
-        .. image:: images/ls_basic_idea2.*
-            :width: 500pt
-            :align: center
+    .. image:: images/ls_basic_idea2.*
+       :width: 500pt
+       :align: center
 
-    ..  only:: latex
-    
-        .. image:: images/ls_basic_idea2.*
-            :width: 400pt
-            :align: center
+..  only:: latex
+   
+    .. image:: images/ls_basic_idea2.*
+       :width: 400pt
+       :align: center
 
-    The code consistently use the term *neighbor* to denote what we call a *candidate solution* in this manual. 
-    We prefer to emphasize the fact 
-    that this *neighbor* solution is in fact a feasible solution that the CP solver tests and accepts or rejects. 
+The code consistently use the term *neighbor* to denote what we call a *candidate solution* in this manual. 
+We prefer to emphasize the fact 
+that this *neighbor* solution is in fact a feasible solution that the CP solver tests and accepts or rejects. 
     
-    ..  warning:: In this manual, we use the term *candidate solution* for what is consistently called a *neighbor* in the code.
+..  warning:: In this manual, we use the term *candidate solution* for what is consistently called a *neighbor* in the code.
     
 The main actors
 """""""""""""""
 
-..  only:: draft
-
-    The main classes involved in the local search algorithm are:
+The main classes involved in the local search algorithm are:
     
-    * ``LocalSearch``: This ``DecisionBuilder`` controls the local search algorithm.
-    * ``LocalSearchPhaseParameters``: This class gathers the components to define the current local search.
-    * ``LocalSearchOperator``\s: This class is responsible of constructing the candidate solutions.
-    * ``FindOneNeighbor``: This ``DecisionBuilder`` filters the candidate solutions given by the ``LocalSearchOperator``
-      and only constructs *filtered* and *accepted* (solutions accepted by the CP solver as feasible solutions) solutions.
-    * ``NestedSolveDecision``: This ``Decision`` invokes a nested search with another ``DecisionBuilder`` 
-      (``FindOneNeighbor`` in this case) in its left branch 
-      (``Apply()`` method) and does nothing in its right branch (``Refute()`` method).
-    * ``LocalSearchFilter``: This filter allows to immediately skip (discard) a candidate solution. It is used 
-      by ``FindOneNeighbor`` to filter the candidate solutions.
+* ``LocalSearch``: This ``DecisionBuilder`` controls the local search algorithm.
+* ``LocalSearchPhaseParameters``: This class gathers the components to define the current local search.
+* ``LocalSearchOperator``\s: This class is responsible of constructing the candidate solutions.
+* ``FindOneNeighbor``: This ``DecisionBuilder`` filters the candidate solutions given by the ``LocalSearchOperator``
+  and only constructs *filtered* and *accepted* (solutions accepted by the CP solver as feasible solutions) solutions.
+* ``NestedSolveDecision``: This ``Decision`` invokes a nested search with another ``DecisionBuilder`` 
+  (``FindOneNeighbor`` in this case) in its left branch 
+  (``Apply()`` method) and does nothing in its right branch (``Refute()`` method).
+* ``LocalSearchFilter``: This filter allows to immediately skip (discard) a candidate solution. It is used 
+  by ``FindOneNeighbor`` to filter the candidate solutions.
     
-    We will not discuss the filtering mechanism here (see the dedicated section :ref:`local_search_filtering`).
+We will not discuss the filtering mechanism here (see the dedicated section :ref:`local_search_filtering`).
 
 ..  _local_search_mechanism:
 

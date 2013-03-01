@@ -59,6 +59,42 @@ The Problem
     overall cost of the tour.
     
 
+..  only:: draft
+
+    Let's introduce a basic example. The next figure represents a graph :math:`G=(V,E)` with three vertices :math:`A, B` and 
+    :math:`C` and three edges :math:`a, b` and :math:`c`.
+        
+    ..  only:: html 
+    
+        .. image:: images/exemple1.*
+           :height: 100pt
+           :align: center
+
+    ..  only:: latex
+    
+        .. image:: images/exemple1.*
+           :height: 80pt
+           :align: center
+
+    The numbers next to the edges are the cost of the edges and vertex :math:`A` is the depot (illustrated by a square).
+    An optimal solution is obvious:
+    
+    ..  only:: html 
+    
+        .. image:: images/exemple1_cpp_sol.*
+           :height: 80pt
+           :align: center
+
+    ..  only:: latex
+    
+        .. image:: images/exemple1_cpp_sol.*
+           :height: 60pt
+           :align: center
+
+
+    The cost of the tour is :math:`1 + 50 + 1 = 52`. It is an optimal tour because we traverse only once every edge. Such graphs 
+    that can be traversed by a tour using every edge exactly once are called *Eulerian graphs* in honour of L. Euler.
+
     ..  topic:: Why *Chinese Postman*?
     
         The *Chinese Postman Problem* has been coined so for the first time by Alan J. Goldman in 
@@ -89,6 +125,8 @@ The Problem
     `The Great Historical Moments of the Chinese Postman Problem <http://www.crt.umontreal.ca/~nikolaj/tutorials/arcrouting/miniplay/english/>`_ [#cpp_play_played]_. 
     
     ..  [#cpp_play_played] This play was actually played to the great delight of the audience!
+    
+    
     
     ..  _box_CPP_paradigm:
     
