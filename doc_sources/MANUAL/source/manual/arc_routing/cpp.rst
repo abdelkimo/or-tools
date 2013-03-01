@@ -5,36 +5,6 @@ The Chinese Postman Problem (CPP) [#ccp_other_name]_
 
 ..  only:: draft
 
-    ..  raw:: latex
-
-        You can find the code in the file~\code{tsp.h}, \code{tsp\_epix.h} and~\code{tsplib\_solution\_to\_epix.cc} and the data
-        in the files~\code{a280.tsp} and~\code{a280.opt.tour}.\\~\\
-
-    ..  only:: html
-
-        ..  container:: files-sidebar
-
-            ..  raw:: html 
-            
-                <ol>
-                  <li>C++ code:
-                    <ol>
-                      <li><a href="../../../tutorials/cplusplus/chap11/tsp.h">arp.h</a></li>
-                      <li><a href="../../../tutorials/cplusplus/chap11/cpp.cc">cpp.cc</a></li>
-                    </ol>
-                  </li>
-                  <li>Data files:
-                    <ol>
-                      <li><a href="../../../tutorials/cplusplus/chap9/a280.tsp">a280.tsp</a></li>
-                      <li><a href="../../../tutorials/cplusplus/chap9/a280.opt.tour">a280.opt.tour</a></li>
-                    </ol>
-                  </li>
-
-                </ol>
-
-
-..  only:: draft
-
     The Chinese Postman Problem is the equivalent of the TSP but on edges/arcs: one seek to find a tour servicing all the 
     edges/arcs and to come back to its starting vertex, the depot. Contrary to the TSP, we don't consider complete graphs and 
     the basic versions of this problem (when we only deal with edges or only with arcs) is in :math:`\text{P}`. To be able 
@@ -48,7 +18,7 @@ The Chinese Postman Problem (CPP) [#ccp_other_name]_
 
 
 The Problem
--------------------------------
+^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
@@ -126,30 +96,60 @@ The Problem
     
     ..  [#cpp_play_played] This play was actually played to the great delight of the audience!
     
-    
+    It is beyond the scope of this manual to explain how we solve the CPP in general. On completely oriented and non-oriented graphs, 
+    this problem belongs to :math:`\text{P}`, i.e. it is an easy problem. For mixed graphs, i.e. graphs with oriented and non-oriented 
+    edges, the problem is in :math:`\text{NP}`. The general approach is summarized in the next box:
     
     ..  _box_CPP_paradigm:
     
     ..  topic:: The CPP paradigm
     
-        1. Find a minimal Eulerian augmentation;
-        2. Find an Eulerian tour in this augmented graph.
-        
+        1. Find a minimal Eulerian augmentation:
         
 
-Benchmark data
------------------
+           ..  only:: html 
+          
+               .. image:: images/example2.*
+                  :height: 80pt
+                  :align: center
 
-..  _arpdata_class:
+           ..  only:: latex
+          
+               .. image:: images/example2.*
+                  :height: 60pt
+                  :align: center
 
-The ``ARPData`` class
----------------------------
+           We duplicate the two edges :math:`c` and :math:`d` to obtain an Eulerian graph. We say that we *augment* the graph.
+           This augmentation is minimal and the augmented graph is Eulerian as we can see in the next step.
 
+        2. Find an Eulerian tour in this augmented graph:
+        
+           ..  only:: html 
+          
+               .. image:: images/example2_sol.*
+                  :height: 80pt
+                  :align: center
 
-..  _section_visualization_epix_cpp:
+           ..  only:: latex
+          
+               .. image:: images/example2_sol.*
+                  :height: 60pt
+                  :align: center
 
-Visualization with ``ePix``
----------------------------
+           An optimal solution for the CPP has a cost of :math:`1 + 50 + 25 + 5 + 1 + 1 +5`.
+
+..  only:: draft
+
+    We stop our discovery of the CPP here because there is no point to try to solve it with Constraint Programming.
+    As we already said earlier, the CPP on graphs with only directed or only non-directed edges is easy to solve. The mixed 
+    version on graphs with both edges and arcs is a difficult problem. In the first case, we know very efficient specialized 
+    algorithms and we don't need CP and in the second case and to the best of our knowledge, CP 
+    could never compete with specialized Arc Routing algorithms. It's only when you add side constraints 
+    (like time constraints) or allow multiple vehicles to service the edges that CP might proof successful. Until now, very 
+    few attempts have been made to solve CPP-like problems with CP.
+    
+    We next focus our attention on an interesting variant of the CPP where time plays an essential role: the Cumulative Chinese 
+    Postman Problem. 
 
 ..  only:: final
 
