@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import os
 import sys
 
@@ -5,8 +7,6 @@ from messages import write_error, write_warning
 
 sys.path.append("../sphinxortools")
 from references import fetch_all_internal_labels, save_labels, load_labels, control_internal_refs
-
-
 
 
 ###########################################################################

@@ -116,249 +116,245 @@ We will not discuss the filtering mechanism here (see the dedicated section :ref
 Overview of the Local Search Mechanism in *or-tools*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-..  only:: draft
-
-    The next figure illustrates the basic mechanism of local search in *or-tools*:
+The next figure illustrates the basic mechanism of local search in *or-tools*:
         
-    ..  only:: html 
+..  only:: html 
     
-        .. image:: images/lsn_mechanism.*
-            :width: 500pt
-            :align: center
+    .. image:: images/lsn_mechanism.*
+       :width: 500pt
+       :align: center
 
-    ..  only:: latex
+..  only:: latex
     
-        .. image:: images/lsn_mechanism.*
-            :width: 400pt
-            :align: center
+    .. image:: images/lsn_mechanism.*
+       :width: 400pt
+       :align: center
 
-    We start with an initial feasible solution. The ``MakeOneNeighbor()`` callback method 
-    from the local search operator(s) [#local_search_operator_singular]_ 
-    constructs one by one candidate solutions [#makeoneneighbor_convenience_fct]_. These solutions are checked by the CP solver and completed if needed. 
-    The "best" solution
-    is chosen and the process is repeated starting with this new improved 
-    solution [#local_search_default_best_solution_update]_.
+We start with an initial feasible solution. The ``MakeOneNeighbor()`` callback method 
+from the local search operator(s) [#local_search_operator_singular]_ 
+constructs candidate solutions one by one [#makeoneneighbor_convenience_fct]_. These solutions are checked by the CP solver and completed if needed. 
+The "best" solution
+is chosen and the process is repeated starting with this new improved 
+solution [#local_search_default_best_solution_update]_.
     
-    ..  [#local_search_operator_singular] In the code, you are only allowed to use **one** ``LocalSearchOperator`` but 
-        you can combine several ``LocalSearchOperator``\s in one ``LocalSearchOperator``. This is a common pattern in the code.
+..  [#local_search_operator_singular] In the code, you are only allowed to use **one** ``LocalSearchOperator`` but 
+    you can combine several ``LocalSearchOperator``\s in one ``LocalSearchOperator``. This is a common pattern in the code.
     
-    ..  [#makeoneneighbor_convenience_fct] ``MakeOneNeighbor()`` is a convenient method. The real method to create a new 
-        candidate is ``MakeNextNeighbor(Assignment* delta, Assignment* deltadelta)`` but you have to deal with the low 
-        level ``delta`` and ``deltadelta``. We discuss these details in the 
-        section :ref:`local_search_operators_the_real_thing`.
+..  [#makeoneneighbor_convenience_fct] ``MakeOneNeighbor()`` is a convenient method. The real method to create a new 
+    candidate is ``MakeNextNeighbor(Assignment* delta, Assignment* deltadelta)`` but you have to deal with the low 
+    level ``delta`` and ``deltadelta``. We discuss these details in the 
+    section :ref:`local_search_operators_the_real_thing`.
     
-    ..  [#local_search_default_best_solution_update] By default, the solver accepts the
-        first feasible solution and repeats the search starting with 
-        this new solution. The idea is that if you combine the local search with an ``ObjectiveVar``, 
-        the next feasible solution will be a solution that beats the current best solution. 
-        You can change this behaviour with a ``SearchLimit``. See below. 
+..  [#local_search_default_best_solution_update] By default, the solver accepts the
+    first feasible solution and repeats the search starting with 
+    this new solution. The idea is that if you combine the local search with an ``ObjectiveVar``, 
+    the next feasible solution will be a solution that beats the current best solution. 
+    You can change this behaviour with a ``SearchLimit``. See below. 
         
-    The whole search process stops
-    whenever a stopping criterion is reached or the CP solver cannot improve anymore the current best solution.
+The whole search process stops
+whenever a stopping criterion is reached or the CP solver cannot improve anymore the current best solution.
 
-    Let's describe some pieces of the *or-tools* mechanism for local search:
+Let's describe some pieces of the *or-tools* mechanism for local search:
     
-      - **initial solution**: we need a **feasible** solution to start with. You can either pass an ``Assignment`` or 
-        a ``DecisionBuilder`` to the ``LocalSearch``\'s constructor.
-      - **LocalSearchPhaseParameters**: the ``LocalSearchPhaseParameters`` parameter holds the actual definition 
-        of the local search phase:
+  - **initial solution**: we need a **feasible** solution to start with. You can either pass an ``Assignment`` or 
+    a ``DecisionBuilder`` to the ``LocalSearch``\'s constructor.
+  - **LocalSearchPhaseParameters**: the ``LocalSearchPhaseParameters`` parameter holds the actual definition 
+    of the local search phase:
         
-        * a **SolutionPool** that keep solution(s);
+    * a **SolutionPool** that keep solution(s);
         
-        * a **LocalSearchOperator** used to explore the neighborhood of the current solution. You can combine
-          several ``LocalSearchOperator``\s into one ``LocalSearchOperator``;
+    * a **LocalSearchOperator** used to explore the neighborhood of the current solution. You can combine
+      several ``LocalSearchOperator``\s into one ``LocalSearchOperator``;
             
-        * a *complementary* **DecisionBuilder** to instantiate unbound variables once an (incomplete) candidate solution has
-          been defined by the ``LocalSearchOperator``. It will also complete the initial ``Assignment`` or the solution provided 
-          by the initial ``DecisionBuilder``.; 
+    * a *complementary* **DecisionBuilder** to instantiate unbound variables once an (incomplete) candidate solution has
+      been defined by the ``LocalSearchOperator``. It will also complete the initial ``Assignment`` or the solution provided 
+      by the initial ``DecisionBuilder``.; 
             
-        * a **Searchlimit** specifying stopping criteria each time we start searching a new neighborhood;
+    * a **Searchlimit** specifying the stopping criteria each time we start searching a new neighborhood;
           
-        * an ``std::vector`` of **LocalSearchFilter**\s used to speed up the search by pruning
-          unfeasible (or undesirable) candidate solutions: instead of letting the solver find out if a candidate solution is feasible or not, you 
-          can help it by bypassing its checking mechanism and tell it right away if a candidate solution is not feasible.
+    * an ``std::vector`` of **LocalSearchFilter**\s used to speed up the search by pruning
+      unfeasible (or undesirable) candidate solutions: instead of letting the solver find out if a candidate solution is feasible or not, you 
+      can help it by bypassing its checking mechanism and telling it right away if a candidate solution is not feasible.
     
     
-    ..  only:: html
+..  only:: html
     
-        ``LocalSearchOperator``\s are detailed in the next section and ``LocalSearchFilter``\s in 
-        the section :ref:`local_search_filtering`.
+    ``LocalSearchOperator``\s are detailed in the next section and ``LocalSearchFilter``\s in 
+    the section :ref:`local_search_filtering`.
 
-    ..  raw:: latex
+..  raw:: latex
     
-        \code{LocalSearchOperator}s are detailed in the next section and \code{LocalSearchFilter}s in 
-        section~\ref{manual/ls/ls_filtering:local-search-filtering}.
+    \code{LocalSearchOperator}s are detailed in the next section and \code{LocalSearchFilter}s in 
+    section~\ref{manual/ls/ls_filtering:local-search-filtering}.
 
     
-    We now detail these two basics ingredients that are the initial solution and the ``LocalSearchPhaseParameters`` parameter.
+We now detail these two basics ingredients that are the initial solution and the ``LocalSearchPhaseParameters`` parameter.
     
 The initial solution
 """"""""""""""""""""""
 
-..  only:: draft
-
-    To start the local search, we need an initial *feasible* solution. You can either give a starting 
-    solution or you can ask the CP solver to find one for you. To let the solver find a solution for you, 
-    you pass it a ``DecisionBuilder``. The **first** solution discovered by this ``DecisionBuilder`` will be taken 
-    as the initial solution.
+To start the local search, we need an initial *feasible* solution. We can either give a starting 
+solution or we can ask the CP solver to find one for us. To let the solver find a solution for us, 
+we pass to it a ``DecisionBuilder``. The **first** solution discovered by this ``DecisionBuilder`` will be taken 
+as the initial solution.
     
-    Corresponding to these two options,
-    there are two factories methods:
+There is a factory method for each one of the two options:
 
-    ..  code-block:: c++
+..  code-block:: c++
     
-        DecisionBuilder* Solver::MakeLocalSearchPhase(Assignment* assignment,
-                                      LocalSearchPhaseParameters* parameters)
+    DecisionBuilder* Solver::MakeLocalSearchPhase(Assignment* assignment,
+                                  LocalSearchPhaseParameters* parameters)
         
-        DecisionBuilder* Solver::MakeLocalSearchPhase(
-                                      const std::vector<IntVar*>& vars,
-                                      DecisionBuilder* first_solution,
-                                      LocalSearchPhaseParameters* parameters)
+    DecisionBuilder* Solver::MakeLocalSearchPhase(
+                                  const std::vector<IntVar*>& vars,
+                                  DecisionBuilder* first_solution,
+                                  LocalSearchPhaseParameters* parameters)
     
-    In the file :file:`dummy_ls.cc`, we use a :program:`gflags` flag ``FLAG_initial_phase``
-    to switch between these two possibilities.
+In the file :file:`dummy_ls.cc`, we use a :program:`gflags` flag ``FLAG_initial_phase``
+to switch between these two possibilities.
     
-    ..  topic::  What are the variables involved in the local search procedure? 
+..  topic::  What are the variables involved in the local search procedure? 
     
-        The local search **only** applies to the variables contained either in the ``Assignment``
-        or the ``std::vector<IntVar*>`` of variables given to ``MakeLocalSearchPhase()``.
+    The local search **only** applies to the variables contained either in the ``Assignment``
+    or the ``std::vector<IntVar*>`` of variables given to ``MakeLocalSearchPhase()``.
 
 ..  _local_search_parameters:
 
 The ``LocalSearchPhaseParameters`` parameter 
 """"""""""""""""""""""""""""""""""""""""""""""""
 
-..  only:: draft
-
-    The ``LocalSearchPhaseParameters`` parameter holds the actual definition 
-    of the local search phase.
+The ``LocalSearchPhaseParameters`` parameter holds the actual definition 
+of the local search phase.
     
-    It basically consists in:
+It basically consists in:
     
-    * a ``SolutionPool``: as its name implies, this class is a pool of solutions. As usual, ``SolutionPool`` is a pure virtual 
-      class that must be implemented. One such implementation is the ``DefaultSolutionPool`` that only keeps the current 
-      solution. You don't have to provide one as it is constructed by default if you use the appropriate factory method. 
-      If you want to keep intermediate solutions 
-      or want to modify these solutions during the search, you might have to implement your own version. Four methods have to 
-      be implemented:
+* a ``SolutionPool``: as its name implies, this class is a pool of solutions. As usual, ``SolutionPool`` is a pure virtual 
+  class that must be implemented. One such implementation is the ``DefaultSolutionPool`` that only keeps the current 
+  solution. You don't have to provide one as it is constructed by default if you use the appropriate factory method. 
+  If you want to keep intermediate solutions 
+  or want to modify these solutions during the search, you might have to implement your own version. Four methods have to 
+  be implemented:
       
-        * ``void Initialize(Assignment* const assignment)``: This method is called to initialize the 
-          ``SolutionPool`` with the initial ``Assignment``.
+  * ``void Initialize(Assignment* const assignment)``: This method is called to initialize the 
+    ``SolutionPool`` with the initial ``Assignment``.
 
-        * ``void RegisterNewSolution(Assignment* const assignment)``: This method is called when a new 
-          solution has been accepted by the local search algorithm.
+  * ``void RegisterNewSolution(Assignment* const assignment)``: This method is called when a new 
+    solution has been accepted by the local search algorithm.
   
-        * ``void GetNextSolution(Assignment* const assignment)``: This method is called when the local search algorithm 
-          starts a new neighborhood. ``assigment`` is the solution to start the new neighborhood search.
+  * ``void GetNextSolution(Assignment* const assignment)``: This method is called when the local search algorithm 
+    starts a new neighborhood. ``assigment`` is the solution to start the new neighborhood search.
 
-        * ``bool SyncNeeded(Assignment* const local_assignment)``: This method checks if the current solution needs to 
-          be updated, i.e. the pool can tell the solver to start a new neighborhood search with the next
-          solution given by the pool (given by its ``GetNextSolution()`` method, see the ``Next()`` method of 
-          the ``FindOneNeighbor`` ``DecisionBuilder`` class below).
+  * ``bool SyncNeeded(Assignment* const local_assignment)``: This method checks if the current solution needs to 
+    be updated, i.e. the pool can oblige the solver to start a new neighborhood search with the next
+    solution given by the pool (given by its ``GetNextSolution()`` method, see the ``Next()`` method of 
+    the ``FindOneNeighbor`` ``DecisionBuilder`` class below).
           
-      A ``SolutionPool`` gives you complete control on the starting solution(s). The ``SolutionPool``
-      **must** take ownership of the ``Assignment``\s it keeps [#solution_pool_takes_ownership_of_solutions_or_else]_.
+  A ``SolutionPool`` gives you complete control on the starting solution(s). Note that the ``SolutionPool``
+  **must** take ownership of the ``Assignment``\s it keeps [#solution_pool_takes_ownership_of_solutions_or_else]_.
 
-      ..  [#solution_pool_takes_ownership_of_solutions_or_else] Well, you could devise another way to keep track of the solutions 
-          and take care of their existence but anyhow, you are responsible for these solutions.
+  ..  [#solution_pool_takes_ownership_of_solutions_or_else] Well, you could devise another way to keep track of the solutions 
+      and take care of their existence but anyhow, you are responsible for these solutions.
 
-    * a ``LocalSearchOperator``: a ``LocalSearchOperator`` or a combination of ``LocalSearchOperator``\s explore the 
-      neighborhood of the current solution. We detail them in the next section.
-    * a ``DecisionBuilder``: this *complementary* ``DecisionBuilder`` helps creating feasible solutions if your ``LocalSearchOperator``\s 
-      only return partial solutions, i.e. solutions with unbounded variables. It also completes the initial solution if needed.
-      If you know that your candidate and the initial solutions are already feasible, you don't have to provide this 
-      ``DecisionBuilder`` (set the corresponding pointer to ``NULL``).
+* a ``LocalSearchOperator``: a ``LocalSearchOperator`` or a combination of ``LocalSearchOperator``\s explore the 
+  neighborhood of the current solution. We detail them in the next section.
+* a ``DecisionBuilder``: this *complementary* ``DecisionBuilder`` helps creating feasible solutions if your ``LocalSearchOperator``\s 
+  only return partial solutions, i.e. solutions with unbounded variables. It also completes the initial solution if needed.
+  If you know that your candidate and the initial solutions are already feasible, you don't have to provide this 
+  ``DecisionBuilder`` (set the corresponding pointer to ``NULL``).
 
-    ..  index:: SearchLimit; in Local Search
+..  index:: SearchLimit; in Local Search
 
-    * a ``SearchLimit``: This ``SearchLimit`` limits the search of **one** neighborhood. 
-      The most interesting statistic to limit is probably the number of found 
-      solutions:
+* a ``SearchLimit``: This ``SearchLimit`` limits the search of **one** neighborhood. 
+  The most interesting statistic to limit is probably the number of found 
+  solutions:
     
-      ..  code-block:: c++
+  ..  code-block:: c++
     
-          SearchLimit * const limit = s.MakeSolutionsLimit(2);
+      SearchLimit * const limit = s.MakeSolutionsLimit(2);
 
-      ..  only:: html 
+  ..  only:: html 
       
-          This would limit the search to maximum two candidate solutions in the same neighborhood. 
-          By default, the CP solver stops the neighborhood search as soon as it finds a filtered and feasible candidate solution. 
-          If you add an ``OptimizeVar`` to your model, once the solver finds this good candidate solution, it changes the model 
-          to exclude solutions with the same objective value. See the section :ref:`golomb_ruler_optimization_how` 
-          to refresh your memory if needed. The second solution found can thus only be better than the first one. When the solver 
-          finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution.
+      This would limit the search to maximum two candidate solutions in the same neighborhood. 
+      By default, the CP solver stops the neighborhood search as soon as it finds a filtered and feasible candidate solution. 
+      If you add an ``OptimizeVar`` to your model, once the solver finds this good candidate solution, it changes the model 
+      to exclude solutions with the same objective value. The second solution found can only be better than the first one.
+      See the section :ref:`golomb_ruler_optimization_how` 
+      to refresh your memory if needed. When the solver 
+      finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution.
 
-      ..  raw:: latex 
+  ..  raw:: latex 
       
-          This would limit the search to maximum two candidate solutions in the same neighborhood. 
-          By default, the CP solver stops the neighborhood search as soon as it finds a filtered and feasible candidate solution. 
-          If you add an~\code{OptimizeVar} to your model, once the solver finds this good candidate solution, it changes the model 
-          to exclude solutions with the same objective value. 
-          See section ~\ref{manual/objectives/optimization_how:golomb-ruler-optimization-how} 
-          to refresh your memory if needed. The second solution found can thus only be better than the first one. When the solver 
-          finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution.
+      This would limit the search to maximum two candidate solutions in the same neighborhood. 
+      By default, the CP solver stops the neighborhood search as soon as it finds a filtered and feasible candidate solution. 
+      If you add an~\code{OptimizeVar} to your model, once the solver finds this good candidate solution, it changes the model 
+      to exclude solutions with the same objective value. 
+      The second solution found can only be better than the first one.
+      See section ~\ref{manual/objectives/optimization_how:golomb-ruler-optimization-how} 
+      to refresh your memory if needed.
+      When the solver 
+      finds 2 solutions (or when the whole neighborhood is explored), it stops and starts over again with the best solution.
 
-    * ``LocalSearchFilter``\s: these filters speed up the search by bypassing the solver checking mechanism if you know that the 
-      solution must be rejected (because it is not feasible, because it is not good enough, ...). If the filters accept a
-      solution, the solver still tests the feasibility of this solution.
+* ``LocalSearchFilter``\s: these filters speed up the search by bypassing the solver checking mechanism if you know that the 
+  solution must be rejected (because it is not feasible, because it is not good enough, ...). If the filters accept a
+  solution, the solver still tests the feasibility of this solution.
 
-      ..  only:: html
+  ..  only:: html
         
-          ``LocalSearchFilter``\s are discussed in 
-          the section :ref:`local_search_filtering`.
+      ``LocalSearchFilter``\s are discussed in 
+      the section :ref:`local_search_filtering`.
 
-      ..  raw:: latex
+  ..  raw:: latex
         
-          \code{LocalSearchFilter}s are discussed in 
-          section~\ref{manual/ls/ls_filtering:local-search-filtering}.
+      \code{LocalSearchFilter}s are discussed in 
+      section~\ref{manual/ls/ls_filtering:local-search-filtering}.
 
       
-    Several factory methods are available to create a ``LocalSearchPhaseParameters`` parameter. 
-    At least you need to declare a ``LocalSearchOperator`` and a complementary ``DecisionBuilder``:
+Several factory methods are available to create a ``LocalSearchPhaseParameters`` parameter. 
+At least you need to declare a ``LocalSearchOperator`` and a complementary ``DecisionBuilder``:
     
-    ..  code-block:: c++
+..  code-block:: c++
     
-        LocalSearchPhaseParameters * Solver::MakeLocalSearchPhaseParameters(
-                            LocalSearchOperator *const ls_operator,
-                            DecisionBuilder *const 
-                                            complementary_decision_builder);
+    LocalSearchPhaseParameters * Solver::MakeLocalSearchPhaseParameters(
+                        LocalSearchOperator *const ls_operator,
+                        DecisionBuilder *const 
+                                        complementary_decision_builder);
 
-    You can also give all the above enumerated parameters :
+You can also pass all the above enumerated parameters :
     
-    ..  code-block:: c++
+..  code-block:: c++
     
-        LocalSearchPhaseParameters* Solver::MakeLocalSearchPhaseParameters(
-                            SolutionPool* const pool,
-                            LocalSearchOperator* const ls_operator,
-                            DecisionBuilder* const 
-                                             complementary_decision_builder,
-                            SearchLimit* const limit,
-                            const std::vector<LocalSearchFilter*>& filters);
+    LocalSearchPhaseParameters* Solver::MakeLocalSearchPhaseParameters(
+                        SolutionPool* const pool,
+                        LocalSearchOperator* const ls_operator,
+                        DecisionBuilder* const 
+                                         complementary_decision_builder,
+                        SearchLimit* const limit,
+                        const std::vector<LocalSearchFilter*>& filters);
     
-    The ``LocalSearchOperator`` will find candidate solutions while the ``complementary_decision_builder`` 
-    ``DecisionBuilder`` will complete 
-    the candidate solutions if not all variables are assigned. 
+The ``LocalSearchOperator`` will find candidate solutions while the ``complementary_decision_builder`` 
+``DecisionBuilder`` will complete 
+the candidate solutions if some of the variables are not assigned.
     
-    A handy way to create a ``DecisionBuilder`` to assist the local search operator(s) is to limit one 
-    with ``MakeSolveOnce()``. ``MakeSolveOnce`` is a ``DecisionBuilder`` that takes another ``DecisionBuilder`` ``db``
-    and ``SearchMonitor``\s:
+A handy way to create a ``DecisionBuilder`` to assist the local search operator(s) is to limit one 
+with ``MakeSolveOnce()``. ``MakeSolveOnce`` is a ``DecisionBuilder`` that takes another ``DecisionBuilder`` ``db``
+and ``SearchMonitor``\s:
     
-    ..  code-block:: c++
+..  code-block:: c++
     
-        DecisionBuilder * const db = ...
-        SearchLimit* const limit = solver.MakeLimit(...);
-        DecisionBuilder * const complementary_decision_builder = 
-                                           solver.MakeSolveOnce(db, limit);
+    DecisionBuilder * const db = ...
+    SearchLimit* const limit = solver.MakeLimit(...);
+    DecisionBuilder * const complementary_decision_builder = 
+                                       solver.MakeSolveOnce(db, limit);
     
-    The ``SolveOnce`` ``DecisionBuilder`` created by ``MakeSolveOnce()`` will collapse the search tree described by the 
-    ``DecisionBuilder`` ``db`` and a set of ``SearchMonitor``\s and wrap it into a single point. The nested search stops after 
-    the first solution is found.
-    If there are no solutions in this nested tree, then (the ``Next()`` method of) ``SolveOnce`` will
-    fail.
+The ``SolveOnce`` ``DecisionBuilder`` created by ``MakeSolveOnce()`` will collapse the search tree described by the 
+``DecisionBuilder`` ``db`` and a set of ``SearchMonitor``\s and wrap it into a single point. The nested search stops after 
+the first solution is found.
+If there are no solutions in this nested tree, then (the ``Next()`` method of) ``SolveOnce`` will
+fail.
     
-    If you know for sure that your ``LocalSearchOperator`` will return feasible 
-    solutions, you don't have to provide a ``DecisionBuilder`` to assist: just give ``NULL`` as argument 
-    for the ``DecisionBuilder`` pointer.
+If you know for sure that your ``LocalSearchOperator`` will return feasible 
+solutions, you don't have to provide a ``DecisionBuilder`` to assist: just submit ``NULL`` as argument 
+for the ``DecisionBuilder`` pointer.
 
 
 ..  _basic_local_search_algorithm_and_the_callback_hooks:

@@ -1,3 +1,0 @@
-user_manual/manual/ls/jobshop_lns.html
-user_manual/manual/tsp/exact_tsp_implementation.html
-user_manual/_images/int64_NodeIndex.png

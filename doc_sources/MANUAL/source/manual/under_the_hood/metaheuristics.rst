@@ -101,7 +101,7 @@ Callbacks to implement
         objective function. If you have an initial solution at hand, see the 
         box *What about an initial solution?* (to be done).
         
-        ..  :ref:`What about an initial solution? <topic_what_about_an_initial_solution_local_search>`
+
         
       ``RefuteDecision()``:
         Blabla

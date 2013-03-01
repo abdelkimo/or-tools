@@ -18,7 +18,7 @@ keep the model simple enough to be able to solve it efficiently.
 
     When developing algorithms, we are always making decisions among several options, each with its advantages and
     disadvantages [#clever_options]_. Let's say we are implementing our own constraint with our own propagation algorithm 
-    (this is exactly what we will do in the chapter :ref:`custom_constraints`).
+    (this is exactly what we will do in the chapter :ref:`chapter_custom_constraints`).
 
 ..  raw:: latex
 
