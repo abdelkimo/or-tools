@@ -221,6 +221,8 @@ Dimension variables
     ..  [#dimensions_limit] Well, as many as your memory allows.
 
     The transit values can be constant, defined with callbacks, vectors or matrices.
+    You can represent any quantities along routes with *dimensions* but not only. For instance, *capacities* and 
+    *time windows* can be modelled with *dimensions*.  
     We'll play with dimensions in the next chapter when we'll try to solve the the 
     :ref:`Capacitated Vehicle Routing Problem <chapter_vrp_with_constraints>`.
 
@@ -231,8 +233,8 @@ Constraints
 
 ..  only:: draft
 
-    Beside the basics constraints we just saw in the previous sub-section, the RL use a constraint to avoid cycles and
-    constraints to model the *disjunctions*.
+    Beside the basics constraints we just saw in the previous sub-section, the RL use a constraint to avoid cycles, 
+    constraints to model the *disjunctions* and pick-up and delivery constraints.
 
 Basic constraints and the ``CloseModel()`` method 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -288,14 +290,76 @@ Objective function
     
         IntVar* obj = routing.CostVar();
 
-    The RL tries to minimize this ``obj`` variable.
+    The RL solver tries to minimize this ``obj`` variable.
+
+Different types of vehicles
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    sdfds
+
+
+Penalties
+^^^^^^^^^^
+
+..  only:: draft
+
+    sdfds
+
+Linear lower bound 
+^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    sdfds
+
+
 
 Miscellaneous
 ------------------
 
+..  only:: draft
+
+    sdfds
+
 Cache
 ^^^^^^^^
+
+..  only:: draft
+
+    sdfds
 
 Light constraints
 ^^^^^^^^^^^^^^^^^^^
 
+..  only:: draft
+
+    To speed up the search, it is sometimes better to only propagate on the bounds instead of 
+    the whole domains for the basic constraints. These "light" constraints are "checking" constraints, 
+    only triggered on ``WhenBound()`` events. They provide very little (or no) domain filtering.
+
+    Basically, these constraints ensure that the variables are respecting the equalities of the basic 
+    constraints. They only perform bound reduction on the variables when these variables are bound.
+    
+    You can trigger the use of these light constraints with the following flag:
+    
+    ..  code-block:: c++
+    
+        DEFINE_bool(routing_use_light_propagation, false,
+               "Use constraints with light propagation in routing model.");
+
+    When ``false``, the RL uses the regular constraints we have seen in the previous parts of this manual. 
+    Try it for yourself, sometimes
+    you can get a serious speed up. These light constraints are especially useful in Local Search.
+
+Locks
+^^^^^^^^^^^^
+
+..  only:: draft
+
+    Often during the search, you find what appears to be good sub-solutions, i.e. 
+    partial routes that seem promising and that you want to keep fixed for a while during the search. This can 
+    easily be done within the RL with the concept of *locks*.
+    
+    A lock is simply an ``std::vector<>``.

@@ -1,7 +1,7 @@
 ..  _tsp_two_phases_approaches:
 
 The two phases approach
----------------------------
+=====================================================
 
 ..  raw:: latex
 
@@ -36,7 +36,7 @@ The two phases approach
     Search. The RL proposes several heuristic to construct this initial solution.
 
 The initial solution
-^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------
 
 ..  only:: draft
 
@@ -103,12 +103,12 @@ The initial solution
     while the corresponding ``enum`` is ``ROUTING_PATH_CHEAPEST_ARC``.
 
 The ``PathOperator`` class 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------
 
 ..  only:: draft
 
 The ``TwoOpt`` ``PathOperator``
-""""""""""""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
@@ -121,7 +121,7 @@ The ``TwoOpt`` ``PathOperator``
 ..  _local_search_pathoperators:
 
 Local Search ``PathOperator``\s
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------
 
 ..  only:: draft
 
@@ -152,7 +152,7 @@ Local Search ``PathOperator``\s
                 "Routing: use extended version of SwapActive neighborhood.");
 
 ``TwoOpt``
-"""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
@@ -169,7 +169,7 @@ Local Search ``PathOperator``\s
 
 
 ``Relocate``
-""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
@@ -185,7 +185,7 @@ Local Search ``PathOperator``\s
     //   1 -> [3 -> 4] -> 2  -> 5
 
 ``OrOpt``
-""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
@@ -198,7 +198,7 @@ Local Search ``PathOperator``\s
     RELOCATE,
 
 ``Exchange``
-"""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
@@ -212,7 +212,7 @@ Local Search ``PathOperator``\s
     EXCHANGE,
 
 ``Cross``
-"""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
@@ -228,7 +228,7 @@ Local Search ``PathOperator``\s
     CROSS,
 
 ``Inactive``
-"""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
@@ -248,7 +248,7 @@ Local Search ``PathOperator``\s
     MAKEINACTIVE,
 
 ``SwapActive``
-"""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
@@ -260,7 +260,7 @@ Local Search ``PathOperator``\s
     SWAPACTIVE,
 
 ``ExtendedSwapActive``
-""""""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
@@ -278,7 +278,7 @@ Local Search ``PathOperator``\s
 
 
 ``PathLNS``
-""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
@@ -293,7 +293,7 @@ Local Search ``PathOperator``\s
 
 
 ``UnActiveLNS``
-"""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
@@ -329,15 +329,24 @@ Local Search ``PathOperator``\s
     TSPLNS
     };
 
+How can I change the order of the ``LocalSearchOperator``\s?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Filters
+-----------------
+
+..  only:: draft
+
+    sds
+
 A Local Search heuristic for the TSP
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------------
 
 ..  only:: draft
 
     Let's use all these ``LocalSearchOperator``\s to implement a basic Local Search heuristic.
 
-How can I change the order of the ``LocalSearchOperator``\s?
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 ..  only:: final
 

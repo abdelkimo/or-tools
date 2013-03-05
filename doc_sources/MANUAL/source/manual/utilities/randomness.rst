@@ -1,7 +1,7 @@
 ..  _randomness:
 
 Randomizing
---------------
+================
 
 ..  only:: draft
 
