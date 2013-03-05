@@ -171,7 +171,7 @@ Vehicles
 """"""""""""""""""""""""""""""""""""""
 ..  only:: draft
 
-    A node doesn't have to be visited. When nodes are either optional or part of a ``Disjunction``, i.e. part of a subset 
+    A node doesn't have to be visited. Nodes can be optional or part of a ``Disjunction``, i.e. part of a subset 
     of nodes from which only one node at most can be visited in a solution.
     
     ``ActiveVar(i)`` returns a boolean ``IntVar*`` (a ``IntVar`` variable with a {0, 1} domain) indicating if the node ``i``
@@ -218,7 +218,7 @@ Dimension variables
     You can add as many dimensions as you want [#dimensions_limit]_.
     
     
-    ..  [#dimensions_limit] Well, as many as your memory allows.
+    ..  [#dimensions_limit] Well, as many as your memory allows...
 
     The transit values can be constant, defined with callbacks, vectors or matrices.
     You can represent any quantities along routes with *dimensions* but not only. For instance, *capacities* and 
@@ -233,11 +233,8 @@ Constraints
 
 ..  only:: draft
 
-    Beside the basics constraints we just saw in the previous sub-section, the RL use a constraint to avoid cycles, 
-    constraints to model the ``Disjunction``\s and pick-up and delivery constraints.
-
-Basic constraints and the ``CloseModel()`` method 
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    Beside the basics constraints we just saw in the previous sub-section, the RL use constraints to avoid cycles, 
+    constraints to model the ``Disjunction``\s and *pick-up and delivery* constraints.
 
 
 No cycle constraint
@@ -245,39 +242,161 @@ No cycle constraint
 
 ..  only:: draft
 
-    One of the most difficult constraint to model is to 
-    avoid cycles in the solutions. For one tour, we don't want to revisit some nodes
-    and we want to visit each node. Often, we get partial solutions like the one depicted on the next 
-    figure (a):
+    One of the most difficult constraint to model is a constraint to 
+    avoid cycles in the solutions. For one tour, we don't want to revisit some nodes.
+    Often, we get partial solutions like the one depicted on the figure (a) on the left:
     
     ..  image:: images/cycles.*
         :width: 400px 
         :align: center
 
-    It is often easy to obtain optimal solutions when we allow cycles (a) but extremely difficult to obtain 
-    a real solution (b), i.e. without cycles. Several constraints have been proposed in the scientific literature, 
-    each with its cons and pros.
+    It is often easy to obtain optimal solutions when we allow cycles (like in figure (a)) but difficult to obtain 
+    a real solution (like in figure (b)), i.e. without cycles. Several constraints have been proposed in the scientific literature, 
+    each with its cons and pros. Sometimes, we can avoid this constraint by modelling the problem in such a way that only 
+    solutions without cycles can be produced but then we have to deal with huge and often numerically
+    (and theoretically [#theoretically_unstable_models]_) unstable models.
+    
+    In the RL, we use our dedicated ``NoCycle`` constraint (defined in :file:`constraint_solver/constraints.cc`) in 
+    combination with an ``AllDifferent`` constraint on the ``NextVar()`` variables. The ``NoCycle`` constraint is implicitly 
+    added to the model.
+
+    The ``NoCycle`` constructor has the following signature:
+    
+    ..  code-block:: c++
+        
+        NoCycle(Solver* const s, 
+                const IntVar* const* nexts, 
+                int size,
+                const IntVar* const* active,
+                ResultCallback1<bool, int64>* sink_handler,
+                bool owner,
+                bool assume_paths);
+    
+    We will not spend too much time on the different arguments. The ``nexts`` and ``active`` arrays 
+    are what their names imply. The ``sink_handler`` is just a callback that indicates if a node is a sink or not.
+    Sinks represent the depots, i.e. the nodes where paths start and end.
+    
+    The ``bool`` ``owner`` allows the solver to take ownership of the callback or not and the ``bool``
+    ``assume_paths`` tells if we deal with real paths or with a forest (paths don't necessarily end) 
+    in the auxiliary graph.
+    
+    The constraint essentially performs two actions:
+    
+    - forbid partial paths from looping back to themselves and
+    - ensure each variable/node can be connected to a sink.
     
     ..  only:: html 
     
-        In the RL, we use our dedicated ``NoCycle`` constraint (defined in :file:`constraint_solver/constraints.cc`).
+        
         We don't say no more about this constraint in this section and refer the reader to the subsection 
         :ref:`uth_nocycle_constraint` for 
         a detailed account of our internal ``NoCycle`` constraint.
     
     ..  raw:: latex 
     
-        In the RL, we use our dedicated \code{NoCycle} constraint (defined in \code{constraint\_solver/constraints.cc}).
         We don't say no more about this constraint in this section and refer the reader to 
         subsection~\ref{manual/under_the_hood/rl:uth-nocycle-constraint} for 
         a detailed account of our internal \code{NoCycle} constraint.
     
+    ..  [#theoretically_unstable_models] For the specialists: for instance, primal and dual degenerate linear models.
+    
 ``Disjunction`` constraints
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    ``Disjunction``\s on a group of nodes allow to visit at most one of the nodes in this group. If you want to visit 
+    **exactly one** node in a ``Disjunction``, use:
+    
+    ..  code-block:: c++
+    
+        void AddDisjunction(const std::vector<NodeIndex>& nodes);
+
+    where ``nodes`` represents the group of nodes. This constraint is equivalent to add
+    
+    ..  math::
+    
+        \sum_{i \in \text{Disjunction}} \text{ActiveVar}(i) = 1.
+    
+    You might one to use *optional* ``Disjunction``\s, i.e. a group of nodes from which **at most one** node can be visited.
+    This time, use:
+    
+    ..  code-block:: c++
+    
+        void AddDisjunction(const std::vector<NodeIndex>& nodes, 
+                            int64 penalty);
+    
+    This constraint is equivalent to add
+    
+    ..  math::
+    
+        p \ + \sum_{i \in \text{Disjunction}} \text{ActiveVar}(i) = 1
+    
+    where ``p`` is a boolean variable corresponding to the ``Disjunction`` and the objective function has an added ``(p * penalty)`` term.
+    If none of the variables in the ``Disjunction`` is visited 
+    (:math:`\sum_{i \in \text{Disjunction}} \text{ActiveVar}(i) = 0`), ``p`` must be equal to one and the penalty 
+    is added to the objective function.
+    
+    To be optional, the penalty ``penalty`` attributed to the ``Disjunction`` 
+    must be *non-negative* (:math:`\geqslant 0`), otherwise the RL uses a simple ``Disjunction``, i.e. exactly one 
+    node in the ``Disjunction`` will be visited in the solutions.
 
 Pick-up and delivery constraints
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     
+..  only:: draft
+
+    These constraints notify that two nodes form a pair of nodes which must belong
+    to the same route. 
+    For instance, if nodes ``i`` and ``j`` must be visited/delivered by the same vehicle, use:
+    
+    ..  code-block:: c++
+    
+        void AddPickupAndDelivery(NodeIndex j, NodeIndex j);
+
+    Whenever you have an equality constraint linking
+    the vehicle variables of two node, i.e. you want to force the two nodes to be visited by the same vehicle, 
+    you should add the ``PickupAndDelivery`` constraint:
+    
+    ..  code-block:: c++
+    
+        Solver* const solver = routing.solver();
+        solver->AddConstraint(solver->MakeEquality(
+                           routing.VehicleVar(routing.NodeToIndex(i)),
+                           routing.VehicleVar(routing.NodeToIndex(j))));
+        routing.AddPickupAndDelivery(i, j);
+    
+    This constraint is counter-intuitive in a least two ways:
+    
+    1. This constraint is not modelled by a real constraint: we use these pairs of nodes 
+       to filter out solutions and take them into account in the 
+       different ``PathOperator``\s we use in the Local Search and 
+    2. This constraint doesn't specify an order on the pair ``(i,j)`` of nodes: node ``j`` could be visited before node ``i``.
+    
+    ..  warning:: The implementation of the ``PickupAndDelivery`` constraint in the RL is counter-intuitive.
+    
+    The implementation of this constraint might change in the future.
+
+    
+The ``CloseModel()`` method 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    Because we don't completely define the model when we construct the ``RoutingModel`` class, most 
+    of the (implicit or explicit) constraints [#only_all_different_defined_in_routingmodel_constructor]_ are added in a special ``CloseModel()`` method. 
+    This method is automatically called before a call to ``Solve()`` but if you want to inspect the model before, you need to 
+    call this method explicitly. This method is also automatically called when you deal with ``Assignment``\s. In particular,
+    it is called by 
+    
+    * ``ReadAssignment()``;
+    * ``RestoreAssignment()`` and
+    * ``ReadAssignmentFromRoutes()``.
+    
+
+    ..  [#only_all_different_defined_in_routingmodel_constructor] Actually, only an ``AllDifferent`` constraint on the 
+        ``NextVar``\s is added in the constructor of the ``RoutingModel`` class. This constraint reinforces the fact that 
+        you cannot visit a node twice. 
 
 Objective function
 -------------------
