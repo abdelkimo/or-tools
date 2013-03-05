@@ -5,8 +5,6 @@ The model behind the scene: overview
 
 ..  only:: draft
 
-    [TO RE_WRITTEN]
-
     ..  only:: html
 
         In this section, we give an overview of the main basic components of our model. Most of these 
@@ -25,46 +23,32 @@ The ``RoutingModel`` class
 
 ..  only:: draft
 
-    All ingredients are defined or accessible within the ``RoutingModel`` ``class`` defined in the header 
-    :file:`constraint_solver/routing.h` that is mandatory to use the RL.
+    All ingredients are defined within the ``RoutingModel`` ``class``. This class is declared in the header 
+    :file:`constraint_solver/routing.h`. 
 
-    There are several constructors available.
+    Basically, two constructors available depending on the number of depots:
     
-    If there is only 1 depot:
+    * if there is only one depot:
     
-    ..  code-block:: c++
-    
-        //  42 nodes and 7 routes/vehicles
-        RoutingModel routing(42, 7);
-        //  depot is node with NodeIndex 5
-        routing.SetDepot(5);
+      ..  code-block:: c++
+      
+          //  42 nodes and 7 routes/vehicles
+          RoutingModel routing(42, 7);
+          //  depot is node with NodeIndex 5
+          routing.SetDepot(5);
 
-    If there are several start/end depots:
+    * if there are several start/end depots:
     
-    ..  code-block:: c++
+      ..  code-block:: c++
+      
+          //  create multi depots
+          std::vector<std::pair<RoutingModel::NodeIndex, 
+                                         RoutingModel::NodeIndex> > depots(2);
+          depots[0] = std::make_pair(1,5);
+          depots[1] = std::make_pair(7,1);
     
-        //  create multi depots
-        std::vector<std::pair<RoutingModel::NodeIndex, 
-                                       RoutingModel::NodeIndex> > depots(2);
-        depots[0] = std::make_pair(1,5);
-        depots[1] = std::make_pair(7,1);
-  
-        RoutingModel VRP(9, 2, depots);
+          RoutingModel VRP(9, 2, depots);
         
-    or 
-    
-    ..  code-block:: c++
-    
-        //  create multi depots
-        std::vector<RoutingModel::NodeIndex>  start_depots(2);
-        std::vector<RoutingModel::NodeIndex>  end_depots(2);
-        start_depots[0] = 1;
-        end_depots[0] = 5;
-        start_depots[1] = 7;
-        end_depots[1] = 1;
-  
-        RoutingModel VRP(9, 2, start_depots, end_depots);
-
     Notice that the space between the two ending `">"` in:
     
     ..  code-block:: c++
@@ -73,6 +57,8 @@ The ``RoutingModel`` class
                                        RoutingModel::NodeIndex> > depots(2);
         
     is mandatory.
+
+
     
     A node can be:
     
