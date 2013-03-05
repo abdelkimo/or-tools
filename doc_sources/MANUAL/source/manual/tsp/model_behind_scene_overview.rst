@@ -234,7 +234,7 @@ Constraints
 ..  only:: draft
 
     Beside the basics constraints we just saw in the previous sub-section, the RL use a constraint to avoid cycles, 
-    constraints to model the *disjunctions* and pick-up and delivery constraints.
+    constraints to model the ``Disjunction``\s and pick-up and delivery constraints.
 
 Basic constraints and the ``CloseModel()`` method 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -307,13 +307,58 @@ Penalties
 
     sdfds
 
-Linear lower bound 
+Lower bounds 
 ^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
-    sdfds
+    [TO BE WRITTEN]
+    
+    one:
+    
+    "Linear lower bound": TO BE DONE. Method doesn't exist anymore!
 
+    two:
+
+    Computing a lower bound to the cost of a vehicle routing problem solving a
+    a linear assignment problem (minimum-cost perfect bipartite matching).
+    A bipartite graph is created with left nodes representing the nodes of the
+    routing problem and right nodes representing possible node successors; an
+    arc between a left node l and a right node r is created if r can be the
+    node following l in a route (Next(l) = r); the cost of the arc is the transit
+    cost between l and r in the routing problem.
+    
+    This is a lower bound given the solution to assignment problem does not
+    necessarily produce a (set of) closed route(s) from a starting node to an
+    ending node.
+    
+    ..  code-block:: c++
+    
+        int64 RoutingModel::ComputeLowerBound() {
+          if (!closed_) {
+            LOG(WARNING) << "Non-closed model not supported.";
+            return 0;
+          }
+          if (!homogeneous_costs_) {
+            LOG(WARNING) << "Non-homogeneous vehicle costs not supported";
+            return 0;
+          }
+          if (disjunctions_.size() > 0) {
+            LOG(WARNING)
+                << "Node disjunction constraints or optional nodes not supported.";
+            return 0;
+          }
+
+    ..  only:: html
+
+        We will explore these and other lower bounds in the section :ref:`lower_bounds` when we'll try to solve the Cumulative 
+        Chinese Postman Problem.
+
+    ..  raw:: latex
+
+        We will explore these and other lower bounds in 
+        section~\ref{manual/arc_routing/lower_bounds:lower-bounds} when we'll try to solve the Cumulative 
+        Chinese Postman Problem.
 
 
 Miscellaneous
@@ -321,14 +366,14 @@ Miscellaneous
 
 ..  only:: draft
 
-    sdfds
+    We discuss here several improvements and conveniences of the RL. 
 
 Cache
 ^^^^^^^^
 
 ..  only:: draft
 
-    sdfds
+    [TO BE WRITTEN]
 
 Light constraints
 ^^^^^^^^^^^^^^^^^^^
@@ -363,7 +408,7 @@ Locks
     easily be done within the RL with the concept of *locks*.
     
     A lock is simply an ``std::vector<int>`` that represent a partial route. If ``lock`` is such a vector, then 
-    we can apply this lock and this ensures that:
+    we can apply this lock ensure that:
     
       ``NextVar(lock[i]) == lock[i+1]``
       
