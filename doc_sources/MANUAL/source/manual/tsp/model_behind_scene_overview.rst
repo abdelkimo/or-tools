@@ -362,4 +362,21 @@ Locks
     partial routes that seem promising and that you want to keep fixed for a while during the search. This can 
     easily be done within the RL with the concept of *locks*.
     
-    A lock is simply an ``std::vector<>``.
+    A lock is simply an ``std::vector<int>`` that represent a partial route. If ``lock`` is such a vector, then 
+    we can apply this lock and this ensures that:
+    
+      ``NextVar(lock[i]) == lock[i+1]``
+      
+    is ``true`` in the current solution.
+        
+    ..  only:: html
+
+        We will use locks in the section :ref:`partial_routes` when we will try to solve the Cumulative Chinese Postman 
+        Problem.
+        
+    ..  raw:: latex
+
+        We will use locks in section~\ref{manual/arc_routing/partial_routes:partial-routes} when we will try to solve the Cumulative Chinese Postman 
+        Problem.
+
+
