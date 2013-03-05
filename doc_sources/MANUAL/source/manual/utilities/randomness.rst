@@ -1,11 +1,12 @@
 ..  _randomness:
 
-Randomness
+Randomizing
 --------------
 
 ..  only:: draft
 
     ACM minimal standard random number generator.
+    
     1. Thoroughly tested in the literature
     2. Period of 2^31-1
     3. Fast: about 60 cycles per value

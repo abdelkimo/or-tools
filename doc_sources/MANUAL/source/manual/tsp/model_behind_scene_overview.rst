@@ -16,7 +16,20 @@ The model behind the scene: overview
 
         In this section, we give an overview of the main basic components of our model. Most of these 
         components will be detailed in this chapter and later in the next two chapters.
-        In section~\ref{manual/under_the_hood/rl:hood-rl}, we describe the inner mechanisms of the RL in details.
+        In section~\ref{manual/under_the_hood/rl:hood-rl}, we describe the inner mechanisms of the RL in details.~\\~\\
+
+    ..  only:: html
+    
+        If you didn't already read the previous section :ref:`rl_model_behind_scene_decision_v`
+        about the main decisions variables and the auxiliary graph, we strongly
+        recommend you to do so before reading this section.
+
+    ..  raw:: latex
+
+        If you didn't already read the previous section~\ref{manual/tsp/model_behind_scene:rl-model-behind-scene-decision-v}
+        about the main decisions variables and the auxiliary graph, we strongly
+        recommend you to do so before reading this section.
+
 
 The ``RoutingModel`` class
 ---------------------------------------------------
@@ -26,7 +39,20 @@ The ``RoutingModel`` class
     All ingredients are defined within the ``RoutingModel`` ``class``. This class is declared in the header 
     :file:`constraint_solver/routing.h`. 
 
-    Basically, two constructors available depending on the number of depots:
+    As already mentionned, the RL is a layer above the CP Solver and the *internal cabling* is accessible through 
+    the underlying solver:
+    
+    ..  code-block:: c++
+    
+        RoutingModel routing(...);
+        Solver* const solver = routing.solver();
+
+    Most desirable features for a RL are directly accessible through the ``RoutingModel`` class though. 
+    The *accessors* (getters and setters) 
+    will be discussed throughout the third part of this manual. But it is good 
+    to know that on last resort you have a complete access (read: control) to the internals of the RL.
+    
+    Basically, two constructors are available depending on the number of depots:
     
     * if there is only one depot:
     
@@ -49,29 +75,17 @@ The ``RoutingModel`` class
     
           RoutingModel VRP(9, 2, depots);
         
-    Notice that the space between the two ending `">"` in:
-    
-    ..  code-block:: c++
-    
-        std::vector<std::pair<RoutingModel::NodeIndex, 
-                                       RoutingModel::NodeIndex> > depots(2);
-        
-    is mandatory.
-
-
-    
-    A node can be:
-    
-      - a transit node;
-      - a starting depot;
-      - an ending depot;
-      - a starting and an ending depot.
+      Notice that a space between the two ending `">"` in:
       
-    A depot **cannot** be an transit node.
-    The number of vehicles can be arbitrary (within the limit of an ``int``).
+      ..  code-block:: c++
+      
+          std::vector<std::pair<RoutingModel::NodeIndex, 
+                                         RoutingModel::NodeIndex> > depots(2);
+          
+      is mandatory.
 
 
-
+    
 
 ..  _var_defining_nodes_and_routes:
 
@@ -99,7 +113,8 @@ Path variables
     Path variables describe the different routes. There are three types of path variables that can be reached with 
     the following methods:
     
-      * ``NextVar(i)``: the main decision variables.
+      * ``NextVar(i)``: the main decision variables. ``NextVar(i) == j`` is ``true`` if ``j`` is the node 
+        immediately reached from node ``i`` in the solution.
       * ``VehicleVar(i)``: represents the vehicle/route index to which node ``i`` belongs in the solution.
       * ``ActiveVar(i)``: a Boolean variable that indicates if a node ``i`` is visited or not.
 
@@ -109,13 +124,6 @@ Main decision variables
 
 ..  only:: draft
 
-    ..  only:: html
-    
-        The previous section :ref:`rl_model_behind_scene_decision_v` describes the main variables.
-        
-    ..  raw:: latex
-    
-        Previous section~\ref{manual/tsp/model_behind_scene:rl-model-behind-scene-decision-v} describes the main variables.
 
         
     You can have access to the main variables with the method ``NextVar(int64)``:
@@ -129,6 +137,8 @@ Main decision variables
     
     ..  code-block:: c++
     
+        Assignment * const solution = routing.Solve();
+        ...
         int64 next_node = solution.Value(var);
         
 Vehicles
@@ -148,13 +158,13 @@ Vehicles
 
     That is, both nodes ``i`` and ``j`` are served by the same vehicle.
     
-    To grab the first and last node (starting and ending depot) of a route/vehicle, we have already seen the 
+    To grab the first and last node (starting and ending depot) of a route/vehicle ``route_number``, we have already seen the 
     ``Start()`` and ``End()`` methods:
     
     ..  code-block:: c++
     
-        int64 starting_depot = routing.Start(i);
-        int64 ending_depot = routing.End(i);
+        int64 starting_depot = routing.Start(route_number);
+        int64 ending_depot = routing.End(route_number);
         
 
 ``Disjunction``\s and optional nodes 
@@ -162,7 +172,7 @@ Vehicles
 ..  only:: draft
 
     A node doesn't have to be visited. When nodes are either optional or part of a ``Disjunction``, i.e. part of a subset 
-    of nodes from which only one node can be visited in one solution.
+    of nodes from which only one node at most can be visited in a solution.
     
     ``ActiveVar(i)`` returns a boolean ``IntVar*`` (a ``IntVar`` variable with a {0, 1} domain) indicating if the node ``i``
     is visited or not in the solution. The way to describe a node that is not visited is to make its ``NextVar(i)`` points 
@@ -191,8 +201,9 @@ Dimension variables
 
 ..  only:: draft
 
-    Dimension variables are used to accumulate quantities (or *dimensions*) along the routes. There are three types 
-    of dimension variables (we explain the type of ``d`` just after the list):
+    Dimension variables are used to accumulate quantities (or *dimensions*) along the routes.
+    To denote a *dimension*, we use an ``std::string d``. There are three types 
+    of dimension variables:
     
       * ``CumulVar(i, d)``: variables representing the quantity of dimension ``d`` when
         arriving at the node ``i``.
@@ -204,12 +215,12 @@ Dimension variables
           
         For a time dimension, you can think of waiting times.
 
-    ``d`` is a ``const std::string`` 
-    by which a dimension is referenced. You can add as many dimensions as you want [#dimensions_limit]_.
+    You can add as many dimensions as you want [#dimensions_limit]_.
     
     
     ..  [#dimensions_limit] Well, as many as your memory allows.
- 
+
+    The transit values can be constant, defined with callbacks, vectors or matrices.
     We'll play with dimensions in the next chapter when we'll try to solve the the 
     :ref:`Capacitated Vehicle Routing Problem <chapter_vrp_with_constraints>`.
 
@@ -220,7 +231,12 @@ Constraints
 
 ..  only:: draft
 
-    JJ
+    Beside the basics constraints we just saw in the previous sub-section, the RL use a constraint to avoid cycles and
+    constraints to model the *disjunctions*.
+
+Basic constraints and the ``CloseModel()`` method 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 No cycle constraint
 ^^^^^^^^^^^^^^^^^^^^
@@ -254,7 +270,11 @@ No cycle constraint
         subsection~\ref{manual/under_the_hood/rl:uth-nocycle-constraint} for 
         a detailed account of our internal \code{NoCycle} constraint.
     
-        
+``Disjunction`` constraints
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Pick-up and delivery constraints
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
     
 
 Objective function
@@ -272,4 +292,10 @@ Objective function
 
 Miscellaneous
 ------------------
+
+Cache
+^^^^^^^^
+
+Light constraints
+^^^^^^^^^^^^^^^^^^^
 
