@@ -50,7 +50,7 @@ The ``RoutingModel`` class
     Most desirable features for a RL are directly accessible through the ``RoutingModel`` class though. 
     The *accessors* (getters and setters) 
     will be discussed throughout the third part of this manual. But it is good 
-    to know that on last resort you have a complete access (read: control) to the internals of the RL.
+    to know that as a last resort you have a complete access (read: control) to the internals of the RL.
     
     Basically, two constructors are available depending on the number of depots:
     
@@ -95,6 +95,7 @@ Variables
 ..  only:: draft
 
     Basically, there are two type of variables: 
+    
       * **Path variables**: the main decision variables and additional variables to describe the different routes and
       * **Dimension variables**: these variables allow to add side constraints like time-windows, capacities, etc.
         and denote some quantities (the *dimensions*) along the routes.
@@ -156,7 +157,7 @@ Vehicles
     
       if ``NextVar(i) == j`` then ``VehicleVar(j) == VehicleVar(i)``.
 
-    That is, both nodes ``i`` and ``j`` are served by the same vehicle.
+    That is, both nodes ``i`` and ``j`` are serviced by the same vehicle.
     
     To grab the first and last node (starting and ending depot) of a route/vehicle ``route_number``, we have already seen the 
     ``Start()`` and ``End()`` methods:
@@ -233,9 +234,8 @@ Constraints
 
 ..  only:: draft
 
-    Beside the basics constraints we just saw in the previous sub-section, the RL use constraints to avoid cycles, 
+    Beside the basics constraints we just overviewed in the previous sub-section, the RL use constraints to avoid cycles, 
     constraints to model the ``Disjunction``\s and *pick-up and delivery* constraints.
-
 
 No cycle constraint
 ^^^^^^^^^^^^^^^^^^^^
@@ -373,7 +373,7 @@ Pick-up and delivery constraints
        different ``PathOperator``\s we use in the Local Search and 
     2. This constraint doesn't specify an order on the pair ``(i,j)`` of nodes: node ``j`` could be visited before node ``i``.
     
-    ..  warning:: The implementation of the ``PickupAndDelivery`` constraint in the RL is counter-intuitive.
+    ..  warning:: The implementation of the ``PickupAndDelivery`` constraint in the RL is a little counter-intuitive.
     
     The implementation of this constraint might change in the future.
 
@@ -384,7 +384,8 @@ The ``CloseModel()`` method
 ..  only:: draft
 
     Because we don't completely define the model when we construct the ``RoutingModel`` class, most 
-    of the (implicit or explicit) constraints [#only_all_different_defined_in_routingmodel_constructor]_ are added in a special ``CloseModel()`` method. 
+    of the (implicit or explicit) constraints [#only_all_different_defined_in_routingmodel_constructor]_  and 
+    the objective function are added in a special ``CloseModel()`` method. 
     This method is automatically called before a call to ``Solve()`` but if you want to inspect the model before, you need to 
     call this method explicitly. This method is also automatically called when you deal with ``Assignment``\s. In particular,
     it is called by 
@@ -398,8 +399,8 @@ The ``CloseModel()`` method
         ``NextVar``\s is added in the constructor of the ``RoutingModel`` class. This constraint reinforces the fact that 
         you cannot visit a node twice. 
 
-Objective function
--------------------
+The objective function
+----------------------------
 
 ..  only:: draft
 
@@ -407,24 +408,129 @@ Objective function
     
     ..  code-block:: c++
     
-        IntVar* obj = routing.CostVar();
+        IntVar* const obj = routing.CostVar();
 
-    The RL solver tries to minimize this ``obj`` variable.
+    The RL solver tries to minimize this ``obj`` variable. The value of the objective function is made out of the sum of:
+    
+    * the costs of the arcs in each path;
+    * a fixed cost of each route/vehicle;
+    * the penalty costs for not visiting optional ``Disjunction``\s.
+    
+    We detail each of these costs.
+    
 
+The costs of the arcs
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    To set the cost of each arc, use a ``NodeEvaluator2`` callback to return the cost of each ``(i,j)`` arc:
+    
+    ..  code-block:: c++
+    
+        void SetCost(NodeEvaluator2* evaluator);
+        
+    ``NodeEvaluator2`` is simply [#nodeevaluator2_cplusplus_jargon]_ a ``typedef`` for a 
+    ``ResultCallback2<int64, NodeIndex, NodeIndex>``, i.e. a class that defines 
+    an ``int64 Run(NodeIndex i, NodeIndex j)`` or  method. If you already have a class that defines a distance method on 
+    pairs of ``NodeIndex``\es, you can transform this class into a ``NodeEvaluator2`` with ``NewPermanentCallback()``.
+    
+    First, the class that computes the distances:
+    
+    ..  code-block:: c++
+    
+        class ComputeDistances {
+          ...
+          int64 Distance(RoutingModel::NodeIndex from,
+                         RoutingModel::NodeIndex to) const {
+            return ...;
+          }
+        ...
+        ;
+
+    Then, the use of a ``NodeEvaluator2`` callback with ``NewPermanentCallback()``:
+    
+    ..  code-block:: c++
+    
+        RoutingModel routing(....);
+        ComputeDistances my_distances_class(...);
+        routing.SetCost(NewPermanentCallback(&my_distances_class, 
+                                             &ComputeDistances::Distance));
+        
+        
+    You can also use a function:
+    
+    ..  code-block:: c++
+    
+        int64 distance(RoutingModel::NodeIndex i, 
+                       RoutingModel::NodeIndex j) {
+          return ...;
+        }
+    
+    and use again ``NewPermanentCallback()``:
+    
+    ..  code-block:: c++
+    
+        routing.SetCost(NewPermanentCallback(&distance));
+        
+    The ``NewPermanentCallback()`` is a function that returns the appropriate callback class made from its arguments. 
+    Some magic might be involved too. ``ResultCallback2`` and ``NewPermanentCallback()`` are defined in the 
+    header :file:`base/callback.h`.
+
+
+    ..  [#nodeevaluator2_cplusplus_jargon] What follows is clearly C++ jargon. Basically, let's say that you need a method or a 
+        function that returns the distances of the arcs. To pass it as argument to the ``SetCost()`` method, wrap it in 
+        a ``NewPermanentCallback()`` "call".
+     
+A fixed cost for each of the existing routes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    Routes/Vehicles don't all have to be used. It might cost less not to use a route/vehicle. To add a fixed cost 
+    for each route/vehicle, use:
+    
+    ..  code-block:: c++
+    
+        void SetRouteFixedCost(int64 cost);
+        
+    This ``int64`` cost will only be added for each route that contains at least one visited node, i.e. a different node 
+    than the start and end nodes of the route.
+
+A penalty cost for missed ``Disjunction``\s
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    We have already seen the penalty costs for optional ``Disjunction``\s above. The penalty cost is only added to the 
+    objective function for a missed ``Disjunction``: the solution doesn't visit any node of the ``Disjunction``. If the given 
+    penalty cost is negative for an optional ``Disjunction``, this ``Disjunction`` becomes mandatory and the penalty is set to 
+    zero. The penalty cost can be zero for optional ``Disjunction`` though and you can model optional nodes by using 
+    singletons for 
+    each ``Disjunction``.
+     
 Different types of vehicles
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
-    sdfds
+    The cost for the arcs and the used routes/vehicles can be customized for each route/vehicle. 
+    
+    To customize the costs of the arcs, use:
+    
+    ..  code-block:: c++
+    
+        void SetVehicleCost(int vehicle, NodeEvaluator2* evaluator);
+        
+    where ``vehicle`` is the number of the route/vehicle.
+    
+    To customize the fixed costs of the routes/vehicles, use:
+    
+    ..  code-block:: c++
+    
+        void SetVehicleFixedCost(int vehicle, int64 cost);
 
 
-Penalties
-^^^^^^^^^^
-
-..  only:: draft
-
-    sdfds
 
 Lower bounds 
 ^^^^^^^^^^^^^^^^^^^^^
