@@ -77,8 +77,8 @@ The Travelling Salesman Problem with Time Windows
     at a given depot and visiting all customers. Each customer :math:`i` has: 
     
     - a *service time* :math:`\beta_i`: this is the time needed to service the customer;
-    - a *ready time* :math:`a_i`: you cannot start to serve the customer before her ready time and
-    - a *due time* :math:`b_i`: you must serve the client before her due time.
+    - a *ready time* :math:`a_i` (sometimes called *release time*): you cannot start to serve the customer before her ready time and
+    - a *due time* :math:`b_i` (sometimes called *deadline*): you must serve the client before her due time.
       
     You only can (and must) visit each client once. The total cost of a tour is the sum of the arcs between the clients in the 
     tour. The ready and due times of a client :math:`i` define a *time window* :math:`[a_i, b_i]` within which the client has 
@@ -107,8 +107,35 @@ The Travelling Salesman Problem with Time Windows
     
     In real application, the time spent at a client might be limited to the service. For instance, you might wait in front 
     of the client's office! It's common to consider that you start to service and leave as soon as possible.
-        
+  
+    Sometimes, travel times and distances are different, i.e. the costs are given by the distances but the feasibility of the 
+    solution depends on the travel times. They can be proportional or completely unrelated to the distances. In this manual, 
+    we take the equality between both for granted.
+  
+    Often, some conditions are applied to the time windows (in theory or practice). The only 
+    condition [#condition_time_windows_integers]_ we will impose 
+    is that :math:`a_i, b_i \in  \mathbb{N}`, 
+    i.e. we impose that the bounds of the time windows must be non negative integers. This also implies that the time windows 
+    and the servicing times are finite.
 
+    ..  [#condition_time_windows_integers] This condition doesn't hold in Rodrigo Ferreira da Silva and Sebastián Urrutia’s
+        definition of a TSPTW. In their article, they ask for (at least theoretically)
+        :math:`a_i, b_i, \beta_i \in  \mathbb{R}^+`, i.e. non negative real numbers and :math:`a_i \leqslant b_i`.
+
+    The practical difficulty of the TSPTW is such that only instances with about 100 nodes have been solved to optimality
+    [#tsptw_instances_to_optimality_remark]_ and heuristics rarely challenge instances with more than 400 nodes.
+    
+    ..  [#tsptw_instances_to_optimality_remark] Instances with more than 100 nodes have been solved to optimality 
+        but no one - at least to the best of our knowledge and at the time of writing - can pretend to systematically solve to optimality 
+        instances with more than 40 nodes... 
+    
+    The 
+    difficulty of the problem non only depends on the number of nodes but also on the "quality" of the time windows.
+    Not many attempts can be found in the scientific literature about exact or heuristic algorithms using CP to solve the TSPTW.
+    Actually, no so many attempts have been successful to solve this difficult problem in general and so the scientific literature 
+    is quite scarce. 
+
+    We refer the interested reader to the two web pages we cite in the next sub-section to find some relevant literature.
 
 Benchmark data
 -----------------
@@ -117,18 +144,18 @@ Benchmark data
 
 
     There isn't a real standard. Basically, you'll find two types of formats and their variants. We reference you
-    to two webpages because their respective authors took great care to format all the instances in the same 
+    to two web pages because their respective authors took great care to format all the instances in the same 
     format.
     
     Manuel López-Ibáñez and Christian Blum have collected benchmark instances from different sources in 
-    the litterature. Their `Benchmark Instances for the TSPTW page <http://iridia.ulb.ac.be/~manuel/tsptw-instances>`_
+    the literature. Their `Benchmark Instances for the TSPTW page <http://iridia.ulb.ac.be/~manuel/tsptw-instances>`_
     contains more or less 300 instances.
     
     Rodrigo Ferreira da Silva and Sebastián Urrutia also collected benchmark from different sources in the 
-    litterature. Their `The TSPTW - Approaches & Additional Resources page <http://homepages.dcc.ufmg.br/~rfsilva/tsptw/>`_
+    literature. Their `The TSPTW - Approaches & Additional Resources page <http://homepages.dcc.ufmg.br/~rfsilva/tsptw/>`_
     contains more or less 100 instances.
     
-    Both pages provide best solutions and sum up the relevant litterature.
+    Both pages provide best solutions and sum up the relevant literature.
 
 The López-Ibáñez-Blum format 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -188,11 +215,10 @@ The López-Ibáñez-Blum format
         9         21       
         275       300      
 
-    The first line contains the number of nodes, including the depot. We have a depot and 20 nodes. The following 
-    21 lines represent a distance matrix. The first row is the distance from the depot to the other nodes. 
-    The first column is the distance from the other nodes to the depot. This distance typically represents the 
-    travel time between nodes :math:`i` and :math:`j`, plus the service time at node :math:`i`. 
-    The distance matrix is not necessarily symmetrical. The next 21 lines represent the time windows (earliest, latest) 
+    The first line contains the number of nodes, including the depot. The ``n20w20.001`` instance has a depot and 20 nodes. 
+    The following 21 lines represent the distance matrix. This distance typically represents the 
+    travel time between nodes :math:`i` and :math:`j`, **plus** the service time at node :math:`i`. 
+    The distance matrix is **not** necessarily **symmetrical**. The next 21 lines represent the time windows (earliest, latest) 
     for each node, one per line. The first node is the depot. 
     
     When then sum of service time is not 0, it is given in a comment on the last line:
@@ -201,6 +227,8 @@ The López-Ibáñez-Blum format
     
         # Sum of service times: 522
         
+
+    
 
 The da Silva-Urrutia format 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -240,15 +268,20 @@ The da Silva-Urrutia format
 
     Having seen the same instance, you don't need much complementary info to 
     understand this format [#not_easy_transformation]_. The first line of data represent the depot and 
-    the last line marks the end of the file.
+    the last line marks the end of the file. As you can see, the authors are not really optimistic about solving 
+    instances with more than 999 nodes!
     
     ..  [#not_easy_transformation] You might think that the translation from this second 
         format to the first one is obvious. It is not! See the 
-        remark on *Travel-time Computation* in the
+        remark on *Travel-time Computation* on the
         `Jeffrey Ohlmann and Barrett Thomas benchmark page <http://myweb.uiowa.edu/bthoa/TSPTWBenchmarkDataSets.htm>`_.
     
 The ``TSPTWData`` class
 --------------------------
+
+..  only:: draft
+
+    Hm...
 
 Visualization with ``ePix``
 ---------------------------
