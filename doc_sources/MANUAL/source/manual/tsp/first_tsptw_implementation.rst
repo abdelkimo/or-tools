@@ -1,6 +1,6 @@
 ..  _first_tsptw_implementation:
 
-The TSPTW in or-tools
+The TSPTW in *or-tools*
 ------------------------------------
 
 

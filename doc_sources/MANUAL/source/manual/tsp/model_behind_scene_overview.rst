@@ -224,8 +224,8 @@ Dimension variables
     The transit values can be constant, defined with callbacks, vectors or matrices.
     You can represent any quantities along routes with *dimensions* but not only. For instance, *capacities* and 
     *time windows* can be modelled with *dimensions*.  
-    We'll play with dimensions in the next chapter when we'll try to solve the the 
-    :ref:`Capacitated Vehicle Routing Problem <chapter_vrp_with_constraints>`.
+    We'll play with dimensions at the end of this chapter when we'll try to solve 
+    :ref:`The Travelling Salesman Problem with Time Windows in or-tools <first_tsptw_implementation>`.
 
     
 
