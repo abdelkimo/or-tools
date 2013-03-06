@@ -281,7 +281,8 @@ The ``TSPTWData`` class
 
 ..  only:: draft
 
-    Hm...
+    The ``TSPTWData`` class is modelled on the ``TSPData`` class. As in the case of the TSPLIB, 
+    we number the nodes starting from one.
 
 Visualization with ``ePix``
 ---------------------------

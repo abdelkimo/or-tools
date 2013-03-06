@@ -503,7 +503,7 @@ How to avoid some edges?
         }  //  while(number_forbidden_arcs_added < number_of_forbidden_arcs)
       }
       
-      
+       
     Because our random number generator (as most random number generators) is not completely random and uniform, we need
     to be sure to exit the ``while`` loop. This is why we introduce the gflag:
     
