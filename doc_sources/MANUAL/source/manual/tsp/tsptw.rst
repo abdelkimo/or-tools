@@ -3,6 +3,38 @@
 The Travelling Salesman Problem with Time Windows (TSPTW)
 =========================================================
 
+..  raw:: latex
+
+    You can find the code in the file~\code{tsp.h}, \code{tsp\_epix.h}, \code{tsp\_minimal.cc}, \code{tsp.cc}, 
+    \code{tsplib\_solution\_to\_epix.cc} and~\code{tsp\_forbidden\_arcs.cc} and the data
+    in the files~\code{tsp\_parameters.txt}, \code{a280.tsp} and~\code{a280.opt.tour}.\\~\\
+
+..  only:: html
+
+    ..  container:: files-sidebar
+
+        ..  raw:: html 
+        
+            <ol>
+              <li>C++ code:
+                <ol>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsptw.h">tsptw.h</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsptw_epix.h">tsptw_epix.h</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsptw_solutions_to_epix.cc">tsptw_solutions_to_epix.cc</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/check_tsptw_solutions.cc">check_tsptw_solutions.cc</a></li>
+                </ol>
+              </li>
+              <li>Data files:
+                <ol>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsp_parameters.txt">tsp_parameters.txt</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/a280.tsp">a280.tsp</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/a280.opt.tour">a280.opt.tour</a></li>
+                </ol>
+              </li>
+
+            </ol>
+
+
 ..  only:: draft
 
     The Travelling Salesman Problem with Time Windows is like the TSP except that cities (or clients)
@@ -10,7 +42,7 @@ The Travelling Salesman Problem with Time Windows (TSPTW)
     despite restricting the search tree [#TSPTW_tree_smaller_than_TSP_tree]_ - renders 
     the problem even more difficult in practice! Indeed, the beautiful symmetry of the 
     TSP [#TSPTW_depot_is_important]_ (any permutation 
-    of cities is a feasible solution) is broken and the search of feasible solutions is 
+    of cities is a feasible solution) is broken and even the search of feasible solutions is 
     difficult [Savelsbergh1985]_.
 
     We present the TSPTW and two instance formats: the López-Ibáñez-Blum and the da Silva-Urrutia formats. As for the 
@@ -31,7 +63,51 @@ The Travelling Salesman Problem with Time Windows
 ..  only:: draft
 
     You might be surprise to learn that there is no common definition that is widely accepted within the scientific 
-    community. The basic idea is to find a "tour" that visits each node within a time window but several variants exist. 
+    community. The basic idea is to find a "tour" that visits each node within a time window but several variants exist.
+    
+    We will use the definition given in Rodrigo Ferreira da Silva and Sebastián Urrutia's 2010 article [Ferreira2010]_.
+    Instead of visiting cities as in the TSP, we visit and service customers.
+    
+    ..  [Ferreira2010] R. Ferreira da Silva and S. Urrutia. 
+        *A General VNS heuristic for the traveling salesman problem with time windows*, Discrete Optimization, V.7, Issue 4,
+        pp. 203-211, 2010.
+
+
+    The Travelling Salesman Problem with Time Windows (TSPTW) consists in finding a minimum cost tour starting and ending
+    at a given depot and visiting all customers. Each customer :math:`i` has: 
+    
+    - a *service time* :math:`\beta_i`: this is the time needed to service the customer;
+    - a *ready time* :math:`a_i`: you cannot start to serve the customer before her ready time and
+    - a *due time* :math:`b_i`: you must serve the client before her due time.
+      
+    You only can (and must) visit each client once. The total cost of a tour is the sum of the arcs between the clients in the 
+    tour. The ready and due times of a client :math:`i` define a *time window* :math:`[a_i, b_i]` within which the client has 
+    to be served. It is allowed to visit the client before the ready time but you'll have to wait until 
+    the ready time before you can service her. Due times must be respected and tours that fail to serve clients before their 
+    due time are considered infeasible.
+
+    Let's draw a figure of a visit to a client :math:`i`. To do so, let's define:
+    
+    - the *arrival time* :math:`t_i`: the time you arrive at the client and
+    - the *service start time* :math:`s_i`: the time you start to service the client.
+    
+    Here is the figure:
+    
+    ..  only:: html 
+
+        .. image:: images/servicing_client_in_tsptw.*
+           :width: 400pt
+           :align: center
+
+    ..  only:: latex
+        
+        .. image:: images/servicing_client_in_tsptw.*
+           :width: 250pt
+           :align: center
+    
+    In real application, the time spent at a client might be limited to the service. For instance, you might wait in front 
+    of the client's office! It's common to consider that you start to service and leave as soon as possible.
+        
 
 
 Benchmark data

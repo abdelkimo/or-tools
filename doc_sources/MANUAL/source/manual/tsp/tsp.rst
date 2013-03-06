@@ -64,7 +64,7 @@ solve TSP instances with then thousands of nodes to optimality [#tsp_record]_.
 
 These instances are out of scope of the Constraint Programming paradigm [#tsp_difficult_for_cp]_. CP shines when
 you consider complicated side constraints like the addition of *time windows*: each customer (represented by a node)
-has to be visited inside a given time interval.
+has to be serviced inside a given time interval.
 
 ..  [#tsp_record] The record at the time of writing is the ``pla85900`` instance in Gerd Reinelt's 
     `TSPLIB <http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/>`_. This instance is a VLSI application
