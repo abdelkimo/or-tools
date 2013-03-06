@@ -9,7 +9,7 @@ The TSPTW in *or-tools*
 
 
 
-Time windows as ``Disjunction``\s
+Time windows as a ``Dimension``
 --------------------------------------
 
 ..  only:: draft
