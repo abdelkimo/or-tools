@@ -1,6 +1,4 @@
 # Milestone:
-Milestone:
-* More than 350 pages...
 # Current changes.
 * Minor enhancements to the manual:
   - 9.5 added.
