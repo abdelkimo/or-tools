@@ -26,9 +26,10 @@ The Travelling Salesman Problem with Time Windows (TSPTW)
               </li>
               <li>Data files:
                 <ol>
-                  <li><a href="../../../tutorials/cplusplus/chap9/tsp_parameters.txt">tsp_parameters.txt</a></li>
-                  <li><a href="../../../tutorials/cplusplus/chap9/a280.tsp">a280.tsp</a></li>
-                  <li><a href="../../../tutorials/cplusplus/chap9/a280.opt.tour">a280.opt.tour</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsptw_check_parameters.txt">tsptw_check_parameters.txt</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/LIB_n20w20.001.txt">LIB_n20w20.001.txt</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/DSU_n20w20.001.txt">DSU_n20w20.001.txt</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/DSU_n20w20.001.opt.tour">DSU_n20w20.001.opt.tour</a></li>
                 </ol>
               </li>
 
@@ -167,7 +168,7 @@ The López-Ibáñez-Blum format
     ..  [Dumas1995] Dumas, Y., Desrosiers, J., Gelinas, E., Solomon, M., *An optimal algorithm 
         for the travelling salesman problem with time windows*, Operations Research 43 (2) (1995) 367-371.
     
-    Here is the content of the file :file:`n20w20.001.txt`:
+    Here is the content of the file :file:`n20w20.001.txt` (:file:`LIB_n20w20.001.txt`):
     
     ..  code-block:: text
     
@@ -221,7 +222,7 @@ The López-Ibáñez-Blum format
     The distance matrix is **not** necessarily **symmetrical**. The next 21 lines represent the time windows (earliest, latest) 
     for each node, one per line. The first node is the depot. 
     
-    When then sum of service time is not 0, it is given in a comment on the last line:
+    When then sum of service times is not 0, it is given in a comment on the last line:
     
     ..  code-block:: text
     
@@ -235,7 +236,7 @@ The da Silva-Urrutia format
 
 ..  only:: draft
 
-    We present exactly the same instance as above. Here is the file :file:`n20w20.001.txt`:
+    We present exactly the same instance as above. Here is the file :file:`n20w20.001.txt` (:file:`DSU_n20w20.001.txt`):
     
     ..  code-block:: text
     
@@ -267,7 +268,7 @@ The da Silva-Urrutia format
           999     0.00     0.00   0.00      0.00         0.00       0.00
 
     Having seen the same instance, you don't need much complementary info to 
-    understand this format [#not_easy_transformation]_. The first line of data represent the depot and 
+    understand this format [#not_easy_transformation]_. The first line of data (``CUST NO. 1``) represent the depot and 
     the last line marks the end of the file. As you can see, the authors are not really optimistic about solving 
     instances with more than 999 nodes!
     

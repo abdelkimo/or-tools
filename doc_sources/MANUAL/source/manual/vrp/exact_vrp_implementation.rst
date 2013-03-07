@@ -1,7 +1,7 @@
 ..  _exact_vrp_implementation:
 
 An exact implementation of the VRP
-------------------------------------
+=====================================
 
 
 

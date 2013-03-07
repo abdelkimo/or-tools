@@ -144,7 +144,7 @@ The Problem
     As we already said earlier, the CPP on graphs with only directed or only non-directed edges is easy to solve. The mixed 
     version on graphs with both edges and arcs is a difficult problem. In the first case, we know very efficient specialized 
     algorithms and we don't need CP and in the second case and to the best of our knowledge, CP 
-    could never compete with specialized Arc Routing algorithms. It's only when you add side constraints 
+    doesn't compete with specialized Arc Routing algorithms. It's only when you add side constraints 
     (like time constraints) or allow multiple vehicles to service the edges that CP might proof successful. Until now, very 
     few attempts have been made to solve CPP-like problems with CP.
     

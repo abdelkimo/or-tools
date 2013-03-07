@@ -1,9 +1,11 @@
 ..  _cvrp_summary:
 
 Summary
--------
+============
 
-summary
+..  only:: draft
+
+    summary
 
 ..  raw:: html
     
