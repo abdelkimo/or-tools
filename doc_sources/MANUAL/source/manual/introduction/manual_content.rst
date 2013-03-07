@@ -51,7 +51,7 @@ Part I: Basics
       The ``AllDifferent`` constraint will make its first apparence too. More importantly, we'll use a ``DecisionBuilder``
       to define the search phase and launch the search with ``NextSolution()``. To conduct the search, we'll use
       ``SearchMonitor``\s and collect solutions with ``SolutionCollector``\s and ``Assigment``\s. Finally, we'll say a few
-      words about the way to pass read-only parameters to the solver and about the other available computing languages 
+      words about the way to pass read-only parameters to the solver and about the other available programming languages 
       in *or-tools* (``Python``, ``Java``
       and ``C#``). Although this chapter is a gentle introduction to the basic use of the library, it also focuses on some 
       basic but important manipulations needed to get things right. Don't miss them!
@@ -65,8 +65,7 @@ Part I: Basics
       tune the search, collect statistics, etc. We present some of them and how to trigger them. To limit the search in some 
       way, use ``SearchLimit``\s. As ``SearchLimit``\s use custom made functions or methods, this will be our first 
       (but certainly not last) encounter with *callbacks* and *functors*. 
-      Two very useful techniques to tighten a model are introduced: adding better bounds and breaking symmetries. You can break 
-      symmetries statically by adding your own constraints or dynamically using ``SymmetryBreaker``\s.
+      Two very useful techniques to tighten a model are introduced: adding better bounds and breaking symmetries. 
       Finally, we explain how our CP solver optimizes while it basically "only" finds feasible solutions.
 
     Chapter 4: :ref:`chapter_reification`:
@@ -80,7 +79,12 @@ Part II: Customization
 ..  only:: draft
 
     Chapter 5: :ref:`chapter_search_primitives`:
-      balbalb
+      The *or-tools* CP solver is quite flexible and comes with several tools (``Decision``\s, ``DecisionBuilder``\s, ...) 
+      that we call *search primitives*. Some are predefined and can be used right out of the box while others can be 
+      customized thanks to callbacks. You can also combine different search strategies. 
+      
+      You can break 
+      symmetries statically by adding your own constraints or dynamically using ``SymmetryBreaker``\s.
 
     Chapter 6: :ref:`chapter_local_search`:
       balbalb
