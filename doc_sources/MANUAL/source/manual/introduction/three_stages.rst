@@ -5,8 +5,15 @@ The three-stage method: describe, model and solve
 
 
 We propose a recipe that belongs to the folklore. Like all recipes it is 
-only a guide and should not be followed blindly. When it comes to research, everything is permitted
+only a guide and should not be followed blindly [#three_stage_method_stop]_. When it comes to research, everything is permitted
 and your imagination is the limit.
+
+..  [#three_stage_method_stop] If you are allergic to this "academic" approach, you probably will be happy to know that 
+    we only use this three-stage method in the first two parts of this manual.
+
+As Feyerabend (`Wikipedia <http://en.wikipedia.org/wiki/Paul_Feyerabend>`_) once said:
+
+  *Anything goes*
 
 In short, we propose to address a problem a in three stages:
 

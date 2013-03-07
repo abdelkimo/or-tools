@@ -11,20 +11,32 @@ The content of the manual
       - **Part II: Customization**: real problems need customized search algorithms and this is what the second part is all about.
         We explain the basic inner working of the solver and its customization.
       - **Part III: Routing**: we provide a general routing solver on top of our Constraint Programming solver that can already solve numerous 
-        node and vehicle problems out of the box. Its rich API provide a good basis to develop specialized routing algorithms including for 
+        node and vehicle problems out of the box. Its rich API provides a good basis to develop specialized routing 
+        algorithms including for some
         arc routing problems.
       - **Part IV: Technicalities**: we detail non-basic but useful techniques of the CP solver and its inner working.
       
     ..  only:: html 
     
-        The **appendice** consists of an index. You can access the :ref:`index <genindex>` anytime by clicking on the 
+        The **appendix** consists of an index. You can access the :ref:`index <genindex>` anytime by clicking on the 
         two links at the right in the header and footer bars in the web version of this manual.
         
     ..  only:: latex
     
-        The **appendices** consist of a bibliography and an index.
+        The **appendices** consist of a bibliography and an index.~\\~\\
         
-    Each chapter in the three first parts is illustrated by one typical problem.
+    ..  only:: html
+
+        Each chapter in the three first parts is illustrated by one typical problem except the 
+        chapter :ref:`chapter_metaheuristics` where we solve previously seen problems.
+    
+    ..  raw:: latex
+
+        Each chapter in the three first parts is illustrated by one typical problem 
+        except chapter~\ref{manual/metaheuristics:chapter-metaheuristics}
+        on meta-heuristics where we solve previously seen problems.
+        
+    Each problem is explained from scratch so you can follow even if you've never heard about them.
         
 Part I: Basics
 ^^^^^^^^^^^^^^^^^^^^
@@ -32,24 +44,33 @@ Part I: Basics
 ..  only:: draft
 
     Chapter 2: :ref:`chapter_first_steps`:
-      We start by helping you download and install the *or-tools* library. Be carreful to know exactly what third-party
-      libraries you want to use with or-tools. We then use the very basic functionnalities of the CP solver. We'll encounter
+      We start by helping you download and install the *or-tools* library. Be careful to know exactly what third-party
+      libraries you want to use with *or-tools*. We then use the very basic functionalities of the CP solver. We'll encounter
       the ``Solver`` class and use the integer variables ``IntVar``. The model used in this chapter is very simple and we'll 
       add basic algebraic equalities with the help of ``MakeSum()``, ``MakeProd()``, ``MakeEquality()`` and ``AddConstraint()``.
-      The ``AllDifferent`` constraint will make its first apparition too. More importantly, we'll use a ``DecisionBuilder``
+      The ``AllDifferent`` constraint will make its first apparence too. More importantly, we'll use a ``DecisionBuilder``
       to define the search phase and launch the search with ``NextSolution()``. To conduct the search, we'll use
       ``SearchMonitor``\s and collect solutions with ``SolutionCollector``\s and ``Assigment``\s. Finally, we'll say a few
-      words about the way to pass read-only parameters to the solver and about the other available languages 
-      in or-tools (``Python``, ``Java``
+      words about the way to pass read-only parameters to the solver and about the other available computing languages 
+      in *or-tools* (``Python``, ``Java``
       and ``C#``). Although this chapter is a gentle introduction to the basic use of the library, it also focuses on some 
       basic but important manipulations needed to get things right. Don't miss them!
       
 
     Chapter 3: :ref:`chapter_using_objectives`:
-      balbalb
+      In this chapter, we not only look for a feasible solution but for an optimal solution, i.e. a solution that optimizes
+      an objective function. To solve the Golomb Ruler Problem, we'll try five different models and compare them two by two.
+      To have an intuition of the models passed to the solver and the progress of the search, we show you how to inspect 
+      the model you constructed and how to collect some statistics about the search. Several flags are available to 
+      tune the search, collect statistics, etc. We present some of them and how to trigger them. To limit the search in some 
+      way, use ``SearchLimit``\s. As ``SearchLimit``\s use custom made functions or methods, this will be our first 
+      (but certainly not last) encounter with *callbacks* and *functors*. 
+      Two very useful techniques to tighten a model are introduced: adding better bounds and breaking symmetries. You can break 
+      symmetries statically by adding your own constraints or dynamically using ``SymmetryBreaker``\s.
+      Finally, we explain how our CP solver optimizes while it basically "only" finds feasible solutions.
 
     Chapter 4: :ref:`chapter_reification`:
-      balbalb
+      [TO BE WRITTEN]
 
 
 
