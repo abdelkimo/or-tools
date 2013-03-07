@@ -108,7 +108,7 @@ The Problem
     ..  only:: latex
         
         .. image:: images/intro_example.*
-           :width: 120pt
+           :width: 140pt
            :align: center
 
     
@@ -255,7 +255,21 @@ Visualization with ``ePix``
 
 ..  only:: draft
 
-    sds
+    Coming with a good idea to visualize statically in 2D feasible solutions for the CCPP is not easy. 
+    A path - optimal or not - might visit an edge several times. Take a look at the optimal solution on the next figure.
+    
+    ..  only:: html 
+
+        .. image:: images/div_ncopies.*
+           :width: 500pt
+           :align: center
+
+    ..  only:: latex
+        
+        .. image:: images/div_ncopies.*
+           :width: 250pt
+           :align: center
+    
 
 
 
