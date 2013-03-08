@@ -1,14 +1,2 @@
-user_manual/_images/sol_4x4_a.png
-user_manual/_images/symmetry_helper_function.png
-user_manual/_images/ls_basic_idea2.png
-user_manual/_images/lsn_mechanism.png
-user_manual/_images/sol_4x4_b1.png
-user_manual/_images/ls_basic_idea1.png
-user_manual/_images/math/7431b10123606c953ebfdabc1b0c11f1e669df1c.png
-user_manual/_images/math/c3ea81f00b5d17fe09a364fafffd82aec51d2c4a.png
-user_manual/_images/math/58fb02244e2f372fd19355336d29c446a295b43d.png
-user_manual/_images/math/2dd241834905de5246fcbb2444ed65f963fccbce.png
-user_manual/_images/math/d13e6913ec7230eec4893036d81a5cbbd8d59aa2.png
-user_manual/_images/math/b5c170dc53fce7452e6f7df461222672d913e34e.png
-user_manual/_images/math/3d39a957d390cfe4fa0ba4407a8650f33cd13d72.png
-user_manual/_images/math/a88de92e555acbcd03724adc1816ed1c044438c7.png
+user_manual/manual/arc_routing/partial_routes.html
+user_manual/manual/arc_routing/lower_bounds.html
