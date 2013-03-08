@@ -85,7 +85,7 @@ Part II: Customization
       customized thanks to callbacks. You can also combine different search strategies. 
       ``SearchMonitor``\s allow you to guide the search thanks to callbacks. ``DecisionBuilder``\s and ``Decision``\s
       define the search tree. We explain their mechanisms and how they are embedded in the main search algorithm of 
-      the CP solver. We also show you where exactly in this main search algorithm most of the callbacks 
+      the CP solver. We also show where exactly in this main search algorithm most of the callbacks 
       of the ``SearchMonitor``\s are triggered. The presented algorithm is a simplified version of the real algorithm 
       but you'll get a pretty clear idea of the real algorithm. 
       To better understand all these tools, we use the wonderful :program:`cpviz` library to visualize the search tree 
@@ -97,8 +97,21 @@ Part II: Customization
       break symmetries during the search (on the fly!) using  ``SymmetryManager``\s and ``SymmetryBreaker``\s.
       
     Chapter 6: :ref:`chapter_local_search`:
-      balbalb
-
+      Scheduling is one of the fields where constraint programming has been applied with great success. 
+      It is thus not surprising that the CP community has developed specific tools to solve scheduling problems. 
+      In this chapter, we introduce the ones that have been implemented in *or-tools*. To address difficult problems 
+      - like the job-shop problem - we make use of (meta-)heuristics. Local search is a general framework to seek a better 
+      solution starting from an initial solution. We explain what local search is and show how it's done in *or-tools*.
+      We present a simplified
+      version of our local search algorithm but, again, you'll have a pretty clear idea of the real algorithm and 
+      where exactly the callbacks of the ``SearchMonitor``\s are triggered. ``LocalSearchOperator``\s are the main 
+      actors: they are in charge to find candidate solutions given an initial solution. We show how to construct your own
+      customized ``LocalSearchOperator``\s and present the most interesting ones that are already implemented in *or-tools*.
+      The CP solver verifies the feasibility of all constructed candidate solutions but if you know how to quickly disregard 
+      some candidate solutions (because you know they are infeasible or not desirable), you can help the CP solver by 
+      creating your own ``LocalSearchFilter``\s. We'll show you how and also present a list of available ``LocalSearchFiler``\s
+      that you might want to use. 
+      
     Chapter 7: :ref:`chapter_metaheuristics`:
       balbalb
 

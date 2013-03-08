@@ -439,7 +439,7 @@ The practical aspect of intractability
 
 If you try to solve a problem that is proven to be :math:`\text{NP-Hard}`, you know that it is 
 probably an intractable problem (if :math:`P \neq NP`). At least, you know that no one could ever come with an efficient 
-algorithm to solve it and that it is unlikely to happen soon. Thus, you can not solve big instances of your 
+algorithm to solve it and that it is unlikely to happen soon. Thus, you can not solve exactly "big" instances of your 
 problem. What can you do?
 
 Maybe there are special cases that can be solved in polynomial time? If you are not interested in these cases and 
@@ -458,6 +458,19 @@ the hope that such approximate solution isn't that different from an exact or op
 
 ..  [#different_solution_optimization] In the case of optimization, a solution that *isn't that different* means a 
     solution that has a good objective value, preferably close to the optimum.
+
+..  only:: draft
+
+    Another possible research avenue is to use *(meta-)heuristics*: algorithms that hopefully return good or even near-optimal
+    solutions. Some of these algorithms give a guarantee on the quality of the produced solutions, some don't
+    and you just hope for the best. You can also monitor the quality of the solutions by trying to close the *optimality gap* as 
+    much as possible. Given an instance, compute a *lower bound* :math:`\alpha` and an *upper bound* :math:`\beta` on the 
+    optimal value :math:`z^*`. So you know that :math:`z^* \in [\alpha, \beta]`. *Closing the optimality gap* is trying 
+    to shrink this interval by producing better upper and lower bounds. If you manage to produce solutions with 
+    objective values belonging to this interval, you know how close (or not) these values are from the optimal value of your
+    instance.
+    
+
 
 ..  _approximation_complexity:
 
