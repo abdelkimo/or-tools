@@ -113,10 +113,10 @@ Part II: Customization
       that you might want to use. 
       
     Chapter 7: :ref:`chapter_metaheuristics`:
-      balbalb
+      [TO BE WRITTEN]
 
     Chapter 8: :ref:`chapter_custom_constraints`:
-      balbalb
+      [TO BE WRITTEN]
 
 
 Part III: Routing
@@ -125,13 +125,13 @@ Part III: Routing
 ..  only:: draft
 
     Chapter 9: :ref:`chapter_tsp_with_constraints`:
-      balbalb
+      [TO BE WRITTEN]
 
     Chapter 10: :ref:`chapter_vrp_with_constraints`:
-      balbalb
+      [TO BE WRITTEN]
 
     Chapter 11: :ref:`chapter_arc_routing_with_constraints`:
-      balbalb
+      [TO BE WRITTEN]
 
 Part IV: Technicalities
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -139,13 +139,13 @@ Part IV: Technicalities
 ..  only:: draft
 
     Chapter 12: :ref:`chapter_utilities`:
-      balbalb
+      [TO BE WRITTEN]
 
     Chapter 13: :ref:`chapter_modeling_tricks`:
-      balbalb
+      [TO BE WRITTEN]
 
     Chapter 14: :ref:`chapter_under_the_hood`:
-      balbalb
+      [TO BE WRITTEN]
 
 
 Appendices
