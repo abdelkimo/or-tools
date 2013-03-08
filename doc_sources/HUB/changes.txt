@@ -2,3 +2,4 @@
 # Current changes.
 * Minor enhancements to the manual:
   - 9.5 added.
+  - 1.5 enhanced.

@@ -9,7 +9,7 @@ only a guide and should not be followed blindly [#three_stage_method_stop]_. Whe
 and your imagination is the limit.
 
 ..  [#three_stage_method_stop] If you are allergic to this "academic" approach, you probably will be happy to know that 
-    we only use this three-stage method in the first two parts of this manual.
+    we only use this three-stage method in the first two partsc of this manual.
 
 As Feyerabend (`Wikipedia <http://en.wikipedia.org/wiki/Paul_Feyerabend>`_) once said:
 

@@ -23,18 +23,19 @@ The content of the manual
         
     ..  only:: latex
     
-        The **appendices** consist of a bibliography and an index.~\\~\\
+        The **appendices** consist of a bibliography and an index.
         
     ..  only:: html
 
         Each chapter in the three first parts is illustrated by one typical problem except the 
-        chapter :ref:`chapter_metaheuristics` where we solve previously seen problems.
+        chapter :ref:`chapter_metaheuristics` where we try to solve previously seen problems.
     
     ..  raw:: latex
 
+        \newline
         Each chapter in the three first parts is illustrated by one typical problem 
         except chapter~\ref{manual/metaheuristics:chapter-metaheuristics}
-        on meta-heuristics where we solve previously seen problems.
+        on meta-heuristics where we try to solve previously seen problems.
         
     Each problem is explained from scratch so you can follow even if you've never heard about them.
         
@@ -49,7 +50,7 @@ Part I: Basics
       the ``Solver`` class and use the integer variables ``IntVar``. The model used in this chapter is very simple and we'll 
       add basic algebraic equalities with the help of ``MakeSum()``, ``MakeProd()``, ``MakeEquality()`` and ``AddConstraint()``.
       The ``AllDifferent`` constraint will make its first apparence too. More importantly, we'll use a ``DecisionBuilder``
-      to define the search phase and launch the search with ``NextSolution()``. To conduct the search, we'll use
+      to define the search phase and launch the search with ``NextSolution()``. To conduct the search, we use
       ``SearchMonitor``\s and collect solutions with ``SolutionCollector``\s and ``Assigment``\s. Finally, we'll say a few
       words about the way to pass read-only parameters to the solver and about the other available programming languages 
       in *or-tools* (``Python``, ``Java``
@@ -82,10 +83,19 @@ Part II: Customization
       The *or-tools* CP solver is quite flexible and comes with several tools (``Decision``\s, ``DecisionBuilder``\s, ...) 
       that we call *search primitives*. Some are predefined and can be used right out of the box while others can be 
       customized thanks to callbacks. You can also combine different search strategies. 
+      ``SearchMonitor``\s allow you to guide the search thanks to callbacks. ``DecisionBuilder``\s and ``Decision``\s
+      define the search tree. We explain their mechanisms and how they are embedded in the main search algorithm of 
+      the CP solver. We also show you where exactly in this main search algorithm most of the callbacks 
+      of the ``SearchMonitor``\s are triggered. The presented algorithm is a simplified version of the real algorithm 
+      but you'll get a pretty clear idea of the real algorithm. 
+      To better understand all these tools, we use the wonderful :program:`cpviz` library to visualize the search tree 
+      and the variable propagations. The basic branching in the search tree is done by selecting variables, then 
+      selecting values these variables can or can not hold. We list the available branching strategies.
+      Once you master all these basic search concepts, we show you how to customize them, i.e. how to create your own 
+      search primitives. This chapter is difficult but essential to understand the basic working of the CP solver. 
+      To reward your efforts and struggles to master this chapter, we end it with some cool stuff about how to
+      break symmetries during the search (on the fly!) using  ``SymmetryManager``\s and ``SymmetryBreaker``\s.
       
-      You can break 
-      symmetries statically by adding your own constraints or dynamically using ``SymmetryBreaker``\s.
-
     Chapter 6: :ref:`chapter_local_search`:
       balbalb
 
