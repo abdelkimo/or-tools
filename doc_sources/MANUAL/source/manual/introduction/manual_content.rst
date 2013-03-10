@@ -125,7 +125,20 @@ Part III: Routing
 ..  only:: draft
 
     Chapter 9: :ref:`chapter_tsp_with_constraints`:
-      [TO BE WRITTEN]
+      This chapter is our first encounter with the Routing Library (RL) and what better problem 
+      than the *Travelling Salesman Problem* (TSP) to introduce it? We overview the library and the problems it can solve. 
+      We then 
+      delve into the specifics of the mathematical model we use to represent all these problems: first the variables, then 
+      the constraints. In particular, we'll see the *auxiliary graph* that we use to model multiple depots.
+      Every calculation is done 
+      on the auxiliary graph and you just have to translate the solutions back to your original nodes. We show you how to 
+      switch between our auxiliary graph and your original graph. 
+      To solve the Routing Problems, we use Local Search. Several specialized ``PathOperator``\s are implemented and we show 
+      you how to create your customized versions.
+      You can add "quantities" along the arcs. This is done 
+      by adding ``Dimension``\s. The quantities can represent *goods*, *people*, *volumes*, ... but also *distances* and *times*.
+      We model time windows with ``Dimension``\s for instance.
+      
 
     Chapter 10: :ref:`chapter_vrp_with_constraints`:
       [TO BE WRITTEN]
@@ -139,7 +152,18 @@ Part IV: Technicalities
 ..  only:: draft
 
     Chapter 12: :ref:`chapter_utilities`:
-      [TO BE WRITTEN]
+      This chapter is about supplementary tools you can use to enhance your work-flow with the *or-tools* library.
+      We'll cover:
+      
+      * Logging:
+      * Asserting:
+      * Timing:
+      * Profiling:
+      * Debugging:
+      * Serializing:
+      * Visualizing:
+      * Randomizing:
+
 
     Chapter 13: :ref:`chapter_modeling_tricks`:
       [TO BE WRITTEN]

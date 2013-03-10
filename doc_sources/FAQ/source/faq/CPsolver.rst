@@ -9,9 +9,22 @@ THIS IS WORK IN PROGRESS.
 
     change How can I by How do I...
 
+
+* :ref:`faq:CPsolver:variables_types`
+* :ref:`faq:CPsolver:constraints_type`
 * :ref:`faq:CPsolver:diff_solve_newsearch`
 * :ref:`faq:CPsolver:basic_functionnality`
 * :ref:`faq:CPsolver:main_methods`
+
+.. _faq:CPsolver:variables_types:
+
+What are the main variables types?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _faq:CPsolver:constraints_type:
+
+What are the main constraints types?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. _faq:CPsolver:diff_solve_newsearch:
 
@@ -25,7 +38,7 @@ Could you explain the basic functionalities of the CP solver?
 
 ..  _faq:CPsolver:main_methods:
 
-What are the main public methods and what is their use?
+What are the main public methods and what are their use?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 How can I influence the traversal of the search tree?
