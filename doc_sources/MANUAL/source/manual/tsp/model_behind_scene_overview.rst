@@ -100,11 +100,13 @@ Variables
       * **Dimension variables**: these variables allow to add side constraints like time-windows, capacities, etc.
         and denote some quantities (the *dimensions*) along the routes.
 
-    From now on in this section, we only use the internal ``int64`` indices. This is worth a warning:
+    From now on in this section, we only use the internal ``int64`` indices except if the indices are explicitly 
+    of type ``NodeIndex``. This is worth a warning:
     
     ..  warning::
     
-        For the rest of this section, we only use the internal ``int64`` indices.
+        For the rest of this section, we only use the internal ``int64`` indices except if the indices are explicitly 
+        of type ``NodeIndex``.
 
 Path variables
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -352,11 +354,11 @@ Pick-up and delivery constraints
     
     ..  code-block:: c++
     
-        void AddPickupAndDelivery(NodeIndex j, NodeIndex j);
+        void AddPickupAndDelivery(NodeIndex i, NodeIndex j);
 
     Whenever you have an equality constraint linking
     the vehicle variables of two node, i.e. you want to force the two nodes to be visited by the same vehicle, 
-    you should add the ``PickupAndDelivery`` constraint:
+    you should add (because it speeds up the search process!) the ``PickupAndDelivery`` constraint:
     
     ..  code-block:: c++
     
@@ -371,7 +373,7 @@ Pick-up and delivery constraints
     1. This constraint is not modelled by a real constraint: we use these pairs of nodes 
        to filter out solutions and take them into account in the 
        different ``PathOperator``\s we use in the Local Search and 
-    2. This constraint doesn't specify an order on the pair ``(i,j)`` of nodes: node ``j`` could be visited before node ``i``.
+    2. This constraint doesn't specify an order on the "ordered" pair ``(i,j)`` of nodes: node ``j`` could be visited before node ``i``.
     
     ..  warning:: The implementation of the ``PickupAndDelivery`` constraint in the RL is a little counter-intuitive.
     
@@ -473,7 +475,7 @@ The costs of the arcs
     
         routing.SetCost(NewPermanentCallback(&distance));
         
-    The ``NewPermanentCallback()`` is a function that returns the appropriate callback class made from its arguments. 
+    ``NewPermanentCallback()`` is a (set of) function(s) that returns the appropriate callback class made from its arguments. 
     Some magic might be involved too. ``ResultCallback2`` and ``NewPermanentCallback()`` are defined in the 
     header :file:`base/callback.h`.
 
@@ -537,42 +539,54 @@ Lower bounds
 
 ..  only:: draft
 
-    [TO BE WRITTEN]
-    
-    one:
-    
-    "Linear lower bound": TO BE DONE. Method doesn't exist anymore!
-
-    two:
-
-    Computing a lower bound to the cost of a vehicle routing problem solving a
-    a linear assignment problem (minimum-cost perfect bipartite matching).
-    A bipartite graph is created with left nodes representing the nodes of the
-    routing problem and right nodes representing possible node successors; an
-    arc between a left node l and a right node r is created if r can be the
-    node following l in a route (Next(l) = r); the cost of the arc is the transit
-    cost between l and r in the routing problem.
-    
-    This is a lower bound given the solution to assignment problem does not
-    necessarily produce a (set of) closed route(s) from a starting node to an
-    ending node.
+    You can ask the RL to compute a *lower bound* on the objective function of your routing model by calling:
     
     ..  code-block:: c++
     
-        int64 RoutingModel::ComputeLowerBound() {
-          if (!closed_) {
-            LOG(WARNING) << "Non-closed model not supported.";
-            return 0;
-          }
-          if (!homogeneous_costs_) {
-            LOG(WARNING) << "Non-homogeneous vehicle costs not supported";
-            return 0;
-          }
-          if (disjunctions_.size() > 0) {
-            LOG(WARNING)
-                << "Node disjunction constraints or optional nodes not supported.";
-            return 0;
-          }
+        int64 RoutingModel::ComputeLowerBound();
+
+    The routing model must be closed before calling this method.
+        
+    ..  warning:: Routing Problems with *node disjunction constraints* (including optional
+        nodes) and *non-homogenous costs* are not supported yet (the method returns 0 in
+        these cases).
+    
+    What this method does is the following. 
+    
+    A *bipartite graph* is created with left nodes representing the nodes of the
+    routing problem and right nodes representing possible node successors. An
+    arc between a left node ``l`` and a right node ``r`` is created if ``r`` can be the
+    node following ``l`` in a route (``NextVar(l) = r``). The cost of the arc is the transit
+    cost between ``l`` and ``r`` in the routing problem. Solving a *Linear Assignment Problem* 
+    (minimum-cost perfect bipartite matching) returns a lower bound. Did you get it? Let's draw a figure.
+    
+    
+    ..  only:: html
+    
+        ..  image:: images/lb_assignment_problem.*
+            :align: center
+            :width: 400 pt
+
+    ..  only:: latex
+        
+        ..  image:: images/lb_assignment_problem.*
+            :align: center
+            :width: 250 pt
+       
+    On the left (figure (a)), we have an original graph with two depots: a starting depot :math:`1` and an ending depot 
+    :math:`5` and three transit nodes :math:`2,3` and :math:`4`. On the right (figure (b)), we have a bipartite 
+    graph [#bipartite_graph_not_really]_ with the same number of left and right nodes. The cost on an arc ``(l,r)`` is 
+    the real 
+    transit cost from ``l`` to ``r``. The Linear Assignment Problem consists in finding a perfect matching of minimum cost, i.e.
+    a bijection along the arcs between the two sets of nodes of the bipartite graph for a minimum cost. On figure (b), such 
+    an optimal solution is depicted in thick blue dashed lines. As is the case here, this solution doesn't 
+    necessarily produce a (set of) closed route(s) from a starting depot to an
+    ending depot.
+    
+    ..  [#bipartite_graph_not_really] This bipartite graph is not really the one used by the CP solver but it's close enough
+        to get the idea.
+    
+    If your model is *linear*, you also can use the *linear relaxation* of your model.
 
     ..  only:: html
 
