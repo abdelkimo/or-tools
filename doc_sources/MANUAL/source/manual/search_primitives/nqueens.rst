@@ -36,11 +36,13 @@ et al. proposed a simple algorithm to return a solution of the n-queens problem 
 So we have to be careful when we talk about the n-queens problem. There are at least three different problems that people refer to 
 when talking about the n-queens problem:
 
-* finding one solution,
+* finding one solution [#solutions_we_mean_feasible_solutions]_,
 * counting the number of solutions and
 * finding (explicitly) all these solutions.
 
 While the first problem is easy, the two others are difficult [#n_queens_hard]_.
+
+..  [#solutions_we_mean_feasible_solutions] By *solution*, we mean *feasible solution*.
 
 ..  [#n_queens_hard] These two problems are NP-Hard. See [Jordan2009]_.
 

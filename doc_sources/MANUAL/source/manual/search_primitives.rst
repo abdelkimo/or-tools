@@ -47,9 +47,8 @@ being drowned in the often tedious details of the implementation
     Specifically, we show how it traverses and constructs the search tree. We even can visualize the search thanks
     to the wonderful :program:`cpviz` framework that we introduce next. Equipped with this knowledge and visualization 
     capacity, we can better understand *out of the box* and *customized* primitives and apply them to solve the 
-    n-queen problem. We end this chapter with two 
-    relatively advanced features: *Impact-Based Search Strategies* that are implemented in the *default search* 
-    and ``SymmetryBreaker``\s that allow to break symmetries during the search (on the fly).
+    n-queen problem. We end this chapter with a relatively advanced feature: 
+    ``SymmetryBreaker``\s that allow to break symmetries during the search (on the fly).
     
 ..  rubric:: Prerequisites:
 
