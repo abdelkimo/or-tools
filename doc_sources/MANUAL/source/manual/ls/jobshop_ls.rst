@@ -40,7 +40,7 @@ The jobshop problem: and now with local search!
     ``delta`` and ``deltadelta`` ``Assignment``\s and how to implement *incremental* ``LocalSearchOperator``\s.
     
     To solve the job-shop problem, we'll define two basic ``LocalSearchOperator``\s. First, we'll apply them separately
-    and then we'll combine them together to get better results. In doing so, we will discover that local search 
+    and then we'll combine them to get better results. In doing so, we will discover that local search 
     is very sensitive to the initial solution used to start it and that the search is path-dependent.
 
 ..  _local_search_operators_the_real_thing:
@@ -101,7 +101,7 @@ The jobshop problem: and now with local search!
     skip the ``deltadelta`` if you prefer. This ``deltadelta`` can be convenient when you define your filters and 
     you can gain some efficiency over the sole use of ``delta``\s.
     
-    To help you construct these ``delta``\s, we provide an inner mechanism that construct automatically these ``delta``\s
+    To help you construct these ``delta``\s, we provide an inner mechanism that constructs automatically these ``delta``\s
     when you use the following self-explanatory setters:
     
     - for ``IntVarLocalSearchOperator``\s only:
@@ -146,7 +146,7 @@ The jobshop problem: and now with local search!
     Currently, ``ApplyChanges()`` always returns ``true`` but this might change in the future and
     then you might have to revert the changes, hence the ``while()`` loop.
     
-    We provide also several getters:
+    We also provide several getters:
 
     - for ``IntVarLocalSearchOperator``\s only:
     
@@ -190,13 +190,13 @@ The initial solution
     ..  only:: html
     
         We let the CP solver construct the initial solution for us. What about reusing the ``DecisionBuilder``
-        we defined in the section :ref:`jobshop_implementation_disjunctive_model` and take its first feasible solution?
+        defined in the section :ref:`jobshop_implementation_disjunctive_model` and grab its first feasible solution?
 
     ..  raw:: latex
     
         We let the CP solver construct the initial solution for us. What about reusing the~\code{DecisionBuilder}
-        we defined in section~\ref{manual/ls/jobshop_implementation:jobshop-implementation-disjunctive-model} 
-        and take its first feasible solution?
+        defined in section~\ref{manual/ls/jobshop_implementation:jobshop-implementation-disjunctive-model} 
+        and grab its first feasible solution?
 
 
     ..  code-block:: c++
@@ -274,8 +274,8 @@ Exchanging two ``IntervalVar``\s on a ``SequenceVar``
     * ``int current_second_``: the index of the second ``IntervalVar`` variable to swap.
     
     We proceed sequentially with the first ``SequenceVar`` (``current_var_ = 0``) and exchange the first and second ``IntervalVar``\s,
-    then the first and the third ``IntervalVar``\s and so on until exhaustion of all possibilities. Here is the code to 
-    increment these indices to create each candidate solution:
+    then the first and the third ``IntervalVar``\s and so on until exhaustion of all possibilities. Here is the code that 
+    increments these indices to create each candidate solution:
     
     ..  code-block:: c++
     
@@ -291,7 +291,7 @@ Exchanging two ``IntervalVar``\s on a ``SequenceVar``
           return current_var_ < Size();
         }
     
-    This ``Increment()`` method returns a ``bool`` to specify when the neighborhood is exhausted, i.e. it returns ``false`` 
+    This ``Increment()`` method returns a ``bool`` that indicates when the neighborhood is exhausted, i.e. it returns ``false`` 
     when there are no more candidate to construct. ``Size()`` and ``Var()`` are helper methods defined in the
     ``SequenceVarLocalSearchOperator`` class. We start with ``current_var_``, ``current_first_`` and ``current_second_``
     all set to ``0``. Pay attention to 
@@ -365,7 +365,7 @@ Exchanging two ``IntervalVar``\s on a ``SequenceVar``
 
     If we run the program :file:`jobshop_ls1` with our instance problem (file :file:`first_example_jssp.txt`),
     we get the optimal solution. Always a good sign. With the instance in :file:`abz9` however, we only get a 
-    solution of cost 1051 in 51,295 seconds:
+    solution with a cost of 1051 in 51,295 seconds:
     
     ..  tabularcolumns |c|c|c|c|
     

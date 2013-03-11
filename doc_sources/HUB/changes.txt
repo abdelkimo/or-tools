@@ -7,3 +7,4 @@
     rewritten) and thus section 6.5 is complete and available.
   - 1.3 and 1.8 enhanced.
   - Intro chapter 5, 5.1 and 5.2 reviewed.
+  - 6.7 intro, 6.7.1->6.7.3 corrected and published.

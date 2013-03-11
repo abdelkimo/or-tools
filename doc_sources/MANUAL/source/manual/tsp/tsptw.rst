@@ -29,7 +29,7 @@ The Travelling Salesman Problem with Time Windows (TSPTW)
                   <li><a href="../../../tutorials/cplusplus/chap9/tsptw_check_parameters.txt">tsptw_check_parameters.txt</a></li>
                   <li><a href="../../../tutorials/cplusplus/chap9/LIB_n20w20.001.txt">LIB_n20w20.001.txt</a></li>
                   <li><a href="../../../tutorials/cplusplus/chap9/DSU_n20w20.001.txt">DSU_n20w20.001.txt</a></li>
-                  <li><a href="../../../tutorials/cplusplus/chap9/DSU_n20w20.001.opt.tour">DSU_n20w20.001.opt.tour</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/n20w20.001.sol">n20w20.001.sol</a></li>
                 </ol>
               </li>
 
@@ -276,6 +276,34 @@ The da Silva-Urrutia format
         format to the first one is obvious. It is not! See the 
         remark on *Travel-time Computation* on the
         `Jeffrey Ohlmann and Barrett Thomas benchmark page <http://myweb.uiowa.edu/bthoa/TSPTWBenchmarkDataSets.htm>`_.
+    
+Solutions 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    We use a simple format to record feasible solutions:
+    
+    * a first line with a permutation of the nodes;
+    * a second line with the objective value.
+    
+    For our instance, a feasible solution could be:
+    
+    ..  code-block:: text
+    
+        1 17 10 20 18 19 11 6 16 2 12 13 7 14 8 3 5 9 21 4 15 
+        378
+    
+    A basic program :program:`check_tsptw_solutions.cc` verifies if a given solution is indeed feasible for a given instance 
+    in López-Ibáñez-Blum or da Silva-Urrutia formats:
+    
+    ..  code-block:: bash
+    
+        ./check_tsptw_solutions -tsptw_data_file=DSU_n20w20.001.txt 
+                                         -tsptw_solution_file=n20w20.001.sol
+    
+    You also can print a report on the instance and the solution given and print the distance matrix.
+    This program relies entirely on the ``TSPTWData`` class we see next.
     
 The ``TSPTWData`` class
 --------------------------
