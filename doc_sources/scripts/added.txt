@@ -1,2 +1,0 @@
-user_manual/manual/arc_routing/partial_routes.html
-user_manual/manual/arc_routing/lower_bounds.html
