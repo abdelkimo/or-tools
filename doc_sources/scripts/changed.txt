@@ -1,6 +1,2 @@
 changes_list.txt
 documentation_hub.html
-user_manual/manual/introduction/theory.html
-user_manual/manual/search_primitives/nqueens.html
-user_manual/manual/ls/jobshop_ls.html
-user_manual/manual/tsp/tsptw.html

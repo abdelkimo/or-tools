@@ -1,7 +1,6 @@
 Manual:
 -------
 
-- Rewrite section 9.4 and give immediately the auxiliary graph.
 
 Automatization:
 ---------------
