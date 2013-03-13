@@ -107,11 +107,13 @@ The Travelling Salesman Problem with Time Windows
            :align: center
     
     In real application, the time spent at a client might be limited to the service. For instance, you might wait in front 
-    of the client's office! It's common to consider that you start to service and leave as soon as possible.
+    of the client's office. It's common to consider that you start to service and leave as soon as possible and we do so 
+    in this manual.
   
     Sometimes, travel times and distances are different, i.e. the costs are given by the distances but the feasibility of the 
     solution depends on the travel times. They can be proportional or completely unrelated to the distances. In this manual, 
-    we take the equality between both for granted.
+    we take the equality between both for granted. Don't forget that sometimes, you'll have to wait before servicing a client, 
+    so often the total time spent to travel is greater than the total distance travelled.
   
     Often, some conditions are applied to the time windows (in theory or practice). The only 
     condition [#condition_time_windows_integers]_ we will impose 
@@ -168,7 +170,8 @@ The López-Ibáñez-Blum format
     ..  [Dumas1995] Dumas, Y., Desrosiers, J., Gelinas, E., Solomon, M., *An optimal algorithm 
         for the travelling salesman problem with time windows*, Operations Research 43 (2) (1995) 367-371.
     
-    Here is the content of the file :file:`n20w20.001.txt` (:file:`LIB_n20w20.001.txt`):
+    Here is the content of the file :file:`n20w20.001.txt` (:file:`LIB_n20w20.001.txt` in our directory 
+    :file:`/tutorials/cplusplus/chap9/`):
     
     ..  code-block:: text
     
@@ -236,7 +239,8 @@ The da Silva-Urrutia format
 
 ..  only:: draft
 
-    We present exactly the same instance as above. Here is the file :file:`n20w20.001.txt` (:file:`DSU_n20w20.001.txt`):
+    We present exactly the same instance as above. Here is the file :file:`n20w20.001.txt` (:file:`DSU_n20w20.001.txt`
+    in our directory :file:`/tutorials/cplusplus/chap9/`):
     
     ..  code-block:: text
     
