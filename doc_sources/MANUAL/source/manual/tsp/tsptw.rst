@@ -299,6 +299,9 @@ Solutions
         1 17 10 20 18 19 11 6 16 2 12 13 7 14 8 3 5 9 21 4 15 
         378
     
+    The objective value ``378`` is the sum of the costs of the arcs and not the time spent to travel (which is ``387``
+    for this solution).
+    
     A basic program :program:`check_tsptw_solutions.cc` verifies if a given solution is indeed feasible for a given instance 
     in López-Ibáñez-Blum or da Silva-Urrutia formats:
     
@@ -307,6 +310,43 @@ Solutions
         ./check_tsptw_solutions -tsptw_data_file=DSU_n20w20.001.txt 
                                          -tsptw_solution_file=n20w20.001.sol
     
+    This program checks if indeed all the nodes have been serviced and if we have a feasible solution:
+    
+    ..  code-block:: c++
+    
+        bool IsFeasibleSolution() {
+          ...
+          //  for loop to test each node in the tour
+          for (...) {
+            //  Test if we have to wait at client node
+            waiting_time = ReadyTime(node) - total_time;
+            if (waiting_time > 0.0) {
+              total_time = ReadyTime(node);
+            }
+            if (total_time + ServiceTime(node) > DueTime(node)) {
+              return false;
+            }
+          }
+          ...
+          return true;
+        }
+      
+    ``IsFeasibleSolution()`` returns ``true`` if the submitted solution is feasible and ``false`` otherwise. To test this
+    solution, we construct the tour node by node. Arriving at a node ``node`` at time ``total_time`` 
+    in the ``for`` loop, we test two things:
+    
+    * First, if there is a waiting time ``waiting_time``. ``ReadyTime(node)`` returns the ready time of the node ``node``
+      and ``total_time`` is the total time spent in the tour to reach the node ``node``. If the ready time is greater than 
+      ``total_time``, ``waiting_time > 0.0`` is ``true`` and we set ``total_time`` to its earliest time ``ReadyTime(node)``.
+      The test ``waiting_time > 0.0`` is not very precise for ``double``\s but all the known instances only use integer values 
+      for the times.
+      
+    * Second, if the due times are respected:
+    
+        is ``total_time + ServiceTime(node)`` :math:`\leqslant` ``DueTime(node)`` true?
+    
+      If not, the method returns ``false``. If all the due times are respected, the method returns ``true``.
+      
     You also can print a report on the instance and the solution given and print the distance matrix.
     This program relies entirely on the ``TSPTWData`` class we see next.
     
