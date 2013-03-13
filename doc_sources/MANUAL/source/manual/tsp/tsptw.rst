@@ -276,6 +276,7 @@ The da Silva-Urrutia format
         format to the first one is obvious. It is not! See the 
         remark on *Travel-time Computation* on the
         `Jeffrey Ohlmann and Barrett Thomas benchmark page <http://myweb.uiowa.edu/bthoa/TSPTWBenchmarkDataSets.htm>`_.
+        In the code, we don't try to match the data between the two formats, so you might find some different solutions. 
     
 Solutions 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

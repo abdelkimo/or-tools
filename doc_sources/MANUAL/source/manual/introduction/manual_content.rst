@@ -134,10 +134,10 @@ Part III: Routing
       on the auxiliary graph and you just have to translate the solutions back to your original nodes. We show you how to 
       switch between our auxiliary graph and your original graph. 
       To solve the Routing Problems, we use Local Search. Several specialized ``PathOperator``\s are implemented and we show 
-      you how to create your customized versions.
+      you how to create your customized versions. We try to solve the TSPLIB instances.
       You can add "quantities" along the arcs. This is done 
       by adding ``Dimension``\s. The quantities can represent *goods*, *people*, *volumes*, ... but also *distances* and *times*.
-      We model time windows with ``Dimension``\s for instance.
+      We model *time windows* with ``Dimension``\s for instance.
       
 
     Chapter 10: :ref:`chapter_vrp_with_constraints`:
