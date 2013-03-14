@@ -129,8 +129,8 @@ The files inside this directory are:
     tsp/zoo_routing_problems
     tsp/routing_library
     tsp/tsp
-    tsp/model_behind_scene
-    tsp/model_behind_scene_overview
+    tsp/model_behind_scenes
+    tsp/model_behind_scenes_overview
     tsp/first_tsp_implementation
     tsp/two_phases_approaches
     tsp/tsptw
