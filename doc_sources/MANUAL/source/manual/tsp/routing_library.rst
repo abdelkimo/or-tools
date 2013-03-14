@@ -223,7 +223,7 @@ You cannot visit a node twice
 
 ..  only:: html
     
-    The way the model is coded (see the section :ref:`rl_model_behind_scene_decision_v`) doesn't allow you to visit 
+    The way the model is coded (see the section :ref:`rl_model_behind_scenes_decision_v`) doesn't allow you to visit 
     a node more than once. You can have several vehicles at one depot though.
         
 ..  raw:: latex

@@ -8,8 +8,8 @@ The Routing Library (RL)
     ..  only:: html
     
         Each node has a unique identifier of type ``RoutingModel::NodeIndex`` 
-        but we use internally a unique index of type ``int64`` (see the section :ref:`rl_model_behind_scene_decision_v`).
-        The model is explained in broad terms in the section :ref:`rl_model_behind_scene_overview`.
+        but we use internally a unique index of type ``int64`` (see the section :ref:`rl_model_behind_scenes_decision_v`).
+        The model is explained in broad terms in the section :ref:`rl_model_behind_scenes_overview`.
 
     ..  raw:: latex 
     

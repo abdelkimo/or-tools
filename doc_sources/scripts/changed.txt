@@ -1,2 +1,7 @@
 changes_list.txt
 documentation_hub.html
+user_manual/manual/VRP.html
+user_manual/manual/TSP.html
+user_manual/manual/tsp/tsp.html
+user_manual/manual/tsp/first_tsp_implementation.html
+user_manual/manual/tsp/routing_library.html

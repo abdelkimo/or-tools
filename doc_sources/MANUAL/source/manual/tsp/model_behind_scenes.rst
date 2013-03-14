@@ -1,4 +1,4 @@
-..  _rl_model_behind_scene_decision_v:
+..  _rl_model_behind_scenes_decision_v:
 
 The model behind the scenes: the main decision variables
 ========================================================
