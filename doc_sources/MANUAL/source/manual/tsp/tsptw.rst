@@ -81,7 +81,9 @@ The Travelling Salesman Problem with Time Windows
     - a *ready time* :math:`a_i` (sometimes called *release time*): you cannot start to serve the customer before her ready time and
     - a *due time* :math:`b_i` (sometimes called *deadline*): you must serve the client before her due time.
       
-    You only can (and must) visit each client once. The total cost of a tour is the sum of the arcs between the clients in the 
+    You only can (and must) visit each client once. The costs on the arcs represent the travel times (and sometimes also the 
+    service times). The total cost of a tour is the sum of the costs on the arcs 
+    used in the 
     tour. The ready and due times of a client :math:`i` define a *time window* :math:`[a_i, b_i]` within which the client has 
     to be served. It is allowed to visit the client before the ready time but you'll have to wait until 
     the ready time before you can service her. Due times must be respected and tours that fail to serve clients before their 
@@ -110,11 +112,16 @@ The Travelling Salesman Problem with Time Windows
     of the client's office. It's common to consider that you start to service and leave as soon as possible and we do so 
     in this manual.
   
-    Sometimes, travel times and distances are different, i.e. the costs are given by the distances but the feasibility of the 
-    solution depends on the travel times. They can be proportional or completely unrelated to the distances. In this manual, 
-    we take the equality between both for granted. Don't forget that sometimes, you'll have to wait before servicing a client, 
-    so often the total time spent to travel is greater than the total distance travelled.
-  
+    Some authors ([Dash2010]_ for instance) consider two costs on the edges: a *travel cost* and a *travel time*. While 
+    the travel times must respect the time windows constraints, the objective value is the sum of the travel costs on the 
+    edges. In this 
+    manual, we only have one cost on the edges. The objective value and the *real* travel time are different: you might 
+    have to wait before servicing a client.
+    
+    ..  [Dash2010] S. Dash, O. Günlük, A. Lodi, and A. Tramontani. 
+        *A Time Bucket Formulation for the Traveling Salesman Problem with Time Windows*, INFORMS Journal on Computing, 
+        v24, pp 132-147, 2012 (published online before print on December 29, 2010).
+          
     Often, some conditions are applied to the time windows (in theory or practice). The only 
     condition [#condition_time_windows_integers]_ we will impose 
     is that :math:`a_i, b_i \in  \mathbb{N}`, 
@@ -129,7 +136,7 @@ The Travelling Salesman Problem with Time Windows
     [#tsptw_instances_to_optimality_remark]_ and heuristics rarely challenge instances with more than 400 nodes.
     
     ..  [#tsptw_instances_to_optimality_remark] Instances with more than 100 nodes have been solved to optimality 
-        but no one - at least to the best of our knowledge and at the time of writing - can pretend to systematically solve to optimality 
+        but no one - at least to the best of our knowledge at the time of writing - can pretend to systematically solve to optimality 
         instances with more than 40 nodes... 
     
     The 

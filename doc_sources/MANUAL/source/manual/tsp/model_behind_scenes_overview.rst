@@ -25,7 +25,7 @@ The model behind the scenes: overview
 
 ..  raw:: latex
 
-    If you haven't already read the section~\ref{manual/tsp/model_behind_scene:rl-model-behind-scene-decision-v}
+    If you haven't already read the section~\ref{manual/tsp/model_behind_scenes:rl-model-behind-scenes-decision-v}
     about the main decision variables and the auxiliary graph, we strongly
     recommend that you do so before reading this section.
 
