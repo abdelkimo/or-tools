@@ -83,8 +83,6 @@ Basically, two constructors are available depending on the number of depots:
   is mandatory.
 
 
-
-
 ..  _var_defining_nodes_and_routes:
 
 Variables
@@ -462,9 +460,19 @@ and use again ``NewPermanentCallback()``:
 
     routing.SetCost(NewPermanentCallback(&distance));
     
-``NewPermanentCallback()`` is a (set of) function(s) that returns the appropriate callback class made from its arguments. 
-Some template magic might be involved too. ``ResultCallback2`` and ``NewPermanentCallback()`` are defined in the 
-header :file:`base/callback.h`.
+..  only:: html
+
+    ``NewPermanentCallback()`` is a (set of) function(s) that returns the appropriate callback class made from its arguments. 
+    Some template magic might be involved too. ``ResultCallback2`` and ``NewPermanentCallback()`` are defined in the 
+    header :file:`base/callback.h`. If you are curious about the callback mechanism and the use of ``NewPermanentCallback()``,
+    read the sub-section :ref:`under_the_hood_callbacks`.
+
+..  raw:: latex
+
+    \code{NewPermanentCallback()} is a (set of) function(s) that returns the appropriate callback class made from its arguments. 
+    Some template magic might be involved too. \code{ResultCallback2} and \code{NewPermanentCallback()} are defined in the 
+    header \code{base/callback.h}. If you are curious about the callback mechanism and the use of \code{NewPermanentCallback()},
+    read sub-section~\ref{manual/under_the_hood/classes:under-the-hood-callbacks}.
 
 
 ..  [#nodeevaluator2_cplusplus_jargon] What follows is clearly C++ jargon. Basically, let's say that you need a method or a 

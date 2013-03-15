@@ -1,11 +1,11 @@
 ..  _hood_classes:
 
 Main classes, structures and typedefs
---------------------------------------------
+==========================================
 
 
 ``BaseObject``\s
-^^^^^^^^^^^^^^^^^^
+----------------------
 
 ..  only:: draft
 
@@ -15,7 +15,7 @@ Main classes, structures and typedefs
     as a convenience.
 
 ``PropagationBaseObject``\s
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------
 
 ..  only:: draft
 
@@ -24,11 +24,15 @@ Main classes, structures and typedefs
     writing new constraints or new expressions.
 
 
+..  _under_the_hood_callbacks:
+
 Callbacks
-^^^^^^^^^^^^^^^
+-----------------
 
 ..  only:: draft
 
+``NewPermanentCallback()`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 ..  raw:: html

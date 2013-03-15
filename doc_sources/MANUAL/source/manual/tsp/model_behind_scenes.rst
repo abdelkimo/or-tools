@@ -91,6 +91,15 @@ Let's take the original graph of the next figure:
         :align: center
         :width: 150 pt
 
+..  only:: draft
+
+    You can of course number (or name) your nodes of the original graph any way you like. For instance, in the ``TSPLIB``
+    nodes are numbered from ``1`` to :math:`n`. In the RL, you **must** number your original nodes from ``0`` to :math:`n-1`.
+    If you don't follow this advice, you might get some surprises!
+
+    ..  warning:: Always use ``NodeIndex`` from ``0`` to :math:`n-1` for your original graph!
+    
+
 
 There are nine nodes of which two are starting depots (1 and 3), one is an ending 
 depot (7) and one is a starting and ending depot (4). The ``NodeIndex``\es [#nodeindices]_ range from 0 to 8.
