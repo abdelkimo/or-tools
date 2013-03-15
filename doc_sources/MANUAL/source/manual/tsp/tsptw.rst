@@ -279,15 +279,18 @@ The da Silva-Urrutia format
           999     0.00     0.00   0.00      0.00         0.00       0.00
 
     Having seen the same instance, you don't need much complementary info to 
-    understand this format [#not_easy_transformation]_. The first line of data (``CUST NO. 1``) represent the depot and 
+    understand this format. The first line of data (``CUST NO. 1``) represent the depot and 
     the last line marks the end of the file. As you can see, the authors are not really optimistic about solving 
-    instances with more than 999 nodes!
+    instances with more than 999 nodes! We don't use the ``DEMAND`` column and we round down the numbers of the last three
+    columns.
     
-    ..  [#not_easy_transformation] You might think that the translation from this second 
-        format to the first one is obvious. It is not! See the 
-        remark on *Travel-time Computation* on the
-        `Jeffrey Ohlmann and Barrett Thomas benchmark page <http://myweb.uiowa.edu/bthoa/TSPTWBenchmarkDataSets.htm>`_.
-        In the code, we don't try to match the data between the two formats, so you might find some different solutions. 
+    You might think that the translation from this second 
+    format to the first one is obvious. It is not! See the 
+    remark on *Travel-time Computation* on the
+    `Jeffrey Ohlmann and Barrett Thomas benchmark page <http://myweb.uiowa.edu/bthoa/TSPTWBenchmarkDataSets.htm>`_.
+    In the code, we don't try to match the data between the two formats, so you might find some different solutions. 
+    
+    ..  warning::  The same instances in the da Silva-Urrutia and the López-Ibáñez-Blum formats might be slightly different.
     
 Solutions 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -327,7 +330,7 @@ Solutions
           for (...) {
             //  Test if we have to wait at client node
             waiting_time = ReadyTime(node) - total_time;
-            if (waiting_time > 0.0) {
+            if (waiting_time > 0) {
               total_time = ReadyTime(node);
             }
             if (total_time + ServiceTime(node) > DueTime(node)) {
@@ -344,7 +347,7 @@ Solutions
     
     * First, if there is a waiting time ``waiting_time``. ``ReadyTime(node)`` returns the ready time of the node ``node``
       and ``total_time`` is the total time spent in the tour to reach the node ``node``. If the ready time is greater than 
-      ``total_time``, ``waiting_time > 0.0`` is ``true`` and we set ``total_time`` to its earliest time ``ReadyTime(node)``.
+      ``total_time``, ``waiting_time > 0`` is ``true`` and we set ``total_time`` to its earliest time ``ReadyTime(node)``.
       The test ``waiting_time > 0.0`` is not very precise for ``double``\s but all the known instances only use integer values 
       for the times.
       
@@ -362,17 +365,141 @@ The ``TSPTWData`` class
 
 ..  only:: draft
 
-    The ``TSPTWData`` class is modelled on the ``TSPData`` class. As in the case of the TSPLIB, 
-    we number the nodes starting from one.
+    You'll find the code in the file :file:`tsptw.h`.
 
+    The ``TSPTWData`` class is modelled on the ``TSPData`` class. As in the case of the TSPLIB, 
+    we number the nodes starting from one. 
+    
+To read instance files
+^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+
+    To read TSPTW instance files, the ``TSPTWData`` class offers the 
+    
+    ..  code-block:: c++
+    
+        LoadTSPTWFile(const std::string& filename);
+    
+    method. 
+    It parses a file in López-Ibáñez-Blum or da Silva-Urrutia format and - in the second case - loads the coordinates
+    and the service times for further treatment. Note that the format is only partially checked: bad inputs might cause 
+    undefined behaviour.
+
+To read solution files
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    To read solution files, use the 
+    
+    ..  code-block:: c++
+    
+        void LoadTSPTWSolutionFile(const std::string& filename);
+        
+    method. This way, you can 
+    load solution file and test them with the ``bool IsFeasibleSolution()`` method briefly seen above.
+
+Specialized methods
+^^^^^^^^^^^^^^^^^^^^^^^
+
+..  only:: draft
+
+    Several methods are specialized for the TSPTW:
+    
+    ..  code-block:: c++
+    
+        int32 ReadyTime(RoutingModel::NodeIndex i);
+        int32 DueTime(RoutingModel::NodeIndex i);
+        int32 ServiceTime(RoutingModel::NodeIndex i);
+
+    The ``ServiceTime()`` method only makes sense when an instance is given in the da Silva-Urrutia format. In the 
+    López-Ibáñez-Blum format, the service times are added to the arc costs and the method returns ``0``.
+    
+    The ``TSPTWData`` class **doesn't** create random instances.
+    
+
+    
 Visualization with ``ePix``
 ---------------------------
 
 
 ..  only:: draft
 
-    dfss
+    To visualize the solutions, rely again on the 
+    excellent `ePiX library <http://mathcs.holycross.edu/~ahwang/current/ePiX.html>`_. The
+    file :file:`tsptw_epix.h` contains the ``TSPTWEpixData`` class. This class is similar to the ``TSPEpixData`` class.
+    Its unique constructor reads:
+    
+    ..  code-block:: c++
+    
+        RoutingModel routing(...);
+        ...
+        TSPTWData data(...);
+        ...
+        TSPTWEpixData(const RoutingModel& routing,
+                      const TSPTWData& data);
 
+    To write a *ePiX* solution file, use the following methods:
+        
+    ..  code-block:: c++
+    
+        void WriteSolutionFile(const Assignment * solution, 
+                               const std::string & epix_filename)
+        void WriteSolutionFile(const std::string & tpstw_solution_filename,
+                               const std::string & epix_filename);
+
+    The first method takes an ``Assignment`` while the second method reads the solution from a solution file.
+
+    You can define the *width* and *height* of the generated image:
+
+    ..  code-block:: c++
+
+        DEFINE_int32(epix_width, 10, "Width of the pictures in cm.");
+        DEFINE_int32(epix_height, 10, "Height  of the pictures in cm.");
+
+    Once the ePiX file is written, you must evoke the ePiX ``elaps`` script:
+
+    ..  code-block:: bash
+
+        ./elaps -pdf epix_file.xp
+
+    Here is an example of the solution in the file :file:`n20w20.001.sol`:
+
+    ..  only:: html 
+
+        .. image:: images/n20w20_001_sol.*
+           :width: 300pt
+           :align: center
+
+    ..  only:: latex
+        
+        .. image:: images/n20w20_001_sol.*
+           :width: 170pt
+           :align: center
+
+    The dot in red in the center represents the depot or first node. The arrows give the direction of the tour. Because of the time 
+    windows, the solution is no longer planar, i.e. the tour crosses itself.
+
+    You can also print the node labels and the time windows with the flags:
+
+    ..  code-block:: c++
+
+        DEFINE_bool(tsptw_epix_labels, false, "Print labels or not?");
+        DEFINE_bool(tsptw_epix_time_windows, false, 
+                                              "Print time windows or not?");
+        
+
+
+    For your (and our!) convenience, we wrote again a small program :program:`tsptw_solution_to_epix`. 
+    Its implementation is in the file :file:`tsptw_solution_to_epix.cc`. To use it, invoke:
+
+    ..  code-block:: bash
+    
+        ./tsptw_solution_to_epix TSPTW_instance_file TSPTW_solution_file >
+                                                        epix_file.xp
+                                                        
 ..  only:: final
 
 

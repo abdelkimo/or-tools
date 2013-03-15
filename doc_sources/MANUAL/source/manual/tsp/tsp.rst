@@ -271,7 +271,13 @@ The 1-dimensional matrix is made of the columns of the virtual 2-dimensional mat
 To read ``TSPLIB`` files
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To read ``TSPLIB`` files, the ``TSPData`` class offers the ``LoadTSPLIBFile(const std::string& filename)`` method.
+To read ``TSPLIB`` files, the ``TSPData`` class offers the 
+
+..  code-block:: c++
+
+    LoadTSPLIBFile(const std::string& filename);
+    
+method.
 It parses a file in ``TSPLIB`` format and loads the coordinates (if any) for further treatment. 
 Note that the format is only 
 partially checked: bad inputs might cause undefined behaviour.
@@ -291,7 +297,13 @@ To generate random TSP
 ^^^^^^^^^^^^^^^^^^^^^^
 
 
-To generate random TSP instances, the ``TSPData`` class provides the ``RandomInitialize(const int size)`` method.
+To generate random TSP instances, the ``TSPData`` class provides the 
+
+..  code-block:: c++
+
+    RandomInitialize(const int size);
+    
+method.
 Several ``gflags`` parameters are available:
     
 - ``deterministic_random_seed``: Use deterministic random seeds or not? ``true`` by default;
