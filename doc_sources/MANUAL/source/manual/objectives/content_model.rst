@@ -89,30 +89,35 @@ By default, the CP solver is able to return some information about the model. If
 
     ./golomb1 --help
     
-in the terminal, you get all possible command line flags. For the CP solver, these are:
+in the terminal, you get all possible command line flags. For the file :file:`constraint_solver.cc`, these are:
 
 ..  code-block:: bash
 
-    Flags from constraint_solver/constraint_solver.cc:
-      -cp_export_file (Export model to file using CPModelProto.) type: 
-                                                                      string
-        default: ""
-      -cp_model_stats (use StatisticsModelVisitor on model before solving.)
-        type: bool default: false
-      -cp_no_solve (Force failure at the beginning of a search.) type: bool
-        default: false
-      -cp_print_model (use PrintModelVisitor on model before solving.) type: 
-                                                                        bool
-        default: false
-      -cp_profile_file (Export profiling overview to file.) type: string
-        default: ""
-      -cp_show_constraints (show all constraints added to the solver.) type:
-                                                                        bool
-        default: false
-      -cp_trace_demons (trace all demon executions.) type: bool default: 
-                                                                       false
-      -cp_verbose_fail (Verbose output when failing) type: bool default:  
-                                                                       false
+    Flags from src/constraint_solver/constraint_solver.cc:
+        -cp_export_file (Export model to file using CPModelProto.)  
+          type: string default: ""
+        -cp_model_stats (use StatisticsModelVisitor on model before solving.)
+          type: bool default: false
+        -cp_name_cast_variables (Name variables casted from expressions) 
+         type: bool default: false
+        -cp_name_variables (Force all variables to have names.) 
+         type: bool default: false
+        -cp_no_solve (Force failure at the beginning of a search.) 
+         type: bool default: false
+        -cp_print_model (use PrintModelVisitor on model before solving.) 
+         type: bool default: false
+        -cp_profile_file (Export profiling overview to file.) 
+         type: string default: ""
+        -cp_show_constraints (show all constraints added to the solver.) 
+         type: bool default: false
+        -cp_trace_propagation (Trace propagation events (constraint and demon
+         executions, variable modifications).) 
+         type: bool default: false
+        -cp_trace_search (Trace search events) 
+         type: bool default: false
+        -cp_verbose_fail (Verbose output when failing.) 
+         type: bool default: false
+
    
 We are interested in the constraints. Invoking
 
