@@ -345,11 +345,10 @@ Solutions
     solution, we construct the tour node by node. Arriving at a node ``node`` at time ``total_time`` 
     in the ``for`` loop, we test two things:
     
-    * First, if there is a waiting time ``waiting_time``. ``ReadyTime(node)`` returns the ready time of the node ``node``
+    * First, if we have to wait. We compute the *waiting time* ``waiting_time``: ``ReadyTime(node)`` returns 
+      the ready time of the node ``node``
       and ``total_time`` is the total time spent in the tour to reach the node ``node``. If the ready time is greater than 
-      ``total_time``, ``waiting_time > 0`` is ``true`` and we set ``total_time`` to its earliest time ``ReadyTime(node)``.
-      The test ``waiting_time > 0.0`` is not very precise for ``double``\s but all the known instances only use integer values 
-      for the times.
+      ``total_time``, ``waiting_time > 0`` is ``true`` and we set ``total_time`` to its earliest time: ``ReadyTime(node)``.
       
     * Second, if the due times are respected:
     
@@ -357,6 +356,36 @@ Solutions
     
       If not, the method returns ``false``. If all the due times are respected, the method returns ``true``.
       
+    The output of the above command line is:
+    
+    ..  code-block:: bash
+    
+        TSPTW instance of type da Silva-Urrutia format
+        Solution is feasible!
+        Loaded obj value: 378, Computed obj value: 387
+        Total computed travel time: 391
+        TSPTW file DSU_n20w20.001.txt (n=21, min=2, max=59, sym? yes) 
+        (!! n20w20.001 16.75 391 )
+
+    As you can see, the recorded objective value in the solution file is ``378`` while the value of the computed 
+    objective value is ``387``. The difference arises because the distance matrix computed is different from the one 
+    really used
+    to compute the objective value of the solution. We refer again the reader to the remark on *Travel-time Computation* 
+    from Jeffrey Ohlmann and Barrett Thomas cited above. If you take the right distance matrix as in the 
+    López-Ibáñez-Blum format, you get:
+    
+    ..  code-block:: bash
+    
+        TSPTW instance of type López-Ibáñez-Blum format
+        Solution is feasible!
+        Loaded obj value: 378, Computed obj value: 378
+        Total computed travel time: 387
+        TSPTW file LIB_n20w20.001.txt (n=21, min=2, max=57, sym? yes)
+
+    Now both the given objective value and the computed one are equal. Note that the total *travel* time is a bit longer:
+    ``387`` for a total distance of ``378``. The difference indicates that some waiting time was needed in order to 
+    begin the service after the ready times for some clients.
+    
     You also can print a report on the instance and the solution given and print the distance matrix.
     This program relies entirely on the ``TSPTWData`` class we see next.
     
@@ -386,7 +415,23 @@ To read instance files
     It parses a file in López-Ibáñez-Blum or da Silva-Urrutia format and - in the second case - loads the coordinates
     and the service times for further treatment. Note that the format is only partially checked: bad inputs might cause 
     undefined behaviour.
-
+    
+    To test if the instance was successfully loaded, use:
+    
+    ..  code-block:: c++
+    
+        bool IsInstanceLoaded() const;
+    
+    Several specialized *getters* are available:
+     
+    * ``std::string Name() const``: returns the instance name, here the filename of the instance;
+    * ``std::string InstanceDetails() const``: a short description of the instance;
+    * ``int Size() const``: size of the instance;
+    * ``int64 Horizon() const``: 
+    * ``int64 Distance(RoutingModel::NodeIndex from, RoutingModel::NodeIndex to) const``:
+    * ``RoutingModel::NodeIndex Depot() const``: returns the depot. This the first node given in the instance and solutions 
+      files.
+      
 To read solution files
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -399,7 +444,25 @@ To read solution files
         void LoadTSPTWSolutionFile(const std::string& filename);
         
     method. This way, you can 
-    load solution file and test them with the ``bool IsFeasibleSolution()`` method briefly seen above.
+    load solution files and test them with the ``bool IsFeasibleSolution()`` method briefly seen above.
+    Actually, you should enquire if the solution is feasible before doing anything with it.
+    
+    Three methods help you deal with the existence/feasibility of the solution:
+    
+    ..  code-block:: c++
+    
+        bool IsSolutionLoaded() const;
+        bool IsSolution() const;
+        bool IsFeasibleSolution() const;
+        
+    With ``IsSolutionLoaded()`` you can check that indeed a solution was loaded/read from a file. ``IsSolution()`` tests 
+    if the solution contains once and only once all the nodes of the graph while ``IsFeasibleSolution()`` tests if 
+    the loaded solution
+    is feasible, i.e. if all due times are respected.
+
+    Once you are sure that a solution is valid and feasible, you can query the loaded solution:
+    
+    * dd
 
 Specialized methods
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -410,14 +473,22 @@ Specialized methods
     
     ..  code-block:: c++
     
-        int32 ReadyTime(RoutingModel::NodeIndex i);
-        int32 DueTime(RoutingModel::NodeIndex i);
-        int32 ServiceTime(RoutingModel::NodeIndex i);
+        int64 ReadyTime(RoutingModel::NodeIndex i) const;
+        int64 DueTime(RoutingModel::NodeIndex i) const;
+        int64 ServiceTime(RoutingModel::NodeIndex i) const;
 
     The ``ServiceTime()`` method only makes sense when an instance is given in the da Silva-Urrutia format. In the 
-    López-Ibáñez-Blum format, the service times are added to the arc costs and the method returns ``0``.
+    López-Ibáñez-Blum format, the service times are added to the arc costs in the "distance" matrix 
+    and the ``ServiceTime()`` method returns ``0``.
     
-    The ``TSPTWData`` class **doesn't** create random instances.
+    
+    //  Cumulated time at a node "to"
+    int64 CumulTime(RoutingModel::NodeIndex from,
+                    RoutingModel::NodeIndex to) const {
+      return Distance(from, to) + ServiceTime(from);
+    }
+    
+    ..  warning:: The ``TSPTWData`` class **doesn't** create random instances.
     
 
     
