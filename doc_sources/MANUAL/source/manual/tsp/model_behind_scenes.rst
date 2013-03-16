@@ -91,13 +91,11 @@ Let's take the original graph of the next figure:
         :align: center
         :width: 150 pt
 
-..  only:: draft
+You can of course number (or name) the nodes of the original graph any way you like. For instance, in the ``TSPLIB``,
+nodes are numbered from ``1`` to :math:`n`. In the RL, you **must** number your original nodes from ``0`` to :math:`n-1`.
+If you don't follow this advice, you might get some surprises!
 
-    You can of course number (or name) your nodes of the original graph any way you like. For instance, in the ``TSPLIB``
-    nodes are numbered from ``1`` to :math:`n`. In the RL, you **must** number your original nodes from ``0`` to :math:`n-1`.
-    If you don't follow this advice, you might get some surprises!
-
-    ..  warning:: Always use ``NodeIndex`` from ``0`` to :math:`n-1` for your original graph!
+..  warning:: Always use ``NodeIndex``\es from ``0`` to :math:`n-1` for your original graph!
     
 
 

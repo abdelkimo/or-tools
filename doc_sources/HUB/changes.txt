@@ -3,4 +3,5 @@
 * Minor enhancements to the manual:
   - 9.5 corrected and published.
   - 9.8 added.
+  - 9.4 enhanced.
 THE CODE OF CHAPTER 9 WILL BE COMPLETELY RE-FACTORIZED!!!
