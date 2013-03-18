@@ -496,15 +496,43 @@ To read solution files
     The ``TSPTWData`` class doesn't generate random instances. Instead, we wrote a little program to do this.
     
 Random generation of instances
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------
 
 ..  only:: draft
 
-    You'll find the code in the file :file:`tsptw_random_instance_generator.cc`.
-
+    You'll find the code in the file :file:`tsptw_generator.cc`.
     
+    The TSPTW instance generator :program:`tsptw_generator` is very basic. It generates an instance in 
+    López-Ibáñez-Blum or/and da Silva-Urrutia as follows:
+    
+    1. it generates :math:`n` random points in the plane;
+    2. it generates a random tour;
+    3. it generates random service times and
+    4. it generates random time windows such that the random solution is feasible.
+    
+    Several parameters (gflags) are defined to control the output:
+    
+    * ``tsptw_name``: The name of the instance;
+    * ``tsptw_size``: The number of clients including the depot;
+    * ``tsptw_deterministic_random_seed``: Use deterministic random seeds or not?;
+    * ``tsptw_time_window_min``: Minimum window time length (default: 10);
+    * ``tsptw_time_window_max``: Maximum window time length (default: 100);
+    * ``tsptw_service_time_min``: Minimum service time length (default: 0);
+    * ``tsptw_service_time_max``: Maximum service time length (default: 10);
+    * ``tsptw_x_max``: Maximum x coordinate (default: 100);
+    * ``tsptw_y_max``: Maximum y coordinate (default: 100);
+    * ``tsptw_LIB``: Create López-Ibáñez-Blum format instance file or not? (default: ``true``);
+    * ``tsptw_DSU``: Create da Silva-Urrutia format instance file or not? (default: ``true``);
 
+    By default, if the name of the instance is
+    ``myInstance``,  :program:`tsptw_generator` creates the three files:
+    
+    * ``DSU_myInstance.txt``;
+    * ``LIB_myInstance.txt`` and
+    * ``myInstance_init.sol``.
 
+    ``myInstance_init.sol`` contains the random tour generated to create the instance. Files with the same name are 
+    overwritten without mercy.
     
 Visualization with ``ePix``
 ---------------------------
