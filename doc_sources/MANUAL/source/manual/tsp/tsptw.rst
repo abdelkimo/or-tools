@@ -22,6 +22,7 @@ The Travelling Salesman Problem with Time Windows (TSPTW)
                   <li><a href="../../../tutorials/cplusplus/chap9/tsptw_epix.h">tsptw_epix.h</a></li>
                   <li><a href="../../../tutorials/cplusplus/chap9/tsptw_solutions_to_epix.cc">tsptw_solutions_to_epix.cc</a></li>
                   <li><a href="../../../tutorials/cplusplus/chap9/check_tsptw_solutions.cc">check_tsptw_solutions.cc</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsptw_generator.cc">tsptw_generator.cc</a></li>
                 </ol>
               </li>
               <li>Data files:
@@ -425,13 +426,35 @@ To read instance files
     Several specialized *getters* are available:
      
     * ``std::string Name() const``: returns the instance name, here the filename of the instance;
-    * ``std::string InstanceDetails() const``: a short description of the instance;
-    * ``int Size() const``: size of the instance;
-    * ``int64 Horizon() const``: 
-    * ``int64 Distance(RoutingModel::NodeIndex from, RoutingModel::NodeIndex to) const``:
+    * ``std::string InstanceDetails() const``: returns a short description of the instance;
+    * ``int Size() const``: returns the size of the instance;
+    * ``int64 Horizon() const``: returns the horizon of the instance, i.e. the maximal due time;
+    * ``int64 Distance(RoutingModel::NodeIndex from, RoutingModel::NodeIndex to) const``: returns the distance between the 
+      two ``NodeIndex``\es;
     * ``RoutingModel::NodeIndex Depot() const``: returns the depot. This the first node given in the instance and solutions 
       files.
+    * ``int64 ReadyTime(RoutingModel::NodeIndex i) const``: returns the ready time of node ``i``; 
+    * ``int64 DueTime(RoutingModel::NodeIndex i) const``: returns the due time of node ``i``
+    * ``int64 ServiceTime(RoutingModel::NodeIndex i) const``: returns the service time of node ``i``.
+     
+    The ``ServiceTime()`` method only makes sense when an instance is given in the da Silva-Urrutia format. In the 
+    López-Ibáñez-Blum format, the service times are added to the arc costs in the "distance" matrix 
+    and the ``ServiceTime()`` method returns ``0``.
       
+    To model the time windows in the RT, we use ``Dimension``\s, i.e. quantities that are accumulated along the routes at each 
+    node.
+    At a given node ``to``, the accumulated time quantity is the travel cost from the 
+    previous node ``from`` to the ``to`` node plus the time to service node ``to``. The ``TSPTWData`` class has a special 
+    method to return this quantity:
+    
+    ..  code-block:: c++
+    
+        int64 CumulTime(RoutingModel::NodeIndex from,
+                        RoutingModel::NodeIndex to) const {
+          return Distance(from, to) + ServiceTime(from);
+        }
+    
+    
 To read solution files
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -462,34 +485,25 @@ To read solution files
 
     Once you are sure that a solution is valid and feasible, you can query the loaded solution:
     
-    * dd
+    * ``int64 SolutionComputedTotalTravelTime() const``: computes the total travel time and returns it. The travel total time
+      often differs from the objective value because of waiting times;
+    * ``int64 SolutionComputedObjective() const``: computes the objective value and returns it;
+    * ``int64 SolutionLoadedObjective() const``: returns the objective value stored in the instance file 
 
-Specialized methods
-^^^^^^^^^^^^^^^^^^^^^^^
+    These methods are also available if the solution was obtained by the solver (in this case, ``SolutionLoadedObjective()`` 
+    returns ``-1`` and ``IsSolutionLoaded()`` returns ``false``).
+    
+    The ``TSPTWData`` class doesn't generate random instances. Instead, we wrote a little program to do this.
+    
+Random generation of instances
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ..  only:: draft
 
-    Several methods are specialized for the TSPTW:
-    
-    ..  code-block:: c++
-    
-        int64 ReadyTime(RoutingModel::NodeIndex i) const;
-        int64 DueTime(RoutingModel::NodeIndex i) const;
-        int64 ServiceTime(RoutingModel::NodeIndex i) const;
+    You'll find the code in the file :file:`tsptw_random_instance_generator.cc`.
 
-    The ``ServiceTime()`` method only makes sense when an instance is given in the da Silva-Urrutia format. In the 
-    López-Ibáñez-Blum format, the service times are added to the arc costs in the "distance" matrix 
-    and the ``ServiceTime()`` method returns ``0``.
     
-    
-    //  Cumulated time at a node "to"
-    int64 CumulTime(RoutingModel::NodeIndex from,
-                    RoutingModel::NodeIndex to) const {
-      return Distance(from, to) + ServiceTime(from);
-    }
-    
-    ..  warning:: The ``TSPTWData`` class **doesn't** create random instances.
-    
+
 
     
 Visualization with ``ePix``
