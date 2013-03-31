@@ -1,0 +1,14 @@
+Actions:         Nodes:   Releases:   Deadlines:   Services:   Durations:   Time:
+
+travel to             4          56           67           0           67      67
+serve                 4          56           67           0            0      67
+travel to             2         147          165           0           95     162
+serve                 2         147          165           0            0     162
+travel to             1         197          216           0           42     204
+serve                 1         197          216           0            0     204
+travel to             3         242          254           0           47     251
+serve                 3         242          254           0            0     251
+travel to             0           0          504           0           26     277
+serve                 0           0          504           0            0     277
+Solution is feasible!
+Obj value = 277

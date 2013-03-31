@@ -101,7 +101,7 @@ of type ``NodeIndex``. This is worth a warning:
 ..  warning::
 
     For the rest of this section, we only use the internal ``int64`` indices except if the indices are explicitly 
-    of type ``NodeIndex``.
+    of type ``RoutingModel::NodeIndex``.
 
 Path variables
 ^^^^^^^^^^^^^^^^^^^^^^^^

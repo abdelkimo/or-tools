@@ -346,7 +346,10 @@ latex_additional_files = ['images/logo.pdf',
                           'images/viz7.pdf',
                           'images/viz8.pdf',
                           'images/output_nqueens1_8.pdf',
-                          'images/Eight-queens-animation.pdf'
+                          'images/Eight-queens-animation.pdf',
+                          'supplements/DSU_test.tsptw',
+                          'supplements/DSU_test.check',
+                          'supplements/LIB_test.check'
                           ]
 # -- Options for manual page output --------------------------------------------
 

@@ -19,6 +19,9 @@ Tutorials:
 ----------
 
 - Remove streams.
+- Part III: refactorization needed:
+  visualizable, symmetric, two_dimension etc -> routing_data 
+  created -> instantiated
 
 Customization:
 ---------------
