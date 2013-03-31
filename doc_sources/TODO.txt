@@ -14,6 +14,7 @@ Vocabulary:
 - use proper term about overriding and overloading;
 - explain FalseExceptIfOneTrue and TrueExceptIfOneFalse;
 - inner workingS;
+- RoutingModel::NodeIndex i(0) -> i(kFirstNode);
 
 Tutorials:
 ----------

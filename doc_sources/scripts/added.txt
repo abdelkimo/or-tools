@@ -1,9 +1,3 @@
-user_manual/manual/tsp/model_behind_scenes_overview.html
-user_manual/manual/tsp/model_behind_scenes.html
-user_manual/_images/cycles.png
-user_manual/_images/lb_assignment_problem.png
-user_manual/_images/math/42e31e8661e3349f3530398cb2c7d597a6b29a88.png
-user_manual/_images/math/8301c6fd93f20a80f3f7904c5f7902e92b4759db.png
-user_manual/_images/math/e776ea524ca7e92dff794b92acf711ed57cd9367.png
-user_manual/_images/math/9b99e12e3bf0539741f85c847a228bd6c930864a.png
-user_manual/_images/math/aa978851f4e9bd4281fd741f5cc42c985ce1909c.png
+user_manual/_images/math/fa09c589c26b74b0c9342c6489a35b8d31727bb7.png
+user_manual/_images/math/5a249597e1435826cff08da803f28a94db45b888.png
+user_manual/_images/math/7556fd495761a0b095b2b3de53d9e1b883b8467b.png

@@ -31,7 +31,10 @@ Callbacks
 
 ..  only:: draft
 
-``NewPermanentCallback()`
+    dd
+    
+    
+``NewPermanentCallback()``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 

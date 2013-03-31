@@ -271,7 +271,7 @@ A basic heuristic to find an initial solution
 
 ..  only:: draft
 
-    
+    [TO BE WRITTEN]
 
 ..  raw:: html
     
