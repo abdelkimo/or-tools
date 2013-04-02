@@ -38,7 +38,7 @@ Vehicule Routing Problems with constraints: the capacitated vehicle routing prob
       \item Basic knowledge of the Routing Library (see the chapter~\ref{manual/TSP:chapter-tsp-with-constraints}), especially:
       \begin{itemize}
         \item section~\ref{manual/tsp/routing_library:tsp-routing-solver};
-        \item section~\ref{manual/tsp/model_behind_scene:rl-model-behind-scene-decision-v};
+        \item section~\ref{manual/tsp/model_behind_scenes:rl-model-behind_scenes-decision-v};
         \item section~\ref{manual/tsp/two_phases_approaches:tsp-two-phases-approaches}.
       \end{itemize}
     \end{itemize}
@@ -60,7 +60,6 @@ The files inside this directory are:
     vrp/vrp
     vrp/first_vrp_implementation
     vrp/partial_routes
-    vrp/exact_vrp_implementation
     vrp/cvrp
     vrp/first_cvrp_implementation
     vrp/cvrp_summary

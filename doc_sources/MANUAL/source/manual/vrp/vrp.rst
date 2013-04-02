@@ -5,20 +5,25 @@ The Vehicle Routing Problem (VRP)
 
 ..  only:: draft
 
-    What is the VRP?
+    blabla
 
 The Problem
 -------------------------------
 
 ..  only:: draft
 
-    Given a graph :math:`G=(V,E)` and pairwise distances between nodes, the TSP consists in finding the shortest 
-    possible path that visits each node exactly once and returns to the starting node. You can think about a  
-    salesman that must visit several cities and come back to his hometown, hence the name the problem.
-
-    The cost we want to minimize is the sum of the distances along the path. Although there is a special vertex called 
-    the *depot* from which the tour starts and ends, we are really concerned with the overall cost of the tour, i.e. the 
-    we could start and end the tour at every node without changing the objective cost of the tour.
+    Given a graph :math:`G=(V,E)` and pairwise distances between nodes, the VRP consists in finding 
+    one or several routes to visit each node once. Each tour starts and ends at the same depot. The cost of a tour 
+    is given by the sum of the distances along the route and the total cost of a feasible solution for the VRP is the sum 
+    of the costs of all tours. 
+    
+    This "definition" remains vague enough to encompass the most known variants of the VRP. Indeed, not only does the VRP
+    exist in different flavors (capacitated, multi-depots, with time-windows, with pick-up and delivery, ...) but several 
+    slightly different definitions exist in the literature. In particular, some instances fix - in a way or another - the 
+    number of vehicle to be used.
+    
+    In this manual, we will use the definition given by ... in ... .
+    
 
     Below you can find a picture of a solution of the TSP with 280 cities (``a280``) in the section :ref:`section_visualization_epix_tsp`.
 
@@ -43,7 +48,7 @@ Benchmark data
 
 
     
-    They use the... TSPLIB format. We refer the reader to the sub-section :ref:`tsp_tsplib_format`
+    These instances are encoded in the... TSPLIB format. We refer the reader to the sub-section :ref:`tsp_tsplib_format`
     for an introduction to this format.
     
 
@@ -95,7 +100,8 @@ The instance file
 
     The type is ``CVRP`` and the capacity of the vehicles is given 
     by keyword ``CAPACITY``. The *demands* on the node are specified in a ``DEMAND_SECTION`` section.
-    The TSPLIB format **requires** that the depot must be listed in the the ``DEMAND_SECTION`` section.
+    The TSPLIB format **requires** that the depot must be listed in the the ``DEMAND_SECTION`` section
+    and have a demand of ``0``.
     Note that there is no specification whatsoever on the number of vehicles.
     
     If you grab other instances on the internet, be careful that they fully comply to the TSPLIB format (or change
