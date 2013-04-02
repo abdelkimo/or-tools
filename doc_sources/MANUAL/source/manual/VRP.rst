@@ -5,11 +5,12 @@ Vehicule Routing Problems with constraints: the capacitated vehicle routing prob
 
 ..  only:: draft
 
-    The *Vehicle Routing Problem* (VRP) is a 
+    The *Vehicle Routing Problem* (VRP) is a seeking to service a number of customers with a 
+    fleet of (homogeneous or heterogeneous) vehicles starting from one depot. This problem can be traced back to the fifties 
+    (see [Dantzig1959]_ for intance). As it includes the TSP (a VRP with one vehicle) as a special case, it is 
+    a computationally complex problem.
     
-    
-    The vehicle routing problem (VRP) is a combinatorial optimization and integer programming problem seeking to service a number of customers with a fleet of vehicles. Proposed by Dantzig and Ramser in 1959, VRP is an important problem in the fields of transportation, distribution and logistics.[1] Often the context is that of delivering goods located at a central depot to customers who have placed orders for such goods. Implicit is the goal of minimizing the cost of distributing the goods. Many methods have been developed for searching for good solutions to the problem, but for all but the smallest problems, finding global minimum for the cost function is computationally complex.
-    
+    .. [Dantzig1959] G. B. Dantzig and J. H. Ramser. *The Truck Dispatching Problem*, Management Science v. 6, pp 80-91, 1959.
     
 ..  rubric:: Overview:
 

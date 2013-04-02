@@ -127,6 +127,8 @@ the `TSPLIB page <http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/index.ht
 It's a little bit outdated but it contains a lot of instances and their proven optimal solutions. Their TSPLIB format
 is the de facto standard format to encode TSP instances.
 
+..  _tsp_tsplib_format:
+
 The TSPLIB format
 ^^^^^^^^^^^^^^^^^^
 
