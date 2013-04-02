@@ -3,6 +3,35 @@
 The Vehicle Routing Problem (VRP)
 ==================================
 
+..  raw:: latex
+
+    You can find the code in the file~\code{tsp.h}, \code{tsp\_epix.h} and~\code{tsplib\_solution\_to\_epix.cc} and the data
+    in the files~\code{a280.tsp} and~\code{a280.opt.tour}.\\~\\
+
+..  only:: html
+
+    ..  container:: files-sidebar
+
+        ..  raw:: html 
+        
+            <ol>
+              <li>C++ code:
+                <ol>
+                  <li><a href="../../../tutorials/cplusplus/chap10/vrp_data.h">vrp_data.h</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap10/vrp_epix_data.h">vrp_epix_data.h</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap10/vrp_solution_to_epix.cc">vrp_solution_to_epix.cc</a></li>
+                </ol>
+              </li>
+              <li>Data files:
+                <ol>
+                  <li><a href="../../../tutorials/cplusplus/chap10/a280.tsp">a280.tsp</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap10/a280.opt.tour">a280.opt.tour</a></li>
+                </ol>
+              </li>
+
+            </ol>
+
+
 ..  only:: draft
 
     blabla
@@ -22,10 +51,19 @@ The Problem
     slightly different definitions exist in the literature. In particular, some instances fix - in a way or another - the 
     number of vehicle to be used.
     
-    In this manual, we will use the definition given by ... in ... .
+    In this manual, we will use the definition given by Gilbert Laporte in [Laporte1992]_. In this article, a VRP 
     
+    - has one depot;
+    - has an homogeneous fleet of vehicles, i.e. the costs to travel an arc are the same for all the vehicles;
+    - the number of vehicles can be fixed, bounded or free;
+    - the distances between two nodes don't need to be equal.
+    
+    ..  [Laporte1992]  G. Laporte. *The vehicle routing problem: An overview of exact and approximate algorithms*,
+        European Journal of Operational Research, v. 59(3), pp 345-358, 1992.
 
-    Below you can find a picture of a solution of the TSP with 280 cities (``a280``) in the section :ref:`section_visualization_epix_tsp`.
+
+    Below you can find a picture of a solution of a VRP with 32 cities (``A-n32-k5``) in the 
+    sub-section :ref:`section_visualization_epix_vrp`.
 
 
 Benchmark data
@@ -134,19 +172,22 @@ The solution file
     2. no node 32! why?
      
 
+..  _vrpdata_class:
 
+The ``VRPData`` class
+---------------------------
 
+To read ``TSPLIB`` files
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The VRPLIB library
-^^^^^^^^^^^^^^^^^^^
+To generate random VRP
+^^^^^^^^^^^^^^^^^^^^^^
 
-..  only:: draft 
+..  _section_visualization_epix_vrp:
 
-    http://www.or.deis.unibo.it/research_pages/ORinstances/VRPLIB/VRPLIB.html
-    
-    http://neo.lcc.uma.es/vrp/
-    
-    https://sites.google.com/site/vrphlibrary/
+Visualization with ``ePix``
+---------------------------
+
 
 ..  raw:: html
     
