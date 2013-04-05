@@ -52,11 +52,15 @@ The Problem
     number of vehicle to be used.
     
     In this manual, we will use the definition given by Gilbert Laporte in [Laporte1992]_. In this article, a VRP 
+    is designed in such a way that
     
-    - has one depot;
-    - has an homogeneous fleet of vehicles, i.e. the costs to travel an arc are the same for all the vehicles;
+    - there is only one depot and each vehicle route starts and ends at this depot;
+    - each node - except the depot - has to be visited (or serviced) exactly once by exactly one vehicle;
+    - fleet of vehicles is homogeneous, i.e. the costs to travel an arc are the same for all the vehicles;
     - the number of vehicles can be fixed, bounded or free;
-    - the distances between two nodes don't need to be equal.
+    - the distances between two nodes don't need to be equal;
+    - the objective function is the sum of the arcs traversed by all vehicles that service at least one node with 
+      no additional cost for each used vehicle.
     
     ..  [Laporte1992]  G. Laporte. *The vehicle routing problem: An overview of exact and approximate algorithms*,
         European Journal of Operational Research, v. 59(3), pp 345-358, 1992.
@@ -175,12 +179,13 @@ To read ``TSPLIB`` files
 
 ..  only:: draft
 
-    Our good old ``TSPLIBReader`` (see XXX) class comes to the rescue. It was designed to also deal with CVRP.
-    As usual, just give a ``TSPLIBReader`` to the ``CVRPData`` constructor:
+    Our good old ``TSPLIBReader`` defined in the header :file:`routing_common/tsplib_reader.h` (see XXX) class 
+    comes again to the rescue. It was designed to also deal with CVRP. Simply provide a filename to the constructor:
     
     ..  code-block:: c++
     
-        dd
+        
+    
 
 To generate a random CVRP
 -----------------------------
@@ -200,6 +205,12 @@ The ``CVRPData`` class: part I
     more general ``CVRPData`` class and just forget about the demands to solve a basic VRP. There are two ways 
     to create a ``CVRPData`` object: you can read a TSPLIB file or randomly generate an instance.
 
+
+    As usual, just give a ``TSPLIBReader`` to the ``CVRPData`` constructor:
+    
+    ..  code-block:: c++
+    
+        dd
 
 CVRP solutions
 ---------------------
