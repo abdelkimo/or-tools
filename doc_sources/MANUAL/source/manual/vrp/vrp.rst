@@ -17,7 +17,7 @@ The Vehicle Routing Problem (VRP)
             <ol>
               <li>C++ code:
                 <ol>
-                  <li><a href="../../../tutorials/cplusplus/chap10/vrp_data.h">vrp_data.h</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap10/vrp_data.h">cvrp_data.h</a></li>
                   <li><a href="../../../tutorials/cplusplus/chap10/vrp_epix_data.h">vrp_epix_data.h</a></li>
                   <li><a href="../../../tutorials/cplusplus/chap10/vrp_solution_to_epix.cc">vrp_solution_to_epix.cc</a></li>
                 </ol>
@@ -86,7 +86,7 @@ Benchmark data
 
 
     
-    These instances are encoded in the... TSPLIB format. We refer the reader to the sub-section :ref:`tsp_tsplib_format`
+    Their instances are encoded in the... TSPLIB format. We refer the reader to the sub-section :ref:`tsp_tsplib_format`
     for an introduction to this format.
     
 
@@ -153,7 +153,7 @@ The solution file
     While there exists a TSPLIB format for the solutions of (C)VRP, it is seldom used. We'll follow the trend and use 
     the most commonly adopted format.
     
-    This is what the file :file:`a280.opt.tour` containing an optimal solution for the problem ``A-n32-k5`` above looks like:
+    This is what the file :file:`opt-A-n32-k5` containing an optimal solution for the ``A-n32-k5`` instance above looks like:
     
     ..  code-block:: text
     
@@ -164,24 +164,45 @@ The solution file
         Route #5: 14 28 11 4 23 3 2 6
         cost 784
 
-    Routes are numbered starting form ``1``. 
+    Routes are numbered starting form ``1`` while the nodes in the solution file are numbered starting from... 0!
     
-    remarks:
-    
-    1. tours can pass by the depot;
-    2. no node 32! why?
+    ..  warning:: Nodes are numbered from 0 in the solution files!
      
+
+
+To read ``TSPLIB`` files
+--------------------------
+
+..  only:: draft
+
+    Our good old ``TSPLIBReader`` (see XXX) class comes to the rescue. It was designed to also deal with CVRP.
+    As usual, just give a ``TSPLIBReader`` to the ``CVRPData`` constructor:
+    
+    ..  code-block:: c++
+    
+        dd
+
+To generate a random CVRP
+-----------------------------
+
+To check a VRP solution
+-------------------------
+
 
 ..  _vrpdata_class:
 
-The ``VRPData`` class
----------------------------
+The ``CVRPData`` class: part I
+--------------------------------
 
-To read ``TSPLIB`` files
-^^^^^^^^^^^^^^^^^^^^^^^^^
+..  only:: draft
 
-To generate random VRP
-^^^^^^^^^^^^^^^^^^^^^^
+    Because there is no TPSLIB format to encode VRP, we don't provide a ``VRPData`` class. Instead, we use the 
+    more general ``CVRPData`` class and just forget about the demands to solve a basic VRP. There are two ways 
+    to create a ``CVRPData`` object: you can read a TSPLIB file or randomly generate an instance.
+
+
+CVRP solutions
+---------------------
 
 ..  _section_visualization_epix_vrp:
 
