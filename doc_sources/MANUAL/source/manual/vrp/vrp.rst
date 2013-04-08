@@ -172,7 +172,8 @@ The solution file
     
     ..  warning:: Nodes are numbered from 0 in the solution files!
      
-
+    By default, we'll use the same convention but a :program:`gflags` flag allows to switch between a numbering starting from 
+    ``0`` or ``1``.
 
 To read ``TSPLIB`` files
 --------------------------
@@ -184,11 +185,41 @@ To read ``TSPLIB`` files
     
     ..  code-block:: c++
     
-        
+        TSPLIBReader tsp_data_reader(instance_file);
+        CVRPData cvrp_data(tsp_data_reader);
+    
     
 
 To generate a random CVRP
 -----------------------------
+
+..  only:: draft
+
+    We have defined a basic ``CVRPDataGenerator`` class to generate CVRP random instances. Each generated instance possesses 
+    at least one CVRP feasible solution. An instance is created by first creating a random CVRP solution, i.e. several tours 
+    and then to associate demands such that the capacity of each vehicle is respected. A ``CVRPDataGenerator`` needs an instance 
+    name and the total number of nodes, including the depot:
+    
+    ..  code-block:: c++
+    
+        CVRPDataGenerator cvrp_data_generator(instance_name, instance_size);
+        CVRPData cvrp_data(cvrp_data_generator);
+
+    A little program :program:`crvp_data_generator` generates random instance of CVRP. Invoke it like this:
+    
+    ..  code-block:: bash
+    
+        sds
+        
+    Several parameters are available:
+    
+    DECLARE_int32(instance_size);
+    DECLARE_string(instance_name);
+
+    DEFINE_string(instance_filename, "", "Filename to save the CVRP instance in TSPLIB format.");
+    DEFINE_int32(depot, 1, "Depot of the CVRP instance. Must be greater of equal to 1.");
+
+    DEFINE_string(distance_file, "", "Matrix distance file.");
 
 To check a VRP solution
 -------------------------
