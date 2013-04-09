@@ -172,7 +172,7 @@ The solution file
     
     ..  warning:: Nodes are numbered from 0 in the solution files!
      
-    By default, we'll use the same convention but a :program:`gflags` flag allows to switch between a numbering starting from 
+    By default, we'll use the same convention but a ``bool`` ``numbering_solution_nodes_from_zero`` flag allows to switch between a numbering starting from 
     ``0`` or ``1``.
 
 To read ``TSPLIB`` files
@@ -186,12 +186,12 @@ To read ``TSPLIB`` files
     ..  code-block:: c++
     
         TSPLIBReader tsp_data_reader(instance_file);
-        CVRPData cvrp_data(tsp_data_reader);
+        
     
     
 
-To generate a random CVRP
------------------------------
+To generate a random CVRP: the ``CVRPDataGenerator`` class
+-------------------------------------------------------------
 
 ..  only:: draft
 
@@ -203,27 +203,92 @@ To generate a random CVRP
     ..  code-block:: c++
     
         CVRPDataGenerator cvrp_data_generator(instance_name, instance_size);
-        CVRPData cvrp_data(cvrp_data_generator);
+        
 
-    A little program :program:`crvp_data_generator` generates random instance of CVRP. Invoke it like this:
+    A little program :program:`crvp_data_generator` generates random instances of CVRP. Invoke it like this:
     
     ..  code-block:: bash
     
-        sds
+        ./cvrp_data_generator -instance_name=my_instance -instance_size=40 
+                                                     > my_instance_file.vrp
         
-    Several parameters are available:
+    An instance name and size is mandatory.
     
-    DECLARE_int32(instance_size);
-    DECLARE_string(instance_name);
+    Several parameters scattered in different files are available as :program:`gflags`:
+    
+    ..  tabularcolumns:: |l|l|l|l|
 
-    DEFINE_string(instance_filename, "", "Filename to save the CVRP instance in TSPLIB format.");
-    DEFINE_int32(depot, 1, "Depot of the CVRP instance. Must be greater of equal to 1.");
+    ..  table::
+        
+        ============================= ================= ========= ============================================================
+        Flags                         Types             Default   Description
+        ============================= ================= ========= ============================================================
+        instance_name                 ``std::string``   ""        Name of the instance.
+        instance_size                 ``int32``         0         Number of nodes, including the depot.
+        instance_filename             ``std::string``   ""        Filename to save the CVRP instance in TSPLIB format.
+        depot                         ``int32``         1         Depot of the CVRP instance. Must be greater of equal to 1.
+        distance_file                 ``std::string``   ""        Matrix distance file.
+        deterministic_random_seed     ``bool``          ``true``  Use deterministic random seeds or not?
+        number_vehicles               ``int32``         2         Number of vehicles.
+        capacity                      ``int64``         100       Capacity of all vehicles.
+        allow_zero_capacity           ``bool``          ``true``  Allow node with zero capacity?
+        width_size                    ``int32``         6         Width size of fields in output.
+        x_max                         ``int32``         100       Maximum x coordinate.
+        y_max                         ``int32``         100       Maximum y coordinate.
+        ============================= ================= ========= ============================================================
+    
 
-    DEFINE_string(distance_file, "", "Matrix distance file.");
 
-To check a VRP solution
--------------------------
 
+To hold and check a VRP solution: the ``CVRPSolution`` class
+------------------------------------------------------------------
+
+..  only:: draft
+
+    To represent a (C)VRP solution, we have defined the ``CVRPSolution`` class. Two constructors are available:
+    
+    ..  code-block:: c++
+    
+        CVRPSolution(const CVRPData & data, std::string filename);
+        CVRPSolution(const CVRPData & data, 
+                     const RoutingModel * routing, 
+                     const Assignment * sol);
+
+    Two methods verify the feasibility of the solution:
+    
+    * ``bool CVRPSolution::IsSolution() const``: tests if all nodes are serviced once and only once, i.e. if the solution 
+      is a feasible VRP solution and
+    * ``bool IsFeasibleSolution() const``: test also if the capacities of the vehicles are respected, i.e. if the solution 
+      is a feasible CVRP solution.
+
+    The ``CVRPSolution`` class provides *iterators* to run through the solution. For instance, the 
+    ``ComputeObjectiveValue()`` method - that computes the objective value of the solution - is written like this:
+    
+    ..  code-block:: c++
+    
+        int64 CVRPSolution::ComputeObjectiveValue() const {
+          int64 obj = 0;
+          RoutingModel::NodeIndex from_node, to_node;
+
+          for (const_vehicle_iterator v_iter = vehicle_begin(); v_iter != vehicle_end(); ++v_iter) {
+            from_node = depot_;
+            for (const_node_iterator n_iter = node_begin(v_iter); n_iter != node_end(v_iter); ++n_iter ) {
+              to_node = *n_iter;
+              obj += data_.Distance(from_node, to_node);
+              from_node = to_node;
+            }
+            //  Last arc
+            obj += data_.Distance(to_node, depot_);
+          }
+
+          return obj;
+        } 
+
+    Because this method is constant and doesn't change the solution, it uses constant iterators. The ``CVRPSolution``
+    class also provides the non constant iterators:
+    
+    * ``vehicle_iterator`` and
+    * ``node_iterator``.
 
 ..  _vrpdata_class:
 
@@ -241,10 +306,16 @@ The ``CVRPData`` class: part I
     
     ..  code-block:: c++
     
-        dd
+        CVRPData cvrp_data(tsp_data_reader);
 
-CVRP solutions
----------------------
+    or the ``CVRPDataGenerator`` to the ``CVRPData`` constructor:
+    
+    ..  code-block:: c++
+    
+        CVRPData cvrp_data(cvrp_data_generator);
+        
+    Basically, the ``CVRPData`` class contains the distance matrix, the nodes coordinates and the clients demands.
+        
 
 ..  _section_visualization_epix_vrp:
 
@@ -252,7 +323,7 @@ Visualization with ``ePix``
 ---------------------------
 
 
-..  raw:: html
+..  only:: finale
     
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
