@@ -34,8 +34,18 @@ The Vehicle Routing Problem (VRP)
 
 ..  only:: draft
 
-    blabla
-
+    In this section, we briefly present one of the basic version of the Vehicle Routing Problem.
+    Most of the time, additional constraints are added [#k_tsp]_.
+    The usual format to encode CVRP instances is from 
+    the `TSPLIB <http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/>`_. There is no TSPLIB format for the basic VRP, 
+    so we simply read CVRP and forget about the demands to solve the VRP.
+    
+    We can reuse our ``TSPLIBReader`` class as it also manages to 
+    read CVRP instances. We use again the excellent `ePiX library <http://mathcs.holycross.edu/~ahwang/current/ePiX.html>`_  
+    through our ``CVRPEpixData`` class to visualize CVRP instances and their solutions.
+    
+    ..  [#k_tsp] This basic version of the VRP is more known under the name *k-TSP*.
+    
 The Problem
 -------------------------------
 
@@ -216,7 +226,7 @@ To generate a random CVRP: the ``CVRPDataGenerator`` class
     
     Several parameters scattered in different files are available as :program:`gflags`:
     
-    ..  tabularcolumns:: |l|l|l|l|
+    ..  tabularcolumns:: |l|l|l|p{4cm}|
 
     ..  table::
         
@@ -270,9 +280,11 @@ To hold and check a VRP solution: the ``CVRPSolution`` class
           int64 obj = 0;
           RoutingModel::NodeIndex from_node, to_node;
 
-          for (const_vehicle_iterator v_iter = vehicle_begin(); v_iter != vehicle_end(); ++v_iter) {
+          for (const_vehicle_iterator v_iter = vehicle_begin(); 
+                                      v_iter != vehicle_end(); ++v_iter) {
             from_node = depot_;
-            for (const_node_iterator n_iter = node_begin(v_iter); n_iter != node_end(v_iter); ++n_iter ) {
+            for (const_node_iterator n_iter = node_begin(v_iter); 
+                                     n_iter != node_end(v_iter); ++n_iter ) {
               to_node = *n_iter;
               obj += data_.Distance(from_node, to_node);
               from_node = to_node;
@@ -322,8 +334,56 @@ The ``CVRPData`` class: part I
 Visualization with ``ePix``
 ---------------------------
 
+..  only:: draft
 
-..  only:: finale
+    You can visualize an (C)VRP instance and/or a solution with the ``CVRPEpixData`` class. First, link it to a
+    ``CVRPData`` object:
+    
+    ..  code-block:: c++
+    
+        CVRPData cvrp_data(...);
+        CVRPEpixData epix_data(cvrp_data);
+        
+    and then invoke its ``Print...()`` or ``Write...()`` methods:
+    
+    ..  code-block:: c++
+    
+          void PrintInstance(std::ostream & out) const;
+          void WriteInstance(const std::string & filename) const;
+          void PrintSolution(std::ostream & out, 
+                             const CVRPSolution & sol) const;
+          void WriteSolution(const std::string & filename, 
+                             const CVRPSolution & sol) const;
+
+    For your (and our!) convenience, we have written the small program :program:`cvrp_solution_to_epix` 
+    to visualize a CVRP solution. To create a pdf image of the :file:`opt-A-n32-k5` solution, invoke it like this:
+    
+    ..  code-block:: bash
+    
+        cvrp_solution_to_epix -instance_file=A-n32-k5.vrp 
+                              -solution_file=opt-A-n32-k5 > opt-A-n32-k5.xp
+
+    then process the ``xp`` file with :program:`elaps`:
+    
+    ..  code-block:: bash
+    
+        ./elaps -pdf opt-A-n32-k5.xp
+    
+    and obtain the following image:
+    
+    ..  only:: html 
+
+        .. image:: images/opt-A-n32-k5.*
+           :width: 250pt
+           :align: center
+
+    ..  only:: latex
+        
+        .. image:: images/opt-A-n32-k5.*
+           :width: 170pt
+           :align: center
+
+..  only:: final
     
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
