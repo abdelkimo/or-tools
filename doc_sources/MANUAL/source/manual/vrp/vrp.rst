@@ -35,16 +35,22 @@ The Vehicle Routing Problem (VRP)
 ..  only:: draft
 
     In this section, we briefly present one of the basic version of the Vehicle Routing Problem.
-    Most of the time, additional constraints are added [#k_tsp]_.
+    Most of the time, additional constraints are added [#mtsp]_.
     The usual format to encode CVRP instances is from 
     the `TSPLIB <http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/>`_. There is no TSPLIB format for the basic VRP, 
-    so we simply read CVRP and forget about the demands to solve the VRP.
+    so we simply read CVRP and forget about the demands of the CVRP instances to solve a basic version of the VRP.
     
     We can reuse our ``TSPLIBReader`` class as it also manages to 
     read CVRP instances. We use again the excellent `ePiX library <http://mathcs.holycross.edu/~ahwang/current/ePiX.html>`_  
     through our ``CVRPEpixData`` class to visualize CVRP instances and their solutions.
     
-    ..  [#k_tsp] This basic version of the VRP is more known under the name *k-TSP*.
+    ..  [#mtsp] This basic version of the VRP is better known under the name *mTSP* or the *Multiple TSP*. We refer the reader 
+        to [Bektas2006]_ for more.
+    
+    ..  [Bektas2006] T. Bektas. *The multiple traveling salesman problem: an overview of formulations and solution procedures*,
+        Omega, Elsevier, v. 34(3), pp 209-219, 2006.
+
+
     
 The Problem
 -------------------------------
@@ -59,7 +65,7 @@ The Problem
     This "definition" remains vague enough to encompass the most known variants of the VRP. Indeed, not only does the VRP
     exist in different flavors (capacitated, multi-depots, with time-windows, with pick-up and delivery, ...) but several 
     slightly different definitions exist in the literature. In particular, some instances fix - in a way or another - the 
-    number of vehicle to be used.
+    number of vehicles to be used.
     
     In this manual, we will use the definition given by Gilbert Laporte in [Laporte1992]_. In this article, a VRP 
     is designed in such a way that
@@ -71,6 +77,12 @@ The Problem
     - the distances between two nodes don't need to be equal;
     - the objective function is the sum of the arcs traversed by all vehicles that service at least one node with 
       no additional cost for each used vehicle.
+    - some side constraints are satisfied.
+
+    
+    The last point is important. Indeed, without side constraints and if the graph obey the triangle inequality ...
+    
+    TO BE COMPLETTED
     
     ..  [Laporte1992]  G. Laporte. *The vehicle routing problem: An overview of exact and approximate algorithms*,
         European Journal of Operational Research, v. 59(3), pp 345-358, 1992.
