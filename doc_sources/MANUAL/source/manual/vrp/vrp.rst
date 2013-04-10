@@ -5,8 +5,10 @@ The Vehicle Routing Problem (VRP)
 
 ..  raw:: latex
 
-    You can find the code in the file~\code{tsp.h}, \code{tsp\_epix.h} and~\code{tsplib\_solution\_to\_epix.cc} and the data
-    in the files~\code{a280.tsp} and~\code{a280.opt.tour}.\\~\\
+    You can find the code in the files~\code{tsplib\_reader.h}, \code{cvrp\_data\_generator.h},
+    \code{cvrp\_data\_generator.cc}, \code{cvrp\_data.h}, \code{cvrp\_data.h}, \code{cvrp\_epix\_data.h} 
+    and~\code{cvrp\_solution\_to\_epix.cc} and the data
+    in the files~\code{A-n32-k5.vrp} and~\code{opt-A-n32-k5}.\\~\\
 
 ..  only:: html
 
@@ -17,15 +19,18 @@ The Vehicle Routing Problem (VRP)
             <ol>
               <li>C++ code:
                 <ol>
-                  <li><a href="../../../tutorials/cplusplus/chap10/vrp_data.h">cvrp_data.h</a></li>
-                  <li><a href="../../../tutorials/cplusplus/chap10/vrp_epix_data.h">vrp_epix_data.h</a></li>
-                  <li><a href="../../../tutorials/cplusplus/chap10/vrp_solution_to_epix.cc">vrp_solution_to_epix.cc</a></li>
+                  <li><a href="../../../tutorials/cplusplus/routing_common/tsplib_reader.h">tsplib_reader.h</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap10/cvrp_data_generator.h">cvrp_data_generator.h</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap10/cvrp_data_generator.cc">cvrp_data_generator.cc</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap10/cvrp_data.h">cvrp_data.h</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap10/cvrp_epix_data.h">cvrp_epix_data.h</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap10/cvrp_solution_to_epix.cc">cvrp_solution_to_epix.cc</a></li>
                 </ol>
               </li>
               <li>Data files:
                 <ol>
-                  <li><a href="../../../tutorials/cplusplus/chap10/a280.tsp">a280.tsp</a></li>
-                  <li><a href="../../../tutorials/cplusplus/chap10/a280.opt.tour">a280.opt.tour</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap10/A-n32-k5.vrp">A-n32-k5.vrp</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap10/opt-A-n32-k5">opt-A-n32-k5</a></li>
                 </ol>
               </li>
 
@@ -72,7 +77,7 @@ The Problem
     
     - there is only one depot and each vehicle route starts and ends at this depot;
     - each node - except the depot - has to be visited (or serviced) exactly once by exactly one vehicle;
-    - fleet of vehicles is homogeneous, i.e. the costs to travel an arc are the same for all the vehicles;
+    - the fleet of vehicles is homogeneous, i.e. the cost to travel an arc is the same for all the vehicles;
     - the number of vehicles can be fixed, bounded or free;
     - the distances between two nodes don't need to be equal;
     - the objective function is the sum of the arcs traversed by all vehicles that service at least one node with 
@@ -80,15 +85,58 @@ The Problem
     - some side constraints are satisfied.
 
     
-    The last point is important. Indeed, without side constraints and if the graph obey the triangle inequality ...
+    The last point is important. Indeed, without side constraints and if the graph obeys the triangle inequality 
+    (i.e. :math:`d(x,z) \leqslant d(x,y) + d(y,z)`), then there is no need to use more than one vehicle. For instance, 
+    the solution with two vehicles on the next figure (left) costs more than the same solution where only one vehicle follows
+    the two routes (right):
     
-    TO BE COMPLETTED
+    ..  only:: html 
+
+        .. image:: images/mtsp_metric_graph.*
+           :width: 550pt
+           :align: center
+
+    ..  only:: latex
+        
+        .. image:: images/mtsp_metric_graph.*
+           :width: 400pt
+           :align: center
+    
+    As :math:`d(x,z) \leqslant d(x,y) + d(y,z)`, the shortcut to go immediately from :math:`x` to :math:`z` without 
+    passing by the depot :math:`y` costs less. 
+    
+    The most common side constraints include:
+    
+    * *capacity restrictions*: a non-negative weight (or *demand*) :math:`d_i` is attached to each city :math:`i` (except
+      the depot) and the sum of weights of any vehicle route may not exceed the vehicle capacity. 
+      Capacity-constrained VRP are referred to as CVRP and will be studied in this chapter.
+    
+    * *maximum number of cities* that can be visited: the number of cities on any route is bounded above by :math:`q`. 
+      This is a special case of CVRP with :math:`d_i = 1` for all :math:`i` except the depot and capacity equal to :math:`q`
+      for all vehicles.
+      
+    * *total time (or distance) restrictions*: each route has its length bounded by a certain amount :math:`T` of time that 
+      cannot be exceeded by each vehicle. Such VRP are often denoted as DVRP or *distance-constrained* VRP.
+    
+    * *time-windows*: each city must be serviced within a time-window :math:`[a_i, b_i]` and waiting times are allowed.
+    
+    * *precedence relations* between pair of cities: city :math:`j` cannot be visited before city :math:`j`. Among such problems 
+      are the VRPPD: the *Vehicle Routing Problems with Pickup and Delivery*.  A number of goods need to be moved from certain pickup 
+      locations to other delivery locations.
+
+    And the list goes on.
+    
+    For our basic version of the VRP, we will only impose than all the vehicles **must** be used. This version of the VRP 
+    is better known as the *mTSP* [#k-TSP]_. Some problems can be coined as mTSP and we refer again the reader to [Bektas2006]_
+    to find some examples.
+    
     
     ..  [Laporte1992]  G. Laporte. *The vehicle routing problem: An overview of exact and approximate algorithms*,
         European Journal of Operational Research, v. 59(3), pp 345-358, 1992.
 
+    ..  [#k-TSP] Not to be confused with the *k-TSP* where only :math:`k` nodes/cities must be visited/serviced.
 
-    Below you can find a picture of a solution of a VRP with 32 cities (``A-n32-k5``) in the 
+    Below you'll find a picture of a solution of a VRP with 32 cities and 5 vehicles (``A-n32-k5``) in the 
     sub-section :ref:`section_visualization_epix_vrp`.
 
 
@@ -112,7 +160,7 @@ Benchmark data
 
 
     
-    Their instances are encoded in the... TSPLIB format. We refer the reader to the sub-section :ref:`tsp_tsplib_format`
+    Their instances are encoded in the TSPLIB format. We refer the reader to the sub-section :ref:`tsp_tsplib_format`
     for an introduction to this format.
     
 
@@ -123,7 +171,7 @@ The TSPLIB format for the CVRP
 
     The VRP in the TSPLIB format are only CVRP, i.e. *capacitated* problems. We will just ignore the demands
     on the nodes
-    to solve VRP. Don't forget the 
+    to solve our basic VRP. Don't forget the 
     TSPLIB convention to number the nodes starting at 1. 
 
     ..  warning:: Nodes are numbered from 1 to n in the TSPLIB and we keep this convention in this chapter.
@@ -163,7 +211,7 @@ The instance file
         EOF 
 
     The type is ``CVRP`` and the capacity of the vehicles is given 
-    by keyword ``CAPACITY``. The *demands* on the node are specified in a ``DEMAND_SECTION`` section.
+    by the keyword ``CAPACITY``. The *demands* on the node are specified in a ``DEMAND_SECTION`` section.
     The TSPLIB format **requires** that the depot must be listed in the the ``DEMAND_SECTION`` section
     and have a demand of ``0``.
     Note that there is no specification whatsoever on the number of vehicles.
@@ -179,7 +227,8 @@ The solution file
     While there exists a TSPLIB format for the solutions of (C)VRP, it is seldom used. We'll follow the trend and use 
     the most commonly adopted format.
     
-    This is what the file :file:`opt-A-n32-k5` containing an optimal solution for the ``A-n32-k5`` instance above looks like:
+    This is what the file :file:`opt-A-n32-k5` containing an optimal solution for the CVRP ``A-n32-k5`` instance above 
+    looks like:
     
     ..  code-block:: text
     
@@ -194,8 +243,9 @@ The solution file
     
     ..  warning:: Nodes are numbered from 0 in the solution files!
      
-    By default, we'll use the same convention but a ``bool`` ``numbering_solution_nodes_from_zero`` flag allows to switch between a numbering starting from 
-    ``0`` or ``1``.
+    By default, we'll use the same convention but a ``bool`` ``numbering_solution_nodes_from_zero`` flag allows to 
+    switch between a numbering starting from 
+    ``0`` or ``1`` in the solution file.
 
 To read ``TSPLIB`` files
 --------------------------
@@ -262,7 +312,7 @@ To generate a random CVRP: the ``CVRPDataGenerator`` class
 
 
 
-To hold and check a VRP solution: the ``CVRPSolution`` class
+To hold and check a (C)VRP solution: the ``CVRPSolution`` class
 ------------------------------------------------------------------
 
 ..  only:: draft
@@ -280,7 +330,7 @@ To hold and check a VRP solution: the ``CVRPSolution`` class
     
     * ``bool CVRPSolution::IsSolution() const``: tests if all nodes are serviced once and only once, i.e. if the solution 
       is a feasible VRP solution and
-    * ``bool IsFeasibleSolution() const``: test also if the capacities of the vehicles are respected, i.e. if the solution 
+    * ``bool IsFeasibleSolution() const``: tests also if the capacities of the vehicles are respected, i.e. if the solution 
       is a feasible CVRP solution.
 
     The ``CVRPSolution`` class provides *iterators* to run through the solution. For instance, the 
@@ -338,7 +388,7 @@ The ``CVRPData`` class: part I
     
         CVRPData cvrp_data(cvrp_data_generator);
         
-    Basically, the ``CVRPData`` class contains the distance matrix, the nodes coordinates and the clients demands.
+    Basically, the ``CVRPData`` class contains the distance matrix, the nodes coordinates (if any) and the clients demands.
         
 
 ..  _section_visualization_epix_vrp:
@@ -392,8 +442,20 @@ Visualization with ``ePix``
     ..  only:: latex
         
         .. image:: images/opt-A-n32-k5.*
-           :width: 170pt
+           :width: 150pt
            :align: center
+
+    ..  only:: html
+    
+        The same flags as for the program :program:`tsp_solution_to_epix` can be applied. 
+        See the sub-section :ref:`section_visualization_epix_tsp`.
+
+    ..  raw:: latex
+    
+        \newline
+        The same flags as for the program {\em tsp\_solution\_to\_epix} can be applied. 
+        See sub-section~\ref{manual/tsp/tsp:section-visualization-epix-tsp}.
+
 
 ..  only:: final
     
