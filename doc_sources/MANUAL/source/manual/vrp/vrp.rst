@@ -6,7 +6,7 @@ The Vehicle Routing Problem (VRP)
 ..  raw:: latex
 
     You can find the code in the files~\code{tsplib\_reader.h}, \code{cvrp\_data\_generator.h},
-    \code{cvrp\_data\_generator.cc}, \code{cvrp\_data.h}, \code{cvrp\_data.h}, \code{cvrp\_epix\_data.h} 
+    \code{cvrp\_data\_generator.cc}, \code{cvrp\_data.h}, \code{cvrp\_solution.h}, \code{cvrp\_epix\_data.h} 
     and~\code{cvrp\_solution\_to\_epix.cc} and the data
     in the files~\code{A-n32-k5.vrp} and~\code{opt-A-n32-k5}.\\~\\
 
@@ -23,6 +23,7 @@ The Vehicle Routing Problem (VRP)
                   <li><a href="../../../tutorials/cplusplus/chap10/cvrp_data_generator.h">cvrp_data_generator.h</a></li>
                   <li><a href="../../../tutorials/cplusplus/chap10/cvrp_data_generator.cc">cvrp_data_generator.cc</a></li>
                   <li><a href="../../../tutorials/cplusplus/chap10/cvrp_data.h">cvrp_data.h</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap10/cvrp_solution.h">cvrp_solution.h</a></li>
                   <li><a href="../../../tutorials/cplusplus/chap10/cvrp_epix_data.h">cvrp_epix_data.h</a></li>
                   <li><a href="../../../tutorials/cplusplus/chap10/cvrp_solution_to_epix.cc">cvrp_solution_to_epix.cc</a></li>
                 </ol>
