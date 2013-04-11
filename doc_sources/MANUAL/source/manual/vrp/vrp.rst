@@ -41,7 +41,9 @@ The Vehicle Routing Problem (VRP)
 ..  only:: draft
 
     In this section, we briefly present one of the basic version of the Vehicle Routing Problem.
-    Most of the time, additional constraints are added [#mtsp]_.
+    Most of the time, additional constraints are added [#mtsp]_. This basic version has not been studied that much 
+    in the scientific literature and in this manual we use it more as a gentle introduction to the CVRP.
+    
     The usual format to encode CVRP instances is from 
     the `TSPLIB <http://comopt.ifi.uni-heidelberg.de/software/TSPLIB95/>`_. There is no TSPLIB format for the basic VRP, 
     so we simply read CVRP and forget about the demands of the CVRP instances to solve a basic version of the VRP.
@@ -71,7 +73,7 @@ The Problem
     This "definition" remains vague enough to encompass the most known variants of the VRP. Indeed, not only does the VRP
     exist in different flavors (capacitated, multi-depots, with time-windows, with pick-up and delivery, ...) but several 
     slightly different definitions exist in the literature. In particular, some instances fix - in a way or another - the 
-    number of vehicles to be used.
+    number of vehicles to be used and a total travelled distance limit is imposed on the vehicles.
     
     In this manual, we will use the definition given by Gilbert Laporte in [Laporte1992]_. In this article, a VRP 
     is designed in such a way that
@@ -89,7 +91,7 @@ The Problem
     The last point is important. Indeed, without side constraints and if the graph obeys the triangle inequality 
     (i.e. :math:`d(x,z) \leqslant d(x,y) + d(y,z)`), then there is no need to use more than one vehicle. For instance, 
     the solution with two vehicles on the next figure (left) costs more than the same solution where only one vehicle follows
-    the two routes (right):
+    the two routes one after the other (right):
     
     ..  only:: html 
 
@@ -147,18 +149,19 @@ Benchmark data
 ..  only:: draft
 
     Several known benchmark data sources are available
-    on the internet. We refer you to two:
+    on the internet. We refer you to three:
     
     ..  only:: html
     
         * The `VRPLIB page <http://www.or.deis.unibo.it/research_pages/ORinstances/VRPLIB/VRPLIB.html>`_ and
         * The `NEO (Network and Emerging Optimization) page <http://neo.lcc.uma.es/vrp/vrp-instances/>`_.
+        * The `SYMPHONY VRP data page <http://branchandcut.org/VRP/data/index.htm>`_ maintained by T. Ralphs.
         
     ..  only:: latex
     
         * The VRPLIB page: `http://www.or.deis.unibo.it/research_pages/ORinstances/VRPLIB/VRPLIB.html` and
         * The NEO (Network and Emerging Optimization) page: `http://neo.lcc.uma.es/vrp/vrp-instances/`.
-
+        * The SYMPHONY VRP data page maintained by T. Ralphs: `<http://branchandcut.org/VRP/data/index.htm>`_.
 
     
     Their instances are encoded in the TSPLIB format. We refer the reader to the sub-section :ref:`tsp_tsplib_format`
