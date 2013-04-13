@@ -293,19 +293,57 @@ An initial solution
     We will see more in details the different methods provided by the ``RoutingModel`` class 
     to switch from routes to ``Assignment`` and vice-versa in the section :ref:`vrp_assigments`.
     
+
+    
+Different search strategies
+------------------------------
+
+..  only:: draft
+
+    [TO BE WRITTEN ONCE SEARCHLIMITS WITH RESPECT TO LOCAL SEARCH ARE DEFINED]
+    
 What about individualizing the vehicles?
 --------------------------------------------
 
 ..  only:: draft
 
-    dsds
-
-
-
-
-
-..  raw:: html
+    Until now, we considered an homogenous fleet of vehicles: all vehicles were exactly the same. But what happens if 
+    you have very different types of vehicles? The RL enables you to distinguish between different types of vehicles.
     
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    You might give a different cost to each type of vehicles. You can do this with the ``SetVehicleFixedCost()`` method:
+    
+    ..  code-block:: c++
+    
+        void SetVehicleFixedCost(int vehicle, int64 cost);
+
+    The RL routing solver will try to minimize of expensive types of vehicles. 
+    
+    Probably, the different types of vehicles have different capacities? No problem, this is allowed in the RL:
+    
+    ..  code-block:: c++
+    
+        void AddDimensionWithVehicleCapacity(NodeEvaluator2* evaluator,
+                                         int64 slack_max,
+                                         VehicleEvaluator* vehicle_capacity,
+                                         bool fix_start_cumul_to_zero,
+                                         const string& name);
+
+    ``AddDimensionWithVehicleCapacity()`` works exactly as ``AddDimension()`` except you use a ``VehicleEvaluator`` callback 
+    to return the capacities for each vehicle. A ``VehicleEvaluator`` is simply a ``ResultCallback1<int64, int64>`` and you 
+    need to implement its ``int64 Run(int64 vehicle)`` method to return the capacity of vehicle number ``vehicle``.
+    
+    You can even set different costs to traverse the arcs of the graph:
+    
+    ..  code-block:: c++
+    
+        void SetVehicleCost(int vehicle, NodeEvaluator2* evaluator);
+
+
+
+..  only:: final
+
+    ..  raw:: html
+        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 

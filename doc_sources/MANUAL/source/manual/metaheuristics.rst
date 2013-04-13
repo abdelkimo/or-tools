@@ -120,6 +120,7 @@ The files inside this directory are:
     :maxdepth: 2
 
     metaheuristics/metaheuristics
+    metaheuristics/search_limits
     metaheuristics/jobshop_lns
     metaheuristics/restart
     metaheuristics/tabu
