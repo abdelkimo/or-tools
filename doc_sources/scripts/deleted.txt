@@ -1,1 +1,0 @@
-user_manual/manual/vrp/exact_vrp_implementation.html

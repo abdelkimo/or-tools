@@ -5,36 +5,36 @@ The Travelling Salesman Problem with Time Windows (TSPTW)
 
 ..  raw:: latex
 
-You can find the code in the file~\code{tsp.h}, \code{tsp\_epix.h}, \code{tsp\_minimal.cc}, \code{tsp.cc}, 
-\code{tsplib\_solution\_to\_epix.cc} and~\code{tsp\_forbidden\_arcs.cc} and the data
-in the files~\code{tsp\_parameters.txt}, \code{a280.tsp} and~\code{a280.opt.tour}.\\~\\
+    You can find the code in the file~\code{tsp.h}, \code{tsp\_epix.h}, \code{tsp\_minimal.cc}, \code{tsp.cc}, 
+    \code{tsplib\_solution\_to\_epix.cc} and~\code{tsp\_forbidden\_arcs.cc} and the data
+    in the files~\code{tsp\_parameters.txt}, \code{a280.tsp} and~\code{a280.opt.tour}.\\~\\
 
 ..  only:: html
 
-..  container:: files-sidebar
+    ..  container:: files-sidebar
 
-    ..  raw:: html 
-    
-        <ol>
-          <li>C++ code:
+        ..  raw:: html 
+        
             <ol>
-              <li><a href="../../../tutorials/cplusplus/chap9/tsptw.h">tsptw.h</a></li>
-              <li><a href="../../../tutorials/cplusplus/chap9/tsptw_epix.h">tsptw_epix.h</a></li>
-              <li><a href="../../../tutorials/cplusplus/chap9/tsptw_solutions_to_epix.cc">tsptw_solutions_to_epix.cc</a></li>
-              <li><a href="../../../tutorials/cplusplus/chap9/check_tsptw_solutions.cc">check_tsptw_solutions.cc</a></li>
-              <li><a href="../../../tutorials/cplusplus/chap9/tsptw_generator.cc">tsptw_generator.cc</a></li>
-            </ol>
-          </li>
-          <li>Data files:
-            <ol>
-              <li><a href="../../../tutorials/cplusplus/chap9/tsptw_check_parameters.txt">tsptw_check_parameters.txt</a></li>
-              <li><a href="../../../tutorials/cplusplus/chap9/LIB_n20w20.001.txt">LIB_n20w20.001.txt</a></li>
-              <li><a href="../../../tutorials/cplusplus/chap9/DSU_n20w20.001.txt">DSU_n20w20.001.txt</a></li>
-              <li><a href="../../../tutorials/cplusplus/chap9/n20w20.001.sol">n20w20.001.sol</a></li>
-            </ol>
-          </li>
+              <li>C++ code:
+                <ol>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsptw.h">tsptw.h</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsptw_epix.h">tsptw_epix.h</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsptw_solutions_to_epix.cc">tsptw_solutions_to_epix.cc</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/check_tsptw_solutions.cc">check_tsptw_solutions.cc</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsptw_generator.cc">tsptw_generator.cc</a></li>
+                </ol>
+              </li>
+              <li>Data files:
+                <ol>
+                  <li><a href="../../../tutorials/cplusplus/chap9/tsptw_check_parameters.txt">tsptw_check_parameters.txt</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/LIB_n20w20.001.txt">LIB_n20w20.001.txt</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/DSU_n20w20.001.txt">DSU_n20w20.001.txt</a></li>
+                  <li><a href="../../../tutorials/cplusplus/chap9/n20w20.001.sol">n20w20.001.sol</a></li>
+                </ol>
+              </li>
 
-        </ol>
+            </ol>
 
 
 

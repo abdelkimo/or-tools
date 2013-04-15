@@ -71,6 +71,8 @@ nodes in solutions.
 ..  [#node_only_visited_once] Remember that we don't allow a node to be visited more than once, i.e. only one 
                               vehicle can visit a node in a solution.
 
+..  _auxiliary_graph_first_encounter:
+
 The auxiliary graph [#simplified_version_of_auxiliary_graph_section]_ 
 ---------------------------------------------------------------------------
 

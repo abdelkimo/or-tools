@@ -66,10 +66,4 @@ The files inside this directory are:
     vrp/assigments
     vrp/cvrp_summary
 
-..  only:: final
-
-    ..  raw:: html
-        
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
