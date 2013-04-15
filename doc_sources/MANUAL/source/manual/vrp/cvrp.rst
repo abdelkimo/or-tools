@@ -101,7 +101,8 @@ The problem
         Solution is feasible!
         Obj value = 784
 
-    As you can see, each vehicle has its capacity respected and in case you wonder, we use the real node identifiers in this output.
+    As you can see, each vehicle has its capacity respected and in case you wonder, we use the real node identifiers (from
+    the original graph) in this output.
     
     In the next section, we show you how to individualize each vehicle (its cost to use it, its own capacity, its 
     costs to traverse an edge).

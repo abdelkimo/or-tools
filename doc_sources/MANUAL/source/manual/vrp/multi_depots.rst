@@ -1,14 +1,17 @@
 ..  _cvrp_multi_depots:
 
-Multi-depots
+Multi-depots and vehicles
 =========================
 
 ..  only:: draft
 
     Some instances have different depots. This is not a problem for the RL. You can have as many depots as you want (within 
     the limit of an ``int``). These depots can be starting, ending or starting and ending depots. Each problem in the RL is 
-    modeled with *routes*: each route starts at a depot, finishes at a depot and is serviced by one vehicle. The auxiliary graph 
+    modelled with *routes*: each route starts at a depot, finishes at a depot and is serviced by one vehicle. The auxiliary graph 
     used internally is constructed in such a way that every vehicle has its own starting and ending depots.
+    
+    Each route and vehicle are in a one to one correspondence in the RL. They are represented by ``VehicleVar()`` variables 
+    and divided among several ``VehicleClass``\es.
     
 Problems with multi-depots
 ------------------------------
@@ -92,16 +95,95 @@ Multi-depots in practice
     returns ``true`` [#no_nextvar_for_end_depot]_. 
     
 
-    ..  [#no_nextvar_for_end_depot] Remember that there are **no** ``NextVar()`` variables for end depots. 
-        This is exactly how the method ``IsVehicleUsed()`` of the ``RoutingModel`` class to test if a vehicle is used 
-        in a given solution or not works.
+    The method ``IsVehicleUsed()`` of the ``RoutingModel`` tests exactly this. 
 
-The ``Vehicle()`` variables
+    ..  [#no_nextvar_for_end_depot] Remember that there are **no** ``NextVar()`` variables for end depots.
+
+    As mentioned earlier, a depot **cannot** be a transit node: you can only start, finish or start and finish a tour at 
+    a depot.
+    
+    ..  warning:: A depot cannot be a transit node.
+
+The ``VehicleVar()`` variables
 ----------------------------------
 
 ..  only:: draft
 
-    dsd
+    In the RL, there is a one to one correspondence between vehicles and routes. You probably noticed 
+    that we interchangeably used the term *route* or *vehicle* in this manual. When you declare ``v`` vehicles/routes 
+    in your model, the RL solver creates a model with ``v`` vehicles/routes numbered from ``0`` to ``vehicles() - 1``.
+    These vehicles/routes are divided in different ``VehicleClasses`` (see next sub-section).
+    
+    The ``VehicleVar(int64 i)`` method returns the ``IntVar*`` corresponding to the node with ``int64`` index ``i``:
+    this variable indicates what vehicle services the 
+    node ``i``, i.e. if node ``i`` is serviced by vehicle ``vehicle_number`` in a 
+    solution (with the same abuse of notation as before):
+    
+      ``VehicleVar(i) == vehicle_number``.
+    
+    
+    You can grab all ``VehicleVar()`` variables at once with:
+    
+    ..  code-block:: c++
+    
+        const std::vector<IntVar*>& VehicleVars() const;
+    
+    
+    
+    For a vehicle ``vehicle_number``, we have that
+    
+      ``routing.VehicleVar(routing.Start(vehicle_number)) == vehicle_number``
+      
+    and 
+    
+      ``routing.VehicleVar(routing.End(vehicle_number)) == vehicle_number``.
+    
+    On the same route, all nodes are serviced by the 
+    same vehicle, i.e.:
+    
+      If ``NextVar(i) == j`` then ``VehicleVar(i) == VehicleVar(j)``
+    
+    If a node ``i`` is not active, i.e. not serviced by a vehicle, ``VehicleVar(i)`` is set to ``-1`` but don't rely 
+    on this to test if a node is active or not. Each node ``i`` has a corresponding ``BoolVar`` that indicates if 
+    the node is active or not. ``ActiveVar(i)`` returns (a pointer to) this variable. Internally, the real criterion used is to 
+    test if ``NextVar(i)`` points to itself or not. i.e. a node ``i`` is active if
+    
+      ``NextVar(i) != i``
+    
+    and inactive if 
+    
+      ``NextVar(i) == i``.
+      
+    Depots are **always** active and can thus **not** be part of a ``Disjunction``.
+    
+    
+``VehicleClass``\es
+--------------------------
+    
+..  only:: draft
+    
+    For efficiency reasons, vehicles/routes are divided in several ``VehicleClass``\es depending on the 
+    starting and ending depot(s) **and** the cost to use the vehicle/route [#cost_of_vehicles_set_by]_. 
+    The ``VehicleClass`` is 
+    a simple ``struct`` based on these three parameters. Its constructor method signature is:
+    
+    ..  code-block:: c++
+    
+        VehicleClass(RoutingModel::NodeIndex start_node,
+                     RoutingModel::NodeIndex end_node,
+                     const int64 cost);
+
+    This ``struct`` provides an ``bool Equal(const VehicleClass& vehicle1, const VehicleClass& vehicle2)``
+    method to compare two ``VehicleClass``\es. You can ask all the different ``VehicleClass``\es used in the model 
+    with:
+    
+    ..  code-block:: c++
+    
+        void GetVehicleClasses(std::vector<VehicleClass>* vehicle_classes) 
+                                                                      const;
+
+    ..  [#cost_of_vehicles_set_by] This cost can be set by ``SetRouteFixedCost(int64 cost)`` if all vehicles have the same 
+        cost or ``SetVehicleFixedCost(int vehicle, int64 cost)`` to set individual costs.
 
 ..  only:: final
 
