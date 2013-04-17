@@ -35,8 +35,6 @@ A little bit of vocabulary
 
 ..  only:: draft
 
-    [TO PUT AT THE BEGINNING OF PART III?]
-
     Before we go on, let's agree on some vocabulary. Our routing problems are modelled with a graph :math:`G=(V, E \cup A)` 
     with :math:`V` the set of all vertices, :math:`E` the set of edges and :math:`A` the set of arcs. Here are some terms we will 
     used throughout the rest of part III:
@@ -85,15 +83,15 @@ A little bit of vocabulary
         or containing edges and arcs (*mixed* paths). In the same vein, we don't distinguish between cycles with only edges 
         (*cycles*), only arcs (*circuits*) or containing edges and arcs (*mixed cycles*).
 
-*Locks* 
-------------------------------------
+*Locks* and the ``ApplyLocksToAllVehicles()`` method
+-------------------------------------------------------
 
 ..  only:: draft
 
     You can find the source code in the file :file:`vrp_locks.cc`.
 
-    A *lock* is simply an ``std::vector<RoutingModel::NodeIndex>`` that represent a partial route.
-    Locks can be fixed (or applied) during the search. Basically, this means that
+    A *lock* is what we call internally an ``std::vector<RoutingModel::NodeIndex>`` that represents a partial route.
+    Locks can be fixed (we prefer to say *applied*) before the search. Basically, this means that
     given a lock ``p`` corresponding to a vehicle ``v``
     (again with the same abuse of notation):
     
@@ -106,9 +104,21 @@ A little bit of vocabulary
     To apply the locks, use the ``ApplyLocksToAllVehicles()`` method:
     
     ..  code-block:: c++
-    
-        RoutingModel routing(29, 4); // 29 nodes, 4 vehicles
+        
+        std::vector<std::pair<RoutingModel::NodeIndex,
+                               RoutingModel::NodeIndex> > depots(4);
+        // Internal depots are 1, 3, 4 and 7
+        // thus with the convention in this manual, 
+        // the real depots are 2, 4, 5 and 8
+        depots[0] = std::make_pair(1,4);
+        depots[1] = std::make_pair(3,4);
+        depots[2] = std::make_pair(3,7);
+        depots[3] = std::make_pair(4,7);
         ...
+        RoutingModel routing(29, 4, depots); // 29 nodes, 4 vehicles
+        ...
+        routing.CloseModel();
+        
         //  Constructing partial routes
         std::vector<std::vector<RoutingModel::NodeIndex> > p(3);
         // first partial route
@@ -116,40 +126,120 @@ A little bit of vocabulary
         p[0].push_back(RoutingModel::NodeIndex(2));
         ...
         p[0].push_back(RoutingModel::NodeIndex(26));
-        p[0].push_back(RoutingModel::NodeIndex(2));
+        p[0].push_back(RoutingModel::NodeIndex(7));
         // second partial route
-        p[1].push_back(RoutingModel::NodeIndex(3));
+        p[1].push_back(RoutingModel::NodeIndex(23));
         p[1].push_back(RoutingModel::NodeIndex(18));
         ...
         p[1].push_back(RoutingModel::NodeIndex(13));
-        
-        routing.ApplyLocksToAllVehicles(p, false);
+        ...
+        if (!routing.ApplyLocksToAllVehicles(p, FLAGS_close_routes)) {
+          LOG(FATAL) << "Unable to apply locks...";
+        }
 
-    Some remarks:
+    Some remarks about the ``ApplyLocksToAllVehicles()`` method:
     
-      * You can only call ``ApplyLocksToAllVehicles()`` if the model is closed.
-      * Partial routes are attached to the corresponding starting depots.
-        For instance, ``p[1][0]`` is attached to the depot of the second route/vehicle.
-      * The ``bool`` indicates if you want to close the routes or not. If set to ``true``, all the given 
-        partial routes are closed and **all the remaining** *transit vertices* are **deactivated**. If set to ``false``, 
-        the partial routes are **not** closed and the remaining vertices are **not** deactivated (but already 
-        deactivated vertices remain deactivated).
-      * You can **only** use transit nodes and each transit node can only be in **one** lock (no depot allowed in the locks).
-      * You can add empty routes by adding an empty vector for the corresponding vehicle/route. In our example, route ``p[2]``
-        is empty and can thus be completed by the CP routing solver. The remaining routes that were not defined in ``p``
-        are closed (i.e. ``NextVar(routing.Start(v)) == routing.End(v)`` for all ``v >= p.size()``).
-      * You can get the corresponding ``Assignment`` with the ``PreAssignment()`` method:
+    * You can only call ``ApplyLocksToAllVehicles()`` if the model is closed (or you'll trigger an ``assert()``).
+    * Partial routes are attached to the corresponding starting depots.
+      For instance, ``p[1][0]`` is attached to the depot of the second route/vehicle.
+    * The ``bool`` ``FLAGS_close_routes`` indicates if you want to close the routes or not. If set to ``true``, all the given 
+      partial routes are closed (i.e. the last vertex of each lock is connected to the corresponding end depot) 
+      and **all the remaining** *transit vertices* are **deactivated**. If set to ``false``, 
+      the partial routes are **not** closed and the remaining vertices are **not** deactivated (but already 
+      deactivated vertices remain deactivated).
+    * You can **only** use transit nodes and each transit node can only be in **one** lock (no depot allowed in the locks).
+    * You can add empty routes by adding an empty vector for the corresponding vehicle/route. In our example, route ``p[2]``
+      is empty and can thus be completed by the CP routing solver. The remaining routes that were not defined in ``p``
+      are closed (i.e. ``NextVar(routing.Start(v)) == routing.End(v)`` for all ``v >= p.size()``).
+    * You can get the corresponding ``Assignment`` with the ``PreAssignment()`` method:
       
-        ..  code-block:: c++
+      ..  code-block:: c++
         
-            const Assignment* const solution_from_locks = 
+          const Assignment* const solution_from_locks = 
                                                     routing.PreAssignment();
       
-      * Finally, you can test if the method could apply the locks: ``ApplyLocksToAllVehicles()`` returns ``true`` if the all 
-        the locks could be applied and ``false`` otherwise.
+    * Finally, ``ApplyLocksToAllVehicles()`` returns ``true`` if the all 
+      the locks could be applied and ``false`` otherwise.
       
     ..  warning:: Pay close attention to **all** the remarks before using the ``ApplyLocksToAllVehicles()`` method.
     
+    Back to the code. 
+    
+    Let's solve this instance:
+    
+    ..  code-block:: c++
+    
+        const Assignment* solution = routing.Solve();
+    
+    and inspect the solution:
+    
+    ..  code-block:: c++
+    
+          if (solution != NULL) {
+            // Solution cost.
+            LG << "Obj value: " << solution->ObjectiveValue();
+            // Inspect solution.
+            std::string route;
+            for (int vehicle_nbr = 0; vehicle_nbr < 4; ++vehicle_nbr) {
+              route = "";
+              for (int64 node = routing.Start(vehicle_nbr); !routing.IsEnd(node);
+                node = solution->Value(routing.NextVar(node))) {
+                route = StrCat(route, StrCat(routing.IndexToNode(node).value() + 1, " -> "));
+              }
+              route = StrCat(route,  routing.IndexToNode(routing.End(vehicle_nbr)).value() + 1 );
+              LG << "Route #" << vehicle_nbr + 1 << std::endl << route << std::endl;
+            }
+          } else {
+            LG << "No solution found.";
+          }
+    
+    Let's recapitulate the data instance before we look at the results.
+    
+    The routes depots are:
+    
+    * route 1: 2 and 5;
+    * route 2: 4 and 5;
+    * route 3: 4 and 8;
+    * route 4: 5 and 8.
+    
+    The locks we defined are:
+    
+    * ``p[0]``: 1 -> 3 -> 18 -> 27 -> 22;
+    * ``p[1]``: 24 -> 19 -> 16 -> 14;
+    * ``p[2]``:
+    
+    The fact that we only applied locks for the 3 first routes while the model has 4 routes means that the fourth route will not be used
+    in the search.
+    
+    
+          
+    If you set ``FLAGS_close_routes`` to ``true``, you'll get a partial solution that is **not** feasible and 
+    we get the expected result:
+    
+    ..  code-block:: bash
+    
+        No solution found.
+        
+    If you set ``FLAGS_close_routes`` to ``false``, the partial solution made up by the locks is completed by the 
+    CP routing solver:
+    
+    ..  code-block:: bash
+    
+        Obj value: 804
+        Route #1
+        2 -> 1 -> 3 -> 18 -> 27 -> 22 -> 26 -> 5
+
+        Route #2
+        4 -> 24 -> 19 -> 16 -> 14 -> 17 -> 21 -> 25 -> 29 -> 5
+
+        Route #3
+        4 -> 6 -> 7 -> 9 -> 10 -> 11 -> 12 -> 13 -> 15 -> 20 -> 23 -> 28 -> 8
+
+        Route #4
+        5 -> 8
+
+    
+          
     If you find the ``ApplyLocksToAllVehicles()`` method too restrictive for your needs, you can always construct 
     a partial ``Assignment`` and pass it to the CP routing solver as we will do in the next sub-section.
     
@@ -172,6 +262,15 @@ A little bit of vocabulary
 ---------------------------------------------
 
 ..  only:: draft
+
+
+
+    ..  topic:: Partial ``Assignment``\s and the RL
+    
+        Partial ``Assignment``\s in the Routing Library have nothing special and 
+        you can use partial ``Assignment``\s in a similar way with the CP solver.
+        The RL provides several handy helper methods that you can copy for your own codes.
+        Aside from the defensive testings, these methods are only several lines long.
 
     // Returns an assignment used to fix some of the variables of the problem.
     // In practice, this assignment locks partial routes of the problem. This
