@@ -1,0 +1,6 @@
+user_manual/_images/rl_original_graph1.png
+user_manual/_images/rl_auxiliary_graph1.png
+user_manual/_images/rl_auxiliary_graph_numberred1.png
+user_manual/_images/rl_sol1.png
+user_manual/_images/math/549fc938d598f7af91987930aed1a65d04de8061.png
+user_manual/_images/math/89711f5300db39ac87c87d59aa3207c3ccd0743d.png

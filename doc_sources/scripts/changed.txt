@@ -1,9 +1,10 @@
 changes_list.txt
 documentation_hub.html
 user_manual/manual/VRP.html
-user_manual/manual/arc_routing.html
-user_manual/manual/arc_routing/disjunctions.html
 user_manual/manual/vrp/multi_depots.html
-user_manual/manual/tsp/model_behind_scenes.html
-user_manual/manual/tsp/first_tsptw_implementation.html
-user_manual/manual/tsp/tsptw.html
+user_manual/manual/vrp/first_cvrp_implementation.html
+user_manual/manual/vrp/assigments.html
+user_manual/manual/vrp/first_vrp_implementation.html
+user_manual/manual/vrp/vrp.html
+user_manual/manual/vrp/partial_routes.html
+user_manual/manual/under_the_hood/rl.html

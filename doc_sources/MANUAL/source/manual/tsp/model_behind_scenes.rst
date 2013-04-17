@@ -158,7 +158,7 @@ Note that the ``int64`` indices don't depend on a given solution but only on the
 
 ..  topic:: What is an auxiliary graph?
 
-    The auxiliary graph is a graph constructed from the original graph. It helps to model a problem. In our case, 
+    An auxiliary graph is a graph constructed from the original graph. It helps to model a problem. In our case, 
     the auxiliary graph allows us to model different routes. We'll meet other auxiliary graphs in the chapter 
     :ref:`chapter_arc_routing_with_constraints`.
 

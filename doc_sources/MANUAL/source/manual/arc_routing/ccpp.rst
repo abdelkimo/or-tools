@@ -35,7 +35,7 @@ The Cumulative Chinese Postman Problem (CCPP)
 
 ..  only:: draft
 
-    The Cumulative Chinese Postman Problem (CCPP) is - in practice - probably one of the most difficult problem 
+    The Cumulative Chinese Postman Problem (CCPP) [#ccpp_acronym_not_known]_ is - in practice - probably one of the most difficult problem 
     introduced in this manual.
     There are at least two reasons to support this claim: 
     
@@ -53,6 +53,9 @@ The Cumulative Chinese Postman Problem (CCPP)
     the same cost on all the edges), you still face a difficult problem: the CCPP has been proven to be *strongly NP-Hard*.
     Intuitively, it means that even with a restriction on the size of the numbers involved in the problem (the costs for the CCPP),
     the problem remains difficult to solve.
+
+    ..  [#ccpp_acronym_not_known] The acronym *CCPP* is more known for the *Capacitated Chinese Postman Problem* or 
+        the *Capacitated Canadian Postman Problem*. In this manual, CCPP stands for the *Cumulative Chinese Postman Problem*.
 
     ..  [#ccpp_MLP_equivalent_exists] This problem shares some similitude with its little brother defined on the nodes: the 
         Minimum Latency Problem (MLP). The MLP has been shown to behave quite differently from the TSP and to be practically
