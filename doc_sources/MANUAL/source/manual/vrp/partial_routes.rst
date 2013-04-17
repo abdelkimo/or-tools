@@ -7,7 +7,7 @@ Partial routes and Assigments
 
     ..  raw:: latex
 
-        You can find the code in the file~\code{vrp_locks.cc}.\\~\\
+        You can find the code in the file~\code{vrp\_locks.cc}.\\~\\
 
     ..  only:: html
 
@@ -182,12 +182,18 @@ A little bit of vocabulary
             std::string route;
             for (int vehicle_nbr = 0; vehicle_nbr < 4; ++vehicle_nbr) {
               route = "";
-              for (int64 node = routing.Start(vehicle_nbr); !routing.IsEnd(node);
-                node = solution->Value(routing.NextVar(node))) {
-                route = StrCat(route, StrCat(routing.IndexToNode(node).value() + 1, " -> "));
+              for (int64 node = routing.Start(vehicle_nbr); 
+                   !routing.IsEnd(node);
+                   node = solution->Value(routing.NextVar(node))) {
+                route = StrCat(route, 
+                          StrCat(routing.IndexToNode(node).value() + 1, 
+                            " -> "));
               }
-              route = StrCat(route,  routing.IndexToNode(routing.End(vehicle_nbr)).value() + 1 );
-              LG << "Route #" << vehicle_nbr + 1 << std::endl << route << std::endl;
+              route = StrCat(route,  
+                        routing.IndexToNode(
+                                    routing.End(vehicle_nbr)).value() + 1 );
+              LG << "Route #" << vehicle_nbr + 1 << std::endl 
+                 << route << std::endl;
             }
           } else {
             LG << "No solution found.";
@@ -258,12 +264,14 @@ A little bit of vocabulary
         Classical problems were the instances are completely known - like all the problems presented in this manual - are
         then coined as *offline* problems in contrast.
 
+..  _vrp_assigments:
+
 ``Assignment``\s and partial ``Assignment``\s
 ---------------------------------------------
 
 ..  only:: draft
 
-
+    [TO BE WRITTEN]
 
     ..  topic:: Partial ``Assignment``\s and the RL
     
@@ -272,75 +280,75 @@ A little bit of vocabulary
         The RL provides several handy helper methods that you can copy for your own codes.
         Aside from the defensive testings, these methods are only several lines long.
 
-    // Returns an assignment used to fix some of the variables of the problem.
-    // In practice, this assignment locks partial routes of the problem. This
-    // can be used in the context of locking the parts of the routes which have
-    // already been driven in online routing problems.
-    const Assignment* const PreAssignment() const { return preassignment_; }
-    // Writes the current solution to a file containing an AssignmentProto.
-    // Returns false if the file cannot be opened or if there is no current
-    // solution.
-    bool WriteAssignment(const string& file_name) const;
-    // Reads an assignment from a file and returns the current solution.
-    // Returns NULL if the file cannot be opened or if the assignment is not
-    // valid.
-    Assignment* ReadAssignment(const string& file_name);
-    // Restores an assignment as a solution in the routing model and returns the
-    // new solution. Returns NULL if the assignment is not valid.
-    Assignment* RestoreAssignment(const Assignment& solution);
-    // Restores the routes as the current solution. Returns NULL if the solution
-    // cannot be restored (routes do not contain a valid solution).
-    // Note that calling this method will run the solver to assign values to the
-    // dimension variables; this may take considerable amount of time, especially
-    // when using dimensions with slack.
-    Assignment* ReadAssignmentFromRoutes(const std::vector<std::vector<NodeIndex> >& routes,
-                                         bool ignore_inactive_nodes);
-    // Fills an assignment from a specification of the routes of the vehicles. The
-    // routes are specified as lists of nodes that appear on the routes of the
-    // vehicles. The indices of the outer vector in 'routes' correspond to
-    // vehicles IDs, the inner vector contain the nodes on the routes for the
-    // given vehicle. The inner vectors must not contain the start and end nodes,
-    // as these are determined by the routing model.
-    // Sets the value of NextVars in the assignment, adding the variables to the
-    // assignment if necessary. The method does not touch other variables in the
-    // assignment. The method can only be called after the model is closed.
-    // With ignore_inactive_nodes set to false, this method will fail (return
-    // NULL) in case some of the route contain nodes that are deactivated in the
-    // model; when set to true, these nodes will be skipped.
-    // Returns true if the route was successfully loaded. However, such assignment
-    // still might not be a valid solution to the routing problem due to more
-    // complex constraints; it is advisible to call solver()->CheckSolution()
-    // afterwards.
-    bool RoutesToAssignment(const std::vector<std::vector<NodeIndex> >& routes,
-                            bool ignore_inactive_nodes,
-                            bool close_routes,
-                            Assignment* const assignment) const;
-    // Converts the solution in the given assignment to routes for all vehicles.
-    // Expects that assignment contains a valid solution (i.e. routes for all
-    // vehicles end with an end node for that vehicle).
-    void AssignmentToRoutes(const Assignment& assignment,
-                            std::vector<std::vector<NodeIndex> >* const routes) const;
-    // Returns a compacted version of the given assignment, in which all vehicles
-    // with id lower or equal to some N have non-empty routes, and all vehicles
-    // with id greater than N have empty routes. Does not take ownership of the
-    // returned object.
-    // If found, the cost of the compact assignment is the same as in the
-    // original assignment and it preserves the values of 'active' variables.
-    // Returns NULL if a compact assignment was not found.
-    // This method only works in homogenous mode, and it only swaps equivalent
-    // vehicles (vehicles with the same start and end nodes). When creating the
-    // compact assignment, the empty plan is replaced by the route assigned to the
-    // compatible vehicle with the highest id. Note that with more complex
-    // constraints on vehicle variables, this method might fail even if a compact
-    // solution exists.
-    // This method changes the vehicle and dimension variables as necessary.
-    // While compacting the solution, only basic checks on vehicle variables are
-    // performed; the complete solution is checked at the end and if it is not
-    // valid, no attempts to repair it are made (instead, the method returns
-    // NULL).
-    Assignment* CompactAssignment(const Assignment& assignment) const;
-    // Adds an extra variable to the vehicle routing assignment.
-    void AddToAssignment(IntVar* const var);
+    ..  // Returns an assignment used to fix some of the variables of the problem.
+      // In practice, this assignment locks partial routes of the problem. This
+      // can be used in the context of locking the parts of the routes which have
+      // already been driven in online routing problems.
+      const Assignment* const PreAssignment() const { return preassignment_; }
+      // Writes the current solution to a file containing an AssignmentProto.
+      // Returns false if the file cannot be opened or if there is no current
+      // solution.
+      bool WriteAssignment(const string& file_name) const;
+      // Reads an assignment from a file and returns the current solution.
+      // Returns NULL if the file cannot be opened or if the assignment is not
+      // valid.
+      Assignment* ReadAssignment(const string& file_name);
+      // Restores an assignment as a solution in the routing model and returns the
+      // new solution. Returns NULL if the assignment is not valid.
+      Assignment* RestoreAssignment(const Assignment& solution);
+      // Restores the routes as the current solution. Returns NULL if the solution
+      // cannot be restored (routes do not contain a valid solution).
+      // Note that calling this method will run the solver to assign values to the
+      // dimension variables; this may take considerable amount of time, especially
+      // when using dimensions with slack.
+      Assignment* ReadAssignmentFromRoutes(const std::vector<std::vector<NodeIndex> >& routes,
+                                           bool ignore_inactive_nodes);
+      // Fills an assignment from a specification of the routes of the vehicles. The
+      // routes are specified as lists of nodes that appear on the routes of the
+      // vehicles. The indices of the outer vector in 'routes' correspond to
+      // vehicles IDs, the inner vector contain the nodes on the routes for the
+      // given vehicle. The inner vectors must not contain the start and end nodes,
+      // as these are determined by the routing model.
+      // Sets the value of NextVars in the assignment, adding the variables to the
+      // assignment if necessary. The method does not touch other variables in the
+      // assignment. The method can only be called after the model is closed.
+      // With ignore_inactive_nodes set to false, this method will fail (return
+      // NULL) in case some of the route contain nodes that are deactivated in the
+      // model; when set to true, these nodes will be skipped.
+      // Returns true if the route was successfully loaded. However, such assignment
+      // still might not be a valid solution to the routing problem due to more
+      // complex constraints; it is advisible to call solver()->CheckSolution()
+      // afterwards.
+      bool RoutesToAssignment(const std::vector<std::vector<NodeIndex> >& routes,
+                              bool ignore_inactive_nodes,
+                              bool close_routes,
+                              Assignment* const assignment) const;
+      // Converts the solution in the given assignment to routes for all vehicles.
+      // Expects that assignment contains a valid solution (i.e. routes for all
+      // vehicles end with an end node for that vehicle).
+      void AssignmentToRoutes(const Assignment& assignment,
+                              std::vector<std::vector<NodeIndex> >* const routes) const;
+      // Returns a compacted version of the given assignment, in which all vehicles
+      // with id lower or equal to some N have non-empty routes, and all vehicles
+      // with id greater than N have empty routes. Does not take ownership of the
+      // returned object.
+      // If found, the cost of the compact assignment is the same as in the
+      // original assignment and it preserves the values of 'active' variables.
+      // Returns NULL if a compact assignment was not found.
+      // This method only works in homogenous mode, and it only swaps equivalent
+      // vehicles (vehicles with the same start and end nodes). When creating the
+      // compact assignment, the empty plan is replaced by the route assigned to the
+      // compatible vehicle with the highest id. Note that with more complex
+      // constraints on vehicle variables, this method might fail even if a compact
+      // solution exists.
+      // This method changes the vehicle and dimension variables as necessary.
+      // While compacting the solution, only basic checks on vehicle variables are
+      // performed; the complete solution is checked at the end and if it is not
+      // valid, no attempts to repair it are made (instead, the method returns
+      // NULL).
+      Assignment* CompactAssignment(const Assignment& assignment) const;
+      // Adds an extra variable to the vehicle routing assignment.
+      void AddToAssignment(IntVar* const var);
 
 
 ..  only:: final 
