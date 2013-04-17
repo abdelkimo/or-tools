@@ -5,6 +5,26 @@ Partial routes and Assigments
 
 ..  only:: draft
 
+    ..  raw:: latex
+
+        You can find the code in the file~\code{vrp_locks.cc}.\\~\\
+
+    ..  only:: html
+
+        ..  container:: files-sidebar
+
+            ..  raw:: html 
+            
+                <ol>
+                  <li>C++ code:
+                    <ol>
+                      <li><a href="../../../tutorials/cplusplus/chap10/vrp_locks.cc">vrp_locks.cc</a></li>
+                    </ol>
+                  </li>
+                </ol>
+
+..  only:: draft
+
     Sometimes, while searching for a good solution, you find that some partial routes are promising or maybe you already know 
     that some routes or partial routes should be part of a solution. If would be nifty to be able to fix some parts of 
     the solution and let the CP routing solver assign the rest of the solution, no? Well, don't dream no more, this possibility
@@ -52,26 +72,29 @@ A little bit of vocabulary
     ..  index:: empty route, graph; empty route
     
     *empty routes*:
-      An *empty route* is a pair of starting and ending depots that are assigned to the same vehicle. 
+      An *empty route* is a pair of starting and ending depots that are assigned to the **same** vehicle. 
       
     ..  index:: partial route, graph; partial route
       
     *partial routes*:
       A *partial route* is a simple path that is traversed by **only one** vehicle. If the starting and ending depots are 
       not the same, a route can be considered as a partial route. The idea is to name "parts" of contiguous edges/arcs that
-      could be extended to form a route.
+      could be extended - in both directions - to form a route.
 
     ..  [#path_def_precision] We don't distinguish between paths with only edges (*paths*), only arcs (*directed* paths) 
         or containing edges and arcs (*mixed* paths). In the same vein, we don't distinguish between cycles with only edges 
         (*cycles*), only arcs (*circuits*) or containing edges and arcs (*mixed cycles*).
 
-*Locks* and how to apply them
+*Locks* 
 ------------------------------------
 
 ..  only:: draft
 
+    You can find the source code in the file :file:`vrp_locks.cc`.
+
     A *lock* is simply an ``std::vector<RoutingModel::NodeIndex>`` that represent a partial route.
-    Locks can be fixed or applied during the search. Basically, this means that given a lock ``p`` corresponding to a vehicle ``v``
+    Locks can be fixed (or applied) during the search. Basically, this means that
+    given a lock ``p`` corresponding to a vehicle ``v``
     (again with the same abuse of notation):
     
       ``NextVar(p[i]) == p[i+1]`` for all ``i`` and ``i+1`` in ``p``
@@ -84,34 +107,68 @@ A little bit of vocabulary
     
     ..  code-block:: c++
     
+        RoutingModel routing(29, 4); // 29 nodes, 4 vehicles
+        ...
+        //  Constructing partial routes
+        std::vector<std::vector<RoutingModel::NodeIndex> > p(3);
+        // first partial route
+        p[0].push_back(RoutingModel::NodeIndex(0));
+        p[0].push_back(RoutingModel::NodeIndex(2));
+        ...
+        p[0].push_back(RoutingModel::NodeIndex(26));
+        p[0].push_back(RoutingModel::NodeIndex(2));
+        // second partial route
+        p[1].push_back(RoutingModel::NodeIndex(3));
+        p[1].push_back(RoutingModel::NodeIndex(18));
+        ...
+        p[1].push_back(RoutingModel::NodeIndex(13));
         
-    ..  topic:: What are *locks* useful for?
+        routing.ApplyLocksToAllVehicles(p, false);
+
+    Some remarks:
     
-        Locks can be applied when you have a preconcieved idea of partial routes that sould be fixed in 
+      * You can only call ``ApplyLocksToAllVehicles()`` if the model is closed.
+      * Partial routes are attached to the corresponding starting depots.
+        For instance, ``p[1][0]`` is attached to the depot of the second route/vehicle.
+      * The ``bool`` indicates if you want to close the routes or not. If set to ``true``, all the given 
+        partial routes are closed and **all the remaining** *transit vertices* are **deactivated**. If set to ``false``, 
+        the partial routes are **not** closed and the remaining vertices are **not** deactivated (but already 
+        deactivated vertices remain deactivated).
+      * You can **only** use transit nodes and each transit node can only be in **one** lock (no depot allowed in the locks).
+      * You can add empty routes by adding an empty vector for the corresponding vehicle/route. In our example, route ``p[2]``
+        is empty and can thus be completed by the CP routing solver. The remaining routes that were not defined in ``p``
+        are closed (i.e. ``NextVar(routing.Start(v)) == routing.End(v)`` for all ``v >= p.size()``).
+      * You can get the corresponding ``Assignment`` with the ``PreAssignment()`` method:
+      
+        ..  code-block:: c++
+        
+            const Assignment* const solution_from_locks = 
+                                                    routing.PreAssignment();
+      
+      * Finally, you can test if the method could apply the locks: ``ApplyLocksToAllVehicles()`` returns ``true`` if the all 
+        the locks could be applied and ``false`` otherwise.
+      
+    ..  warning:: Pay close attention to **all** the remarks before using the ``ApplyLocksToAllVehicles()`` method.
+    
+    If you find the ``ApplyLocksToAllVehicles()`` method too restrictive for your needs, you can always construct 
+    a partial ``Assignment`` and pass it to the CP routing solver as we will do in the next sub-section.
+    
+    
+    ..  topic:: Locks and online problems
+    
+        Locks can be applied when you have a preconceived idea of partial routes that should be fixed in 
         a solution for a reason or another. Of course, you can tests some solutions with partial routes fixed
         but there are also problems where you don't want to change too much an already obtained solution: the 
         so-called *online* or *dynamical* problems. These problems are dynamic in the sense that the instances change 
         over time: some parts of these instances change over time or are only revealed over time.
         
-        For a VRP, you may think of actual drivers that are trapped in congestionned areas: you must then adapt the 
+        For a VRP, you may think of actual drivers that are trapped in congested areas: you must then adapt the 
         routes to follow (to *reroute*) (or be prepared for some unpleasant consequences).
         
         Classical problems were the instances are completely known - like all the problems presented in this manual - are
         then coined as *offline* problems in contrast.
-    
-    // Applies lock chains to all vehicles to the next search, such that locks[p]
-    // is the lock chain for route p. Returns false if the locks do not contain
-    // valid routes; expects that the routes do not contain the depots,
-    // i.e. there are empty vectors in place of empty routes.
-    // If close_routes is set to true, adds the end nodes to the route of each
-    // vehicle and deactivates other nodes.
-    // An assignment containing the locks can be obtained by calling
-    // PreAssignment().
-    bool ApplyLocksToAllVehicles(const std::vector<std::vector<NodeIndex> >& locks,
-                                 bool close_routes);
 
-
-``Assignment``\s and pre-``Assignment``\s
+``Assignment``\s and partial ``Assignment``\s
 ---------------------------------------------
 
 ..  only:: draft
@@ -185,7 +242,6 @@ A little bit of vocabulary
     Assignment* CompactAssignment(const Assignment& assignment) const;
     // Adds an extra variable to the vehicle routing assignment.
     void AddToAssignment(IntVar* const var);
-    // TODO(user): Revisit if coordinates are added to the RoutingModel class.
 
 
 ..  only:: final 
