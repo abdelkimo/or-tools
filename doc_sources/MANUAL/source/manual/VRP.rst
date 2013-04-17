@@ -63,7 +63,6 @@ The files inside this directory are:
     vrp/first_cvrp_implementation
     vrp/multi_depots
     vrp/partial_routes
-    vrp/assigments
     vrp/cvrp_summary
 
 
