@@ -191,6 +191,8 @@ The demands as a ``Dimension``
     Of course, using ``GreedyDescent`` is not very clever but first, before we change the search strategy, let's give a 
     hand to the solver and allow for the introduction of a known initial solution to start the local search.
 
+..  _vrp_initial_solution:
+
 An initial solution 
 -----------------------
 
