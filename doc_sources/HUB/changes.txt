@@ -1,6 +1,5 @@
 # Milestone:
 # Current changes.
 * Minor enhancements to the manual:
-- 10.5 written.
-- 14.11.2 corrected and published: This sub-section will hopefully 
-  lift the veil on the mystery of the RL auxiliary graph.
+- 10.6 written.
+

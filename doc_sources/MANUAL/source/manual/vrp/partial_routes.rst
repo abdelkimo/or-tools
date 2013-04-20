@@ -273,81 +273,91 @@ A little bit of vocabulary
 
     You can find the source code in the file :file:`vrp_IO.cc`.
 
-    To make your life easier, the RL provides several helper methods to write and read ``Assignment``\s.
-    First, you have the shortcuts:
+    To make life easier, the RL provides several helper methods to write and read ``Assignment``\s.
     
-    ..  code-block:: c++
+    1. First, you have the shortcut methods:
     
-         bool WriteAssignment(const string& file_name) const;
-         Assignment* ReadAssignment(const string& file_name);
+      ..  code-block:: c++
+      
+           bool WriteAssignment(const string& file_name) const;
+           Assignment* ReadAssignment(const string& file_name);
 
-    The first method, writes the current solution to a file and the second method loads the ``Assignment`` contained in the 
-    file as the current solution. The format used is the *protocol buffer* from 
-    Google [#proto_format]_. These two methods are shortcuts. ``WriteAssignment()`` takes the current solution and invokes 
-    its ``Save()`` method while ``ReadAssignment()`` invokes the ``Load()`` method of an ``Assignment`` and restore this 
-    ``Assignment`` as the current solution with the ``RestoreAssignment`` ``DecisionBuilder``. You can test if everything went 
-    fine: ``WriteAssignment()`` returns ``true`` if it could save the ``Assignment``, ``false`` otherwise and 
-    ``ReadAssignment()`` returns ``NULL`` if it couldn't load the ``Assignment`` contained in the file as the current solution.
+      The first method, writes the current solution to a file and the second method loads the ``Assignment`` contained in the 
+      file as the current solution. The format used is the *protocol buffer* from 
+      Google [#proto_format]_. These two methods are shortcuts. ``WriteAssignment()`` takes the current solution and invokes 
+      its ``Save()`` method while ``ReadAssignment()`` invokes the ``Load()`` method of an ``Assignment`` and restore this 
+      ``Assignment`` as the current solution with the ``RestoreAssignment`` ``DecisionBuilder``. You can test if everything went 
+      fine: ``WriteAssignment()`` returns ``true`` if it could save the ``Assignment``, ``false`` otherwise and 
+      ``ReadAssignment()`` returns ``NULL`` if it couldn't load the ``Assignment`` contained in the file as the current solution.
 
-    If you already have an ``Assignment`` at hand, you can restore it as the current solution with
+      If you already have an ``Assignment`` at hand, you can restore it as the current solution with
+      
+      ..  code-block:: c++
+      
+          Assignment* RestoreAssignment(const Assignment& solution);
+      
+      Again, if ``solution`` is not valid, ``RestoreAssignment()`` returns ``NULL``. As usual with the ``RestoreAssignment``
+      ``DecisionBuilder``, you don't need to provide a complete ``Assignment``. If needed, the CP solver will complete the 
+      solution. For the RL, this ``DecisionBuilder`` will be the classical 
+      default ``DecisionBuilder`` on the ``NextVar()`` variables with the strategy ``CHOOSE_FIRST_UNBOUND`` to choose the next 
+      non assigned variable and ``ASSIGN_MIN_VALUE`` to assign it a value.
+      
+      You can also add extra interesting ``IntVar`` variables to the routing ``Assignment``:
+      
+      ..  code-block:: c++
+      
+          void AddToAssignment(IntVar* const var);
     
-    ..  code-block:: c++
+    2. Second and more interestingly, the RL provides methods to translate an ``Assignment`` into and from 
     
-        Assignment* RestoreAssignment(const Assignment& solution);
-    
-    Again, if ``solution`` is not valid, ``RestoreAssignment()`` returns ``NULL``. As usual with the ``RestoreAssignment``
-    ``DecisionBuilder``, you don't need to provide a complete ``Assignment``. If needed, the CP solver will complete the 
-    solution. For the RL, this ``DecisionBuilder`` will be the classical 
-    default ``DecisionBuilder`` on the ``NextVar()`` variables with the strategy ``CHOOSE_FIRST_UNBOUND`` to choose the next 
-    non assigned variable and ``ASSIGN_MIN_VALUE`` to assign it a value.
-    
-    More interestingly, the RL provides methods to translate an ``Assignment`` into and from 
-    an ``std::vector<std::vector<RoutingModel::NodeIndex> >``.
-    The vector is a little bit peculiar as it doesn't hold the starting and ending depots:
-    
-    ..  code-block:: c++
-    
-        RoutingModel routing(); // as above
-        ...
-        const Assignment* solution = routing.Solve();
-        ...
-        std::vector<std::vector<RoutingModel::NodeIndex> > sol;
-        routing.AssignmentToRoutes(*solution, &sol);
-    
-    In the file :file:`vrp_IO.cc`, we print the vector and for the instance above, we obtain:
-    
-    ..  code-block:: bash
-    
-        Solution saved into an std::vector of size 4
-        Route #1 with starting depot 2 and ending depot 5
-        1 -> 3 -> 18 -> 27 -> 22 -> 26
+      an ``std::vector<std::vector<RoutingModel::NodeIndex> >``.
+      The vector is a little bit peculiar as it doesn't hold the starting and ending depots:
+      
+      ..  code-block:: c++
+      
+          RoutingModel routing(); // as above
+          ...
+          const Assignment* solution = routing.Solve();
+          ...
+          std::vector<std::vector<RoutingModel::NodeIndex> > sol;
+          routing.AssignmentToRoutes(*solution, &sol);
+      
+      In the file :file:`vrp_IO.cc`, we print the vector and for the instance above, we obtain:
+      
+      ..  code-block:: bash
+      
+          Solution saved into an std::vector of size 4
+          Route #1 with starting depot 2 and ending depot 5
+          1 -> 3 -> 18 -> 27 -> 22 -> 26
 
-        Route #2 with starting depot 4 and ending depot 5
-        24 -> 19 -> 16 -> 14 -> 17 -> 21 -> 25 -> 29
+          Route #2 with starting depot 4 and ending depot 5
+          24 -> 19 -> 16 -> 14 -> 17 -> 21 -> 25 -> 29
 
-        Route #3 with starting depot 4 and ending depot 8
-        6 -> 7 -> 9 -> 10 -> 11 -> 12 -> 13 -> 15 -> 20 -> 23 -> 28
+          Route #3 with starting depot 4 and ending depot 8
+          6 -> 7 -> 9 -> 10 -> 11 -> 12 -> 13 -> 15 -> 20 -> 23 -> 28
 
-        Route #4 with starting depot 5 and ending depot 8
-        
-        
-    As you can see, no depot is saved into this ``std::vector``. It is also this kind of ``std::vector`` you have to 
-    pass to the ``RoutesToAssignment()`` as we have see in the sub-section :ref:`vrp_initial_solution` or 
-    the ``ReadAssignmentFromRoutes()`` method:
+          Route #4 with starting depot 5 and ending depot 8
+          
+          
+      As you can see, no depot is saved into this ``std::vector``. It is also this kind of ``std::vector`` you have to 
+      pass to the ``RoutesToAssignment()`` as we have see in the sub-section :ref:`vrp_initial_solution` or 
+      the ``ReadAssignmentFromRoutes()`` method:
+      
+      ..  code-block:: c++
+      
+          Assignment* const restored_sol = 
+                                 routing.ReadAssignmentFromRoutes(sol, false);
     
-    ..  code-block:: c++
-    
-        Assignment* const restored_sol = 
-                               routing.ReadAssignmentFromRoutes(sol, false);
-  
-    This method restores the solution contained in the vector as the current solution.
+      This method restores the solution contained in the vector as the current solution.
     
     In contrast to the ``RoutesToAssignment()`` method, the solution passed to ``ReadAssignmentFromRoutes()`` must be a complete 
     solution, i.e. all ``NextVar()`` mandatory variables must be assigned.
     
     We also remind the reader that in contrast to all other loading methods presented here, 
     ``RoutesToAssignment()`` doesn't reconstruct 
-    a feasible solution and deals only with ``NextVar()`` variables. 
+    a feasible solution and deals only with ``NextVar()`` variables. If your model has many complicated side constraints (like 
+    ``Dimension``\s with slack variables), the CP routing solver might need some time to reconstruct a feasible solution 
+    from the ``NextVar()`` variables.
     
     
     ..  [#proto_format] This format is a multi-platform compatible binary format for serializing structured data.
@@ -363,36 +373,6 @@ A little bit of vocabulary
         The RL provides several handy helper methods that you can copy for your own codes.
         Aside from the defensive testings, these methods are only several lines long.
 
-      bool RoutesToAssignment(const std::vector<std::vector<NodeIndex> >& routes,
-                              bool ignore_inactive_nodes,
-                              bool close_routes,
-                              Assignment* const assignment) const;
-      // Converts the solution in the given assignment to routes for all vehicles.
-      // Expects that assignment contains a valid solution (i.e. routes for all
-      // vehicles end with an end node for that vehicle).
-      void AssignmentToRoutes(const Assignment& assignment,
-                              std::vector<std::vector<NodeIndex> >* const routes) const;
-      // Returns a compacted version of the given assignment, in which all vehicles
-      // with id lower or equal to some N have non-empty routes, and all vehicles
-      // with id greater than N have empty routes. Does not take ownership of the
-      // returned object.
-      // If found, the cost of the compact assignment is the same as in the
-      // original assignment and it preserves the values of 'active' variables.
-      // Returns NULL if a compact assignment was not found.
-      // This method only works in homogenous mode, and it only swaps equivalent
-      // vehicles (vehicles with the same start and end nodes). When creating the
-      // compact assignment, the empty plan is replaced by the route assigned to the
-      // compatible vehicle with the highest id. Note that with more complex
-      // constraints on vehicle variables, this method might fail even if a compact
-      // solution exists.
-      // This method changes the vehicle and dimension variables as necessary.
-      // While compacting the solution, only basic checks on vehicle variables are
-      // performed; the complete solution is checked at the end and if it is not
-      // valid, no attempts to repair it are made (instead, the method returns
-      // NULL).
-      Assignment* CompactAssignment(const Assignment& assignment) const;
-      // Adds an extra variable to the vehicle routing assignment.
-      void AddToAssignment(IntVar* const var);
 
 
 ..  only:: final 
