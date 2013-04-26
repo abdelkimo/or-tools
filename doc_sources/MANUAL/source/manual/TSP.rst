@@ -108,14 +108,14 @@ The files inside this directory are:
 - :file:`tsp.h`: This file contains the ``TSPData`` class that records the data for the TSP. 
   This file is used throughout the TSP examples.
 - :file:`tsplib.h`: Declarations of TSPLIB keywords and the ``TSPLIBDistanceFunctions`` class.
-- :file:`tsp_epix.h`: This file provide the helper functions to visualize TSPLIB solutions with the ePiX library.
+- :file:`tsp_epix.h`: This file provides the helper functions to visualize TSPLIB solutions with the ePiX library.
 - :file:`tsplib_solution_to_epix.cc`: A simple program to visualize solutions in TSPLIB format with the ePiX library.
 - :file:`tsp_minimal.cc`: A minimalist implementation of the TSP with the RL.
 - :file:`tsp.cc`: A basic implementation of the TSP with the RL.
 - :file:`tsp_forbidden_arcs.cc`: The TSP with forbidden arcs between some nodes.
 - :file:`tsptw.h`: This file contains the ``TSPTWData`` class that records the data for the Travelling Salesman Problem with
   Time Windows. This file is used throughout the TSPTW examples.
-- :file:`tsptw_epix.h`: This file provide the helper functions to visualize TSPTW solutions with the ePiX library.
+- :file:`tsptw_epix.h`: This file provides the helper functions to visualize TSPTW solutions with the ePiX library.
 - :file:`tsptw.cc`: A basic implementation of the TSPTW with the RL.
 - :file:`tsptw_ls.cc`: A specialized implementation of the TSPTW with the RL.
 
