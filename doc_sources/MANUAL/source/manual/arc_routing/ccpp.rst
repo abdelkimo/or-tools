@@ -248,9 +248,47 @@ The ``CCPPData`` class
 
 ..  only:: draft
 
-    sds
+    We use a different approach here as we don't need complete graphs. To contain a graph, several data structures exist.
+    The *or-tools* library proposes several. We'll use the ``StaticGraph`` class defined in the :file:`graph/graph.h` header.
+    What we need to model a CCPP instance is just a little bit more than a graph but not that much. To simplify 
+    the implementation of our ``CCPPData`` class we'll let it publicly inherit from the ``StaticGraph`` class.
+    
+    ..  code-block:: c++
+    
+        class CCPPData : public StaticGraph<int32, int32> {
+          ...
+        };
+        
+    We can safely do so because the destructor of ``StaticGraph`` is virtual [#virtual_desctructor]_. 
+    As you can see, the ``StaticGraph`` is 
+    a template class with two template parameters: the first is to hold the nodes while the second one is to hold the edges.
+    In the case of our ``CCPPData`` class, ``int32`` will be enough to hold both of them.
 
+    The ``StaticGraph`` class provides nice iterators to traverse the graph:
+    
+    ..  code-block:: c++
+    
+        sds
 
+    In the *or-tools* implementation of graphs, properties of nodes and edges are kept in separate data structures.
+    As each node and arc is assigned to an internal index, we can use theses indices to retrieve some properties stored 
+    in an ``std::vector`` for instance:
+    
+    ..  code-block:: c++
+    
+        sdsd
+        
+    We have implemented several methods in the ``CCPPData`` class to easily get to the costs of the edges:
+    
+    ..  code-block:: c++
+    
+        sds
+    
+    
+
+    ..  [#virtual_desctructor] Basically, this means that whenever an object of type ``StaticGraph`` is destructed, the 
+        right destructor 
+        will be called, even if the real object is of a derived type and thus no memory leak will incur.
 
 Visualization with ``ePix``
 ---------------------------

@@ -256,8 +256,19 @@ To read ``TSPLIB`` files
 
 ..  only:: draft
 
-    Our good old ``TSPLIBReader`` defined in the header :file:`routing_common/tsplib_reader.h` (see XXX) class 
-    comes again to the rescue. It was designed to also deal with CVRP. Simply provide a filename to the constructor:
+    ..  only:: html
+    
+        Our good old ``TSPLIBReader`` class defined in the header :file:`routing_common/tsplib_reader.h` (see the 
+        sub-section :ref:`tsp_benchmark_data`) 
+        comes again to the rescue. It was designed to also deal with CVRP. Simply provide a filename to the constructor:
+
+    ..  raw:: latex
+    
+        Our good old~\code{TSPLIBReader} class defined in the header~\code{routing\_common/tsplib\_reader.h}
+        (see~\ref{manual/tsp/tsp:tsp-benchmark-data}) 
+        comes again to the rescue. It was designed to also deal with CVRP. Simply provide a filename to the constructor:
+ 
+
     
     ..  code-block:: c++
     

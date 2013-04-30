@@ -117,6 +117,9 @@ to discover this fascinating problem and hosts the best known implementation to 
 You also might be interested in the `8th DIMACS Implementation Challenge
 <http://www2.research.att.com/~dsj/chtsp/about.html>`_ held in 2001 about the TSP.
 
+
+..  _tsp_benchmark_data:
+
 Benchmark data
 -----------------
 
