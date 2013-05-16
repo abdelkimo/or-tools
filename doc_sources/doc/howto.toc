@@ -1,34 +1,36 @@
-\contentsline {section}{\numberline {1}Introduction (How it works)}{2}{section.1}
+\contentsline {section}{\numberline {1}How it works}{2}{section.1}
 \contentsline {subsection}{\numberline {1.1}Vocabulary}{2}{subsection.1.1}
 \contentsline {subsection}{\numberline {1.2}Directories}{2}{subsection.1.2}
 \contentsline {subsection}{\numberline {1.3}Contents of the \texttt {SOURCES} directory}{3}{subsection.1.3}
 \contentsline {subsection}{\numberline {1.4}Work flow}{4}{subsection.1.4}
 \contentsline {subsection}{\numberline {1.5}Preferred use}{4}{subsection.1.5}
 \contentsline {section}{\numberline {2}Install the documentation and the needed tools}{5}{section.2}
-\contentsline {subsection}{\numberline {2.1}External libraries and tools}{5}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Scripts}{5}{subsection.2.2}
-\contentsline {section}{\numberline {3}or-tools Sphinx extension}{5}{section.3}
-\contentsline {subsection}{\numberline {3.1}Links and references}{5}{subsection.3.1}
-\contentsline {subsubsection}{\numberline {3.1.1}Labels}{5}{subsubsection.3.1.1}
-\contentsline {subsubsection}{\numberline {3.1.2}References}{6}{subsubsection.3.1.2}
-\contentsline {section}{\numberline {4}Add to the manual\nobreakspace {}\dots }{6}{section.4}
-\contentsline {subsection}{\numberline {4.1}a part}{6}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}a chapter}{6}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}a section}{6}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Front material}{7}{subsection.4.4}
-\contentsline {subsubsection}{\numberline {4.4.1}Title page}{7}{subsubsection.4.4.1}
-\contentsline {subsubsection}{\numberline {4.4.2}Foreword}{7}{subsubsection.4.4.2}
-\contentsline {subsubsection}{\numberline {4.4.3}Table of contents}{7}{subsubsection.4.4.3}
-\contentsline {section}{\numberline {5}Generate the documentation}{7}{section.5}
-\contentsline {subsection}{\numberline {5.1}The manual}{7}{subsection.5.1}
-\contentsline {subsubsection}{\numberline {5.1.1}\emph {Final} or\nobreakspace {}\emph {draft} release}{7}{subsubsection.5.1.1}
-\contentsline {subsection}{\numberline {5.2}The documentation hub}{7}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}The tutorial code}{7}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}The slides}{7}{subsection.5.4}
-\contentsline {subsection}{\numberline {5.5}The version}{7}{subsection.5.5}
-\contentsline {subsection}{\numberline {5.6}Documentation Hub}{7}{subsection.5.6}
-\contentsline {subsubsection}{\numberline {5.6.1}The change files/directory}{7}{subsubsection.5.6.1}
-\contentsline {section}{\numberline {6}Global cripts}{7}{section.6}
-\contentsline {section}{\numberline {7}Gotchas}{7}{section.7}
-\contentsline {section}{\numberline {8}Resources}{8}{section.8}
-\contentsline {subsection}{\numberline {8.1}Images}{8}{subsection.8.1}
+\contentsline {subsection}{\numberline {2.1}Local directories and copies}{5}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}The\nobreakspace {}\texttt {config.ini} file}{5}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}External libraries and tools}{6}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Scripts and first run}{6}{subsection.2.4}
+\contentsline {section}{\numberline {3}or-tools Sphinx extension}{6}{section.3}
+\contentsline {subsection}{\numberline {3.1}Links and references}{7}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Labels}{7}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}References}{7}{subsubsection.3.1.2}
+\contentsline {section}{\numberline {4}Add to the manual\nobreakspace {}\dots }{7}{section.4}
+\contentsline {subsection}{\numberline {4.1}a part}{8}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}a chapter}{8}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}a section}{8}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Front material}{8}{subsection.4.4}
+\contentsline {subsubsection}{\numberline {4.4.1}Title page}{8}{subsubsection.4.4.1}
+\contentsline {subsubsection}{\numberline {4.4.2}Foreword}{8}{subsubsection.4.4.2}
+\contentsline {subsubsection}{\numberline {4.4.3}Table of contents}{8}{subsubsection.4.4.3}
+\contentsline {section}{\numberline {5}Generate the documentation}{8}{section.5}
+\contentsline {subsection}{\numberline {5.1}The manual}{8}{subsection.5.1}
+\contentsline {subsubsection}{\numberline {5.1.1}\emph {Final} or\nobreakspace {}\emph {draft} release}{8}{subsubsection.5.1.1}
+\contentsline {subsection}{\numberline {5.2}The documentation hub}{8}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}The tutorial code}{8}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}The slides}{8}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}The version}{8}{subsection.5.5}
+\contentsline {subsection}{\numberline {5.6}Documentation Hub}{9}{subsection.5.6}
+\contentsline {subsubsection}{\numberline {5.6.1}The change files/directory}{9}{subsubsection.5.6.1}
+\contentsline {section}{\numberline {6}Global cripts}{9}{section.6}
+\contentsline {section}{\numberline {7}Gotchas}{9}{section.7}
+\contentsline {section}{\numberline {8}Resources}{9}{section.8}
+\contentsline {subsection}{\numberline {8.1}Images}{9}{subsection.8.1}

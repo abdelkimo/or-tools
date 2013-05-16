@@ -50,15 +50,19 @@ the documentation is written and how to upload the output files on the Google se
 \setcounter{tocdepth}{2}
 \tableofcontents
 
-\section{Introduction (How it works)}
 
+%***************************************************************************************
+\section{How it works}
+%***************************************************************************************
 This documentation and the process to generate the or-tools library's documentation was designed with the or-tools people in mind. As such, the whole generation process isn't bullet-proof nor idiot-proof.\\
 
 You can get your local copy of the documentation and generate it if you want but there is no reason to do so as all the generated documentation is already available on the Google servers. If you find better ways to generate some parts of the documentation, please share with the whole community (but keep in mind that our main purpose is not to spend too much time on this).\\
 
 This document itself is written in~\LaTeX\ and generated with~PDF\LaTeX.
 
+%######################
 \subsection{Vocabulary}
+%######################
 
 To avoid misunderstanding, let's agree on some wordings.
 
@@ -66,12 +70,15 @@ To avoid misunderstanding, let's agree on some wordings.
  \item[Source/Code file] a file in wich you write the documentation. It can be restructuredText (.rst), \LaTeX\ (.tex) or text (.txt, .css, html, \ldots)\footnote{Basically, \emph{all} source files are text files.}. Some files are at the same time source and output files.
  \item[Output file] a file that will be published on the server side, including html files, images, etc. Some files are at the same time source and output files.
  \item[Local home] the computer you use to write the documentation.
+\item[Root directory] the local directory in your {\bf Local home} that contains locally all the files to generate the documentation. It is your workspace to generate the documentation.
  \item[Google servers] the servers where the documentation is publicly accessible from the Internet.
  \item[Documentation hub] a central html page from which all the documentation is accessible except the downloadable files. The url is:\\
  \href{http://or-tools.googlecode.com/svn/trunk/documentation/documentation\_hub.html}{http://or-tools.googlecode.com/svn/trunk/documentation/documentation\_hub.html}.
 \end{description}
 
+%######################
 \subsection{Directories}
+%######################
 
 There are seven main directories: four on the Local home side (\code{SOURCES}, \code{BUILD}, \code{DEPLOY} and \code{DOCUMENTATION}) and three on the Google servers side (\code{svn/doc\_sources}, \code{files} and  \code{svn/trunk/documentation}). Figure~\ref{pic_directories} illustrates those directories. The four local directories can be named to your liking (see section~\ref{installation}).
 
@@ -93,8 +100,10 @@ There are seven main directories: four on the Local home side (\code{SOURCES}, \
 
 \footnotetext{We don't consider white as a color, at least not in this document.} 
 
+%######################
 \subsection{Contents of the \code{SOURCES} directory}
 \label{doc_content}
+%######################
 
 The documentation is explained on the documentation hub.\\
 
@@ -117,7 +126,10 @@ The local directory \code{SOURCES} contains the following directories:
  \item[\code{LABS}] Exercises. 
 \end{description}
 
+%######################
 \subsection{Work flow}
+\label{work_flow}
+%######################
 
 The whole process is divided in 9~steps\footnote{Once you get used to the documentation generation, you will be able to skip some of the steps (when you don't need to update the whole documentation tree) and to only use the specific manual commands you need.}. Most of the steps are automated by Python scripts and to simplify your life (and mine), several scripts are bundled in the global scripts (see section~\ref{global_scripts}). These scripts need to be called in sequence. In each of the subdirectories of the directory~\code{SOURCES} (see section~\ref{doc_content}), you will find the corresponding Python scripts if needed. If you don't 
 find a specific script in a subdirectory, it means this script is not needed for that type of documentation.\\
@@ -139,32 +151,124 @@ the documentation and try new things without messing with the svn directory.
 
 Section~\ref{generate_documentation} provides a more detailed account on how to generate the documentation.
 
-
+%######################
 \subsection{Preferred use}
+%######################
 
 These scripts are not bullet-proof nor idiot-proof. I strongly suggest that the source files always match the documentation files in~\href{http://or-tools.googlecode.com/svn/trunk/documentation}{http://or-tools.googlecode.com/svn/trunk/documentation} . Once you have finished steps \raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {1}}} - \raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {6}}}, commit your changes on the Google solvers (step \raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {7}}}). If there is a conflict, start the whole process again later when the generated documentation is up to date and matches the sources files on the Google servers. One easy way to ensure the consistency between the source and the documentation is to delegate to one single person the upload and commitment of the documentation (steps \raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {8}}} - \raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {{9}}}}) (or to redesign the whole process ;-) ). This design ask for some discipline but I think it is manageable among Googlers.
 
 
-
+%***************************************************************************************
 \section{Install the documentation and the needed tools}
+%***************************************************************************************
 \label{installation}
 
 To do.
 
+%######################
+\subsection{Local directories and copies}
+%######################
+
+First, you need to setup your {\bf Local Root} directory as your working directory. Inside this directory, create the following directories:
+\begin{itemize}
+\item \code{SOURCES}
+\item \code{BUILD}
+\item \code{DOCUMENTATION}
+\item \code{DEPLOY}
+\end{itemize}
+
+\code{SOURCES} and \code{DOCUMENTATION} are svn copies of \code{svn/doc\_sources} and~\code{svn/trunk/documentation} so you have to create them with~\code{svn}:\\
+
+\code{svn checkout https://or-tools.googlecode.com/svn/doc\_source SOURCES --username me}\\
+
+\code{svn checkout https://or-tools.googlecode.com/svn/trunk/documentation DOCUMENTATION --username me}\\
+
+and type your \emph{GoogleCode.com Password} when prompted.\\
+
+\code{BUILD} and~\code{DEPLOY} have to be manually created.\\
+
+You also have to manually create:
+
+\begin{itemize}
+\item \code{DEPLOY/UPLOAD/manual}: this directory is empty.
+\item \code{labs}, \code{tutorials} and~\code{reference\_manual}: these are copies of the corresponding directories in~\code{DOCUMENTATION}. The idea is to generate their content with~\code{generate\_*.py} and~\code{deploy\_*.py} scripts but this has to be done. Fro the moment, simply copy the directories. You don't need to copy~\code{reference\_manual} as a simple soft link will do.
+\end{itemize}
+
+%######################
+\subsection{The~\code{config.ini} file}
+%######################
+
+Copy the~\code{config.ini} file from the \code{SOURCES/scripts} directory into your {\bf Local Root} directory. and fill in 
+the first lines:
+
+\begin{verbatim}
+# Configuration file for the or-tools documentation project.
+# All keys MUST be in lowercase.
+[root]
+dir = 
+
+project = or-tools
+
+[ortools]
+
+dir = 
+
+[personal]
+password = 
+username = 
+\end{verbatim}
+
+For instance, in my configuration:
+
+\begin{itemize}
+\item \code{dir = /mnt/data/RESEARCH/GOOGLE/OR\_TOOLS\_DOC}
+\item \code{dir = /mnt/data/or-tools-read-only}
+\end{itemize}
+
+%######################
 \subsection{External libraries and tools}
+%######################
 
 The following list details all the libraries and tools that I use to generate the documentation. Most of them are written in Python.
 
 \begin{description}
- \item[Sphinx] This is the main library. It transforms \verb+restucturedText+ into plenty of other formats.
+ \item[Sphinx] This is the main library. It transforms \verb+restucturedText+ into plenty of other formats. The latest version the better. \code{Sphinx} is quite buggy. The website can be found here:
+
+\href{http://sphinx-doc.org/}{http://sphinx-doc.org/}
+
+Some \code{Sphinx} extensions are used (or are planned to be used one day...):
+ \begin{description}
+\item[sphinx.ext.pngmath] Instead of using \code{MathJax}, we transform the formulas into \code{png}. The \code{MathJax} server is often too busy...
+\item[sphinx.ext.ifconfig]
+\item[sphinxortools.ortools] Homemade extension that~\ldots doesn't work yet;
+\item[sphinxcontrib.doxylink] 
+
+\end{description}
+
+If you platform permits it, you can easely add these extensions with~\code{easy\_install}. For instance:
+
+\code{easy\_install -U sphinxcontrib-doxylink}
+
+Otherwise, you can adjust the Python \code{sys.path} in the \code{Sphinx conf.py} configuration file (\code{SOURCES/MANUAL/sources/config.py}).
+
  \item[Jinja2] 
- \item[\LaTeX] To generate the pdf version of the manual, we use \LaTeX{} and \verb+pdflatex+ (and of course, the classical \verb+makeindex+/\verb+mkindex+, \verb+bibtex+, \ldots).
+ \item[\LaTeX] To generate the pdf version of the manual, we use \LaTeX{} and \verb+pdflatex+ (and of course, the classical \verb+makeindex+/\verb+mkindex+, \verb+bibtex+, \ldots). \TeX Live is perfect.
  \end{description}
 
 We use also Python (2.7), make, html, css, ...
 
-\subsection{Scripts}
-The Python scripts are not bullet-proof. For your convenience add the script directory to your \verb+PATH+ variable.\\
+%######################
+\subsection{Scripts and first run}
+%######################
+
+The Python scripts are not bullet-proof. For your convenience, you can add the script directory to your \verb+PATH+ variable.\\
+
+By now, you should have a copy of \code{svn/doc\_sources} in \code{SOURCES}, a copy of~\code{svn/trunk/documentation} in~\code{DOCUMENTATION} and local copies of \code{labs}, \code{tutorials} and~\code{reference\_manual}.\\
+
+The first run isn't different from a usual documentation update. See section~\ref{work_flow}.
+
+
+
 
 % There are three main directories:
 % \begin{description}
@@ -184,11 +288,17 @@ The Python scripts are not bullet-proof. For your convenience add the script dir
 %  \item[Step 3] \verb+svn+: the traditional \verb+svn+ commands.
 %  \end{description}
 
+%***************************************************************************************
 \section{or-tools Sphinx extension}
+%***************************************************************************************
+
+\textcolor{red}{FORGET THIS FOR THE MOMENT}.\\
 
 To do.
 
+%######################
 \subsection{Links and references}
+%######################
 
 The right way to define references is to subclass \code{XRefRole} from \code{sphinx.roles} and tho redefine its methods \code{process\_link()} and
 \code{result\_nodes()}. In the standard domain (\code{domain = env.domains['std']}), two dictionnaries are defined with anonymous labels and non anonymous labels. You can 
@@ -239,17 +349,23 @@ code & HTML & \LaTeX\\
 \end{table}
 
 
-
+%***************************************************************************************
 \section{Add to the manual~\ldots}
+%***************************************************************************************
 \label{write_documentation}
 
 To do.
 
 This section covers only the manual. To correct or add some material, just open the corresponding~\code{rst} file, follow the~\code{rst} syntax and the more specialized~\code{Sphinx} syntax and adapt the file to your needs. If you want to add a chapter or a section, read the next two sections. We discuss also how to add a label and a reference in section~\ref{adding_ref} and the front material as it requires a special treatment.
 
+%######################
 \subsection{a part}
+%######################
 
+%######################
 \subsection{a chapter}
+%######################
+
 To add a chapter, follow the next steps:
 \begin{enumerate}
  \item In \code{SOURCES/MANUAL/source/manual}, create a file \code{mychapter.rst} and a folder \code{mychapter} where you will write the different sections of the chapter. See the other \code{rst} files.
@@ -264,7 +380,9 @@ To add a chapter, follow the next steps:
 
 There is nothing else to do for the~\LaTeX\ version.
 
+%######################
 \subsection{a section}
+%######################
 
 Just write your section in a~\code{rst} file in the folder corresponding to the chapter and add an entry in the corresponding~\code{rst} file of the chapter.
 
@@ -298,7 +416,9 @@ Just write your section in a~\code{rst} file in the folder corresponding to the 
 % 
 % See the gotchas about some references and how~\code{Sphinx} transforms them.
 
+%######################
 \subsection{Front material}
+%######################
 
 Again, we have duplicated the text as~\code{Sphinx} treats the~\code{pdf} and~\code{html} versions differently.
 
@@ -308,22 +428,35 @@ Again, we have duplicated the text as~\code{Sphinx} treats the~\code{pdf} and~\c
 
 \subsubsection{Table of contents}
 
+%***************************************************************************************
 \section{Generate the documentation}
 \label{generate_documentation}
+%***************************************************************************************
 
+
+%######################
 \subsection{The manual}
-
+%######################
 \subsubsection{\emph{Final} or~\emph{draft} release}
 \label{final_draft_mode}
 
+%######################
 \subsection{The documentation hub}
 \label{generate_documentation_hub}
+%######################
 
+%######################
 \subsection{The tutorial code}
+%######################
 
+%######################
 \subsection{The slides}
+%######################
 
+%######################
 \subsection{The version}
+%######################
+
 All the automatic generation of the doc is based on the current version number, so don't mess with it\footnote{An assert-like script is run by all the other scripts to verify that at least the current version is
 greater than the version before.}! ;-) 
 The file~\verb+current_version.txt+ contains the current version (the one that you will upload on the server). You can update it by hand. By default, after a deploy and an update, the next version is incremented by~$1$. For instance, if the current version was~\verb+1.2.23+ before deploying and updating, then the next version will be automatically set to~\verb+1.2.24+.\\
@@ -340,11 +473,15 @@ Each documentation of subdirectory \verb+SOURCES+  has an individual \verb+deplo
  \item[changes] This directory contains copies of all the \verb+changes.txt+ files.
  \end{description}
 
+%***************************************************************************************
 \section{Global cripts}
 \label{global_scripts}
+%***************************************************************************************
 
 
+%***************************************************************************************
 \section{Gotchas}
+%***************************************************************************************
 
 \begin{itemize}
  \item When in draft mode (see~\ref{final_draft_mode}), the section numbers in the html pages are wrong. 
@@ -360,9 +497,14 @@ Each documentation of subdirectory \verb+SOURCES+  has an individual \verb+deplo
   \item Capitalized letters in a reference become lower letters and dashes ("-") become underscores ("\_") in the~\LaTeX\ version of the references. So for instance, if the reference in your~\code{rst} file \code{my\_file.rst} in the directory~\code{manual/my\_chapter/} is~\code{MyStrange\_referenceIa}, the~\LaTeX~reference will be~\code{manual/my\_chapter/my\_file:mystrange-referenceia}. 
 \end{itemize}
 
+%***************************************************************************************
 \section{Resources}
+%***************************************************************************************
 
+%######################
 \subsection{Images}
+%######################
+
 \begin{description}
  \item[Xfig]
  \item[fig2pdf]
