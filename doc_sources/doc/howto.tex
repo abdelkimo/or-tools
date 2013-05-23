@@ -32,9 +32,16 @@
 \newcommand{\code}[1]{\texttt{#1}}
 \DeclareRobustCommand{\hsout}[1]{\texorpdfstring{\sout{#1}}{#1}}
 
+\newcommand{\gservers}{{\bf Google servers}}
+\newcommand{\lhome}{{\bf Local home}}
+\newcommand{\dhub}{{\bf Documentation hub}}
+
+\setlength{\parindent}{0pt}
+
+
 %opening
 \title{How to generate the documentation for the or-tools library}
-\author{Nikolaj van Omme\footnote{You can reach me at ortools.doc@gmail.com if you need some help. ;-) }}
+\author{Nikolaj van Omme\footnote{You can reach me at ortools.doc@gmail.com (or ask Laurent on how to reach me) if you need some help. ;-) }}
 \date{\today}
 
 \begin{document}
@@ -45,9 +52,16 @@
 This little document explains how to generate and upload all the documentation for the Google or-tools library. This document doesn't explain how to write the documentation i.e. how to use of \emph{Sphinx}, \emph{Jinja2}, \emph{html}, \emph{css}, etc., only how to generate the output files once
 the documentation is written and how to upload the output files on the Google servers. All the scripts are written in Python and must be called in the correct sequence.\\
 \begin{center}\textcolor{red}{Only tested under Linux.}\end{center}
-\begin{center}\textcolor{red}{THIS INTERNAL DOCUMENT IS ONLY HELPFULL TO THE OR-TOOLS STAFF RESPONSIBLE OF WRITING THE DOC!}\footnote{You can get your local copy of the documentation and generate it if you want but there is no reason to do so as all the generated documentation is already available on the Google servers.}\end{center}
+\begin{center}\textcolor{red}{THIS INTERNAL DOCUMENT IS ONLY HELPFULL IF YOU WANT TO GENERATE THE DOCUMENTATION!}\footnote{You can get your local copy of the documentation and generate it if you want but there is no reason to do so as all the generated documentation is already available on the Google servers.}\\
+\vspace{0.5cm}
+\textcolor{red}{AS OF MAY 23, 2013, THIS DOCUMENT ACCURATELY DESCRIBES THE DOCUMENTATION GENERATION PROCESS.}\\
+\vspace{0.2cm}
+\textcolor{red}{Please update this document if you change anything to the documentation generation.}
+\end{center}
 
 The documentation and the process to generate the or-tools library's documentation was designed with the or-tools people in mind. As such, the whole generation process isn't bullet-proof nor idiot-proof. In agreement with Laurent Perron, some tools were disregarded.\\
+
+The contract only permitted to deal with a first version of the manual with the accompanying C++ code and the documentation HUB. The FAQ, slides and other documentation haven't been done~\ldots yet. In particular, the C++ code hasn't been translated into other languages.\\
 
 This document itself is written in~\LaTeX\ and generated with~PDF\LaTeX.
 
@@ -60,7 +74,7 @@ This document itself is written in~\LaTeX\ and generated with~PDF\LaTeX.
 %***************************************************************************************
 \section{Preminilaries}
 %***************************************************************************************
-
+We quickly describe the involved directories and files.
 
 %######################
 \subsection{Vocabulary}
@@ -69,12 +83,12 @@ This document itself is written in~\LaTeX\ and generated with~PDF\LaTeX.
 To avoid misunderstanding, let's agree on some wordings.
 
 \begin{description}
- \item[Source/Code file] a file in wich you write the documentation. It can be restructuredText (.rst), \LaTeX\ (.tex) or text (.txt, .css, html, \ldots)\footnote{Basically, \emph{all} source files are text files.}. Some files are at the same time source and output files.
- \item[Output file] a file that will be published on the server side, including html files, images, etc. Some files are at the same time source and output files.
- \item[Local home] the computer you use to write the documentation.
-\item[Root directory] the local directory in your {\bf Local home} that contains locally all the files to generate the documentation. It is your workspace to generate the documentation.
- \item[Google servers] the servers where the documentation is publicly accessible from the Internet.
- \item[Documentation hub] a central html page from which all the documentation is accessible except the downloadable files. The url is:\\
+ \item[Source/Code file] A file in wich you write the documentation. It can be restructuredText (.rst), \LaTeX\ (.tex) or text (.txt, .css, html, \ldots)\footnote{Basically, \emph{all} source files are text files.}. Some files are at the same time source and output files.
+ \item[Output file] A file that will be published on the server side, including html files, images, etc. Some files are at the same time source and output files.
+ \item[\lhome] The computer you use to write the documentation.
+\item[Root directory] The local directory in your \lhome\ that contains locally all the files to generate the documentation. It is your workspace to generate the documentation.
+ \item[\gservers] The servers where the documentation is publicly accessible from the Internet.
+ \item[\dhub] A central html page from which all the documentation is accessible except the downloadable files. The url is:\\
  \href{http://or-tools.googlecode.com/svn/trunk/documentation/documentation\_hub.html}{http://or-tools.googlecode.com/svn/trunk/documentation/documentation\_hub.html}.
 \end{description}
 
@@ -82,19 +96,21 @@ To avoid misunderstanding, let's agree on some wordings.
 \subsection{Directories}
 %######################
 
-There are seven main directories: four on the Local home side (\code{SOURCES}, \code{BUILD}, \code{DEPLOY} and \code{DOCUMENTATION}) and three on the Google servers side (\code{svn/doc\_sources}, \code{files} and  \code{svn/trunk/documentation}). Figure~\ref{pic_directories} illustrates those directories. The four local directories can be named to your liking (see section~\ref{installation}).
+There are {\bf seven} main directories (illustrated on Figure~\ref{pic_directories} page~\pageref{pic_directories}).\\
 
-\begin{figure}[h]
-   \centering
-   \includegraphics[scale=0.8]{images/directories.pdf}
-   \caption{figure}{The six main directories and the scripts/commands to move the files between them. The base url for the Google Servers is~\href{http://or-tools.googlecode.com/}{http://or-tools.googlecode.com/}. The directories colored in the same color are svn copies of each other\footnotemark.}\label{pic_directories}
- \end{figure}
+{\bf Four} on the \lhome\ side:
 
 \begin{description}
  \item[\code{SOURCES}] This local directory contains the sources files, the scripts files and some configuration files. This directory is a local copy of the the directory \code{doc\_sources}.
- \item[\code{BUILD}] This local directory contains all the automatically generated output files. 
- \item[\code{DEPLOY}]  This local directory contains all the generated output files (automatically or by hand). It is not a local copy of the \code{trunk/documentation} directory as the directory structure is slightly different. We use it essentially for testing purpose.
+ \item[\code{BUILD}] This local directory contains all the automatically generated output files.\\
+\hspace{2cm}{\bf Exceptions:} \code{HUB} (is build inside its source directory).
+ \item[\code{DEPLOY}]  This local directory contains all the generated output files (automatically or by hand). It is not a local copy of the \code{trunk/documentation} directory as the directory structure is slightly different. We use it essentially for testing purpose. Consider this directory as a buffer between \code{BUILD} and~\code{DOCUMENTATION}.
  \item[\code{DOCUMENTATION}] The real thing, i.e. the documentation you can access from the documentation hub. This local directory is a local copy of the \code{trunk/documentation} directory. Actually, it is more the opposite: \code{svn/trunk/documentation} is a copy of your local directory \code{DOCUMENTATION} as we push (commit) the generated documentation on the Google servers without pulling (updating) it.
+\end{description}
+
+and {\bf three} on the \gservers\ side:
+
+\begin{description}
  \item[\code{svn/doc\_sources}] A server directory containing the sources files of the documentation. All the files you need to generate the documentation are stored in this directory. The full url is~\href{http://or-tools.googlecode.com/svn/doc\_sources}{http://or-tools.googlecode.com/svn/doc\_sources}.
  \item[\code{files}] A server directory containing the downloadable files. The full url is~\href{http://or-tools.googlecode.com/files}{http://or-tools.googlecode.com/files}. Note that you don't have public access to the directory, only to the files stored in it.
  \item[\code{svn/trunk/documentation}] A server directory with the or-tools library's documentation (except for the downloadable files). The full url is~\href{http://or-tools.googlecode.com/svn/trunk/documentation}{http://or-tools.googlecode.com/svn/trunk/documentation}.
@@ -103,17 +119,18 @@ There are seven main directories: four on the Local home side (\code{SOURCES}, \
 \footnotetext{We don't consider white as a color, at least not in this document.} 
 
 %######################
-\subsection{Contents of the \code{SOURCES} directory}
+\subsection{The \code{SOURCES} directory}
 \label{doc_content}
 %######################
 
-The documentation is explained on the documentation hub.\\
+The documentation is explained on the \dhub.\\
 
 The local directory \code{SOURCES} contains the following files:
 
 \begin{description}
- \item[\code{current\_version.txt}] Text file with the actual release number (xx.yy.zz), i.e. the release number of the next documentation you will upload.
- \item[\code{global.rst}] Rst file with global variables. You can update it manually if you need to.
+ \item[\code{current\_version.txt}] Text file with the actual release number (xx.yy.zz), i.e. the release number of the next documentation you will upload. It is automatically updated after a new release is uploaded but you can manually update it
+if necessary.
+ \item[\code{global.rst}] Rst file with global variables.
  \item[\code{README.txt}] You know...
  \item[\code{TODO.txt}] What we plan for the future.
 \end{description}
@@ -122,10 +139,19 @@ The local directory \code{SOURCES} contains the following directories:
 
 \begin{description}
  \item[\code{doc}] The doc of the doc, i.e. the \LaTeX\ files to generate this document.
- \item[\code{FAQ}] Source files for the Frequently Asked Questions. The FAQ is generated by Sphinx.
+ \item[\code{FAQ}] Source files for the Frequently Asked Questions. The FAQ is generated by Sphinx. Needs to be rewritten and completed.
  \item[\code{HUB}] Sources files for the documentation hub. Written by hand but with the help of the Python \code{generate.py} script.
+\item[\code{images}] Interesting images to use somewhere else. Kept here meanwhile.
  \item[\code{internals}] Internal files for the scripts. You shouldn't change anything here.
- \item[\code{LABS}] Exercises. 
+ \item[\code{LABS}] Exercises. Needs to be written.
+\item[\code{LICENSES}] Different licenses. They are all regrouped in one place: easier to update them as needed.
+\item[\code{MANUAL}] The documentation user's manual directory.
+\item[\code{scripts}] Several Python scripts used throughout the or-tools documentation project.
+\item[\code{SLIDES}] Tentative try to generate slides for the documentation. Has to be written and a new approach with pygment is needed.
+\item[\code{sphinxortools}] Tentative or-tools Sphinx extension. Abandonned after too many hair pulled out (Sphinx bugs).
+Another avenue would be to use pre- and post-processing tools currently not recommended by Laurent. Because of 
+numerous Sphinx (last version used: 1.1.3) bugs, you need to duplicate lots of texts, tags and tables in the source files.
+\item[\code{TUTORIALS}] C++ code and hopefully other languages one day.
 \end{description}
 
 
@@ -163,7 +189,7 @@ You also have to manually create:
 
 \begin{itemize}
 \item \code{DEPLOY/UPLOAD/manual}: this directory is empty.
-\item \code{labs}, \code{tutorials} and~\code{reference\_manual}: these are copies of the corresponding directories in~\code{DOCUMENTATION}. The idea is to generate their content with~\code{generate\_*.py} and~\code{deploy\_*.py} scripts but this has to be done. Fro the moment, simply copy the directories. You don't need to copy~\code{reference\_manual} as a simple soft link will do.
+\item \code{labs}, \code{tutorials} and~\code{reference\_manual}: these are copies of the corresponding directories in~\code{DOCUMENTATION}. The idea is to generate their content with~\code{generate\_*.py} and~\code{deploy\_*.py} scripts but this has to be done. For the moment, simply copy the directories. You don't need to copy~\code{reference\_manual} as a simple soft link will do.
 \end{itemize}
 
 %######################
@@ -201,7 +227,7 @@ For instance, in my configuration:
 \subsection{External libraries and tools}
 %######################
 
-The following list details all the libraries and tools that I use to generate the documentation. Most of them are written in Python.
+The following list details all the libraries and tools that you need to generate the documentation. Most of them are written in Python.
 
 \begin{description}
  \item[Sphinx] This is the main library. It transforms \verb+restucturedText+ into plenty of other formats. The latest version the better. \code{Sphinx} is quite buggy. The website can be found here:
@@ -211,19 +237,21 @@ The following list details all the libraries and tools that I use to generate th
 Some \code{Sphinx} extensions are used (or are planned to be used one day...):
  \begin{description}
 \item[sphinx.ext.pngmath] Instead of using \code{MathJax}, we transform the formulas into \code{png}. The \code{MathJax} server is often too busy...
-\item[sphinx.ext.ifconfig]
-\item[sphinxortools.ortools] Homemade extension that~\ldots doesn't work yet;
-\item[sphinxcontrib.doxylink] 
-
+\item[sphinx.ext.ifconfig] To create different versions of the documentation (A4/USLetter, final/draft, \ldots).
+\item[sphinxortools.ortools] Homemade extension that~\ldots doesn't work and is abandonned.
+\item[sphinxcontrib.doxylink] No used yet. To create external links with the documentation generated by Doxygen.
 \end{description}
 
-If you platform permits it, you can easely add these extensions with~\code{easy\_install}. For instance:
+If you platform permits it, you can easely add these extensions with~\code{easy\_install} (Sphink can also be installed that way). For instance:
 
 \code{easy\_install -U sphinxcontrib-doxylink}
 
 Otherwise, you can adjust the Python \code{sys.path} in the \code{Sphinx conf.py} configuration file (\code{SOURCES/MANUAL/sources/config.py}).
 
- \item[Jinja2] 
+ \item[Jinja2] Jinja2 is a templating language for Python (used to generate the HTML code), The website can be found here:
+
+\href{http://jinja.pocoo.org/}{http://jinja.pocoo.org/}
+
  \item[\LaTeX] To generate the pdf version of the manual, we use \LaTeX{} and \verb+pdflatex+ (and of course, the classical \verb+makeindex+/\verb+mkindex+, \verb+bibtex+, \ldots). \TeX Live is perfect.
  \end{description}
 
@@ -272,6 +300,13 @@ The first run isn't different from a usual documentation update. See section~\re
 
 The whole process is divided in 9~steps\footnote{Once you get used to the documentation generation, you will be able to skip some of the steps (when you don't need to update the whole documentation tree) and to only use the specific manual commands you need.}. Most of the steps are automated by Python scripts and to simplify your life (and mine), several scripts are bundled in the global scripts (see section~\ref{global_scripts}). These scripts need to be called in sequence. In each of the subdirectories of the directory~\code{SOURCES} (see section~\ref{doc_content}), you will find the corresponding Python scripts if needed. If you don't 
 find a specific script in a subdirectory, it means this script is not needed for that type of documentation.\\
+
+
+\begin{figure}[h]
+   \centering
+   \includegraphics[scale=0.8]{images/directories.pdf}
+   \caption{figure}{The six main directories and the scripts/commands to move the files between them. The base url for the Google Servers is~\href{http://or-tools.googlecode.com/}{http://or-tools.googlecode.com/}. The directories colored in the same color are svn copies of each other\footnotemark.}\label{pic_directories}
+ \end{figure}
 
 \begin{description}
  \item[Step \raisebox{.3pt}{\textcircled{\raisebox{-.9pt} {1}}}] {\bf Update the source code:} (script: none)\\Update your local copy of the documentation via svn: \code{svn update}.
