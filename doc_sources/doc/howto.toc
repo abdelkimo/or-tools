@@ -2,7 +2,7 @@
 \contentsline {subsection}{\numberline {1.1}Vocabulary}{2}{subsection.1.1}
 \contentsline {subsection}{\numberline {1.2}Directories}{2}{subsection.1.2}
 \contentsline {subsection}{\numberline {1.3}The \texttt {SOURCES} directory}{3}{subsection.1.3}
-\contentsline {section}{\numberline {2}How to Install the documentation sources and the needed tools}{4}{section.2}
+\contentsline {section}{\numberline {2}How to Install the documentation sources and the needed tools}{3}{section.2}
 \contentsline {subsection}{\numberline {2.1}Local directories and copies}{4}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}The\nobreakspace {}\texttt {config.ini} file}{4}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}External libraries and tools}{5}{subsection.2.3}
@@ -10,23 +10,7 @@
 \contentsline {section}{\numberline {3}How to generate the manual}{5}{section.3}
 \contentsline {subsection}{\numberline {3.1}Work flow}{5}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Preferred use}{7}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}How to add some parts to the manual}{7}{subsection.3.3}
-\contentsline {subsubsection}{\numberline {3.3.1}A part}{7}{subsubsection.3.3.1}
-\contentsline {subsubsection}{\numberline {3.3.2}A chapter}{7}{subsubsection.3.3.2}
-\contentsline {subsubsection}{\numberline {3.3.3}A section}{7}{subsubsection.3.3.3}
-\contentsline {subsubsection}{\numberline {3.3.4}Front material}{7}{subsubsection.3.3.4}
-\contentsline {paragraph}{Title page}{7}{section*.2}
-\contentsline {paragraph}{Foreword}{7}{section*.3}
-\contentsline {paragraph}{Table of contents}{7}{section*.4}
-\contentsline {subsubsection}{\numberline {3.3.5}\emph {Final} or\nobreakspace {}\emph {draft} release}{8}{subsubsection.3.3.5}
-\contentsline {section}{\numberline {4}How to generate the rest of the documentation}{8}{section.4}
-\contentsline {subsection}{\numberline {4.1}The documentation hub}{8}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}The tutorial code}{8}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}The slides}{8}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}The version}{8}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Documentation Hub}{8}{subsection.4.5}
-\contentsline {subsubsection}{\numberline {4.5.1}The change files/directory}{8}{subsubsection.4.5.1}
-\contentsline {section}{\numberline {5}Global cripts}{8}{section.5}
-\contentsline {section}{\numberline {6}Gotchas}{8}{section.6}
-\contentsline {section}{\numberline {7}Resources}{9}{section.7}
-\contentsline {subsection}{\numberline {7.1}Images}{9}{subsection.7.1}
+\contentsline {subsection}{\numberline {3.3}Different versions}{7}{subsection.3.3}
+\contentsline {section}{\numberline {4}{\bf Documentation hub}}{7}{section.4}
+\contentsline {subsection}{\numberline {4.1}The change files/directory}{7}{subsection.4.1}
+\contentsline {section}{\numberline {5}Gotchas}{8}{section.5}

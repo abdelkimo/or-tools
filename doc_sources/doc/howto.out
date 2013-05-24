@@ -10,14 +10,7 @@
 \BOOKMARK [1][-]{section.3}{How to generate the manual}{}% 10
 \BOOKMARK [2][-]{subsection.3.1}{Work flow}{section.3}% 11
 \BOOKMARK [2][-]{subsection.3.2}{Preferred use}{section.3}% 12
-\BOOKMARK [2][-]{subsection.3.3}{How to add some parts to the manual}{section.3}% 13
-\BOOKMARK [1][-]{section.4}{How to generate the rest of the documentation}{}% 14
-\BOOKMARK [2][-]{subsection.4.1}{The documentation hub}{section.4}% 15
-\BOOKMARK [2][-]{subsection.4.2}{The tutorial code}{section.4}% 16
-\BOOKMARK [2][-]{subsection.4.3}{The slides}{section.4}% 17
-\BOOKMARK [2][-]{subsection.4.4}{The version}{section.4}% 18
-\BOOKMARK [2][-]{subsection.4.5}{Documentation Hub}{section.4}% 19
-\BOOKMARK [1][-]{section.5}{Global cripts}{}% 20
-\BOOKMARK [1][-]{section.6}{Gotchas}{}% 21
-\BOOKMARK [1][-]{section.7}{Resources}{}% 22
-\BOOKMARK [2][-]{subsection.7.1}{Images}{section.7}% 23
+\BOOKMARK [2][-]{subsection.3.3}{Different versions}{section.3}% 13
+\BOOKMARK [1][-]{section.4}{Documentation hub}{}% 14
+\BOOKMARK [2][-]{subsection.4.1}{The change files/directory}{section.4}% 15
+\BOOKMARK [1][-]{section.5}{Gotchas}{}% 16
