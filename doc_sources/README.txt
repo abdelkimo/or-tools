@@ -15,7 +15,7 @@ http://or-tools.googlecode.com/svn/trunk/documentation/documentation_hub.html
 *------------------------------------------------------------------------------*
 *                                                                              *
 * THIS IS WORK IN PROGRESS. SOURCES MAY CONTAIN APPROXIMATIONS OR EVEN ERRORS. *
-* SCRIPTS MAY NOT WORK AS INTENTED AND ARE NOT (YET) TESTED.                   *
+* SCRIPTS MAY NOT WORK AS INTENTED AND ARE NOT (YET) FULLY TESTED.             *
 *                                                                              *
 *------------------------------------------------------------------------------*
 
@@ -23,4 +23,4 @@ See doc/howto.pdf to generate the documentation of the or-tools library.
 
 Have a nice day!
 
-You can reach us at ortools dot doc at gmail dot com
+You can reach us at ortools dot doc at gmail dot com.

@@ -12,5 +12,5 @@
 \contentsline {subsection}{\numberline {3.2}Preferred use}{7}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Different versions}{7}{subsection.3.3}
 \contentsline {section}{\numberline {4}{\bf Documentation hub}}{7}{section.4}
-\contentsline {subsection}{\numberline {4.1}The change files/directory}{7}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.1}The change files/directory}{8}{subsection.4.1}
 \contentsline {section}{\numberline {5}Gotchas}{8}{section.5}
