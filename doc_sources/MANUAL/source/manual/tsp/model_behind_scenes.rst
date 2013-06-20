@@ -3,6 +3,10 @@
 The model behind the scenes: the main decision variables
 ========================================================
 
+..  only:: draft
+
+    test
+
 ..  only:: html
 
     We present the main decision variables of the model used in the RL.
