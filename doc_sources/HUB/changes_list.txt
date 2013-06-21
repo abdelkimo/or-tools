@@ -1,4 +1,11 @@
 
+v.0.2.7: (2013-06-21 14:49:53)
+------------------------------
+* Minor enhancements to the manual:
+
+* Back to Sphinx 1.2b
+
+
 v.0.2.6: (2013-05-16 00:08:01)
 ------------------------------
 * Minor enhancements to the manual:
