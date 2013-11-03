@@ -60,9 +60,10 @@ How to force all vehicles to service cities?
                                 routing.NextVar(routing.Start(vehicle_nbr));
 
     To obtain the ``int64`` indices corresponding to end depots is not more complicated.
-    we detail the auxiliary graph in the sub-section :ref:`auxiliary_graph_detailed`. The internal numbering of the 
-    its nodes is done such that all end depots are numbered last, having ``int64`` indices from ``Size()`` - that returns
-    the number of ``NextVar()`` variables - to ``Size() + vehicles()`` non included where ``vehicles()`` returns the number of vehicles.
+    We detail the auxiliary graph in the sub-section :ref:`auxiliary_graph_detailed`. The internal numbering of 
+    its nodes is done such that all end depots are numbered last, having ``int64`` indices from ``Size()`` to ``Size() + vehicles()`` non included where 
+    ``Size()`` returns
+    the number of ``NextVar()`` variables and ``vehicles()`` the number of vehicles.
 
     To remove the ``int64`` indices, we need to have a **complete** model with all variables defined. To complete the model, 
     we must invoke the ``CloseModel()`` method:
@@ -157,7 +158,7 @@ The basic program
           ...
     
     We must invoke the ``CloseModel()`` to finalize the model for our instance. We need the **complete** model to be able 
-    to interfere with it.
+    to interact with it.
     
     We continue the inspection of the ``VRP_solver()`` function:
     
@@ -252,7 +253,7 @@ Some outputs
     the nodes are numbered from ``0``. You can change this last behaviour by setting the flag 
     ``numbering_solution_nodes_from_zero`` to ``false``.
     
-    Here are different outputs obtained with the ePiX library:
+    Here are different outputs obtained with the ePiX library, with ``number_vehicles`` equal to ``2, 3, 4`` and  ``5``:
     
     
     ..  only:: html 

@@ -8,7 +8,7 @@ Vehicule Routing Problems with constraints: the capacitated vehicle routing prob
     The *Vehicle Routing Problem* (VRP) is a Routing Problem seeking to service a number of customers with a 
     fleet of (homogeneous or heterogeneous) vehicles starting from one depot. The basic idea is to service clients - represented
     by nodes in a graph - by the 
-    vehicles. Lots of real and industrial problems can be modelled like VRP. This problem can be traced back to the fifties 
+    vehicles. Lots of theoric and industrial problems can be modelled like VRP. This problem can be traced back to the fifties 
     (see [Dantzig1959]_ for instance). As it includes the TSP (a VRP with one vehicle) as a special case, it is 
     a computationally complex problem.
     
@@ -30,7 +30,7 @@ Vehicule Routing Problems with constraints: the capacitated vehicle routing prob
     present a basic program to solve the bare VRP. To do so, we show how to interact directly with the underlying CP solver.
     Next, the CVRP is introduced and explained. Capacities are modelled with ``Dimension``\s. Finally, we discuss the 
     multi-depots variant of the VRP in general and how to fix some parts of the routes while letting the CP solver 
-    assign the other clients to vehicles, i.e. complete the partial solution.
+    assign the other clients to vehicles, i.e. how to complete the partial solution.
 
 ..  rubric:: Prerequisites:
 

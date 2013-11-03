@@ -35,6 +35,8 @@ The CVRP in or-tools
 
 ..  only:: draft
 
+    To solve a CVRP with *or-tools*, we'll use our homemade CVRP classes (``CVRPData``, ``CVRPSolution`` and ``CVRPEpixData``). The main difficulty that remains is how to model the demands in *or-tools*.
+    Simple: with ``Dimension``\s. We will also detail how to provide an initial solution, how to tweak the search strategy and finally how to deal with an heterogenous fleet of vehicles.  
 
 The demands as a ``Dimension``
 ----------------------------------
@@ -44,8 +46,8 @@ The demands as a ``Dimension``
     You'll find the code in the file :file:`cvrp_basic.cc`.
 
     The accumulation of *demands* along the routes makes the ``Dimension`` variables perfect candidates to model 
-    demands. We suggest the reader to read the sub-section :ref:`time_windows_as_dimension` before
-    reading on. The situation is a little easier here as the demands only depend on the client and not the 
+    demands. We suggest you to read the sub-section :ref:`time_windows_as_dimension` to refresh your memory if needed. 
+    The situation is a little easier here as the demands only depend on the client and not the 
     arcs the vehicles traverse to reach these clients.
 
     As usual, the solving process is encapsulated in a ``void CVRPBasicSolver(const CVRPData & data)`` function
@@ -61,7 +63,7 @@ The demands as a ``Dimension``
           operations_research::CVRPBasicSolver(cvrp_data);
         }
 
-    The creation of the routing model is now also quite known:
+    The creation of the routing model is now also quite known by now:
     
     ..  code-block:: c++
     
@@ -70,15 +72,15 @@ The demands as a ``Dimension``
           const int size = data.Size();
           const int64 capacity = data.Capacity();
 
-          CHECK_GT(FLAGS_number_vehicles, 0) 
-                                         << "We need at least one vehicle!";
+          CHECK_GT(FLAGS_number_vehicles, 1) 
+                                         << "We need at least two vehicles!";
           // Little check to see if we have enough vehicles
           CHECK_GT(capacity, data.TotalDemand()/FLAGS_number_vehicles) 
                            << "No enough vehicles to cover all the demands";
           ...
 
-    This little check is handy to avoid the solver trying to find a feasible solution while it is obvious none exist.
-    The distances are the depot are transferred to the solver the usual way:
+    This little check is handy to avoid the solver trying to find a feasible solution while it is obvious none exists.
+    The distances and the depot are transferred to the solver the usual way:
     
     ..  code-block:: c++
     
@@ -310,7 +312,7 @@ What about individualizing the vehicles?
 ..  only:: draft
 
     Until now, we considered an homogenous fleet of vehicles: all vehicles were exactly the same. But what happens if 
-    you have very different types of vehicles? The RL enables you to distinguish between different types of vehicles.
+    you have (very) different types of vehicles? The RL enables you to distinguish between different types of vehicles.
     
     You might give a different cost to each type of vehicles. You can do this with the ``SetVehicleFixedCost()`` method:
     
@@ -318,9 +320,10 @@ What about individualizing the vehicles?
     
         void SetVehicleFixedCost(int vehicle, int64 cost);
 
-    The RL routing solver will try to minimize of expensive types of vehicles. 
+    The cost of using some vehicles can be higher or lower than others. If a vehicle is used, i.e. this vehicle serves at least **one** node, this cost is added to the objective function. 
+
     
-    Probably, the different types of vehicles have different capacities? No problem, this is allowed in the RL:
+    Different types of vehicles have different capacities? No problem, this is allowed in the RL:
     
     ..  code-block:: c++
     

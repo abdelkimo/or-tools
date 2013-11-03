@@ -33,7 +33,8 @@ The Capacitated Vehicle Routing Problem (CVRP)
 ..  only:: draft
 
     We don't have much to say about the CVRP as much has been said in the section :ref:`vrp_vrp`. The side constraint we 
-    add here to the VRP is a capacity constraint: each vehicle must respect its capacity on the route it traverses.
+    add here to the VRP is a capacity constraint: each vehicle must respect its capacity on the route it traverses, i.e. the sum of the node capacities of all the nodes serviced by one vehicle must be smaller than the vehicule capacity.
+    And this for all vehicles.
 
 The problem
 -------------
@@ -45,9 +46,9 @@ The problem
     The depot is the same for all vehicles and doesn't need to be 
     serviced. 
     
-    In this version, vehicles have all the same capacity :math:`C` that cannot be exceeded on a tour and clients 
-    have *demands*. A client :math:`i`  has a demand :math:`d_i` that has to be met when a vehicle service this client. 
-    Think of demands as quantities of goods that the vehicle pick up when visiting clients: the total among of goods/demands 
+    In this version, all vehicles have the same capacity :math:`C` that cannot be exceeded on a tour and clients (nodes)
+    have *demands*. A client :math:`i`  has a demand :math:`d_i` that has to be met when a vehicle services this client. 
+    Think of demands as quantities of goods that the vehicle picks up when visiting clients: the total among of goods/demands 
     picked up along the route cannot exceed its capacity.
     
     The program :program:`check_cvrp_solution` allows you to check if indeed the capacities of the vehicles are respected 

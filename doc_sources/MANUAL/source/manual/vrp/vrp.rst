@@ -58,6 +58,8 @@ The Vehicle Routing Problem (VRP)
     ..  [Bektas2006] T. Bektas. *The multiple traveling salesman problem: an overview of formulations and solution procedures*,
         Omega, Elsevier, v. 34(3), pp 209-219, 2006.
 
+    We didn't program specialized VRP classes. Instead we'll use and present more general CVRP classes.
+
 
     
 The Problem
@@ -123,7 +125,7 @@ The Problem
     
     * *time-windows*: each city must be serviced within a time-window :math:`[a_i, b_i]` and waiting times are allowed.
     
-    * *precedence relations* between pair of cities: city :math:`j` cannot be visited before city :math:`j`. Among such problems 
+    * *precedence relations* between pair of cities: city :math:`j` cannot be visited before city :math:`i`. Among such problems 
       are the VRPPD: the *Vehicle Routing Problems with Pickup and Delivery*.  A number of goods need to be moved from certain pickup 
       locations to other delivery locations.
 
@@ -153,8 +155,8 @@ Benchmark data
     
     ..  only:: html
     
-        * The `VRPLIB page <http://www.or.deis.unibo.it/research_pages/ORinstances/VRPLIB/VRPLIB.html>`_ and
-        * The `NEO (Network and Emerging Optimization) page <http://neo.lcc.uma.es/vrp/vrp-instances/>`_.
+        * The `VRPLIB page <http://www.or.deis.unibo.it/research_pages/ORinstances/VRPLIB/VRPLIB.html>`_;
+        * The `NEO (Network and Emerging Optimization) page <http://neo.lcc.uma.es/vrp/vrp-instances/>`_;
         * The `SYMPHONY VRP data page <http://branchandcut.org/VRP/data/index.htm>`_ maintained by T. Ralphs.
         
     ..  only:: latex
@@ -243,7 +245,7 @@ The solution file
         Route #5: 14 28 11 4 23 3 2 6
         cost 784
 
-    Routes are numbered starting form ``1`` while the nodes in the solution file are numbered starting from... 0!
+    Routes are numbered starting form ``1`` while the nodes in the solution file are numbered starting from... 0! Also, note that the depot is not present.
     
     ..  warning:: Nodes are numbered from 0 in the solution files!
      
@@ -299,7 +301,7 @@ To generate a random CVRP: the ``CVRPDataGenerator`` class
         ./cvrp_data_generator -instance_name=my_instance -instance_size=40 
                                                      > my_instance_file.vrp
         
-    An instance name and size is mandatory.
+    An instance name and size are mandatory.
     
     Several parameters scattered in different files are available as :program:`gflags`:
     

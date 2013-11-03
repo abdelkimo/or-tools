@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # Copyright 2012 Google Inc. All Rights Reserved.
 # Author: ortools.doc@gmail.com (Nikolaj van Omme).
-# Python script to compare deploy dir with documentation dir.
-# See documentation manual.
+
 import sys
 from os.path import  join
 from file_module import find_files_in_dirs, file_starts_with
