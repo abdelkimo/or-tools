@@ -140,9 +140,6 @@ The basic program
           RoutingModel routing(size, FLAGS_number_vehicles);
           routing.SetCost(NewPermanentCallback(&data, &CVRPData::Distance));
 
-          // Disabling Large Neighborhood Search, comment out to activate it.
-          routing.SetCommandLineOption("routing_no_lns", "true");
-
           if (FLAGS_time_limit_in_ms > 0) {
             routing.UpdateTimeLimit(FLAGS_time_limit_in_ms);
           }
