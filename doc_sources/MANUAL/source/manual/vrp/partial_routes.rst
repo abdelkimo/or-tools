@@ -37,7 +37,7 @@ A little bit of vocabulary
 
     Before we go on, let's agree on some vocabulary. Our routing problems are modelled with a graph :math:`G=(V, E \cup A)` 
     with :math:`V` the set of all vertices, :math:`E` the set of edges and :math:`A` the set of arcs. Here are some terms we will 
-    used throughout the rest of part III:
+    use throughout the rest of part III:
     
     ..  index:: path, graph; path
     
@@ -75,9 +75,9 @@ A little bit of vocabulary
     ..  index:: partial route, graph; partial route
       
     *partial routes*:
-      A *partial route* is a simple path that is traversed by **only one** vehicle. If the starting and ending depots are 
-      not the same, a route can be considered as a partial route. The idea is to name "parts" of contiguous edges/arcs that
-      could be extended - in both directions - to form a route.
+      A *partial route* is a simple path that is traversed by **only one** vehicle. The idea is to name "parts" of contiguous edges/arcs that
+      could be extended - in both directions - to form a route. A route can be considered as a partial route only if the starting and ending depots are 
+      not the same. This partial route cannot be extended at both its end vertices but we still call it a *partial route*.
 
     ..  [#path_def_precision] We don't distinguish between paths with only edges (*paths*), only arcs (*directed* paths) 
         or containing edges and arcs (*mixed* paths). In the same vein, we don't distinguish between cycles with only edges 
@@ -108,7 +108,7 @@ A little bit of vocabulary
         std::vector<std::pair<RoutingModel::NodeIndex,
                                RoutingModel::NodeIndex> > depots(4);
         // Internal depots are 1, 3, 4 and 7
-        // thus with the convention in this manual, 
+        // thus with the TSPLIB convention in this manual, 
         // the real depots are 2, 4, 5 and 8
         depots[0] = std::make_pair(1,4);
         depots[1] = std::make_pair(3,4);
@@ -141,7 +141,8 @@ A little bit of vocabulary
     
     * You can only call ``ApplyLocksToAllVehicles()`` if the model is closed (or you'll trigger an ``assert()``).
     * Partial routes are attached to the corresponding starting depots.
-      For instance, ``p[1][0]`` is attached to the depot of the second route/vehicle.
+      For instance, ``p[1][0]`` is attached to the depot of the second route/vehicle. This means that partial routes constructed with the 
+      ``ApplyLocksToAllVehicles()`` method all **start** at a given depot.
     * The ``bool`` ``FLAGS_close_routes`` indicates if you want to close the routes or not. If set to ``true``, all the given 
       partial routes are closed (i.e. the last vertex of each lock is connected to the corresponding end depot) 
       and **all the remaining** *transit vertices* are **deactivated**. If set to ``false``, 
@@ -149,7 +150,7 @@ A little bit of vocabulary
       deactivated vertices remain deactivated).
     * You can **only** use transit nodes and each transit node can only be in **one** lock (no depot allowed in the locks).
     * You can add empty routes by adding an empty vector for the corresponding vehicle/route. In our example, route ``p[2]``
-      is empty and can thus be completed by the CP routing solver. The remaining routes that were not defined in ``p``
+      is empty and can thus be completed by the CP routing solver (if ``FLAGS_close_routes`` is set to ``false``). The remaining routes that were not defined in ``p``
       are closed (i.e. ``NextVar(routing.Start(v)) == routing.End(v)`` for all ``v >= p.size()``).
     * You can get the corresponding ``Assignment`` with the ``PreAssignment()`` method:
       
@@ -262,7 +263,7 @@ A little bit of vocabulary
         routes to follow (to *reroute*) (or be prepared for some unpleasant consequences).
         
         Classical problems were the instances are completely known - like all the problems presented in this manual - are
-        then coined as *offline* problems in contrast.
+        then coined as *offline* problems by contrast.
 
 ..  _vrp_assigments:
 

@@ -21,7 +21,7 @@ Problems with multi-depots
     You can find the source code in the file :file:`chap14/rl_auxiliary_graph.cc`.
 
     We only consider problems where the starting and ending depots are knows for each vehicles. If you have to deal 
-    with a problem where this is not the case, there are a bunch of modeling tricks where you can add fictive nodes.
+    with a problem where this is not the case, there exists a bunch of modeling tricks where you can add fictive nodes.
     
     To create the ``RoutingModel`` with multi-depots, simply give an 
     ``std::vector<std::pair<RoutingModel::NodexIndex, RoutingModel::NodexIndex> >`` with the list of pairs of starting and 
@@ -110,7 +110,7 @@ The ``VehicleVar()`` variables
 ..  only:: draft
 
     In the RL, there is a one to one correspondence between vehicles and routes. You probably noticed 
-    that we interchangeably used the term *route* or *vehicle* in this manual. When you declare ``v`` vehicles/routes 
+    that we interchangeably used the terms *route* and *vehicle* in this manual. When you declare ``v`` vehicles/routes 
     in your model, the RL solver creates a model with ``v`` vehicles/routes numbered from ``0`` to ``vehicles() - 1``.
     These vehicles/routes are divided in different ``VehicleClasses`` (see next sub-section).
     
@@ -154,7 +154,9 @@ The ``VehicleVar()`` variables
     
       ``NextVar(i) == i``.
       
-    Depots are **always** active and can thus **not** be part of a ``Disjunction``.
+    Depots are **always** active and can thus **not** be part of a ``Disjunction``. This is worth remembering:
+
+    ..  warning:: Depots are **always** active and can thus **not** be part of a ``Disjunction``. 
     
     
 ``VehicleClass``\es
