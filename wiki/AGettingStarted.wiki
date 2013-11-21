@@ -64,7 +64,7 @@ If the OS is Mountain Lion, it is a bit more complicated:
     * type {{{export PATH=`pwd`/dependencies/install/bin:$PATH}}}
   * You only need to run the first time or after make clean_third_party. You need to export the augmented PATH each time you run make third_party.
 
-If you wish to use glpk, please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.49.tar.gz and put the archive in or-tools/dependencies/archives.
+If you wish to use glpk, please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.52.tar.gz and put the archive in or-tools/dependencies/archives.
 If you have the license, please download scipoptsuite-3.0.1.tgz from http://zibopt.zib.de/download.shtml and  put the archive in or-tools/dependencies/archives.
 
 If you wish to use .NET, you need to install mono.
@@ -112,7 +112,7 @@ Install java JDK from http://www.oracle.com/technetwork/java/javase/downloads/jd
 
 You need to install python-setuptools for windows. See the installation instructions at: http://pypi.python.org/pypi/setuptools#windows
 
-If you wish to use glpk, please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.49.tar.gz and put the archive in or-tools/dependencies/archives.
+If you wish to use glpk, please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.52.tar.gz and put the archive in or-tools/dependencies/archives.
 
 Then launch a terminal from the visual studio tools menu (32 or 64 bit according to your installation, this must be consistent with the java and python versions installed before) and use it to launch the following commands.
 
