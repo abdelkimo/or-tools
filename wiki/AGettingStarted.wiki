@@ -56,7 +56,7 @@ The fedora command is:
 On mac OS X, you need to install xcode (actually, it seems only xcode command line tools are necessary, which is way smaller). If the OS is before Mountain Lion (Lion, Snow Leopard), then it should be enough.
 If the OS is Mountain Lion, it is a bit more complicated:
 
-  * You then need to install xcode 4.6.1 and the corresponding command line tools for xcode.
+  * You then need to install the latest version of the command line tools for xcode (full xcode is not needed).
   * To install javac, just run {{{javac}}}, it will start the procedure to download java and install it.
   * autotools and libtool are no longer distributed with xcode. You need to compile them yourself if you want to run make third_party
     * cd into the or-tools directory
@@ -70,7 +70,7 @@ If you have the license, please download scipoptsuite-3.0.1.tgz from http://zibo
 If you wish to use .NET, you need to install mono.
 On linux platforms, just install the mono-devel package. You need a recent one (at least 2.8 I believe) to work correctly. If mono is not supported on your platform, you can install it using the procedure for Mac OS X.
 
-On Mac OS X, you need 64 bit support. Thus you need to build mono by hand. Copy the mono archive http://download.mono-project.com/sources/mono/mono-2.10.9.tar.gz to dependencies/archives.
+On Mac OS X, you need 64 bit support. Thus you need to build mono by hand. Copy the mono archive http://download.mono-project.com/sources/mono/mono-3.2.5.tar.bz2 to dependencies/archives.
 You can use {{{dependencies/install/bin/gmcs}}} to compile C# files and {{{dependencies/install/bin/mono}}} to run resulting .exe files.
 
 run:
@@ -108,7 +108,7 @@ You must also use a same compilation terminal from the visual studio tools menu.
 
 Install python from http://www.python.org/download/releases/2.7/
 
-Install java JDK from http://www.oracle.com/technetwork/java/javase/downloads/jdk-7u2-download-1377129.html
+Install java JDK from the oracle site.
 
 You need to install python-setuptools for windows. See the installation instructions at: http://pypi.python.org/pypi/setuptools#windows
 
@@ -128,7 +128,7 @@ Then you can download all dependencies and build them using:
 
 then edit Makefile.local to point to the correct python and java installation. For instance, on my system, it is:
 {{{
-WINDOWS_JDK_DIR = c:\\Program Files\\Java\\jdk1.7.0_02
+WINDOWS_JDK_DIR = c:\\Program Files\\Java\\jdk1.7.0_45
 WINDOWS_PYTHON_VERSION = 27
 WINDOWS_PYTHON_PATH = C:\\python27
 }}}
