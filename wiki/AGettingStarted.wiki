@@ -65,7 +65,7 @@ If the OS is Mountain Lion, it is a bit more complicated:
   * You only need to run the first time or after make clean_third_party. You need to export the augmented PATH each time you run make third_party.
 
 If you wish to use glpk, please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.52.tar.gz and put the archive in or-tools/dependencies/archives.
-If you have the license, please download scipoptsuite-3.0.1.tgz from http://zibopt.zib.de/download.shtml and  put the archive in or-tools/dependencies/archives.
+If you have the license, please download scipoptsuite-3.0.2.tgz from http://zibopt.zib.de/download.shtml and  put the archive in or-tools/dependencies/archives.
 
 If you wish to use .NET, you need to install mono.
 On linux platforms, just install the mono-devel package. You need a recent one (at least 2.8 I believe) to work correctly. If mono is not supported on your platform, you can install it using the procedure for Mac OS X.
