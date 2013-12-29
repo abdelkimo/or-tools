@@ -48,6 +48,13 @@ The command on ubuntu >= 12.04 is the following:
 sudo apt-get install bison flex python-setuptools python-dev autoconf libtool
 }}}
 
+The command on ubuntu >= 13.04 is the following:
+{{{
+sudo apt-get install bison flex python-setuptools python-dev autoconf libtool zlib1g-dev
+}}}
+
+
+
 The fedora command is:
 {{{
  sudo yum install subversion bison flex python-setuptools python-dev autoconf libtool zlib-devel
