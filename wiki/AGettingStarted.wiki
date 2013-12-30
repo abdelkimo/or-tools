@@ -107,7 +107,9 @@ One workaround is described on this page http://stackoverflow.com/questions/4495
 
 If you have root privilieges, you can replace the last line and install the python modules for all users with the following command:
 {{{
-  cd dependencies/sources/google-apputils
+  cd dependencies/sources/google_apputils_python_14
+  sudo python2.7 setup.py install
+  cd dependencies/sources/protobuf-512/python
   sudo python2.7 setup.py install
 }}}
 
@@ -162,6 +164,8 @@ Afterwards, to use python, you need to install google-apputils.
 
 {{{
   cd dependencies/sources/google-apputils
+  c:\python27\python.exe setup.py install
+  cd dependencies/sources/protobuf/python
   c:\python27\python.exe setup.py install
 }}}
 
