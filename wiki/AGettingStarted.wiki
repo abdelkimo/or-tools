@@ -164,6 +164,7 @@ Please note that you should not put "" aroud the jdk path to take care of the sp
 Afterwards, to use python, you need to install google-apputils.
 
 {{{
+  copy dependencies\install\bin\protoc.exe   dependencies\sources\protobuf\src
   cd dependencies/sources/google-apputils
   c:\python27\python.exe setup.py install
   cd dependencies/sources/protobuf/python
