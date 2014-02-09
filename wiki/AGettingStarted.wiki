@@ -38,7 +38,7 @@ or-tools/
 
 == Extra packages ==
 
-If you wish to use glpk, please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.52.tar.gz and put the archive in or-tools/dependencies/archives.
+If you wish to use glpk, please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.52.1.tar.gz and put the archive in or-tools/dependencies/archives.
 If you have the license, please download scipoptsuite-3.0.2.tgz from http://zibopt.zib.de/download.shtml and  put the archive in or-tools/dependencies/archives. 
  
 == Ubuntu specific part ==
@@ -85,13 +85,8 @@ If the OS is Mountain Lion or after, it is a bit more complicated:
 
   * You then need to install the latest version of the command line tools for xcode (full xcode is not needed).
   * To install javac, just run {{{javac}}}, it will start the procedure to download java and install it.
-  * autotools and libtool are no longer distributed with xcode. You need to compile them yourself if you want to run make third_party
-    * cd into the or-tools directory
-    * run {{{./tools/build_aclocal_on_mountain_lion.sh}}}
-    * type {{{export PATH=`pwd`/dependencies/install/bin:$PATH}}}
-  * You only need to run the first time or after make clean_third_party. You need to export the augmented PATH each time you run make third_party.
 
-To use .NET, you need mono. On Mac OS X, you need 64 bit support. Thus you need to build mono by hand. Copy the mono archive http://download.mono-project.com/sources/mono/mono-3.2.5.tar.bz2 to dependencies/archives.
+To use .NET, you need mono. On Mac OS X, you need 64 bit support. Thus you need to build mono by hand. Copy the mono archive http://download.mono-project.com/sources/mono/mono-3.2.6.tar.bz2 to dependencies/archives.
 You can use {{{dependencies/install/bin/gmcs}}} to compile C# files and {{{dependencies/install/bin/mono}}} to run resulting .exe files.
 
 == Build third party software ==
