@@ -47,17 +47,17 @@ For linux users, please intall zlib-devel, bison, flex, autoconf, libtool, pytho
 
 The command on ubuntu < 12.04 is the following:
 {{{
-sudo apt-get install bison flex python-setuptools python-dev autoconf libtool zlib-devel
+sudo apt-get install bison flex python-setuptools python-dev autoconf libtool zlib-devel texinfo
 }}}
 
 The command on ubuntu >= 12.04 is the following:
 {{{
-sudo apt-get install bison flex python-setuptools python-dev autoconf libtool
+sudo apt-get install bison flex python-setuptools python-dev autoconf libtool texinfo
 }}}
 
 The command on ubuntu >= 13.04 is the following:
 {{{
-sudo apt-get install bison flex python-setuptools python-dev autoconf libtool zlib1g-dev
+sudo apt-get install bison flex python-setuptools python-dev autoconf libtool zlib1g-dev texinfo
 }}}
 
 To use java on ubuntu, you need to install the jdk
