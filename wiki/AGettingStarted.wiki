@@ -38,7 +38,7 @@ or-tools/
 
 == Extra packages ==
 
-If you wish to use glpk, please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.52.1.tar.gz and put the archive in or-tools/dependencies/archives.
+If you wish to use glpk, please download glpk from http://ftp.gnu.org/gnu/glpk/glpk-4.53.tar.gz and put the archive in or-tools/dependencies/archives.
 If you have the license, please download scipoptsuite-3.0.2.tgz from http://zibopt.zib.de/download.shtml and  put the archive in or-tools/dependencies/archives. 
  
 == Ubuntu specific part ==
@@ -149,7 +149,7 @@ Then you can download all dependencies and build them using:
 
 then edit Makefile.local to point to the correct python and java installation. For instance, on my system, it is:
 {{{
-WINDOWS_JDK_DIR = c:\\Program Files\\Java\\jdk1.7.0_45
+WINDOWS_JDK_DIR = c:\\Program Files\\Java\\jdk1.7.0_51
 WINDOWS_PYTHON_VERSION = 27
 WINDOWS_PYTHON_PATH = C:\\python27
 }}}
