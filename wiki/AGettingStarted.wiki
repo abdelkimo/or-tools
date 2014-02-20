@@ -78,6 +78,15 @@ The fedora command is:
  sudo yum install subversion bison flex python-setuptools python-dev autoconf libtool zlib-devel
 }}}
 
+== Debian part ==
+
+Please install the following packages on debian:
+
+The command on ubuntu >= 13.04 is the following:
+{{{
+sudo apt-get install bison flex python-setuptools python-dev autoconf libtool texinfo texlive
+}}}
+
 == Mac OS X Specific part ==
 
 On mac OS X, you need to install xcode (actually, it seems only xcode command line tools are necessary, which is way smaller). If the OS is before Mountain Lion (Lion, Snow Leopard), then it should be enough.
