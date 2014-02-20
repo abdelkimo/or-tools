@@ -82,7 +82,6 @@ The fedora command is:
 
 Please install the following packages on debian:
 
-The command on ubuntu >= 13.04 is the following:
 {{{
 sudo apt-get install bison flex python-setuptools python-dev autoconf libtool texinfo texlive
 }}}
