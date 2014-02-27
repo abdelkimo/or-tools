@@ -67,9 +67,8 @@ sudo apt-get install openjdk-7-jdk
 }}}
 
 To use .NET on ubuntu, you need to install mono
-{{{
-sudo apt-get install mono-devel
-}}}
+
+I would recommend copying the mono archive (http://download.mono-project.com/sources/mono/mono-3.2.8.tar.bz2) to dependencies/archives instead of using the packaged mono-devel for ubuntu as 2.10.8 is old.
 
 == Fedora specific part ==
 
@@ -94,8 +93,8 @@ If the OS is Mountain Lion or after, it is a bit more complicated:
   * You then need to install the latest version of the command line tools for xcode (full xcode is not needed).
   * To install javac, just run {{{javac}}}, it will start the procedure to download java and install it.
 
-To use .NET, you need mono. On Mac OS X, you need 64 bit support. Thus you need to build mono by hand. Copy the mono archive http://download.mono-project.com/sources/mono/mono-3.2.5.tar.bz2 to dependencies/archives.
-You can use {{{dependencies/install/bin/gmcs}}} to compile C# files and {{{dependencies/install/bin/mono}}} to run resulting .exe files.
+To use .NET, you need mono. On Mac OS X, you need 64 bit support. Thus you need to build mono by hand. Copy the mono archive http://download.mono-project.com/sources/mono/mono-3.2.8.tar.bz2 to dependencies/archives.
+You can use {{{dependencies/install/bin/mcs}}} to compile C# files and {{{dependencies/install/bin/mono}}} to run resulting .exe files.
 
 == Build third party software ==
 
