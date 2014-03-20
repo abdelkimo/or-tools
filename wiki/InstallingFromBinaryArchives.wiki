@@ -9,6 +9,6 @@ This is an how-to.
 
 We provide binary modules for:
   * C++: OrToolsWithCpp
-  * [Python]: OrToolsWithPyPi
-  * [Java]: OrToolsWithJava
+  * Python: OrToolsWithPyPi
+  * Java: OrToolsWithJava
   * .NET: OrToolsWithDotNet
