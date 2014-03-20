@@ -5,3 +5,4 @@
     # [OrToolsWithCpp C++ instructions]
     # [OrToolsWithPyPi Python instructions]
     # [OrToolsWithJava Java instructions]
+    # [OrToolsWithDotNet .NET instructions]
