@@ -4,3 +4,4 @@
   # [InstallingFromBinaryArchives Installing OR-Tools from binary archives]
     # [OrToolsWithCpp C++ instructions]
     # [OrToolsWithPyPi Python instructions]
+    # [OrToolsWithJava Java instructions]
