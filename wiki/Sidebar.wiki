@@ -2,3 +2,4 @@
 [https://code.google.com/p/or-tools/wiki/Welcome Welcome]
   # [AGettingStarted Getting Started]
   # [InstallingFromBinaryArchives Installing OR-Tools from binary archives]
+    # [OrToolsWithCpp C++ Instructions]
