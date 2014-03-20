@@ -2,6 +2,8 @@
 
 This file describes how to install the or-tools C++ binary archive.
 
+The archives can be found [https://drive.google.com/folderview?id=0B2yUSpEp04BNdEU4QW5US1hvTzg&usp=sharing here] ([https://app.box.com/s/gmgtnfqgl8ibrz5d1cm0 mirror]).
+
 OR-Tools is located at http://code.google.com/p/or-tools
 
 These modules have been tested under:
