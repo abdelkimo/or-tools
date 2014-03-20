@@ -4,6 +4,8 @@ This file describes how to use the or-tools java binary archive.
 
 OR-Tools is located at http://code.google.com/p/or-tools
 
+The binary archives can be found [https://drive.google.com/folderview?id=0B2yUSpEp04BNdEU4QW5US1hvTzg&usp=sharing here] ([https://app.box.com/s/gmgtnfqgl8ibrz5d1cm0 mirror]).
+
 This module has been tested under:
   * ubuntu 10.04 and up (32 and 64 bit).
   * Mac OS X Lion with xcode 5.x (64 bit, Mountain Lion and up).
