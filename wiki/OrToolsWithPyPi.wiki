@@ -73,7 +73,7 @@ python2.7 examples/golomb8.py
 
 = Troubleshooting =
 
-== ImportError: No module named _pywraplp ==
+== [ImportError]: No module named _pywraplp ==
 
 Most likely, you are using windows XP. Unfortunately, ortools needs visual studio 2012 or up, which is incompatible with Windows XP.
 
