@@ -1,0 +1,14 @@
+#summary This page documents how to use or-tools from binary archives.
+
+= Introduction =
+
+OR-Tools can be used directly from binary archives.
+This is an how-to.
+
+= Details =
+
+We provide binary modules for:
+  * C++: OrToolsWithCpp
+  * [Python]: OrToolsWithPyPi
+  * [Java]: OrToolsWithJava
+  * .NET: OrToolsWithDotNet
