@@ -3,6 +3,11 @@
 
 <wiki:toc max_depth="1" />
 
+You can use or-tools from sources or from binary archives.
+This section describes using from sources.
+
+Please refer to InstallingFromBinaryArchives to learn more about installing from binary archives or modules.
+
 =Getting the source=
 
 Please visit http://code.google.com/p/or-tools/source/checkout to checkout the sources of or-tools.
