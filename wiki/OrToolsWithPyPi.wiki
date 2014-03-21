@@ -6,7 +6,7 @@
 
 On linux, python should be installed by default.
 
-On Mac OS X, you need to install XCode Commande Line Tools (for Mountain Lion and up).
+On Mac OS X, you need to install XCode Command Line Tools (for Mountain Lion and up).
 
 On Windows, you need to install python from http://www.python.org/download/releases/2.7/ . Please use the 32 bit or 64 bit version.
 
