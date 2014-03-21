@@ -1,4 +1,5 @@
 #summary Using OR-Tools With Pypi
+#labels Phase-Deploy
 
 = Getting OR-Tools from Pypi =
 
@@ -8,14 +9,14 @@ On linux, python should be installed by default.
 
 On Mac OS X, you need to install XCode Command Line Tools (for Mountain Lion and up).
 
-On Windows, you need to install python from http://www.python.org/download/releases/2.7/ . Please use the 32 bit or 64 bit version.
+On Windows, you need to install python from http://www.python.org/download/releases/2.7/ . Please choose the 32 bit or 64 bit version.
 
 == Installing or-tools from the examples archive ==
 
 ortools is available on pypi.
 The best way to install it is to download the Google.OrTools.python.examples archive from [https://drive.google.com/folderview?id=0B2yUSpEp04BNdEU4QW5US1hvTzg&usp=sharing here] ([https://app.box.com/s/gmgtnfqgl8ibrz5d1cm0 mirror]).
 
-Unpack it, go in the created directory and run:
+Unpack it, go in the ortools_examples directory and run:
 
 Linux and Mac OS X:
 if you have root privileges:
@@ -31,7 +32,7 @@ python2.7 setup.py install --user
 
 Windows:
 {{{
-c:\python27\python setup.py install
+c:\python27\python.exe setup.py install
 }}}
 
 This should download the _ortools_ package, as well as its dependencies (protobuf, google apputils).
@@ -46,7 +47,7 @@ You can install ortools differently, although this is not recommended.
 easy_install ortools
 }}}
 
-Note that pip is not supported.
+Note that pip is not supported. You must use easy_install.
 
 === Using .msi files on windows ===
 
@@ -55,20 +56,26 @@ You will need to install protobuf and google-apputils from pypi.
 
 = Running one example =
 
-Once it is installed, you should see the following directory structure:
+Once Google.OrTools.python.examples is unpacked, you should see the following directory structure:
 {{{
 ortools_examples\
-  data\           <- Data directory
-  examples\       <- All examples
-  LICENSE-2.0.txt <- Apache 2.0 License file
-  README.txt      <- README file
-  setup.py        <- setup file
+  data\           <- Data directory for the examples.
+  examples\       <- All python examples.
+  LICENSE-2.0.txt <- Apache 2.0 License file.
+  README.txt      <- README file.
+  setup.py        <- setup file.
 }}} 
 
 you should be able to run any examples in the examples/ directory
 
+Linux and Mac OS X:
 {{{
 python2.7 examples/golomb8.py
+}}}
+
+Windows:
+{{{
+c:\python27\python.exe examples\golomb8.py
 }}}
 
 = Troubleshooting =
@@ -77,4 +84,4 @@ python2.7 examples/golomb8.py
 
 Most likely, you are using windows XP. Unfortunately, ortools needs visual studio 2012 or up, which is incompatible with Windows XP.
 
-Another common error is to use pip, this tools pulls the wrong archive with most likely a wrong platform. So please use easy_install, or better the installation instructions using the example archive.
+Another common error is to use pip, this tool pulls the wrong archive with most likely a wrong platform. So use easy_install, or better the installation instructions using the Google.OrTools.python.examples archive.
