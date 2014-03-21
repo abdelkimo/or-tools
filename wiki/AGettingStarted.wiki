@@ -300,3 +300,27 @@ If everything is OK, it will run a selection of examples from all technologies i
 
 If you have trouble compiling or-tools, please write to or-tools-discuss@googlegroups.com.
 I will follow up from there.
+
+Here are some common cases:
+
+== Cannot download pcre ==
+
+The message is 
+{{{
+svn co svn://vcs.exim.org/pcre/code/trunk -r 1336 dependencies/sources/pcre-1336 svn: E000101: Unable to connect to a repository at URL 'svn://vcs.exim.org/pcre/code/trunk' svn: E000101: Can't connect to host 'vcs.exim.org': Network is unreachable make: [dependencies/sources/pcre-1336/autogen.sh] Error 1
+}}}
+
+Unfortunately, pcre servers are flaky. Just retry until it works.
+
+== Missing gflags.h ==
+
+The message is 
+{{{
+src\base/commandlineflags.h(17) : fatal error C1083: Cannot open include file: 'gflags/gflags.h': No such file or directory tools\make: [objs/alldiff_cst.obj] Error 2
+}}}
+
+This means that either you did not run make third_party, or it did not succeed. Please run make third_party and report errors.
+
+== Error C2143 ==
+
+Most likely, you are using visual studio 2010, please upgrade to a later version (2012 or up).
