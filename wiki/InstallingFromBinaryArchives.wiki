@@ -8,7 +8,7 @@ This is an how-to.
 = Details =
 
 We provide binary modules for:
-  * C++: OrToolsWithCpp
-  * Python: OrToolsWithPyPi
-  * Java: OrToolsWithJava
-  * .NET: OrToolsWithDotNet
+  * [OrToolsWithCpp C++]
+  * [OrToolsWithPyPi Python]
+  * [OrToolsWithJava Java]
+  * [OrToolsWithDotNet .NET]
