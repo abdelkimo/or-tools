@@ -324,3 +324,7 @@ This means that either you did not run make third_party, or it did not succeed. 
 == Error C2143 ==
 
 Most likely, you are using visual studio 2010, please upgrade to a later version (2012 or up).
+
+== Make test crashes on mtsearch_test ==
+
+I know there is a rare race condition in my code. I had not the time to debug it. Just ignore, or-tools do not use parallelism except if you specifically use some dedicated parallel local search.
