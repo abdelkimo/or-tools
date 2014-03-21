@@ -18,7 +18,7 @@ or-tools/
   LICENSE-2.0.txt    <- Apache License
   README             <- This file
   examples/          <- C++ examples
-  lib/               <- directory containing the ortools complete library
+  lib/               <- directory containing the ortools library
   include/           <- all include files
   Makefile/          <- Main makefile
 }}}
