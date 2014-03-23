@@ -11,6 +11,12 @@ On Mac OS X, you need to install XCode Command Line Tools (for Mountain Lion and
 
 On Windows, you need to install python from http://www.python.org/download/releases/2.7/ . Please choose the 32 bit or 64 bit version.
 
+== Upgrading setuptools ==
+
+Sometimes, you get weird errors when trying to install ortools. I recomment upgrading setuptools using the instructions found here:
+
+https://pypi.python.org/pypi/setuptools#installation-instructions
+
 == Installing or-tools from the examples archive ==
 
 ortools is available on pypi.
