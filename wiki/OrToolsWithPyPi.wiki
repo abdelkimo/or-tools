@@ -62,7 +62,7 @@ You will need to install protobuf and google-apputils from pypi.
 
 = Running one example =
 
-Once Google.OrTools.python.examples is unpacked, you should see the following directory structure:
+Once Google.!OrTools.python.examples is unpacked, you should see the following directory structure:
 {{{
 ortools_examples\
   data\           <- Data directory for the examples.
