@@ -5,6 +5,8 @@
 
 == Getting Python ==
 
+OR-Tools is compatible with python *2.6* and *2.7*. Compatibility with python 3.3 is underway, but protobuf is not yet compatible.
+
 On linux, python should be installed by default.
 
 On Mac OS X, you need to install XCode Command Line Tools (for Mountain Lion and up).
