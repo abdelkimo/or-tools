@@ -95,6 +95,8 @@ sudo apt-get install bison flex python-setuptools python-dev autoconf libtool te
 On mac OS X, you need to install xcode (actually, it seems only xcode command line tools are necessary, which is way smaller). If the OS is before Mountain Lion (Lion, Snow Leopard), then it should be enough.
 If the OS is Mountain Lion or after, it is a bit more complicated:
 
+* Note: * As of March 2014, please do not use the March 2014 XCode Command Line Tools as they broke one of the dependencies. Use the late November 2013 version until this is fixed.
+
   * You then need to install the latest version of the command line tools for xcode (full xcode is not needed).
   * To install javac, just run {{{javac}}}, it will start the procedure to download java and install it.
 
