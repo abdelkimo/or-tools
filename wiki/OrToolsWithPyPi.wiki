@@ -55,7 +55,8 @@ You can install ortools differently, although this is not recommended.
 easy_install ortools
 }}}
 
-Note that pip is not supported. You must use easy_install.
+Note that pip is not supported. You must use easy_install. 
+Note that (1) easy_install is not installed by default, and (2) you will not get the ortools examples to test.
 
 === Using .msi files on windows ===
 
