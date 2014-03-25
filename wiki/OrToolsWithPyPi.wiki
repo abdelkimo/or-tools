@@ -22,7 +22,7 @@ https://pypi.python.org/pypi/setuptools#installation-instructions
 == Installing or-tools from the examples archive ==
 
 ortools is available on pypi.
-The best way to install it is to download the Google.OrTools.python.examples archive from [https://drive.google.com/folderview?id=0B2yUSpEp04BNdEU4QW5US1hvTzg&usp=sharing here] ([https://app.box.com/s/gmgtnfqgl8ibrz5d1cm0 mirror]).
+The best way to install it is to download the Google.!OrTools.python.examples archive from [https://drive.google.com/folderview?id=0B2yUSpEp04BNdEU4QW5US1hvTzg&usp=sharing here] ([https://app.box.com/s/gmgtnfqgl8ibrz5d1cm0 mirror]).
 
 Unpack it, go in the ortools_examples directory and run:
 
