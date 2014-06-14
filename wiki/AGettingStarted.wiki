@@ -65,6 +65,11 @@ The command on ubuntu >= 13.04 is the following:
 sudo apt-get install bison flex python-setuptools python-dev autoconf libtool zlib1g-dev texinfo gawk
 }}}
 
+The command on ubuntu >= 14.04 is the following:
+{{{
+sudo apt-get install bison flex python-setuptools python-dev autoconf libtool zlib1g-dev texinfo gawk g++ curl
+}}}
+
 To use java on ubuntu, you need to install the jdk
 
 {{{
