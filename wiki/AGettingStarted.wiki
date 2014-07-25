@@ -92,7 +92,7 @@ The fedora command is:
 Please install the following packages on debian:
 
 {{{
-sudo apt-get install bison flex python-setuptools python-dev autoconf libtool texinfo texlive gawk
+sudo apt-get install bison flex python-setuptools python-dev autoconf libtool texinfo texlive gawk g++ zlib1g-dev
 }}}
 
 == Mac OS X Specific part ==
