@@ -1,6 +1,3 @@
 # Milestone:
 # Current changes.
-* Minor enhancements to the manual:
-
-* Back to Sphinx 1.2b
-
+* regaining control - NO CHANGE

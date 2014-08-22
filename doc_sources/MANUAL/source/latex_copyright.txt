@@ -4,7 +4,7 @@
 
 \vspace{\stretch{1}}
 
-\copyright\ Copyright 2012-2013, Google\\
+\copyright\ Copyright 2012-2014, Google\\
 
 
 \vspace{\stretch{1}}

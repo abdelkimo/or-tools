@@ -116,9 +116,9 @@ for line in hub_content:
             continue
         else:
             continue
-    if line.startswith('<li class="manual_download">'):
-        new_hub_content.append(line.replace(old_version, current_version))
-        continue
+    #if line.startswith('<li class="manual_download">'):
+    #    new_hub_content.append(line.replace(old_version, current_version))
+    #    continue
     new_hub_content.append(line)
 
 file = open(hub_html_page, 'w')

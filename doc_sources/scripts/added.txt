@@ -1,1 +1,2 @@
 static/documentation_hub.css~
+user_manual/_static/basic.css~

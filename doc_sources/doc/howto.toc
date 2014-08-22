@@ -1,7 +1,7 @@
 \contentsline {section}{\numberline {1}Preminilaries}{2}{section.1}
 \contentsline {subsection}{\numberline {1.1}Vocabulary}{2}{subsection.1.1}
 \contentsline {subsection}{\numberline {1.2}Directories}{2}{subsection.1.2}
-\contentsline {subsection}{\numberline {1.3}The \texttt {SOURCES} directory}{3}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.3}The main \texttt {SOURCES} directory}{3}{subsection.1.3}
 \contentsline {section}{\numberline {2}How to Install the documentation sources and the needed tools}{3}{section.2}
 \contentsline {subsection}{\numberline {2.1}Local directories and copies}{4}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}The\nobreakspace {}\texttt {config.ini} file}{4}{subsection.2.2}
