@@ -1,7 +1,9 @@
+..  include:: ../../../../global.rst
+
 ..  _four_queens_problem:
 
-The 4-queens problem
---------------------
+The 4-queens problem |difficulty|
+-----------------------------------
 
 
 ..  only:: html 

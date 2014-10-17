@@ -106,7 +106,7 @@ void Jobshop(const JobShopData& data) {
     for (int task_index = 0; task_index < tasks.size(); ++task_index) {
       const JobShopData::Task& task = tasks[task_index];
       CHECK_EQ(job_id, task.job_id);
-      const string name = StringPrintf("J%dM%dI%dD%d",
+      const std::string name = StringPrintf("J%dM%dI%dD%d",
                                        task.job_id,
                                        task.machine_id,
                                        task_index,
@@ -138,7 +138,7 @@ void Jobshop(const JobShopData& data) {
   // Adds disjunctive constraints and creates sequence variables.
   std::vector<SequenceVar*> all_sequences;
   for (int machine_id = 0; machine_id < machine_count; ++machine_id) {
-    const string name = StringPrintf("Machine_%d", machine_id);
+    const std::string name = StringPrintf("Machine_%d", machine_id);
     DisjunctiveConstraint* const ct =
     solver.MakeDisjunctiveConstraint(machines_to_tasks[machine_id], name);
     solver.AddConstraint(ct);
@@ -202,8 +202,7 @@ void Jobshop(const JobShopData& data) {
 
   //  Swap Operator with shuffle length 2.
   LocalSearchOperator* const initial_shuffle_operator =
-      solver.RevAlloc(new ShuffleIntervals(all_sequences.data(),
-                                           all_sequences.size(),
+      solver.RevAlloc(new ShuffleIntervals(all_sequences,
                                            2));
   //  Complementary DecisionBuilder.
   DecisionBuilder* const random_sequence_phase =
@@ -257,14 +256,12 @@ void Jobshop(const JobShopData& data) {
   std::vector<LocalSearchOperator*> operators;
   LOG(INFO) << "  - use swap operator";
   LocalSearchOperator* const swap_operator =
-      solver.RevAlloc(new SwapIntervals(all_sequences.data(),
-                                        all_sequences.size()));
+      solver.RevAlloc(new SwapIntervals(all_sequences));
   operators.push_back(swap_operator);
   LOG(INFO) << "  - use shuffle operator with a max length of "
             << FLAGS_shuffle_length;
   LocalSearchOperator* const shuffle_operator =
-      solver.RevAlloc(new ShuffleIntervals(all_sequences.data(),
-                                           all_sequences.size(),
+      solver.RevAlloc(new ShuffleIntervals(all_sequences,
                                            FLAGS_shuffle_length));
   operators.push_back(shuffle_operator);
 

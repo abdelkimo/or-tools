@@ -12,6 +12,13 @@
 # serve to show the default.
 
 import sys, os
+from datetime import date
+
+# Homemade scripts... not the best solution but certainly the least intrusive one
+script_dir_relative_path = '../../scripts'
+script_dir_absolute_path = os.path.abspath(os.path.normpath(script_dir_relative_path))
+sys.path.insert(1, script_dir_absolute_path)
+from or_tools_doc_utils import read_global_rst
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -48,15 +55,18 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Frequently Asked Questions'
-copyright = u'2012, Google'
+# Get current year
+current_year = date.today().year
+copyright = u'2012-%s, Google' % current_year
 
 #**************************************************************************************
 #ADDED FUNCTIONNALITIES
 
 html_add_permalinks = None
+rst_prolog_file = os.path.normpath('../../global.rst')
+rst_prolog_relative_paths_file = os.path.normpath('../../global_relative_paths.txt')
 
-rst_prolog = open('../../global.rst', 'r').read()
-
+rst_prolog = read_global_rst(rst_prolog_file, rst_prolog_relative_paths_file)
 #**************************************************************************************
 
 # The version info for the project you're documenting, acts as replacement for
@@ -173,7 +183,7 @@ html_sidebars = {
 html_domain_indices = False
 
 # If false, no index is generated.
-#html_use_index = True
+html_use_index = False
 
 # If true, the index is split into individual pages for each letter.
 #html_split_index = False

@@ -19,7 +19,7 @@ namespace operations_research {
 class DecreaseOneVar: public IntVarLocalSearchOperator {
   public:
     explicit DecreaseOneVar(const std::vector<IntVar*>& variables)
-            : IntVarLocalSearchOperator(variables.data(), variables.size()),
+            : IntVarLocalSearchOperator(variables),
             variable_index_(0) {
               VLOG(2) << "Creation of DecreaseOneVar Local Search Operator";
             }

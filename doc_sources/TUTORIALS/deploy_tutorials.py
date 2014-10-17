@@ -64,7 +64,7 @@ copyright_cpluscplus_file = join(config['root.dir'],
 flush_content_in_list(copyright_cpluscplus_file, copyright_cpluscplus_list)
 
 # List of files and directories not to be copied
-tabu = ['.svn']
+tabu = ['.svn', '.*', '*.kdev4', '*.*~', '*.o', '*.log']
 
 separator = "*************************************************************"
 

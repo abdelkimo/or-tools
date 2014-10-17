@@ -18,23 +18,23 @@ From time to time, we will add questions asked on the `mailing list <http://grou
 General questions about:
 ^^^^^^^^^^^^^^^^^^^^^^^^
   :ref:`the documentation <faq:documentation:questions>`:
-    We try to answer questions on the documentation itself and on the documentation generation.
+    Questions on the documentation itself and on the documentation generation.
     
   :ref:`the installation and compilation <faq:installation:questions>`:
     How to compile the library? How to compile your own code? We try to answer common installation questions or at least
     to give you some links to the appropriate documentation.
     
   :ref:`the library <faq:library:questions>`:
-    We try to answer general questions about the library.
+    General questions about the library.
     
   :ref:`the CP Solver <faq:CPsolver:qestions>`:
-    We try to answer general questions about the CP Solver engine. 
+    General questions about the CP Solver engine. 
     
   :ref:`the CP Routing Solver <faq:routing:questions>`
-    We try to answer general questions about the CP Routing Solver engine.
+    General questions about the CP Routing Solver engine.
     
   :ref:`the Local Search algorithm <faq:localsearch:questions>`
-    We try to answer general questions about the way Local Search is implemented in *or-tools*.
+    General questions about the way Local Search is implemented in *or-tools*.
 
 
 .. toctree::
@@ -48,4 +48,22 @@ General questions about:
    the CP Routing Solver <faq/routing>
    the Local Search algorithm <faq/LS>   
    
+..  raw:: html 
 
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>

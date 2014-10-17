@@ -15,7 +15,7 @@ and divided among several ``VehicleClass``\es.
 Problems with multi-depots
 ------------------------------
 
-You can find the source code in the file :file:`chap14/rl_auxiliary_graph.cc`.
+You can find the source code in the file :file:`chap13/rl_auxiliary_graph.cc`.
 
 We only consider problems where the starting and ending depots are known for each vehicle. If you have to deal 
 with a problem where this is not the case, there exists a bunch of modeling tricks where you can add fictive nodes.

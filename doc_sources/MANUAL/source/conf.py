@@ -12,6 +12,7 @@
 # serve to show the default.
 
 import sys, os
+from datetime import date
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -30,13 +31,13 @@ needs_sphinx = '1.0'
 extensions = ['sphinx.ext.pngmath', 'sphinx.ext.ifconfig', 'sphinxcontrib.doxylink', 'sphinxortools.ortools']
 
 # -- PNGmath configuration -----------------------------------------------------
-pngmath_latex_preamble = r'\usepackage{color} \usepackage{cancel}  \usepackage[active]{preview}  \newcommand\TStrut{\rule{0pt}{2.6ex}}  \newcommand\BStrut{\rule[-1.2ex]{0pt}{0pt}}' 
+pngmath_latex_preamble = r'\usepackage{color} \usepackage{cancel}  \usepackage[active]{preview} \usepackage{wasysym} \usepackage{amsmath} \usepackage{amsfonts} \usepackage{amssymb} \newcommand\TStrut{\rule{0pt}{2.6ex}}  \newcommand\BStrut{\rule[-1.2ex]{0pt}{0pt}}' 
 pngmath_use_preview=True
 
-pngmath_dvipng_args = ['-gamma 1.5', '-D 110', '-bg Transparent']
 # Adding Transparency for math images
-
 #pngmath_dvipng_args = ['gamma', '1.5', '-D', '110', '-bg', 'Transparent']
+#pngmath_dvipng_args = ['-gamma 1.5', '-D 110', '-bg Transparent']
+pngmath_dvipng_args =  ['-gamma', '1.5', '-D', '110', '-bg', 'Transparent']
 
 # -- PNGmath configuration -----------------------------------------------------
 
@@ -54,7 +55,10 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'User\'s Manual'
-copyright = u'2012-2014, Google'
+# Get current year
+current_year = date.today().year
+copyright = u'2012-%s, Google' % current_year
+
 
 #**************************************************************************************
 #ADDED FUNCTIONNALITIES

@@ -1,7 +1,9 @@
+..  include:: ../../../../global.rst
+
 ..  _what_is_cp:
 
-What is constraint programming?
--------------------------------
+What is constraint programming? |difficulty|
+----------------------------------------------
 
 
 Constraint Programming (CP) is an emergent field in operations research [#no_origin_war]_.

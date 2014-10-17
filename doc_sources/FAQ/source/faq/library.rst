@@ -68,11 +68,11 @@ What are the supported platforms?
 
 The code is known to compile on:
 
-* gcc 4.4.x on ubuntu 10.04 and up (10.10, 11.04, 11.10 and 12.04)
-* xcode >= 3.2.3 on Mac OS X Snow Leopard and Mac OS X Lion (gcc 4.2.1)
-* Microsoft Visual Studio 10. 
+* gcc 4.7.x and above on Ubuntu 12.04 and up (12.04, 12.10, 13.04, 13.10)
+* XCode >= 5.0 (clang++ with C++11 support)
+* Microsoft Visual Studio 2012 and 2013 (2010 is not supported as it lacks support for C++11)
 
-Both 32 bit and 64 bit architectures are supported, although the code is optimized to run in 64 bit mode. 
+Both 32-bit and 64-bit architectures are supported, although the code is optimized to run in 64-bit mode.
 
 .. _faq:library:use_at_google:
 

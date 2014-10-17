@@ -49,7 +49,7 @@ void Jobshop(const JobShopData& data) {
     for (int task_index = 0; task_index < tasks.size(); ++task_index) {
       const JobShopData::Task& task = tasks[task_index];
       CHECK_EQ(job_id, task.job_id);
-      const string name = StringPrintf("J%dM%dI%dD%d",
+      const std::string name = StringPrintf("J%dM%dI%dD%d",
                                        task.job_id,
                                        task.machine_id,
                                        task_index,
@@ -81,7 +81,7 @@ void Jobshop(const JobShopData& data) {
   // Adds disjunctive constraints and creates sequence variables.
   std::vector<SequenceVar*> all_sequences;
   for (int machine_id = 0; machine_id < machine_count; ++machine_id) {
-    const string name = StringPrintf("Machine_%d", machine_id);
+    const std::string name = StringPrintf("Machine_%d", machine_id);
     DisjunctiveConstraint* const ct =
     solver.MakeDisjunctiveConstraint(machines_to_tasks[machine_id], name);
     solver.AddConstraint(ct);
@@ -136,8 +136,7 @@ void Jobshop(const JobShopData& data) {
 
   //  Swap Operator.
   LocalSearchOperator* const swap_operator =
-      solver.RevAlloc(new SwapIntervals(all_sequences.data(),
-                                        all_sequences.size()));
+      solver.RevAlloc(new SwapIntervals(all_sequences));
   //  Complementary DecisionBuilder.
   DecisionBuilder* const random_sequence_phase =
       solver.MakePhase(all_sequences, Solver::CHOOSE_RANDOM_RANK_FORWARD);

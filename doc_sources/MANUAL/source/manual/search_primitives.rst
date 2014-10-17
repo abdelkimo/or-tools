@@ -4,7 +4,7 @@
 
 ..  _chapter_search_primitives:
 
-Defining search primitives: the n-queens problem
+Defining search primitives: the n-Queens Problem
 ==================================================
     
 This chapter is about the customization of the search. What stategy(ies) to

@@ -427,14 +427,14 @@ to visualize a CVRP solution. To create a pdf image of the :file:`opt-A-n32-k5` 
 
 ..  code-block:: bash
 
-    cvrp_solution_to_epix -instance_file=A-n32-k5.vrp 
+    ./cvrp_solution_to_epix -instance_file=A-n32-k5.vrp 
                           -solution_file=opt-A-n32-k5 > opt-A-n32-k5.xp
 
 then process the ``xp`` file with :program:`elaps`:
 
 ..  code-block:: bash
 
-    ./elaps -pdf opt-A-n32-k5.xp
+    elaps -pdf opt-A-n32-k5.xp
 
 to obtain the following image:
 

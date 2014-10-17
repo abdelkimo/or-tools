@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-
+..  include:: ../../global.rst
 
 ..  raw:: latex 
 
@@ -117,7 +117,10 @@ Foreword
         
     - A Constraint Programming solver.
     - A simple and unified interface to several linear programming and mixed integer 
-      programming solvers (GLPK, CLP, CBC and SCIP).
+      programming solvers (`CBC <https://projects.coin-or.org/Cbc>`_, `CLP <https://projects.coin-or.org/Clp>`_, 
+      `GLOP <https://developers.google.com/optimization/docs/lp/glop>`_, `GLPK <https://www.gnu.org/software/glpk/>`_, 
+      `Gurobi <http://www.gurobi.com/>`_, 
+      `SCIP <http://scip.zib.de/>`_ and `Sulum <http://sulumoptimization.com/>`_).
     - Knapsack algorithms.
     - Graph algorithms (shortest paths, min cost flow, max flow, linear sum assignment).
     - *FlatZinc* support.
@@ -136,10 +139,10 @@ Foreword
       examples written in C++, Python, Java and C#!
     - **Portable** Because it is made by Google, the code conforms strictly to the Google coding
       styles. The code is known to compile on:
-      
-      * gcc 4.4.x on ubuntu 10.04 and up (10.10, 11.04, 11.10 and 12.04).
-      * xcode >= 3.2.3 on Mac OS X Snow Leopard and Mac OS X Lion (gcc 4.2.1).
-      * Microsoft Visual Studio 10.
+
+      * gcc 4.7.x and above on Ubuntu 12.04 and up (12.04, 12.10, 13.04, 13.10)
+      * XCode >= 5.0 (clang++ with C++11 support)
+      * Microsoft Visual Studio 2012 and 2013 (2010 is not supported as it lacks support for C++11)
       
       Both 32 bit and 64 bit architectures are supported, although the code is optimized to run in
       64 bit mode.
@@ -153,6 +156,12 @@ Foreword
       growing.
 
     .. _foreword:will_learn:
+    
+    Optimization tools at Google
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+    If you want to know more about optimization at Google, we refer the interested read to our 
+    `Google Optimization <https://developers.google.com/optimization/>`_ page.
     
     What you will learn in this document
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -264,6 +273,8 @@ Foreword
     of this method and the code lines that follow the definition of this function. The purpose of this
     example is to show that the code is written inside the ``namespace operations_research``.
 
+    Some sections are more difficult to read than others. The more |difficulty|, the more difficult they are!
+    
     All commands are issued from a Unix-like terminal:
     
     ..  code-block:: bash
@@ -287,7 +298,7 @@ Foreword
     
     - ``documentation/tutorials/C++``
 
-    If you prefer to code in Python, Java or C#, we have translated all the examples in your
+    If you prefer to code in Python, Java or C#, we have translated (will translate) all the examples in your
     favourite language. You can find the complete examples on the documentation hub or under the
     directories:
     
@@ -299,7 +310,13 @@ Foreword
     
     Lab sessions
     ^^^^^^^^^^^^
-    
+
+..  raw:: html 
+
+     <font color="red">The labs are currently hold.</font>
+     
+..  only:: html
+
     Theory is good but useless without practice and experience. For each chapter, we provide exercises.
     Most of them are practical and consist in completing some C++ code. Even if you don’t (like to)
     code in C++, these lab sessions are helpful as we develop some concepts seen in the manual more

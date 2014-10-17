@@ -3,6 +3,9 @@
 General questions about the installation and the compilation of the library
 ----------------------------------------------------------------------------
 
+Basically, we refer you to the wiki page `Getting Started <http://code.google.com/p/or-tools/wiki/AGettingStarted>`_ for all the 
+juicy details but here are some (short) pointers.
+
 * :ref:`faq:installation:compile`
 * :ref:`faq:installation:compile_independently`
 * :ref:`faq:installation:compile_tutorial`
@@ -30,7 +33,8 @@ Take a look at :ref:`faq:installation:compile`
 How do I compile and run the examples in the tutorial section?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-``Makefiles`` are (will be) provided to compile the examples (soon).
+``Makefiles`` are provided to compile the examples. See the `Tutorial examples <http://or-tools.googlecode.com/svn/trunk/documentation/documentation_hub.html#tutorial_examples>`_ section from 
+the  `Documentation Hub <http://or-tools.googlecode.com/svn/trunk/documentation/documentation_hub.html>`_
 
 .. _faq:installation:update:
 

@@ -4,6 +4,11 @@
 # Upload tutorials files (code files).
 # See documentation manual.
 
+import sys
+
+print "doesn't work anymore due to Google's upload policy changes"
+sys.exit(-1)
+
 from subprocess import check_call
 import sys
 from os.path import join

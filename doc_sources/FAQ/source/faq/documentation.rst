@@ -108,8 +108,7 @@ keep your suggestions for later.
 
 Does the search tool return pertinent results?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Not for the moment.
-Give us some time. For the moment, the structure of the documentation is still changing and the documentation is quite empty.
+Yes, it does. Give the Google engine one or two days to index new pages thought.
 
 
 .. _`faq:documentation:computer_used`:
@@ -119,20 +118,19 @@ What computer did you use for the numerical results?
 It doesn't really matter. What matters is that ALL experiments where done with 
 the same computer. You insist? OK, we used a laptop computer running under Linux (Kernel 2.6.38-15) with 3.9 GB of RAM and two Intel Core2 Duo processors at 2,26 Ghz each. Happy now?
 
+Update. As of 2014, I'm using another laptop. It still doesn't matter what computer I'm using but if you want to compare your results with those written in the documentation, here are the specifications:
+
+- Linux (Kernel 3.11.0-12-generic);
+- Intel Core :superscript:`TM` i7-3840QM at 2.80Ghz x 4;
+- 31.0 Gib of Ram.
+
 
 .. _`faq:documentation:end_of_project`:
 
 When do you expect to finish?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- :strike:`June 1` :superscript:`st`, :strike:`2012`
-- :strike:`September 1` :superscript:`st`, :strike:`2012`
-- :strike:`December 1` :superscript:`st`, :strike:`2012`
-- :strike:`February 1` :superscript:`st`, :strike:`2015`, :strike:`2013`
-
-Do we dare to fix another deadline? 
-
-- April 15 :superscript:`th`, :strike:`2015`, 2013
+- December 30 :superscript:`th`, 2014
 
 for the first draft. 
 

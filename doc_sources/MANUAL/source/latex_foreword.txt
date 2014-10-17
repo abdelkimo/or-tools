@@ -26,8 +26,10 @@ The {\bf or-tools}~library is a set of {\bf o}perations {\bf r}esearch {\bf tool
 The main tools are:
 \begin{itemize}
   \item A Constraint Programming solver.
-  \item A simple and unified interface to several linear programming and mixed
-integer programming solvers (GLPK, CLP, CBC and SCIP).
+  \item A simple and unified interface to several linear programming and mixed integer programming solvers (\href{https://projects.coin-or.org/Cbc}{CBC}, \href{https://projects.coin-or.org/Clp}{CLP}, 
+      \href{https://developers.google.com/optimization/docs/lp/glop}{GLOP}, \href{https://www.gnu.org/software/glpk/}{GLPK}, 
+      \href{http://www.gurobi.com/}{Gurobi}, 
+      \href{http://scip.zib.de/}{SCIP} and~\href{http://sulumoptimization.com/}{Sulum}).
   \item Knapsack algorithms.
   \item Graph algorithms (shortest paths, min cost flow, max flow, linear sum assignment).
   \item \emph{FlatZinc} support.
@@ -133,6 +135,8 @@ To focus on some parts of the code, we omit non necessary code or code lines and
 In this example, the parameters of the function~\code{MakeBaseLine2()} are stripped as are the content of this method and the code lines that follow the definition
 of this function. The purpose of this example is to show that the code is written inside the~\code{namespace}~\code{operations\_research}.
 
+Some sections are more difficult to read than others. The more~$\bigstar$, the more difficult they are!
+
 All commands are issued from a Unix-like terminal:
 
 \includegraphics[width=1.06\linewidth]{command_line.pdf}
@@ -157,6 +161,8 @@ If you prefer to code in \code{Python}, \code{Java} or \code{C\#}, we have trans
 \code{documentation/tutorials/Csharp}.
 
 \section*{Lab sessions}
+
+\textcolor{red}{The labs are currently hold.}
 
 Theory is good but useless without practice and experience. For each chapter, we provide exercises. Most of them are practical and consist in completing some~\code{C++} code. 
 Even if you don't (like to) code in~\code{C++}, these lab sessions are helpful as we develop some concepts seen in the manual more in details. Exercises vary between simple and 

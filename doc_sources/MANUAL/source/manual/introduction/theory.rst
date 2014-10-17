@@ -1,40 +1,44 @@
+..  include:: ../../../../global.rst
+
 ..  _a_little_bit_of_theory:
 
-A little bit of theory
-----------------------
+A little bit of theory |difficulty| |difficulty| |difficulty|
+------------------------------------------------------------------------------------------------
 
-
-[MUST BE REREAD]
+We give you in a nutshell some important ideas and 
+the vocabulary we use throughout this manual. As is often the case with theory, if you don't have some first-hand experience with 
+the practice (in this case with mathematical optimization), you might find it difficult to follow the theoretical abstraction and technicalities.
+To help you get mixed up, experts often mix terms and use (wrongly formulated) shortcuts when they describe their theory. Optimization is certainly no exception. 
+We use specific examples to illustrate the most important concepts
 
 ..  only:: html 
 
-    We give you in a nutshell the important ideas and 
-    the vocabulary we use throughout this manual. In the section :ref:`constraint_satisfaction_problem`,
+    In the section :ref:`constraint_satisfaction_problem`,
     we cover the basic vocabulary to talk about the problems we solve in CP. The section
     :ref:`complexity_in_a_few_lines` introduces informally *complexity theory* [#time_complexity]_. 
     One of the difficulties of this 
     theory is that there are a lot of technical details no to be missed. We have tried 
     in this section to introduce you to important ideas without being drawn into too many details 
-    (some inescapable details are in the footnotes).
+    (some *inescapable* details can be found in the footnotes).
 
     ..  [#time_complexity] We talk here about *Time*-complexity theory, i.e. we are concerned with the time we need 
                            to solve problems. There exist other complexity theories, for instance the *Space*-complexity 
                            theory where we are concerned with the memory space needed to solve problems.
 ..  raw:: latex 
 
-    We give you in a nutshell the important ideas and 
-    the vocabulary we use throughout this manual. In 
-    section~\ref{manual/introduction/theory:constraint-satisfaction-problem},
+    In section~\ref{manual/introduction/theory:constraint-satisfaction-problem},
     we cover the basic vocabulary to talk about the problems we solve in CP. 
     Section~\ref{manual/introduction/theory:complexity-in-a-few-lines} introduces informally 
-    \emph{complexity theory}. One of the difficulties of this theory is that 
+    \emph{complexity theory}\footnote{We talk here about \emph{Time}-complexity theory, i.e. we are concerned with the time we need 
+    to solve problems. There exist other complexity theories, for instance the \emph{Space}-complexity 
+    theory where we are concerned with the memory space needed to solve problems.}. One of the difficulties of this theory is that 
     there are a lot of technical details no to be missed. We have tried 
     in this section to introduce you to important ideas without being drawn into too many details
-    (some inescapable details are in the footnotes).
+    (some \emph{inescapable} details can be found in the footnotes).
 
   
 Complexity theory is quite new (it really started in the '70s)
-and is not easy (and after reading this section, you'll have more questions than answers). 
+and is not easy (and after reading this section, you'll probably have more questions than answers). 
 If you are allergic to theory, read the next two subsections 
 but skip the rest. We are convinced - we took the time to write it, right? - that 
 you would benefit from reading this section in its entirety but it is up to you. 
@@ -49,40 +53,41 @@ Constraint Satisfaction Problems (CSP) and Constraint Optimization Problems (COP
 ..  only:: html
 
     We illustrate the different components of a 
-    Constraint Satisfaction Problem with the 4-queens problem we saw in the section :ref:`four_queens_problem`.
+    Constraint Satisfaction Problem with the 4-Queens problem we saw in the section :ref:`four_queens_problem`.
     Each time, we use a general definition (for instance variable :math:`x_i`) and then illustrate this definition by 
-    the 4-queens problem (for instance variable :math:`x_{21}`).
+    the 4-Queens problem (for instance variable :math:`x_{21}`).
 
 
 ..  raw:: latex
 
     We illustrate the different components of a 
-    Constraint Satisfaction Problem with the 4-queens problem we saw in 
+    Constraint Satisfaction Problem with the 4-Queens Problem we saw in 
     section~\ref{manual/introduction/4queens:four-queens-problem}.
 
+..  index:: Constraint Satisfaction Problem, variable, domain, constraint
 
-A **CSP** consists of 
+A **Constraint Satisfaction Problem (CSP)** consists of 
 
   * a set of **variables** :math:`X = \{x_0, \ldots, x_{n-1}\}`.
     
-    Ex.: For the 4-queens problem, we have a binary variable :math:`x_{ij}` indicating the presence or not of a queen
+    Ex.: For the 4-Queens Problem, we have a binary variable :math:`x_{ij}` indicating the presence or not of a queen
     on square :math:`(i,j)`:
     
     ..  math::
     
         X = \{x_{00}, x_{01}, x_{02}, x_{03}, x_{10}, x_{11}, x_{12},  \ldots, x_{33}\}
 
-  * for each variable :math:`x_i`, a *finite* set :math:`D_i` of possible values (its **domain**).
+  * a **domain** for each variable :math:`x_i`, i.e. a *finite* set :math:`D_i` of possible values.
   
-    Ex.: Each variable :math:`x_{ij}` is a binary variable, thus 
+    Ex.: For the 4-Queens Problem, each variable :math:`x_{ij}` is a binary variable, thus 
     
     ..  math:: 
         
         D_{00} = D_{01} = \ldots = D_{33} = \{0,1\}.
 
-  * **constraints** that restrict the values the variables can take simultaneously.
+  * a set of **constraints** that restrict the values the variables can take simultaneously.
   
-    Ex.: Constraints that avoid that two queens are on the same row:
+    Ex.: For the 4-Queens Problem,, we have a set of constraints that forbid two queens (or more) to share the same row:
     
     ..  math::
     
@@ -100,7 +105,7 @@ A **CSP** consists of
         :math:`x_{i3}` could take the value :math:`1`. Actually, we could replace the inequalities by equalities because 
         we know that every feasible solution must have a queen on each row. Later, in the 
         section :ref:`nqueen_implementation_basic_model`, we will provide
-        another model with other variables and constraints.
+        another model with different variables and constraints.
 
     ..  raw:: latex
     
@@ -144,6 +149,7 @@ Problems, instances and solutions
 
     Here is an example of such a formula:
     
+    XXX
     
     Feasible solutions don't need to be real solutions for a problem. You could be interested in an approximate solution
     because 
@@ -201,12 +207,13 @@ Complexity theory in a few lines
     are hard to solve [#difficult_to_solve]_: 
     no one could ever come up 
     with a very efficient algorithm to solve this problem. On the other hand, other problems, 
-    like the *Chinese Postman Problem*
-    (see the chapter :ref:`chapter_arc_routing_with_constraints`), are solved very efficiently. 
+    like the *n-Queens Problem*
+    (see the chapter :ref:`chapter_search_primitives`), are solved very efficiently [#precision_on_both_problems]_. 
     In the '70s, complexity experts were able to translate this
     fact into a beautiful *complexity theory*. 
 
     ..  [#difficult_to_solve] Roughly, we consider a problem to be hard to solve if we need a lot of time to solve it. Read on.
+    ..  [#precision_on_both_problems] The Travelling Salesman Problem is said to be *NP-hard* while (a version of) the n-Queens Problem is said to be in *P*.
 
 ..  raw:: latex
 
@@ -216,9 +223,9 @@ Complexity theory in a few lines
     lot of time to solve it. Read on.}: 
     no one could ever come up
     with a very efficient algorithm to solve this problem. On the other hand, other problems, 
-    like the \emph{Chinese Postman Problem}
-    (see chapter~\ref{manual/arc_routing:chapter-arc-routing-with-constraints}), 
-    are solved very efficiently. 
+    like the \emph{n-Queens Problem}
+    (see chapter~\ref{manual/search_primitives:chapter-search-primitives}), 
+    are solved very efficiently\footnote{The Travelling Salesman Problem is said to be~\emph{NP-hard} while (a version of) the n-Queens Problem is said to be in~\emph{P}.}. 
     In the '70s, complexity experts were able to 
     translate this fact into a beautiful \emph{complexity theory}.\\~\\ 
 
