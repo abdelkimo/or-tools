@@ -2,18 +2,18 @@
 
 ..  _four_queens_problem:
 
-The 4-queens problem |difficulty|
+The 4-Queens Problem |difficulty|
 -----------------------------------
 
 
 ..  only:: html 
 
-    We present here a well-known problem among Constraint Programming practitioners: the 4-queens problem.
+    We present here a well-known problem among Constraint Programming practitioners: the 4-Queens Problem.
     We shall encounter this problem again and generalize it in the Chapter :ref:`chapter_search_primitives`.
 
 ..  raw:: latex 
 
-    We present a well-known problem among Constraint Programming practitioners: the 4-queens problem.
+    We present a well-known problem among Constraint Programming practitioners: the 4-Queens Problem.
     We shall encounter this problem again and generalize it in 
     Chapter~\ref{manual/search_primitives:chapter-search-primitives}.
 
@@ -21,7 +21,7 @@ The problem
 ^^^^^^^^^^^
 
 
-The *4-queens problem* [#see_what_n_queens_problem_really_is]_ consists in 
+The *4-Queens Problem* [#see_what_n_queens_problem_really_is]_ consists in 
 placing four queens on a 4 x 4 chessboard so that no two queens can capture each other.
 That is, no two queens are allowed to be placed on the same row, the same column or the same diagonal.
 
@@ -36,7 +36,7 @@ That is, no two queens are allowed to be placed on the same row, the same column
         See section~\ref{manual/search_primitives/nqueens:nqueen-problem} for a more precise definition of this problem.
 
 
-The following figure illustrates a solution to the 4-queens problem: none of the 4 queens can capture each other.
+The following figure illustrates a solution to the 4-Queens Problem: none of the 4 queens can capture each other.
 
 
 ..  image:: images/sol_4x4_b.*
@@ -53,7 +53,7 @@ A mathematical translation of the problem
 
 In Constraint Programming we translate a real problem to a *mathematical model* with *variables* and *constraints*. Variables 
 represent decisions and constraints restraint the variables of taking arbitrary values altogether. For instance, to model the 
-4-queens problem, we could use a binary variable :math:`x_{ij}` that indicates if a queen is present on the given
+4-Queens Problem, we could use a binary variable :math:`x_{ij}` that indicates if a queen is present on the given
 :math:`(i,j)` square (:math:`x_{ij} = 1`) or not (:math:`x_{ij} = 0`). The first index :math:`i` denotes the :math:`i^\text{th}` row
 and the second index :math:`j` the :math:`j^\text{th}` column. We need several constraints to model that no two queens
 can capture each other. We also need to constraint the need for 4 queens. We could add the constraint:

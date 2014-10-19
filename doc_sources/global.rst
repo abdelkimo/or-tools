@@ -5,7 +5,7 @@
 .. role:: strike
     :class: strike
     
-..  |difficulty|  replace:: :math:`\bigstar`
+..  |difficulty|  replace:: :math:`\textstyle\bigstar`
     
 ..  |smiley_nerd| replace:: :math:`\smiley`
 
