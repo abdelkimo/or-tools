@@ -67,7 +67,7 @@ sudo apt-get install bison flex python-setuptools python-dev autoconf libtool zl
 
 The command on ubuntu >= 14.04 is the following:
 {{{
-sudo apt-get install bison flex python-setuptools python-dev autoconf libtool zlib1g-dev texinfo gawk g++ curl texlive subversion
+sudo apt-get install bison flex python-setuptools python-dev autoconf libtool zlib1g-dev texinfo gawk g++ curl texlive subversion make
 }}}
 
 To use java on ubuntu, you need to install the jdk
