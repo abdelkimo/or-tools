@@ -10,7 +10,7 @@ Please refer to InstallingFromBinaryArchives to learn more about installing from
 
 =Getting the source=
 
-Please visit http://code.google.com/p/or-tools/source/checkout to checkout the sources of or-tools.
+Please visit https://github.com/google/or-tools to checkout the sources of or-tools.
 
 =Content of the Archive=
 
